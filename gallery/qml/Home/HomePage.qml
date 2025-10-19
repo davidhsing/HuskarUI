@@ -7,22 +7,22 @@ import HuskarUI.Basic
 Rectangle {
     color: '#80000000'
 
-    ShaderEffect {
-        anchors.fill: parent
-        vertexShader: 'qrc:/Gallery/shaders/effect1.vert.qsb'
-        fragmentShader: 'qrc:/Gallery/shaders/effect1.frag.qsb'
-        opacity: 0.5
-
-        property vector3d iResolution: Qt.vector3d(width, height, 0)
-        property real iTime: 0
-
-        Timer {
-            running: true
-            repeat: true
-            interval: 10
-            onTriggered: parent.iTime += 0.01;
-        }
-    }
+    // ShaderEffect {
+    //     anchors.fill: parent
+    //     vertexShader: 'qrc:/Gallery/shaders/effect1.vert.qsb'
+    //     fragmentShader: 'qrc:/Gallery/shaders/effect1.frag.qsb'
+    //     opacity: 0.5
+    //
+    //     property vector3d iResolution: Qt.vector3d(width, height, 0)
+    //     property real iTime: 0
+    //
+    //     Timer {
+    //         running: true
+    //         repeat: true
+    //         interval: 10
+    //         onTriggered: parent.iTime += 0.01;
+    //     }
+    // }
 
     Flickable {
         anchors.fill: parent

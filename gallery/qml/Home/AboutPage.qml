@@ -7,9 +7,9 @@ import HuskarUI.Basic
 HusWindow {
     id: root
     width: 400
-    height: 500
+    height: 180
     minimumWidth: 400
-    minimumHeight: 500
+    minimumHeight: 180
     captionBar.minimizeButtonVisible: false
     captionBar.maximizeButtonVisible: false
     captionBar.winTitle: qsTr('关于')
@@ -94,52 +94,6 @@ HusWindow {
             HusCopyableText {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr('库版本: ') + HusApp.libVersion()
-            }
-
-            HusCopyableText {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr('作者: MenPenS')
-            }
-
-            HusCopyableText {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr('微信号: MenPenS0612')
-            }
-
-            HusCopyableText {
-                width: parent.width - 30
-                anchors.horizontalCenter: parent.horizontalCenter
-                wrapMode: HusCopyableText.WordWrap
-                horizontalAlignment: HusCopyableText.AlignHCenter
-                text: qsTr('QQ交流群号: <a href=\'https://qm.qq.com/q/cMNHn2tWeY\' style=\'color:#722ED1\'>490328047</a>')
-                textFormat: HusCopyableText.RichText
-                onLinkActivated: (link) => Qt.openUrlExternally(link);
-            }
-
-            HusCopyableText {
-                width: parent.width - 30
-                anchors.horizontalCenter: parent.horizontalCenter
-                wrapMode: HusCopyableText.WordWrap
-                horizontalAlignment: HusCopyableText.AlignHCenter
-                text: 'Github: <a href=\'https://github.com/mengps/HuskarUI\' style=\'color:#722ED1\'>https://github.com/mengps/HuskarUI</a>'
-                textFormat: HusCopyableText.RichText
-                onLinkActivated: (link) => Qt.openUrlExternally(link);
-            }
-
-            HusCopyableText {
-                width: parent.width - 30
-                anchors.horizontalCenter: parent.horizontalCenter
-                wrapMode: HusCopyableText.WordWrap
-                horizontalAlignment: HusCopyableText.AlignHCenter
-                text: qsTr('如果该项目/源码对你有用，就请点击上方链接给一个免费的Star，谢谢！')
-            }
-
-            HusCopyableText {
-                width: parent.width - 30
-                anchors.horizontalCenter: parent.horizontalCenter
-                wrapMode: HusCopyableText.WordWrap
-                horizontalAlignment: HusCopyableText.AlignHCenter
-                text: qsTr('有任何问题可以提Issues或进群！')
             }
         }
     }

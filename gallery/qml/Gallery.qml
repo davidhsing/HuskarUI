@@ -9,10 +9,10 @@ import './Home'
 
 HusWindow {
     id: galleryWindow
-    width: 1300
-    height: 850
+    width: 900
+    height: 600
     opacity: 0
-    minimumWidth: 800
+    minimumWidth: 900
     minimumHeight: 600
     title: qsTr('HuskarUI Gallery')
     followThemeSwitch: true
@@ -48,7 +48,7 @@ HusWindow {
         }
     }
     onWidthChanged: {
-        galleryMenu.compactMode = width < 1100;
+        galleryMenu.compactMode = width < 800;
     }
 
     property var galleryGlobal: Global { }
@@ -67,7 +67,7 @@ HusWindow {
         id: galleryBackground
         anchors.fill: content
         color: '#f5f5f5'
-        opacity: 0.2
+        opacity: 0.7
     }
 
     Loader {
@@ -152,7 +152,7 @@ HusWindow {
                     id: avatarIcon
                     size: 60
                     anchors.verticalCenter: parent.verticalCenter
-                    imageSource: 'https://avatars.githubusercontent.com/u/33405710?v=4'
+                    imageSource: 'https://avatars.githubusercontent.com/u/9333918?v=4'
                 }
 
                 Column {
@@ -163,21 +163,15 @@ HusWindow {
                     spacing: 4
 
                     HusText {
-                        text: 'MenPenS'
+                        text: 'DavidHsing'
                         font.weight: Font.DemiBold
                         font.italic: true
                         font.pixelSize: HusTheme.Primary.fontPrimarySize + 1
                     }
 
                     HusText {
-                        text: '843261040@qq.com'
-                        font.pixelSize: HusTheme.Primary.fontPrimarySize - 1
-                        color: HusTheme.Primary.colorTextSecondary
-                    }
-
-                    HusText {
                         width: parent.width
-                        text: 'https://github.com/mengps'
+                        text: 'https://github.com/davidhsing'
                         font.pixelSize: HusTheme.Primary.fontPrimarySize - 1
                         color: HusTheme.Primary.colorTextSecondary
                         wrapMode: HusText.WrapAnywhere

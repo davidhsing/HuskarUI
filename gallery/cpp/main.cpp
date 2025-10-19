@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QQuickWindow::setDefaultAlphaBuffer(true);
 
     const QGuiApplication app(argc, argv);
-    QGuiApplication::setOrganizationName("MenPenS");
+    QGuiApplication::setOrganizationName("GitHub");
     QGuiApplication::setApplicationName("HuskarUI");
     QGuiApplication::setApplicationDisplayName("HuskarUI Gallery");
     QGuiApplication::setApplicationVersion(HusApp::libVersion());
