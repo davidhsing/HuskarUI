@@ -84,6 +84,7 @@ git clone --recursive https://github.com/mengps/HuskarUI.git
 cd HuskarUI
 cmake -S . -B build
 cmake --build build --config Release --target all --parallel
+cmake --install build
 ```
 
 - Build with MinGW
