@@ -1,0 +1,8 @@
+{
+    "__style__": {
+        "colorBg": "@colorBgContainer",
+        "colorDivider": "@colorBorder",
+        "colorText": "@colorTextSecondary",
+        "fontSize": "@fontPrimarySize"
+    }
+}

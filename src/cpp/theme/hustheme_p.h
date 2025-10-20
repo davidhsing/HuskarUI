@@ -65,6 +65,7 @@ enum class Component : uint16_t
     HusPopover,
     HusModal,
     HusSpin,
+    HusStatusBar,
     HusTextArea,
 
     Size
@@ -110,7 +111,8 @@ static QHash<QString, Component> g_componentTable
     { "HusPopconfirm",      Component::HusPopconfirm       },
     { "HusPopover",         Component::HusPopover          },
     { "HusModal",           Component::HusModal            },
-    { "HusSpin",               Component::HusSpin             },
+    { "HusSpin",            Component::HusSpin             },
+    { "HusStatusBar",       Component::HusStatusBar        },
     { "HusTextArea",        Component::HusTextArea         },
 };
 

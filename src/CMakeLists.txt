@@ -147,6 +147,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusPopover.qml
         imports/HusModal.qml
         imports/HusSpin.qml
+        imports/HusStatusBar.qml
         imports/HusTextArea.qml
     SOURCES
         $<$<BOOL:${WIN32}>:${HUSKARUI_RC_FILE}>
@@ -211,6 +212,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusPopover.json
         theme/HusModal.json
         theme/HusSpin.json
+        theme/HusStatusBar.json
         theme/HusTextArea.json
 )
 

@@ -105,6 +105,13 @@ QtObject {
                     label: qsTr('HusCaptionBar 标题栏'),
                     source: './Examples/General/ExpCaptionBar.qml',
                     desc: qsTr('新增窗口额外按钮代理 winExtraButtonsDelegate。')
+                },
+                {
+                    key: 'HusStatusBar',
+                    label: qsTr('HusStatusBar 状态栏'),
+                    source: './Examples/General/ExpStatusBar.qml',
+                    addVersion: '0.4.8.3',
+                    desc: qsTr('状态栏组件,用于在窗口底部显示应用程序状态信息。')
                 }
             ]
         },

@@ -57,8 +57,8 @@ Item {
     }
 
     objectName: '__HusEmpty__'
-    width: 200
-    height: 200
+    implicitWidth: 200
+    implicitHeight: 200
 
     ColumnLayout {
         anchors.centerIn: parent

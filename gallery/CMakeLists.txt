@@ -50,6 +50,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/General/ExpCaptionBar.qml
         qml/Examples/General/ExpMoveMouseArea.qml
         qml/Examples/General/ExpResizeMouseArea.qml
+        qml/Examples/General/ExpStatusBar.qml
         qml/Examples/DataEntry/ExpSwitch.qml
         qml/Examples/DataEntry/ExpSlider.qml
         qml/Examples/DataEntry/ExpSelect.qml
@@ -141,7 +142,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE  #VSCode 打印需要屏蔽此属性
+    # WIN32_EXECUTABLE TRUE  #VSCode 打印需要屏蔽此属性
 )
 
 # Configure Android_OpenSSL
