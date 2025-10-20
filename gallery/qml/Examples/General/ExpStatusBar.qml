@@ -27,8 +27,8 @@ model | var | [] | 状态栏数据模型数组
 colorBg | color | HusTheme.Primary.colorBgContainer | 背景颜色
 defaultColorText | color | HusTheme.Primary.colorText | 默认文本颜色
 defaultFontSize | int | HusTheme.Primary.fontPrimarySize | 默认字体大小
-defaultLeftMargin | int | 8 | 默认左边距
-defaultRightMargin | int | 8 | 默认右边距
+defaultLeftMargin | int | 10 | 默认左边距
+defaultRightMargin | int | 10 | 默认右边距
 defaultElide | int | Text.ElideRight | 默认文本省略方式
 radiusBg | int | 0 | 背景圆角半径
 \n<br/>
@@ -68,23 +68,19 @@ rightMargin | int | 否 | 右边距,优先级高于 defaultRightMargin
 import HuskarUI.Basic
 
 HusStatusBar {
-    width: 600
-    height: 30
     model: [
-        { text: "就绪", width: 150 },
+        { text: "就绪", width: -1 },
         { text: "v1.0.0", width: 100 },
         { text: "192.168.1.1", width: 150 },
-        { text: Qt.formatDateTime(new Date(), "yyyy-MM-dd"), width: -1 }
+        { text: Qt.formatDateTime(new Date(), "yyyy-MM-dd"), width: 90 }
     ]
 }`
             exampleDelegate: HusStatusBar {
-                width: parent.width
-                height: 30
                 model: [
-                    { text: "就绪", width: 150 },
+                    { text: "就绪", width: -1 },
                     { text: "v1.0.0", width: 100 },
                     { text: "192.168.1.1", width: 150 },
-                    { text: Qt.formatDateTime(new Date(), "yyyy-MM-dd"), width: -1 }
+                    { text: Qt.formatDateTime(new Date(), "yyyy-MM-dd"), width: 90 }
                 ]
             }
         }
@@ -97,8 +93,6 @@ HusStatusBar {
 import HuskarUI.Basic
 
 HusStatusBar {
-    width: 600
-    height: 30
     model: [
         {
             text: "左对齐",
@@ -107,23 +101,21 @@ HusStatusBar {
         },
         {
             text: "居中对齐",
-            width: 200,
+            width: -1,
             align: HusStatusBar.Align_Center
         },
         {
             text: "右对齐",
-            width: -1,
+            width: 200,
             align: HusStatusBar.Align_Right
         }
     ]
 }`
             exampleDelegate: HusStatusBar {
-                width: parent.width
-                height: 30
                 model: [
                     { text: "左对齐", width: 200, align: HusStatusBar.Align_Left },
-                    { text: "居中对齐", width: 200, align: HusStatusBar.Align_Center },
-                    { text: "右对齐", width: -1, align: HusStatusBar.Align_Right }
+                    { text: "居中对齐", width: -1, align: HusStatusBar.Align_Center },
+                    { text: "右对齐", width: 200, align: HusStatusBar.Align_Right }
                 ]
             }
         }
@@ -137,14 +129,12 @@ HusStatusBar {
 import HuskarUI.Basic
 
 HusStatusBar {
-    width: 600
-    height: 35
     defaultFontSize: 14
 
     model: [
         {
             text: "用户名",
-            width: 150,
+            width: -1,
             colorText: "#1890ff",
             fontSize: 16,
             leftMargin: 15
@@ -164,21 +154,19 @@ HusStatusBar {
         },
         {
             text: Qt.formatDateTime(new Date(), "yyyy-MM-dd"),
-            width: -1,
+            width: 90,
             align: HusStatusBar.Align_Center,
             fontSize: 12
         }
     ]
 }`
             exampleDelegate: HusStatusBar {
-                width: parent.width
-                height: 35
                 defaultFontSize: 14
 
                 model: [
                     {
                         text: "用户名",
-                        width: 150,
+                        width: -1,
                         colorText: "#1890ff",
                         fontSize: 16,
                         leftMargin: 15
@@ -198,7 +186,7 @@ HusStatusBar {
                     },
                     {
                         text: Qt.formatDateTime(new Date(), "yyyy-MM-dd"),
-                        width: -1,
+                        width: 90,
                         align: HusStatusBar.Align_Center,
                         fontSize: 12
                     }

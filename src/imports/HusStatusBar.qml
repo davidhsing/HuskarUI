@@ -13,9 +13,9 @@ Item {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property var model: []
-    property int defaultFontSize: HusTheme.HusStatusBar.fontSize - 1
-    property int defaultLeftMargin: 8
-    property int defaultRightMargin: 8
+    property int defaultFontSize: HusTheme.HusStatusBar.fontSize - 2
+    property int defaultLeftMargin: 10
+    property int defaultRightMargin: 10
     property int defaultElide: Text.ElideRight
     property color colorBg: HusTheme.HusStatusBar.colorBg
     property color colorDivider: HusTheme.HusStatusBar.colorDivider
@@ -31,7 +31,8 @@ Item {
     property string elideRole: 'elide'
 
     objectName: '__HusStatusBar__'
-    implicitHeight: 30
+    implicitWidth: parent.width
+    implicitHeight: 26
 
     Rectangle {
         anchors.fill: parent
@@ -51,7 +52,7 @@ Item {
                     required property var modelData
                     required property int index
 
-                    property int itemWidth: modelData[control.widthRole] ?? -1
+                    property int itemWidth: modelData[control.widthRole] ?? 0
                     property int itemAlign: modelData[control.alignRole] ?? HusStatusBar.Align_Left
                     property color itemColorText: modelData[control.colorTextRole] ?? control.defaultColorText
                     property int itemFontSize: modelData[control.fontSizeRole] ?? control.defaultFontSize
@@ -60,7 +61,7 @@ Item {
                     property int itemElide: modelData[control.elideRole] ?? control.defaultElide
 
                     Layout.fillHeight: true
-                    Layout.preferredWidth: (itemWidth >= 0) ? itemWidth :  -1
+                    Layout.preferredWidth: (itemWidth >= 0) ? itemWidth : 0
                     Layout.fillWidth: itemWidth < 0
 
                     HusText {
