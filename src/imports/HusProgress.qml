@@ -108,7 +108,7 @@ Item {
         property real progressWidth: control.percent * 0.01 * width
 
         NumberAnimation on activeWidth {
-            running: control.type == HusProgress.Type_Line && control.status == HusProgress.Status_Active
+            running: control.type === HusProgress.Type_Line && control.status === HusProgress.Status_Active
             from: 0
             to: __canvas.progressWidth
             loops: Animation.Infinite

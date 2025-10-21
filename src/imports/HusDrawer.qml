@@ -114,8 +114,9 @@ T.Drawer {
             sourceComponent: control.titleDelegate
             onLoaded: {
                 /*! 无边框窗口的标题栏会阻止事件传递, 需要调这个 */
-                if (captionBar)
+                if (captionBar) {
                     captionBar.addInteractionItem(item);
+                }
             }
         }
         Loader {
@@ -125,12 +126,14 @@ T.Drawer {
         }
     }
     onAboutToShow: {
-        if (captionBar && modal)
+        if (captionBar && modal) {
             captionBar.enabled = false;
+        }
     }
     onAboutToHide: {
-        if (captionBar && modal)
+        if (captionBar && modal) {
             captionBar.enabled = true;
+        }
     }
 
     T.Overlay.modal: Rectangle {
