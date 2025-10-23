@@ -185,7 +185,7 @@ HusWindow {
 
             TapHandler {
                 onTapped: {
-                    Qt.openUrlExternally('https://github.com/mengps');
+                    Qt.openUrlExternally('https://github.com/davidhsing/HuskarUI');
                 }
             }
         }
