@@ -76,9 +76,9 @@ if(WIN32)
         COMMENTS "Modern UI-Kit for Qml { Design reference Ant-d }"
         NAME ${RC_NAME}
         COMPANY "HuskarUI"
-        DESCRIPTION "https://github.com/mengps/HuskarUI"
+        DESCRIPTION "https://github.com/davidhsing/HuskarUI"
         VERSION "${PROJECT_VERSION}"
-        COPYRIGHT "Copyright (C) 2025 mengps. All rights reserved."
+        COPYRIGHT "Copyright (C) 2025 davidhsing. All rights reserved."
         OUTPUT_FILE "${HUSKARUI_RC_FILE}"
     )
 endif()
@@ -146,6 +146,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusPopconfirm.qml
         imports/HusPopover.qml
         imports/HusModal.qml
+        imports/HusQrCode.qml
         imports/HusSpin.qml
         imports/HusStatusBar.qml
         imports/HusTextArea.qml
@@ -211,6 +212,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusPopconfirm.json
         theme/HusPopover.json
         theme/HusModal.json
+        theme/HusQrCode.json
         theme/HusSpin.json
         theme/HusStatusBar.json
         theme/HusTextArea.json
@@ -227,6 +229,7 @@ qt_add_resources(${PROJECT_NAME} "resources"
         resources/images/star.png
         resources/images/stripes.png
         resources/font/HuskarUI-Icons.ttf
+        resources/js/qrcode-svg.min.js
 )
 
 qt_add_shaders(${PROJECT_NAME} "shaders"

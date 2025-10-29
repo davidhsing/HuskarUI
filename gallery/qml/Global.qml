@@ -365,6 +365,13 @@ QtObject {
                     desc: qsTr('显示一个表示空状态的图像和描述文本。')
                 },
                 {
+                    key: 'HusQrCode',
+                    label: qsTr('HusQrCode 二维码'),
+                    source: './Examples/DataDisplay/ExpQrCode.qml',
+                    addVersion: '0.4.8.3',
+                    desc: qsTr('显示一个二维码。')
+                },
+                {
                     key: 'HusSpin',
                     label: qsTr('HusSpin 加载中'),
                     source: './Examples/DataDisplay/ExpSpin.qml',

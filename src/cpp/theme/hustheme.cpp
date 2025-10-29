@@ -480,6 +480,7 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
             ADD_COMPONENT_CASE(HusPopconfirm)
             ADD_COMPONENT_CASE(HusPopover)
             ADD_COMPONENT_CASE(HusModal)
+            ADD_COMPONENT_CASE(HusQrCode)
             ADD_COMPONENT_CASE(HusSpin)
             ADD_COMPONENT_CASE(HusStatusBar)
             ADD_COMPONENT_CASE(HusTextArea)
