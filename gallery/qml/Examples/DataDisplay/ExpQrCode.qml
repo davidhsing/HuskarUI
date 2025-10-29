@@ -24,7 +24,7 @@ Flickable {
 content | string | - | 文本内容
 colorBackground | color | HusTheme.Primary.colorBgContainer | 背景颜色
 colorForeground | color | HusTheme.Primary.colorTextPrimary | 文本颜色
-eccLevel | int | HusQrCode.ECC_LEVEL_L | 二维码的纠错级别(来自 HusQrCode)
+eccLevel | enum | HusQrCode.ECC_LEVEL_L | 二维码的纠错级别(来自 HusQrCode)
 padding | int | 2 | 到边缘的间距级别
 rawWidth | int | 500 | 图片的原始宽度(会缩放到组件的宽度)
 rawHeight | int | 500 | 图片的原始高度(会缩放到组件的高度)
