@@ -49,6 +49,7 @@ Item {
     Image {
         width: control.width ?? control.implicitWidth
         height: control.height ?? control.implicitHeight
+        anchors.centerIn: parent
         source: control.rawSource
     }
 
