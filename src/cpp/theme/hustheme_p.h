@@ -21,7 +21,10 @@ enum class Function : uint16_t
     Alpha,
     OnBackground,
 
-    Multiply
+    Add,
+    Subtract,
+    Multiply,
+    Divide
 };
 
 enum class Component : uint16_t
@@ -33,6 +36,7 @@ enum class Component : uint16_t
     HusTour,
     HusMenu,
     HusDivider,
+    HusFormItem,
     HusEmpty,
     HusSwitch,
     HusScrollBar,
@@ -81,6 +85,7 @@ static QHash<QString, Component> g_componentTable
     { "HusTour",            Component::HusTour             },
     { "HusMenu",            Component::HusMenu             },
     { "HusDivider",         Component::HusDivider          },
+    { "HusFormItem",        Component::HusFormItem         },
     { "HusEmpty",           Component::HusEmpty            },
     { "HusSwitch",          Component::HusSwitch           },
     { "HusScrollBar",       Component::HusScrollBar        },

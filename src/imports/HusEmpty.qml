@@ -39,7 +39,7 @@ Item {
     property int descriptionSpacing: 12
     property font descriptionFont: Qt.font({
                                                family: HusTheme.HusEmpty.fontFamily,
-                                               pixelSize: HusTheme.HusEmpty.fontSize - 1
+                                               pixelSize: HusTheme.HusEmpty.fontSize
                                            })
     property color colorDescription: HusTheme.HusEmpty.colorDescription
 

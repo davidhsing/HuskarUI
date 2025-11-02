@@ -23,7 +23,10 @@ void HusThemePrivate::parse$(QMap<QString, QVariant> &out, const QString &tokenN
         { "lighter",           Function::Lighter },
         { "alpha",             Function::Alpha },
         { "onBackground",      Function::OnBackground },
-        { "multiply",          Function::Multiply }
+        { "add",               Function::Add },
+        { "subtract",          Function::Subtract },
+        { "multiply",          Function::Multiply },
+        { "divide",            Function::Divide }
     };
 
     static QRegularExpression g_funcRegex("\\$([^)]+)\\(");
@@ -158,6 +161,28 @@ void HusThemePrivate::parse$(QMap<QString, QVariant> &out, const QString &tokenN
                     qCDebug(lcHusTheme) << QString("func onBackground() only accepts 2 parameters:(%1)").arg(args);
                 }
             } break;
+            case Function::Add:
+            {
+                auto argList = args.split(',');
+                if (argList.length() == 2) {
+                    auto arg1 = numberFromIndexTable(argList.at(0).trimmed());
+                    auto arg2 = numberFromIndexTable(argList.at(1).trimmed());
+                    out[tokenName] = HusThemeFunctions::add(arg1, arg2);
+                } else {
+                    qCDebug(lcHusTheme) << QString("func add() only accepts 2 parameters:(%1)").arg(args);
+                }
+            } break;
+            case Function::Subtract:
+            {
+                auto argList = args.split(',');
+                if (argList.length() == 2) {
+                    auto arg1 = numberFromIndexTable(argList.at(0).trimmed());
+                    auto arg2 = numberFromIndexTable(argList.at(1).trimmed());
+                    out[tokenName] = HusThemeFunctions::subtract(arg1, arg2);
+                } else {
+                    qCDebug(lcHusTheme) << QString("func subtract() only accepts 2 parameters:(%1)").arg(args);
+                }
+            } break;
             case Function::Multiply:
             {
                 auto argList = args.split(',');
@@ -167,6 +192,17 @@ void HusThemePrivate::parse$(QMap<QString, QVariant> &out, const QString &tokenN
                     out[tokenName] = HusThemeFunctions::multiply(arg1, arg2);
                 } else {
                     qCDebug(lcHusTheme) << QString("func multiply() only accepts 2 parameters:(%1)").arg(args);
+                }
+            } break;
+            case Function::Divide:
+            {
+                auto argList = args.split(',');
+                if (argList.length() == 2) {
+                    auto arg1 = numberFromIndexTable(argList.at(0).trimmed());
+                    auto arg2 = numberFromIndexTable(argList.at(1).trimmed());
+                    out[tokenName] = HusThemeFunctions::divide(arg1, arg2);
+                } else {
+                    qCDebug(lcHusTheme) << QString("func divide() only accepts 2 parameters:(%1)").arg(args);
                 }
             } break;
             default:
@@ -449,6 +485,7 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
             ADD_COMPONENT_CASE(HusTour)
             ADD_COMPONENT_CASE(HusMenu)
             ADD_COMPONENT_CASE(HusDivider)
+            ADD_COMPONENT_CASE(HusFormItem)
             ADD_COMPONENT_CASE(HusEmpty)
             ADD_COMPONENT_CASE(HusSwitch)
             ADD_COMPONENT_CASE(HusScrollBar)

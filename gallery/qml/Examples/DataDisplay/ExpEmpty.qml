@@ -63,34 +63,34 @@ colorDescription | color | - | 描述文本颜色
 通过 \`description\` 属性设置描述文本。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-    
-                    HusRadioBlock {
-                        id: imageStyleRadio
-                        initCheckedIndex: 1
-                        model: [
-                            { label: 'None', value: HusEmpty.Style_None },
-                            { label: 'Default', value: HusEmpty.Style_Default },
-                            { label: 'Simple', value: HusEmpty.Style_Simple }
-                        ]
-                    }
+Column {
+    spacing: 10
 
-                    Rectangle {
-                        width: 230
-                        height: 230
-                        color: HusTheme.Primary.colorBgBase
+    HusRadioBlock {
+        id: imageStyleRadio
+        initCheckedIndex: 1
+        model: [
+            { label: 'None', value: HusEmpty.Style_None },
+            { label: 'Default', value: HusEmpty.Style_Default },
+            { label: 'Simple', value: HusEmpty.Style_Simple }
+        ]
+    }
 
-                        HusEmpty {
-                            anchors.fill: parent
-                            imageStyle: imageStyleRadio.currentCheckedValue
-                            description: qsTr('暂无数据')
-                        }
-                    }
-                }
+    Rectangle {
+        width: 230
+        height: 230
+        color: HusTheme.Primary.colorBgBase
+
+        HusEmpty {
+            anchors.fill: parent
+            imageStyle: imageStyleRadio.currentCheckedValue
+            description: qsTr('暂无数据')
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

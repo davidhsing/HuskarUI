@@ -88,6 +88,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/Navigation/ExpPagination.qml
         qml/Examples/Navigation/ExpBreadcrumb.qml
         qml/Examples/Layout/ExpDivider.qml
+        qml/Examples/Layout/ExpFormItem.qml
         qml/Examples/Effect/ExpAcrylic.qml
         qml/Examples/Effect/ExpSwitchEffect.qml
         qml/Examples/Effect/ExpShadow.qml

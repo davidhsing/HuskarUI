@@ -5,10 +5,8 @@
 
 #include <QtGui/QFontDatabase>
 
-HusThemeFunctions::HusThemeFunctions(QObject *parent)
-    : QObject{parent}
+HusThemeFunctions::HusThemeFunctions(QObject *parent) : QObject{parent}
 {
-
 }
 
 HusThemeFunctions *HusThemeFunctions::instance()
@@ -103,7 +101,22 @@ QColor HusThemeFunctions::onBackground(const QColor &color, const QColor &backgr
         );
 }
 
+qreal HusThemeFunctions::add(qreal num1, qreal num2)
+{
+    return num1 + num2;
+}
+
+qreal HusThemeFunctions::subtract(qreal num1, qreal num2)
+{
+    return num1 - num2;
+}
+
 qreal HusThemeFunctions::multiply(qreal num1, qreal num2)
 {
     return num1 * num2;
+}
+
+qreal HusThemeFunctions::divide(qreal num1, qreal num2)
+{
+    return (num2 == 0) ? 0 : (num1 / num2);
 }

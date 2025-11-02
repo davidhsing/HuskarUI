@@ -125,6 +125,13 @@ QtObject {
                     label: qsTr('HusDivider 分割线'),
                     source: './Examples/Layout/ExpDivider.qml',
                     desc: qsTr('区隔内容的分割线。')
+                },
+                {
+                    key: 'HusFormItem',
+                    label: qsTr('HusFormItem 表单项'),
+                    source: './Examples/Layout/ExpFormItem.qml',
+                    addVersion: '0.5.0.0',
+                    desc: qsTr('包裹字段带校验的表单项。')
                 }
             ]
         },
@@ -361,21 +368,21 @@ QtObject {
                     key: 'HusEmpty',
                     label: qsTr('HusEmpty 空状态'),
                     source: './Examples/DataDisplay/ExpEmpty.qml',
-                    addVersion: '0.4.8.3',
+                    addVersion: '0.5.0.0',
                     desc: qsTr('显示一个表示空状态的图像和描述文本。')
                 },
                 {
                     key: 'HusQrCode',
                     label: qsTr('HusQrCode 二维码'),
                     source: './Examples/DataDisplay/ExpQrCode.qml',
-                    addVersion: '0.4.8.3',
+                    addVersion: '0.5.0.0',
                     desc: qsTr('显示一个二维码。')
                 },
                 {
                     key: 'HusSpin',
                     label: qsTr('HusSpin 加载中'),
                     source: './Examples/DataDisplay/ExpSpin.qml',
-                    addVersion: '0.4.8.3',
+                    addVersion: '0.5.0.0',
                     desc: qsTr('显示一个正在加载的状态的图像和提示文本。')
                 }
             ]
@@ -466,7 +473,7 @@ QtObject {
                     key: 'HusPopover',
                     label: qsTr('HusPopover 气泡显示框'),
                     source: './Examples/Feedback/ExpPopover.qml',
-                    addVersion: '0.4.8.2',
+                    addVersion: '0.5.0.0',
                     desc: qsTr('气泡显示框，弹出气泡式的显示框。')
                 },
                 {

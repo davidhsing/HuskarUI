@@ -10,8 +10,8 @@ Item {
     property bool spinning: true
     property string tip: ''
     property real tipSpacing: 8
-    property color colorIcon: HusTheme.Primary.colorPrimary
-    property color colorTip: HusTheme.Primary.colorTextSecondary
+    property color colorIcon: HusTheme.HusSpin.colorIcon
+    property color colorTip: HusTheme.HusSpin.colorTip
     property int delay: 0    // 毫秒
     property var delayCallback: null
     default property alias contentDelegate: __contentItem.data
@@ -164,7 +164,7 @@ Item {
             id: __tipText
             anchors.horizontalCenter: parent.horizontalCenter
             text: control.tip
-            visible: !!control.tip.length
+            visible: !!control.tip
             color: control.colorTip
 
             Behavior on color {

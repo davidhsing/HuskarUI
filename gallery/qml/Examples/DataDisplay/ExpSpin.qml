@@ -76,7 +76,8 @@ delayCallback | function | function() | 到达延迟时间后的回调
             width: parent.width
             expTitle: '各种大小'
             desc: '小的用于文本加载,默认用于卡片容器级加载,大的用于页面级加载。'
-            code: `Row {
+            code: `
+Row {
     spacing: 50
 
     HusSpin {
@@ -93,7 +94,8 @@ delayCallback | function | function() | 到达延迟时间后的回调
         size: 48
         spinning: true
     }
-}`
+}
+            `
             exampleDelegate: Item {
                 width: parent.width
                 height: 100
@@ -131,51 +133,51 @@ delayCallback | function | function() | 到达延迟时间后的回调
 通过 \`tip\` 属性设置描述文本。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-    
-                    HusSwitch {
-                        id: spinningSwitch
-                        checkedText: 'Spinning'
-                        uncheckedText: 'Not-Spinning'
-                    }
-    
-                    HusSpin {
-                        width: 250
-                        height: 250
-                        spinning: spinningSwitch.checked
-                        tip: '加载中...'
-                        delay: 3000
-                        delayCallback: () => {
-                            message.success('延迟函数调用完成');
-                        }
-    
-                        Rectangle {
-                            anchors.fill: parent
-                            color: HusTheme.Primary.colorBgContainer
-    
-                            Column {
-                                anchors.centerIn: parent
-                                spacing: 10
-    
-                                HusText { text: '这是内容区域' }
-                                HusButton { text: '按钮' }
-                            }
-                        }
-                    }
+Column {
+    spacing: 10
 
-                    HusMessage {
-                        id: message
-                        z: 999
-                        parent: galleryWindow.captionBar
-                        width: parent.width
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.bottom
-                    }
-                }
+    HusSwitch {
+        id: spinningSwitch
+        checkedText: 'Spinning'
+        uncheckedText: 'Not-Spinning'
+    }
+
+    HusSpin {
+        width: 250
+        height: 250
+        spinning: spinningSwitch.checked
+        tip: '加载中...'
+        delay: 3000
+        delayCallback: () => {
+            message.success('延迟函数调用完成');
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            color: HusTheme.Primary.colorBgContainer
+
+            Column {
+                anchors.centerIn: parent
+                spacing: 10
+
+                HusText { text: '这是内容区域' }
+                HusButton { text: '按钮' }
+            }
+        }
+    }
+
+    HusMessage {
+        id: message
+        z: 999
+        parent: galleryWindow.captionBar
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

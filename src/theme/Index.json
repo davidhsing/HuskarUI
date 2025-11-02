@@ -158,6 +158,7 @@
         "HusCopyableText": ":/HuskarUI/theme/HusCopyableText.json",
         "HusMenu": ":/HuskarUI/theme/HusMenu.json",
         "HusDivider": ":/HuskarUI/theme/HusDivider.json",
+        "HusFormItem": ":/HuskarUI/theme/HusFormItem.json",
         "HusEmpty": ":/HuskarUI/theme/HusEmpty.json",
         "HusSwitch": ":/HuskarUI/theme/HusSwitch.json",
         "HusScrollBar": ":/HuskarUI/theme/HusScrollBar.json",

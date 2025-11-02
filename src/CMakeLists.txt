@@ -103,6 +103,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusWindow.qml
         imports/HusMenu.qml
         imports/HusDivider.qml
+        imports/HusFormItem.qml
         imports/HusEmpty.qml
         imports/HusSwitch.qml
         imports/HusScrollBar.qml
@@ -181,6 +182,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusCopyableText.json
         theme/HusMenu.json
         theme/HusDivider.json
+        theme/HusFormItem.json
         theme/HusEmpty.json
         theme/HusSwitch.json
         theme/HusScrollBar.json

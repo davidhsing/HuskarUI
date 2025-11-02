@@ -1,0 +1,13 @@
+{
+    "__style__": {
+        "fontLabelFamily": "@fontPrimaryFamily",
+        "fontLabelSize": "@fontPrimarySize",
+        "fontFeedbackFamily": "@fontPrimaryFamily",
+        "fontFeedbackSize": "$subtract(@fontPrimarySize, 1)",
+        "colorLabel": "@colorTextBase",
+        "colorLabelRequired": "@colorError",
+        "colorFeedbackNormal": "@colorTextBase",
+        "colorFeedbackSuccess": "@colorSuccess",
+        "colorFeedbackError": "@colorError"
+    }
+}
