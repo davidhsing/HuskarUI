@@ -117,7 +117,7 @@ Column {
             width: parent.width
             descTitle: qsTr('表单验证')
             desc: qsTr(`
-通过 \`validator\` 属性提供验证函数，返回 \`{valid: bool, message: string}\` 对象来显示验证反馈。
+通过 \`validator\` 属性提供验证函数，参数为空或任意自定义对象，返回 \`{valid: bool, message: string}\` 对象来显示验证反馈。
             `)
             code: `
 import QtQuick

@@ -78,33 +78,9 @@ Item {
             anchors.rightMargin: control.rightMargin
 
             // 标签
-            Row {
+            Loader {
                 width: parent.width
-                spacing: 4
-
-                // 必填星号
-                HusText {
-                    visible: control.required
-                    text: '*'
-                    color: control.colorLabelRequired
-                    font {
-                        family: control.themeSource.fontLabelFamily
-                        pixelSize: control.themeSource.fontLabelSize
-                    }
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-
-                // 标签文本
-                HusText {
-                    text: control.label + (control.showColon ? control.colonText : '')
-                    color: control.colorLabel
-                    horizontalAlignment: control.labelAlign
-                    font {
-                        family: control.themeSource.fontLabelFamily
-                        pixelSize: control.themeSource.fontLabelSize
-                    }
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+                sourceComponent: __labelComponent
             }
 
             // 标签间距
@@ -151,34 +127,10 @@ Item {
             anchors.rightMargin: control.rightMargin
 
             // 标签区域
-            Row {
+            Loader {
                 width: control.labelWidth
                 height: parent.height
-                spacing: control.requiredSpacing
-
-                // 必填星号
-                HusText {
-                    visible: control.required
-                    text: '*'
-                    color: control.colorLabelRequired
-                    font {
-                        family: control.themeSource.fontLabelFamily
-                        pixelSize: control.themeSource.fontLabelSize
-                    }
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-
-                // 标签文本
-                HusText {
-                    text: control.label + (control.showColon ? control.colonText : '')
-                    color: control.colorLabel
-                    horizontalAlignment: control.labelAlign
-                    font {
-                        family: control.themeSource.fontLabelFamily
-                        pixelSize: control.themeSource.fontLabelSize
-                    }
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+                sourceComponent: __labelComponent
             }
 
             // 内容和反馈列
@@ -214,11 +166,44 @@ Item {
         visible: false
     }
 
+    // 标签组件
+    Component {
+        id: __labelComponent
+        Row {
+            visible: !!control.colorLabel
+            spacing: control.required ? control.requiredSpacing : 0
+
+            // 必填星号
+            HusText {
+                text: '*'
+                color: control.colorLabelRequired
+                font {
+                    family: control.themeSource.fontLabelFamily
+                    pixelSize: control.themeSource.fontLabelSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
+                visible: control.required
+            }
+
+            // 标签文本
+            HusText {
+                text: control.label + (control.showColon ? control.colonText : '')
+                color: control.colorLabel
+                horizontalAlignment: control.labelAlign
+                font {
+                    family: control.themeSource.fontLabelFamily
+                    pixelSize: control.themeSource.fontLabelSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
+                visible: !!control.colorLabel
+            }
+        }
+    }
+
     // 反馈文本组件
     Component {
         id: __feedbackComponent
         HusText {
-            visible: !!__private.feedbackText || control.showEmptyFeedback
             opacity: visible ? 1 : 0
             text: __private.feedbackText
             color: {
@@ -235,6 +220,7 @@ Item {
                 family: control.themeSource.fontFeedbackFamily
                 pixelSize: control.themeSource.fontFeedbackSize
             }
+            visible: !!__private.feedbackText || control.showEmptyFeedback
 
             Behavior on opacity {
                 enabled: control.animationEnabled
