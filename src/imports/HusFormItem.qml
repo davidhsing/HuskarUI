@@ -188,7 +188,7 @@ Item {
             // 标签文本
             HusText {
                 text: control.label + (control.showColon ? control.colonText : '')
-                color: control.label
+                color: control.colorLabel
                 horizontalAlignment: control.labelAlign
                 font {
                     family: control.themeSource.fontLabelFamily
