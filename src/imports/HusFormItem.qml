@@ -188,14 +188,14 @@ Item {
             // 标签文本
             HusText {
                 text: control.label + (control.showColon ? control.colonText : '')
-                color: control.colorLabel
+                color: control.label
                 horizontalAlignment: control.labelAlign
                 font {
                     family: control.themeSource.fontLabelFamily
                     pixelSize: control.themeSource.fontLabelSize
                 }
                 anchors.verticalCenter: parent.verticalCenter
-                visible: !!control.colorLabel
+                visible: !!control.label
             }
         }
     }
