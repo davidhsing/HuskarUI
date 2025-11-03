@@ -41,7 +41,7 @@ topMargin | int | 0 | 上边距
 bottomMargin | int | 0 | 下边距
 leftMargin | int | 0 | 左边距
 rightMargin | int | 0 | 右边距
-validator | function | - | 验证函数，返回 {valid: bool, message: string} 或 boolean 或 undefined
+validator | function | - | 验证函数，参数为任意自定义对象，返回 {valid: bool, message: string} 或 boolean 或 undefined
 colorLabel | color | HusTheme.Primary.colorTextBase | 标签颜色
 colorLabelRequired | color | HusTheme.Primary.colorError | 必填星号颜色
 colorFeedbackSuccess | color | HusTheme.Primary.colorSuccess | 成功状态颜色

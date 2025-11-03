@@ -249,7 +249,7 @@ Item {
     }
 
     // 验证函数
-    function __validate() {
+    function __validate(param) {
         if (typeof control.validator !== 'function') {
             __private.validationStatus = HusFormItem.Validation_None;
             __private.feedbackText = '';
@@ -257,8 +257,8 @@ Item {
         }
 
         try {
-            // 调用 validator，不传任何参数
-            let result = control.validator();
+            // 调用 validator，如果提供了参数则传递参数，否则不传参数
+            let result = (arguments.length > 0) ? control.validator(param) : control.validator();
 
             // 处理 undefined 返回值 - 清空反馈
             if (result === undefined) {
@@ -285,19 +285,19 @@ Item {
     }
 
     // 公开的验证方法 - 校验所有一级子组件
-    function validate() {
+    function validate(param) {
         let allValid = true;
         for (let i = 0; i < __contentItem.children.length; i++) {
             const child = __contentItem.children[i];
             // 如果子组件也有 validate 方法（例如嵌套的 FormItem），递归调用
             if (child.hasOwnProperty('validate') && typeof child.validate === 'function') {
-                if (!child.validate()) {
+                if (!child.validate(param)) {
                     allValid = false;
                 }
             }
         }
         // 执行当前组件的验证
-        __validate();
+        __validate(param);
         // 检查当前组件的验证状态
         if (__private.validationStatus === HusFormItem.Validation_Error) {
             allValid = false;
