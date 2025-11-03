@@ -27,8 +27,8 @@ Item {
     property bool showColon: true
     property int layout: HusFormItem.Layout_Vertical
     property int labelWidth: 100
-    property int labelSpacing: 6
-    property int feedbackSpacing: 4
+    property int labelSpacing: 4
+    property int feedbackSpacing: 2
     property bool showEmptyFeedback: true
     property int topMargin: 0
     property int bottomMargin: 0

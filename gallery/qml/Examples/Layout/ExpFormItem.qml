@@ -34,8 +34,8 @@ requiredSpacing | int | 4 | 红色 * 与标签的间距
 colonText | string | ':' | 标签末尾分隔符文本
 showColon | bool | true | 是否显示标签末尾分隔符
 labelWidth | int | 100 | 水平布局时标签宽度
-labelSpacing | int | 6 | 标签与输入组件的间距
-feedbackSpacing | int | 4 | 输入组件与反馈文本的间距
+labelSpacing | int | 4 | 标签与输入组件的间距
+feedbackSpacing | int | 2 | 输入组件与反馈文本的间距
 showEmptyFeedback | bool | true | 当反馈文本为空时，依然保留反馈文本的区域
 topMargin | int | 0 | 上边距
 bottomMargin | int | 0 | 下边距
@@ -85,7 +85,7 @@ import QtQuick
 import HuskarUI.Basic
 
 Column {
-    spacing: 20
+    spacing: 2
 
     HusFormItem {
         width: parent.width
@@ -99,7 +99,7 @@ Column {
 }
             `
             exampleDelegate: Column {
-                spacing: 20
+                spacing: 2
 
                 HusFormItem {
                     width: parent.width
@@ -124,12 +124,11 @@ import QtQuick
 import HuskarUI.Basic
 
 Column {
-    spacing: 20
+    spacing: 2
 
     HusFormItem {
         id: usernameItem
         width: parent.width
-        height: 60
         required: true
         label: "用户名"
         validator: function() {
@@ -194,12 +193,11 @@ Column {
 }
             `
             exampleDelegate: Column {
-                spacing: 20
+                spacing: 2
 
                 HusFormItem {
                     id: usernameItem
                     width: parent.width
-                    height: 60
                     required: true
                     label: "用户名"
                     validator: function() {
