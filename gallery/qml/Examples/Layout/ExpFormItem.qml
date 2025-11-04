@@ -33,7 +33,7 @@ required | bool | false | 是否必填，为 true 时标签前显示红色 *
 requiredSpacing | int | 4 | 红色 * 与标签的间距
 colonText | string | ':' | 标签末尾分隔符文本
 showColon | bool | true | 是否显示标签末尾分隔符
-labelWidth | int | 100 | 水平布局时标签宽度
+labelWidth | int | 80 | 水平布局时标签宽度
 labelSpacing | int | 4 | 标签与输入组件的间距
 feedbackSpacing | int | 2 | 输入组件与反馈文本的间距
 showEmptyFeedback | bool | true | 当反馈文本为空时，依然保留反馈文本的区域

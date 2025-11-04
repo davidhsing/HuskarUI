@@ -7,14 +7,14 @@ Item {
 
     // 枚举定义
     enum Layout {
-        Layout_Vertical,
-        Layout_Horizontal
+        Layout_Vertical = 0,
+        Layout_Horizontal = 1
     }
 
     enum ValidationStatus {
-        Validation_None,
-        Validation_Success,
-        Validation_Error
+        Validation_None = 0,
+        Validation_Success = 1,
+        Validation_Error = 2
     }
 
     // 基础属性
@@ -26,7 +26,7 @@ Item {
     property string colonText: ':'
     property bool showColon: true
     property int layout: HusFormItem.Layout_Vertical
-    property int labelWidth: 100
+    property int labelWidth: 80
     property int labelSpacing: 4
     property int feedbackSpacing: 2
     property bool showEmptyFeedback: true
@@ -63,14 +63,13 @@ Item {
     Loader {
         id: __mainLoader
         anchors.fill: parent
-        sourceComponent: control.layout === HusFormItem.Layout_Vertical ? __verticalComponent : __horizontalComponent
+        sourceComponent: (control.layout === HusFormItem.Layout_Vertical) ? __verticalComponent : __horizontalComponent
     }
 
     // 垂直布局组件
     Component {
         id: __verticalComponent
-        Column {
-            width: parent.width
+        ColumnLayout {
             spacing: 0
             anchors.topMargin: control.topMargin
             anchors.bottomMargin: control.bottomMargin
@@ -79,26 +78,31 @@ Item {
 
             // 标签
             Loader {
-                width: parent.width
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignHCenter
                 sourceComponent: __labelComponent
             }
 
             // 标签间距
             Item {
-                width: 1
                 height: control.labelSpacing
+                Layout.fillWidth: true
             }
 
             // 内容和反馈
-            Column {
-                width: parent.width
+            ColumnLayout {
                 spacing: control.feedbackSpacing
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignTop
 
                 // 内容区域
                 Item {
                     id: __verticalContentArea
-                    width: parent.width
-                    height: childrenRect.height
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignTop
+                    Layout.preferredHeight: childrenRect ? childrenRect.height : 0
                     Component.onCompleted: {
                         for (let i = 0; i < __contentItem.data.length; i++) {
                             __contentItem.data[i].parent = __verticalContentArea;
@@ -108,7 +112,8 @@ Item {
 
                 // 反馈文本
                 Loader {
-                    width: parent.width
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignTop
                     sourceComponent: __feedbackComponent
                 }
             }
@@ -118,8 +123,7 @@ Item {
     // 水平布局组件
     Component {
         id: __horizontalComponent
-        Row {
-            height: parent.height
+        RowLayout {
             spacing: control.labelSpacing
             anchors.topMargin: control.topMargin
             anchors.bottomMargin: control.bottomMargin
@@ -128,21 +132,23 @@ Item {
 
             // 标签区域
             Loader {
-                width: control.labelWidth
-                height: parent.height
+                Layout.preferredWidth: control.labelWidth
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignVCenter
                 sourceComponent: __labelComponent
             }
 
             // 内容和反馈列
-            Column {
-                height: parent.height
+            ColumnLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
                 spacing: control.feedbackSpacing
 
                 // 内容区域
                 Item {
                     id: __horizontalContentArea
-                    width: parent.width
-                    height: childrenRect.height
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: childrenRect ? childrenRect.height : 0
                     Component.onCompleted: {
                         for (let i = 0; i < __contentItem.data.length; i++) {
                             __contentItem.data[i].parent = __horizontalContentArea;
@@ -152,7 +158,8 @@ Item {
 
                 // 反馈文本
                 Loader {
-                    width: parent.width
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignTop
                     sourceComponent: __feedbackComponent
                 }
             }
@@ -169,9 +176,12 @@ Item {
     // 标签组件
     Component {
         id: __labelComponent
-        Row {
+        RowLayout {
             visible: !!control.colorLabel
             spacing: control.required ? control.requiredSpacing : 0
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.alignment: Qt.AlignVCenter
 
             // 必填星号
             HusText {
@@ -181,21 +191,22 @@ Item {
                     family: control.themeSource.fontLabelFamily
                     pixelSize: control.themeSource.fontLabelSize
                 }
-                anchors.verticalCenter: parent.verticalCenter
                 visible: control.required
+                Layout.alignment: Qt.AlignVCenter
             }
 
             // 标签文本
             HusText {
                 text: control.label + (control.showColon ? control.colonText : '')
                 color: control.colorLabel
-                horizontalAlignment: control.labelAlign
                 font {
                     family: control.themeSource.fontLabelFamily
                     pixelSize: control.themeSource.fontLabelSize
                 }
-                anchors.verticalCenter: parent.verticalCenter
+                horizontalAlignment: control.labelAlign
                 visible: !!control.label
+                Layout.alignment: Qt.AlignVCenter
+                Layout.fillWidth: true
             }
         }
     }

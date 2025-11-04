@@ -5,8 +5,7 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum ImageStyle
-    {
+    enum ImageStyle {
         Style_None = 0,
         Style_Default = 1,
         Style_Simple = 2
