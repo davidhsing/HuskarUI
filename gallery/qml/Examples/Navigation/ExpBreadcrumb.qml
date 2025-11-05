@@ -33,6 +33,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
+allowHoverTap | bool | true | 是否允许更改鼠标形状为手性和允许点击
 initModel | list | [] | 初始模型
 separator | string | '/' | 默认分隔符
 spacing | int | 4 | 路由项间隔

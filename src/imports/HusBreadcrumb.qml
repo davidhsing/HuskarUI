@@ -9,6 +9,7 @@ Item {
     signal clickMenu(deep: int, key: string, keyPath: var, data: var)
 
     property bool animationEnabled: HusTheme.animationEnabled
+    property bool allowHoverTap: true
     property var initModel: []
     readonly property int count: __listModel.count
     property string separator: '/'
@@ -86,15 +87,17 @@ Item {
 
         HoverHandler {
             id: __hoverHandler
-            cursorShape: !isCurrent ? Qt.PointingHandCursor : Qt.ArrowCursor
+            cursorShape: (isCurrent || !control.allowHoverTap) ? Qt.ArrowCursor : Qt.PointingHandCursor
             onHoveredChanged: {
-                if (hovered) __private.hover(index);
+                if (hovered && control.allowHoverTap) {
+                    __private.hover(index);
+                }
             }
         }
 
         TapHandler {
             id: __tapHandler
-            enabled: !isCurrent
+            enabled: !isCurrent && control.allowHoverTap
             onTapped: control.click(index, model);
         }
 
