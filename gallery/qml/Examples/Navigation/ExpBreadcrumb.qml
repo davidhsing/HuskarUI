@@ -34,6 +34,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 allowHoverTap | bool | true | 是否允许更改鼠标形状为手性和允许点击
+copyable | bool | false | 是否允许复制文本
 initModel | list | [] | 初始模型
 separator | string | '/' | 默认分隔符
 spacing | int | 4 | 路由项间隔

@@ -10,6 +10,7 @@ Item {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool allowHoverTap: true
+    property bool copyable: false
     property var initModel: []
     readonly property int count: __listModel.count
     property string separator: '/'
@@ -65,6 +66,7 @@ Item {
                 font: control.titleFont
                 enabled: isCurrent
                 color: __icon.color
+                copyable: control.copyable
 
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
             }
