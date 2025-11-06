@@ -25,8 +25,7 @@ Item {
         implicitWidth: __itemRow.implicitWidth + 8
         implicitHeight: Math.max(__icon.implicitHeight, __text.implicitHeight) + 4
         radius: control.radiusItemBg
-        color: isCurrent || !__hoverHandler.hovered ? HusTheme.HusBreadcrumb.colorBgLast :
-                                                      HusTheme.HusBreadcrumb.colorBg;
+        color: (isCurrent || !__hoverHandler.hovered || !control.allowHoverTap) ? HusTheme.HusBreadcrumb.colorBgLast : HusTheme.HusBreadcrumb.colorBg;
 
         property int __index: index
         property var menu: model.menu ?? {}
@@ -43,8 +42,7 @@ Item {
             HusIconText {
                 id: __icon
                 anchors.verticalCenter: parent.verticalCenter
-                color: isCurrent || __hoverHandler.hovered ? HusTheme.HusBreadcrumb.colorIconLast :
-                                                             HusTheme.HusBreadcrumb.colorIcon;
+                color: (isCurrent || __hoverHandler.hovered) ? HusTheme.HusBreadcrumb.colorIconLast : HusTheme.HusBreadcrumb.colorIcon;
                 iconSize: model.iconSize
                 iconSource: model.loading ? HusIcon.LoadingOutlined : model.iconSource
                 verticalAlignment: Text.AlignVCenter
