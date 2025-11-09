@@ -20,7 +20,7 @@
         "colorBorderHover": "@colorPrimary",
         "colorBorderDisabled": "$onBackground(@colorFill, @colorBgBase)",
         "colorBg": "@colorBgBase",
-        "colorBgDisabled": "$onBackground(@colorFillPrimary, @colorBgBase)",
+        "colorBgDisabled": "$onBackground(@colorFillSecondary, @colorBgBase)",
 
         "colorLabelBg": "$onBackground(@colorFillQuaternary, @colorBgBase)",
         "colorLabelBgDisabled": "$onBackground(@colorFillPrimary, @colorBgBase)",

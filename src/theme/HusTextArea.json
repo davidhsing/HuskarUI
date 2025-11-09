@@ -12,7 +12,7 @@
         "colorBorderHover": "@colorPrimary",
         "colorBorderDisabled": "$onBackground(@colorFill, @colorBgBase)",
         "colorBg": "@colorBgBase",
-        "colorBgDisabled": "$onBackground(@colorFillPrimary, @colorBgBase)",
+        "colorBgDisabled": "$onBackground(@colorFillSecondary, @colorBgBase)",
         "radiusBg": "@radiusPrimary"
     }
 }
