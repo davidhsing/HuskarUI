@@ -21,8 +21,9 @@ T.TextField {
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int clearIconSize: themeSource.fontClearIconSize
     property int clearIconPosition: HusInput.Position_Right
-    readonly property int leftIconPadding: iconPosition === HusInput.Position_Left ? __private.iconSize : 0
-    readonly property int rightIconPadding: iconPosition === HusInput.Position_Right ? __private.iconSize : 0
+    property bool readOnlyDisabledBg: false
+    readonly property int leftIconPadding: (iconPosition === HusInput.Position_Left) ? __private.iconSize : 0
+    readonly property int rightIconPadding: (iconPosition === HusInput.Position_Right) ? __private.iconSize : 0
     readonly property int leftClearIconPadding: {
         if (clearIconPosition === HusInput.Position_Left) {
             return leftIconPadding > 0 ? (__private.clearIconSize + 5) : __private.clearIconSize;
@@ -39,10 +40,8 @@ T.TextField {
     }
     property color colorIcon: enabled ? control.themeSource.colorIcon : control.themeSource.colorIconDisabled
     property color colorText: enabled ? themeSource.colorText : themeSource.colorTextDisabled
-    property color colorBorder: enabled ?
-                                    active ? themeSource.colorBorderHover :
-                                             themeSource.colorBorder : themeSource.colorBorderDisabled
-    property color colorBg: enabled ? themeSource.colorBg : themeSource.colorBgDisabled
+    property color colorBorder: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder)
+    property color colorBg: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
     property int radiusBg: themeSource.radiusBg
     property string contentDescription: ''
     property var themeSource: HusTheme.HusInput
@@ -57,9 +56,7 @@ T.TextField {
         iconSize: control.clearIconSize
         colorIcon: {
             if (control.enabled) {
-                return __tapHandler.pressed ? control.themeSource.colorClearIconActive :
-                                              __hoverHandler.hovered ? control.themeSource.colorClearIconHover :
-                                                                       control.themeSource.colorClearIcon;
+                return __tapHandler.pressed ? control.themeSource.colorClearIconActive : (__hoverHandler.hovered ? control.themeSource.colorClearIconHover : control.themeSource.colorClearIcon);
             } else {
                 return control.themeSource.colorClearIconDisabled;
             }
