@@ -42,7 +42,7 @@ Item {
 
     property Component bgDelegate: Rectangle {
         color: control.colorBg
-        border.color: control.colorBorder
+        border.color: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBorderDisabled : control.colorBorder
         radius: control.radiusBg
     }
 
