@@ -93,3 +93,9 @@ Makefile
 
 # clion
 **/.idea
+
+# Ignore third-party libraries
+3rdparty/qwindowkit/
+# Or uncomment the following line to ignore all third-party libraries
+# 3rdparty/*
+# !3rdparty/.gitkeep
