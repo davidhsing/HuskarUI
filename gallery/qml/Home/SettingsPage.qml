@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 HusWindow {
     id: root

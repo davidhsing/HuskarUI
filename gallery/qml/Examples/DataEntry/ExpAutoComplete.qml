@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -86,7 +86,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     spacing: 10
@@ -121,7 +121,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     spacing: 10
@@ -173,7 +173,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     spacing: 10
@@ -214,7 +214,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     spacing: 10
@@ -337,7 +337,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     spacing: -8
@@ -459,7 +459,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     spacing: 10

@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 Rectangle {
     id: root

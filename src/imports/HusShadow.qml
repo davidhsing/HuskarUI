@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Effects
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 MultiEffect {
     shadowEnabled: true

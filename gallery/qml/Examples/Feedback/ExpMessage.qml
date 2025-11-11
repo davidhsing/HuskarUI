@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -98,7 +98,7 @@ colorIcon | color | 可选 | 消息图标颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Item {
                     width: parent.width
@@ -149,7 +149,7 @@ colorIcon | color | 可选 | 消息图标颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     width: parent.width
@@ -230,7 +230,7 @@ colorIcon | color | 可选 | 消息图标颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     width: parent.width
@@ -291,7 +291,7 @@ colorIcon | color | 可选 | 消息图标颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     width: parent.width
@@ -375,7 +375,7 @@ colorIcon | color | 可选 | 消息图标颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Item {
                     width: parent.width

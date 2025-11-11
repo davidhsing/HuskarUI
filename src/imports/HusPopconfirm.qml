@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 HusPopover {
     id: control

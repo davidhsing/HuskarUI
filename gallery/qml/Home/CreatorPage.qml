@@ -2,8 +2,8 @@ import QtCore
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Dialogs
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 import Gallery
 
 HusWindow {

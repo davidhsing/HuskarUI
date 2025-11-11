@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -52,7 +52,7 @@ noDisabledState | bool | false | 无禁用状态(即被禁用时不会更改颜�
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     spacing: 15

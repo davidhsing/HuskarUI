@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 Rectangle {
     id: control

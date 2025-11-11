@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -173,7 +173,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Item {
                     width: parent.width
@@ -281,7 +281,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -433,7 +433,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width

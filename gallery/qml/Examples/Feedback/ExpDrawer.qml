@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -65,7 +65,7 @@ colorOverlay | color | - | 覆盖层颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     HusButton {
@@ -117,7 +117,7 @@ colorOverlay | color | - | 覆盖层颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     spacing: 10

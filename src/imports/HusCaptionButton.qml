@@ -1,5 +1,5 @@
 import QtQuick
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 HusIconButton {
     id: control

@@ -1,5 +1,5 @@
 import QtQuick
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -64,7 +64,7 @@ colorDescription | color | - | 描述文本颜色
                        `)
             code: `
 import QtQuick
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 Column {
     spacing: 10

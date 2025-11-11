@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -83,7 +83,7 @@ showArrow | bool | false | 是否显示箭头
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     spacing: 10
@@ -181,7 +181,7 @@ showArrow | bool | false | 是否显示箭头
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     spacing: 10
@@ -276,7 +276,7 @@ showArrow | bool | false | 是否显示箭头
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     spacing: 10
@@ -348,7 +348,7 @@ showArrow | bool | false | 是否显示箭头
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     spacing: 10

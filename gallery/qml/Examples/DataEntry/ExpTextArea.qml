@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -86,7 +86,7 @@ horScrollBar | [HusScrollBar](internal://HusScrollBar) | - | 访问内部水平�
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -139,7 +139,7 @@ horScrollBar | [HusScrollBar](internal://HusScrollBar) | - | 访问内部水平�
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -187,7 +187,7 @@ horScrollBar | [HusScrollBar](internal://HusScrollBar) | - | 访问内部水平�
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width

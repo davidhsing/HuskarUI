@@ -1,5 +1,5 @@
 import QtQuick
-import HuskarUI.Antd
+import HuskarUI.Basic
 import '/HuskarUI/resources/js/qrcode-svg.min.js' as QrCodeSvg
 
 Item {

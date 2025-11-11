@@ -1,7 +1,7 @@
 //pragma Singleton
 
 import QtQuick
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 QtObject {
     id: root

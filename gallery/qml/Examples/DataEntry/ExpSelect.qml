@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -79,7 +79,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
             code: `
                 import QtQuick
                 import QtQuick.Layouts
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     width: parent.width

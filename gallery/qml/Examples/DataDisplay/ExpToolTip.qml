@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -63,7 +63,7 @@ colorBg | color | - | 背景颜色
             code: `
                 import QtQuick
                 import QtQuick.Layouts
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width

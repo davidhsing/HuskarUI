@@ -119,12 +119,12 @@ The installation directory structure
     ├─lib
     │   *.lib/so
     └─imports
-        └─HuskarUI/Antd
+        └─HuskarUI/Basic
 ```
 - Usage
   - Link the `<install_dir>/lib`.
   - Include the `<install_dir>/include`.
-  - Copy the `<install_dir>/bin/HuskarUIAntd.[dll/so]` to `[QtDir]/[QtVersion]/[Kit]/bin`.
+  - Copy the `<install_dir>/bin/HuskarUIBasic.[dll/so]` to `[QtDir]/[QtVersion]/[Kit]/bin`.
   - Copy the `<install_dir>/imports/HuskarUI` to `[QtDir]/[QtVersion]/[Kit]/qml`.
 
 ## 📦 Get started 
@@ -134,7 +134,7 @@ The installation directory structure
  ```cmake
   target_include_directories(<your_target> PRIVATE HuskarUI/include)
   target_link_directories(<your_target> PRIVATE HuskarUI/lib)
-  target_link_libraries(<your_target> PRIVATE HuskarUIAntd)
+  target_link_libraries(<your_target> PRIVATE HuskarUIBasic)
  ```
  - Add the following code to your `main.cpp`
  ```cpp
@@ -155,7 +155,7 @@ The installation directory structure
  ```
 - Add the following code to your `.qml`
  ```qml
-  import HuskarUI.Antd
+  import HuskarUI.Basic
   HusWindow { 
     ...
   }

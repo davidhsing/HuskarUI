@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -109,7 +109,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     spacing: 10
@@ -157,7 +157,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     spacing: 10
@@ -282,7 +282,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     width: parent.width
@@ -322,7 +322,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -375,7 +375,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -446,7 +446,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     width: parent.width
@@ -495,7 +495,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Row {
                     width: parent.width

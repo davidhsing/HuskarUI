@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Templates as T
 import Qt.labs.qmlmodels
-import HuskarUI.Antd
+import HuskarUI.Basic
 
 HusRectangle {
     id: control

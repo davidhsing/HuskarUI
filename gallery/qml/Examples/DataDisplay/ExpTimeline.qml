@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
-import HuskarUI.Antd
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
 import '../../Controls'
 
@@ -112,7 +112,7 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -172,7 +172,7 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -249,7 +249,7 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -342,7 +342,7 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
@@ -450,7 +450,7 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Antd
+                import HuskarUI.Basic
 
                 Column {
                     width: parent.width
