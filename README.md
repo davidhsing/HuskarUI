@@ -81,7 +81,7 @@ git clone --recursive https://github.com/mengps/HuskarUI.git
 ```
 - Update
 ```auto
-git submodule update --init --recursive
+git submodule update --remote --recursive
 ```
 
 - Build
