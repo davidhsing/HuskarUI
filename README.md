@@ -79,6 +79,11 @@ Please visit [Release](https://github.com/mengps/HuskarUI/releases) to download.
 ```auto
 git clone --recursive https://github.com/mengps/HuskarUI.git
 ```
+- Update
+```auto
+git submodule update --init --recursive
+```
+
 - Build
 ```cmake
 cd HuskarUI
