@@ -2,7 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
-import HuskarUI.Basic
+import HuskarUI.Antd
 import Gallery
 
 import './Home'

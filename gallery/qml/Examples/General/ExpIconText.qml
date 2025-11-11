@@ -1,7 +1,7 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import QtQuick.Layouts
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 import '../../Controls'
 

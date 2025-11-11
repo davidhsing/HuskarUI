@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -112,7 +112,7 @@ items | list | 可选 | 菜单模型
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width
@@ -168,7 +168,7 @@ items | list | 可选 | 菜单模型
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusBreadcrumb {
                     width: parent.width
@@ -196,7 +196,7 @@ items | list | 可选 | 菜单模型
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusBreadcrumb {
                     width: parent.width
@@ -228,7 +228,7 @@ items | list | 可选 | 菜单模型
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusBreadcrumb {
                     width: parent.width
@@ -261,7 +261,7 @@ items | list | 可选 | 菜单模型
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusBreadcrumb {
                     width: parent.width

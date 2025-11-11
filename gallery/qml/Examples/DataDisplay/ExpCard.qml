@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -75,7 +75,7 @@ colorBodyDescription | color | - | 主体部分描述颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     spacing: 10
@@ -113,7 +113,7 @@ colorBodyDescription | color | - | 主体部分描述颜色
             code: `
                 import QtQuick
                 import QtQuick.Layouts
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     width: parent.width

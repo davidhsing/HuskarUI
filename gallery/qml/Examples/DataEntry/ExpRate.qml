@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -91,7 +91,7 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -142,7 +142,7 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -177,7 +177,7 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -241,7 +241,7 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -361,7 +361,7 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10

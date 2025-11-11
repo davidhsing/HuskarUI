@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -62,7 +62,7 @@ focusRadius | int | 2 | 焦点圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -127,8 +127,8 @@ focusRadius | int | 2 | 焦点圆角
                        `)
             code: `
                 import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+                import QtQuick.Controls
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10

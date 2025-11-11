@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -59,7 +59,7 @@ maximumY | real | Number.MAX_VALUE | 可移动的最大y坐标
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Rectangle {
                     color: 'transparent'

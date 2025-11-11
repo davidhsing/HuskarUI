@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -62,7 +62,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     spacing: 10
@@ -122,8 +122,8 @@ contentDescription | string | '' | 内容描述(提高可用性)
                        `)
             code: `
                 import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+                import QtQuick.Controls
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10

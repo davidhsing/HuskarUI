@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -82,7 +82,7 @@ colorFeedbackError | color | HusTheme.Primary.colorError | 错误状态颜色
             desc: qsTr(`最基本的表单项，包含标签和输入组件。`)
             code: `
 import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Column {
     spacing: 2
@@ -121,7 +121,7 @@ Column {
             `)
             code: `
 import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Column {
     spacing: 2

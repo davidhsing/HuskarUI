@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -93,7 +93,7 @@ radiusTagBg | int | - | 标签圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     width: parent.width
@@ -145,7 +145,7 @@ radiusTagBg | int | - | 标签圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     width: parent.width
@@ -226,7 +226,7 @@ radiusTagBg | int | - | 标签圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     width: parent.width
@@ -342,7 +342,7 @@ radiusTagBg | int | - | 标签圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusMultiSelect {
                     width: 500
@@ -398,7 +398,7 @@ radiusTagBg | int | - | 标签圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusMultiSelect {
                     id: customTag
@@ -449,7 +449,7 @@ radiusTagBg | int | - | 标签圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusMultiSelect {
                     width: 500
@@ -498,7 +498,7 @@ radiusTagBg | int | - | 标签圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Loader {
                     asynchronous: true

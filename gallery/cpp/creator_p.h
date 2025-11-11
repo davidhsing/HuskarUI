@@ -87,8 +87,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 static auto g_cmake_only_link_huskarui = R"(
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Quick
-    HuskarUIBasic
-    $<$<BOOL:${BUILD_HUSKARUI_STATIC_LIBRARY}>:HuskarUIBasicPlugin>
+    HuskarUIAntd
+    $<$<BOOL:${BUILD_HUSKARUI_STATIC_LIBRARY}>:HuskarUIAntdPlugin>
 )
 )";
 
@@ -97,8 +97,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE %1)
 target_link_directories(${PROJECT_NAME} PRIVATE %2)
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Quick
-    HuskarUIBasic
-    $<$<BOOL:${BUILD_HUSKARUI_STATIC_LIBRARY}>:HuskarUIBasicPlugin>
+    HuskarUIAntd
+    $<$<BOOL:${BUILD_HUSKARUI_STATIC_LIBRARY}>:HuskarUIAntdPlugin>
 )
 )";
 
@@ -223,7 +223,7 @@ static auto g_main_cpp_file = R"(
 
 #ifdef BUILD_HUSKARUI_STATIC_LIBRARY
 #include <QtQml/qqmlextensionplugin.h>
-Q_IMPORT_QML_PLUGIN(HuskarUI_BasicPlugin)
+Q_IMPORT_QML_PLUGIN(HuskarUI_AntdPlugin)
 #endif
 
 #include <husapp.h>
@@ -255,7 +255,7 @@ static auto g_main_add_import_cpp_file = R"(
 
 #ifdef BUILD_HUSKARUI_STATIC_LIBRARY
 #include <QtQml/qqmlextensionplugin.h>
-Q_IMPORT_QML_PLUGIN(HuskarUI_BasicPlugin)
+Q_IMPORT_QML_PLUGIN(HuskarUI_AntdPlugin)
 #endif
 
 #include <husapp.h>
@@ -283,7 +283,7 @@ int main(int argc, char *argv[])
 
 static auto g_main_qml_file = R"(
 import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 HusWindow {
     width: 640

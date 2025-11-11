@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -80,7 +80,7 @@ colorInfo | color | - | 进度条信息文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width
@@ -112,7 +112,7 @@ colorInfo | color | - | 进度条信息文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     width: parent.width
@@ -141,7 +141,7 @@ colorInfo | color | - | 进度条信息文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     width: parent.width
@@ -191,7 +191,7 @@ colorInfo | color | - | 进度条信息文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width
@@ -307,7 +307,7 @@ colorInfo | color | - | 进度条信息文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     width: parent.width
@@ -362,7 +362,7 @@ colorInfo | color | - | 进度条信息文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width
@@ -567,7 +567,7 @@ colorInfo | color | - | 进度条信息文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width

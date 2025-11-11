@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -67,7 +67,7 @@ radiusBg | int | - | 背景圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 MouseArea {
                     width: parent.width
@@ -177,7 +177,7 @@ radiusBg | int | - | 背景圆角
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Item {
                     width: parent.width

@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.16)
 
 set(HUSKARUI_VERSION 0.5.0.0)
 
-message(STATUS "Configuring HuskarUIBasic Version: ${HUSKARUI_VERSION}")
+message(STATUS "Configuring HuskarUIAntd Version: ${HUSKARUI_VERSION}")
 
-project(HuskarUIBasic VERSION ${HUSKARUI_VERSION} LANGUAGES CXX)
+project(HuskarUIAntd VERSION ${HUSKARUI_VERSION} LANGUAGES CXX)
 
 #Add HuskarUIHelper
 include(${CMAKE_CURRENT_SOURCE_DIR}/../.cmake/HuskarUIHelper.cmake)
@@ -39,9 +39,9 @@ endif()
 #Set plugin output dir.
 if(NOT HUSKARUI_PLUGIN_OUTPUT_DIRECTORY)
     if(BUILD_HUSKARUI_IN_DEFAULT_LOCATION)
-        set(HUSKARUI_PLUGIN_OUTPUT_DIRECTORY ${Qt6_DIR}/../../../qml/HuskarUI/Basic)
+        set(HUSKARUI_PLUGIN_OUTPUT_DIRECTORY ${Qt6_DIR}/../../../qml/HuskarUI/Antd)
     else()
-        set(HUSKARUI_PLUGIN_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/HuskarUI/plugins/HuskarUI/Basic)
+        set(HUSKARUI_PLUGIN_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/HuskarUI/plugins/HuskarUI/Antd)
     endif()
 endif()
 
@@ -50,7 +50,7 @@ message(STATUS "The HuskarUI library output dir: ${HUSKARUI_LIBRARY_OUTPUT_DIREC
 message(STATUS "The HuskarUI plugin output dir: ${HUSKARUI_PLUGIN_OUTPUT_DIRECTORY}")
 
 if(BUILD_HUSKARUI_STATIC_LIBRARY)
-    set(PLUGIN_NAME HuskarUIBasicPlugin)
+    set(PLUGIN_NAME HuskarUIAntdPlugin)
     qt_add_library(${PROJECT_NAME} STATIC)
 else()
     set(PLUGIN_NAME huskaruibasicplugin)
@@ -84,7 +84,7 @@ if(WIN32)
 endif()
 
 qt_add_qml_module(${PROJECT_NAME}
-    URI "HuskarUI.Basic"
+    URI "HuskarUI.Antd"
     VERSION 1.0
     DESIGNER_SUPPORTED
     PLUGIN_TARGET ${PLUGIN_NAME}

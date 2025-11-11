@@ -167,8 +167,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     Qt6::Quick
-    HuskarUIBasic
-    $<$<BOOL:${BUILD_HUSKARUI_STATIC_LIBRARY}>:HuskarUIBasicPlugin>
+    HuskarUIAntd
+    $<$<BOOL:${BUILD_HUSKARUI_STATIC_LIBRARY}>:HuskarUIAntdPlugin>
 )
 
 if(BUILD_HUSKARUI_STATIC_LIBRARY)
@@ -235,7 +235,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${CMAKE_COMMAND} -E rm -f "${CMAKE_CURRENT_SOURCE_DIR}/../package/${PROJECT_NAME}.qmltypes"
                 COMMAND ${CMAKE_COMMAND} -E rm -f "${CMAKE_CURRENT_SOURCE_DIR}/../package/${PROJECT_NAME}_qml_module_dir_map.qrc"
                 COMMAND ${CMAKE_COMMAND} -E rm -f "${CMAKE_CURRENT_SOURCE_DIR}/../package/qmldir"
-                COMMAND ${CMAKE_COMMAND} -E copy ${Qt6_DIR}/../../../bin/HuskarUIBasic.dll ${CMAKE_CURRENT_SOURCE_DIR}/../package
+                COMMAND ${CMAKE_COMMAND} -E copy ${Qt6_DIR}/../../../bin/HuskarUIAntd.dll ${CMAKE_CURRENT_SOURCE_DIR}/../package
                 COMMAND ${QT_DEPLOY_QT} ${QT_DEPLOY_ARGS}
                 COMMENT "Windows Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt

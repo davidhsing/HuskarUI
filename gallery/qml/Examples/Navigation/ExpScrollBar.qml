@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -55,8 +55,8 @@ colorIcon | color | - | 图标颜色(即箭头颜色)
                        `)
             code: `
                 import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+                import QtQuick.Controls
+                import HuskarUI.Antd
 
                 Item {
                     Flickable {

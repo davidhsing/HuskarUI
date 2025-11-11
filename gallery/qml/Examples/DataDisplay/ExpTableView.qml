@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 import Gallery
 
 import '../../Controls'
@@ -232,7 +232,7 @@ filterInput | string | 单元格的过滤输入
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width
@@ -376,7 +376,7 @@ filterInput | string | 单元格的过滤输入
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width
@@ -608,7 +608,7 @@ filterInput | string | 单元格的过滤输入
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     width: parent.width
@@ -786,7 +786,7 @@ filterInput | string | 单元格的过滤输入
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
                 import Gallery
 
                 Column {

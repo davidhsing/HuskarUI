@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -63,7 +63,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     HusSwitch { }
@@ -81,7 +81,7 @@ Switch 失效状态，由 \`enabled\` 属性控制。
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 15
@@ -127,7 +127,7 @@ Switch 支持两种文本：\n
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 15
@@ -166,7 +166,7 @@ Switch 支持两种文本：\n
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 15
@@ -214,7 +214,7 @@ Switch 支持两种文本：\n
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 15

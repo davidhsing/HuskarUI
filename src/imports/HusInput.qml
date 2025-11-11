@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic as T
-import HuskarUI.Basic
+import QtQuick.Controls as T
+import HuskarUI.Antd
 
 T.TextField {
     id: control

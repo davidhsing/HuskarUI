@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -60,7 +60,7 @@ colorText | color | - | 文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     spacing: 20
@@ -131,7 +131,7 @@ colorText | color | - | 文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     spacing: 10
@@ -181,7 +181,7 @@ colorText | color | - | 文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     spacing: 20
@@ -256,7 +256,7 @@ colorText | color | - | 文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Row {
                     spacing: 20
@@ -309,7 +309,7 @@ colorText | color | - | 文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 20
@@ -421,7 +421,7 @@ colorText | color | - | 文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -532,7 +532,7 @@ colorText | color | - | 文本颜色
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10

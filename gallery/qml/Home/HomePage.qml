@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import QtQuick.Effects
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Rectangle {
     color: '#80000000'

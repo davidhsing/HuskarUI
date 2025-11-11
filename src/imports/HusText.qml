@@ -1,5 +1,5 @@
 import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Text {
     id: control

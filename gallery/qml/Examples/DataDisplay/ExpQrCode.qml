@@ -1,5 +1,5 @@
 import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -54,7 +54,7 @@ rawSource | string | - | 图片的原始源(data:image格式,只读)
             desc: '一个简单的二维码。'
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusQrCode {
                     width: 250

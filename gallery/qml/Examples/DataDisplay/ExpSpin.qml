@@ -1,5 +1,5 @@
 import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -134,7 +134,7 @@ Row {
                        `)
             code: `
 import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Column {
     spacing: 10

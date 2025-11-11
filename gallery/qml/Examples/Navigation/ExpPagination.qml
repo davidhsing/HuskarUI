@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -74,7 +74,7 @@ nextButtonTooltip | string | '下一页' | 下一页按钮的提示文本(为空
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusPagination {
                     currentPageIndex: 0
@@ -99,7 +99,7 @@ nextButtonTooltip | string | '下一页' | 下一页按钮的提示文本(为空
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -164,7 +164,7 @@ nextButtonTooltip | string | '下一页' | 下一页按钮的提示文本(为空
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 Column {
                     spacing: 10
@@ -233,7 +233,7 @@ nextButtonTooltip | string | '下一页' | 下一页按钮的提示文本(为空
                        `)
             code: `
                 import QtQuick
-                import HuskarUI.Basic
+                import HuskarUI.Antd
 
                 HusPagination {
                     currentPageIndex: 2

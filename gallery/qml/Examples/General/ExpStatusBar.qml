@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Controls.Basic
-import HuskarUI.Basic
+import QtQuick.Controls
+import HuskarUI.Antd
 
 import '../../Controls'
 
@@ -65,7 +65,7 @@ rightMargin | int | 否 | 右边距,优先级高于 defaultRightMargin
             desc: qsTr('最简单的用法,通过 `model` 数组定义状态栏的各个格子。')
             code:
                 `import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 HusStatusBar {
     model: [
@@ -90,7 +90,7 @@ HusStatusBar {
             desc: qsTr('通过 `align` 属性指定每个格子的文本对齐方式,支持 `HusStatusBar.Align_Left`、`HusStatusBar.Align_Center`、`HusStatusBar.Align_Right`。')
             code:
                 `import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 HusStatusBar {
     model: [
@@ -126,7 +126,7 @@ HusStatusBar {
             desc: qsTr('通过 `colorText`、`fontSize`、`leftMargin`、`rightMargin` 等属性自定义每个格子的样式。')
             code:
                 `import QtQuick
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 HusStatusBar {
     defaultFontSize: 14

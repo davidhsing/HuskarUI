@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Item {
     id: control

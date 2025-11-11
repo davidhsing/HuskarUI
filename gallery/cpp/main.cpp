@@ -4,7 +4,7 @@
 
 #ifdef BUILD_HUSKARUI_STATIC_LIBRARY
 #include <QtQml/qqmlextensionplugin.h>
-Q_IMPORT_QML_PLUGIN(HuskarUI_BasicPlugin)
+Q_IMPORT_QML_PLUGIN(HuskarUI_AntdPlugin)
 #endif
 
 #include "customtheme.h"

@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Shapes
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Item {
     id: control

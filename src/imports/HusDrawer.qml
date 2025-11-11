@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 T.Drawer {
     id: control

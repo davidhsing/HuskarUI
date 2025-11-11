@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as T
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 HusInput {
     id: control

@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import HuskarUI.Basic
+import HuskarUI.Antd
 
 Item {
     id: root
