@@ -26,7 +26,7 @@ QtObject {
             key: 'General',
             label: qsTr('通用'),
             iconSource: HusIcon.ProductOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusWindow',
                     label: qsTr('HusWindow 无边框窗口'),
@@ -119,7 +119,7 @@ QtObject {
             key: 'Layout',
             label: qsTr('布局'),
             iconSource: HusIcon.BarsOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusDivider',
                     label: qsTr('HusDivider 分割线'),
@@ -139,7 +139,7 @@ QtObject {
             key: 'Navigation',
             label: qsTr('导航'),
             iconSource: HusIcon.SendOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusMenu',
                     label: qsTr('HusMenu 菜单'),
@@ -177,7 +177,7 @@ QtObject {
             key: 'DataEntry',
             label: qsTr('数据录入'),
             iconSource: HusIcon.InsertRowBelowOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusSwitch',
                     label: qsTr('HusSwitch 开关'),
@@ -274,7 +274,7 @@ QtObject {
             key: 'DataDisplay',
             label: qsTr('数据展示'),
             iconSource: HusIcon.FundProjectionScreenOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusToolTip',
                     label: qsTr('HusToolTip 文字提示'),
@@ -391,7 +391,7 @@ QtObject {
             key: 'Effect',
             label: qsTr('效果'),
             iconSource: HusIcon.FireOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusAcrylic',
                     label: qsTr('HusAcrylic 亚克力效果'),
@@ -417,7 +417,7 @@ QtObject {
             key: 'Utils',
             label: qsTr('工具'),
             iconSource: HusIcon.ToolOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusAsyncHasher',
                     label: qsTr('HusAsyncHasher 异步哈希器'),
@@ -430,7 +430,7 @@ QtObject {
             key: 'Feedback',
             label: qsTr('反馈'),
             iconSource: HusIcon.MessageOutlined,
-            menuChildren: [
+            children: [
                 {
                     key: 'HusWatermark',
                     label: qsTr('HusWatermark 水印'),
@@ -493,7 +493,7 @@ QtObject {
             label: qsTr('主题相关'),
             iconSource: HusIcon.SkinOutlined,
             type: 'group',
-            menuChildren: [
+            children: [
                 {
                     key: 'HusTheme',
                     label: qsTr('HusTheme 主题定制'),
@@ -550,11 +550,11 @@ QtObject {
         /*! 创建菜单等 */
         let __menus = [], __options = [], __updates = [];
         for (const item of galleryModel) {
-            if (item && item.menuChildren) {
+            if (item && item.children) {
                 let hasNew = false;
                 let hasUpdate = false;
-                item.menuChildren.sort((a, b) => a.key.localeCompare(b.key));
-                item.menuChildren.forEach(
+                item.children.sort((a, b) => a.key.localeCompare(b.key));
+                item.children.forEach(
                             object => {
                                 object.state = object.addVersion ? 'New' : object.updateVersion ? 'Update' : '';
                                 if (object.state) {

@@ -333,13 +333,13 @@ HusWindow {
                     anchors.bottom: undefined
                     anchors.margins: 1
                     dot: true
-                    presetColor: parent.badgeState == 'New' ? 'red' : 'green'
+                    presetColor: (parent.badgeState === 'New') ? 'red' : 'green'
                     visible: parent.badgeState !== ''
                 }
             }
             onClickMenu: function(deep, key, keyPath, data) {
                 if (data) {
-                    if (data.hasOwnProperty('menuChildren')) {
+                    if (data.hasOwnProperty('children')) {
                         setDataProperty(key, 'badgeState', '');
                     } else {
                         console.debug('onClickMenu', deep, key, keyPath, JSON.stringify(data));

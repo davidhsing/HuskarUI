@@ -146,8 +146,8 @@ Item {
                 if (item.hasOwnProperty('key') && item.key === key) {
                     return item;
                 } else {
-                    if (item.hasOwnProperty('menuChildren')) {
-                        const data = findItemFunc(item.menuChildren);
+                    if (item.hasOwnProperty('children')) {
+                        const data = findItemFunc(item.children);
                         if (data !== undefined) {
                             return data;
                         }
@@ -169,8 +169,8 @@ Item {
                     list[i] = data;
                     return true;
                 } else {
-                    if (item.hasOwnProperty('menuChildren')) {
-                        if (setItemFunc(item.menuChildren)) {
+                    if (item.hasOwnProperty('children')) {
+                        if (setItemFunc(item.children)) {
                             return true;
                         }
                     }
@@ -191,8 +191,8 @@ Item {
                     list[i][propertyName] = value;
                     return true;
                 } else {
-                    if (item.hasOwnProperty('menuChildren')) {
-                        if (setItemFunc(item.menuChildren)) {
+                    if (item.hasOwnProperty('children')) {
+                        if (setItemFunc(item.children)) {
                             return true;
                         }
                     }
@@ -362,7 +362,7 @@ Item {
             property int menuIconSize: model.iconSize || defaultMenuIconSize
             property var menuIconSource: model.iconSource || 0
             property int menuIconSpacing: model.iconSpacing || defaultMenuIconSpacing
-            property var menuChildren: model.menuChildren || []
+            property var menuChildren: model.children || []
             property int menuChildrenLength: menuChildren ? menuChildren.length : 0
             property var menuIconDelegate: model.iconDelegate ?? control.menuIconDelegate
             property var menuLabelDelegate: model.labelDelegate ?? control.menuLabelDelegate

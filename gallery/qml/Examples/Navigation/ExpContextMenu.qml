@@ -89,14 +89,14 @@ radiusBg | int | - | 背景圆角
                                 key: 'New',
                                 label: 'New',
                                 iconSource: HusIcon.FileOutlined,
-                                menuChildren: [
+                                children: [
                                     { key: 'NewFolder', label: 'Folder', },
                                     { key: 'NewImage', label: 'Image File', },
                                     { key: 'NewText', label: 'Text File', },
                                     {
                                         key: 'NewText',
                                         label: 'Other',
-                                        menuChildren: [
+                                        children: [
                                             { key: 'Other1', label: 'Other1', },
                                             { key: 'Other2', label: 'Other2', },
                                         ]
@@ -139,14 +139,14 @@ radiusBg | int | - | 背景圆角
                             key: 'New',
                             label: 'New',
                             iconSource: HusIcon.FileOutlined,
-                            menuChildren: [
+                            children: [
                                 { key: 'NewFolder', label: 'Folder', },
                                 { key: 'NewImage', label: 'Image File', },
                                 { key: 'NewText', label: 'Text File', },
                                 {
                                     key: 'NewText',
                                     label: 'Other',
-                                    menuChildren: [
+                                    children: [
                                         { key: 'Other1', label: 'Other1', },
                                         { key: 'Other2', label: 'Other2', },
                                     ]

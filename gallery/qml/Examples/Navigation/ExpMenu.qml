@@ -93,7 +93,7 @@ enabled | bool | 可选 | 是否启用(false则禁用本菜单项)
 iconSize | int | 可选 | 图标大小
 iconSource | int | 可选 | 图标源
 iconSpacing | int | 可选 | 图标间隔
-menuChildren | list | 可选 | 子菜单(支持无限嵌套)
+children | list | 可选 | 子菜单(支持无限嵌套)
 iconDelegate | var | 可选 | 本菜单项图标代理(将覆盖menuIconDelegate)
 labelDelegate | var | 可选 | 本菜单项标签代理(将覆盖menuLabelDelegate)
 contentDelegate | var | 可选 | 本菜单项内容代理(将覆盖menuContentDelegate)
@@ -163,7 +163,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
 - { iconSize: 图标大小 }\n
 - { iconSource: 图标源 }\n
 - { iconSpacing: 图标间隔 }\n
-- { menuChildren: 子菜单(支持无限嵌套) }\n
+- { children: 子菜单(支持无限嵌套) }\n
 - { contentDelegate: 该菜单项内容代理 }\n
 菜单项 \`type\` 支持：\n
 - 'item' { 普通菜单项(默认) }\n
@@ -200,11 +200,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                             {
                                 label: qsTr('首页2'),
                                 iconSource: HusIcon.HomeOutlined,
-                                menuChildren: [
+                                children: [
                                     {
                                         label: qsTr('首页2-1'),
                                         iconSource: HusIcon.HomeOutlined,
-                                        menuChildren: [
+                                        children: [
                                             {
                                                 label: qsTr('首页2-1-1'),
                                                 iconSource: HusIcon.HomeOutlined,
@@ -247,11 +247,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                         {
                             label: qsTr('首页2'),
                             iconSource: HusIcon.HomeOutlined,
-                            menuChildren: [
+                            children: [
                                 {
                                     label: qsTr('首页2-1'),
                                     iconSource: HusIcon.HomeOutlined,
-                                    menuChildren: [
+                                    children: [
                                         {
                                             label: qsTr('首页2-1-1'),
                                             iconSource: HusIcon.HomeOutlined,
@@ -308,11 +308,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                             {
                                 label: qsTr('首页2'),
                                 iconSource: HusIcon.HomeOutlined,
-                                menuChildren: [
+                                children: [
                                     {
                                         label: qsTr('首页2-1'),
                                         iconSource: HusIcon.HomeOutlined,
-                                        menuChildren: [
+                                        children: [
                                             {
                                                 label: qsTr('首页2-1-1'),
                                                 iconSource: HusIcon.HomeOutlined
@@ -322,7 +322,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                                     {
                                         label: qsTr('首页2-2'),
                                         iconSource: HusIcon.HomeOutlined,
-                                        menuChildren: [
+                                        children: [
                                             {
                                                 label: qsTr('首页2-2-1'),
                                                 iconSource: HusIcon.HomeOutlined
@@ -334,11 +334,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                             {
                                 label: qsTr('首页3'),
                                 iconSource: HusIcon.HomeOutlined,
-                                menuChildren: [
+                                children: [
                                     {
                                         label: qsTr('首页3-1'),
                                         iconSource: HusIcon.HomeOutlined,
-                                        menuChildren: [
+                                        children: [
                                             {
                                                 label: qsTr('首页3-1-1'),
                                                 iconSource: HusIcon.HomeOutlined
@@ -375,11 +375,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                         {
                             label: qsTr('首页2'),
                             iconSource: HusIcon.HomeOutlined,
-                            menuChildren: [
+                            children: [
                                 {
                                     label: qsTr('首页2-1'),
                                     iconSource: HusIcon.HomeOutlined,
-                                    menuChildren: [
+                                    children: [
                                         {
                                             label: qsTr('首页2-1-1'),
                                             iconSource: HusIcon.HomeOutlined,
@@ -390,7 +390,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                                 {
                                     label: qsTr('首页2-2'),
                                     iconSource: HusIcon.HomeOutlined,
-                                    menuChildren: [
+                                    children: [
                                         {
                                             label: qsTr('首页2-2-1'),
                                             iconSource: HusIcon.HomeOutlined
@@ -402,11 +402,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                         {
                             label: qsTr('首页3'),
                             iconSource: HusIcon.HomeOutlined,
-                            menuChildren: [
+                            children: [
                                 {
                                     label: qsTr('首页3-1'),
                                     iconSource: HusIcon.HomeOutlined,
-                                    menuChildren: [
+                                    children: [
                                         {
                                             label: qsTr('首页3-1-1'),
                                             iconSource: HusIcon.HomeOutlined
@@ -460,11 +460,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                             {
                                 label: qsTr('首页2'),
                                 iconSource: HusIcon.HomeOutlined,
-                                menuChildren: [
+                                children: [
                                     {
                                         label: qsTr('首页2-1'),
                                         iconSource: HusIcon.HomeOutlined,
-                                        menuChildren: [
+                                        children: [
                                             {
                                                 label: qsTr('首页2-1-1'),
                                                 iconSource: HusIcon.HomeOutlined
@@ -474,7 +474,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                                     {
                                         label: qsTr('首页2-2'),
                                         iconSource: HusIcon.HomeOutlined,
-                                        menuChildren: [
+                                        children: [
                                             {
                                                 label: qsTr('首页2-2-1'),
                                                 iconSource: HusIcon.HomeOutlined
@@ -486,11 +486,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                             {
                                 label: qsTr('首页3'),
                                 iconSource: HusIcon.HomeOutlined,
-                                menuChildren: [
+                                children: [
                                     {
                                         label: qsTr('首页3-1'),
                                         iconSource: HusIcon.HomeOutlined,
-                                        menuChildren: [
+                                        children: [
                                             {
                                                 label: qsTr('首页3-1-1'),
                                                 iconSource: HusIcon.HomeOutlined
@@ -527,11 +527,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                         {
                             label: qsTr('首页2'),
                             iconSource: HusIcon.HomeOutlined,
-                            menuChildren: [
+                            children: [
                                 {
                                     label: qsTr('首页2-1'),
                                     iconSource: HusIcon.HomeOutlined,
-                                    menuChildren: [
+                                    children: [
                                         {
                                             label: qsTr('首页2-1-1'),
                                             iconSource: HusIcon.HomeOutlined
@@ -541,7 +541,7 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                                 {
                                     label: qsTr('首页2-2'),
                                     iconSource: HusIcon.HomeOutlined,
-                                    menuChildren: [
+                                    children: [
                                         {
                                             label: qsTr('首页2-2-1'),
                                             iconSource: HusIcon.HomeOutlined
@@ -553,11 +553,11 @@ backgroundDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBackgr
                         {
                             label: qsTr('首页3'),
                             iconSource: HusIcon.HomeOutlined,
-                            menuChildren: [
+                            children: [
                                 {
                                     label: qsTr('首页3-1'),
                                     iconSource: HusIcon.HomeOutlined,
-                                    menuChildren: [
+                                    children: [
                                         {
                                             label: qsTr('首页3-1-1'),
                                             iconSource: HusIcon.HomeOutlined

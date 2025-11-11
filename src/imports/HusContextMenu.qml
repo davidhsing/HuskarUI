@@ -78,7 +78,7 @@ HusPopup {
         onClickMenu:
             (deep, key, keyPath, data) => {
                 control.clickMenu(deep, key, keyPath, data);
-                if (!data.hasOwnProperty('menuChildren')) {
+                if (!data.hasOwnProperty('children')) {
                     close();
                 }
             }
