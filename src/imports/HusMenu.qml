@@ -47,7 +47,7 @@ Item {
 
         Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     }
-    property Component menuBackgroundDelegate: Rectangle {
+    property Component menuBgDelegate: Rectangle {
         radius: menuButton.radiusBg
         color: menuButton.colorBg
         border.color: menuButton.colorBorder
@@ -250,7 +250,7 @@ Item {
         property var iconDelegate: null
         property var labelDelegate: null
         property var contentDelegate: null
-        property var backgroundDelegate: null
+        property var bgDelegate: null
 
         onClicked: {
             if (expandedVisible)
@@ -292,7 +292,7 @@ Item {
             property alias menuButton: __menuButtonImpl
         }
         background: Loader {
-            sourceComponent: __menuButtonImpl.backgroundDelegate
+            sourceComponent: __menuButtonImpl.bgDelegate
             property alias model: __menuButtonImpl.model
             property alias menuButton: __menuButtonImpl
         }
@@ -367,7 +367,7 @@ Item {
             property var menuIconDelegate: model.iconDelegate ?? control.menuIconDelegate
             property var menuLabelDelegate: model.labelDelegate ?? control.menuLabelDelegate
             property var menuContentDelegate: model.contentDelegate ?? control.menuContentDelegate
-            property var menuBackgroundDelegate: model.backgroundDelegate ?? control.menuBackgroundDelegate
+            property var menuBgDelegate: model.bgDelegate ?? control.menuBgDelegate
 
             property var parentMenu: view.menuDeep === 0 ? null : view.parentMenu
             property var keyPath: parentMenu ? [...parentMenu.keyPath, menuKey] : [menuKey]
@@ -507,7 +507,7 @@ Item {
                     iconDelegate: __rootItem.menuIconDelegate
                     labelDelegate: __rootItem.menuLabelDelegate
                     contentDelegate: __rootItem.menuContentDelegate
-                    backgroundDelegate: __rootItem.menuBackgroundDelegate
+                    bgDelegate: __rootItem.menuBgDelegate
                     onClicked: {
                         __rootItem.clickMenu();
                         if (__rootItem.menuChildrenLength == 0) {

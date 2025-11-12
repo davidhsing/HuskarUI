@@ -142,7 +142,7 @@ HusPopup {
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
             }
         }
-        menuBackgroundDelegate: Rectangle {
+        menuBgDelegate: Rectangle {
             radius: control.radiusBg
             color: {
                 if (enabled) {
