@@ -93,7 +93,3 @@ Makefile
 
 # clion
 **/.idea
-
-# Ignore third-party libraries
-3rdparty/*
-!3rdparty/.gitkeep
