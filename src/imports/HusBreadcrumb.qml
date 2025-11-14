@@ -178,7 +178,9 @@ Item {
     }
 
     function clearButFirst() {
-        __listModel.remove(1, __listModel.count - 1);
+        if (__listModel.count > 1) {
+            __listModel.remove(1, __listModel.count - 1);
+        }
     }
 
     function reset() {
