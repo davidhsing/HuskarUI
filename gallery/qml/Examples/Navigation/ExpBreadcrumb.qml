@@ -118,10 +118,25 @@ items | list | 可选 | 菜单模型
                     width: parent.width
                     spacing: 10
 
-                    HusButton {
-                        text: 'Reset'
-                        type: HusButton.Type_Primary
-                        onClicked: breadcrumb.reset();
+                    Row {
+                        width: parent.width
+                        spacing: 10
+    
+                        HusButton {
+                            text: 'Reset'
+                            type: HusButton.Type_Primary
+                            onClicked: breadcrumb.reset();
+                        }
+        
+                        HusButton {
+                            text: 'Clear But First'
+                            onClicked: {
+                                breadcrumb.clearButFirst();
+                                breadcrumb.append({
+                                    title: 'Another Application',
+                                });
+                            }
+                        }
                     }
 
                     HusBreadcrumb {
@@ -140,10 +155,25 @@ items | list | 可选 | 菜单模型
             exampleDelegate: Column {
                 spacing: 10
 
-                HusButton {
-                    text: 'Reset'
-                    type: HusButton.Type_Primary
-                    onClicked: breadcrumb.reset();
+                Row {
+                    width: parent.width
+                    spacing: 10
+
+                    HusButton {
+                        text: 'Reset'
+                        type: HusButton.Type_Primary
+                        onClicked: breadcrumb.reset();
+                    }
+
+                    HusButton {
+                        text: 'Rebuild'
+                        onClicked: {
+                            breadcrumb.clearButFirst();
+                            breadcrumb.append({
+                                title: 'Another Application',
+                            });
+                        }
+                    }
                 }
 
                 HusBreadcrumb {

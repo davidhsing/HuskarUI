@@ -177,6 +177,10 @@ Item {
         __listModel.clear();
     }
 
+    function clearButFirst() {
+        __listModel.remove(1, __listModel.count - 1);
+    }
+
     function reset() {
         clear();
         for (const object of initModel) {
