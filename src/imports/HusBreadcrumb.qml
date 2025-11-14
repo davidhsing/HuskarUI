@@ -255,6 +255,7 @@ Item {
 
             Row {
                 id: __row
+                width: parent.width
                 height: parent.height
                 spacing: control.spacing
 

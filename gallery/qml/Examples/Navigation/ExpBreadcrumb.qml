@@ -170,6 +170,12 @@ items | list | 可选 | 菜单模型
                         onClicked: {
                             breadcrumb.clearButFirst();
                             breadcrumb.append({
+                                title: 'Another Application Center',
+                            });
+                            breadcrumb.append({
+                                title: 'Another Application List',
+                            });
+                            breadcrumb.append({
                                 title: 'Another Application',
                             });
                         }
