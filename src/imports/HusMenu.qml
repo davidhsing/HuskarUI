@@ -354,6 +354,7 @@ Item {
             required property var modelData
             property alias model: __rootItem.modelData
             property var view: ListView.view
+            property var menuControl: control
             property string menuKey: model.key || ''
             property string menuType: model.type || 'item'
             property bool menuEnabled: model.enabled === undefined ? true : model.enabled
@@ -513,15 +514,16 @@ Item {
                         if (__rootItem.menuChildrenLength == 0) {
                             __private.selectedItem = __rootItem;
                             __rootItem.selectedCurrentParentMenu();
-                            if (control.compactMode || control.popupMode)
+                            if (__rootItem.menuControl.compactMode || __rootItem.menuControl.popupMode) {
                                 __rootItem.layerPopup.closeWithParent();
+                            }
                         } else {
-                            if (control.compactMode || control.popupMode) {
+                            if (__rootItem.menuControl.compactMode || __rootItem.menuControl.popupMode) {
                                 const h = __rootItem.layerPopup.topPadding +
                                         __rootItem.layerPopup.bottomPadding +
                                         __childrenListView.realHeight + 6;
                                 const pos = mapToItem(null, 0, 0);
-                                const pos2 = mapToItem(control, 0, 0);
+                                const pos2 = mapToItem(__rootItem.menuControl, 0, 0);
                                 if ((pos.y + h) > __private.window.height) {
                                     __rootItem.layerPopup.y = Math.max(0, pos2.y - ((pos.y + h) - __private.window.height));
                                 } else {
