@@ -160,6 +160,7 @@
         "HusDivider": ":/HuskarUI/theme/HusDivider.json",
         "HusFormItem": ":/HuskarUI/theme/HusFormItem.json",
         "HusEmpty": ":/HuskarUI/theme/HusEmpty.json",
+        "HusShield": ":/HuskarUI/theme/HusShield.json",
         "HusSwitch": ":/HuskarUI/theme/HusSwitch.json",
         "HusScrollBar": ":/HuskarUI/theme/HusScrollBar.json",
         "HusSlider": ":/HuskarUI/theme/HusSlider.json",

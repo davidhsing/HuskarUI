@@ -379,6 +379,13 @@ QtObject {
                     desc: qsTr('显示一个二维码。')
                 },
                 {
+                    key: 'HusShield',
+                    label: qsTr('HusShield 徽章'),
+                    source: './Examples/DataDisplay/ExpShield.qml',
+                    addVersion: '0.5.0.0',
+                    desc: qsTr('类似 GitHub Shields 的徽章组件。')
+                },
+                {
                     key: 'HusSpin',
                     label: qsTr('HusSpin 加载中'),
                     source: './Examples/DataDisplay/ExpSpin.qml',
