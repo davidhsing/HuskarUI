@@ -229,7 +229,7 @@ radiusBg | int | - | 背景圆角
 
                     HusAvatar {
                         anchors.verticalCenter: parent.verticalCenter
-                        imageSource: 'https://avatars.githubusercontent.com/u/33405710?v=4'
+                        imageSource: 'https://avatars.githubusercontent.com/u/9333918?v=4'
                     }
 
                     HusAvatar {
@@ -266,7 +266,7 @@ radiusBg | int | - | 背景圆角
 
                 HusAvatar {
                     anchors.verticalCenter: parent.verticalCenter
-                    imageSource: 'https://avatars.githubusercontent.com/u/33405710?v=4'
+                    imageSource: 'https://avatars.githubusercontent.com/u/9333918?v=4'
                 }
 
                 HusAvatar {
