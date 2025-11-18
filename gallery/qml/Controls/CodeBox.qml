@@ -20,6 +20,15 @@ Rectangle {
     property Component exampleDelegate: Item { }
     property alias code: codeText.text
 
+    HusMessage {
+        id: message
+        z: 999
+        parent: galleryWindow.captionBar
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+    }
+
     Column {
         id: column
         width: parent.width - 20
@@ -63,13 +72,13 @@ Rectangle {
                     textFormat: Text.MarkdownText
                     wrapMode: Text.WordWrap
                     text: descTextLoader.text
-                    onLinkActivated:
-                        (link) => {
-                            if (link.startsWith('internal://'))
-                                galleryMenu.gotoMenu(link.slice(11));
-                            else
-                                Qt.openUrlExternally(link);
+                    onLinkActivated: (link) => {
+                        if (link.startsWith('internal://')) {
+                            galleryMenu.gotoMenu(link.slice(11));
+                        } else {
+                            Qt.openUrlExternally(link);
                         }
+                    }
                     onHoveredLinkChanged: {
                         if (hoveredLink === '') {
                             linkTooltip.visible = false;
@@ -154,6 +163,22 @@ Rectangle {
                         arrowVisible: false
                         visible: parent ? parent.hovered : false
                         text: qsTr('运行代码')
+                    }
+                }
+                HusIconButton {
+                    padding: 4
+                    topPadding: 4
+                    bottomPadding: 4
+                    iconSize: HusTheme.Primary.fontPrimarySizeHeading4
+                    iconSource: HusIcon.CopyOutlined
+                    onClicked: {
+                        HusApi.setClipbordText(codeText.text);
+                        message.success(qsTr('代码复制成功'))
+                    }
+                    HusToolTip {
+                        arrowVisible: false
+                        visible: parent ? parent.hovered : false
+                        text: qsTr('复制代码')
                     }
                 }
             }
