@@ -17,6 +17,7 @@ Item {
     property string inputPlaceholder: ''
     property bool inputEnabled: true
     property bool inputReadOnly: false
+    property bool inputRreadOnlyBg: false
     property bool buttonEnabled: true
     property string buttonText: qsTr('浏览')
     property int buttonType: HusButton.Type_Default
@@ -35,7 +36,6 @@ Item {
 
     signal pathSelected(string path)
     signal pathsSelected(var paths)
-    signal textChanged(string text)
 
     RowLayout {
         id: __layout
@@ -47,14 +47,27 @@ Item {
             Layout.fillWidth: true
             sourceComponent: control.inputDelegate
             onLoaded: {
-                item.text = Qt.binding(() => control.inputText);
-                item.placeholderText = Qt.binding(() => control.inputPlaceholder);
-                item.enabled = Qt.binding(() => control.inputEnabled);
-                item.readOnly = Qt.binding(() => control.inputReadOnly);
-                item.textChanged.connect(() => {
-                    control.inputText = item.text;
-                    control.textChanged(item.text);
-                });
+                // Check if item has properties before binding
+                if (item.hasOwnProperty('text')) {
+                    item.text = Qt.binding(() => control.inputText);
+                }
+                if (item.hasOwnProperty('placeholderText')) {
+                    item.placeholderText = Qt.binding(() => control.inputPlaceholder);
+                }
+                if (item.hasOwnProperty('enabled')) {
+                    item.enabled = Qt.binding(() => control.inputEnabled);
+                }
+                if (item.hasOwnProperty('readOnly')) {
+                    item.readOnly = Qt.binding(() => control.inputReadOnly);
+                }
+                if (item.hasOwnProperty('readOnlyBg')) {
+                    item.readOnlyBg = Qt.binding(() => control.inputReadOnlyBg);
+                }
+                if (item.hasOwnProperty('text') && item.hasOwnProperty('textChanged') && typeof item.textChanged.connect === 'function') {
+                    item.textChanged.connect(() => {
+                        control.inputText = item.text;
+                    });
+                }
             }
         }
 
@@ -63,11 +76,22 @@ Item {
             sourceComponent: control.buttonDelegate
             Layout.preferredWidth: control.buttonWidth
             onLoaded: {
-                item.text = Qt.binding(() => control.buttonText);
-                item.iconSource = Qt.binding(() => control.buttonIconSource);
-                item.enabled = Qt.binding(() => control.buttonEnabled);
-                item.type = Qt.binding(() => control.buttonType);
-                item.clicked.connect(__openDialog);
+                // Check if item has properties before binding
+                if (item.hasOwnProperty('text')) {
+                    item.text = Qt.binding(() => control.buttonText);
+                }
+                if (item.hasOwnProperty('iconSource')) {
+                    item.iconSource = Qt.binding(() => control.buttonIconSource);
+                }
+                if (item.hasOwnProperty('enabled')) {
+                    item.enabled = Qt.binding(() => control.buttonEnabled);
+                }
+                if (item.hasOwnProperty('type')) {
+                    item.type = Qt.binding(() => control.buttonType);
+                }
+                if (item.hasOwnProperty('clicked') && typeof item.clicked.connect === 'function') {
+                    item.clicked.connect(__openDialog);
+                }
             }
         }
     }

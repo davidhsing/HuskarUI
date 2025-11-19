@@ -21,7 +21,7 @@ T.TextField {
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int clearIconSize: themeSource.fontClearIconSize
     property int clearIconPosition: HusInput.Position_Right
-    property bool readOnlyDisabledBg: false
+    property bool readOnlyBg: false
     readonly property int leftIconPadding: (iconPosition === HusInput.Position_Left) ? __private.iconSize : 0
     readonly property int rightIconPadding: (iconPosition === HusInput.Position_Right) ? __private.iconSize : 0
     readonly property int leftClearIconPadding: {
@@ -40,8 +40,8 @@ T.TextField {
     }
     property color colorIcon: enabled ? control.themeSource.colorIcon : control.themeSource.colorIconDisabled
     property color colorText: enabled ? themeSource.colorText : themeSource.colorTextDisabled
-    property color colorBorder: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder)
-    property color colorBg: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
+    property color colorBorder: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder)
+    property color colorBg: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
     property int radiusBg: themeSource.radiusBg
     property string contentDescription: ''
     property var themeSource: HusTheme.HusInput
@@ -81,7 +81,7 @@ T.TextField {
     }
     property Component bgDelegate: Rectangle {
         color: control.colorBg
-        border.color: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBorderDisabled : control.colorBorder
+        border.color: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : control.colorBorder
         radius: control.radiusBg
     }
 
