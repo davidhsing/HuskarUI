@@ -13,6 +13,7 @@ Item {
     }
 
     property int browserType: HusFileBrowser.Browser_File
+    property string defaultFolder: ''
     property string inputText: ''
     property string inputPlaceholder: ''
     property bool inputEnabled: true
@@ -36,6 +37,14 @@ Item {
 
     signal pathSelected(string path)
     signal pathsSelected(var paths)
+
+    QtObject {
+        id: __private
+        readonly property string resolvedDefaultFolder: !!control.defaultFolder ? Qt.resolvedUrl(control.defaultFolder) : ''
+        readonly property string resolvedInputText: !!control.inputText ? Qt.resolvedUrl(control.inputText) : ''
+        readonly property string effectiveFileFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : ((control.browserType === HusFileBrowser.Browser_File && !!resolvedInputText) ? resolvedInputText : Qt.resolvedUrl('.'))
+        readonly property string effectiveFolderFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : (!!resolvedInputText ? resolvedInputText : Qt.resolvedUrl('.'))
+    }
 
     RowLayout {
         id: __layout
@@ -99,7 +108,8 @@ Item {
     FileDialog {
         id: __fileDialog
         visible: false
-        fileMode: (control.browserType === HusFileBrowser.Browser_Files) ? FileDialog.OpenFiles : FileDialog.OpenFile
+        fileMode: (control.browserType === HusFileBrowser.Browser_File) ? FileDialog.OpenFile : FileDialog.OpenFiles
+        currentFolder: __private.effectiveFileFolder
         onAccepted: {
             if (control.browserType === HusFileBrowser.Browser_Files) {
                 const paths = selectedFiles.map(url => control.convertLocal ? __urlToLocalFile(url) : url.toString());
@@ -115,6 +125,7 @@ Item {
     FolderDialog {
         id: __folderDialog
         visible: false
+        currentFolder: __private.effectiveFolderFolder
         onAccepted: {
             control.inputText = control.convertLocal ? __urlToLocalFile(selectedFolder.toString()) : selectedFolder.toString();
             control.pathSelected(control.inputText);

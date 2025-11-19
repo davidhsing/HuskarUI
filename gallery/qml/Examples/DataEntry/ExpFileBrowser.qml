@@ -26,6 +26,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 browserType | int | HusFileBrowser.Browser_File | 浏览器样式(来自 HusFileBrowser)
+defaultFolder | string | - | 默认的浏览文件夹路径
 inputText | string | - | 文本框文本
 inputPlaceholder | string | - | 文本框占位符
 inputEnabled | bool | true | 文本框已启用
