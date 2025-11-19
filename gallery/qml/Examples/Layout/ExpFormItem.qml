@@ -88,7 +88,6 @@ Column {
     spacing: 2
 
     HusFormItem {
-        width: parent.width
         label: "用户名"
 
         HusInput {
@@ -102,7 +101,6 @@ Column {
                 spacing: 2
 
                 HusFormItem {
-                    width: parent.width
                     label: "用户名"
 
                     HusInput {

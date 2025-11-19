@@ -49,7 +49,7 @@ Item {
     default property alias contentDelegate: __contentItem.data
 
     objectName: '__HusFormItem__'
-    implicitWidth: __mainLoader.implicitWidth
+    implicitWidth: parent.width
     implicitHeight: __mainLoader.implicitHeight
 
     // 内部状态对象
