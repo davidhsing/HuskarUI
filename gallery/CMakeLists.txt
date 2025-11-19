@@ -65,6 +65,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataEntry/ExpMultiSelect.qml
         qml/Examples/DataEntry/ExpDateTimePicker.qml
         qml/Examples/DataEntry/ExpTextArea.qml
+        qml/Examples/DataEntry/ExpFileBrowser.qml
         qml/Examples/DataDisplay/ExpToolTip.qml
         qml/Examples/DataDisplay/ExpTourFocus.qml
         qml/Examples/DataDisplay/ExpTourStep.qml

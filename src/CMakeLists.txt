@@ -152,6 +152,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusSpin.qml
         imports/HusStatusBar.qml
         imports/HusTextArea.qml
+        imports/HusFileBrowser.qml
     SOURCES
         $<$<BOOL:${WIN32}>:${HUSKARUI_RC_FILE}>
         cpp/husglobal.h
