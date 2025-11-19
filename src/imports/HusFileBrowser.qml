@@ -18,7 +18,7 @@ Item {
     property string inputPlaceholder: ''
     property bool inputEnabled: true
     property bool inputReadOnly: false
-    property bool inputRreadOnlyBg: false
+    property bool inputReadOnlyBg: false
     property bool buttonEnabled: true
     property string buttonText: qsTr('浏览')
     property int buttonType: HusButton.Type_Default
