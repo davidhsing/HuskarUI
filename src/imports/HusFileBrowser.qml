@@ -41,9 +41,8 @@ Item {
     QtObject {
         id: __private
         readonly property string resolvedDefaultFolder: !!control.defaultFolder ? Qt.resolvedUrl(control.defaultFolder) : ''
-        readonly property string resolvedInputText: !!control.inputText ? Qt.resolvedUrl(control.inputText) : ''
-        readonly property string effectiveFileFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : ((control.browserType === HusFileBrowser.Browser_File && !!resolvedInputText) ? resolvedInputText : Qt.resolvedUrl('.'))
-        readonly property string effectiveFolderFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : ((control.browserType === HusFileBrowser.Browser_Folder && !!control.inputText) ? control.inputText : Qt.resolvedUrl('.'))
+        readonly property string effectiveFileFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : ((control.browserType === HusFileBrowser.Browser_File && !!control.inputText) ? control.inputText : Qt.resolvedUrl('.'))
+        readonly property string effectiveFolderFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : (control.browserType === HusFileBrowser.Browser_Folder && !!control.inputText ? control.inputText : Qt.resolvedUrl('.'))
     }
 
     RowLayout {
