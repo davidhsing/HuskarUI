@@ -21,7 +21,7 @@ HusText {
     Loader {
         id: __iconLoader
         anchors.centerIn: parent
-        active: typeof iconSource == 'string' && iconSource !== ''
+        active: !!control.iconSource
         sourceComponent: Image {
             source: control.iconSource
             width: control.iconSize
