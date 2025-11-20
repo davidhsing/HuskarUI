@@ -89,6 +89,7 @@ Column {
 
     HusFormItem {
         label: "用户名"
+        width: parent.width
 
         HusInput {
             width: parent.width
@@ -102,6 +103,7 @@ Column {
 
                 HusFormItem {
                     label: "用户名"
+                    width: parent.width
 
                     HusInput {
                         width: parent.width
