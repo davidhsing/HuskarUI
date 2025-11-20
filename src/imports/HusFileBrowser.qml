@@ -38,13 +38,6 @@ Item {
     signal pathSelected(string path)
     signal pathsSelected(var paths)
 
-    QtObject {
-        id: __private
-        readonly property string resolvedDefaultFolder: !!control.defaultFolder ? Qt.resolvedUrl(control.defaultFolder) : ''
-        readonly property string effectiveFileFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : ((control.browserType === HusFileBrowser.Browser_File && !!control.inputText) ? control.inputText : Qt.resolvedUrl('.'))
-        readonly property string effectiveFolderFolder: !!resolvedDefaultFolder ? resolvedDefaultFolder : (control.browserType === HusFileBrowser.Browser_Folder && !!control.inputText ? control.inputText : Qt.resolvedUrl('.'))
-    }
-
     RowLayout {
         id: __layout
         anchors.fill: parent
@@ -108,7 +101,7 @@ Item {
         id: __fileDialog
         visible: false
         fileMode: (control.browserType === HusFileBrowser.Browser_File) ? FileDialog.OpenFile : FileDialog.OpenFiles
-        currentFolder: __private.effectiveFileFolder
+        currentFolder: (control.browserType === HusFileBrowser.Browser_File && !!control.inputText) ? Qt.resolvedUrl(__urlToUniformFile(control.inputText)) : currentFolder
         onAccepted: {
             if (control.browserType === HusFileBrowser.Browser_Files) {
                 const paths = selectedFiles.map(url => control.convertLocal ? __urlToLocalFile(url) : url.toString());
@@ -124,7 +117,7 @@ Item {
     FolderDialog {
         id: __folderDialog
         visible: false
-        currentFolder: __private.effectiveFolderFolder
+        currentFolder: control.inputText ? Qt.resolvedUrl(__urlToUniformFile(control.inputText)) : currentFolder
         onAccepted: {
             control.inputText = control.convertLocal ? __urlToLocalFile(selectedFolder.toString()) : selectedFolder.toString();
             control.pathSelected(control.inputText);
@@ -150,5 +143,16 @@ Item {
         urlString = urlString.replace(/^file:\/\/\//, Qt.platform.os === 'windows' ? '' : '/');
         urlString = urlString.replace(/\//g, (Qt.platform.os === 'windows') ? '\\' : '/');
         return urlString;
+    }
+
+    function __urlToUniformFile(path) {
+        if (!path) {
+            return path;
+        }
+        let pathString = (typeof path === 'string') ? path : path.toString();
+        if (pathString.startsWith('file:///')) {
+            return pathString;
+        }
+        return 'file:///' + pathString;
     }
 }
