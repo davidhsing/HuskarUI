@@ -22,7 +22,7 @@ Item {
     property alias length: __textArea.length
     property int maxLength: -1
     property alias readOnly: __textArea.readOnly
-    property bool readOnlyDisabledBg: false
+    property bool readOnlyBg: false
     property alias font: __scrollView.font
     property alias text: __textArea.text
     property alias placeholderText: __textArea.placeholderText
@@ -30,8 +30,8 @@ Item {
     property alias colorPlaceholderText: __textArea.placeholderTextColor
     property alias colorSelectedText: __textArea.selectedTextColor
     property alias colorSelection: __textArea.selectionColor
-    property color colorBorder: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder)
-    property color colorBg: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
+    property color colorBorder: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder)
+    property color colorBg: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
     property int radiusBg: themeSource.radiusBg
     property string contentDescription: ''
     property var themeSource: HusTheme.HusTextArea
@@ -42,7 +42,7 @@ Item {
 
     property Component bgDelegate: Rectangle {
         color: control.colorBg
-        border.color: (!enabled || (readOnly && control.readOnlyDisabledBg)) ? themeSource.colorBorderDisabled : control.colorBorder
+        border.color: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : control.colorBorder
         radius: control.radiusBg
     }
 

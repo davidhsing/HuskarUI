@@ -42,7 +42,7 @@ lineCount | int(readonly) | 0 | 文本行数
 length | int | 0 | 文本长度
 maxLength | int | -1 | 最大文本长度
 readOnly | bool | false | 是否只读
-readOnlyDisabledBg | bool | false | 当只读时是否采用禁用时的背景色
+readOnlyBg | bool | false | 当只读时是否采用禁用时的背景色
 text | string | '' | 文本
 placeholderText | string | '' | 占位文本
 font | font | - | 字体
