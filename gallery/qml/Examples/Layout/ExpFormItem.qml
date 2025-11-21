@@ -46,11 +46,9 @@ colorLabel | color | HusTheme.Primary.colorTextBase | 标签颜色
 colorLabelRequired | color | HusTheme.Primary.colorError | 必填星号颜色
 colorFeedbackSuccess | color | HusTheme.Primary.colorSuccess | 成功状态颜色
 colorFeedbackError | color | HusTheme.Primary.colorError | 错误状态颜色
-
 \n<br/>
 \n### 支持的函数：
 - \`validate()\` 执行验证，返回 bool 表示是否通过
-
 \n<br/>
 \n### 枚举：
 - \`HusFormItem.Layout_Vertical\` 垂直布局
