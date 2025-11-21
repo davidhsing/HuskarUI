@@ -7,6 +7,7 @@
         "colorLeftBg": "@colorTextSecondary",
         "colorLeftText": "white",
         "colorRightBg": "@colorSuccess",
-        "colorRightText": "white"
+        "colorRightText": "white",
+        "radiusBg": "@radiusPrimary"
     }
 }

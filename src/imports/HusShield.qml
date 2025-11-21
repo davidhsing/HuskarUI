@@ -22,7 +22,7 @@ Item {
     property color colorLeftText: HusTheme.HusShield.colorLeftText
     property color colorRightBg: HusTheme.HusShield.colorRightBg
     property color colorRightText: HusTheme.HusShield.colorRightText
-    property HusRadius radiusBg: HusRadius { all: 4 }
+    property HusRadius radiusBg: HusRadius { all: parseInt(HusTheme.HusShield.radiusBg) }
 
     // Delegate 属性
     property Component leftDelegate: __defaultLeftDelegate
