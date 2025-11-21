@@ -486,6 +486,7 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
             ADD_COMPONENT_CASE(HusMenu)
             ADD_COMPONENT_CASE(HusDivider)
             ADD_COMPONENT_CASE(HusFormItem)
+            ADD_COMPONENT_CASE(HusGroupBox)
             ADD_COMPONENT_CASE(HusEmpty)
             ADD_COMPONENT_CASE(HusShield)
             ADD_COMPONENT_CASE(HusSwitch)

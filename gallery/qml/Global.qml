@@ -131,6 +131,13 @@ QtObject {
                     source: './Examples/Layout/ExpFormItem.qml',
                     addVersion: '0.5.0.0',
                     desc: qsTr('包裹字段带校验的表单项。')
+                },
+                {
+                    key: 'HusGroupBox',
+                    label: qsTr('HusGroupBox 分组框'),
+                    source: './Examples/Layout/ExpGroupBox.qml',
+                    addVersion: '0.5.0.0',
+                    desc: qsTr('用于将相关内容组织在一起的分组框。')
                 }
             ]
         },

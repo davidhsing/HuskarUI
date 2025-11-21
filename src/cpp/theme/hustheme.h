@@ -30,6 +30,7 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusMenu);
     HUS_PROPERTY_READONLY(QVariantMap, HusDivider);
     HUS_PROPERTY_READONLY(QVariantMap, HusFormItem);
+    HUS_PROPERTY_READONLY(QVariantMap, HusGroupBox);
     HUS_PROPERTY_READONLY(QVariantMap, HusEmpty);
     HUS_PROPERTY_READONLY(QVariantMap, HusShield);
     HUS_PROPERTY_READONLY(QVariantMap, HusSwitch);

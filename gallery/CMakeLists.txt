@@ -91,6 +91,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/Navigation/ExpBreadcrumb.qml
         qml/Examples/Layout/ExpDivider.qml
         qml/Examples/Layout/ExpFormItem.qml
+        qml/Examples/Layout/ExpGroupBox.qml
         qml/Examples/Effect/ExpAcrylic.qml
         qml/Examples/Effect/ExpSwitchEffect.qml
         qml/Examples/Effect/ExpShadow.qml
@@ -142,7 +143,7 @@ qt_add_shaders(${PROJECT_NAME} "shaders"
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER huskarui.com
+    MACOSX_BUNDLE_GUI_IDENTIFIER github.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
