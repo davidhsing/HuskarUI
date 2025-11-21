@@ -148,7 +148,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusPopconfirm.qml
         imports/HusPopover.qml
         imports/HusModal.qml
-        imports/HusQrCode.qml
+        imports/HusQRCode.qml
         imports/HusSpin.qml
         imports/HusStatusBar.qml
         imports/HusTextArea.qml
@@ -217,7 +217,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusPopconfirm.json
         theme/HusPopover.json
         theme/HusModal.json
-        theme/HusQrCode.json
+        theme/HusQRCode.json
         theme/HusSpin.json
         theme/HusStatusBar.json
         theme/HusTextArea.json

@@ -1,6 +1,6 @@
 import QtQuick
 import HuskarUI.Basic
-import '/HuskarUI/resources/js/qrcode-svg.min.js' as QrCodeSvg
+import '/HuskarUI/resources/js/qrcode-svg.min.js' as QRCodeSvg
 
 Item {
     id: control
@@ -15,9 +15,9 @@ Item {
 
     property string content
     property string container: 'svg'
-    property color colorBackground: HusTheme.HusQrCode.colorBackground
-    property color colorForeground: HusTheme.HusQrCode.colorForeground
-    property int eccLevel: HusQrCode.ECC_LEVEL_L
+    property color colorBackground: HusTheme.HusQRCode.colorBackground
+    property color colorForeground: HusTheme.HusQRCode.colorForeground
+    property int eccLevel: HusQRCode.ECC_LEVEL_L
     property bool join: false
     property int padding: 2
     property bool predefined: false
@@ -60,20 +60,20 @@ Item {
         }
         let levelStr;
         switch (control.eccLevel) {
-            case HusQrCode.ECC_LEVEL_M:
+            case HusQRCode.ECC_LEVEL_M:
                 levelStr = 'M';
                 break;
-            case HusQrCode.ECC_LEVEL_Q:
+            case HusQRCode.ECC_LEVEL_Q:
                 levelStr = 'Q';
                 break;
-            case HusQrCode.ECC_LEVEL_H:
+            case HusQRCode.ECC_LEVEL_H:
                 levelStr = 'H';
                 break;
             default:
                 levelStr = 'L';
                 break;
         }
-        __private.svgString = new QrCodeSvg.QRCode({
+        __private.svgString = new QRCodeSvg.QRCode({
             content: control.content,
             container: control.container,
             width: control.rawWidth > 0 ? control.rawWidth : control.implicitWidth,
