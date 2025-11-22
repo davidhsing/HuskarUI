@@ -109,15 +109,12 @@ Item {
             id: __titleLoader
             z: 1
             x: {
-                if (control.titlePosition === HusGroupBox.Position_Top || control.titlePosition === HusGroupBox.Position_Bottom) {
-                    if (control.titleAlign === HusGroupBox.Align_Left) {
-                        return control.titlePadding;
-                    } else if (control.titleAlign === HusGroupBox.Align_Right) {
-                        return __container.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0) - control.titlePadding;
-                    }
-                    return (__container.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0)) * 0.5;
+                if (control.titleAlign === HusGroupBox.Align_Left) {
+                    return control.titlePadding;
+                } else if (control.titleAlign === HusGroupBox.Align_Right) {
+                    return __container.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0) - control.titlePadding;
                 }
-                return 0;
+                return (__container.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0)) * 0.5;
             }
             y: {
                 if (control.titlePosition === HusGroupBox.Position_Top) {
