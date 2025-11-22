@@ -169,6 +169,7 @@
         "HusToolTip": ":/HuskarUI/theme/HusToolTip.json",
         "HusSelect": ":/HuskarUI/theme/HusSelect.json",
         "HusInput": ":/HuskarUI/theme/HusInput.json",
+        "HusInputNumber": ":/HuskarUI/theme/HusInputNumber.json",
         "HusRate": ":/HuskarUI/theme/HusRate.json",
         "HusRadio": ":/HuskarUI/theme/HusRadio.json",
         "HusCheckBox": ":/HuskarUI/theme/HusCheckBox.json",

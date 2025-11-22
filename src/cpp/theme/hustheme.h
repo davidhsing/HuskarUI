@@ -40,6 +40,7 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusToolTip);
     HUS_PROPERTY_READONLY(QVariantMap, HusSelect);
     HUS_PROPERTY_READONLY(QVariantMap, HusInput);
+    HUS_PROPERTY_READONLY(QVariantMap, HusInputNumber);
     HUS_PROPERTY_READONLY(QVariantMap, HusRate);
     HUS_PROPERTY_READONLY(QVariantMap, HusRadio);
     HUS_PROPERTY_READONLY(QVariantMap, HusCheckBox);

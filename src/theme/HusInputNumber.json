@@ -1,0 +1,11 @@
+{
+    "__init__": {
+        "__import__": ["HusInput"]
+    },
+    "__style__": {
+        "colorPrefix": "@colorTextSecondary",
+        "colorSuffix": "@colorTextSecondary",
+        "colorBeforeLabel": "@colorTextSecondary",
+        "colorAfterLabel": "@colorTextSecondary"
+    }
+}

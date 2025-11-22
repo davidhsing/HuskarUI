@@ -248,7 +248,8 @@ QtObject {
                     key: 'HusInputNumber',
                     label: qsTr('HusInputNumber 数字输入框'),
                     source: './Examples/DataEntry/ExpInputNumber.qml',
-                    desc: qsTr('新增初始化标签列表索引属性。')
+                    updateVersion: '0.5.0.0',
+                    desc: qsTr('新增 colorPrefix, colorSuffix。\n新增 colorBeforeLabel, colorAfterLabel。')
                 },
                 {
                     key: 'HusMultiSelect',

@@ -28,9 +28,9 @@ Item {
     property var upIcon: HusIcon.UpOutlined || ''
     property var downIcon: HusIcon.DownOutlined || ''
     property font labelFont: Qt.font({
-                                         family: 'HuskarUI-Icons',
-                                         pixelSize: themeSource.fontSize
-                                     })
+        family: 'HuskarUI-Icons',
+        pixelSize: themeSource.fontSize
+    })
     property var beforeLabel: '' || []
     property var afterLabel: '' || []
     property int initBeforeLabelIndex: 0
@@ -41,8 +41,12 @@ Item {
     property var parser: text => Number(text)
     property int defaultHandlerWidth: 24
     property alias colorText: __input.colorText
+    property color colorPrefix: themeSource.colorPrefix
+    property color colorSuffix: themeSource.colorSuffix
+    property color colorBeforeLabel: themeSource.colorBeforeLabel
+    property color colorAfterLabel: themeSource.colorAfterLabel
     property int radiusBg: themeSource.radiusBg
-    property var themeSource: HusTheme.HusInput
+    property var themeSource: HusTheme.HusInputNumber
 
     property alias input: __input
 
@@ -59,7 +63,7 @@ Item {
         Loader {
             id: __beforeLoader
             anchors.centerIn: parent
-            sourceComponent: typeof control.beforeLabel == 'string' ? __labelComp : __selectComp
+            sourceComponent: (typeof control.beforeLabel == 'string') ? __labelComp : __selectComp
             property bool isBefore: true
         }
     }
@@ -76,7 +80,7 @@ Item {
         Loader {
             id: __afterLoader
             anchors.centerIn: parent
-            sourceComponent: typeof control.afterLabel == 'string' ? __labelComp : __selectComp
+            sourceComponent: (typeof control.afterLabel == 'string') ? __labelComp : __selectComp
             property bool isBefore: false
         }
     }
@@ -102,15 +106,12 @@ Item {
         HusIconButton {
             id: __upButton
             width: parent.width
-            height: hovered ? parent.hoverHeight :
-                              __downButton.hovered ? parent.noHoverHeight : parent.halfHeight
+            height: hovered ? parent.hoverHeight : (__downButton.hovered ? parent.noHoverHeight : parent.halfHeight)
             padding: 0
             enabled: control.enabled
             animationEnabled: control.animationEnabled
             autoRepeat: true
-            colorIcon: control.enabled ?
-                           hovered ? control.themeSource.colorBorderHover :
-                                     control.themeSource.colorBorder : control.themeSource.colorBorderDisabled
+            colorIcon: control.enabled ? (hovered ? control.themeSource.colorBorderHover : control.themeSource.colorBorder) : control.themeSource.colorBorderDisabled
             iconSize: control.themeSource.fontSize - 4
             iconSource: control.upIcon
             hoverCursorShape: control.value >= control.max ? Qt.ForbiddenCursor : Qt.PointingHandCursor
@@ -129,17 +130,14 @@ Item {
         HusIconButton {
             id: __downButton
             width: parent.width
-            height: (hovered ? parent.hoverHeight :
-                               __upButton.hovered ? parent.noHoverHeight : parent.halfHeight) + 1
+            height: (hovered ? parent.hoverHeight : (__upButton.hovered ? parent.noHoverHeight : parent.halfHeight)) + 1
             anchors.top: __upButton.bottom
             anchors.topMargin: -1
             padding: 0
             enabled: control.enabled
             animationEnabled: control.animationEnabled
             autoRepeat: true
-            colorIcon: control.enabled ?
-                           hovered ? control.themeSource.colorBorderHover :
-                                     control.themeSource.colorBorder : control.themeSource.colorBorderDisabled
+            colorIcon: control.enabled ? (hovered ? control.themeSource.colorBorderHover : control.themeSource.colorBorder) : control.themeSource.colorBorderDisabled
             iconSize: control.themeSource.fontSize - 4
             iconSource: control.downIcon
             hoverCursorShape: control.value <= control.min ? Qt.ForbiddenCursor : Qt.PointingHandCursor
@@ -225,24 +223,25 @@ Item {
             id: __afterText
             rightPadding: 4
             animationEnabled: control.animationEnabled
+            colorText: isBefore ? control.colorBeforeLabel : control.colorAfterLabel
             colorBg: 'transparent'
             colorBorder: 'transparent'
             clearEnabled: false
             model: isBefore ? control.beforeLabel : control.afterLabel
             currentIndex: isBefore ? control.initBeforeLabelIndex : control.initAfterLabelIndex
-            onActivated:
-                (index) => {
-                    if (isBefore) {
-                        control.beforeActivated(index, valueAt(index));
-                    } else {
-                        control.afterActivated(index, valueAt(index));
-                    }
+            onActivated: (index) => {
+                if (isBefore) {
+                    control.beforeActivated(index, valueAt(index));
+                } else {
+                    control.afterActivated(index, valueAt(index));
                 }
+            }
             onCurrentTextChanged: {
-                if (isBefore)
+                if (isBefore) {
                     control.currentBeforeLabel = currentText;
-                else
+                } else {
                     control.currentAfterLabel = currentText;
+                }
             }
         }
     }
@@ -252,13 +251,14 @@ Item {
 
         HusText {
             text: isBefore ? control.beforeLabel : control.afterLabel
-            color: __input.colorText
+            color: isBefore ? control.colorBeforeLabel : control.colorAfterLabel
             font: control.labelFont
             Component.onCompleted: {
-                if (isBefore)
+                if (isBefore) {
                     control.currentBeforeLabel = control.beforeLabel;
-                else
+                } else {
                     control.currentAfterLabel = control.afterLabel;
+                }
             }
         }
     }
@@ -298,9 +298,7 @@ Item {
                 rightPadding: __handlerLoader.implicitWidth + __suffixLoader.implicitWidth
                 colorIcon: {
                     if (control.enabled) {
-                        return __tapHandler.pressed ? control.themeSource.colorClearIconActive :
-                                                      __hoverHandler.hovered ? control.themeSource.colorClearIconHover :
-                                                                               control.themeSource.colorClearIcon;
+                        return __tapHandler.pressed ? control.themeSource.colorClearIconActive : (__hoverHandler.hovered ? control.themeSource.colorClearIconHover : control.themeSource.colorClearIcon);
                     } else {
                         return control.themeSource.colorClearIconDisabled;
                     }
@@ -322,7 +320,9 @@ Item {
             }
             onTextChanged: {
                 let v = control.parser(text);
-                if (v >= control.min && v <= control.max) control.value = v;
+                if (v >= control.min && v <= control.max) {
+                    control.value = v
+                }
             }
             onEditingFinished: control.valueChanged();
 
@@ -332,22 +332,23 @@ Item {
             WheelHandler {
                 enabled: control.enabled && control.useWheel
                 onWheel: function(wheel) {
-                    if (wheel.angleDelta.y > 0)
+                    if (wheel.angleDelta.y > 0) {
                         control.increase();
-                    else
+                    } else {
                         control.decrease();
+                    }
                 }
             }
 
             Loader {
                 id: __prefixLoader
                 height: parent.height
-                active: control.prefix != ''
+                active: control.prefix !== ''
                 sourceComponent: HusText {
                     leftPadding: 10
                     rightPadding: 5
                     text: control.prefix
-                    color: __input.colorText
+                    color: control.colorPrefix
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -356,12 +357,12 @@ Item {
                 id: __suffixLoader
                 height: parent.height
                 anchors.right: __handlerLoader.left
-                active: control.suffix != ''
+                active: control.suffix !== ''
                 sourceComponent: HusText {
                     leftPadding: 5
                     rightPadding: 10
                     text: control.suffix
-                    color: __input.colorText
+                    color: control.colorSuffix
                     verticalAlignment: Text.AlignVCenter
                 }
             }

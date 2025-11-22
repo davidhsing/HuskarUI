@@ -197,6 +197,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusSelect.json
         theme/HusMultiSelect.json
         theme/HusInput.json
+        theme/HusInputNumber.json
         theme/HusRate.json
         theme/HusRadio.json
         theme/HusCheckBox.json

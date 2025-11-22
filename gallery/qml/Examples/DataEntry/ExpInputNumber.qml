@@ -57,6 +57,10 @@ formatter | function | - | 格式化器(格式化数值为字符串)
 parser | function | - | 解析器(解析字符串为数值)
 defaultHandlerWidth | int | 24 | 默认增减按钮宽度
 colorText | color | - | 文本颜色
+colorPrefix | color | - | 前缀文本(图标)颜色
+colorSuffix | color | - | 后缀文本(图标)颜色
+colorBeforeLabel | color | - | 前置标签(列表)颜色
+colorAfterLabel | color | - | 后置标签(列表)颜色
 radiusBg | int | - | 背景圆角
 input | [HusInput](internal://HusInput) | - | 访问内部输入框
 \n<br/>
@@ -93,7 +97,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
         }
 
         ThemeToken {
-            source: 'HusInput'
+            source: 'HusInputNumber'
         }
 
         Description {

@@ -496,6 +496,7 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
             ADD_COMPONENT_CASE(HusToolTip)
             ADD_COMPONENT_CASE(HusSelect)
             ADD_COMPONENT_CASE(HusInput)
+            ADD_COMPONENT_CASE(HusInputNumber)
             ADD_COMPONENT_CASE(HusRate)
             ADD_COMPONENT_CASE(HusRadio)
             ADD_COMPONENT_CASE(HusCheckBox)
