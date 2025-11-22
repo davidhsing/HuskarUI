@@ -39,7 +39,7 @@ colorTitle | color | - | 标题颜色
 colorBorder | color | - | 边框颜色
 colorBg | color | - | 背景颜色
 radiusBg | HusRadius | - | 圆角半径
-contentMargins | int | 12 | 内容区域统一边距
+contentMargins | int | 16 | 内容区域统一边距
 contentTopMargin | int | - | 内容区域顶部边距(标题在顶部时为15)
 contentBottomMargin | int | - | 内容区域底部边距(标题在底部时为15)
 contentLeftMargin | int | - | 内容区域左侧边距
