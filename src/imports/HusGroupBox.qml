@@ -77,49 +77,69 @@ Item {
     default property alias content: __contentItem.data
 
     objectName: '__HusGroupBox__'
+    implicitWidth: __container.implicitWidth
+    implicitHeight: __container.implicitHeight
 
     Behavior on colorTitle { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorBorder { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
-    Loader {
-        id: __borderLoader
-        anchors.fill: parent
-        sourceComponent: borderDelegate
-    }
-
-    Loader {
-        id: __titleLoader
-        z: 1
-        x: {
-            if (control.titlePosition === HusGroupBox.Position_Top || control.titlePosition === HusGroupBox.Position_Bottom) {
-                if (control.titleAlign === HusGroupBox.Align_Left) {
-                    return control.titlePadding;
-                } else if (control.titleAlign === HusGroupBox.Align_Right) {
-                    return control.width - implicitWidth - control.titlePadding;
-                }
-                return (control.width - implicitWidth) * 0.5;
-            }
-            return 0;
-        }
-        y: {
-            if (control.titlePosition === HusGroupBox.Position_Top) {
-                return -implicitHeight * 0.5;
-            } else if (control.titlePosition === HusGroupBox.Position_Bottom) {
-                return control.height - implicitHeight * 0.5;
-            }
-            return 0;
-        }
-        sourceComponent: titleDelegate
-    }
-
     Item {
-        id: __contentItem
-        anchors.fill: parent
-        anchors.topMargin: control.contentTopMargin
-        anchors.bottomMargin: control.contentBottomMargin
-        anchors.leftMargin: control.contentLeftMargin
-        anchors.rightMargin: control.contentRightMargin
+        id: __container
+        anchors.centerIn: parent
+        implicitWidth: Math.max(1, __contentItem.implicitWidth + control.contentLeftMargin + control.contentRightMargin)
+        implicitHeight: {
+            let height = __contentItem.implicitHeight + (control.contentTopMargin + control.contentBottomMargin) * 2 / 3;
+            if (!!control.title) {
+                height += (__titleLoader.item ? __titleLoader.item.implicitHeight : 0) / 2;
+            }
+            return Math.max(1, height);
+        }
+
+        width: Math.max(implicitWidth, parent.width)
+        height: Math.max(implicitHeight, parent.height)
+
+        Loader {
+            id: __borderLoader
+            anchors.fill: parent
+            sourceComponent: borderDelegate
+        }
+
+        Loader {
+            id: __titleLoader
+            z: 1
+            x: {
+                if (control.titlePosition === HusGroupBox.Position_Top || control.titlePosition === HusGroupBox.Position_Bottom) {
+                    if (control.titleAlign === HusGroupBox.Align_Left) {
+                        return control.titlePadding;
+                    } else if (control.titleAlign === HusGroupBox.Align_Right) {
+                        return __container.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0) - control.titlePadding;
+                    }
+                    return (__container.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0)) * 0.5;
+                }
+                return 0;
+            }
+            y: {
+                if (control.titlePosition === HusGroupBox.Position_Top) {
+                    return -(__titleLoader.item ? __titleLoader.item.implicitHeight : 0) * 0.5;
+                } else if (control.titlePosition === HusGroupBox.Position_Bottom) {
+                    return __container.height - (__titleLoader.item ? __titleLoader.item.implicitHeight : 0) * 0.5;
+                }
+                return 0;
+            }
+            sourceComponent: titleDelegate
+        }
+
+        Item {
+            id: __contentItem
+            anchors.fill: parent
+            anchors.topMargin: control.contentTopMargin
+            anchors.bottomMargin: control.contentBottomMargin
+            anchors.leftMargin: control.contentLeftMargin
+            anchors.rightMargin: control.contentRightMargin
+            implicitWidth: childrenRect.width
+            implicitHeight: childrenRect.height
+        }
     }
 
     Accessible.role: Accessible.Grouping

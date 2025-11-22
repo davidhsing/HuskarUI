@@ -69,8 +69,6 @@ contentRightMargin | int | - | 内容区域右侧边距
             desc: qsTr("最简单的用法,默认标题在顶部左对齐。")
             code: `
 HusGroupBox {
-    width: 300
-    height: 200
     title: "用户信息"
 
     Column {
@@ -83,8 +81,6 @@ HusGroupBox {
     }
 }`
             exampleDelegate: HusGroupBox {
-                width: 300
-                height: 200
                 title: qsTr("用户信息")
 
                 Column {
