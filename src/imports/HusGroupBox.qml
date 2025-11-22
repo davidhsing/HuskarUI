@@ -20,7 +20,7 @@ Item {
     property string title: ''
     property font titleFont: Qt.font({
         family: HusTheme.HusGroupBox.fontFamily,
-        pixelSize: parseInt(HusTheme.HusGroupBox.fontSize)
+        pixelSize: HusTheme.HusGroupBox.fontSize
     })
     property int titlePosition: HusGroupBox.Position_Top
     property int titleAlign: HusGroupBox.Align_Left
@@ -36,7 +36,7 @@ Item {
     property color colorTitle: HusTheme.HusGroupBox.colorTitle
     property color colorBorder: HusTheme.HusGroupBox.colorBorder
     property color colorBg: HusTheme.HusGroupBox.colorBg
-    property HusRadius radiusBg: HusRadius { all: parseInt(HusTheme.HusGroupBox.radiusBg) }
+    property HusRadius radiusBg: HusRadius { all: HusTheme.HusGroupBox.radiusBg }
     property string contentDescription: title
 
     property Component titleDelegate: HusText {

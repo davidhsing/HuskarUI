@@ -14,32 +14,32 @@ Item {
     property int imageStyle: HusEmpty.Image_Default
     property string imageSource: {
         switch (imageStyle) {
-        case HusEmpty.Style_None: return '';
-        case HusEmpty.Style_Default: return 'qrc:/HuskarUI/resources/images/empty-default.svg';
-        case HusEmpty.Style_Simple: return 'qrc:/HuskarUI/resources/images/empty-simple.svg';
+            case HusEmpty.Style_None: return '';
+            case HusEmpty.Style_Default: return 'qrc:/HuskarUI/resources/images/empty-default.svg';
+            case HusEmpty.Style_Simple: return 'qrc:/HuskarUI/resources/images/empty-simple.svg';
         }
     }
     property int imageWidth: {
         switch (imageStyle) {
-        case HusEmpty.Style_None: return width / 3;
-        case HusEmpty.Style_Default: return 92;
-        case HusEmpty.Style_Simple: return 64;
+            case HusEmpty.Style_None: return width / 3;
+            case HusEmpty.Style_Default: return 92;
+            case HusEmpty.Style_Simple: return 64;
         }
     }
     property int imageHeight: {
         switch (imageStyle) {
-        case HusEmpty.Style_None: return height / 3;
-        case HusEmpty.Style_Default: return 76;
-        case HusEmpty.Style_Simple: return 41;
+            case HusEmpty.Style_None: return height / 3;
+            case HusEmpty.Style_Default: return 76;
+            case HusEmpty.Style_Simple: return 41;
         }
     }
     property bool showDescription: true
     property string description: ''
     property int descriptionSpacing: 12
     property font descriptionFont: Qt.font({
-                                               family: HusTheme.HusEmpty.fontFamily,
-                                               pixelSize: HusTheme.HusEmpty.fontSize
-                                           })
+        family: HusTheme.HusEmpty.fontFamily,
+        pixelSize: HusTheme.HusEmpty.fontSize
+    })
     property color colorDescription: HusTheme.HusEmpty.colorDescription
 
     property Component imageDelegate: Image {
