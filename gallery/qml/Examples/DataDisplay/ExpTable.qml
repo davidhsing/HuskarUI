@@ -109,7 +109,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusTableView 表格\n
+# HusTable 表格\n
 展示行列数据。\n
 * **继承自 { HusRectangle }**\n
 \n<br/>
@@ -139,8 +139,9 @@ defaultColumnHeaderHeight | int | 40 | 默认列头高度
 defaultRowHeaderWidth | int | 40 | 默认行头宽度
 columnGridVisible | bool | false | 是否显示列网格线
 rowGridVisible | bool | false | 是否显示行网格线
+rowHeightProvider | function(row, key) | minimumRowHeight | 行高提供函数
 minimumRowHeight | int | 40 | 最小行高
-maximumRowHeight | int | Number.NaN | 最大行高
+maximumRowHeight | int | Number.MAX_VALUE | 最大行高
 initModel | list | [] | 表格初始数据模型
 rowCount | int | 0 | 当前模型行数
 columns | list | [] | 列描述对象数组
@@ -217,7 +218,7 @@ filterInput | string | 单元格的过滤输入
         }
 
         ThemeToken {
-            source: 'HusTableView'
+            source: 'HusTable'
         }
 
         Description {
@@ -238,7 +239,7 @@ filterInput | string | 单元格的过滤输入
                     width: parent.width
                     spacing: 10
 
-                    HusTableView {
+                    HusTable {
                         width: parent.width
                         height: 200
                         columns: [
@@ -302,7 +303,7 @@ filterInput | string | 单元格的过滤输入
             exampleDelegate: Column {
                 spacing: 10
 
-                HusTableView {
+                HusTable {
                     width: parent.width
                     height: 200
                     columns: [
@@ -423,7 +424,7 @@ filterInput | string | 单元格的过滤输入
                         }
                     }
 
-                    HusTableView {
+                    HusTable {
                         id: tableView
                         width: parent.width
                         height: 400
@@ -531,7 +532,7 @@ filterInput | string | 单元格的过滤输入
                     }
                 }
 
-                HusTableView {
+                HusTable {
                     id: tableView
                     width: parent.width
                     height: 400
@@ -614,7 +615,7 @@ filterInput | string | 单元格的过滤输入
                     width: parent.width
                     spacing: 10
 
-                    HusTableView {
+                    HusTable {
                         id: sortAndFilterTable
                         width: parent.width
                         height: 400
@@ -680,7 +681,7 @@ filterInput | string | 单元格的过滤输入
             exampleDelegate: Column {
                 spacing: 10
 
-                HusTableView {
+                HusTable {
                     id: sortAndFilterTable
                     width: parent.width
                     height: 400
@@ -772,15 +773,15 @@ filterInput | string | 单元格的过滤输入
         return list;
     }
 \`\`\`\n
-3. 在 Qml 中直接访问该数据集并赋值给 HusTableView.initModel。\n
+3. 在 Qml 中直接访问该数据集并赋值给 HusTable.initModel。\n
 \`\`\`auto
-    HusTableView {
+    HusTable {
         Component.onCompleted: {
             initModel = getMyDataList();
         }
     }
 \`\`\`\n
-4. **注意** 使用 HusTableView 提供的接口操作数据(增删查改)。\n
+4. **注意** 使用 HusTable 提供的接口操作数据(增删查改)。\n
 **更详细的说明请参考官方文档：**\n
 - [QML 和 C++ 之间的数据类型转换](https://doc.qt.io/qt-6/zh/qtqml-cppintegration-data.html)\n
                        `)
@@ -799,13 +800,13 @@ filterInput | string | 单元格的过滤输入
                         onClicked: {
                             const list = DataGenerator.genTableData(10);
                             for (const object of list) {
-                                cppTableView.appendRow(object);
+                                cppTable.appendRow(object);
                             }
                         }
                     }
 
-                    HusTableView {
-                        id: cppTableView
+                    HusTable {
+                        id: cppTable
                         width: parent.width
                         height: 400
                         columns: [
@@ -856,13 +857,13 @@ filterInput | string | 单元格的过滤输入
                     onClicked: {
                         const list = DataGenerator.genTableData(10);
                         for (const object of list) {
-                            cppTableView.appendRow(object);
+                            cppTable.appendRow(object);
                         }
                     }
                 }
 
-                HusTableView {
-                    id: cppTableView
+                HusTable {
+                    id: cppTable
                     width: parent.width
                     height: 400
                     columns: [

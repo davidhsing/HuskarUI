@@ -75,7 +75,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataDisplay/ExpCard.qml
         qml/Examples/DataDisplay/ExpTimeline.qml
         qml/Examples/DataDisplay/ExpTag.qml
-        qml/Examples/DataDisplay/ExpTableView.qml
+        qml/Examples/DataDisplay/ExpTable.qml
         qml/Examples/DataDisplay/ExpBadge.qml
         qml/Examples/DataDisplay/ExpCarousel.qml
         qml/Examples/DataDisplay/ExpImage.qml

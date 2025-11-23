@@ -51,7 +51,7 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusPopup);
     HUS_PROPERTY_READONLY(QVariantMap, HusTimeline);
     HUS_PROPERTY_READONLY(QVariantMap, HusTag);
-    HUS_PROPERTY_READONLY(QVariantMap, HusTableView);
+    HUS_PROPERTY_READONLY(QVariantMap, HusTable);
     HUS_PROPERTY_READONLY(QVariantMap, HusMessage);
     HUS_PROPERTY_READONLY(QVariantMap, HusAutoComplete);
     HUS_PROPERTY_READONLY(QVariantMap, HusProgress);

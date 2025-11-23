@@ -198,7 +198,7 @@ Item {
             height: Math.min(400, 40 * ((galleryGlobal.componentTokens[root.source]?.length ?? 0) + 1))
             active: root.source != ''
             asynchronous: true
-            sourceComponent: HusTableView {
+            sourceComponent: HusTable {
                 propagateWheelEvent: false
                 columnGridVisible: true
                 columns: [

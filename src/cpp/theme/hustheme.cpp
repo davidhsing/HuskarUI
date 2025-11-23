@@ -507,7 +507,7 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
             ADD_COMPONENT_CASE(HusPopup)
             ADD_COMPONENT_CASE(HusTimeline)
             ADD_COMPONENT_CASE(HusTag)
-            ADD_COMPONENT_CASE(HusTableView)
+            ADD_COMPONENT_CASE(HusTable)
             ADD_COMPONENT_CASE(HusMessage)
             ADD_COMPONENT_CASE(HusAutoComplete)
             ADD_COMPONENT_CASE(HusProgress)

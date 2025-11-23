@@ -338,9 +338,9 @@ QtObject {
                     desc: qsTr('进行标记和分类的小标签。')
                 },
                 {
-                    key: 'HusTableView',
-                    label: qsTr('HusTableView 表格'),
-                    source: './Examples/DataDisplay/ExpTableView.qml',
+                    key: 'HusTable',
+                    label: qsTr('HusTable 表格'),
+                    source: './Examples/DataDisplay/ExpTable.qml',
                     desc: qsTr('新增 getCellData 获取单元数据。\n新增 setCellData 设置单元数据。')
                 },
                 {

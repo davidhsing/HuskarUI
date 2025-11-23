@@ -130,7 +130,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusPopup.qml
         imports/HusTimeline.qml
         imports/HusTag.qml
-        imports/HusTableView.qml
+        imports/HusTable.qml
         imports/HusMessage.qml
         imports/HusAutoComplete.qml
         imports/HusText.qml
@@ -208,7 +208,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusPopup.json
         theme/HusTimeline.json
         theme/HusTag.json
-        theme/HusTableView.json
+        theme/HusTable.json
         theme/HusMessage.json
         theme/HusAutoComplete.json
         theme/HusProgress.json

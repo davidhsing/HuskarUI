@@ -180,7 +180,7 @@
         "HusPopup": ":/HuskarUI/theme/HusPopup.json",
         "HusTimeline": ":/HuskarUI/theme/HusTimeline.json",
         "HusTag": ":/HuskarUI/theme/HusTag.json",
-        "HusTableView": ":/HuskarUI/theme/HusTableView.json",
+        "HusTable": ":/HuskarUI/theme/HusTable.json",
         "HusMessage": ":/HuskarUI/theme/HusMessage.json",
         "HusAutoComplete": ":/HuskarUI/theme/HusAutoComplete.json",
         "HusProgress": ":/HuskarUI/theme/HusProgress.json",

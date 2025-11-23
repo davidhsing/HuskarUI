@@ -11,10 +11,11 @@ HusRectangle {
     property bool alternatingRow: false
     property int defaultColumnHeaderHeight: 40
     property int defaultRowHeaderWidth: 40
+    property var rowHeightProvider: (row, key) => minimumRowHeight
     property bool columnGridVisible: false
     property bool rowGridVisible: false
     property real minimumRowHeight: 40
-    property real maximumRowHeight: Number.NaN
+    property real maximumRowHeight: Number.MAX_VALUE
     property var initModel: []
     readonly property int rowCount: __cellModel.rowCount
     property var columns: []
@@ -22,22 +23,22 @@ HusRectangle {
 
     property bool columnHeaderVisible: true
     property font columnHeaderTitleFont: Qt.font({
-                                                     family: HusTheme.HusTableView.fontFamily,
-                                                     pixelSize: HusTheme.HusTableView.fontSize
+                                                     family: HusTheme.HusTable.fontFamily,
+                                                     pixelSize: HusTheme.HusTable.fontSize
                                                  })
-    property color colorColumnHeaderTitle: HusTheme.HusTableView.colorColumnTitle
-    property color colorColumnHeaderBg: HusTheme.HusTableView.colorColumnHeaderBg
+    property color colorColumnHeaderTitle: HusTheme.HusTable.colorColumnTitle
+    property color colorColumnHeaderBg: HusTheme.HusTable.colorColumnHeaderBg
 
     property bool rowHeaderVisible: true
     property font rowHeaderTitleFont: Qt.font({
-                                                  family: HusTheme.HusTableView.fontFamily,
-                                                  pixelSize: HusTheme.HusTableView.fontSize
+                                                  family: HusTheme.HusTable.fontFamily,
+                                                  pixelSize: HusTheme.HusTable.fontSize
                                               })
-    property color colorRowHeaderTitle: HusTheme.HusTableView.colorRowTitle
-    property color colorRowHeaderBg: HusTheme.HusTableView.colorRowHeaderBg
+    property color colorRowHeaderTitle: HusTheme.HusTable.colorRowTitle
+    property color colorRowHeaderBg: HusTheme.HusTable.colorRowHeaderBg
 
-    property color colorGridLine: HusTheme.HusTableView.colorGridLine
-    property color colorResizeBlockBg: HusTheme.HusTableView.colorResizeBlockBg
+    property color colorGridLine: HusTheme.HusTable.colorGridLine
+    property color colorResizeBlockBg: HusTheme.HusTable.colorResizeBlockBg
 
     property Component columnHeaderDelegate: Item {
         id: __columnHeaderDelegate
@@ -200,18 +201,18 @@ HusRectangle {
 
             HusIconText {
                 visible: sortDirections.indexOf('ascend') !== -1
-                colorIcon: sortMode === 'ascend' ? HusTheme.HusTableView.colorIconHover :
-                                                   HusTheme.HusTableView.colorIcon
+                colorIcon: sortMode === 'ascend' ? HusTheme.HusTable.colorIconHover :
+                                                   HusTheme.HusTable.colorIcon
                 iconSource: HusIcon.CaretUpOutlined
-                iconSize: HusTheme.HusTableView.fontSize - 2
+                iconSize: HusTheme.HusTable.fontSize - 2
             }
 
             HusIconText {
                 visible: sortDirections.indexOf('descend') !== -1
-                colorIcon: sortMode === 'descend' ? HusTheme.HusTableView.colorIconHover :
-                                                    HusTheme.HusTableView.colorIcon
+                colorIcon: sortMode === 'descend' ? HusTheme.HusTable.colorIconHover :
+                                                    HusTheme.HusTable.colorIcon
                 iconSource: HusIcon.CaretDownOutlined
-                iconSize: HusTheme.HusTableView.fontSize - 2
+                iconSize: HusTheme.HusTable.fontSize - 2
             }
         }
     }
@@ -223,7 +224,7 @@ HusRectangle {
             id: __headerFilterIcon
             anchors.centerIn: parent
             iconSource: HusIcon.SearchOutlined
-            colorIcon: hovered ? HusTheme.HusTableView.colorIconHover : HusTheme.HusTableView.colorIcon
+            colorIcon: hovered ? HusTheme.HusTable.colorIconHover : HusTheme.HusTable.colorIcon
             onClicked: {
                 __filterPopup.open();
             }
@@ -298,11 +299,11 @@ HusRectangle {
         }
     }
 
-    objectName: '__HusTableView__'
+    objectName: '__HusTable__'
     clip: true
-    color: HusTheme.HusTableView.colorBg
-    topLeftRadius: HusTheme.HusTableView.radiusBg
-    topRightRadius: HusTheme.HusTableView.radiusBg
+    color: HusTheme.HusTable.colorBg
+    topLeftRadius: HusTheme.HusTable.radiusBg
+    topRightRadius: HusTheme.HusTable.radiusBg
     onColumnsChanged: {
         let headerColumns = [];
         let headerRow = {};
@@ -660,8 +661,8 @@ HusRectangle {
         height: control.defaultColumnHeaderHeight
         anchors.left: control.rowHeaderVisible ? __rowHeaderViewBg.right : parent.left
         anchors.right: parent.right
-        topLeftRadius: control.rowHeaderVisible ? 0 : HusTheme.HusTableView.radiusBg
-        topRightRadius: HusTheme.HusTableView.radiusBg
+        topLeftRadius: control.rowHeaderVisible ? 0 : HusTheme.HusTable.radiusBg
+        topRightRadius: HusTheme.HusTable.radiusBg
         color: control.colorColumnHeaderBg
         visible: control.columnHeaderVisible
 
@@ -676,6 +677,7 @@ HusRectangle {
             model: TableModel {
                 id: __columnHeaderModel
             }
+            columnWidthProvider: (column) => control.columns[column].width
             delegate: Item {
                 id: __columnHeaderItem
                 implicitWidth: display.width ?? 100
@@ -690,10 +692,10 @@ HusRectangle {
                 property bool editable: display.editable ?? false
                 property var sorter: display.sorter
                 property real minimumWidth: display.minimumWidth ?? 40
-                property real maximumWidth: display.maximumWidth ?? Number.NaN
+                property real maximumWidth: display.maximumWidth ?? Number.MAX_VALUE
 
                 TableView.onReused: {
-                    if (selectionType == 'checkbox')
+                    if (selectionType === 'checkbox')
                         __private.updateParentCheckBox();
                 }
 
@@ -843,20 +845,21 @@ HusRectangle {
             delegate: Rectangle {
                 id: __rootItem
                 implicitWidth: control.columns[column].width
-                implicitHeight: control.minimumRowHeight
+                implicitHeight: Math.max(control.minimumRowHeight, Math.min(control.rowHeightProvider(row, key), control.maximumRowHeight))
+                visible: implicitHeight >= 0
                 clip: true
                 color: {
                     if (__private.checkedKeysMap.has(key)) {
-                        if (row == __cellView.currentHoverRow)
-                            return HusTheme.isDark ? HusTheme.HusTableView.colorCellBgDarkHoverChecked :
-                                                     HusTheme.HusTableView.colorCellBgHoverChecked;
+                        if (row === __cellView.currentHoverRow)
+                            return HusTheme.isDark ? HusTheme.HusTable.colorCellBgDarkHoverChecked :
+                                                     HusTheme.HusTable.colorCellBgHoverChecked;
                         else
-                            return HusTheme.isDark ? HusTheme.HusTableView.colorCellBgDarkChecked :
-                                                     HusTheme.HusTableView.colorCellBgChecked;
+                            return HusTheme.isDark ? HusTheme.HusTable.colorCellBgDarkChecked :
+                                                     HusTheme.HusTable.colorCellBgChecked;
                     } else {
-                        return row == __cellView.currentHoverRow ? HusTheme.HusTableView.colorCellBgHover :
+                        return (row === __cellView.currentHoverRow) ? HusTheme.HusTable.colorCellBgHover :
                                                                    control.alternatingRow && __rootItem.row % 2 !== 0 ?
-                                                                       HusTheme.HusTableView.colorCellBgHover : HusTheme.HusTableView.colorCellBg;
+                                                                       HusTheme.HusTable.colorCellBgHover : HusTheme.HusTable.colorCellBg;
                     }
                 }
 
@@ -974,7 +977,7 @@ HusRectangle {
         active: control.rowHeaderVisible && control.columnHeaderVisible
         sourceComponent: HusRectangle {
             color: control.colorResizeBlockBg
-            topLeftRadius: HusTheme.HusTableView.radiusBg
+            topLeftRadius: HusTheme.HusTable.radiusBg
 
             ResizeArea {
                 width: parent.width
