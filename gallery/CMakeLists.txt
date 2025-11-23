@@ -69,7 +69,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataDisplay/ExpToolTip.qml
         qml/Examples/DataDisplay/ExpTourFocus.qml
         qml/Examples/DataDisplay/ExpTourStep.qml
-        qml/Examples/DataDisplay/ExpTabView.qml
+        qml/Examples/DataDisplay/ExpTabs.qml
         qml/Examples/DataDisplay/ExpCollapse.qml
         qml/Examples/DataDisplay/ExpAvatar.qml
         qml/Examples/DataDisplay/ExpCard.qml

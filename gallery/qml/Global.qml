@@ -302,10 +302,10 @@ QtObject {
                     desc: qsTr('新增 penetrationEvent/focusRadius 属性。\n优化步骤卡片显示逻辑。')
                 },
                 {
-                    key: 'HusTabView',
-                    label: qsTr('HusTabView 标签页'),
-                    source: './Examples/DataDisplay/ExpTabView.qml',
-                    desc: qsTr('HusTabView 是通过选项卡标签切换内容的组件。')
+                    key: 'HusTabs',
+                    label: qsTr('HusTabs 标签页'),
+                    source: './Examples/DataDisplay/ExpTabs.qml',
+                    desc: qsTr('HusTabs 是通过选项卡标签切换内容的组件。')
                 },
                 {
                     key: 'HusCollapse',

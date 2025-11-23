@@ -165,7 +165,7 @@
         "HusSwitch": ":/HuskarUI/theme/HusSwitch.json",
         "HusScrollBar": ":/HuskarUI/theme/HusScrollBar.json",
         "HusSlider": ":/HuskarUI/theme/HusSlider.json",
-        "HusTabView": ":/HuskarUI/theme/HusTabView.json",
+        "HusTabs": ":/HuskarUI/theme/HusTabs.json",
         "HusToolTip": ":/HuskarUI/theme/HusToolTip.json",
         "HusSelect": ":/HuskarUI/theme/HusSelect.json",
         "HusInput": ":/HuskarUI/theme/HusInput.json",

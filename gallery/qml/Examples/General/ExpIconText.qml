@@ -61,7 +61,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
         anchors.bottom: flickable.bottom
     }
 
-    HusTabView {
+    HusTabs {
         anchors.top: flickable.bottom
         anchors.topMargin: 5
         anchors.bottom: parent.bottom

@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusTabView 标签页\n
+# HusTabs 标签页\n
 通过选项卡标签切换内容的组件。\n
 * **继承自 { Item }**\n
 \n<br/>
@@ -36,9 +36,9 @@ animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 initModel | list | true | 标签页初始模型
 count | int | true | 当前标签页数量
 currentIndex | int | true | 当前标签页索引(更改该值可切换页)
-tabType | enum | HusTabView.Type_Default | 标签类型(来自 HusTabView)
-tabSize | enum | HusTabView.Size_Auto | 标签大小(来自 HusTabView)
-tabPosition | enum | HusTabView.Position_Top | 标签位置(来自 HusTabView)
+tabType | enum | HusTabs.Type_Default | 标签类型(来自 HusTabs)
+tabSize | enum | HusTabs.Size_Auto | 标签大小(来自 HusTabs)
+tabPosition | enum | HusTabs.Position_Top | 标签位置(来自 HusTabs)
 tabAddable | bool | false | 标签是否可新增
 tabCentered | bool | false | 标签是否居中
 tabCardMovable | bool | true | 标签卡片是否可移动(tabType == Type_Card*生效)
@@ -89,7 +89,7 @@ editable | bool | 可选 | 本标签是否可编辑
         }
 
         ThemeToken {
-            source: 'HusTabView'
+            source: 'HusTabs'
         }
 
         Description {
@@ -109,13 +109,13 @@ editable | bool | 可选 | 本标签是否可编辑
 - { tabHeight: 本标签高度 }\n
 - { editable: 本标签是否可编辑(tabType == Type_CardEditable时生效) }\n
 通过 \`tabPosition\` 属性设置标签位置，支持的位置：\n
-- 标签在上方(默认){ HusTabView.Position_Top }\n
-- 标签在下方{ HusTabView.Position_Bottom }\n
-- 标签在左方{ HusTabView.Position_Left }\n
-- 标签在右方{ HusTabView.Position_Right }\n
+- 标签在上方(默认){ HusTabs.Position_Top }\n
+- 标签在下方{ HusTabs.Position_Bottom }\n
+- 标签在左方{ HusTabs.Position_Left }\n
+- 标签在右方{ HusTabs.Position_Right }\n
 通过 \`tabSize\` 属性设置标签大小计算方式，支持的方式：\n
-- 自动计算标签大小(取决于文本大小){ HusTabView.Size_Auto }\n
-- 固定标签大小(取决于 tabWidth 和 defaultTabWidth){ HusTabView.Size_Fixed }\n
+- 自动计算标签大小(取决于文本大小){ HusTabs.Size_Auto }\n
+- 固定标签大小(取决于 tabWidth 和 defaultTabWidth){ HusTabs.Size_Fixed }\n
 通过 \`tabAddable\` 属性设置标签列表是否可新增\n
 通过 \`tabCentered\` 属性设置标签列表是否居中\n
                        `)
@@ -131,10 +131,10 @@ editable | bool | 可选 | 本标签是否可编辑
                         id: positionRadio1
                         initCheckedIndex: 0
                         model: [
-                            { label: qsTr('上'), value: HusTabView.Position_Top },
-                            { label: qsTr('下'), value: HusTabView.Position_Bottom },
-                            { label: qsTr('左'), value: HusTabView.Position_Left },
-                            { label: qsTr('右'), value: HusTabView.Position_Right }
+                            { label: qsTr('上'), value: HusTabs.Position_Top },
+                            { label: qsTr('下'), value: HusTabs.Position_Bottom },
+                            { label: qsTr('左'), value: HusTabs.Position_Left },
+                            { label: qsTr('右'), value: HusTabs.Position_Right }
                         ]
                     }
 
@@ -177,13 +177,13 @@ editable | bool | 可选 | 本标签是否可编辑
                         }
                     }
 
-                    HusTabView {
-                        id: defaultTabView
+                    HusTabs {
+                        id: defaultTabs
                         width: parent.width
                         height: 200
                         defaultTabWidth: 40
                         tabPosition: positionRadio1.currentCheckedValue
-                        tabSize: sizeSwitch.checked ? HusTabView.Size_Fixed : HusTabView.Size_Auto
+                        tabSize: sizeSwitch.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
                         tabAddable: addableSwitch.checked
                         tabCentered: isCenterSwitch.checked
                         addTabCallback:
@@ -236,10 +236,10 @@ editable | bool | 可选 | 本标签是否可编辑
                     id: positionRadio1
                     initCheckedIndex: 0
                     model: [
-                        { label: qsTr('上'), value: HusTabView.Position_Top },
-                        { label: qsTr('下'), value: HusTabView.Position_Bottom },
-                        { label: qsTr('左'), value: HusTabView.Position_Left },
-                        { label: qsTr('右'), value: HusTabView.Position_Right }
+                        { label: qsTr('上'), value: HusTabs.Position_Top },
+                        { label: qsTr('下'), value: HusTabs.Position_Bottom },
+                        { label: qsTr('左'), value: HusTabs.Position_Left },
+                        { label: qsTr('右'), value: HusTabs.Position_Right }
                     ]
                 }
 
@@ -282,13 +282,13 @@ editable | bool | 可选 | 本标签是否可编辑
                     }
                 }
 
-                HusTabView {
-                    id: defaultTabView
+                HusTabs {
+                    id: defaultTabs
                     width: parent.width
                     height: 200
                     defaultTabWidth: 40
                     tabPosition: positionRadio1.currentCheckedValue
-                    tabSize: sizeSwitch.checked ? HusTabView.Size_Fixed : HusTabView.Size_Auto
+                    tabSize: sizeSwitch.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
                     tabAddable: addableSwitch.checked
                     tabCentered: isCenterSwitch.checked
                     addTabCallback:
@@ -339,9 +339,9 @@ editable | bool | 可选 | 本标签是否可编辑
             width: parent.width
             desc: qsTr(`
 通过 \`tabType\` 属性设置标签类型，支持的类型：\n
-- 默认标签(默认){ HusTabView.Type_Default }\n
-- 卡片标签{ HusTabView.Type_Card }\n
-- 可编辑卡片标签{ HusTabView.Type_CardEditable }\n
+- 默认标签(默认){ HusTabs.Type_Default }\n
+- 卡片标签{ HusTabs.Type_Card }\n
+- 可编辑卡片标签{ HusTabs.Type_CardEditable }\n
                        `)
             code: `
                 import QtQuick
@@ -355,10 +355,10 @@ editable | bool | 可选 | 本标签是否可编辑
                         id: positionRadio2
                         initCheckedIndex: 0
                         model: [
-                            { label: qsTr('上'), value: HusTabView.Position_Top },
-                            { label: qsTr('下'), value: HusTabView.Position_Bottom },
-                            { label: qsTr('左'), value: HusTabView.Position_Left },
-                            { label: qsTr('右'), value: HusTabView.Position_Right }
+                            { label: qsTr('上'), value: HusTabs.Position_Top },
+                            { label: qsTr('下'), value: HusTabs.Position_Bottom },
+                            { label: qsTr('左'), value: HusTabs.Position_Left },
+                            { label: qsTr('右'), value: HusTabs.Position_Right }
                         ]
                     }
 
@@ -414,14 +414,14 @@ editable | bool | 可选 | 本标签是否可编辑
                         }
                     }
 
-                    HusTabView {
-                        id: cardTabView
+                    HusTabs {
+                        id: cardTabs
                         width: parent.width
                         height: 200
                         defaultTabWidth: 50
                         tabPosition: positionRadio2.currentCheckedValue
-                        tabSize: sizeSwitch2.checked ? HusTabView.Size_Fixed : HusTabView.Size_Auto
-                        tabType: typeSwitch.checked ? HusTabView.Type_CardEditable :  HusTabView.Type_Card
+                        tabSize: sizeSwitch2.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
+                        tabType: typeSwitch.checked ? HusTabs.Type_CardEditable :  HusTabs.Type_Card
                         tabAddable: addableSwitch2.checked
                         tabCentered: isCenterSwitch2.checked
                         addTabCallback:
@@ -475,10 +475,10 @@ editable | bool | 可选 | 本标签是否可编辑
                     id: positionRadio2
                     initCheckedIndex: 0
                     model: [
-                        { label: qsTr('上'), value: HusTabView.Position_Top },
-                        { label: qsTr('下'), value: HusTabView.Position_Bottom },
-                        { label: qsTr('左'), value: HusTabView.Position_Left },
-                        { label: qsTr('右'), value: HusTabView.Position_Right }
+                        { label: qsTr('上'), value: HusTabs.Position_Top },
+                        { label: qsTr('下'), value: HusTabs.Position_Bottom },
+                        { label: qsTr('左'), value: HusTabs.Position_Left },
+                        { label: qsTr('右'), value: HusTabs.Position_Right }
                     ]
                 }
 
@@ -541,14 +541,14 @@ editable | bool | 可选 | 本标签是否可编辑
                     }
                 }
 
-                HusTabView {
-                    id: cardTabView
+                HusTabs {
+                    id: cardTabs
                     width: parent.width
                     height: 200
                     defaultTabWidth: 50
                     tabPosition: positionRadio2.currentCheckedValue
-                    tabSize: sizeSwitch2.checked ? HusTabView.Size_Fixed : HusTabView.Size_Auto
-                    tabType: typeSwitch.checked ? HusTabView.Type_CardEditable :  HusTabView.Type_Card
+                    tabSize: sizeSwitch2.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
+                    tabType: typeSwitch.checked ? HusTabs.Type_CardEditable :  HusTabs.Type_Card
                     tabAddable: addableSwitch2.checked
                     tabCentered: isCenterSwitch2.checked
                     addTabCallback:

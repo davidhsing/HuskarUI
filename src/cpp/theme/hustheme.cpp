@@ -492,7 +492,7 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
             ADD_COMPONENT_CASE(HusSwitch)
             ADD_COMPONENT_CASE(HusScrollBar)
             ADD_COMPONENT_CASE(HusSlider)
-            ADD_COMPONENT_CASE(HusTabView)
+            ADD_COMPONENT_CASE(HusTabs)
             ADD_COMPONENT_CASE(HusToolTip)
             ADD_COMPONENT_CASE(HusSelect)
             ADD_COMPONENT_CASE(HusInput)

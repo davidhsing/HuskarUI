@@ -113,7 +113,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusMouseResizeArea.qml
         imports/HusAcrylic.qml
         imports/HusSlider.qml
-        imports/HusTabView.qml
+        imports/HusTabs.qml
         imports/HusToolTip.qml
         imports/HusSelect.qml
         imports/HusInput.qml
@@ -192,7 +192,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusSwitch.json
         theme/HusScrollBar.json
         theme/HusSlider.json
-        theme/HusTabView.json
+        theme/HusTabs.json
         theme/HusToolTip.json
         theme/HusSelect.json
         theme/HusMultiSelect.json

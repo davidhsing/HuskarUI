@@ -32,16 +32,16 @@ Item {
     property var initModel: []
     property alias count: __tabModel.count
     property alias currentIndex: __tabView.currentIndex
-    property int tabType: HusTabView.Type_Default
-    property int tabSize: HusTabView.Size_Auto
-    property int tabPosition: HusTabView.Position_Top
+    property int tabType: HusTabs.Type_Default
+    property int tabSize: HusTabs.Size_Auto
+    property int tabPosition: HusTabs.Position_Top
     property bool tabAddable: false
     property bool tabCentered: false
     property bool tabCardMovable: true
     property int defaultTabWidth: 80
-    property int defaultTabHeight: HusTheme.HusTabView.fontSize + 16
+    property int defaultTabHeight: HusTheme.HusTabs.fontSize + 16
     property int defaultTabSpacing: 2
-    property int defaultTabBgRadius: HusTheme.HusTabView.radiusTabBg
+    property int defaultTabBgRadius: HusTheme.HusTabs.radiusTabBg
     property int defaultHighlightWidth: __private.isHorizontal ? 30 : 20
     property var addTabCallback:
         () => {
@@ -51,14 +51,14 @@ Item {
     property Component addButtonDelegate: HusCaptionButton {
         id: __addButton
         animationEnabled: control.animationEnabled
-        iconSize: HusTheme.HusTabView.fontSize
+        iconSize: HusTheme.HusTabs.fontSize
         iconSource: HusIcon.PlusOutlined
-        colorIcon: HusTheme.HusTabView.colorTabCloseHover
+        colorIcon: HusTheme.HusTabs.colorTabCloseHover
         hoverCursorShape: Qt.PointingHandCursor
-        radiusBg: HusTheme.HusTabView.radiusButton
+        radiusBg: HusTheme.HusTabs.radiusButton
         onClicked: addTabCallback();
     }
-    property Component tabDelegate: tabType == HusTabView.Type_Default ? __defaultTabDelegate : __cardTabDelegate
+    property Component tabDelegate: tabType == HusTabs.Type_Default ? __defaultTabDelegate : __cardTabDelegate
     property Component contentDelegate: Item { }
     property Component highlightDelegate: Item {
         Loader {
@@ -66,8 +66,8 @@ Item {
             width: __private.isHorizontal ? defaultHighlightWidth : 2
             height: __private.isHorizontal ? 2 : defaultHighlightWidth
             anchors {
-                bottom: control.tabPosition == HusTabView.Position_Top ? parent.bottom : undefined
-                right: control.tabPosition == HusTabView.Position_Left ? parent.right : undefined
+                bottom: control.tabPosition == HusTabs.Position_Top ? parent.bottom : undefined
+                right: control.tabPosition == HusTabs.Position_Left ? parent.right : undefined
             }
             state: __content.state
             states: [
@@ -120,14 +120,14 @@ Item {
                     }
                 }
             ]
-            active: control.tabType === HusTabView.Type_Default
+            active: control.tabType === HusTabs.Type_Default
             sourceComponent: Rectangle {
-                color: HusTheme.isDark ? HusTheme.HusTabView.colorHightlightDark : HusTheme.HusTabView.colorHightlight
+                color: HusTheme.isDark ? HusTheme.HusTabs.colorHightlightDark : HusTheme.HusTabs.colorHightlight
             }
         }
     }
 
-    objectName: '__HusTabView__'
+    objectName: '__HusTabs__'
     onInitModelChanged: {
         clear();
         for (const object of initModel) {
@@ -197,7 +197,7 @@ Item {
 
         HusIconButton {
             id: __tabItem
-            width: (!__private.isHorizontal && control.tabSize == HusTabView.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
+            width: (!__private.isHorizontal && control.tabSize == HusTabs.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
             height: tabHeight
             leftPadding: 5
             rightPadding: 5
@@ -210,19 +210,19 @@ Item {
             colorBorder: 'transparent'
             colorText: {
                 if (isCurrent) {
-                    return HusTheme.isDark ? HusTheme.HusTabView.colorHightlightDark : HusTheme.HusTabView.colorHightlight;
+                    return HusTheme.isDark ? HusTheme.HusTabs.colorHightlightDark : HusTheme.HusTabs.colorHightlight;
                 } else {
-                    return down ? HusTheme.HusTabView.colorTabActive :
-                                  hovered ? HusTheme.HusTabView.colorTabHover :
-                                            HusTheme.HusTabView.colorTab;
+                    return down ? HusTheme.HusTabs.colorTabActive :
+                                  hovered ? HusTheme.HusTabs.colorTabHover :
+                                            HusTheme.HusTabs.colorTab;
                 }
             }
             font {
-                family: HusTheme.HusTabView.fontFamily
-                pixelSize: HusTheme.HusTabView.fontSize
+                family: HusTheme.HusTabs.fontFamily
+                pixelSize: HusTheme.HusTabs.fontSize
             }
             contentItem: Item {
-                implicitWidth: control.tabSize == HusTabView.Size_Auto ? (__text.width + calcIconWidth) : __tabItem.tabFixedWidth
+                implicitWidth: control.tabSize == HusTabs.Size_Auto ? (__text.width + calcIconWidth) : __tabItem.tabFixedWidth
                 implicitHeight: Math.max(__icon.implicitHeight, __text.implicitHeight)
 
                 property int calcIconWidth: __icon.empty ? 0 : (__icon.implicitWidth + __tabItem.tabIconSpacing)
@@ -242,7 +242,7 @@ Item {
 
                 HusText {
                     id: __text
-                    width: control.tabSize == HusTabView.Size_Auto ? implicitWidth :
+                    width: control.tabSize == HusTabs.Size_Auto ? implicitWidth :
                                                                      Math.max(0, __tabItem.tabFixedWidth - 5 - parent.calcIconWidth)
                     anchors.left: __icon.right
                     anchors.leftMargin: __icon.empty ? 0 : __tabItem.tabIconSpacing
@@ -268,11 +268,11 @@ Item {
             property bool isCurrent: __tabView.currentIndex === index
             property string tabKey: modelData.key || ''
             property var tabIcon: modelData.iconSource || 0
-            property int tabIconSize: modelData.iconSize || HusTheme.HusTabView.fontSize
+            property int tabIconSize: modelData.iconSize || HusTheme.HusTabs.fontSize
             property int tabIconSpacing: modelData.iconSpacing || 5
             property string tabTitle: modelData.title || ''
             property int tabFixedWidth: modelData.tabWidth || defaultTabWidth
-            property int tabWidth: control.tabSize == HusTabView.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
+            property int tabWidth: control.tabSize == HusTabs.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
                                                                              implicitContentWidth
             property int tabHeight: modelData.tabHeight || defaultTabHeight
         }
@@ -293,14 +293,14 @@ Item {
             property bool isCurrent: __tabView.currentIndex === index
             property string tabKey: modelData.key || ''
             property var tabIcon: modelData.iconSource || 0
-            property int tabIconSize: modelData.iconSize || HusTheme.HusTabView.fontSize
+            property int tabIconSize: modelData.iconSize || HusTheme.HusTabs.fontSize
             property int tabIconSpacing: modelData.iconSpacing || 5
             property string tabTitle: modelData.title || ''
             property int tabFixedWidth: modelData.tabWidth || defaultTabWidth
             property int tabWidth: __tabItem.calcWidth
             property int tabHeight: modelData.tabHeight || defaultTabHeight
 
-            property bool tabEditable: modelData.editable && control.tabType == HusTabView.Type_CardEditable
+            property bool tabEditable: modelData.editable && control.tabType == HusTabs.Type_CardEditable
 
             onTabWidthChanged: {
                 if (__private.needResetTabMaxWidth) {
@@ -312,35 +312,35 @@ Item {
 
             HusRectangle {
                 id: __tabItem
-                width: (!__private.isHorizontal && control.tabSize == HusTabView.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
+                width: (!__private.isHorizontal && control.tabSize == HusTabs.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
                 height: tabHeight
                 z: __dragHandler.drag.active ? 1 : 0
                 color: {
                     if (HusTheme.isDark)
-                        return isCurrent ? HusTheme.HusTabView.colorTabCardBgCheckedDark : HusTheme.HusTabView.colorTabCardBgDark;
+                        return isCurrent ? HusTheme.HusTabs.colorTabCardBgCheckedDark : HusTheme.HusTabs.colorTabCardBgDark;
                     else
-                        return isCurrent ? HusTheme.HusTabView.colorTabCardBgChecked : HusTheme.HusTabView.colorTabCardBg;
+                        return isCurrent ? HusTheme.HusTabs.colorTabCardBgChecked : HusTheme.HusTabs.colorTabCardBg;
                 }
-                border.color: HusTheme.HusTabView.colorTabCardBorder
-                topLeftRadius: control.tabPosition == HusTabView.Position_Top || control.tabPosition == HusTabView.Position_Left ? defaultTabBgRadius : 0
-                topRightRadius: control.tabPosition == HusTabView.Position_Top || control.tabPosition == HusTabView.Position_Right ? defaultTabBgRadius : 0
-                bottomLeftRadius: control.tabPosition == HusTabView.Position_Bottom || control.tabPosition == HusTabView.Position_Left ? defaultTabBgRadius : 0
-                bottomRightRadius: control.tabPosition == HusTabView.Position_Bottom || control.tabPosition == HusTabView.Position_Right ? defaultTabBgRadius : 0
+                border.color: HusTheme.HusTabs.colorTabCardBorder
+                topLeftRadius: control.tabPosition == HusTabs.Position_Top || control.tabPosition == HusTabs.Position_Left ? defaultTabBgRadius : 0
+                topRightRadius: control.tabPosition == HusTabs.Position_Top || control.tabPosition == HusTabs.Position_Right ? defaultTabBgRadius : 0
+                bottomLeftRadius: control.tabPosition == HusTabs.Position_Bottom || control.tabPosition == HusTabs.Position_Left ? defaultTabBgRadius : 0
+                bottomRightRadius: control.tabPosition == HusTabs.Position_Bottom || control.tabPosition == HusTabs.Position_Right ? defaultTabBgRadius : 0
 
                 property bool down: false
                 property bool hovered: false
                 property int calcIconWidth: __icon.empty ? 0 : (__icon.implicitWidth + __tabContainer.tabIconSpacing)
                 property int calcCloseWidth: __close.visible ? (__close.implicitWidth + 5) : 0
-                property real calcWidth: control.tabSize == HusTabView.Size_Auto ? (__text.width + calcIconWidth + calcCloseWidth + 10)
+                property real calcWidth: control.tabSize == HusTabs.Size_Auto ? (__text.width + calcIconWidth + calcCloseWidth + 10)
                                                                                  : __tabContainer.tabFixedWidth
                 property real calcHeight: Math.max(__icon.implicitHeight, __text.implicitHeight, __close.height)
                 property color colorText: {
                     if (isCurrent) {
-                        return HusTheme.isDark ? HusTheme.HusTabView.colorHightlightDark : HusTheme.HusTabView.colorHightlight;
+                        return HusTheme.isDark ? HusTheme.HusTabs.colorHightlightDark : HusTheme.HusTabs.colorHightlight;
                     } else {
-                        return down ? HusTheme.HusTabView.colorTabActive :
-                                      hovered ? HusTheme.HusTabView.colorTabHover :
-                                                HusTheme.HusTabView.colorTab;
+                        return down ? HusTheme.HusTabs.colorTabActive :
+                                      hovered ? HusTheme.HusTabs.colorTabHover :
+                                                HusTheme.HusTabs.colorTab;
                     }
                 }
 
@@ -413,15 +413,15 @@ Item {
 
                 HusText {
                     id: __text
-                    width: control.tabSize == HusTabView.Size_Auto ? implicitWidth :
+                    width: control.tabSize == HusTabs.Size_Auto ? implicitWidth :
                                                                      Math.max(0, __tabContainer.tabFixedWidth - 5 - __tabItem.calcIconWidth - __tabItem.calcCloseWidth)
                     anchors.left: __icon.right
                     anchors.leftMargin: __icon.empty ? 0 : __tabContainer.tabIconSpacing
                     anchors.verticalCenter: parent.verticalCenter
                     text: tabTitle
                     font {
-                        family: HusTheme.HusTabView.fontFamily
-                        pixelSize: HusTheme.HusTabView.fontSize
+                        family: HusTheme.HusTabs.fontFamily
+                        pixelSize: HusTheme.HusTabs.fontSize
                     }
                     color: __tabItem.colorText
                     elide: Text.ElideRight
@@ -445,7 +445,7 @@ Item {
                     hoverCursorShape: Qt.PointingHandCursor
                     iconSize: tabIconSize
                     iconSource: HusIcon.CloseOutlined
-                    colorIcon: hovered ? HusTheme.HusTabView.colorTabCloseHover : HusTheme.HusTabView.colorTabClose
+                    colorIcon: hovered ? HusTheme.HusTabs.colorTabCloseHover : HusTheme.HusTabs.colorTabClose
                     onClicked: {
                         control.remove(index);
                     }
@@ -470,7 +470,7 @@ Item {
 
     QtObject {
         id: __private
-        property bool isHorizontal: control.tabPosition == HusTabView.Position_Top || control.tabPosition == HusTabView.Position_Bottom
+        property bool isHorizontal: control.tabPosition == HusTabs.Position_Top || control.tabPosition == HusTabs.Position_Bottom
         property int tabMaxWidth: 0
         property bool needResetTabMaxWidth: false
     }
@@ -622,23 +622,23 @@ Item {
         active: control.tabAddable
         x: {
             switch (tabPosition) {
-            case HusTabView.Position_Top:
-            case HusTabView.Position_Bottom:
+            case HusTabs.Position_Top:
+            case HusTabs.Position_Bottom:
                 return Math.min(__tabView.x + __tabView.contentWidth + 5, control.width - width);
-            case HusTabView.Position_Left:
+            case HusTabs.Position_Left:
                 return Math.max(0, __tabView.width - width);
-            case HusTabView.Position_Right:
+            case HusTabs.Position_Right:
                 return Math.max(0, __tabView.x);
             }
         }
         y: {
             switch (tabPosition) {
-            case HusTabView.Position_Top:
+            case HusTabs.Position_Top:
                 return Math.max(0, __tabView.y + __tabView.height - height);
-            case HusTabView.Position_Bottom:
+            case HusTabs.Position_Bottom:
                 return __tabView.y;
-            case HusTabView.Position_Left:
-            case HusTabView.Position_Right:
+            case HusTabs.Position_Left:
+            case HusTabs.Position_Right:
                 return Math.min(__tabView.y + __tabView.contentHeight + 5, control.height - height);
             }
         }
@@ -650,10 +650,10 @@ Item {
         id: __content
         state: {
             switch (tabPosition) {
-            case HusTabView.Position_Top: return 'top';
-            case HusTabView.Position_Bottom: return 'bottom';
-            case HusTabView.Position_Left: return 'left';
-            case HusTabView.Position_Right: return 'right';
+            case HusTabs.Position_Top: return 'top';
+            case HusTabs.Position_Bottom: return 'bottom';
+            case HusTabs.Position_Left: return 'left';
+            case HusTabs.Position_Right: return 'right';
             }
         }
         states: [
