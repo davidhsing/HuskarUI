@@ -14,7 +14,7 @@ Flickable {
         spacing: 30
         Description {
             desc: qsTr(`
-# HusOTPInput 一次性口令输入框 \n
+# HusInputOnce 一次性口令输入框 \n
 用于接收和验证一次性口令的输入框组合，通常用于验证码或密码。\n
 * **继承自 { Item }**\n
 \n<br/>
@@ -84,16 +84,16 @@ radiusBg | int | - | 输入项背景圆角
                 Column {
                     spacing: 10
 
-                    HusOTPInput {
+                    HusInputOnce {
                         length: 6
                     }
 
-                    HusOTPInput {
+                    HusInputOnce {
                         length: 6
                         enabled: false
                     }
 
-                    HusOTPInput {
+                    HusInputOnce {
                         length: 6
                         itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
                     }
@@ -102,16 +102,16 @@ radiusBg | int | - | 输入项背景圆角
             exampleDelegate: Column {
                 spacing: 10
 
-                HusOTPInput {
+                HusInputOnce {
                     length: 6
                 }
 
-                HusOTPInput {
+                HusInputOnce {
                     length: 6
                     enabled: false
                 }
 
-                HusOTPInput {
+                HusInputOnce {
                     length: 6
                     itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
                 }
@@ -132,7 +132,7 @@ radiusBg | int | - | 输入项背景圆角
                 Column {
                     spacing: 10
 
-                    HusOTPInput {
+                    HusInputOnce {
                         length: 6
                         itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
                         formatter: (text) => text.toUpperCase();
@@ -142,7 +142,7 @@ radiusBg | int | - | 输入项背景圆角
             exampleDelegate: Column {
                 spacing: 10
 
-                HusOTPInput {
+                HusInputOnce {
                     length: 6
                     itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
                     formatter: (text) => text.toUpperCase();
@@ -164,7 +164,7 @@ radiusBg | int | - | 输入项背景圆角
                 Row {
                     spacing: 10
 
-                    HusOTPInput {
+                    HusInputOnce {
                         id: password
                         length: 6
                         itemPassword: true
@@ -181,7 +181,7 @@ radiusBg | int | - | 输入项背景圆角
             exampleDelegate: Row {
                 spacing: 10
 
-                HusOTPInput {
+                HusInputOnce {
                     id: password
                     length: 6
                     itemPassword: true
@@ -209,7 +209,7 @@ radiusBg | int | - | 输入项背景圆角
                 Row {
                     spacing: 10
 
-                    HusOTPInput {
+                    HusInputOnce {
                         id: activationCodeInput
                         length: 4
                         characterLength: 4
@@ -239,7 +239,7 @@ radiusBg | int | - | 输入项背景圆角
             exampleDelegate: Row {
                 spacing: 10
 
-                HusOTPInput {
+                HusInputOnce {
                     id: activationCodeInput
                     length: 4
                     characterLength: 4

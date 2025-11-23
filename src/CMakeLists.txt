@@ -117,7 +117,8 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusToolTip.qml
         imports/HusSelect.qml
         imports/HusInput.qml
-        imports/HusOTPInput.qml
+        imports/HusInputNumber.qml
+        imports/HusInputOnce.qml
         imports/HusRate.qml
         imports/HusRadio.qml imports/HusRadioBlock.qml
         imports/HusCheckBox.qml
@@ -139,7 +140,6 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusSwitchEffect.qml
         imports/HusContextMenu.qml
         imports/HusBreadcrumb.qml
-        imports/HusInputNumber.qml
         imports/HusImage.qml
         imports/HusImagePreview.qml
         imports/HusMultiSelect.qml

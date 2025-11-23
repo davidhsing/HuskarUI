@@ -55,13 +55,13 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataEntry/ExpSlider.qml
         qml/Examples/DataEntry/ExpSelect.qml
         qml/Examples/DataEntry/ExpInput.qml
-        qml/Examples/DataEntry/ExpOTPInput.qml
+        qml/Examples/DataEntry/ExpInputNumber.qml
+        qml/Examples/DataEntry/ExpInputOnce.qml
         qml/Examples/DataEntry/ExpRate.qml
         qml/Examples/DataEntry/ExpRadio.qml
         qml/Examples/DataEntry/ExpRadioBlock.qml
         qml/Examples/DataEntry/ExpCheckBox.qml
         qml/Examples/DataEntry/ExpAutoComplete.qml
-        qml/Examples/DataEntry/ExpInputNumber.qml
         qml/Examples/DataEntry/ExpMultiSelect.qml
         qml/Examples/DataEntry/ExpDateTimePicker.qml
         qml/Examples/DataEntry/ExpTextArea.qml

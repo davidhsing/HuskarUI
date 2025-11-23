@@ -28,7 +28,7 @@ Item {
 
     property Component dividerDelegate: Item { }
 
-    objectName: '__HusOTPInput__'
+    objectName: '__HusInputOnce__'
     width: __row.width
     height: __row.height
     onCurrentIndexChanged: {

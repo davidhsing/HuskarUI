@@ -209,9 +209,9 @@ QtObject {
                     desc: qsTr('新增 clearIconDelegate。\n新增 bgDelegate代理。\n新增清除图标相关属性和信号。')
                 },
                 {
-                    key: 'HusOTPInput',
-                    label: qsTr('HusOTPInput 一次性口令输入框'),
-                    source: './Examples/DataEntry/ExpOTPInput.qml',
+                    key: 'HusInputOnce',
+                    label: qsTr('HusInputOnce 一次性口令输入框'),
+                    source: './Examples/DataEntry/ExpInputOnce.qml',
                     desc: qsTr('新增 setInput() 函数。\n新增 setInputAtIndex() 函数。')
                 },
                 {
