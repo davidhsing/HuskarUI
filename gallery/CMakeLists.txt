@@ -48,8 +48,8 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/General/ExpText.qml
         qml/Examples/General/ExpButtonBlock.qml
         qml/Examples/General/ExpCaptionBar.qml
-        qml/Examples/General/ExpMoveMouseArea.qml
-        qml/Examples/General/ExpResizeMouseArea.qml
+        qml/Examples/General/ExpMouseMoveArea.qml
+        qml/Examples/General/ExpMouseResizeArea.qml
         qml/Examples/General/ExpStatusBar.qml
         qml/Examples/DataEntry/ExpSwitch.qml
         qml/Examples/DataEntry/ExpSlider.qml

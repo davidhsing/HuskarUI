@@ -109,8 +109,8 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusShield.qml
         imports/HusSwitch.qml
         imports/HusScrollBar.qml
-        imports/HusResizeMouseArea.qml
-        imports/HusMoveMouseArea.qml
+        imports/HusMouseMoveArea.qml
+        imports/HusMouseResizeArea.qml
         imports/HusAcrylic.qml
         imports/HusSlider.qml
         imports/HusTabView.qml

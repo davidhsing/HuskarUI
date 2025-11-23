@@ -9,7 +9,7 @@ MouseArea {
     property real minimumY: -Number.MAX_VALUE
     property real maximumY: Number.MAX_VALUE
 
-    objectName: '__HusMoveMouseArea__'
+    objectName: '__HusMouseMoveArea__'
     onClicked: (mouse) => mouse.accepted = false;
     onPressed:
         (mouse) => {

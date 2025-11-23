@@ -88,15 +88,15 @@ QtObject {
                     desc: qsTr('HusIconButton 的变体，用于将多个按钮组织成块，类似 HusRadioBlock。')
                 },
                 {
-                    key: 'HusMoveMouseArea',
-                    label: qsTr('HusMoveMouseArea 鼠标移动区域'),
-                    source: './Examples/General/ExpMoveMouseArea.qml',
+                    key: 'HusMouseMoveArea',
+                    label: qsTr('HusMouseMoveArea 鼠标移动区域'),
+                    source: './Examples/General/ExpMouseMoveArea.qml',
                     desc: qsTr('移动鼠标区域，提供对任意 Item 进行鼠标移动操作的区域。')
                 },
                 {
-                    key: 'HusResizeMouseArea',
-                    label: qsTr('HusResizeMouseArea 鼠标改变大小区域'),
-                    source: './Examples/General/ExpResizeMouseArea.qml',
+                    key: 'HusMouseResizeArea',
+                    label: qsTr('HusMouseResizeArea 鼠标改变大小区域'),
+                    source: './Examples/General/ExpMouseResizeArea.qml',
                     desc: qsTr('改变大小鼠标区域，提供对任意 Item 进行鼠标改变大小操作的区域。')
                 },
                 {

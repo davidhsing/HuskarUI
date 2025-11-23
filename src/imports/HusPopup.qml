@@ -56,7 +56,7 @@ T.Popup {
         }
         Loader {
             active: control.movable || control.resizable
-            sourceComponent: HusResizeMouseArea {
+            sourceComponent: HusMouseResizeArea {
                 anchors.fill: parent
                 target: control
                 movable: control.movable

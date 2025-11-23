@@ -7,7 +7,7 @@ import QtQuick
            ←|7|   |8|   |9|→
              ↓     ↓     ↓
              分8个缩放区域
-      |5|为移动区域{MoveMouseArea}
+      |5|为移动区域{MouseMoveArea}
     target               缩放目标
     __private.startPos   鼠标起始点
     __private.fixedPos   用于固定目标的点
@@ -31,7 +31,7 @@ Item {
     property alias minimumY: area5.minimumY
     property alias maximumY: area5.maximumY
 
-    objectName: '__HusResizeMouseArea__'
+    objectName: '__HusMouseResizeArea__'
 
     QtObject {
         id: __private
@@ -191,7 +191,7 @@ Item {
             }
     }
 
-    HusMoveMouseArea {
+    HusMouseMoveArea {
         id: area5
         x: areaMarginSize * 0.5
         y: areaMarginSize * 0.5
