@@ -462,7 +462,7 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
                         initModel: [
                             {
                                 time: new Date(2020, 2, 19),
-                                content: '<p style=\'color:red\'>HTML Text</p><br><img src=\'https://avatars.githubusercontent.com/u/33405710?v=4\' width=\'50\' height=\'50\'>',
+                                content: '<p style=\'color:red\'>HTML Text</p><br><img src=\'https://avatars.githubusercontent.com/u/9333918?v=4\' width=\'50\' height=\'50\'>',
                                 contentFormat: Text.RichText
                             },
                             {
@@ -492,7 +492,7 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
                     initModel: [
                         {
                             time: new Date(2020, 2, 19),
-                            content: '<p style=\'color:red\'>HTML Text</p><br><img src=\'https://avatars.githubusercontent.com/u/33405710?v=4\' width=\'50\' height=\'50\'>',
+                            content: '<p style=\'color:red\'>HTML Text</p><br><img src=\'https://avatars.githubusercontent.com/u/9333918?v=4\' width=\'50\' height=\'50\'>',
                             contentFormat: Text.RichText
                         },
                         {

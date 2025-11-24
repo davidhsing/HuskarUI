@@ -92,7 +92,7 @@ HusWatermark::HusWatermark(QQuickItem *parent)
     Q_D(HusWatermark);
 
     d->m_font.setFamily(HusTheme::instance()->Primary()["fontPrimaryFamily"].toString());
-    d->m_font.setPixelSize(HusTheme::instance()->Primary()["fontPrimarySize"].toInt());
+    d->m_font.setPixelSize(HusTheme::instance()->Primary()["fontPrimarySize"].toInt() - 1);
 }
 
 HusWatermark::~HusWatermark()
