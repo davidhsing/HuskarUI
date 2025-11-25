@@ -26,7 +26,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-previewEnabled | bool | true| 是否启用预览
+previewEnabled | bool | false | 是否启用预览
 hovered | bool(readonly) | - | 鼠标是否悬浮
 hoverCursorShape | int | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
 fallback | url | '' | 加载失败时显示的图像占位符
@@ -214,7 +214,6 @@ url | url | 必选 | 图片源
                                 { url: 'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg' }
                             ]
                             delegate: HusImage {
-                                previewEnabled: false
                                 width: 200
                                 height: width
                                 source: modelData.url
@@ -248,7 +247,6 @@ url | url | 必选 | 图片源
                             { url: 'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg' }
                         ]
                         delegate: HusImage {
-                            previewEnabled: false
                             width: 200
                             height: width
                             source: modelData.url
@@ -287,6 +285,7 @@ url | url | 必选 | 图片源
                     HusImage {
                         width: 200
                         height: 300
+                        previewEnabled: true
                         source: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp'
                         items: [
                             { url: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp' },
@@ -302,6 +301,7 @@ url | url | 必选 | 图片源
                 HusImage {
                     width: 200
                     height: 300
+                    previewEnabled: true
                     source: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp'
                     items: [
                         { url: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp' },
@@ -329,6 +329,7 @@ url | url | 必选 | 图片源
                     HusImage {
                         width: 200
                         height: width
+                        previewEnabled: true
                         source: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200'
                         items: [
                             { url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' },
@@ -342,6 +343,7 @@ url | url | 必选 | 图片源
                 HusImage {
                     width: 200
                     height: width
+                    previewEnabled: true
                     source: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200'
                     items: [
                         { url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' },

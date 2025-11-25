@@ -5,22 +5,22 @@ Image {
     id: control
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property bool previewEnabled: true
+    property bool previewEnabled: false
     readonly property alias hovered: __hoverHandler.hovered
     property int hoverCursorShape: Qt.PointingHandCursor
-    property string fallback: ''
-    property string placeholder: ''
+    property var fallback: ''
+    property var placeholder: ''
     property var items: []
 
     objectName: '__HusImage__'
     onSourceChanged: {
-        if (items.length == 0) {
+        if (control.items.length === 0) {
             __private.previewItems = [{ url: source }];
         }
     }
     onItemsChanged: {
-        if (items.length > 0) {
-            __private.previewItems = [...items];
+        if (control.items.length > 0) {
+            __private.previewItems = [...control.items];
         }
     }
 
@@ -31,7 +31,7 @@ Image {
 
     Loader {
         anchors.centerIn: parent
-        active: control.status === Image.Error && control.fallback !== ''
+        active: (control.status === Image.Error) && ((typeof control.fallback == 'string' && control.fallback !== '') || (typeof control.fallback == 'object' && control.fallback.toString() !== ''))
         sourceComponent: Image {
             source: control.fallback
             Component.onCompleted: {
@@ -42,7 +42,7 @@ Image {
 
     Loader {
         anchors.centerIn: parent
-        active: control.status === Image.Loading && control.placeholder !== ''
+        active: (control.status === Image.Loading) && ((typeof control.placeholder == 'string' && control.placeholder !== '') || (typeof control.placeholder == 'object' && control.placeholder.toString() !== ''))
         sourceComponent: Image {
             source: control.placeholder
         }
@@ -94,6 +94,6 @@ Image {
 
     HoverHandler {
         id: __hoverHandler
-        cursorShape: control.hoverCursorShape
+        cursorShape: (control.previewEnabled || control.items.length > 0) ? control.hoverCursorShape : Qt.ArrowCursor
     }
 }
