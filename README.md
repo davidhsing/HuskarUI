@@ -5,7 +5,7 @@
 
 Ant Design component library for Qt Qml
 
-If you need Qt5 impl [HuskarUI for Qt5](https://github.com/mengps/HuskarUI_Qt5)
+If you need Qt5 impl [HuskarUI for Qt5](https://github.com/davidhsing/HuskarUI_Qt5)
 
 </div>
 
@@ -26,13 +26,13 @@ English | [中文](./README-zh_CN.md)
 [macos-badge]: https://img.shields.io/badge/MacOS-passing-brightgreen?style=flat-square
 [android-badge]: https://img.shields.io/badge/Android-passing-brightgreen?style=flat-square
 
-[issues-open-image]: https://img.shields.io/github/issues/mengps/HuskarUI?label=Issue&style=flat-square
-[issues-open-url]: https://github.com/mengps/HuskarUI/issues
-[issues-close-image]: https://img.shields.io/github/issues-closed/mengps/HuskarUI?color=brightgreen&label=Issue&style=flat-square
-[issues-close-url]: https://github.com/mengps/HuskarUI/issues?q=is%3Aissue%20state%3Aclosed
+[issues-open-image]: https://img.shields.io/github/issues/davidhsing/HuskarUI?label=Issue&style=flat-square
+[issues-open-url]: https://github.com/davidhsing/HuskarUI/issues
+[issues-close-image]: https://img.shields.io/github/issues-closed/davidhsing/HuskarUI?color=brightgreen&label=Issue&style=flat-square
+[issues-close-url]: https://github.com/davidhsing/HuskarUI/issues?q=is%3Aissue%20state%3Aclosed
 
-[release-image]: https://img.shields.io/github/v/release/mengps/HuskarUI?label=Release&style=flat-square
-[release-url]: https://github.com/mengps/HuskarUI/releases
+[release-image]: https://img.shields.io/github/v/release/davidhsing/HuskarUI?label=Release&style=flat-square
+[release-url]: https://github.com/davidhsing/HuskarUI/releases
 
 [qqgroup-image]: https://img.shields.io/badge/QQGroup-490328047-f74658?style=flat-square
 [qqgroup-url]: https://qm.qq.com/q/cMNHn2tWeY
@@ -56,12 +56,12 @@ English | [中文](./README-zh_CN.md)
 
 ## 🗺️ Roadmap
 
-The development plan can be found here: [Component Roadmap](https://github.com/mengps/HuskarUI/discussions/5).
+The development plan can be found here: [Component Roadmap](https://github.com/davidhsing/HuskarUI/discussions/5).
 
 Anyone can discuss through issues, QQ groups, or WeChat groups, and ultimately meaningful components/functions will be added to the development plan.
 
 ## 🌐 Online wiki
-- [HuskarUI Online wiki (AI)](https://deepwiki.com/mengps/HuskarUI)
+- [HuskarUI Online wiki (AI)](https://deepwiki.com/davidhsing/HuskarUI)
 
 ## 📺 Online Demo
 
@@ -71,13 +71,13 @@ Anyone can discuss through issues, QQ groups, or WeChat groups, and ultimately m
 
 Precompiled packages and binary libraries for two platforms, `Windows / Linux`, have been created.
 
-Please visit [Release](https://github.com/mengps/HuskarUI/releases) to download.
+Please visit [Release](https://github.com/davidhsing/HuskarUI/releases) to download.
 
 ## 🔨 How to Build
 
 - Clone
 ```auto
-git clone --recursive https://github.com/mengps/HuskarUI.git
+git clone --recursive https://github.com/davidhsing/HuskarUI.git
 ```
 - Update
 ```auto
@@ -177,4 +177,4 @@ Windows 11 / Ubuntu 24.04.2, Qt Version >= 6.7
 
 ## 🎉 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=mengps/HuskarUI&type=Date)](https://star-history.com/#mengps/HuskarUI&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=davidhsing/HuskarUI&type=Date)](https://star-history.com/#davidhsing/HuskarUI&Date)

@@ -95,7 +95,7 @@ colorIcon | color | - | 图标颜色
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
                                 onClicked: {
-                                    Qt.openUrlExternally('https://github.com/mengps/HuskarUI');
+                                    Qt.openUrlExternally('https://github.com/davidhsing/HuskarUI');
                                 }
                             }
                         }
@@ -130,7 +130,7 @@ colorIcon | color | - | 图标颜色
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
                             onClicked: {
-                                Qt.openUrlExternally('https://github.com/mengps/HuskarUI');
+                                Qt.openUrlExternally('https://github.com/davidhsing/HuskarUI');
                             }
                         }
                     }
