@@ -12,18 +12,15 @@ Item {
 
     property int size: 30
     property var iconSource: 0 ?? ''
-
-    property string imageSource: ''
+    property var imageSource: ''
     property bool imageMipmap: false
-
     property string textSource: ''
     property font textFont: Qt.font({
-                                        family: HusTheme.Primary.fontPrimaryFamily,
-                                        pixelSize: control.size * 0.5
-                                    })
+        family: HusTheme.Primary.fontPrimaryFamily,
+        pixelSize: control.size * 0.5
+    })
     property int textSize: HusAvatar.Size_Fixed
     property int textGap: 4
-
     property color colorBg: HusTheme.Primary.colorTextQuaternary
     property color colorIcon: 'white'
     property color colorText: 'white'
@@ -142,7 +139,7 @@ Item {
         sourceComponent: {
             if (control.iconSource !== 0 && control.iconSource !== '')
                 return __iconImpl;
-            else if (control.imageSource != '')
+            else if ((typeof control.imageSource == 'string' && control.imageSource !== '') || (typeof control.imageSource == 'object' && control.imageSource.toString() !== ''))
                 return __imageImpl;
             else
                 return __textImpl;
