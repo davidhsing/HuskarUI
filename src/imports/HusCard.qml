@@ -8,28 +8,28 @@ Rectangle {
     property bool animationEnabled: HusTheme.animationEnabled
     property string title: ''
     property font titleFont: Qt.font({
-                                         family: HusTheme.HusCard.fontFamily,
-                                         pixelSize: HusTheme.HusCard.fontSizeTitle,
-                                         weight: Font.DemiBold,
-                                     })
-    property string coverSource: ''
+        family: HusTheme.HusCard.fontFamily,
+        pixelSize: HusTheme.HusCard.fontSizeTitle,
+        weight: Font.DemiBold,
+    })
+    property var coverSource: ''
     property int coverFillMode: Image.Stretch
-
+    property int coverHeight: 180
     property int bodyAvatarSize: 40
     property var bodyAvatarIcon: 0 ?? ''
-    property string bodyAvatarSource: ''
+    property var bodyAvatarSource: ''
     property string bodyAvatarText: ''
     property string bodyTitle: ''
     property font bodyTitleFont: Qt.font({
-                                             family: HusTheme.HusCard.fontFamily,
-                                             pixelSize: HusTheme.HusCard.fontSizeBodyTitle,
-                                             weight: Font.DemiBold,
-                                         })
+        family: HusTheme.HusCard.fontFamily,
+        pixelSize: HusTheme.HusCard.fontSizeBodyTitle,
+        weight: Font.DemiBold,
+    })
     property string bodyDescription: ''
     property font bodyDescriptionFont: Qt.font({
-                                                   family: HusTheme.HusCard.fontFamily,
-                                                   pixelSize: HusTheme.HusCard.fontSizeBodyDescription,
-                                               })
+        family: HusTheme.HusCard.fontFamily,
+        pixelSize: HusTheme.HusCard.fontSizeBodyDescription,
+    })
     property color colorTitle: HusTheme.HusCard.colorTitle
     property color colorBodyAvatar: HusTheme.HusCard.colorBodyAvatar
     property color colorBodyAvatarBg: 'transparent'
@@ -66,14 +66,15 @@ Rectangle {
             width: parent.width;
             height: 1
             anchors.bottom: parent.bottom
-            visible: control.coverSource == ''
+            visible: (typeof control.coverSource == 'string' && control.coverSource !== '') || (typeof control.coverSource == 'object' && control.coverSource.toString() !== '')
         }
     }
     property Component extraDelegate: Item { }
     property Component coverDelegate: Image {
-        height: control.coverSource == '' ? 0 : 180
+        height: !visible ? 0 : control.coverHeight
         source: control.coverSource
         fillMode: control.coverFillMode
+        visible: (typeof control.coverSource == 'string' && control.coverSource !== '') || (typeof control.coverSource == 'object' && control.coverSource.toString() !== '')
     }
     property Component bodyDelegate: Item {
         height: 100
@@ -95,7 +96,8 @@ Rectangle {
                     textSource: control.bodyAvatarText
                     colorIcon: control.colorBodyAvatar
                     colorText: control.colorBodyAvatar
-                    visible: !(iconSource == 0 && imageSource == '' && textSource == '')
+                    // visible: !(iconSource == 0 && imageSource == '' && textSource == '')
+                    visible: (iconSource !== 0 && iconSource !== '') || ((typeof imageSource == 'string' && imageSource !== '') || (typeof imageSource == 'object' && imageSource.toString() !== '')) || textSource !== ''
                 }
             }
 
@@ -111,7 +113,7 @@ Rectangle {
                     font: control.bodyTitleFont
                     color: control.colorBodyTitle
                     wrapMode: Text.WrapAnywhere
-                    visible: control.bodyTitle != ''
+                    visible: control.bodyTitle !== ''
                 }
 
                 HusText {
@@ -122,7 +124,7 @@ Rectangle {
                     font: control.bodyDescriptionFont
                     color: control.colorBodyDescription
                     wrapMode: Text.WrapAnywhere
-                    visible: control.bodyDescription != ''
+                    visible: control.bodyDescription !== ''
                 }
             }
         }

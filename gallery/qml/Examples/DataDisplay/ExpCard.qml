@@ -35,6 +35,7 @@ title | string | '' | 标题文本
 titleFont | font | - | 标题字体
 coverSource | url | '' | 封面图片链接
 coverFillMode | enum | Image.Stretch | 封面图片填充模式(来自 Image)
+coverHeight | int | 180 | 封面图片高度
 bodyAvatarSize | int |  40 | 内容字体
 bodyAvatarIcon | int | 0 | 主体部分头像图标(来自 HusIcon)
 bodyAvatarSource | url | '' | 主体部分头像链接
