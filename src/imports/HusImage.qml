@@ -5,9 +5,11 @@ Image {
     id: control
 
     property bool animationEnabled: HusTheme.animationEnabled
+    property bool emptyAsError: false
     property bool previewEnabled: false
     readonly property alias hovered: __hoverHandler.hovered
     property int hoverCursorShape: Qt.PointingHandCursor
+    property bool forceHoverCursor: false
     property var fallback: ''
     property var placeholder: ''
     property var items: []
@@ -31,7 +33,7 @@ Image {
 
     Loader {
         anchors.centerIn: parent
-        active: (control.status === Image.Error) && ((typeof control.fallback == 'string' && control.fallback !== '') || (typeof control.fallback == 'object' && control.fallback.toString() !== ''))
+        active: control.status === Image.Error || (control.emptyAsError && ((typeof control.source == 'string' && control.source === '') || (typeof control.source == 'object' && control.source.toString() === ''))) && ((typeof control.fallback == 'string' && control.fallback !== '') || (typeof control.fallback == 'object' && control.fallback.toString() !== ''))
         sourceComponent: Image {
             source: control.fallback
             Component.onCompleted: {
@@ -94,6 +96,6 @@ Image {
 
     HoverHandler {
         id: __hoverHandler
-        cursorShape: (control.previewEnabled || control.items.length > 0) ? control.hoverCursorShape : Qt.ArrowCursor
+        cursorShape: (control.previewEnabled || control.items.length > 0 || control.forceHoverCursor) ? control.hoverCursorShape : Qt.ArrowCursor
     }
 }
