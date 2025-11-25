@@ -3,7 +3,7 @@
         "fontFamily": "@fontPrimaryFamily",
         "fontSizeTitle": "@fontPrimarySize",
         "fontSizeContent": "@fontPrimarySize",
-        "colorBorder": "@colorBorder",
+        "colorBorder": "@colorBorderSecondary",
         "colorBorderDark": "#424242",
         "colorIcon": "@colorTextPrimary",
         "colorTitle": "@colorTextPrimary",
