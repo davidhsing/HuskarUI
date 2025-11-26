@@ -9,7 +9,7 @@
         "colorBg": "$alpha(@colorPrimaryBgActive, 0)",
         "colorBgHover": "$alpha(@colorPrimaryBgActive, 0.15)",
         "colorBgActive": "$alpha(@colorPrimaryBgActive, 0.25)",
-        "colorBorder": "@colorBorder",
+        "colorBorder": "@colorBorderSecondary",
         "colorChildBg": "@colorFillQuaternary",
         "radiusBg": "@radiusPrimary"
     }
