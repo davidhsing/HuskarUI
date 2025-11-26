@@ -22,6 +22,7 @@ Flickable {
 \n### 支持的代理：\n
 - **winIconDelegate: Component** 窗口图标代理\n
 - **winTitleDelegate: Component** 窗口标题代理\n
+- **winAheadButtonsDelegate: Component** 窗口优先按钮代理(默认为空)\n
 - **winPresetButtonsDelegate: Component** 窗口预设按钮代理(默认为主题切换&置顶按钮)\n
 - **winExtraButtonsDelegate: Component** 窗口额外按钮代理(默认为空)\n
 - **winButtonsDelegate: Component** 窗口按钮代理(默认最小化&最大化&关闭按钮)\n

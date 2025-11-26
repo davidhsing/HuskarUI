@@ -68,6 +68,7 @@ Rectangle {
         color: winTitleColor
         font: winTitleFont
     }
+    property Component winAheadButtonsDelegate: Item { }
     property Component winPresetButtonsDelegate: Row {
         Connections {
             target: control
@@ -222,6 +223,12 @@ Rectangle {
                     sourceComponent: winTitleDelegate
                 }
             }
+        }
+
+        Loader {
+            Layout.fillHeight: true
+            Layout.alignment: Qt.AlignVCenter
+            sourceComponent: winAheadButtonsDelegate
         }
 
         Loader {
