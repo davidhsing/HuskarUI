@@ -8,6 +8,7 @@ Item {
     signal actived(key: string)
 
     property bool animationEnabled: HusTheme.animationEnabled
+    property bool borderVisible: true
     property int hoverCursorShape: Qt.PointingHandCursor
     property var initModel: []
     property alias count: __listModel.count
@@ -17,21 +18,22 @@ Item {
     property var defaultActiveKey: []
     property var expandIcon: HusIcon.RightOutlined || ''
     property font titleFont: Qt.font({
-                                         family: HusTheme.HusCollapse.fontFamily,
-                                         pixelSize: HusTheme.HusCollapse.fontSizeTitle
-                                     })
+        family: HusTheme.HusCollapse.fontFamily,
+        pixelSize: HusTheme.HusCollapse.fontSizeTitle
+    })
     property color colorBg: HusTheme.HusCollapse.colorBg
     property color colorIcon: HusTheme.HusCollapse.colorIcon
     property color colorTitle: HusTheme.HusCollapse.colorTitle
     property color colorTitleBg: HusTheme.HusCollapse.colorTitleBg
     property font contentFont: Qt.font({
-                                           family: HusTheme.HusCollapse.fontFamily,
-                                           pixelSize: HusTheme.HusCollapse.fontSizeContent
-                                       })
+        family: HusTheme.HusCollapse.fontFamily,
+        pixelSize: HusTheme.HusCollapse.fontSizeContent
+    })
     property color colorContent: HusTheme.HusCollapse.colorContent
     property color colorContentBg: HusTheme.HusCollapse.colorContentBg
     property color colorBorder: HusTheme.isDark ? HusTheme.HusCollapse.colorBorderDark : HusTheme.HusCollapse.colorBorder
     property int radiusBg: HusTheme.HusCollapse.radiusBg
+
     property Component titleDelegate: Row {
         leftPadding: 16
         rightPadding: 16
@@ -161,7 +163,7 @@ Item {
             bottomRightRadius: (isEnd || detached) ? control.radiusBg : 0
             color: control.colorBg
             border.color: control.colorBorder
-            border.width: detached ? 1 : 0
+            border.width: (!detached || !control.borderVisible) ? 0 : 1
             clip: true
 
             required property var model
@@ -190,6 +192,7 @@ Item {
                     bottomRightRadius: (isEnd && !active) || (detached && !active) ? control.radiusBg : 0
                     color: control.colorTitleBg
                     border.color: control.colorBorder
+                    border.width: !control.borderVisible ? 0 : 1
 
                     Loader {
                         id: __titleLoader
@@ -255,6 +258,7 @@ Item {
         sourceComponent: Rectangle {
             color: 'transparent'
             border.color: control.colorBorder
+            border.width: !control.borderVisible ? 0 : 1
             radius: control.radiusBg
         }
     }

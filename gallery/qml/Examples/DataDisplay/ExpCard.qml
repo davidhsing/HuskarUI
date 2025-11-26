@@ -31,6 +31,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
+borderVisible | bool | true | 边框是否可见
 title | string | '' | 标题文本
 titleFont | font | - | 标题字体
 coverSource | url | '' | 封面图片链接

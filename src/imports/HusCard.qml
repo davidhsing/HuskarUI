@@ -6,6 +6,7 @@ Rectangle {
     id: control
 
     property bool animationEnabled: HusTheme.animationEnabled
+    property bool borderVisible: true
     property string title: ''
     property font titleFont: Qt.font({
         family: HusTheme.HusCard.fontFamily,
@@ -136,6 +137,7 @@ Rectangle {
     height: __column.height
     color: HusTheme.HusCard.colorBg
     border.color: HusTheme.isDark ? HusTheme.HusCard.colorBorderDark : HusTheme.HusCard.colorBorder
+    border.width: !control.borderVisible ? 0 : 1
     radius: HusTheme.HusCard.radiusBg
     clip: true
 
