@@ -8,8 +8,8 @@ Item {
     signal clickMenu(deep: int, key: string, keyPath: var, data: var)
 
     property bool animationEnabled: HusTheme.animationEnabled
+    property bool borderVisible: false
     property string contentDescription: ''
-    property bool showEdge: false
     property bool tooltipVisible: false
     property bool compactMode: false
     property int compactWidth: 50
@@ -25,6 +25,7 @@ Item {
     property var defaultSelectedKey: []
     property var initModel: []
     property alias scrollBar: __menuScrollBar
+    property color colorBorder: HusTheme.HusMenu.colorBorder
     property int radiusBg: HusTheme.HusMenu.radiusBg
 
     property Component menuIconDelegate: HusIconText {
@@ -632,9 +633,9 @@ Item {
         width: 1
         height: parent.height
         anchors.right: parent.right
-        active: control.showEdge
+        active: control.borderVisible
         sourceComponent: Rectangle {
-            color: HusTheme.HusMenu.colorEdge
+            color: control.colorBorder
         }
     }
 

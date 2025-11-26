@@ -63,8 +63,8 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
+borderVisible | bool | false | 边框是否可见
 contentDescription | string | '' | 内容描述(提高可用性)
-showEdge | bool | false | 是否显示边线
 tooltipVisible | bool | false | 是否显示工具提示
 compactMode | bool | false | 是否为紧凑模式
 compactWidth | int | 50 | 紧凑模式宽度
@@ -79,6 +79,7 @@ defaultMenuHieght | int | 40 | 默认菜单高度
 defaultMenuSpacing | int | 4 | 默认菜单间隔
 defaultSelectedKey | list | [] | 初始选中的菜单项 key 数组
 initModel | list | [] | 初始菜单模型
+colorBorder | color | - | 边框颜色
 scrollBar | HusScrollBar | - | 菜单滚动条
 radiusBg | int | - | 背景圆角
 \n<br/>

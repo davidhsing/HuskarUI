@@ -282,7 +282,7 @@ HusWindow {
             anchors.left: parent.left
             anchors.top: searchComponent.bottom
             anchors.bottom: creatorButton.top
-            showEdge: true
+            borderVisible: true
             tooltipVisible: true
             defaultMenuWidth: 300
             defaultSelectedKey: ['HomePage']
