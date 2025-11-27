@@ -37,6 +37,7 @@ Image {
         sourceComponent: Image {
             width: control.width
             height: control.height
+            fillMode: control.fillMode
             source: control.fallback
             Component.onCompleted: {
                 __private.previewItems = [{ url: control.fallback }]
@@ -50,6 +51,7 @@ Image {
         sourceComponent: Image {
             width: control.width
             height: control.height
+            fillMode: control.fillMode
             source: control.placeholder
         }
     }
