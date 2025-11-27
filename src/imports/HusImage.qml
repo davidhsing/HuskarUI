@@ -35,6 +35,8 @@ Image {
         anchors.centerIn: parent
         active: control.status === Image.Error || (control.emptyAsError && ((typeof control.source == 'string' && control.source === '') || (typeof control.source == 'object' && control.source.toString() === ''))) && ((typeof control.fallback == 'string' && control.fallback !== '') || (typeof control.fallback == 'object' && control.fallback.toString() !== ''))
         sourceComponent: Image {
+            width: control.width
+            height: control.height
             source: control.fallback
             Component.onCompleted: {
                 __private.previewItems = [{ url: control.fallback }]
@@ -46,6 +48,8 @@ Image {
         anchors.centerIn: parent
         active: (control.status === Image.Loading) && ((typeof control.placeholder == 'string' && control.placeholder !== '') || (typeof control.placeholder == 'object' && control.placeholder.toString() !== ''))
         sourceComponent: Image {
+            width: control.width
+            height: control.height
             source: control.placeholder
         }
     }
