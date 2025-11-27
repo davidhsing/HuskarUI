@@ -6,6 +6,20 @@ HusIconButton {
 
     property bool isError: false
     property bool noDisabledState: false
+    property color colorBorder: {
+        if (type === HusButton.Type_Link) {
+            return 'transparent';
+        }
+        if (enabled || noDisabledState) {
+            switch (control.type) {
+                case HusButton.Type_Default:
+                    return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorDefaultBorder);
+                default:
+                    return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorBorder);
+            }
+        }
+        return HusTheme.HusButton.colorBorderDisabled;
+    }
 
     objectName: '__HusCaptionButton__'
     leftPadding: 12
@@ -29,19 +43,5 @@ HusIconButton {
             return control.down ? HusTheme.HusCaptionButton.colorBgActive: (control.hovered ? HusTheme.HusCaptionButton.colorBgHover : HusTheme.HusCaptionButton.colorBg);
         }
         return HusTheme.HusCaptionButton.colorBgDisabled;
-    }
-    colorBorder: {
-        if (type === HusButton.Type_Link) {
-            return 'transparent';
-        }
-        if (enabled || noDisabledState) {
-            switch (control.type) {
-                case HusButton.Type_Default:
-                    return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorDefaultBorder);
-                default:
-                    return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorBorder);
-            }
-        }
-        return HusTheme.HusButton.colorBorderDisabled;
     }
 }
