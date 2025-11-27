@@ -16,26 +16,32 @@ HusIconButton {
     iconSize: HusTheme.HusCaptionButton.fontSize
     effectEnabled: false
     colorIcon: {
-        if (enabled || noDisabledState) {
-            return checked ? HusTheme.HusCaptionButton.colorIconChecked :
-                             HusTheme.HusCaptionButton.colorIcon;
-        } else {
+        if (!enabled || !noDisabledState) {
             return HusTheme.HusCaptionButton.colorIconDisabled;
         }
+        return checked ? HusTheme.HusCaptionButton.colorIconChecked : HusTheme.HusCaptionButton.colorIcon;
     }
     colorBg: {
-        if (enabled || noDisabledState) {
-            if (isError) {
-                return control.down ? HusTheme.HusCaptionButton.colorErrorBgActive:
-                                      control.hovered ? HusTheme.HusCaptionButton.colorErrorBgHover :
-                                                        HusTheme.HusCaptionButton.colorErrorBg;
-            } else {
-                return control.down ? HusTheme.HusCaptionButton.colorBgActive:
-                                      control.hovered ? HusTheme.HusCaptionButton.colorBgHover :
-                                                        HusTheme.HusCaptionButton.colorBg;
-            }
-        } else {
+        if (!enabled || !noDisabledState) {
             return HusTheme.HusCaptionButton.colorBgDisabled;
+        }
+        if (isError) {
+            return control.down ? HusTheme.HusCaptionButton.colorErrorBgActive: (control.hovered ? HusTheme.HusCaptionButton.colorErrorBgHover : HusTheme.HusCaptionButton.colorErrorBg);
+        }
+        return control.down ? HusTheme.HusCaptionButton.colorBgActive: (control.hovered ? HusTheme.HusCaptionButton.colorBgHover : HusTheme.HusCaptionButton.colorBg);
+    }
+    colorBorder: {
+        if (type === HusButton.Type_Link) {
+            return 'transparent';
+        }
+        if (!enabled || !noDisabledState) {
+            return HusTheme.HusButton.colorBorderDisabled;
+        }
+        switch (control.type) {
+            case HusButton.Type_Default:
+                return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorDefaultBorder);
+            default:
+                return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorBorder);
         }
     }
 }
