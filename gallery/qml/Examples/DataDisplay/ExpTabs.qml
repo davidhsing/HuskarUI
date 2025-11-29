@@ -41,13 +41,13 @@ tabSize | enum | HusTabs.Size_Auto | 标签大小(来自 HusTabs)
 tabPosition | enum | HusTabs.Position_Top | 标签位置(来自 HusTabs)
 tabAddable | bool | false | 标签是否可新增
 tabCentered | bool | false | 标签是否居中
-tabCardMovable | bool | true | 标签卡片是否可移动(tabType == Type_Card*生效)
+tabCardMovable | bool | false | 标签卡片是否可移动(tabType == Type_Card*生效)
 defaultTabWidth | int | 80 | 默认标签宽度
 defaultTabHeight | int | - | 默认标签高度
 defaultTabSpacing | int | 2 | 默认标签间隔
 defaultTabBgRadius | int | - | 默认标签背景半径(tabType == Type_Card*生效)
-defaultHighlightWidth | int | 30丨20 | 默认高亮条宽度半径(tabType == Type_Default生效)
-addTabCallback | function | - | 添加标签回调(点击+按钮时调用)
+defaultIndicatorWidth | int | 40丨20 | 默认高亮条宽度半径(tabType == Type_Default生效)
+tabAddCallback | function | - | 添加标签回调(点击+按钮时调用)
 \n<br/>
 \n### 模型支持的属性：\n
 属性名 | 类型 | 可选/必选 | 描述
@@ -120,114 +120,114 @@ editable | bool | 可选 | 本标签是否可编辑
 通过 \`tabCentered\` 属性设置标签列表是否居中\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusRadioBlock {
-                        id: positionRadio1
-                        initCheckedIndex: 0
-                        model: [
-                            { label: qsTr('上'), value: HusTabs.Position_Top },
-                            { label: qsTr('下'), value: HusTabs.Position_Bottom },
-                            { label: qsTr('左'), value: HusTabs.Position_Left },
-                            { label: qsTr('右'), value: HusTabs.Position_Right }
-                        ]
-                    }
+    HusRadioBlock {
+        id: positionRadio1
+        initCheckedIndex: 0
+        model: [
+            { label: qsTr('上'), value: HusTabs.Position_Top },
+            { label: qsTr('下'), value: HusTabs.Position_Bottom },
+            { label: qsTr('左'), value: HusTabs.Position_Left },
+            { label: qsTr('右'), value: HusTabs.Position_Right }
+        ]
+    }
 
-                    Row {
-                        spacing: 10
-    
-                        HusText { text: qsTr('是否可新增') }
-    
-                        HusSwitch {
-                            id: addableSwitch
-                            checkedText: qsTr('是')
-                            uncheckedText: qsTr('否')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+    Row {
+        spacing: 10
 
-                    Row {
-                        spacing: 10
+        HusText { text: qsTr('是否可新增') }
 
-                        HusText { text: qsTr('是否居中') }
+        HusSwitch {
+            id: addableSwitch
+            checkedText: qsTr('是')
+            uncheckedText: qsTr('否')
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-                        HusSwitch {
-                            id: isCenterSwitch
-                            checkedText: qsTr('是')
-                            uncheckedText: qsTr('否')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+    Row {
+        spacing: 10
 
-                    Row {
-                        spacing: 10
+        HusText { text: qsTr('是否居中') }
 
-                        HusText { text: qsTr('标签大小') }
+        HusSwitch {
+            id: isCenterSwitch
+            checkedText: qsTr('是')
+            uncheckedText: qsTr('否')
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-                        HusSwitch {
-                            id: sizeSwitch
-                            checkedText: qsTr('固定')
-                            uncheckedText: qsTr('自动')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+    Row {
+        spacing: 10
 
-                    HusTabs {
-                        id: defaultTabs
-                        width: parent.width
-                        height: 200
-                        defaultTabWidth: 40
-                        tabPosition: positionRadio1.currentCheckedValue
-                        tabSize: sizeSwitch.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
-                        tabAddable: addableSwitch.checked
-                        tabCentered: isCenterSwitch.checked
-                        addTabCallback:
-                            () => {
-                                append({
-                                           title: 'New Tab ' + (count + 1),
-                                           content: 'Content of Tab Content ',
-                                           contentColor: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.24).toString()
-                                       });
-                                currentIndex = count - 1;
-                                positionViewAtEnd();
-                            }
-                        contentDelegate: Rectangle {
-                            color: model.contentColor
+        HusText { text: qsTr('标签大小') }
 
-                            HusText {
-                                anchors.centerIn: parent
-                                text: model.content + (index + 1)
-                            }
-                        }
-                        initModel: [
-                            {
-                                key: '1',
-                                iconSource: HusIcon.CreditCardOutlined,
-                                title: 'Tab 1',
-                                content: 'Content of Tab Content ',
-                                contentColor: '#60ff0000'
-                            },
-                            {
-                                key: '2',
-                                iconSource: HusIcon.CreditCardOutlined,
-                                title: 'Tab 2',
-                                content: 'Content of Tab Content ',
-                                contentColor: '#6000ff00'
-                            },
-                            {
-                                key: '3',
-                                title: 'Tab 3',
-                                content: 'Content of Tab Content ',
-                                contentColor: '#600000ff'
-                            }
-                        ]
-                    }
-                }
+        HusSwitch {
+            id: sizeSwitch
+            checkedText: qsTr('固定')
+            uncheckedText: qsTr('自动')
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+    HusTabs {
+        id: defaultTabs
+        width: parent.width
+        height: 200
+        defaultTabWidth: 40
+        tabPosition: positionRadio1.currentCheckedValue
+        tabSize: sizeSwitch.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
+        tabAddable: addableSwitch.checked
+        tabCentered: isCenterSwitch.checked
+        tabAddCallback:
+            () => {
+                append({
+                           title: 'New Tab ' + (count + 1),
+                           content: 'Content of Tab Content ',
+                           contentColor: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.24).toString()
+                       });
+                currentIndex = count - 1;
+                positionViewAtEnd();
+            }
+        contentDelegate: Rectangle {
+            color: model.contentColor
+
+            HusText {
+                anchors.centerIn: parent
+                text: model.content + (index + 1)
+            }
+        }
+        initModel: [
+            {
+                key: '1',
+                iconSource: HusIcon.CreditCardOutlined,
+                title: 'Tab 1',
+                content: 'Content of Tab Content ',
+                contentColor: '#60ff0000'
+            },
+            {
+                key: '2',
+                iconSource: HusIcon.CreditCardOutlined,
+                title: 'Tab 2',
+                content: 'Content of Tab Content ',
+                contentColor: '#6000ff00'
+            },
+            {
+                key: '3',
+                title: 'Tab 3',
+                content: 'Content of Tab Content ',
+                contentColor: '#600000ff'
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -291,16 +291,15 @@ editable | bool | 可选 | 本标签是否可编辑
                     tabSize: sizeSwitch.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
                     tabAddable: addableSwitch.checked
                     tabCentered: isCenterSwitch.checked
-                    addTabCallback:
-                        () => {
-                            append({
-                                       title: 'New Tab ' + (count + 1),
-                                       content: 'Content of Tab Content ',
-                                       contentColor: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.24).toString()
-                                   });
-                            currentIndex = count - 1;
-                            positionViewAtEnd();
-                        }
+                    tabAddCallback: () => {
+                        append({
+                                   title: 'New Tab ' + (count + 1),
+                                   content: 'Content of Tab Content ',
+                                   contentColor: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.24).toString()
+                               });
+                        currentIndex = count - 1;
+                        positionViewAtEnd();
+                    }
                     contentDelegate: Rectangle {
                         color: model.contentColor
 
@@ -344,129 +343,129 @@ editable | bool | 可选 | 本标签是否可编辑
 - 可编辑卡片标签{ HusTabs.Type_CardEditable }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusRadioBlock {
-                        id: positionRadio2
-                        initCheckedIndex: 0
-                        model: [
-                            { label: qsTr('上'), value: HusTabs.Position_Top },
-                            { label: qsTr('下'), value: HusTabs.Position_Bottom },
-                            { label: qsTr('左'), value: HusTabs.Position_Left },
-                            { label: qsTr('右'), value: HusTabs.Position_Right }
-                        ]
-                    }
+    HusRadioBlock {
+        id: positionRadio2
+        initCheckedIndex: 0
+        model: [
+            { label: qsTr('上'), value: HusTabs.Position_Top },
+            { label: qsTr('下'), value: HusTabs.Position_Bottom },
+            { label: qsTr('左'), value: HusTabs.Position_Left },
+            { label: qsTr('右'), value: HusTabs.Position_Right }
+        ]
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusText { text: qsTr('是否可新增') }
+        HusText { text: qsTr('是否可新增') }
 
-                        HusSwitch {
-                            id: addableSwitch2
-                            checkedText: qsTr('是')
-                            uncheckedText: qsTr('否')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+        HusSwitch {
+            id: addableSwitch2
+            checkedText: qsTr('是')
+            uncheckedText: qsTr('否')
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusText { text: qsTr('是否居中') }
+        HusText { text: qsTr('是否居中') }
 
-                        HusSwitch {
-                            id: isCenterSwitch2
-                            checkedText: qsTr('是')
-                            uncheckedText: qsTr('否')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+        HusSwitch {
+            id: isCenterSwitch2
+            checkedText: qsTr('是')
+            uncheckedText: qsTr('否')
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusText { text: qsTr('标签大小') }
+        HusText { text: qsTr('标签大小') }
 
-                        HusSwitch {
-                            id: sizeSwitch2
-                            checkedText: qsTr('固定')
-                            uncheckedText: qsTr('自动')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+        HusSwitch {
+            id: sizeSwitch2
+            checkedText: qsTr('固定')
+            uncheckedText: qsTr('自动')
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusText { text: qsTr('是否可编辑') }
+        HusText { text: qsTr('是否可编辑') }
 
-                        HusSwitch {
-                            id: typeSwitch
-                            checkedText: qsTr('是')
-                            uncheckedText: qsTr('否')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+        HusSwitch {
+            id: typeSwitch
+            checkedText: qsTr('是')
+            uncheckedText: qsTr('否')
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-                    HusTabs {
-                        id: cardTabs
-                        width: parent.width
-                        height: 200
-                        defaultTabWidth: 50
-                        tabPosition: positionRadio2.currentCheckedValue
-                        tabSize: sizeSwitch2.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
-                        tabType: typeSwitch.checked ? HusTabs.Type_CardEditable :  HusTabs.Type_Card
-                        tabAddable: addableSwitch2.checked
-                        tabCentered: isCenterSwitch2.checked
-                        addTabCallback:
-                            () => {
-                                append({
-                                           title: 'New Tab ' + (count + 1),
-                                           content: 'Content of Tab Content ',
-                                           contentColor: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.24).toString()
-                                       });
-                                currentIndex = count - 1;
-                                positionViewAtEnd();
-                            }
-                        contentDelegate: Rectangle {
-                            color: model.contentColor
+    HusTabs {
+        id: cardTabs
+        width: parent.width
+        height: 200
+        defaultTabWidth: 50
+        tabPosition: positionRadio2.currentCheckedValue
+        tabSize: sizeSwitch2.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
+        tabType: typeSwitch.checked ? HusTabs.Type_CardEditable :  HusTabs.Type_Card
+        tabAddable: addableSwitch2.checked
+        tabCentered: isCenterSwitch2.checked
+        tabAddCallback:
+            () => {
+                append({
+                           title: 'New Tab ' + (count + 1),
+                           content: 'Content of Tab Content ',
+                           contentColor: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.24).toString()
+                       });
+                currentIndex = count - 1;
+                positionViewAtEnd();
+            }
+        contentDelegate: Rectangle {
+            color: model.contentColor
 
-                            HusText {
-                                anchors.centerIn: parent
-                                text: model.content + (index + 1)
-                            }
-                        }
-                        initModel: [
-                            {
-                                key: '1',
-                                iconSource: HusIcon.CreditCardOutlined,
-                                title: 'Tab 1',
-                                content: 'Content of Card Tab Content ',
-                                contentColor: '#60ff0000'
-                            },
-                            {
-                                key: '2',
-                                editable: false,
-                                iconSource: HusIcon.CreditCardOutlined,
-                                title: 'Tab 2',
-                                content: 'Content of Card Tab Content ',
-                                contentColor: '#6000ff00'
-                            },
-                            {
-                                key: '3',
-                                title: 'Tab 3',
-                                content: 'Content of Card Tab Content ',
-                                contentColor: '#600000ff'
-                            }
-                        ]
-                    }
-                }
+            HusText {
+                anchors.centerIn: parent
+                text: model.content + (index + 1)
+            }
+        }
+        initModel: [
+            {
+                key: '1',
+                iconSource: HusIcon.CreditCardOutlined,
+                title: 'Tab 1',
+                content: 'Content of Card Tab Content ',
+                contentColor: '#60ff0000'
+            },
+            {
+                key: '2',
+                editable: false,
+                iconSource: HusIcon.CreditCardOutlined,
+                title: 'Tab 2',
+                content: 'Content of Card Tab Content ',
+                contentColor: '#6000ff00'
+            },
+            {
+                key: '3',
+                title: 'Tab 3',
+                content: 'Content of Card Tab Content ',
+                contentColor: '#600000ff'
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -551,7 +550,7 @@ editable | bool | 可选 | 本标签是否可编辑
                     tabType: typeSwitch.checked ? HusTabs.Type_CardEditable :  HusTabs.Type_Card
                     tabAddable: addableSwitch2.checked
                     tabCentered: isCenterSwitch2.checked
-                    addTabCallback:
+                    tabAddCallback:
                         () => {
                             append({
                                        title: 'New Tab ' + (count + 1),

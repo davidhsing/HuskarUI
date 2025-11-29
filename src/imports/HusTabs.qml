@@ -37,17 +37,16 @@ Item {
     property int tabPosition: HusTabs.Position_Top
     property bool tabAddable: false
     property bool tabCentered: false
-    property bool tabCardMovable: true
+    property bool tabCardMovable: false
     property int defaultTabWidth: 80
     property int defaultTabHeight: HusTheme.HusTabs.fontSize + 16
     property int defaultTabSpacing: 2
     property int defaultTabBgRadius: HusTheme.HusTabs.radiusTabBg
-    property int defaultHighlightWidth: __private.isHorizontal ? 30 : 20
-    property var addTabCallback:
-        () => {
-            append({ title: `New Tab ${__tabView.count + 1}` });
-            positionViewAtEnd();
-        }
+    property int defaultIndicatorWidth: __private.isHorizontal ? 40 : 20
+    property var tabAddCallback: () => {
+        append({ title: `New Tab ${__tabView.count + 1}` });
+        positionViewAtEnd();
+    }
     property Component addButtonDelegate: HusCaptionButton {
         id: __addButton
         animationEnabled: control.animationEnabled
@@ -56,15 +55,15 @@ Item {
         colorIcon: HusTheme.HusTabs.colorTabCloseHover
         hoverCursorShape: Qt.PointingHandCursor
         radiusBg: HusTheme.HusTabs.radiusButton
-        onClicked: addTabCallback();
+        onClicked: tabAddCallback();
     }
     property Component tabDelegate: tabType == HusTabs.Type_Default ? __defaultTabDelegate : __cardTabDelegate
     property Component contentDelegate: Item { }
     property Component highlightDelegate: Item {
         Loader {
             id: __highlight
-            width: __private.isHorizontal ? defaultHighlightWidth : 2
-            height: __private.isHorizontal ? 2 : defaultHighlightWidth
+            width: __private.isHorizontal ? defaultIndicatorWidth : 2
+            height: __private.isHorizontal ? 2 : defaultIndicatorWidth
             anchors {
                 bottom: control.tabPosition == HusTabs.Position_Top ? parent.bottom : undefined
                 right: control.tabPosition == HusTabs.Position_Left ? parent.right : undefined
