@@ -46,7 +46,7 @@ defaultTabWidth | int | 80 | 默认标签宽度
 defaultTabHeight | int | - | 默认标签高度
 defaultTabSpacing | int | 2 | 默认标签间隔
 defaultTabBgRadius | int | - | 默认标签背景半径(tabType == Type_Card*生效)
-defaultIndicatorWidth | int | 40丨20 | 默认高亮条宽度半径(tabType == Type_Default生效)
+defaultHighlightWidth | int | 40丨20 | 默认高亮条宽度半径(tabType == Type_Default生效)
 tabAddCallback | function | - | 添加标签回调(点击+按钮时调用)
 \n<br/>
 \n### 模型支持的属性：\n

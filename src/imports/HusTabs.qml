@@ -42,7 +42,7 @@ Item {
     property int defaultTabHeight: HusTheme.HusTabs.fontSize + 16
     property int defaultTabSpacing: 2
     property int defaultTabBgRadius: HusTheme.HusTabs.radiusTabBg
-    property int defaultIndicatorWidth: __private.isHorizontal ? 40 : 20
+    property int defaultHighlightWidth: __private.isHorizontal ? 40 : 20
     property var tabAddCallback: () => {
         append({ title: `New Tab ${__tabView.count + 1}` });
         positionViewAtEnd();
@@ -62,8 +62,8 @@ Item {
     property Component highlightDelegate: Item {
         Loader {
             id: __highlight
-            width: __private.isHorizontal ? defaultIndicatorWidth : 2
-            height: __private.isHorizontal ? 2 : defaultIndicatorWidth
+            width: __private.isHorizontal ? defaultHighlightWidth : 2
+            height: __private.isHorizontal ? 2 : defaultHighlightWidth
             anchors {
                 bottom: control.tabPosition == HusTabs.Position_Top ? parent.bottom : undefined
                 right: control.tabPosition == HusTabs.Position_Left ? parent.right : undefined
