@@ -18,6 +18,7 @@ Item {
     property int itemInputMethodHints: Qt.ImhHiddenText
     property bool itemPassword: false
     property string itemPasswordCharacter: ''
+    property bool errorState: false
     property var formatter: (text) => text
 
     property color colorItemText: enabled ? HusTheme.HusInput.colorText : HusTheme.HusInput.colorTextDisabled
@@ -77,12 +78,13 @@ Item {
             id: __rootItem
             width: control.itemWidth
             height: control.itemHeight
+            animationEnabled: control.animationEnabled
             verticalAlignment: HusInput.AlignVCenter
             horizontalAlignment: HusInput.AlignHCenter
             enabled: control.enabled
-            animationEnabled: control.animationEnabled
+            errorState: control.errorState
             colorText: control.colorItemText
-            colorBorder: active ? control.colorItemBorderActive : control.colorItemBorder
+            colorBorder: errorState ? (active ? HusTheme.HusInput.colorErrorBorderHover : HusTheme.HusInput.colorErrorBorder) : (active ? control.colorItemBorderActive : control.colorItemBorder)
             colorBg: control.colorItemBg
             radiusBg: control.radiusBg
             validator: control.itemValidator
