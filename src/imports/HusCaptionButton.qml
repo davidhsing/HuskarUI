@@ -4,7 +4,7 @@ import HuskarUI.Basic
 HusIconButton {
     id: control
 
-    property bool isError: false
+    property bool errorState: false
 
     objectName: '__HusCaptionButton__'
     leftPadding: 12
@@ -22,7 +22,7 @@ HusIconButton {
     }
     colorBg: {
         if (control.enabled || control.noDisabledState) {
-            if (isError) {
+            if (errorState) {
                 return control.down ? HusTheme.HusCaptionButton.colorErrorBgActive: (control.hovered ? HusTheme.HusCaptionButton.colorErrorBgHover : HusTheme.HusCaptionButton.colorErrorBg);
             }
             return control.down ? HusTheme.HusCaptionButton.colorBgActive: (control.hovered ? HusTheme.HusCaptionButton.colorBgHover : HusTheme.HusCaptionButton.colorBg);

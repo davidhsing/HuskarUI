@@ -157,7 +157,7 @@ Rectangle {
             noDisabledState: true
             iconSource: HusIcon.CloseOutlined
             iconSize: 14
-            isError: true
+            errorState: true
             contentDescription: qsTr('关闭')
             onClicked: control.closeCallback();
         }

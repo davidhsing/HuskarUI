@@ -25,7 +25,7 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-isError | bool | false | 是否为警示按钮
+errorState | bool | false | 是否为警示状态
                        `)
         }
 
@@ -47,7 +47,7 @@ isError | bool | false | 是否为警示按钮
         CodeBox {
             width: parent.width
             desc: qsTr(`
-通过 \`isError\` 属性设置为警示按钮，例如关闭按钮。
+通过 \`errorState\` 属性设置为警示按钮，例如关闭按钮。
                        `)
             code: `
                 import QtQuick
@@ -61,7 +61,7 @@ isError | bool | false | 是否为警示按钮
                     }
 
                     HusCaptionButton {
-                        isError: true
+                        errorState: true
                         iconSource: HusIcon.CloseOutlined
                     }
 
@@ -80,7 +80,7 @@ isError | bool | false | 是否为警示按钮
                 }
 
                 HusCaptionButton {
-                    isError: true
+                    errorState: true
                     iconSource: HusIcon.CloseOutlined
                 }
 
