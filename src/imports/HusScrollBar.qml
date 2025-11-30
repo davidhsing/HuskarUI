@@ -7,12 +7,8 @@ T.ScrollBar {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property int minimumHandleSize: 24
-    property color colorBar: control.pressed ? HusTheme.HusScrollBar.colorBarActive :
-                                               control.hovered ? HusTheme.HusScrollBar.colorBarHover :
-                                                                 HusTheme.HusScrollBar.colorBar
-    property color colorBg: control.pressed ? HusTheme.HusScrollBar.colorBgActive :
-                                              control.hovered ? HusTheme.HusScrollBar.colorBgHover :
-                                                                HusTheme.HusScrollBar.colorBg
+    property color colorBar: control.pressed ? HusTheme.HusScrollBar.colorBarActive : (control.hovered ? HusTheme.HusScrollBar.colorBarHover : HusTheme.HusScrollBar.colorBar)
+    property color colorBg: control.pressed ? HusTheme.HusScrollBar.colorBgActive : (control.hovered ? HusTheme.HusScrollBar.colorBgHover : HusTheme.HusScrollBar.colorBg)
     property string contentDescription: ''
 
     objectName: '__HusScrollBar__'
@@ -26,10 +22,11 @@ T.ScrollBar {
     bottomPadding: control.orientation == Qt.Vertical ? (bottomInset + 10) : bottomInset
     policy: T.ScrollBar.AlwaysOn
     minimumSize: {
-        if (control.orientation == Qt.Vertical)
-            return size * height < minimumHandleSize ? minimumHandleSize / height : 0;
-        else
-            return size * width < minimumHandleSize ? minimumHandleSize / width : 0;
+        if (control.orientation == Qt.Vertical) {
+            return (size * height < minimumHandleSize) ? minimumHandleSize / height : 0;
+        } else {
+            return (size * width < minimumHandleSize) ? minimumHandleSize / width : 0;
+        }
     }
     visible: (control.policy != T.ScrollBar.AlwaysOff) && control.size !== 1
     contentItem: Item {
