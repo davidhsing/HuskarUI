@@ -15,12 +15,9 @@ T.ComboBox {
     property bool tooltipVisible: false
     property bool loading: false
     property int defaultPopupMaxHeight: 240
-    property color colorText: enabled ?
-                                  popup.visible ? themeSource.colorTextActive :
-                                                  themeSource.colorText : themeSource.colorTextDisabled
-    property color colorBorder: enabled ?
-                                    active ? themeSource.colorBorderHover :
-                                             themeSource.colorBorder : themeSource.colorBorderDisabled
+    property bool errorState: false
+    property color colorText: enabled ? (popup.visible ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
+    property color colorBorder: errorState ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? (active ? themeSource.colorBorderHover : themeSource.colorBorder) : themeSource.colorBorderDisabled)
     property color colorBg: enabled ? themeSource.colorBg : themeSource.colorBgDisabled
 
     property int radiusBg: themeSource.radiusBg

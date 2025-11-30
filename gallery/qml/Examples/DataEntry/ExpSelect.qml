@@ -33,6 +33,7 @@ clearIconSource | int丨string | HusIcon.CloseCircleFilled | 清除图标源(来
 tooltipVisible | bool | false | 是否显示文字提示
 loading | bool | false | 是否在加载中
 defaultPopupMaxHeight | int | 240 | 默认弹窗最大高度
+errorState | bool | false | 是否为警示状态
 colorText | color | - | 文本颜色
 colorBorder | color | - | 边框颜色
 colorBg | color | - | 背景颜色
