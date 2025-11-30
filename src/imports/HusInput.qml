@@ -38,9 +38,10 @@ T.TextField {
             return 0;
         }
     }
-    property color colorIcon: enabled ? control.themeSource.colorIcon : control.themeSource.colorIconDisabled
+    property bool errorState: false
+    property color colorIcon: enabled ? themeSource.colorIcon : themeSource.colorIconDisabled
     property color colorText: enabled ? themeSource.colorText : themeSource.colorTextDisabled
-    property color colorBorder: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder)
+    property color colorBorder: errorState ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : ((!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder))
     property color colorBg: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
     property int radiusBg: themeSource.radiusBg
     property string contentDescription: ''
