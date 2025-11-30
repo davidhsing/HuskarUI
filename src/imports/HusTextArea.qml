@@ -26,11 +26,12 @@ Item {
     property alias font: __scrollView.font
     property alias text: __textArea.text
     property alias placeholderText: __textArea.placeholderText
+    property bool errorState: false
     property alias colorText: __textArea.color
     property alias colorPlaceholderText: __textArea.placeholderTextColor
     property alias colorSelectedText: __textArea.selectedTextColor
     property alias colorSelection: __textArea.selectionColor
-    property color colorBorder: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder)
+    property color colorBorder: errorState ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : ((!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder))
     property color colorBg: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
     property int radiusBg: themeSource.radiusBg
     property string contentDescription: ''
