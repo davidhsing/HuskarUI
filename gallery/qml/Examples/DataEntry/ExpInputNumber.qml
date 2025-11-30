@@ -56,6 +56,7 @@ currentAfterLabel | sting | '' | 当前后置标签
 formatter | function | - | 格式化器(格式化数值为字符串)
 parser | function | - | 解析器(解析字符串为数值)
 defaultHandlerWidth | int | 24 | 默认增减按钮宽度
+errorState | bool | false | 是否为警示状态
 colorText | color | - | 文本颜色
 colorPrefix | color | - | 前缀文本(图标)颜色
 colorSuffix | color | - | 后缀文本(图标)颜色
