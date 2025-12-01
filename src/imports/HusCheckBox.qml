@@ -13,15 +13,11 @@ T.CheckBox {
     property color colorText: enabled ? themeSource.colorText : themeSource.colorTextDisabled
     property color colorIndicator: {
         if (enabled) {
-            return (checkState !== Qt.Unchecked) ? hovered ? themeSource.colorIndicatorCheckedHover :
-                                                             themeSource.colorIndicatorChecked : themeSource.colorIndicator
-        } else {
-            return themeSource.colorIndicatorDisabled;
+            return (checkState !== Qt.Unchecked) ? (hovered ? themeSource.colorIndicatorCheckedHover : themeSource.colorIndicatorChecked) : themeSource.colorIndicator
         }
+        return themeSource.colorIndicatorDisabled;
     }
-    property color colorIndicatorBorder: enabled ?
-                                             (hovered || checked) ? themeSource.colorIndicatorBorderChecked :
-                                                                    themeSource.colorIndicatorBorder : themeSource.colorIndicatorDisabled
+    property color colorIndicatorBorder: enabled ? ((hovered || checked) ? themeSource.colorIndicatorBorderChecked : themeSource.colorIndicatorBorder) : themeSource.colorIndicatorDisabled
     property string contentDescription: ''
     property var themeSource: HusTheme.HusCheckBox
 

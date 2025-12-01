@@ -5,15 +5,13 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Align
-    {
+    enum Align {
         Align_Left = 0,
         Align_Center = 1,
         Align_Right = 2
     }
 
-    enum Style
-    {
+    enum Style {
         SolidLine = 0,
         DashLine = 1
     }
@@ -21,9 +19,9 @@ Item {
     property bool animationEnabled: HusTheme.animationEnabled
     property string title: ''
     property font titleFont: Qt.font({
-                                         family: HusTheme.HusDivider.fontFamily,
-                                         pixelSize: HusTheme.HusDivider.fontSize
-                                     })
+        family: HusTheme.HusDivider.fontFamily,
+        pixelSize: HusTheme.HusDivider.fontSize
+    })
     property int titleAlign: HusDivider.Align_Left
     property int titlePadding: 20
     property color colorText: HusTheme.HusDivider.colorText

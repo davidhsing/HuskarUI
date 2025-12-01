@@ -4,8 +4,7 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Position
-    {
+    enum Position {
         Position_Top = 0,
         Position_Bottom = 1,
         Position_Left = 2,
@@ -28,14 +27,13 @@ Item {
     property Component indicatorDelegate: Rectangle {
         width: isHorizontal ? __width : __height
         height: isHorizontal ? __height : __width
-        color: isCurrent ? HusTheme.HusCarousel.colorIndicatorActive :
-                           hovered ? HusTheme.HusCarousel.colorIndicatorHover : HusTheme.HusCarousel.colorIndicator
+        color: isCurrent ? HusTheme.HusCarousel.colorIndicatorActive : (hovered ? HusTheme.HusCarousel.colorIndicatorHover : HusTheme.HusCarousel.colorIndicator)
         radius: HusTheme.HusCarousel.radiusIndicator
 
         required property int index
         required property var model
         property bool isHorizontal: control.position === HusCarousel.Position_Top || control.position === HusCarousel.Position_Bottom
-        property bool isCurrent: index == control.currentIndex
+        property bool isCurrent: index === control.currentIndex
         property bool hovered: __hoverHandler.hovered
 
         property int __width: isCurrent ? __private.indicatorWidth + 10 : __private.indicatorWidth
@@ -110,7 +108,6 @@ Item {
             if (indicatorWidth >= indicatorMaxWidth) break;
             totalWidth = (++indicatorWidth) * __listModel.count + indicatorSpacing * (__listModel.count - 1) + indicatorMaxWidth;
         } while (totalWidth < contentWidth);
-
         return indicatorWidth;
     }
 

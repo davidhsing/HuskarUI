@@ -22,11 +22,10 @@ Item {
     property bool showZero: false
     property int overflowCount: 99
     property font font: Qt.font({
-                                    family: __private.isNumber ? HusTheme.Primary.fontPrimaryFamily : 'HuskarUI-Icons',
-                                    pixelSize: __private.isNumber ? 12 : 16
-                                })
-    property color colorBg: presetColor == '' ? (!__private.isNumber ? 'transparent' : HusTheme.Primary.colorError) :
-                                                __private.isCustom ? presetColor : __private.colorArray[5]
+        family: __private.isNumber ? HusTheme.Primary.fontPrimaryFamily : 'HuskarUI-Icons',
+        pixelSize: __private.isNumber ? 12 : 16
+    })
+    property color colorBg: presetColor == '' ? (!__private.isNumber ? 'transparent' : HusTheme.Primary.colorError) : (__private.isCustom ? presetColor : __private.colorArray[5])
     property alias colorBorder: __border.border.color
     property color colorText: 'white'
 

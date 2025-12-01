@@ -17,9 +17,9 @@ T.Drawer {
     property int drawerSize: 378
     property string title: ''
     property font titleFont: Qt.font({
-                                         family: HusTheme.HusDrawer.fontFamily,
-                                         pixelSize: HusTheme.HusDrawer.fontSizeTitle
-                                     })
+        family: HusTheme.HusDrawer.fontFamily,
+        pixelSize: HusTheme.HusDrawer.fontSizeTitle
+    })
     property color colorTitle: HusTheme.HusDrawer.colorTitle
     property color colorBg: HusTheme.HusDrawer.colorBg
     property color colorOverlay: HusTheme.HusDrawer.colorOverlay
