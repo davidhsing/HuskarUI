@@ -23,17 +23,17 @@ HusRectangle {
 
     property bool columnHeaderVisible: true
     property font columnHeaderTitleFont: Qt.font({
-                                                     family: HusTheme.HusTable.fontFamily,
-                                                     pixelSize: HusTheme.HusTable.fontSize
-                                                 })
+        family: HusTheme.HusTable.fontFamily,
+        pixelSize: HusTheme.HusTable.fontSize
+    })
     property color colorColumnHeaderTitle: HusTheme.HusTable.colorColumnTitle
     property color colorColumnHeaderBg: HusTheme.HusTable.colorColumnHeaderBg
 
     property bool rowHeaderVisible: true
     property font rowHeaderTitleFont: Qt.font({
-                                                  family: HusTheme.HusTable.fontFamily,
-                                                  pixelSize: HusTheme.HusTable.fontSize
-                                              })
+        family: HusTheme.HusTable.fontFamily,
+        pixelSize: HusTheme.HusTable.fontSize
+    })
     property color colorRowHeaderTitle: HusTheme.HusTable.colorRowTitle
     property color colorRowHeaderBg: HusTheme.HusTable.colorRowHeaderBg
 
@@ -68,12 +68,12 @@ HusRectangle {
             color: control.colorColumnHeaderTitle
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: {
-                if (__columnHeaderDelegate.align == 'left')
+                if (__columnHeaderDelegate.align == 'left') {
                     return Text.AlignLeft;
-                else if (__columnHeaderDelegate.align == 'right')
+                } else if (__columnHeaderDelegate.align == 'right') {
                     return Text.AlignRight;
-                else
-                    return Text.AlignHCenter;
+                }
+                return Text.AlignHCenter;
             }
         }
 

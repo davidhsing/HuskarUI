@@ -49,7 +49,7 @@ Item {
 
         TapHandler {
             onTapped: {
-                control.swithTo(index);
+                control.switchTo(index);
             }
         }
     }
@@ -60,7 +60,7 @@ Item {
         iconSize: 20
         colorIcon: hovered ? HusTheme.HusCarousel.colorArrowHover : HusTheme.HusCarousel.colorArrow
         type: HusButton.Type_Link
-        onClicked: control.swithToPrev();
+        onClicked: control.switchToPrev();
     }
     property Component nextDelegate: HusIconButton {
         padding: 5
@@ -69,21 +69,21 @@ Item {
         iconSize: 20
         colorIcon: hovered ? HusTheme.HusCarousel.colorArrowHover : HusTheme.HusCarousel.colorArrow
         type: HusButton.Type_Link
-        onClicked: control.swithToNext();
+        onClicked: control.switchToNext();
     }
 
     objectName: '__HusCarousel__'
     onInfiniteChanged: __private.updateModel();
     onInitModelChanged: __private.updateModel();
 
-    function swithTo(index, animated = true) {
+    function switchTo(index, animated = true) {
         if (animated)
             __listView.currentIndex = infinite ? index + 1 : index;
         else
             __listView.positionViewAtIndex(infinite ? 1 : 0, ListView.SnapPosition);
     }
 
-    function swithToPrev() {
+    function switchToPrev() {
         if (infinite && __listView.currentIndex === 0) {
             __listView.positionViewAtIndex(__listView.count - 2, ListView.SnapPosition);
             __listView.decrementCurrentIndex();
@@ -92,7 +92,7 @@ Item {
         }
     }
 
-    function swithToNext() {
+    function switchToNext() {
         if (infinite && __listView.currentIndex === __listView.count - 1) {
             __listView.positionViewAtIndex(1, ListView.SnapPosition);
             __listView.incrementCurrentIndex();
@@ -105,7 +105,9 @@ Item {
         let indicatorWidth = 0;
         let totalWidth = 0;
         do {
-            if (indicatorWidth >= indicatorMaxWidth) break;
+            if (indicatorWidth >= indicatorMaxWidth) {
+                break;
+            }
             totalWidth = (++indicatorWidth) * __listModel.count + indicatorSpacing * (__listModel.count - 1) + indicatorMaxWidth;
         } while (totalWidth < contentWidth);
         return indicatorWidth;
@@ -118,8 +120,7 @@ Item {
 
         function updateModel() {
             if (control.initModel.length > 0) {
-                const model = control.infinite ? [control.initModel[control.initModel.length - 1], ...control.initModel, control.initModel[0]] :
-                                                 [...control.initModel];
+                const model = control.infinite ? [control.initModel[control.initModel.length - 1], ...control.initModel, control.initModel[0]] : [...control.initModel];
                 __listModel.clear();
                 for (const item of model) {
                     __listModel.append(item);
@@ -173,7 +174,7 @@ Item {
         interval: control.autoplaySpeed
         running: control.autoplay
         onTriggered: {
-            control.swithToNext();
+            control.switchToNext();
         }
     }
 
