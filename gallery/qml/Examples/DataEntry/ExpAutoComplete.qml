@@ -229,7 +229,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                             { label: 'HuskarUI FAQ', option: 'Solutions' },
                             { label: 'HuskarUI for Qml FAQ' },
                             { label: 'HuskarUI', option: 'Copyright' },
-                            { label: 'Copyright (C) 2025 mengps. All rights reserved.' },
+                            { label: 'Copyright (C) 2025 davidhsing. All rights reserved.' },
                         ]
                         labelDelegate: Column {
                             id: delegateColumn
@@ -285,7 +285,7 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
                         { label: 'HuskarUI FAQ', option: 'Solutions' },
                         { label: 'HuskarUI for Qml FAQ' },
                         { label: 'HuskarUI', option: 'Copyright' },
-                        { label: 'Copyright (C) 2025 mengps. All rights reserved.' },
+                        { label: 'Copyright (C) 2025 davidhsing. All rights reserved.' },
                     ]
                     labelDelegate: Column {
                         id: delegateColumn
