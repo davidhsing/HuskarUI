@@ -47,6 +47,9 @@ Item {
         append({ title: `New Tab ${__tabView.count + 1}` });
         positionViewAtEnd();
     }
+    property var tabCloseCallback: (index, data) => {
+        remove(index);
+    }
     property Component addButtonDelegate: HusCaptionButton {
         id: __addButton
         animationEnabled: control.animationEnabled
@@ -446,7 +449,7 @@ Item {
                     iconSource: HusIcon.CloseOutlined
                     colorIcon: hovered ? HusTheme.HusTabs.colorTabCloseHover : HusTheme.HusTabs.colorTabClose
                     onClicked: {
-                        control.remove(index);
+                        control.tabCloseCallback(__tabContainer.index, __tabContainer.model);
                     }
 
                     HoverHandler {
