@@ -38,8 +38,12 @@ pageTotal | int | - | 页总数
 pageButtonMaxCount | int | 7 | 最大页按钮数量
 pageSize | int | 10 | 每页数量
 pageSizeModel | list | [] | 每页数量模型
-prevButtonTooltip | string | '上一页' | 上一页按钮的提示文本(为空不显示)
-nextButtonTooltip | string | '下一页' | 下一页按钮的提示文本(为空不显示)
+prevButtonTooltip | string | '上一页' | 上一页按钮的提示文本(为空则不显示)
+nextButtonTooltip | string | '下一页' | 下一页按钮的提示文本(为空则不显示)
+prevMoreTooltip | string | '向前5页' | 向前更多的提示文本(为空则不显示)
+nextMoreTooltip | string | '向后5页' | 向后更多的提示文本(为空则不显示)
+quickJumperPrefix | string | '跳至' | 快捷跳转的前置文本(为空则不显示)
+quickJumperSuffix | string | - | 快捷跳转的后置文本(为空则不显示)
 \n<br/>
 \n### 支持的函数：\n
 - \`gotoPageIndex(index: int)\` 跳转到\`index\` 处的页 \n
