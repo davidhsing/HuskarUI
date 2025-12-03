@@ -1065,7 +1065,7 @@ HusRectangle {
         }
         // 如果有负数列，平均分配剩余空间
         if (flexibleColumns > 0) {
-            return Math.max(100, (availableWidth - fixedWidth) / flexibleColumns);
+            return Math.max(0, (availableWidth - fixedWidth) / flexibleColumns);
         }
         return 100;
     }
