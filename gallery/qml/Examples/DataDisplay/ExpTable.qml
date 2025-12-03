@@ -245,6 +245,7 @@ filterInput | string | 单元格的过滤输入
                     HusTable {
                         width: parent.width
                         height: 200
+                        color: '#fff'
                         columns: [
                             {
                                 title: 'Name',
@@ -309,14 +310,13 @@ filterInput | string | 单元格的过滤输入
                 HusTable {
                     width: parent.width
                     height: 200
-                    columnResizable: true
-                    rowResizable: true
+                    color: '#fff'
                     columns: [
                         {
                             title: 'Name',
                             dataIndex: 'name',
                             delegate: textDelegate,
-                            width: -1
+                            width: 200
                         },
                         {
                             title: 'Age',

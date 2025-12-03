@@ -11,6 +11,7 @@ QT_FORWARD_DECLARE_CLASS(HusRectanglePrivate)
 class HUSKARUI_EXPORT HusRadius: public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(HusRadius)
 
     Q_PROPERTY(qreal all READ all WRITE setAll NOTIFY allChanged FINAL)
     Q_PROPERTY(qreal topLeft READ topLeft WRITE setTopLeft NOTIFY topLeftChanged FINAL)
@@ -18,25 +19,22 @@ class HUSKARUI_EXPORT HusRadius: public QObject
     Q_PROPERTY(qreal bottomLeft READ bottomLeft WRITE setBottomLeft NOTIFY bottomLeftChanged FINAL)
     Q_PROPERTY(qreal bottomRight READ bottomRight WRITE setBottomRight NOTIFY bottomRightChanged FINAL)
 
-    QML_NAMED_ELEMENT(HusRadius)
-
 public:
-    HusRadius(QObject *parent = nullptr) : QObject{parent} { }
-    ~HusRadius() { }
+    explicit HusRadius(QObject *parent = nullptr) : QObject{parent} { }
 
-    qreal all() const;
+    [[nodiscard]] qreal all() const;
     void setAll(qreal all);
 
-    qreal topLeft() const;
+    [[nodiscard]] qreal topLeft() const;
     void setTopLeft(qreal topLeft);
 
-    qreal topRight() const;
+    [[nodiscard]] qreal topRight() const;
     void setTopRight(qreal topRight);
 
-    qreal bottomLeft() const;
+    [[nodiscard]] qreal bottomLeft() const;
     void setBottomLeft(qreal bottomLeft);
 
-    qreal bottomRight() const;
+    [[nodiscard]] qreal bottomRight() const;
     void setBottomRight(qreal bottomRight);
 
 signals:
@@ -57,17 +55,16 @@ private:
 class HUSKARUI_EXPORT HusPen: public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(HusPen)
 
     HUS_PROPERTY_INIT(qreal, width, setWidth, 1)
     HUS_PROPERTY_INIT(QColor, color, setColor, Qt::transparent)
     HUS_PROPERTY_INIT(int, style, setStyle, Qt::SolidLine)
 
-    QML_NAMED_ELEMENT(HusPen)
-
 public:
-    HusPen(QObject *parent = nullptr) : QObject{parent} { }
+    explicit HusPen(QObject *parent = nullptr) : QObject{parent} { }
 
-    bool isValid() const {
+    [[nodiscard]] bool isValid() const {
         return m_width > 0 && m_color.isValid() && m_color.alpha() > 0;
     }
 };
@@ -75,6 +72,7 @@ public:
 class HUSKARUI_EXPORT HusRectangle: public QQuickPaintedItem
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(HusRectangle)
 
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged FINAL)
     Q_PROPERTY(QJSValue gradient READ gradient WRITE setGradient RESET resetGradient)
@@ -86,34 +84,31 @@ class HUSKARUI_EXPORT HusRectangle: public QQuickPaintedItem
     Q_PROPERTY(qreal bottomLeftRadius READ bottomLeftRadius WRITE setBottomLeftRadius NOTIFY bottomLeftRadiusChanged FINAL)
     Q_PROPERTY(qreal bottomRightRadius READ bottomRightRadius WRITE setBottomRightRadius NOTIFY bottomRightRadiusChanged FINAL)
 
-    QML_NAMED_ELEMENT(HusRectangle)
-
 public:
     explicit HusRectangle(QQuickItem *parent = nullptr);
-    ~HusRectangle();
 
-    QColor color() const;
+    [[nodiscard]] QColor color() const;
     void setColor(QColor color);
 
     HusPen *border();
 
-    QJSValue gradient() const;
+    [[nodiscard]] QJSValue gradient() const;
     void setGradient(const QJSValue &gradient);
     void resetGradient();
 
-    qreal radius() const;
+    [[nodiscard]] qreal radius() const;
     void setRadius(qreal radius);
 
-    qreal topLeftRadius() const;
+    [[nodiscard]] qreal topLeftRadius() const;
     void setTopLeftRadius(qreal radius);
 
-    qreal topRightRadius() const;
+    [[nodiscard]] qreal topRightRadius() const;
     void setTopRightRadius(qreal radius);
 
-    qreal bottomLeftRadius() const;
+    [[nodiscard]] qreal bottomLeftRadius() const;
     void setBottomLeftRadius(qreal radius);
 
-    qreal bottomRightRadius() const;
+    [[nodiscard]] qreal bottomRightRadius() const;
     void setBottomRightRadius(qreal radius);
 
 signals:
@@ -142,12 +137,10 @@ private:
 class HusRectangleInternal: public QQuickRectangle
 {
     Q_OBJECT
-
     QML_NAMED_ELEMENT(HusRectangleInternal)
 
 public:
     explicit HusRectangleInternal(QQuickItem *parent = nullptr) : QQuickRectangle{parent} { }
-    ~HusRectangleInternal() { };
 };
 
 #else
@@ -155,7 +148,6 @@ public:
 class HusRectangleInternal: public HusRectangle
 {
     Q_OBJECT
-
     QML_NAMED_ELEMENT(HusRectangleInternal)
 
 public:
