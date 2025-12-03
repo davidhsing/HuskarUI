@@ -163,7 +163,7 @@ colorResizeBlockBg | color | - | 调整头大小块(左上角方块)背景色
 title | string | 必选 | 标题
 dataIndex | sting | 必选 | 数据索引
 delegate | var | 必选 | 该列的单元格代理
-width | int | 必选 | 该列初始宽度
+width | int | 可选 | 该列初始宽度, 默认 100, 传 -1 表示弹性布局
 minimumWidth | int | 可选 | 该列最小宽度
 maximumWidth | int | 可选 | 该列最大宽度
 editable | bool | 可选 | 列头标题是否可编辑
@@ -311,7 +311,7 @@ filterInput | string | 单元格的过滤输入
                             title: 'Name',
                             dataIndex: 'name',
                             delegate: textDelegate,
-                            width: 200
+                            width: -1
                         },
                         {
                             title: 'Age',
@@ -335,7 +335,7 @@ filterInput | string | 单元格的过滤输入
                             title: 'Action',
                             dataIndex: 'action',
                             delegate: actionDelegate,
-                            width: 300
+                            width: 100
                         }
                     ]
                     initModel: [

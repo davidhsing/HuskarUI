@@ -107,16 +107,14 @@ HusRectangle {
 
                 onToggled: {
                     if (checkState == Qt.Unchecked) {
-                        __private.model.forEach(
-                                    object => {
-                                        __private.checkedKeysMap.delete(object.key);
-                                    });
+                        __private.model.forEach(object => {
+                            __private.checkedKeysMap.delete(object.key);
+                        });
                         __private.checkedKeysMapChanged();
                     } else {
-                        __private.model.forEach(
-                                    object => {
-                                        __private.checkedKeysMap.set(object.key, true);
-                                    });
+                        __private.model.forEach(object => {
+                            __private.checkedKeysMap.set(object.key, true);
+                        });
                         __private.checkedKeysMapChanged();
                     }
                     __private.updateParentCheckBox();
@@ -139,8 +137,9 @@ HusRectangle {
             active: sorter !== undefined
             sourceComponent: columnHeaderSorterIconDelegate
             onLoaded: {
-                if (sortDirections.length === 0) return;
-
+                if (sortDirections.length === 0) {
+                    return;
+                }
                 let ref = control.columns[column];
                 if (!ref.hasOwnProperty('activeSorter')) {
                     ref.activeSorter = false;
@@ -201,16 +200,14 @@ HusRectangle {
 
             HusIconText {
                 visible: sortDirections.indexOf('ascend') !== -1
-                colorIcon: sortMode === 'ascend' ? HusTheme.HusTable.colorIconHover :
-                                                   HusTheme.HusTable.colorIcon
+                colorIcon: sortMode === 'ascend' ? HusTheme.HusTable.colorIconHover : HusTheme.HusTable.colorIcon
                 iconSource: HusIcon.CaretUpOutlined
                 iconSize: HusTheme.HusTable.fontSize - 2
             }
 
             HusIconText {
                 visible: sortDirections.indexOf('descend') !== -1
-                colorIcon: sortMode === 'descend' ? HusTheme.HusTable.colorIconHover :
-                                                    HusTheme.HusTable.colorIcon
+                colorIcon: sortMode === 'descend' ? HusTheme.HusTable.colorIconHover : HusTheme.HusTable.colorIcon
                 iconSource: HusIcon.CaretDownOutlined
                 iconSize: HusTheme.HusTable.fontSize - 2
             }
@@ -334,13 +331,12 @@ HusRectangle {
     }
 
     function checkForRows(rows: var) {
-        rows.forEach(
-                    row => {
-                        if (row >= 0 && row < __private.model.length) {
-                            const key = __private.model[row].key;
-                            __private.checkedKeysMap.set(key, true);
-                        }
-                    });
+        rows.forEach(row => {
+            if (row >= 0 && row < __private.model.length) {
+                const key = __private.model[row].key;
+                __private.checkedKeysMap.set(key, true);
+            }
+        });
         __private.checkedKeysMapChanged();
     }
 
@@ -368,34 +364,31 @@ HusRectangle {
     function sort(column) {
         /*! 仅需设置排序相关属性, 真正的排序在 filter() 中完成 */
         if (columns[column].hasOwnProperty('sorter')) {
-            columns.forEach(
-                        (object, index) => {
-                            if (object.hasOwnProperty('sorter')) {
-                                if (column === index) {
-                                    object.activeSorter = true;
-                                    object.sortIndex = (object.sortIndex + 1) % object.sortDirections.length;
-                                    object.sortMode = object.sortDirections[object.sortIndex];
-                                } else {
-                                    object.activeSorter = false;
-                                    object.sortIndex = -1;
-                                    object.sortMode = 'false';
-                                }
-                            }
-                        });
+            columns.forEach((object, index) => {
+                if (object.hasOwnProperty('sorter')) {
+                    if (column === index) {
+                        object.activeSorter = true;
+                        object.sortIndex = (object.sortIndex + 1) % object.sortDirections.length;
+                        object.sortMode = object.sortDirections[object.sortIndex];
+                    } else {
+                        object.activeSorter = false;
+                        object.sortIndex = -1;
+                        object.sortMode = 'false';
+                    }
+                }
+            });
         }
-
         filter();
     }
 
     function clearSort() {
-        columns.forEach(
-                    object => {
-                        if (object.sortDirections && object.sortDirections.length !== 0) {
-                            object.activeSorter = false;
-                            object.sortIndex = -1;
-                            object.sortMode = 'false';
-                        }
-                    });
+        columns.forEach(object => {
+            if (object.sortDirections && object.sortDirections.length !== 0) {
+                object.activeSorter = false;
+                object.sortIndex = -1;
+                object.sortMode = 'false';
+            }
+        });
         __private.model = [...initModel];
     }
 
@@ -403,60 +396,57 @@ HusRectangle {
         /*! 先过滤 */
         let changed = false;
         let model = [...initModel];
-        columns.forEach(
-                    object => {
-                        if (object.hasOwnProperty('onFilter') && object.hasOwnProperty('filterInput')) {
-                            model = model.filter((record, index) => object.onFilter(object.filterInput, record));
-                            changed = true;
-                        }
-                    });
-        if (changed)
+        columns.forEach(object => {
+            if (object.hasOwnProperty('onFilter') && object.hasOwnProperty('filterInput')) {
+                model = model.filter((record, index) => object.onFilter(object.filterInput, record));
+                changed = true;
+            }
+        });
+        if (changed) {
             __private.model = model;
+        }
 
         /*! 根据 activeSorter 列排序 */
-        columns.forEach(
-                    object => {
-                        if (object.activeSorter === true) {
-                            if (object.sortMode === 'ascend') {
-                                /*! sorter 作为上升处理 */
-                                __private.model.sort(object.sorter);
-                                __private.modelChanged();
-                            } else if (object.sortMode === 'descend') {
-                                /*! 返回 ascend 相反结果即可 */
-                                __private.model.sort((a, b) => object.sorter(b, a));
-                                __private.modelChanged();
-                            } else {
-                                /*! 还原 */
-                                __private.model = model;
-                            }
-                        }
-                    });
+        columns.forEach(object => {
+            if (object.activeSorter === true) {
+                if (object.sortMode === 'ascend') {
+                    /*! sorter 作为上升处理 */
+                    __private.model.sort(object.sorter);
+                    __private.modelChanged();
+                } else if (object.sortMode === 'descend') {
+                    /*! 返回 ascend 相反结果即可 */
+                    __private.model.sort((a, b) => object.sorter(b, a));
+                    __private.modelChanged();
+                } else {
+                    /*! 还原 */
+                    __private.model = model;
+                }
+            }
+        });
     }
 
     function clearFilter() {
-        columns.forEach(
-                    object => {
-                        if (object.hasOwnProperty('onFilter') || object.hasOwnProperty('filterInput')) {
-                            object.filterInput = '';
-                        }
-                    });
+        columns.forEach(object => {
+            if (object.hasOwnProperty('onFilter') || object.hasOwnProperty('filterInput')) {
+                object.filterInput = '';
+            }
+        });
         __private.model = [...initModel];
     }
 
     function clear() {
         __private.model = initModel = [];
         __cellModel.clear();
-        columns.forEach(
-                    object => {
-                        if (object.sortDirections && object.sortDirections.length !== 0) {
-                            object.activeSorter = false;
-                            object.sortIndex = -1;
-                            object.sortMode = 'false';
-                        }
-                        if (object.hasOwnProperty('onFilter') || object.hasOwnProperty('filterInput')) {
-                            object.filterInput = '';
-                        }
-                    });
+        columns.forEach(object => {
+            if (object.sortDirections && object.sortDirections.length !== 0) {
+                object.activeSorter = false;
+                object.sortIndex = -1;
+                object.sortMode = 'false';
+            }
+            if (object.hasOwnProperty('onFilter') || object.hasOwnProperty('filterInput')) {
+                object.filterInput = '';
+            }
+        });
     }
 
     function getTableModel() {
@@ -483,8 +473,7 @@ HusRectangle {
     }
 
     function moveRow(fromRowIndex, toRowIndex, count = 1) {
-        if (fromRowIndex >= 0 && fromRowIndex < __private.model.length &&
-                toRowIndex >= 0 && toRowIndex < __private.model.length) {
+        if (fromRowIndex >= 0 && fromRowIndex < __private.model.length && toRowIndex >= 0 && toRowIndex < __private.model.length) {
             const objects = __private.model.splice(from, count);
             __cellModel.moveRow(fromRowIndex, toRowIndex, count);
             __private.model.splice(to, 0, ...objects);
@@ -517,8 +506,7 @@ HusRectangle {
     }
 
     function setCellData(rowIndex, columnIndex, data: var) {
-        if (rowIndex >= 0 && rowIndex < __private.model.length
-                && columnIndex >= 0 && columnIndex < columns.length) {
+        if (rowIndex >= 0 && rowIndex < __private.model.length && columnIndex >= 0 && columnIndex < columns.length) {
             __cellModel.setData(__cellModel.index(rowIndex, columnIndex), 'display', data);
         }
     }
@@ -550,41 +538,39 @@ HusRectangle {
         preventStealing: true
         hoverEnabled: true
         onEntered: cursorShape = isHorizontal ? Qt.SplitHCursor : Qt.SplitVCursor;
-        onPressed:
-            (mouse) => {
-                if (target) {
-                    startPos = Qt.point(mouseX, mouseY);
-                }
+        onPressed: (mouse) => {
+            if (target) {
+                startPos = Qt.point(mouseX, mouseY);
             }
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    if (isHorizontal) {
-                        let resultWidth = 0;
-                        let offsetX = mouse.x - startPos.x;
-                        if (maximumWidth != Number.NaN && (target.width + offsetX) > maximumWidth) {
-                            resultWidth = maximumWidth;
-                        } else if ((target.width + offsetX) < minimumWidth) {
-                            resultWidth = minimumWidth;
-                        } else {
-                            resultWidth = target.width + offsetX;
-                        }
-                        resizeCallback(resultWidth);
+        }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                if (isHorizontal) {
+                    let resultWidth = 0;
+                    let offsetX = mouse.x - startPos.x;
+                    if (maximumWidth != Number.NaN && (target.width + offsetX) > maximumWidth) {
+                        resultWidth = maximumWidth;
+                    } else if ((target.width + offsetX) < minimumWidth) {
+                        resultWidth = minimumWidth;
                     } else {
-                        let resultHeight = 0;
-                        let offsetY = mouse.y - startPos.y;
-                        if (maximumHeight != Number.NaN && (target.height + offsetY) > maximumHeight) {
-                            resultHeight = maximumHeight;
-                        } else if ((target.height + offsetY) < minimumHeight) {
-                            resultHeight = minimumHeight;
-                        } else {
-                            resultHeight = target.height + offsetY;
-                        }
-                        resizeCallback(resultHeight);
+                        resultWidth = target.width + offsetX;
                     }
-                    mouse.accepted = true;
+                    resizeCallback(resultWidth);
+                } else {
+                    let resultHeight = 0;
+                    let offsetY = mouse.y - startPos.y;
+                    if (maximumHeight != Number.NaN && (target.height + offsetY) > maximumHeight) {
+                        resultHeight = maximumHeight;
+                    } else if ((target.height + offsetY) < minimumHeight) {
+                        resultHeight = minimumHeight;
+                    } else {
+                        resultHeight = target.height + offsetY;
+                    }
+                    resizeCallback(resultHeight);
                 }
+                mouse.accepted = true;
             }
+        }
     }
 
     Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
@@ -597,12 +583,11 @@ HusRectangle {
 
         function updateParentCheckBox() {
             let checkCount = 0;
-            model.forEach(
-                        object => {
-                            if (checkedKeysMap.has(object.key)) {
-                                checkCount++;
-                            }
-                        });
+            model.forEach(object => {
+                if (checkedKeysMap.has(object.key)) {
+                    checkCount++;
+                }
+            });
             parentCheckState = checkCount == 0 ? Qt.Unchecked : checkCount == model.length ? Qt.Checked : Qt.PartiallyChecked;
             parentCheckStateChanged();
         }
@@ -631,25 +616,21 @@ HusRectangle {
         onModelChanged: {
             control.scrollToRow(0);
             __cellModel.clear();
-
             let cellRows = [];
-            model.forEach(
-                        (object, index) => {
-                            let data = {};
-                            for (let i = 0; i < columns.length; i++) {
-                                const dataIndex = columns[i].dataIndex ?? '';
-                                if (object.hasOwnProperty(dataIndex)) {
-                                    data[`__data${i}`] = object[dataIndex];
-                                } else {
-                                    data[`__data${i}`] = null;
-                                }
-                            }
-                            cellRows.push(data);
-                        });
+            model.forEach((object, index) => {
+                let data = {};
+                for (let i = 0; i < columns.length; i++) {
+                    const dataIndex = columns[i].dataIndex ?? '';
+                    if (object.hasOwnProperty(dataIndex)) {
+                        data[`__data${i}`] = object[dataIndex];
+                    } else {
+                        data[`__data${i}`] = null;
+                    }
+                }
+                cellRows.push(data);
+            });
             __cellModel.rows = cellRows;
-
             __rowHeaderModel.rows = model;
-
             updateParentCheckBox();
         }
         onParentCheckStateChanged: updateCheckedKeys();
@@ -677,10 +658,13 @@ HusRectangle {
             model: TableModel {
                 id: __columnHeaderModel
             }
-            columnWidthProvider: (column) => control.columns[column].width
+            columnWidthProvider: (column) => {
+                const availableWidth = __columnHeaderView.width;
+                return control._calcColumnWidth(column, availableWidth);
+            }
             delegate: Item {
                 id: __columnHeaderItem
-                implicitWidth: display.width ?? 100
+                implicitWidth: control._calcColumnWidth(column, __columnHeaderView.width)
                 implicitHeight: __columnHeaderView.height
                 clip: true
 
@@ -695,8 +679,9 @@ HusRectangle {
                 property real maximumWidth: display.maximumWidth ?? Number.MAX_VALUE
 
                 TableView.onReused: {
-                    if (selectionType === 'checkbox')
+                    if (selectionType === 'checkbox') {
                         __private.updateParentCheckBox();
+                    }
                 }
 
                 TableView.editDelegate: HusInput {
@@ -844,23 +829,18 @@ HusRectangle {
             model: TableModel { id: __cellModel }
             delegate: Rectangle {
                 id: __rootItem
-                implicitWidth: control.columns[column].width
+                implicitWidth: control._calcColumnWidth(column, __cellView.width)
                 implicitHeight: Math.max(control.minimumRowHeight, Math.min(control.rowHeightProvider(row, key), control.maximumRowHeight))
                 visible: implicitHeight >= 0
                 clip: true
                 color: {
                     if (__private.checkedKeysMap.has(key)) {
-                        if (row === __cellView.currentHoverRow)
-                            return HusTheme.isDark ? HusTheme.HusTable.colorCellBgDarkHoverChecked :
-                                                     HusTheme.HusTable.colorCellBgHoverChecked;
-                        else
-                            return HusTheme.isDark ? HusTheme.HusTable.colorCellBgDarkChecked :
-                                                     HusTheme.HusTable.colorCellBgChecked;
-                    } else {
-                        return (row === __cellView.currentHoverRow) ? HusTheme.HusTable.colorCellBgHover :
-                                                                   control.alternatingRow && __rootItem.row % 2 !== 0 ?
-                                                                       HusTheme.HusTable.colorCellBgHover : HusTheme.HusTable.colorCellBg;
+                        if (row === __cellView.currentHoverRow) {
+                            return HusTheme.isDark ? HusTheme.HusTable.colorCellBgDarkHoverChecked : HusTheme.HusTable.colorCellBgHoverChecked;
+                        }
+                        return HusTheme.isDark ? HusTheme.HusTable.colorCellBgDarkChecked : HusTheme.HusTable.colorCellBgChecked;
                     }
+                    return (row === __cellView.currentHoverRow) ? HusTheme.HusTable.colorCellBgHover : (control.alternatingRow && __rootItem.row % 2 !== 0 ? HusTheme.HusTable.colorCellBgHover : HusTheme.HusTable.colorCellBg);
                 }
 
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
@@ -1019,5 +999,40 @@ HusRectangle {
         anchors.top: control.columnHeaderVisible ? __columnHeaderViewBg.bottom : __cellMouseArea.top
         anchors.bottom: __cellMouseArea.bottom
         animationEnabled: control.animationEnabled
+    }
+
+    /*!
+     * 计算表格列的宽度
+     * \param column 列索引
+     * \param availableWidth 可用总宽度
+     * \return 列的实际宽度
+     */
+    function _calcColumnWidth(column, availableWidth) {
+        const columnData = columns[column];
+        if (columnData.width === undefined) {
+            return 100;
+        }
+        const widthValue = columnData.width;
+        if (widthValue >= 0) {
+            return widthValue;
+        }
+        // 如果是负数，需要计算填充宽度
+        let flexibleColumns = 0;
+        let fixedWidth = 0;
+        for (let i = 0; i < columns.length; i++) {
+            const colWidth = columns[i].width;
+            if (colWidth === undefined) {
+                fixedWidth += 100;
+            } else if (colWidth >= 0) {
+                fixedWidth += colWidth;
+            } else {
+                flexibleColumns++;
+            }
+        }
+        // 如果有负数列，平均分配剩余空间
+        if (flexibleColumns > 0) {
+            return Math.max(100, (availableWidth - fixedWidth) / flexibleColumns);
+        }
+        return 100;
     }
 }
