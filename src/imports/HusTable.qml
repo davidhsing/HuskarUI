@@ -318,9 +318,7 @@ HusRectangle {
         let cellColumns = [];
         for (let i = 0; i < columns.length; i++) {
             let column = Qt.createQmlObject('import Qt.labs.qmlmodels; TableModelColumn {}', __cellModel);
-            column.display = (function(index) {
-                return `__data${index}`;
-            })(i);
+            column.display = `__data${i}`;
             cellColumns.push(column);
         }
         __cellModel.columns = cellColumns;
@@ -927,8 +925,8 @@ HusRectangle {
                         }
                         property alias checked: __rootItem.checked
                         property alias selected: __rootItem.selected
-                        property alias rowIndex: __rootItem.row
-                        property alias columnIndex: __rootItem.column
+                        property alias row: __rootItem.row
+                        property alias column: __rootItem.column
                         property alias cellData: __rootItem.cellData
                         property alias cellIndex: __rootItem.index
                         property alias dataIndex: __rootItem.dataIndex
