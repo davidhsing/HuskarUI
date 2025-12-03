@@ -67,9 +67,9 @@ HusRectangle {
             color: control.colorColumnHeaderText
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: {
-                if (__columnHeaderDelegate.align == 'left') {
+                if (__columnHeaderDelegate.align === 'left') {
                     return Text.AlignLeft;
-                } else if (__columnHeaderDelegate.align == 'right') {
+                } else if (__columnHeaderDelegate.align === 'right') {
                     return Text.AlignRight;
                 }
                 return Text.AlignHCenter;
@@ -95,7 +95,7 @@ HusRectangle {
             anchors.left: parent.left
             anchors.leftMargin: 10
             anchors.verticalCenter: parent.verticalCenter
-            active: __columnHeaderDelegate.selectionType == 'checkbox'
+            active: __columnHeaderDelegate.selectionType === 'checkbox'
             sourceComponent: HusCheckBox {
                 id: __parentBox
                 animationEnabled: control.animationEnabled
@@ -105,7 +105,7 @@ HusRectangle {
                 }
 
                 onToggled: {
-                    if (checkState == Qt.Unchecked) {
+                    if (checkState === Qt.Unchecked) {
                         __private.model.forEach(object => {
                             __private.checkedKeysMap.delete(object.key);
                         });
@@ -317,8 +317,12 @@ HusRectangle {
 
         let cellColumns = [];
         for (let i = 0; i < columns.length; i++) {
-            let column = Qt.createQmlObject('import Qt.labs.qmlmodels; TableModelColumn {}', __cellModel);
-            column.display = `__data${i}`;
+            let column = Qt.createQmlObject(`  
+                import Qt.labs.qmlmodels;  
+                TableModelColumn {  
+                    display: "__data${i}"  
+                }  
+            `, __cellModel);
             cellColumns.push(column);
         }
         __cellModel.columns = cellColumns;
@@ -546,7 +550,7 @@ HusRectangle {
                 if (isHorizontal) {
                     let resultWidth = 0;
                     let offsetX = mouse.x - startPos.x;
-                    if (maximumWidth != Number.NaN && (target.width + offsetX) > maximumWidth) {
+                    if (maximumWidth !== Number.NaN && (target.width + offsetX) > maximumWidth) {
                         resultWidth = maximumWidth;
                     } else if ((target.width + offsetX) < minimumWidth) {
                         resultWidth = minimumWidth;
@@ -557,7 +561,7 @@ HusRectangle {
                 } else {
                     let resultHeight = 0;
                     let offsetY = mouse.y - startPos.y;
-                    if (maximumHeight != Number.NaN && (target.height + offsetY) > maximumHeight) {
+                    if (maximumHeight !== Number.NaN && (target.height + offsetY) > maximumHeight) {
                         resultHeight = maximumHeight;
                     } else if ((target.height + offsetY) < minimumHeight) {
                         resultHeight = minimumHeight;
@@ -586,7 +590,7 @@ HusRectangle {
                     checkCount++;
                 }
             });
-            parentCheckState = checkCount == 0 ? Qt.Unchecked : checkCount == model.length ? Qt.Checked : Qt.PartiallyChecked;
+            parentCheckState = (checkCount === 0) ? Qt.Unchecked : (checkCount === model.length ? Qt.Checked : Qt.PartiallyChecked);
             parentCheckStateChanged();
         }
 
@@ -655,6 +659,7 @@ HusRectangle {
             clip: true
             model: TableModel {
                 id: __columnHeaderModel
+                TableModelColumn { display: function() { return "key"; } }
             }
             columnWidthProvider: (column) => {
                 const availableWidth = __columnHeaderView.width;
@@ -877,7 +882,7 @@ HusRectangle {
 
                     Loader {
                         id: __childCheckBoxLoader
-                        active: selectionType == 'checkbox'
+                        active: selectionType === 'checkbox'
                         anchors.left: parent.left
                         anchors.leftMargin: 10
                         anchors.verticalCenter: parent.verticalCenter
@@ -890,7 +895,7 @@ HusRectangle {
                             }
 
                             onToggled: {
-                                if (checkState == Qt.Checked) {
+                                if (checkState === Qt.Checked) {
                                     __private.checkedKeysMap.set(__rootItem.key, true);
                                     __rootItem.checked = true;
                                 } else {
