@@ -318,7 +318,9 @@ HusRectangle {
         let cellColumns = [];
         for (let i = 0; i < columns.length; i++) {
             let column = Qt.createQmlObject('import Qt.labs.qmlmodels; TableModelColumn {}', __cellModel);
-            column.display = `__data${i}`;
+            column.display = (function(index) {
+                return `__data${index}`;
+            })(i);
             cellColumns.push(column);
         }
         __cellModel.columns = cellColumns;
@@ -757,7 +759,7 @@ HusRectangle {
             clip: true
             model: TableModel {
                 id: __rowHeaderModel
-                TableModelColumn { display: "key" }
+                TableModelColumn { display: function() { return "key"; } }
             }
             delegate: Item {
                 id: __rowHeaderItem
