@@ -180,10 +180,13 @@ filterInput | string | 可选 | 该列过滤输入
 \n### {columns.delegate}可访问属性：\n
 属性名 | 类型 | 描述
 ------ | --- | ---
-row | int | 行索引
-column | int | 列索引
-cellData | var | 单元格数据
+checked | bool | 是否复选
+selected | bool | 是否选中
+rowIndex | int | 行索引
+columnIndex | int | 列索引
+columnData | var | 列对象(已排除 delegate 属性)
 cellIndex | int | 单元格索引
+cellData | var | 单元格数据
 dataIndex | sting | 数据索引
 filterInput | string | 单元格的过滤输入
 \n<br/>

@@ -923,13 +923,28 @@ HusRectangle {
                                 return null;
                             }
                         }
-                        property alias row: __rootItem.row
-                        property alias column: __rootItem.column
+                        property alias checked: __rootItem.checked
+                        property alias selected: __rootItem.selected
+                        property alias rowIndex: __rootItem.row
+                        property alias columnIndex: __rootItem.column
                         property alias cellData: __rootItem.cellData
                         property alias cellIndex: __rootItem.index
                         property alias dataIndex: __rootItem.dataIndex
                         property alias filterInput: __rootItem.filterInput
                         property alias current: __rootItem.current
+                        property var columnData: {
+                            const origin = control.columns[__rootItem.column];
+                            if (!origin) {
+                                return undefined;
+                            }
+                            const cleaned = {};
+                            for (let key in origin) {
+                                if (key !== 'delegate') {
+                                    cleaned[key] = origin[key];
+                                }
+                            }
+                            return cleaned;
+                        }
                     }
                 }
 
