@@ -757,7 +757,7 @@ HusRectangle {
             clip: true
             model: TableModel {
                 id: __rowHeaderModel
-                TableModelColumn { }
+                TableModelColumn { display: "key" }
             }
             delegate: Item {
                 id: __rowHeaderItem
