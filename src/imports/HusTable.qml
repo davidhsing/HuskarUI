@@ -670,11 +670,11 @@ HusRectangle {
                 required property var display
                 property int row: model.row
                 property int column: model.column
-                property string selectionType: display.selectionType ?? ''
-                property bool editable: display.editable ?? false
-                property var sorter: display.sorter
-                property real minimumWidth: display.minimumWidth ?? 40
-                property real maximumWidth: display.maximumWidth ?? Number.MAX_VALUE
+                property string selectionType: display?.selectionType ?? ''
+                property bool editable: display?.editable ?? false
+                property var sorter: display?.sorter
+                property real minimumWidth: display?.minimumWidth ?? 40
+                property real maximumWidth: display?.maximumWidth ?? Number.MAX_VALUE
 
                 TableView.onReused: {
                     if (selectionType === 'checkbox') {
