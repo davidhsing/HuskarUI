@@ -304,7 +304,7 @@ HusRectangle {
         let headerRow = {};
         for (const object of columns) {
             let column = Qt.createQmlObject('import Qt.labs.qmlmodels; TableModelColumn {}', __columnHeaderModel);
-            column.display = object.dataIndex;
+            column.display = object.dataIndex ?? '';
             headerColumns.push(column);
             headerRow[object.dataIndex] = object;
         }
@@ -317,11 +317,11 @@ HusRectangle {
 
         let cellColumns = [];
         for (let i = 0; i < columns.length; i++) {
-            let column = Qt.createQmlObject(`  
-                import Qt.labs.qmlmodels;  
-                TableModelColumn {  
-                    display: "__data${i}"  
-                }  
+            let column = Qt.createQmlObject(`
+                import Qt.labs.qmlmodels;
+                TableModelColumn {
+                    display: "__data${i}"
+                }
             `, __cellModel);
             cellColumns.push(column);
         }
@@ -606,7 +606,7 @@ HusRectangle {
             let dataObject = new Object;
             for (let i = 0; i < control.columns.length; i++) {
                 const dataIndex = control.columns[i].dataIndex ?? '';
-                if (object.hasOwnProperty(dataIndex)) {
+                if (dataIndex && object.hasOwnProperty(dataIndex)) {
                     dataObject[`__data${i}`] = object[dataIndex];
                 } else {
                     dataObject[`__data${i}`] = null;
@@ -623,7 +623,7 @@ HusRectangle {
                 let data = {};
                 for (let i = 0; i < columns.length; i++) {
                     const dataIndex = columns[i].dataIndex ?? '';
-                    if (object.hasOwnProperty(dataIndex)) {
+                    if (dataIndex && object.hasOwnProperty(dataIndex)) {
                         data[`__data${i}`] = object[dataIndex];
                     } else {
                         data[`__data${i}`] = null;
