@@ -138,7 +138,9 @@ alternatingRow | bool | false | 是否交替显示行背景
 defaultColumnHeaderHeight | int | 40 | 默认列头高度
 defaultRowHeaderWidth | int | 40 | 默认行头宽度
 columnGridVisible | bool | false | 是否显示列网格线
+columnResizeable | bool | false | 是否可调整列宽
 rowGridVisible | bool | false | 是否显示行网格线
+rowResizable | bool | false | 是否可调整行高
 rowHeightProvider | function(row, key) | minimumRowHeight | 行高提供函数
 minimumRowHeight | int | 40 | 最小行高
 maximumRowHeight | int | Number.MAX_VALUE | 最大行高
@@ -149,13 +151,14 @@ checkedKeys | list | [] | 选中行的键列表
 colorGridLine | color | - | 网格线颜色
 columnHeaderVisible | bool | true | 是否显示列头
 columnHeaderTitleFont | font | - | 列头标题字体
-colorColumnHeaderTitle | color | - | 列头标题颜色
+colorColumnHeaderText | color | - | 列头标题颜色
 colorColumnHeaderBg | color | - |  列头背景颜色
 rowHeaderVisible | bool | true | 是否显示行头
 rowHeaderTitleFont | font | - | 行头标题字体
-colorRowHeaderTitle | color | - | 行头标题颜色
+colorRowHeaderText | color | - | 行头标题颜色
 colorRowHeaderBg | color | - | 行头背景颜色
 colorResizeBlockBg | color | - | 调整头大小块(左上角方块)背景色
+resizeBlockText | string | - | 调整头大小块(左上角方块)标题(一般为序号)
 \n<br/>
 \n### {columns}支持的属性：\n
 属性名 | 类型 | 可选/必选 | 描述

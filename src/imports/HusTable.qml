@@ -13,36 +13,35 @@ HusRectangle {
     property int defaultRowHeaderWidth: 40
     property var rowHeightProvider: (row, key) => minimumRowHeight
     property bool columnGridVisible: false
+    property bool columnResizable: false
     property bool rowGridVisible: false
+    property bool rowResizable: false
     property real minimumRowHeight: 40
     property real maximumRowHeight: Number.MAX_VALUE
     property var initModel: []
     readonly property int rowCount: __cellModel.rowCount
     property var columns: []
     property var checkedKeys: []
-
     property bool columnHeaderVisible: true
     property font columnHeaderTitleFont: Qt.font({
         family: HusTheme.HusTable.fontFamily,
         pixelSize: HusTheme.HusTable.fontSize
     })
-    property color colorColumnHeaderTitle: HusTheme.HusTable.colorColumnTitle
+    property color colorColumnHeaderText: HusTheme.HusTable.colorColumnHeaderText
     property color colorColumnHeaderBg: HusTheme.HusTable.colorColumnHeaderBg
-
     property bool rowHeaderVisible: true
     property font rowHeaderTitleFont: Qt.font({
         family: HusTheme.HusTable.fontFamily,
         pixelSize: HusTheme.HusTable.fontSize
     })
-    property color colorRowHeaderTitle: HusTheme.HusTable.colorRowTitle
+    property color colorRowHeaderText: HusTheme.HusTable.colorRowHeaderText
     property color colorRowHeaderBg: HusTheme.HusTable.colorRowHeaderBg
-
     property color colorGridLine: HusTheme.HusTable.colorGridLine
     property color colorResizeBlockBg: HusTheme.HusTable.colorResizeBlockBg
+    property string resizeBlockText: ''
 
     property Component columnHeaderDelegate: Item {
         id: __columnHeaderDelegate
-
         property var model: parent.model
         property var headerData: parent.headerData
         property bool editable: headerData?.editable ?? false
@@ -65,7 +64,7 @@ HusRectangle {
             }
             font: control.columnHeaderTitleFont
             text: headerData?.title ?? ''
-            color: control.colorColumnHeaderTitle
+            color: control.colorColumnHeaderText
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: {
                 if (__columnHeaderDelegate.align == 'left') {
@@ -183,7 +182,7 @@ HusRectangle {
             }
             font: control.rowHeaderTitleFont
             text: (row + 1)
-            color: control.colorRowHeaderTitle
+            color: control.colorRowHeaderText
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
         }
@@ -723,6 +722,7 @@ HusRectangle {
                     maximumWidth: __columnHeaderItem.maximumWidth
                     anchors.right: parent.right
                     anchors.rightMargin: -width * 0.5
+                    enabled: control.columnResizable
                     target: __columnHeaderItem
                     isHorizontal: true
                     resizeCallback: result => __columnHeaderView.setColumnWidth(__columnHeaderItem.column, result);
@@ -735,6 +735,7 @@ HusRectangle {
             height: 1
             anchors.bottom: parent.bottom
             color: control.colorGridLine
+            visible: control.columnHeaderVisible && control.columnGridVisible
         }
     }
 
@@ -782,6 +783,7 @@ HusRectangle {
                     height: 1
                     anchors.bottom: parent.bottom
                     anchors.horizontalCenter: parent.horizontalCenter
+                    visible: control.rowResizable
                 }
 
                 ResizeArea {
@@ -791,6 +793,7 @@ HusRectangle {
                     maximumHeight: control.maximumRowHeight
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: -height * 0.5
+                    enabled: control.rowResizable
                     target: __rowHeaderItem
                     isHorizontal: false
                     resizeCallback: result => __rowHeaderView.setRowHeight(__rowHeaderItem.row, result);
@@ -803,6 +806,7 @@ HusRectangle {
             height: parent.height
             anchors.right: parent.right
             color: control.colorGridLine
+            visible: control.rowHeaderVisible && control.rowGridVisible
         }
     }
 
@@ -843,7 +847,7 @@ HusRectangle {
                     return (row === __cellView.currentHoverRow) ? HusTheme.HusTable.colorCellBgHover : (control.alternatingRow && __rootItem.row % 2 !== 0 ? HusTheme.HusTable.colorCellBgHover : HusTheme.HusTable.colorCellBg);
                 }
 
-                Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
+                // Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
 
                 TableView.onReused: {
                     checked = __private.checkedKeysMap.has(key);
@@ -965,6 +969,7 @@ HusRectangle {
                 minimumHeight: control.defaultColumnHeaderHeight
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: -height * 0.5
+                enabled: control.rowResizable
                 target: __columnHeaderViewBg
                 isHorizontal: false
                 resizeCallback: result => __columnHeaderViewBg.height = result;
@@ -976,9 +981,38 @@ HusRectangle {
                 minimumWidth: control.defaultRowHeaderWidth
                 anchors.right: parent.right
                 anchors.rightMargin: -width * 0.5
+                enabled: control.columnResizable
                 target: __rowHeaderViewBg
                 isHorizontal: true
                 resizeCallback: result => __rowHeaderViewBg.width = result;
+            }
+
+            HusText {
+                anchors {
+                    left: parent.left
+                    leftMargin: 8
+                    right: parent.right
+                    rightMargin: 8
+                    top: parent.top
+                    topMargin: 4
+                    bottom: parent.bottom
+                    bottomMargin: 4
+                }
+                font: control.rowHeaderTitleFont
+                text: control.resizeBlockText
+                color: control.colorColumnHeaderText
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                visible: !!control.resizeBlockText
+            }
+
+            Loader {
+                active: control.rowHeaderVisible
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                width: 1
+                height: parent.height * 0.5
+                sourceComponent: Rectangle {color: control.colorGridLine }
             }
         }
     }
