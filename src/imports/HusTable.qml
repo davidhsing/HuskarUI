@@ -298,8 +298,7 @@ HusRectangle {
     objectName: '__HusTable__'
     clip: true
     color: HusTheme.HusTable.colorBg
-    topLeftRadius: HusTheme.HusTable.radiusBg
-    topRightRadius: HusTheme.HusTable.radiusBg
+    radius: HusTheme.HusTable.radiusBg
     onColumnsChanged: {
         let headerColumns = [];
         let headerRow = {};

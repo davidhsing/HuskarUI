@@ -309,6 +309,8 @@ filterInput | string | 单元格的过滤输入
                 HusTable {
                     width: parent.width
                     height: 200
+                    columnResizable: true
+                    rowResizable: true
                     columns: [
                         {
                             title: 'Name',
