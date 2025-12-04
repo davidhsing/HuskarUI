@@ -156,13 +156,6 @@ Item {
         Behavior on colorText { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
         Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
         Behavior on colorBorder { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
-
-        HusToolTip {
-            visible: parent.hovered && parent.enabled
-            arrowVisible: false
-            animationEnabled: control.animationEnabled
-            text: parent.text
-        }
     }
 
     component PaginationMoreButton: HusIconButton {
