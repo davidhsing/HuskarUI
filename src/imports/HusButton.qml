@@ -46,7 +46,7 @@ T.Button {
         return HusTheme.HusButton.colorTextDisabled;
     }
     property color colorBg: {
-        if (type === HusButton.Type_Link) {
+        if (control.type === HusButton.Type_Link) {
             return 'transparent';
         }
         if (enabled || control.noDisabledState) {
@@ -160,8 +160,8 @@ T.Button {
             anchors.centerIn: parent
             radius: control.shape === HusButton.Shape_Default ? control.radiusBg : height * 0.5
             color: control.colorBg
+            border.color: (control.enabled || control.noDisabledState) ? control.colorBorder : (control.type === HusButton.Type_Link ? 'transparent' : HusTheme.HusButton.colorDefaultBorder)
             border.width: (control.type === HusButton.Type_Filled || control.type === HusButton.Type_Text) ? 0 : 1
-            border.color: (control.enabled || control.noDisabledState) ? control.colorBorder : 'transparent'
 
             property real realWidth: control.shape === HusButton.Shape_Default ? parent.width : parent.height
             property real realHeight: control.shape === HusButton.Shape_Default ? parent.height : parent.height

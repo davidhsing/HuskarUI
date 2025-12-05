@@ -61,13 +61,15 @@ errorState | bool | false | 是否为警示状态
                     }
 
                     HusCaptionButton {
-                        errorState: true
+                        text: qsTr('普通')
+                        colorText: colorIcon
                         iconSource: HusIcon.CloseOutlined
                     }
 
                     HusCaptionButton {
-                        text: qsTr('关闭')
+                        text: qsTr('警示')
                         colorText: colorIcon
+                        errorState: true
                         iconSource: HusIcon.CloseOutlined
                     }
                 }
@@ -80,13 +82,15 @@ errorState | bool | false | 是否为警示状态
                 }
 
                 HusCaptionButton {
-                    errorState: true
+                    text: qsTr('普通')
+                    colorText: colorIcon
                     iconSource: HusIcon.CloseOutlined
                 }
 
                 HusCaptionButton {
-                    text: qsTr('关闭')
+                    text: qsTr('警示')
                     colorText: colorIcon
+                    errorState: true
                     iconSource: HusIcon.CloseOutlined
                 }
             }

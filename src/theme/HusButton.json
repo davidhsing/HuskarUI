@@ -28,8 +28,8 @@
         "colorBorder": "@colorPrimaryBorder",
         "colorBorderHover": "@colorPrimaryBorderHover",
         "colorBorderActive": "@colorPrimaryBorderActive",
-        "colorBorderDisabled": "@colorPrimaryBorder",
-        "colorDefaultBorder": "#80808080",
+        "colorBorderDisabled": "$alpha(@colorTextBase, 0.15)",
+        "colorDefaultBorder": "$onBackground(@colorTextQuaternary, @colorBgBase)",
         "radiusBg": "@radiusPrimary"
     }
 }
