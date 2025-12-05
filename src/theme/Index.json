@@ -85,7 +85,7 @@
         "colorPrimaryContainerBg": "@colorPrimaryBase-6",
         "colorPrimaryContainerBgActive": "@colorPrimaryBase-7",
 
-        "colorPrimaryContainerBgDisabled": "$alpha(@colorTextBase, 0.1)",
+        "colorPrimaryContainerBgDisabled": "$alpha(@colorTextBase, 0.05)",
         "colorPrimaryTextDisabled": "$alpha(@colorTextBase, 0.45)",
 
         "colorSuccessBg": "@colorSuccessBase-1",

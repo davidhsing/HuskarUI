@@ -9,7 +9,7 @@
         "colorText": "@colorPrimaryText",
         "colorTextHover": "@colorPrimaryTextHover",
         "colorTextActive": "@colorPrimaryTextActive",
-        "colorBgDisabled": "@colorPrimaryContainerBgDisabled",
+        "colorBgDisabled": "$onBackground(@colorFillSecondary, @colorBgBase)",
         "colorBg": "$alpha(@colorBgBase, 0)",
         "colorBgHover": "@colorBgBase",
         "colorBgActive": "@colorBgBase",
@@ -28,7 +28,7 @@
         "colorBorder": "@colorPrimaryBorder",
         "colorBorderHover": "@colorPrimaryBorderHover",
         "colorBorderActive": "@colorPrimaryBorderActive",
-        "colorBorderDisabled": "$alpha(@colorTextBase, 0.15)",
+        "colorBorderDisabled": "@colorPrimaryBorder",
         "colorDefaultBorder": "#80808080",
         "radiusBg": "@radiusPrimary"
     }
