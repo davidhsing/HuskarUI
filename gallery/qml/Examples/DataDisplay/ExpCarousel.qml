@@ -44,6 +44,7 @@ draggable | bool | true | 是否启用拖拽切换
 showIndicator | bool | true | 是否显示指示器
 indicatorSpacing | int | 6 | 指示器间隔
 showArrow | bool | false | 是否显示箭头
+radiusIndicator | int | - | 指示器圆角半径
 \n<br/>
 \n### 支持的函数：\n
 - \`switchTo(index: int, animated: bool = true)\` \n
