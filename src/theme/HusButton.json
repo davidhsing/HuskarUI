@@ -9,7 +9,7 @@
         "colorText": "@colorPrimaryText",
         "colorTextHover": "@colorPrimaryTextHover",
         "colorTextActive": "@colorPrimaryTextActive",
-        "colorBgDisabled": "$onBackground(@colorFillSecondary, @colorBgBase)",
+        "colorBgDisabled": "@colorBgDisabled",
         "colorBg": "$alpha(@colorBgBase, 0)",
         "colorBgHover": "@colorBgBase",
         "colorBgActive": "@colorBgBase",

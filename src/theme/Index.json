@@ -64,6 +64,7 @@
         "colorBgSpotlight": "$alpha(@colorTextBase, 0.85)",
         "colorBgBlur": "transparent",
         "colorBgMask": "$alpha(#000, 0.45)",
+        "colorBgDisabled": "$alpha(@colorTextBase, 0.02)",
 
         "colorBorder": "$darker(@colorBgBase, 118)",
         "colorBorderSecondary": "$darker(@colorBgBase, 109)",
@@ -77,15 +78,12 @@
         "colorPrimaryHover":"@colorPrimaryBase-5",
         "colorPrimary": "@colorPrimaryBase-6",
         "colorPrimaryActive": "@colorPrimaryBase-7",
-        "colorPrimaryTextHover": "@colorPrimaryBase-5",
-        "colorPrimaryText": "@colorPrimaryBase-6",
-        "colorPrimaryTextActive": "@colorPrimaryBase-7",
-
         "colorPrimaryContainerBgHover": "@colorPrimaryBase-5",
         "colorPrimaryContainerBg": "@colorPrimaryBase-6",
         "colorPrimaryContainerBgActive": "@colorPrimaryBase-7",
-
-        "colorPrimaryContainerBgDisabled": "$alpha(@colorTextBase, 0.05)",
+        "colorPrimaryTextHover": "@colorPrimaryBase-5",
+        "colorPrimaryText": "@colorPrimaryBase-6",
+        "colorPrimaryTextActive": "@colorPrimaryBase-7",
         "colorPrimaryTextDisabled": "$alpha(@colorTextBase, 0.45)",
 
         "colorSuccessBg": "@colorSuccessBase-1",

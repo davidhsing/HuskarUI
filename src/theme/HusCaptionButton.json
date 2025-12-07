@@ -6,7 +6,7 @@
         "colorIconHover": "@colorTextBase",
         "colorIconActive": "@colorTextBase",
         "colorIconChecked": "@colorPrimaryTextHover",
-        "colorBgDisabled": "@colorPrimaryContainerBgDisabled",
+        "colorBgDisabled": "@colorBgDisabled",
         "colorBg": "$alpha(@colorTextBase, 0)",
         "colorBgHover": "@colorFillSecondary",
         "colorBgActive": "@colorFill",

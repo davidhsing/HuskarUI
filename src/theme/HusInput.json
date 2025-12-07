@@ -20,12 +20,9 @@
         "colorBorderHover": "@colorPrimary",
         "colorBorderDisabled": "$onBackground(@colorFill, @colorBgBase)",
         "colorBg": "@colorBgBase",
-        "colorBgDisabled": "$onBackground(@colorFillSecondary, @colorBgBase)",
+        "colorBgDisabled": "@colorBgDisabled",
         "colorErrorBorder": "@colorError",
         "colorErrorBorderHover": "@colorErrorActive",
-
-        "colorLabelBg": "$onBackground(@colorFillQuaternary, @colorBgBase)",
-        "colorLabelBgDisabled": "$onBackground(@colorFillPrimary, @colorBgBase)",
         "radiusBg": "@radiusPrimary"
     }
 }

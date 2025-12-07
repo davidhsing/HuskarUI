@@ -3,6 +3,8 @@
         "__import__": ["HusInput"]
     },
     "__style__": {
+        "colorLabelBg": "$onBackground(@colorFillQuaternary, @colorBgBase)",
+        "colorLabelBgDisabled": "@colorBgDisabled",
         "colorPrefix": "@colorTextSecondary",
         "colorSuffix": "@colorTextSecondary",
         "colorBeforeLabel": "@colorTextSecondary",

@@ -434,7 +434,6 @@ void HusThemePrivate::reloadComponentThemeFile(QObject *themeObject, const QStri
                                                    const ThemeData::Component &componentTheme)
 {
     Q_Q(HusTheme);
-
     auto tokenMapPtr = componentTheme.tokenMap;
     auto installTokenMap = componentTheme.installTokenMap;
 
@@ -457,21 +456,18 @@ void HusThemePrivate::reloadComponentThemeFile(QObject *themeObject, const QStri
 void HusThemePrivate::reloadDefaultComponentTheme()
 {
     Q_Q(HusTheme);
-
     reloadComponentTheme(m_defaultTheme);
 }
 
 void HusThemePrivate::reloadCustomComponentTheme()
 {
     Q_Q(HusTheme);
-
     reloadComponentTheme(m_customTheme);
 }
 
 void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName, const QString &themePath)
 {
     Q_Q(HusTheme);
-
 #define ADD_COMPONENT_CASE(ComponentName) \
     case Component::ComponentName: \
     registerComponentTheme(q, componentName, &q->m_##ComponentName, themePath, m_defaultTheme); break;
@@ -533,11 +529,12 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
 void HusThemePrivate::registerComponentTheme(QObject *themeObject, const QString &component, QVariantMap *themeMap,
                                              const QString &themePath, QMap<QObject *, ThemeData> &dataMap)
 {
-    if (!themeObject || !themeMap) return;
-
-    if (!dataMap.contains(themeObject))
+    if (!themeObject || !themeMap) {
+        return;
+    }
+    if (!dataMap.contains(themeObject)) {
         dataMap[themeObject] = {};
-
+    }
     if (dataMap.contains(themeObject)) {
         dataMap[themeObject].themeObject = themeObject;
         dataMap[themeObject].componentMap[component].path = themePath;
@@ -548,7 +545,6 @@ void HusThemePrivate::registerComponentTheme(QObject *themeObject, const QString
 HusTheme *HusTheme::instance()
 {
     static HusTheme *theme = new HusTheme;
-
     return theme;
 }
 
@@ -560,7 +556,6 @@ HusTheme *HusTheme::create(QQmlEngine *, QJSEngine *)
 bool HusTheme::isDark() const
 {
     Q_D(const HusTheme);
-
     if (d->m_darkMode == DarkMode::System) {
         return d->m_helper->getColorScheme() == HusSystemThemeHelper::ColorScheme::Dark;
     } else {
@@ -571,14 +566,12 @@ bool HusTheme::isDark() const
 HusTheme::DarkMode HusTheme::darkMode() const
 {
     Q_D(const HusTheme);
-
     return d->m_darkMode;
 }
 
 void HusTheme::setDarkMode(DarkMode mode)
 {
     Q_D(HusTheme);
-
     if (d->m_darkMode != mode) {
         auto oldIsDark = isDark();
         d->m_darkMode = mode;
@@ -595,14 +588,12 @@ void HusTheme::setDarkMode(DarkMode mode)
 HusTheme::TextRenderType HusTheme::textRenderType() const
 {
     Q_D(const HusTheme);
-
     return d->m_textRenderType;
 }
 
 void HusTheme::setTextRenderType(TextRenderType renderType)
 {
     Q_D(HusTheme);
-
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     if (renderType == TextRenderType::CurveRendering) {
         renderType = TextRenderType::QtRendering;
@@ -618,14 +609,12 @@ void HusTheme::setTextRenderType(TextRenderType renderType)
 void HusTheme::registerCustomComponentTheme(QObject *themeObject, const QString &component, QVariantMap *themeMap, const QString &themePath)
 {
     Q_D(HusTheme);
-
     d->registerComponentTheme(themeObject, component, themeMap, themePath, d->m_customTheme);
 }
 
 void HusTheme::reloadTheme()
 {
     Q_D(HusTheme);
-
     if (QFile index(d->m_themeIndexPath); index.open(QIODevice::ReadOnly)) {
         QJsonParseError error;
         QJsonDocument indexDoc = QJsonDocument::fromJson(index.readAll(), &error);
@@ -644,13 +633,11 @@ void HusTheme::reloadTheme()
 void HusTheme::installThemeColorTextBase(const QString &lightAndDark)
 {
     Q_D(HusTheme);
-
     auto __init__ = d->m_indexObject["__init__"].toObject();
     auto __base__ = __init__["__base__"].toObject();
     __base__["colorTextBase"] = lightAndDark.simplified();
     __init__["__base__"] = __base__;
     d->m_indexObject["__init__"] = __init__;
-
     d->reloadIndexTheme();
     d->reloadDefaultComponentTheme();
     d->reloadCustomComponentTheme();
@@ -659,56 +646,54 @@ void HusTheme::installThemeColorTextBase(const QString &lightAndDark)
 void HusTheme::installThemeColorBgBase(const QString &lightAndDark)
 {
     Q_D(HusTheme);
-
     auto __init__ = d->m_indexObject["__init__"].toObject();
     auto __base__ = __init__["__base__"].toObject();
     __base__["colorBgBase"] = lightAndDark.simplified();
     __init__["__base__"] = __base__;
     d->m_indexObject["__init__"] = __init__;
-
     d->reloadIndexTheme();
     d->reloadDefaultComponentTheme();
     d->reloadCustomComponentTheme();
 }
 
+void HusTheme::installThemeColorBgDisabled(const QString &colorDisabled)
+{
+    Q_D(HusTheme);
+    installIndexToken("colorBgDisabled", colorDisabled);
+}
+
 void HusTheme::installThemePrimaryColorBase(const QColor &colorBase)
 {
     Q_D(HusTheme);
-
     installIndexToken("colorPrimaryBase", QString("$genColor(%1)").arg(colorBase.name()));
 }
 
-void HusTheme::installThemePrimaryFontSizeBase(int fontSizeBase)
+void HusTheme::installThemePrimaryFontSizeBase(const int fontSizeBase)
 {
     Q_D(HusTheme);
-
     installIndexToken("fontSizeBase", QString("$genFontSize(%1)").arg(fontSizeBase));
 }
 
 void HusTheme::installThemePrimaryFontFamiliesBase(const QString &familiesBase)
 {
     Q_D(HusTheme);
-
     installIndexToken("fontFamilyBase", QString("$genFontFamily(%1)").arg(familiesBase));
 }
 
-void HusTheme::installThemePrimaryRadiusBase(int radiusBase)
+void HusTheme::installThemePrimaryRadiusBase(const int radiusBase)
 {
     Q_D(HusTheme);
-
     installIndexToken("radiusBase", QString("$genRadius(%1)").arg(radiusBase));
 }
 
 void HusTheme::installThemePrimaryAnimationBase(int durationFast, int durationMid, int durationSlow)
 {
     Q_D(HusTheme);
-
     auto __style__ = d->m_indexObject["__style__"].toObject();
     __style__["durationFast"] = QString::number(durationFast);
     __style__["durationMid"] = QString::number(durationMid);
     __style__["durationSlow"] = QString::number(durationSlow);
     d->m_indexObject["__style__"] = __style__;
-
     d->reloadIndexTheme();
     d->reloadDefaultComponentTheme();
     d->reloadCustomComponentTheme();
@@ -717,13 +702,12 @@ void HusTheme::installThemePrimaryAnimationBase(int durationFast, int durationMi
 void HusTheme::installIndexTheme(const QString &themePath)
 {
     Q_D(HusTheme);
-
     if (themePath != d->m_themeIndexPath) {
-        if (themePath.isEmpty())
+        if (themePath.isEmpty()) {
             d->m_themeIndexPath = ":/HuskarUI/theme/Index.json";
-        else
+        } else {
             d->m_themeIndexPath = themePath;
-
+        }
         reloadTheme();
     }
 }
@@ -731,13 +715,11 @@ void HusTheme::installIndexTheme(const QString &themePath)
 void HusTheme::installIndexToken(const QString &token, const QString &value)
 {
     Q_D(HusTheme);
-
     auto __init__ = d->m_indexObject["__init__"].toObject();
     auto __vars__ = __init__["__vars__"].toObject();
     __vars__[token] = value.simplified();
     __init__["__vars__"] = __vars__;
     d->m_indexObject["__init__"] = __init__;
-
     d->reloadIndexTheme();
     d->reloadDefaultComponentTheme();
     d->reloadCustomComponentTheme();
@@ -746,7 +728,6 @@ void HusTheme::installIndexToken(const QString &token, const QString &value)
 void HusTheme::installComponentTheme(const QString &component, const QString &themePath)
 {
     Q_D(HusTheme);
-
     auto __component__ = d->m_indexObject["__component__"].toObject();
     if (__component__.contains(component)) {
         __component__[component] = themePath;
@@ -760,7 +741,6 @@ void HusTheme::installComponentTheme(const QString &component, const QString &th
 void HusTheme::installComponentToken(const QString &component, const QString &token, const QString &value)
 {
     Q_D(HusTheme);
-
     for (auto &theme: d->m_defaultTheme) {
         if (theme.componentMap.contains(component)) {
             theme.componentMap[component].installTokenMap.insert(token, value);

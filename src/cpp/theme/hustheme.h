@@ -122,8 +122,13 @@ public:
      */
     Q_INVOKABLE void installThemeColorBgBase(const QString &lightAndDark);
     /**
+     * @brief 设置背景禁用色{HusTheme.Primary.colorBgDisabled}
+     * @param colorDisabled 禁用颜色
+     */
+    Q_INVOKABLE void installThemeColorBgDisabled(const QString &colorDisabled);
+    /**
      * @brief 设置主基础色{HusTheme.Primary.colorPrimaryBase}
-     * @param color 主基础颜色
+     * @param colorBase 主基础颜色
      */
     Q_INVOKABLE void installThemePrimaryColorBase(const QColor &colorBase);
     /**

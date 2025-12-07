@@ -119,20 +119,8 @@ contentDescription | string | '' | 内容描述(提高可用性)
 
                     HusInput {
                         width: 150
-                        iconPosition: HusInput.Position_Left
-                        iconSource: HusIcon.UserOutlined
-                        clearEnabled: true
-                        clearIconPosition: HusInput.Position_Left
-                        placeholderText: 'Username'
-                    }
-
-                    HusInput {
-                        width: 150
-                        iconPosition: HusInput.Position_Right
-                        iconSource: HusIcon.UserOutlined
-                        clearEnabled: true
-                        clearIconPosition: HusInput.Position_Right
-                        placeholderText: 'Username'
+                        placeholderText: 'Disabled'
+                        enabled: false
                     }
                 }
 
@@ -167,20 +155,8 @@ contentDescription | string | '' | 内容描述(提高可用性)
 
                 HusInput {
                     width: 150
-                    iconPosition: HusInput.Position_Left
-                    iconSource: HusIcon.UserOutlined
-                    clearEnabled: true
-                    clearIconPosition: HusInput.Position_Left
-                    placeholderText: 'Username'
-                }
-
-                HusInput {
-                    width: 150
-                    iconPosition: HusInput.Position_Right
-                    iconSource: HusIcon.UserOutlined
-                    clearEnabled: true
-                    clearIconPosition: HusInput.Position_Right
-                    placeholderText: 'Username'
+                    placeholderText: 'Disabled'
+                    enabled: false
                 }
             }
         }
