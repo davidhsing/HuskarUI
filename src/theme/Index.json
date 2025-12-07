@@ -64,7 +64,7 @@
         "colorBgSpotlight": "$alpha(@colorTextBase, 0.85)",
         "colorBgBlur": "transparent",
         "colorBgMask": "$alpha(#000, 0.45)",
-        "colorBgDisabled": "$alpha(@colorTextBase, 0.02)",
+        "colorBgDisabled": "$alpha(@colorTextBase, 0.05)",
 
         "colorBorder": "$darker(@colorBgBase, 118)",
         "colorBorderSecondary": "$darker(@colorBgBase, 109)",
