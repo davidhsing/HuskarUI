@@ -98,7 +98,6 @@ Row {
             { value: 'yiminghe', label: 'Yimingheabcdef' },
             { value: 'disabled', label: 'Disabled', enabled: false },
         ]
-        currentIndex: -1
     }
 
     HusSelect {
@@ -140,7 +139,6 @@ Row {
                         { value: 'yiminghe', label: 'Yimingheabcdef' },
                         { value: 'disabled', label: 'Disabled', enabled: false },
                     ]
-                    currentIndex: -1
                 }
 
                 HusSelect {

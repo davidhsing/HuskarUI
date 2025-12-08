@@ -108,6 +108,7 @@ T.ComboBox {
     bottomPadding: 4
     implicitWidth: implicitContentWidth + implicitIndicatorWidth + leftPadding + rightPadding
     implicitHeight: implicitContentHeight + topPadding + bottomPadding
+    currentIndex: -1
     textRole: 'label'
     valueRole: 'value'
     font {
