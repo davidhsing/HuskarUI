@@ -11,6 +11,7 @@ HusSelect {
 
     property var options: []
     property var filterOption: (input, option) => true
+    property var initValue: []
     property alias text: __input.text
     property string prefix: ''
     property string suffix: ''
@@ -93,6 +94,30 @@ HusSelect {
     Behavior on colorTagText { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorTagBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
+    Component.onCompleted: {
+        if (!Array.isArray(control.initValue) || control.initValue.length === 0 || !control.options || control.options.length === 0) {
+            return;
+        }
+        if (genDefaultKey) {
+            control.options.forEach((item) => {
+                if (!item.hasOwnProperty('key')) {
+                    item.key = item.label;
+                }
+            });
+        }
+        for (let j = 0; j < control.initValue.length; j++) {
+            const targetValue = control.initValue[j];
+            for (let k = 0; k < control.options.length; k++) {
+                const item = control.options[k];
+                if (item && item[control.valueRole] === targetValue) {
+                    const key = item.key;
+                    __private.insert(key, item);
+                    break;
+                }
+            }
+        }
+    }
+
     function findKey(key: string) {
         return __private.getData(key);
     }
@@ -131,12 +156,11 @@ HusSelect {
 
     onOptionsChanged: {
         if (genDefaultKey) {
-            options.forEach(
-                        (item, index) => {
-                            if (!item.hasOwnProperty('key')) {
-                                item.key = item.label;
-                            }
-                        });
+            options.forEach((item, index) => {
+                if (!item.hasOwnProperty('key')) {
+                    item.key = item.label;
+                }
+            });
         }
         filter();
     }

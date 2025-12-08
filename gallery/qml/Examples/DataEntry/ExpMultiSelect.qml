@@ -29,9 +29,9 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 options | list | [] | 选项模型列表
 filterOption | function | - | 输入项将使用该函数进行筛选
+initValue | var | [] | 初始值
 text | string | '' | 当前输入文本
 prefix | string | '' | 前缀文本
 suffix | string | '' | 后缀文本
@@ -92,28 +92,28 @@ radiusTagBg | int | - | 标签圆角
 通过 \`filterOption\` 设置过滤选项，它是形如：\`function(input: string, option: var): bool { }\` 的函数。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusMultiSelect {
-                        width: 200
-                        filterOption: (input, option) => option.label.toUpperCase().indexOf(input.toUpperCase()) !== -1
-                        Component.onCompleted: {
-                            const list = [];
-                            for (let i = 10; i < 36; i++) {
-                                list.push({
-                                              label: i.toString(36) + i,
-                                              value: i.toString(36) + i,
-                                          });
-                            }
-                            options = list;
-                        }
-                    }
-                }
+    HusMultiSelect {
+        width: 200
+        filterOption: (input, option) => option.label.toUpperCase().indexOf(input.toUpperCase()) !== -1
+        Component.onCompleted: {
+            const list = [];
+            for (let i = 10; i < 36; i++) {
+                list.push({
+                    label: i.toString(36) + i,
+                    value: i.toString(36) + i,
+                });
+            }
+            options = list;
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -125,9 +125,9 @@ radiusTagBg | int | - | 标签圆角
                         const list = [];
                         for (let i = 10; i < 36; i++) {
                             list.push({
-                                          label: i.toString(36) + i,
-                                          value: i.toString(36) + i,
-                                      });
+                                label: i.toString(36) + i,
+                                value: i.toString(36) + i,
+                            });
                         }
                         options = list;
                     }
@@ -139,6 +139,7 @@ radiusTagBg | int | - | 标签圆角
             width: parent.width
             descTitle: qsTr(`自定义下拉文本`)
             desc: qsTr(`
+通过 \`initValue\` 属性设置初始值。\n
 通过 \`textRole\` 设置弹窗显示的文本角色。\n
 通过 \`searchEnabled\` 设置是否启用搜索。\n
 通过 \`placeholderText\` 设置占位符文本。\n
@@ -178,6 +179,7 @@ radiusTagBg | int | - | 标签圆角
                                 desc: '🇰🇷 Korea (韩国)',
                             },
                         ]
+                        initValue: ['china', 'usa']
                     }
                 }
             `
@@ -211,6 +213,7 @@ radiusTagBg | int | - | 标签圆角
                             desc: '🇰🇷 Korea (韩国)',
                         },
                     ]
+                    initValue: ['china', 'usa']
                 }
             }
         }

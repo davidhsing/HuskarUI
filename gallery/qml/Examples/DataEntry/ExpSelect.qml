@@ -27,13 +27,14 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 active | bool(readonly) | - | 是否处于激活状态
-hoverCursorShape | enum | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
 clearEnabled | bool | false | 是否启用清除按钮
 clearIconSource | int丨string | HusIcon.CloseCircleFilled | 清除图标源(来自 HusIcon)或图标链接
-tooltipVisible | bool | false | 是否显示文字提示
-loading | bool | false | 是否在加载中
 defaultPopupMaxHeight | int | 240 | 默认弹窗最大高度
 errorState | bool | false | 是否为警示状态
+hoverCursorShape | enum | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
+initValue | var | - | 初始值
+loading | bool | false | 是否在加载中
+tooltipVisible | bool | false | 是否显示文字提示
 colorText | color | - | 文本颜色
 colorBorder | color | - | 边框颜色
 colorBg | color | - | 背景颜色
@@ -74,54 +75,56 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - { enabled: 本选择项是否启用 }\n
 通过 \`loading\` 属性设置是否在加载中。\n
 可以让 \`enabled\` 绑定 \`loading\` 实现加载完成才启用。\n
+通过 \`initValue\` 属性设置初始值。\n
 通过 \`tooltipVisible\` 属性设置是否显示文字提示框(主要用于长文本)。\n
 通过 \`defaultPopupMaxHeight\` 属性设置默认弹出窗口的高度。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Layouts
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusSelect {
-                        width: 120
-                        height: 30
-                        tooltipVisible: true
-                        model: [
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'yiminghe', label: 'Yimingheabcdef' },
-                            { value: 'disabled', label: 'Disabled', enabled: false },
-                        ]
-                    }
+    HusSelect {
+        width: 120
+        height: 30
+        tooltipVisible: true
+        model: [
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'yiminghe', label: 'Yimingheabcdef' },
+            { value: 'disabled', label: 'Disabled', enabled: false },
+        ]
+    }
 
-                    HusSelect {
-                        width: 120
-                        height: 30
-                        enabled: false
-                        model: [
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'yiminghe', label: 'Yiminghe' },
-                            { value: 'disabled', label: 'Disabled', enabled: false },
-                        ]
-                    }
+    HusSelect {
+        width: 120
+        height: 30
+        enabled: false
+        model: [
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'yiminghe', label: 'Yiminghe' },
+            { value: 'disabled', label: 'Disabled', enabled: false },
+        ]
+        initValue: 'lucy'
+    }
 
-                    HusSelect {
-                        width: 120
-                        height: 30
-                        loading: true
-                        model: [
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'yiminghe', label: 'Yiminghe' },
-                            { value: 'disabled', label: 'Disabled', enabled: false },
-                        ]
-                    }
-                }
+    HusSelect {
+        width: 120
+        height: 30
+        loading: true
+        model: [
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'yiminghe', label: 'Yiminghe' },
+            { value: 'disabled', label: 'Disabled', enabled: false },
+        ]
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -148,6 +151,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
                         { value: 'yiminghe', label: 'Yiminghe' },
                         { value: 'disabled', label: 'Disabled', enabled: false },
                     ]
+                    initValue: 'lucy'
                 }
 
                 HusSelect {

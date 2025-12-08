@@ -9,13 +9,14 @@ T.ComboBox {
 
     property bool animationEnabled: HusTheme.animationEnabled
     readonly property bool active: hovered || activeFocus
-    property int hoverCursorShape: Qt.PointingHandCursor
     property bool clearEnabled: true
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
-    property bool tooltipVisible: false
-    property bool loading: false
     property int defaultPopupMaxHeight: 240
     property bool errorState: false
+    property int hoverCursorShape: Qt.PointingHandCursor
+    property var initValue: undefined
+    property bool loading: false
+    property bool tooltipVisible: false
     property color colorText: enabled ? (popup.visible ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
     property color colorBorder: errorState ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? (active ? themeSource.colorBorderHover : themeSource.colorBorder) : themeSource.colorBorderDisabled)
     property color colorBg: enabled ? themeSource.colorBg : themeSource.colorBgDisabled
@@ -87,6 +88,19 @@ T.ComboBox {
     Behavior on colorText { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorBorder { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
+
+    Component.onCompleted: {
+        if (typeof control.initValue !== 'undefined' && control.model && control.count > 0) {
+            for (let i = 0; i < control.count; i++) {
+                const item = control.model[i];
+                if (item && item[control.valueRole] === control.initValue) {
+                    control.currentIndex = i;
+                    return;
+                }
+            }
+        }
+        control.currentIndex = -1;
+    }
 
     objectName: '__HusSelect__'
     leftPadding: 4
