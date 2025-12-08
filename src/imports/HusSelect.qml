@@ -43,10 +43,11 @@ T.ComboBox {
         }
         iconSize: control.themeSource.fontSize
         iconSource: {
-            if (control.enabled && control.clearEnabled && __clearMouseArea.active)
+            if (control.enabled && control.clearEnabled && __clearMouseArea.active) {
                 return control.clearIconSource;
-            else
-                control.loading ? HusIcon.LoadingOutlined : HusIcon.DownOutlined
+            } else {
+                return control.loading ? HusIcon.LoadingOutlined : HusIcon.DownOutlined
+            }
         }
 
         Behavior on colorIcon { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
@@ -90,6 +91,7 @@ T.ComboBox {
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
     Component.onCompleted: {
+        __private.lastCurrentIndex = control.currentIndex;
         if (typeof control.initValue !== 'undefined' && control.model && control.count > 0) {
             for (let i = 0; i < control.count; i++) {
                 const item = control.model[i];
@@ -99,7 +101,13 @@ T.ComboBox {
                 }
             }
         }
-        control.currentIndex = -1;
+        if (control.model && __private.lastCurrentIndex === 0) {
+            Qt.callLater(() => {
+                if (__private.lastCurrentIndex === 0) {
+                    control.currentIndex = -1;
+                }
+            });
+        }
     }
 
     objectName: '__HusSelect__'
@@ -256,6 +264,11 @@ T.ComboBox {
         Binding on height { when: __popup.opened; value: __popup.implicitHeight }
     }
 
+    QtObject {
+        id: __private
+        property int lastCurrentIndex: -1
+    }
+
     HoverHandler {
         cursorShape: control.hoverCursorShape
     }
@@ -263,4 +276,10 @@ T.ComboBox {
     Accessible.role: Accessible.ComboBox
     Accessible.name: control.displayText
     Accessible.description: control.contentDescription
+
+    onCurrentIndexChanged: {
+        if (__private.lastCurrentIndex !== -1 && __private.lastCurrentIndex !== currentIndex) {
+            __private.lastCurrentIndex = currentIndex;
+        }
+    }
 }
