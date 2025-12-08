@@ -20,7 +20,6 @@ T.ComboBox {
     property color colorText: enabled ? (popup.visible ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
     property color colorBorder: errorState ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? (active ? themeSource.colorBorderHover : themeSource.colorBorder) : themeSource.colorBorderDisabled)
     property color colorBg: enabled ? themeSource.colorBg : themeSource.colorBgDisabled
-
     property int radiusBg: themeSource.radiusBg
     property int radiusItemBg: themeSource.radiusItemBg
     property int radiusPopupBg: themeSource.radiusPopupBg
@@ -91,7 +90,6 @@ T.ComboBox {
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
     Component.onCompleted: {
-        __private.lastCurrentIndex = control.currentIndex;
         if (typeof control.initValue !== 'undefined' && control.model && control.count > 0) {
             for (let i = 0; i < control.count; i++) {
                 const item = control.model[i];
@@ -100,13 +98,6 @@ T.ComboBox {
                     return;
                 }
             }
-        }
-        if (control.model && __private.lastCurrentIndex === 0) {
-            Qt.callLater(() => {
-                if (__private.lastCurrentIndex === 0) {
-                    control.currentIndex = -1;
-                }
-            });
         }
     }
 
@@ -264,11 +255,6 @@ T.ComboBox {
         Binding on height { when: __popup.opened; value: __popup.implicitHeight }
     }
 
-    QtObject {
-        id: __private
-        property int lastCurrentIndex: -1
-    }
-
     HoverHandler {
         cursorShape: control.hoverCursorShape
     }
@@ -276,10 +262,4 @@ T.ComboBox {
     Accessible.role: Accessible.ComboBox
     Accessible.name: control.displayText
     Accessible.description: control.contentDescription
-
-    onCurrentIndexChanged: {
-        if (__private.lastCurrentIndex !== -1 && __private.lastCurrentIndex !== currentIndex) {
-            __private.lastCurrentIndex = currentIndex;
-        }
-    }
 }
