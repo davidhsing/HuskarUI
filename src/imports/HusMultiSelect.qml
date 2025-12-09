@@ -25,6 +25,7 @@ HusSelect {
     property color colorTagText: themeSource.colorTagText
     property color colorTagBg: themeSource.colorTagBg
     property int radiusTagBg: themeSource.radiusTagBg
+    property var activeValue: []
 
     property Component prefixDelegate: HusText {
         font: control.font
@@ -152,20 +153,6 @@ HusSelect {
 
     function closePopup() {
         __popup.close();
-    }
-
-    onOptionsChanged: {
-        if (genDefaultKey) {
-            options.forEach((item, index) => {
-                if (!item.hasOwnProperty('key')) {
-                    item.key = item.label;
-                }
-            });
-        }
-        filter();
-    }
-    onFilterOptionChanged: {
-        filter();
     }
 
     objectName: '__HusMultiSelect__'
@@ -451,13 +438,49 @@ HusSelect {
             if (selectedKeysMap.has(key)) {
                 return selectedKeysMap.get(key);
             }
-            return undefined;
         }
 
         function updateSelectedKeys() {
             control.selectedKeys = [...selectedKeysMap.keys()];
         }
 
+        function updateSelectedItemsByValues() {
+            if (control.activeValue !== undefined && control.activeValue !== null && Array.isArray(control.activeValue) && control.options && control.options.length > 0) {
+                __private.clear();
+                for (let j = 0; j < control.activeValue.length; j++) {
+                    const targetValue = control.activeValue[j];
+                    for (let k = 0; k < control.options.length; k++) {
+                        const item = control.options[k];
+                        if (item && item[control.valueRole] === targetValue) {
+                            const key = item.key;
+                            __private.insert(key, item);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         onSelectedKeysMapChanged: updateSelectedKeys();
+    }
+
+    onActiveValueChanged: {
+        __private.updateSelectedItemsByValues();
+    }
+
+    onOptionsChanged: {
+        if (genDefaultKey) {
+            options.forEach((item, index) => {
+                if (!item.hasOwnProperty('key')) {
+                    item.key = item.label;
+                }
+            });
+        }
+        __private.updateSelectedItemsByValues();
+        filter();
+    }
+
+    onFilterOptionChanged: {
+        filter();
     }
 }

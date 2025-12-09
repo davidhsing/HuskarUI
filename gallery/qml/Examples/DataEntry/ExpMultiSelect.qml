@@ -32,6 +32,7 @@ Flickable {
 options | list | [] | 选项模型列表
 filterOption | function | - | 输入项将使用该函数进行筛选
 initValue | var | [] | 初始值
+activeValue | var | [] | 绑定值
 text | string | '' | 当前输入文本
 prefix | string | '' | 前缀文本
 suffix | string | '' | 后缀文本

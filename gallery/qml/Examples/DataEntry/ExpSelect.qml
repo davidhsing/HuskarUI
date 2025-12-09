@@ -33,6 +33,7 @@ defaultPopupMaxHeight | int | 240 | 默认弹窗最大高度
 errorState | bool | false | 是否为警示状态
 hoverCursorShape | enum | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
 initValue | var | - | 初始值
+activeValue | var | - | 绑定值
 loading | bool | false | 是否在加载中
 tooltipVisible | bool | false | 是否显示文字提示
 colorText | color | - | 文本颜色

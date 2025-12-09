@@ -15,6 +15,7 @@ T.ComboBox {
     property bool errorState: false
     property int hoverCursorShape: Qt.PointingHandCursor
     property var initValue: null
+    property var activeValue: null
     property bool loading: false
     property bool tooltipVisible: false
     property color colorText: enabled ? (popup.visible ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
@@ -263,4 +264,42 @@ T.ComboBox {
     Accessible.role: Accessible.ComboBox
     Accessible.name: control.displayText
     Accessible.description: control.contentDescription
+
+    QtObject {
+        id: __private
+
+        function updateCurrentIndexByValue() {
+            if (control.activeValue !== undefined && control.activeValue !== null && control.model && control.count > 0) {
+                for (let i = 0; i < control.count; i++) {
+                    const item = control.model[i];
+                    if (item && item[control.valueRole] === control.activeValue) {
+                        control.currentIndex = i;
+                        return;
+                    }
+                }
+                control.currentIndex = -1;
+            }
+        }
+    }
+
+    onActiveValueChanged: {
+        __private.updateCurrentIndexByValue();
+    }
+
+    onCurrentIndexChanged: {
+        if (control.currentIndex >= 0 && control.currentIndex < control.count && control.model) {
+            const item = control.model[control.currentIndex];
+            if (item) {
+                control.activeValue = item[control.valueRole];
+            } else {
+                control.activeValue = null;
+            }
+        } else {
+            control.activeValue = null;
+        }
+    }
+
+    onModelChanged: {
+        __private.updateCurrentIndexByValue();
+    }
 }
