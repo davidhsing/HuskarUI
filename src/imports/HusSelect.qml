@@ -14,7 +14,7 @@ T.ComboBox {
     property int defaultPopupMaxHeight: 240
     property bool errorState: false
     property int hoverCursorShape: Qt.PointingHandCursor
-    property var initValue: undefined
+    property var initValue: null
     property bool loading: false
     property bool tooltipVisible: false
     property color colorText: enabled ? (popup.visible ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
@@ -90,7 +90,7 @@ T.ComboBox {
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
     Component.onCompleted: {
-        if (typeof control.initValue !== 'undefined' && control.model && control.count > 0) {
+        if (control.initValue !== undefined && control.initValue !== null && control.model && control.count > 0) {
             for (let i = 0; i < control.count; i++) {
                 const item = control.model[i];
                 if (item && item[control.valueRole] === control.initValue) {
