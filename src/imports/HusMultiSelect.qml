@@ -166,8 +166,6 @@ HusSelect {
     contentItem: Item {
         implicitHeight: Math.max(__flow.implicitHeight, 22)
 
-        property real rightMargin: control.indicator.width + control.spacing + 5
-
         Loader {
             id: __prefixLoader
             anchors.left: parent.left
@@ -179,7 +177,7 @@ HusSelect {
         Loader {
             id: __suffixLoader
             anchors.right: parent.right
-            anchors.rightMargin: parent.rightMargin
+            anchors.rightMargin: 0
             anchors.verticalCenter: parent.verticalCenter
             sourceComponent: control.suffixDelegate
         }
