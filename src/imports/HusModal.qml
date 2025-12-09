@@ -46,7 +46,7 @@ HusPopup {
         iconSize: control.iconSize
     }
     property Component titleDelegate: HusText {
-        height: control.title == '' ? 0 : implicitHeight
+        height: control.title === '' ? 0 : implicitHeight
         font: control.titleFont
         color: control.colorTitle
         text: control.title
@@ -54,7 +54,7 @@ HusPopup {
         wrapMode: Text.WrapAnywhere
     }
     property Component descriptionDelegate: HusText {
-        height: control.description == '' ? 0 : implicitHeight
+        height: control.description === '' ? 0 : implicitHeight
         font: control.descriptionFont
         color: control.colorDescription
         text: control.description

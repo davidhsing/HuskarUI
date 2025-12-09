@@ -193,7 +193,7 @@ Item {
     function getPath() {
         let path = '';
         for (let i = 0; i < __listModel.count; i++) {
-            path += __listModel.get(i).title + ((i + 1 != count) ? __listModel.get(i).separator : '');
+            path += __listModel.get(i).title + ((i + 1 !== count) ? __listModel.get(i).separator : '');
         }
         return path;
     }

@@ -182,7 +182,7 @@ HusInput {
 
                 property var textData: modelData[control.textRole]
                 property var valueData: modelData[control.valueRole] ?? textData
-                property bool selected: __popupListView.selectIndex == index
+                property bool selected: __popupListView.selectIndex === index
 
                 width: __popupListView.width
                 height: implicitContentHeight + topPadding + bottomPadding

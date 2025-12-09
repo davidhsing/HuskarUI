@@ -168,14 +168,15 @@ Item {
 
             required property var model
             required property int index
-            property bool isStart: index == 0
+            property bool isStart: index === 0
             property bool isEnd: (index + 1) === control.count
             property bool active: false
             property bool detached: __listView.spacing !== -1
 
             Component.onCompleted: {
-                if (control.defaultActiveKey.indexOf(model.key) != -1)
+                if (control.defaultActiveKey.indexOf(model.key) !== -1) {
                     active = true;
+                }
             }
 
             Column {

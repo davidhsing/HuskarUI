@@ -118,12 +118,10 @@ Item {
 
         function createGradient(ctx) {
             let gradient = ctx.createLinearGradient(0, 0, width, height);
-            Object.keys(control.gradientStops).forEach(
-                        stop => {
-                            const percentage = parseFloat(stop) / 100;
-                            gradient.addColorStop(percentage, control.gradientStops[stop]);
-                        });
-
+            Object.keys(control.gradientStops).forEach(stop => {
+                const percentage = parseFloat(stop) / 100;
+                gradient.addColorStop(percentage, control.gradientStops[stop]);
+            });
             return gradient;
         }
 
@@ -183,7 +181,7 @@ Item {
                 if (progressWidth > 0) {
                     drawRoundLine(ctx, x, y, progressWidth, control.barThickness, radius, color);
                     /*! 绘制激活状态动画 */
-                    if (control.status == HusProgress.Status_Active) {
+                    if (control.status === HusProgress.Status_Active) {
                         drawRoundLine(ctx, x, y, __canvas.activeWidth, control.barThickness, radius, __canvas.activeColor);
                     }
                 }

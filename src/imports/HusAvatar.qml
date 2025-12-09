@@ -97,7 +97,7 @@ Item {
             Component.onCompleted: calcBestSize();
 
             function calcBestSize() {
-                if (control.textSize == HusAvatar.Size_Fixed) {
+                if (control.textSize === HusAvatar.Size_Fixed) {
                     __textSource.font.pixelSize = control.size * 0.5;
                 } else {
                     let bestSize = control.size * 0.5;

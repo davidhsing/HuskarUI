@@ -22,25 +22,25 @@ T.Popup {
     property int radiusStepCard: HusTheme.HusTour.radiusCard
     property color colorStepCard: HusTheme.HusTour.colorBg
     property font stepTitleFont: Qt.font({
-                                             bold: true,
-                                             family: HusTheme.HusTour.fontFamily,
-                                             pixelSize: HusTheme.HusTour.fontSizeTitle
-                                         })
+        bold: true,
+        family: HusTheme.HusTour.fontFamily,
+        pixelSize: HusTheme.HusTour.fontSizeTitle
+    })
     property color colorStepTitle: HusTheme.HusTour.colorText
     property font stepDescriptionFont: Qt.font({
-                                                   family: HusTheme.HusTour.fontFamily,
-                                                   pixelSize: HusTheme.HusTour.fontSizeDescription
-                                               })
+        family: HusTheme.HusTour.fontFamily,
+        pixelSize: HusTheme.HusTour.fontSizeDescription
+    })
     property color colorStepDescription: HusTheme.HusTour.colorText
     property font indicatorFont: Qt.font({
-                                             family: HusTheme.HusTour.fontFamily,
-                                             pixelSize: HusTheme.HusTour.fontSizeIndicator
-                                         })
+        family: HusTheme.HusTour.fontFamily,
+        pixelSize: HusTheme.HusTour.fontSizeIndicator
+    })
     property color colorIndicator: HusTheme.HusTour.colorText
     property font buttonFont: Qt.font({
-                                          family: HusTheme.HusTour.fontFamily,
-                                          pixelSize: HusTheme.HusTour.fontSizeButton
-                                      })
+        family: HusTheme.HusTour.fontFamily,
+        pixelSize: HusTheme.HusTour.fontSizeButton
+    })
     property Component arrowDelegate: Canvas {
         id: __arrowDelegate
         width: arrowWidth

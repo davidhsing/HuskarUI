@@ -185,22 +185,34 @@ Item {
             if (object.hasOwnProperty('colorNode')) {
                 object.colorNode = String(object.colorNode);
             }
-
-            if (!object.hasOwnProperty('colorNode')) object.colorNode = String(control.colorNode);
-            if (!object.hasOwnProperty('iconSource')) object.iconSource = 0;
-            if (!object.hasOwnProperty('iconSize')) object.iconSize = control.defaultNodeSize;
-            if (!object.hasOwnProperty('loading')) object.loading = false;
-
-            if (!object.hasOwnProperty('time')) object.time = new Date(undefined);
-            if (!object.hasOwnProperty('timeFormat')) object.timeFormat = control.defaultTimeFormat;
-
-            if (!object.hasOwnProperty('content')) object.content = '';
-            if (!object.hasOwnProperty('contentFormat')) object.contentFormat = control.defaultContentFormat;
-
+            if (!object.hasOwnProperty('colorNode')) {
+                object.colorNode = String(control.colorNode);
+            }
+            if (!object.hasOwnProperty('iconSource')) {
+                object.iconSource = 0;
+            }
+            if (!object.hasOwnProperty('iconSize')) {
+                object.iconSize = control.defaultNodeSize;
+            }
+            if (!object.hasOwnProperty('loading')) {
+                object.loading = false;
+            }
+            if (!object.hasOwnProperty('time')) {
+                object.time = new Date(undefined);
+            }
+            if (!object.hasOwnProperty('timeFormat')) {
+                object.timeFormat = control.defaultTimeFormat;
+            }
+            if (!object.hasOwnProperty('content')) {
+                object.content = '';
+            }
+            if (!object.hasOwnProperty('contentFormat')) {
+                object.contentFormat = control.defaultContentFormat;
+            }
             /*! 判断是否存在有效时间 */
-            if (__private.noTime && object.hasOwnProperty('time') && !isNaN(object.time))
+            if (__private.noTime && object.hasOwnProperty('time') && !isNaN(object.time)) {
                 __private.noTime = false;
-
+            }
             return object;
         }
     }
@@ -228,21 +240,23 @@ Item {
             required property var model
             required property int index
             property bool timeOnLeft: {
-                if (control.mode == HusTimeline.Mode_Right)
+                if (control.mode === HusTimeline.Mode_Right) {
                     return false;
-                else if (control.mode == HusTimeline.Mode_Alternate)
-                    return index % 2 == 0;
-                else
+                } else if (control.mode === HusTimeline.Mode_Alternate) {
+                    return index % 2 === 0;
+                } else {
                     return true;
+                }
             }
 
             Loader {
                 id: lineLoader
                 active: {
-                    if (control.reverse)
-                        return __rootItem.index != 0;
-                    else
-                        __rootItem.index !== (__listModel.count - 1);
+                    if (control.reverse) {
+                        return __rootItem.index !== 0;
+                    } else {
+                        return __rootItem.index !== (__listModel.count - 1);
+                    }
                 }
                 width: defaultLineWidth
                 height: parent.height - nodeLoader.height
@@ -256,10 +270,11 @@ Item {
             Loader {
                 id: nodeLoader
                 x: {
-                    if (__private.noTime && control.mode != HusTimeline.Mode_Alternate)
-                        return control.mode == HusTimeline.Mode_Left ? 0 : parent.width - width;
-                    else
+                    if (__private.noTime && control.mode !== HusTimeline.Mode_Alternate) {
+                        return control.mode === HusTimeline.Mode_Left ? 0 : parent.width - width;
+                    } else {
                         return (__rootItem.width - width) * 0.5;
+                    }
                 }
                 width: 30
                 sourceComponent: nodeDelegate

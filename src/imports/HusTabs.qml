@@ -60,7 +60,7 @@ Item {
         radiusBg: HusTheme.HusTabs.radiusButton
         onClicked: tabAddCallback();
     }
-    property Component tabDelegate: tabType == HusTabs.Type_Default ? __defaultTabDelegate : __cardTabDelegate
+    property Component tabDelegate: tabType === HusTabs.Type_Default ? __defaultTabDelegate : __cardTabDelegate
     property Component contentDelegate: Item { }
     property Component highlightDelegate: Item {
         Loader {
@@ -68,8 +68,8 @@ Item {
             width: __private.isHorizontal ? defaultHighlightWidth : 2
             height: __private.isHorizontal ? 2 : defaultHighlightWidth
             anchors {
-                bottom: control.tabPosition == HusTabs.Position_Top ? parent.bottom : undefined
-                right: control.tabPosition == HusTabs.Position_Left ? parent.right : undefined
+                bottom: control.tabPosition === HusTabs.Position_Top ? parent.bottom : undefined
+                right: control.tabPosition === HusTabs.Position_Left ? parent.right : undefined
             }
             state: __content.state
             states: [
@@ -199,7 +199,7 @@ Item {
 
         HusIconButton {
             id: __tabItem
-            width: (!__private.isHorizontal && control.tabSize == HusTabs.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
+            width: (!__private.isHorizontal && control.tabSize === HusTabs.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
             height: tabHeight
             leftPadding: 5
             rightPadding: 5
@@ -224,7 +224,7 @@ Item {
                 pixelSize: HusTheme.HusTabs.fontSize
             }
             contentItem: Item {
-                implicitWidth: control.tabSize == HusTabs.Size_Auto ? (__text.width + calcIconWidth) : __tabItem.tabFixedWidth
+                implicitWidth: control.tabSize === HusTabs.Size_Auto ? (__text.width + calcIconWidth) : __tabItem.tabFixedWidth
                 implicitHeight: Math.max(__icon.implicitHeight, __text.implicitHeight)
 
                 property int calcIconWidth: __icon.empty ? 0 : (__icon.implicitWidth + __tabItem.tabIconSpacing)
@@ -244,7 +244,7 @@ Item {
 
                 HusText {
                     id: __text
-                    width: control.tabSize == HusTabs.Size_Auto ? implicitWidth :
+                    width: control.tabSize === HusTabs.Size_Auto ? implicitWidth :
                                                                      Math.max(0, __tabItem.tabFixedWidth - 5 - parent.calcIconWidth)
                     anchors.left: __icon.right
                     anchors.leftMargin: __icon.empty ? 0 : __tabItem.tabIconSpacing
@@ -258,7 +258,7 @@ Item {
                 }
             }
             onTabWidthChanged: {
-                if (index == 0)
+                if (index === 0)
                     __private.tabMaxWidth = 0;
                 __private.tabMaxWidth = Math.max(__private.tabMaxWidth, __tabItem.tabWidth);
             }
@@ -274,7 +274,7 @@ Item {
             property int tabIconSpacing: modelData.iconSpacing || 5
             property string tabTitle: modelData.title || ''
             property int tabFixedWidth: modelData.tabWidth || defaultTabWidth
-            property int tabWidth: control.tabSize == HusTabs.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
+            property int tabWidth: control.tabSize === HusTabs.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
                                                                              implicitContentWidth
             property int tabHeight: modelData.tabHeight || defaultTabHeight
         }
@@ -302,7 +302,7 @@ Item {
             property int tabWidth: __tabItem.calcWidth
             property int tabHeight: modelData.tabHeight || defaultTabHeight
 
-            property bool tabEditable: modelData.editable && control.tabType == HusTabs.Type_CardEditable
+            property bool tabEditable: modelData.editable && control.tabType === HusTabs.Type_CardEditable
 
             onTabWidthChanged: {
                 if (__private.needResetTabMaxWidth) {
@@ -314,7 +314,7 @@ Item {
 
             HusRectangle {
                 id: __tabItem
-                width: (!__private.isHorizontal && control.tabSize == HusTabs.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
+                width: (!__private.isHorizontal && control.tabSize === HusTabs.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
                 height: tabHeight
                 z: __dragHandler.drag.active ? 1 : 0
                 color: {
@@ -324,16 +324,16 @@ Item {
                         return isCurrent ? HusTheme.HusTabs.colorTabCardBgChecked : HusTheme.HusTabs.colorTabCardBg;
                 }
                 border.color: HusTheme.HusTabs.colorTabCardBorder
-                topLeftRadius: control.tabPosition == HusTabs.Position_Top || control.tabPosition == HusTabs.Position_Left ? defaultTabBgRadius : 0
-                topRightRadius: control.tabPosition == HusTabs.Position_Top || control.tabPosition == HusTabs.Position_Right ? defaultTabBgRadius : 0
-                bottomLeftRadius: control.tabPosition == HusTabs.Position_Bottom || control.tabPosition == HusTabs.Position_Left ? defaultTabBgRadius : 0
-                bottomRightRadius: control.tabPosition == HusTabs.Position_Bottom || control.tabPosition == HusTabs.Position_Right ? defaultTabBgRadius : 0
+                topLeftRadius: control.tabPosition === HusTabs.Position_Top || control.tabPosition === HusTabs.Position_Left ? defaultTabBgRadius : 0
+                topRightRadius: control.tabPosition === HusTabs.Position_Top || control.tabPosition === HusTabs.Position_Right ? defaultTabBgRadius : 0
+                bottomLeftRadius: control.tabPosition === HusTabs.Position_Bottom || control.tabPosition === HusTabs.Position_Left ? defaultTabBgRadius : 0
+                bottomRightRadius: control.tabPosition === HusTabs.Position_Bottom || control.tabPosition === HusTabs.Position_Right ? defaultTabBgRadius : 0
 
                 property bool down: false
                 property bool hovered: false
                 property int calcIconWidth: __icon.empty ? 0 : (__icon.implicitWidth + __tabContainer.tabIconSpacing)
                 property int calcCloseWidth: __close.visible ? (__close.implicitWidth + 5) : 0
-                property real calcWidth: control.tabSize == HusTabs.Size_Auto ? (__text.width + calcIconWidth + calcCloseWidth + 10)
+                property real calcWidth: control.tabSize === HusTabs.Size_Auto ? (__text.width + calcIconWidth + calcCloseWidth + 10)
                                                                                  : __tabContainer.tabFixedWidth
                 property real calcHeight: Math.max(__icon.implicitHeight, __text.implicitHeight, __close.height)
                 property color colorText: {
@@ -415,7 +415,7 @@ Item {
 
                 HusText {
                     id: __text
-                    width: control.tabSize == HusTabs.Size_Auto ? implicitWidth :
+                    width: control.tabSize === HusTabs.Size_Auto ? implicitWidth :
                                                                      Math.max(0, __tabContainer.tabFixedWidth - 5 - __tabItem.calcIconWidth - __tabItem.calcCloseWidth)
                     anchors.left: __icon.right
                     anchors.leftMargin: __icon.empty ? 0 : __tabContainer.tabIconSpacing
@@ -472,7 +472,7 @@ Item {
 
     QtObject {
         id: __private
-        property bool isHorizontal: control.tabPosition == HusTabs.Position_Top || control.tabPosition == HusTabs.Position_Bottom
+        property bool isHorizontal: control.tabPosition === HusTabs.Position_Top || control.tabPosition === HusTabs.Position_Bottom
         property int tabMaxWidth: 0
         property bool needResetTabMaxWidth: false
     }

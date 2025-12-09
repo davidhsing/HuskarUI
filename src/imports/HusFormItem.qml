@@ -24,7 +24,7 @@ Item {
     property string label: ''
     property int labelAlign: Text.AlignLeft
     property string colonText: ':'
-    property bool showColon: true
+    property bool showColon: false
     property int layout: HusFormItem.Layout_Vertical
     property int labelWidth: 80
     property int labelSpacing: 4

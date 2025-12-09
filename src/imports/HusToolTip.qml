@@ -116,10 +116,10 @@ T.ToolTip {
                 y: __private.isHorizontal ? 0 : (-control.y + (__private.controlParentHeight - height)) * 0.5
                 width: __private.arrowSize.width
                 height: __private.arrowSize.height
-                anchors.top: control.position == HusToolTip.Position_Bottom ? parent.top : undefined
-                anchors.bottom: control.position == HusToolTip.Position_Top ? parent.bottom : undefined
-                anchors.left: control.position == HusToolTip.Position_Right ? parent.left : undefined
-                anchors.right: control.position == HusToolTip.Position_Left ? parent.right : undefined
+                anchors.top: control.position === HusToolTip.Position_Bottom ? parent.top : undefined
+                anchors.bottom: control.position === HusToolTip.Position_Top ? parent.bottom : undefined
+                anchors.left: control.position === HusToolTip.Position_Right ? parent.left : undefined
+                anchors.right: control.position === HusToolTip.Position_Left ? parent.right : undefined
 
                 Connections {
                     target: control
@@ -133,10 +133,10 @@ T.ToolTip {
                 id: __bg
                 width: __text.implicitWidth + 14
                 height: __text.implicitHeight + 12
-                anchors.top: control.position == HusToolTip.Position_Top ? parent.top : undefined
-                anchors.bottom: control.position == HusToolTip.Position_Bottom ? parent.bottom : undefined
-                anchors.left: control.position == HusToolTip.Position_Left ? parent.left : undefined
-                anchors.right: control.position == HusToolTip.Position_Right ? parent.right : undefined
+                anchors.top: control.position === HusToolTip.Position_Top ? parent.top : undefined
+                anchors.bottom: control.position === HusToolTip.Position_Bottom ? parent.bottom : undefined
+                anchors.left: control.position === HusToolTip.Position_Left ? parent.left : undefined
+                anchors.right: control.position === HusToolTip.Position_Right ? parent.right : undefined
                 anchors.margins: 1
                 radius: control.radiusBg
                 color: control.colorBg
@@ -156,7 +156,7 @@ T.ToolTip {
 
     QtObject {
         id: __private
-        property bool isHorizontal: control.position == HusToolTip.Position_Top || control.position == HusToolTip.Position_Bottom
+        property bool isHorizontal: control.position === HusToolTip.Position_Top || control.position === HusToolTip.Position_Bottom
         property size arrowSize: control.arrowVisible ? (isHorizontal ? Qt.size(12, 6) : Qt.size(6, 12)) : Qt.size(0, 0)
         property real controlParentWidth: control.parent ? control.parent.width : 0
         property real controlParentHeight: control.parent ? control.parent.height : 0
