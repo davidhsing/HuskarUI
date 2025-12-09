@@ -583,6 +583,35 @@ HusRectangle {
         property int parentCheckState: Qt.Unchecked
         property var checkedKeysMap: new Map
 
+        function calcColumnWidth(column, availableWidth) {
+            const columnData = columns[column];
+            if (columnData.width === undefined) {
+                return 100;
+            }
+            const widthValue = columnData.width;
+            if (widthValue >= 0) {
+                return widthValue;
+            }
+            // 如果是负数，需要计算填充宽度
+            let flexibleColumns = 0;
+            let fixedWidth = 0;
+            for (let i = 0; i < columns.length; i++) {
+                const colWidth = columns[i].width;
+                if (colWidth === undefined) {
+                    fixedWidth += 100;
+                } else if (colWidth >= 0) {
+                    fixedWidth += colWidth;
+                } else {
+                    flexibleColumns++;
+                }
+            }
+            // 如果有负数列，平均分配剩余空间
+            if (flexibleColumns > 0) {
+                return Math.max(0, (availableWidth - fixedWidth) / flexibleColumns);
+            }
+            return 100;
+        }
+
         function updateParentCheckBox() {
             let checkCount = 0;
             model.forEach(object => {
@@ -635,6 +664,7 @@ HusRectangle {
             __rowHeaderModel.rows = model;
             updateParentCheckBox();
         }
+
         onParentCheckStateChanged: updateCheckedKeys();
         onCheckedKeysMapChanged: updateCheckedKeys();
     }
@@ -663,11 +693,11 @@ HusRectangle {
             }
             columnWidthProvider: (column) => {
                 const availableWidth = __columnHeaderView.width;
-                return control._calcColumnWidth(column, availableWidth);
+                return __private.calcColumnWidth(column, availableWidth);
             }
             delegate: Item {
                 id: __columnHeaderItem
-                implicitWidth: control._calcColumnWidth(column, __columnHeaderView.width)
+                implicitWidth: __private.calcColumnWidth(column, __columnHeaderView.width)
                 implicitHeight: __columnHeaderView.height
                 clip: true
 
@@ -837,7 +867,7 @@ HusRectangle {
             model: TableModel { id: __cellModel }
             delegate: Rectangle {
                 id: __rootItem
-                implicitWidth: control._calcColumnWidth(column, __cellView.width)
+                implicitWidth: __private.calcColumnWidth(column, __cellView.width)
                 implicitHeight: Math.max(control.minimumRowHeight, Math.min(control.rowHeightProvider(row, key), control.maximumRowHeight))
                 visible: implicitHeight >= 0
                 clip: true
@@ -1052,40 +1082,5 @@ HusRectangle {
         anchors.top: control.columnHeaderVisible ? __columnHeaderViewBg.bottom : __cellMouseArea.top
         anchors.bottom: __cellMouseArea.bottom
         animationEnabled: control.animationEnabled
-    }
-
-    /*!
-     * 计算表格列的宽度
-     * \param column 列索引
-     * \param availableWidth 可用总宽度
-     * \return 列的实际宽度
-     */
-    function _calcColumnWidth(column, availableWidth) {
-        const columnData = columns[column];
-        if (columnData.width === undefined) {
-            return 100;
-        }
-        const widthValue = columnData.width;
-        if (widthValue >= 0) {
-            return widthValue;
-        }
-        // 如果是负数，需要计算填充宽度
-        let flexibleColumns = 0;
-        let fixedWidth = 0;
-        for (let i = 0; i < columns.length; i++) {
-            const colWidth = columns[i].width;
-            if (colWidth === undefined) {
-                fixedWidth += 100;
-            } else if (colWidth >= 0) {
-                fixedWidth += colWidth;
-            } else {
-                flexibleColumns++;
-            }
-        }
-        // 如果有负数列，平均分配剩余空间
-        if (flexibleColumns > 0) {
-            return Math.max(0, (availableWidth - fixedWidth) / flexibleColumns);
-        }
-        return 100;
     }
 }

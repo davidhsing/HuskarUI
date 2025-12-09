@@ -145,7 +145,21 @@ Item {
     property string contentDescription: ''
 
     objectName: '__HusSlider__'
-    onValueChanged: __fromValueUpdate();
+    onValueChanged: __private.fromValueUpdate();
+
+    QtObject {
+        id: __private
+
+        function fromValueUpdate() {
+            if (__sliderLoader.item) {
+                if (range) {
+                    __sliderLoader.item.setValues(...value);
+                } else {
+                    __sliderLoader.item.value = value;
+                }
+            }
+        }
+    }
 
     function decrease(first = true) {
         if (__sliderLoader.item) {
@@ -167,15 +181,6 @@ Item {
                 __sliderLoader.item.second.increase();
         } else {
             __sliderLoader.item.decrease();
-        }
-    }
-    function __fromValueUpdate() {
-        if (__sliderLoader.item) {
-            if (range) {
-                __sliderLoader.item.setValues(...value);
-            } else {
-                __sliderLoader.item.value = value;
-            }
         }
     }
 
@@ -263,7 +268,7 @@ Item {
         id: __sliderLoader
         anchors.fill: parent
         sourceComponent: control.range ? __rangeSliderComponent : __sliderComponent
-        onLoaded: __fromValueUpdate();
+        onLoaded: __private.fromValueUpdate();
     }
 
     Accessible.role: Accessible.Slider

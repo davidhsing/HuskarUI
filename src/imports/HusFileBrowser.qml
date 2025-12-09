@@ -91,7 +91,7 @@ Item {
                     item.type = Qt.binding(() => control.buttonType);
                 }
                 if (item.hasOwnProperty('clicked') && typeof item.clicked.connect === 'function') {
-                    item.clicked.connect(__openDialog);
+                    item.clicked.connect(__private.openDialog);
                 }
             }
         }
@@ -101,14 +101,14 @@ Item {
         id: __fileDialog
         visible: false
         fileMode: (control.browserType === HusFileBrowser.Browser_File) ? FileDialog.OpenFile : FileDialog.OpenFiles
-        currentFolder: (control.browserType === HusFileBrowser.Browser_File && !!control.inputText) ? Qt.resolvedUrl(__urlToUniformFile(control.inputText)) : currentFolder
+        currentFolder: (control.browserType === HusFileBrowser.Browser_File && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : currentFolder
         onAccepted: {
             if (control.browserType === HusFileBrowser.Browser_Files) {
-                const paths = selectedFiles.map(url => control.convertLocal ? __urlToLocalFile(url) : url.toString());
+                const paths = selectedFiles.map(url => control.convertLocal ? __private.urlToLocalFile(url) : url.toString());
                 control.inputText = paths.join(control.pathJoiner);
                 control.pathsSelected(paths);
             } else {
-                control.inputText = control.convertLocal ? __urlToLocalFile(selectedFile) : selectedFile.toString();
+                control.inputText = control.convertLocal ? __private.urlToLocalFile(selectedFile) : selectedFile.toString();
                 control.pathSelected(control.inputText);
             }
         }
@@ -117,42 +117,46 @@ Item {
     FolderDialog {
         id: __folderDialog
         visible: false
-        currentFolder: control.inputText ? Qt.resolvedUrl(__urlToUniformFile(control.inputText)) : currentFolder
+        currentFolder: control.inputText ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : currentFolder
         onAccepted: {
-            control.inputText = control.convertLocal ? __urlToLocalFile(selectedFolder.toString()) : selectedFolder.toString();
+            control.inputText = control.convertLocal ? __private.urlToLocalFile(selectedFolder.toString()) : selectedFolder.toString();
             control.pathSelected(control.inputText);
         }
     }
 
-    function __openDialog() {
-        if (control.browserType === HusFileBrowser.Browser_Folder) {
-            __folderDialog.open();
-        } else {
-            __fileDialog.open();
-        }
-    }
+    QtObject {
+        id: __private
 
-    function __urlToLocalFile(url) {
-        if (!url) {
-            return url;
+        function openDialog() {
+            if (control.browserType === HusFileBrowser.Browser_Folder) {
+                __folderDialog.open();
+            } else {
+                __fileDialog.open();
+            }
         }
-        let urlString = (typeof url === 'string') ? url : url.toString();
-        if (!urlString.startsWith('file:///')) {
+
+        function urlToLocalFile(url) {
+            if (!url) {
+                return url;
+            }
+            let urlString = (typeof url === 'string') ? url : url.toString();
+            if (!urlString.startsWith('file:///')) {
+                return urlString;
+            }
+            urlString = urlString.replace(/^file:\/\/\//, Qt.platform.os === 'windows' ? '' : '/');
+            urlString = urlString.replace(/\//g, (Qt.platform.os === 'windows') ? '\\' : '/');
             return urlString;
         }
-        urlString = urlString.replace(/^file:\/\/\//, Qt.platform.os === 'windows' ? '' : '/');
-        urlString = urlString.replace(/\//g, (Qt.platform.os === 'windows') ? '\\' : '/');
-        return urlString;
-    }
 
-    function __urlToUniformFile(path) {
-        if (!path) {
-            return path;
+        function urlToUniformFile(path) {
+            if (!path) {
+                return path;
+            }
+            let pathString = (typeof path === 'string') ? path : path.toString();
+            if (pathString.startsWith('file:///')) {
+                return pathString;
+            }
+            return 'file:///' + pathString;
         }
-        let pathString = (typeof path === 'string') ? path : path.toString();
-        if (pathString.startsWith('file:///')) {
-            return pathString;
-        }
-        return 'file:///' + pathString;
     }
 }
