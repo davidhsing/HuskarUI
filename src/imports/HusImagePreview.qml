@@ -7,6 +7,8 @@ HusPopup {
 
     property bool animationEnabled: HusTheme.animationEnabled
 
+    property real rotationInit: 0
+    property real scaleInit: 1.0
     property real scaleMin: 1.0
     property real scaleMax: 5.0
     property real scaleStep: 0.5
@@ -22,10 +24,12 @@ HusPopup {
         source: sourceUrl
         fillMode: Image.PreserveAspectFit
         onStatusChanged: {
-            if (status == Image.Ready)
+            if (status === Image.Ready) {
                 control.resetTransform();
+            }
         }
     }
+    property Component extraDelegate: Item { }
     property Component closeDelegate: HusIconButton {
         topPadding: 10
         bottomPadding: 10
@@ -269,8 +273,8 @@ HusPopup {
         __private.isCenterScale = true;
         __private.flipX = false;
         __private.flipY = false;
-        __private.scale = 1.0;
-        __private.rotation = 0;
+        __private.scale = control.scaleInit;
+        __private.rotation = control.rotationInit;
         __private.toCenter();
     }
 
@@ -315,13 +319,13 @@ HusPopup {
         signal toCenter()
 
         property bool visible: false
-        property real scale: 1.0
+        property real rotation: control.rotationInit
+        property real scale: control.scaleInit
         property real scaleOriginX: 0.0
         property real scaleOriginY: 0.0
         property bool isCenterScale: true
         property bool flipX: false
         property bool flipY: false
-        property real rotation: 0
 
         function initObject(object) {
             if (!object.hasOwnProperty('url')) object.url = '';
@@ -663,6 +667,7 @@ HusPopup {
             }
 
             Loader {
+                id: indicatorLoader
                 anchors.bottom: operationLoader.top
                 anchors.bottomMargin: 18
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -679,6 +684,7 @@ HusPopup {
             }
 
             Loader {
+                id: prevLoader
                 anchors.left: parent.left
                 anchors.leftMargin: 30
                 anchors.verticalCenter: parent.verticalCenter
@@ -687,6 +693,7 @@ HusPopup {
             }
 
             Loader {
+                id: nextLoader
                 anchors.right: parent.right
                 anchors.rightMargin: 30
                 anchors.verticalCenter: parent.verticalCenter
@@ -695,6 +702,16 @@ HusPopup {
             }
 
             Loader {
+                id: extraLoader
+                anchors.top: parent.top
+                anchors.right: closeLoader.left
+                anchors.rightMargin: 10
+                anchors.margins: 30
+                sourceComponent: control.extraDelegate
+            }
+
+            Loader {
+                id: closeLoader
                 anchors.top: parent.top
                 anchors.right: parent.right
                 anchors.margins: 30

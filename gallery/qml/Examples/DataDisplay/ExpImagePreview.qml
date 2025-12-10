@@ -22,6 +22,7 @@ Flickable {
 \n### 支持的代理：\n
 - **sourceDelegate: Component** 预览源项目代理(可以是 \`Image/AnimatedImage/Video\` 等)，必须提供 \`sourceSize\` 属性，代理可访问属性：\n
   - \`sourceUrl: url\` 源url\n
+- **extraDelegate: Component** 额外操作区代理(位于关闭按钮代理左侧)。\n
 - **closeDelegate: Component** 关闭按钮代理。\n
 - **prevDelegate: Component** 前一幅按钮代理。\n
 - **nextDelegate: Component** 后一幅按钮代理。\n
@@ -32,6 +33,8 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
+rotationInit | real | 0 | 初始旋转(角度)值
+scaleInit | real | 1.0 | 初始缩放值
 scaleMin | real | 1.0 | 最小缩放值
 scaleMax | real | 5.0 | 最大缩放值
 scaleStep | real | 0.5 | 缩放步长
@@ -84,31 +87,43 @@ url | url | 必选 | 图片源
             descTitle: qsTr('基本用法')
             desc: qsTr(`
 基本用法在 [HusImage](internal://HusImage) 中已有示例。\n
+通过 extraDelegate 设置额外操作区。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusButton {
-                        text: 'Show image preview'
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            imagePreview.open();
-                        }
-                    }
+    HusButton {
+        text: 'Show image preview'
+        type: HusButton.Type_Primary
+        onClicked: {
+            imagePreview.open();
+        }
+    }
 
-                    HusImagePreview {
-                        id: imagePreview
-                        items: [
-                            { url: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp' },
-                            { url: 'https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp' },
-                            { url: 'https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp' },
-                        ]
-                    }
-                }
+    HusImagePreview {
+        id: imagePreview
+        items: [
+            { url: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp' },
+            { url: 'https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp' },
+            { url: 'https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp' },
+        ]
+        extraDelegate: HusIconButton {
+            topPadding: 10
+            bottomPadding: 10
+            iconSource: HusIcon.SettingOutlined
+            iconSize: 20
+            shape: HusButton.Shape_Circle
+            type: HusButton.Type_Default
+            colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
+            colorBg: hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg
+            colorBorder: colorBg
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -128,6 +143,17 @@ url | url | 必选 | 图片源
                         { url: 'https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp' },
                         { url: 'https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp' },
                     ]
+                    extraDelegate: HusIconButton {
+                        topPadding: 10
+                        bottomPadding: 10
+                        iconSource: HusIcon.SettingOutlined
+                        iconSize: 20
+                        shape: HusButton.Shape_Circle
+                        type: HusButton.Type_Default
+                        colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
+                        colorBg: hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg
+                        colorBorder: colorBg
+                    }
                 }
             }
         }
@@ -139,37 +165,37 @@ url | url | 必选 | 图片源
 可以通过 \`sourceDelegate\` 将预览项替换为其他组件。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusButton {
-                        text: 'Show gif image preview'
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            gifPreview.open();
-                        }
-                    }
+    HusButton {
+        text: 'Show gif image preview'
+        type: HusButton.Type_Primary
+        onClicked: {
+            gifPreview.open();
+        }
+    }
 
-                    HusImagePreview {
-                        id: gifPreview
-                        sourceDelegate: AnimatedImage {
-                            source: sourceUrl
-                            fillMode: Image.PreserveAspectFit
-                            onStatusChanged: {
-                                if (status == Image.Ready)
-                                    gifPreview.resetTransform();
-                            }
-                        }
-                        items: [
-                            { url: 'https://gw.alipayobjects.com/zos/rmsportal/LyTPSGknLUlxiVdwMWyu.gif' },
-                            { url: 'https://gw.alipayobjects.com/zos/rmsportal/SQOZVQVIossbXpzDmihu.gif' },
-                            { url: 'https://gw.alipayobjects.com/zos/rmsportal/OkIXkscKxywYLSrilPIf.gif' },
-                        ]
-                    }
-                }
+    HusImagePreview {
+        id: gifPreview
+        sourceDelegate: AnimatedImage {
+            source: sourceUrl
+            fillMode: Image.PreserveAspectFit
+            onStatusChanged: {
+                if (status == Image.Ready)
+                    gifPreview.resetTransform();
+            }
+        }
+        items: [
+            { url: 'https://gw.alipayobjects.com/zos/rmsportal/LyTPSGknLUlxiVdwMWyu.gif' },
+            { url: 'https://gw.alipayobjects.com/zos/rmsportal/SQOZVQVIossbXpzDmihu.gif' },
+            { url: 'https://gw.alipayobjects.com/zos/rmsportal/OkIXkscKxywYLSrilPIf.gif' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
