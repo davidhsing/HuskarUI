@@ -166,6 +166,14 @@ Item {
         }
     }
 
+    function scrollToBegin() {
+        __textArea.cursorPosition = 0;
+    }
+
+    function scrollToEnd() {
+        __textArea.cursorPosition = __textArea.length;
+    }
+
     QtObject {
         id: __private
 

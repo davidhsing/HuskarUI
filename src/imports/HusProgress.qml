@@ -29,43 +29,41 @@ Item {
     property real gapDegree: 60
     property bool useGradient: false
     property var gradientStops: ({
-                                     '0%': control.colorBar,
-                                     '100%': control.colorBar
-                                 })
+        '0%': control.colorBar,
+        '100%': control.colorBar
+    })
     property bool showInfo: true
     property int precision: 0
-    property var formatter:
-        () => {
-            switch (control.status) {
-                case HusProgress.Status_Success:
-                return control.type === HusProgress.Type_Line ? HusIcon.CheckCircleFilled : HusIcon.CheckOutlined;
-                case HusProgress.Status_Exception:
-                return control.type === HusProgress.Type_Line ? HusIcon.CloseCircleFilled : HusIcon.CloseOutlined;
-                default: return `${control.percent.toFixed(control.precision)}%`;
-            }
+    property var formatter: () => {
+        switch (control.status) {
+            case HusProgress.Status_Success:
+            return control.type === HusProgress.Type_Line ? HusIcon.CheckCircleFilled : HusIcon.CheckOutlined;
+            case HusProgress.Status_Exception:
+            return control.type === HusProgress.Type_Line ? HusIcon.CloseCircleFilled : HusIcon.CloseOutlined;
+            default: return `${control.percent.toFixed(control.precision)}%`;
         }
+    }
     property color colorBar: {
         switch (control.status) {
-        case HusProgress.Status_Success: return HusTheme.HusProgress.colorBarSuccess;
-        case HusProgress.Status_Exception: return HusTheme.HusProgress.colorBarException;
-        case HusProgress.Status_Normal: return HusTheme.HusProgress.colorBarNormal;
-        case HusProgress.Status_Active : return HusTheme.HusProgress.colorBarNormal;
-        default: return HusTheme.HusProgress.colorBarNormal;
+            case HusProgress.Status_Success: return HusTheme.HusProgress.colorBarSuccess;
+            case HusProgress.Status_Exception: return HusTheme.HusProgress.colorBarException;
+            case HusProgress.Status_Normal: return HusTheme.HusProgress.colorBarNormal;
+            case HusProgress.Status_Active : return HusTheme.HusProgress.colorBarNormal;
+            default: return HusTheme.HusProgress.colorBarNormal;
         }
     }
     property color colorTrack: HusTheme.HusProgress.colorTrack
     property color colorInfo: {
         switch (control.status) {
-        case HusProgress.Status_Success: return HusTheme.HusProgress.colorInfoSuccess;
-        case HusProgress.Status_Exception: return HusTheme.HusProgress.colorInfoException;
-        default: return HusTheme.HusProgress.colorInfoNormal;
+            case HusProgress.Status_Success: return HusTheme.HusProgress.colorInfoSuccess;
+            case HusProgress.Status_Exception: return HusTheme.HusProgress.colorInfoException;
+            default: return HusTheme.HusProgress.colorInfoNormal;
         }
     }
     property Component infoDelegate: HusIconText {
         color: control.colorInfo
         font.family: isIcon ? 'HuskarUI-Icons' : HusTheme.HusProgress.fontFamily
-        font.pixelSize: type === HusProgress.Type_Line ? HusTheme.HusProgress.fontSize + (!isIcon ? 0 : 2) :
-                                                         HusTheme.HusProgress.fontSize + (!isIcon ? 8 : 16)
+        font.pixelSize: type === HusProgress.Type_Line ? HusTheme.HusProgress.fontSize + (!isIcon ? 0 : 2) : HusTheme.HusProgress.fontSize + (!isIcon ? 8 : 16)
         text: isIcon ? String.fromCharCode(formatText) : formatText
         property var formatText: control.formatter()
         property bool isIcon: typeof formatText == 'number'
@@ -87,7 +85,6 @@ Item {
     onColorInfoChanged: __canvas.requestPaint();
 
     Behavior on percent { enabled: control.animationEnabled; NumberAnimation { duration: HusTheme.Primary.durationMid } }
-
     Behavior on colorBar { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
     Behavior on colorTrack { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
     Behavior on colorInfo { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
@@ -190,7 +187,7 @@ Item {
 
         function drawCircle(ctx, centerX, centerY, radius) {
             /*! 确保绘制不会超出边界 */
-            radius = Math.min(radius, Math.min(width, height) * 0.5 - control.barThickness);
+            radius = Math.max(0, Math.min(radius, Math.min(width, height) * 0.5 - control.barThickness));
             const color = getCurrentColor(ctx);
             if (control.steps > 0) {
                 /*! 计算每个步骤的弧长，考虑圆角影响 */
@@ -233,7 +230,7 @@ Item {
         }
 
         function drawDashboard(ctx, centerX, centerY, radius) {
-            radius = Math.min(radius, Math.min(width, height) * 0.5 - control.barThickness);
+            radius = Math.max(0,Math.min(radius, Math.min(width, height) * 0.5 - control.barThickness));
             /* ! 计算开始和结束角度 */
             const gapRad = Math.min(Math.max(control.gapDegree, 0), 295) * Math.PI / 180;
             const startAngle = Math.PI * 0.5 + gapRad * 0.5;

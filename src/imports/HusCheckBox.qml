@@ -96,7 +96,7 @@ T.CheckBox {
                 color: control.colorIndicator
                 visible: opacity !== 0
                 opacity: control.checkState === Qt.Checked ? 1.0 : 0.0
-                radius: parent.radius - 1
+                radius: Math.max(0, parent.radius - 1)
 
                 Behavior on opacity {
                     enabled: control.animationEnabled
