@@ -360,7 +360,7 @@ HusPopup {
                     name: 'open'
                     when: __private.visible
                     PropertyChanges { __imagePreview.opacity: 1.0 }
-                    PropertyChanges { __imagePreview.scale: control.scaleInit }
+                    PropertyChanges { __imagePreview.scale: 1.0 }
                 },
                 State {
                     name: 'close'
