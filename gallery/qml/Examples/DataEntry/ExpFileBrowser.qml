@@ -25,7 +25,7 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-browserType | int | HusFileBrowser.Browser_File | 浏览器样式(来自 HusFileBrowser)
+browserMode | int | HusFileBrowser.Open_File | 浏览器样式(来自 HusFileBrowser)
 defaultFolder | string | - | 默认的浏览文件夹路径
 inputText | string | - | 文本框文本
 inputPlaceholder | string | - | 文本框占位符
@@ -59,7 +59,7 @@ pathJoiner | string | '; ' | 多个文件的分隔符
             descTitle: qsTr('基本')
             desc: qsTr(`
 最简单的用法。\n
-通过 \`browserType\` 属性设置文件/文件夹类型。\n
+通过 \`browserMode\` 属性设置文件/文件夹类型。\n
 通过 \`inputText\` 属性设置文本框文本。\n
 通过 \`inputPlaceholder\` 属性设置文本框占位符。\n
 通过 \`buttonText\` 属性设置按钮文本。\n
@@ -73,17 +73,18 @@ Column {
     spacing: 16
 
     HusRadioBlock {
-        id: browserTypeRadio
+        id: browserModeRadio
         initCheckedIndex: 0
         model: [
-            { label: 'File', value: HusFileBrowser.Browser_File },
-            { label: 'Files', value: HusFileBrowser.Browser_Files },
-            { label: 'Folder', value: HusFileBrowser.Browser_Folder }
+            { label: 'OpenFile', value: HusFileBrowser.Open_File },
+            { label: 'OpenFiles', value: HusFileBrowser.Open_Files },
+            { label: 'OpenFolder', value: HusFileBrowser.Open_Folder },
+            { label: 'SaveFile', value: HusFileBrowser.Save_File }
         ]
     }
 
     HusFileBrowser {
-        browserType: browserTypeRadio.currentCheckedValue
+        browserMode: browserModeRadio.currentCheckedValue
         buttonText: qsTr('浏览')
     }
 }
@@ -93,17 +94,18 @@ Column {
                 spacing: 16
 
                 HusRadioBlock {
-                    id: browserTypeRadio
+                    id: browserModeRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'File', value: HusFileBrowser.Browser_File },
-                        { label: 'Files', value: HusFileBrowser.Browser_Files },
-                        { label: 'Folder', value: HusFileBrowser.Browser_Folder }
+                        { label: 'OpenFile', value: HusFileBrowser.Open_File },
+                        { label: 'OpenFiles', value: HusFileBrowser.Open_Files },
+                        { label: 'OpenFolder', value: HusFileBrowser.Open_Folder },
+                        { label: 'SaveFile', value: HusFileBrowser.Save_File }
                     ]
                 }
 
                 HusFileBrowser {
-                    browserType: browserTypeRadio.currentCheckedValue
+                    browserMode: browserModeRadio.currentCheckedValue
                     buttonText: qsTr('浏览')
                 }
             }

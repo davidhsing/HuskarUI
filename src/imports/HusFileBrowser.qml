@@ -6,13 +6,14 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum BrowserType {
-        Browser_File,
-        Browser_Files,
-        Browser_Folder
+    enum BrowserMode {
+        Open_File,
+        Open_Files,
+        Open_Folder,
+        Save_File
     }
 
-    property int browserType: HusFileBrowser.Browser_File
+    property int browserMode: HusFileBrowser.Open_File
     property string defaultFolder: ''
     property string inputText: ''
     property string inputPlaceholder: ''
@@ -100,10 +101,10 @@ Item {
     FileDialog {
         id: __fileDialog
         visible: false
-        fileMode: (control.browserType === HusFileBrowser.Browser_File) ? FileDialog.OpenFile : FileDialog.OpenFiles
-        currentFolder: (control.browserType === HusFileBrowser.Browser_File && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : currentFolder
+        fileMode: (control.browserMode === HusFileBrowser.Save_File) ? FileDialog.SaveFile : ((control.browserMode === HusFileBrowser.Open_File) ? FileDialog.OpenFile : FileDialog.OpenFiles)
+        currentFolder: ((control.browserMode === HusFileBrowser.Open_File || control.browserMode === HusFileBrowser.Save_File) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : currentFolder
         onAccepted: {
-            if (control.browserType === HusFileBrowser.Browser_Files) {
+            if (control.browserMode === HusFileBrowser.Open_Files) {
                 const paths = selectedFiles.map(url => control.convertLocal ? __private.urlToLocalFile(url) : url.toString());
                 control.inputText = paths.join(control.pathJoiner);
                 control.pathsSelected(paths);
@@ -128,7 +129,7 @@ Item {
         id: __private
 
         function openDialog() {
-            if (control.browserType === HusFileBrowser.Browser_Folder) {
+            if (control.browserMode === HusFileBrowser.Open_Folder) {
                 __folderDialog.open();
             } else {
                 __fileDialog.open();
