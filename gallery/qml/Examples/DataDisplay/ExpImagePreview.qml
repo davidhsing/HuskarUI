@@ -88,6 +88,7 @@ url | url | 必选 | 图片源
             desc: qsTr(`
 基本用法在 [HusImage](internal://HusImage) 中已有示例。\n
 通过 extraDelegate 设置额外操作区。\n
+通过 scaleInit 设置初始缩放比例。\n
                        `)
             code: `
 import QtQuick
@@ -154,6 +155,7 @@ Column {
                         colorBg: hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg
                         colorBorder: colorBg
                     }
+                    scaleInit: 1.0
                 }
             }
         }

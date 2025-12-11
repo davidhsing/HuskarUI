@@ -6,16 +6,13 @@ HusPopup {
     id: control
 
     property bool animationEnabled: HusTheme.animationEnabled
-
     property real rotationInit: 0
     property real scaleInit: 1.0
     property real scaleMin: 1.0
     property real scaleMax: 5.0
     property real scaleStep: 0.5
-
     readonly property alias currentScale: __private.scale
     readonly property alias currentRotation: __private.rotation
-
     property var items: []
     property alias currentIndex: __listView.currentIndex
     readonly property alias count: __listView.count
@@ -365,7 +362,7 @@ HusPopup {
                     name: 'open'
                     when: __private.visible
                     PropertyChanges { __imagePreview.opacity: 1.0 }
-                    PropertyChanges { __imagePreview.scale: 1.0 }
+                    PropertyChanges { __imagePreview.scale: control.scaleInit }
                 },
                 State {
                     name: 'close'
@@ -419,21 +416,19 @@ HusPopup {
                     height: __listView.height
                     clip: true
                     drag.target: __image
-                    onClicked:
-                        mouse => {
-                            if (!imageContains(mouse.x, mouse.y)) {
-                                control.close();
-                            }
+                    onClicked: mouse => {
+                        if (!imageContains(mouse.x, mouse.y)) {
+                            control.close();
                         }
-                    onDoubleClicked:
-                        () => {
-                            if (__private.scale > 1.0) {
-                                __private.scale = 1.0;
-                                __private.toCenter();
-                            } else {
-                                control.zoomIn();
-                            }
+                    }
+                    onDoubleClicked: () => {
+                        if (__private.scale > 1.0) {
+                            __private.scale = 1.0;
+                            __private.toCenter();
+                        } else {
+                            control.zoomIn();
                         }
+                    }
 
                     required property string url
                     property bool isCurrent: ListView.isCurrentItem
@@ -453,8 +448,9 @@ HusPopup {
                         property point mapBottomRight: mapToItem(parent, width, height)
                         sourceComponent: control.sourceDelegate
                         onRealSizeChanged: {
-                            if (realSize.width < __rootItem.width || realSize.height < __rootItem.height)
+                            if (realSize.width < __rootItem.width || realSize.height < __rootItem.height) {
                                 __adjustTimer.restart();
+                            }
                         }
 
                         function calcMapRect() {
@@ -463,14 +459,14 @@ HusPopup {
                         }
 
                         function toCenterX() {
-                            const centerX = __rootItem.width * 0.5 - width * 0.5 * __private.scale;
-                            const originScaleX = (__scale.origin.x - width * 0.5) * (__private.scale - 1.0);
+                            const centerX = (__rootItem.width - width * __private.scale) / 2;
+                            const originScaleX = (__scale.origin.x - width / (__private.scale * 30)) * (__private.scale - 1.0);
                             x = centerX - originScaleX * (__private.flipX ? 1 : -1);
                         }
 
                         function toCenterY() {
-                            const centerY = __rootItem.height * 0.5 - height * 0.5 * __private.scale;
-                            const originScaleY = (__scale.origin.y - height * 0.5) * (__private.scale - 1.0);
+                            const centerY = (__rootItem.height - height * __private.scale) / 2;
+                            const originScaleY = (__scale.origin.y - height / (__private.scale * 30)) * (__private.scale - 1.0);
                             y = centerY - originScaleY * (__private.flipY ? 1 : -1);
                         }
 
@@ -498,7 +494,6 @@ HusPopup {
                                         } else if (mapTopLeft.x > 0) {
                                             x += -mapTopLeft.x;
                                         }
-
                                     } else {
                                         if (mapTopLeft.x < __rootItem.width) {
                                             x += (__rootItem.width - mapTopLeft.x);
