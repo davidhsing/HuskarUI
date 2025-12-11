@@ -124,6 +124,7 @@ Column {
             colorBg: hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg
             colorBorder: colorBg
         }
+        scaleInit: 1.0
     }
 }
             `

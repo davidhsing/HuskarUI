@@ -69,12 +69,9 @@ HusPopup {
         iconSize: 20
         shape: HusButton.Shape_Circle
         type: HusButton.Type_Default
-        hoverCursorShape: control.currentIndex >= (control.count - 1) ? Qt.ForbiddenCursor : Qt.PointingHandCursor
-        colorIcon: control.currentIndex >= (control.count - 1) ? HusTheme.HusImage.colorButtonText :
-                                                                 HusTheme.HusImage.colorButtonTextHover
-        colorBg: control.currentIndex >= (control.count - 1) ?
-                     'transparent' : hovered ? HusTheme.HusImage.colorButtonBgHover :
-                                               HusTheme.HusImage.colorButtonBg
+        hoverCursorShape: (control.currentIndex >= (control.count - 1)) ? Qt.ForbiddenCursor : Qt.PointingHandCursor
+        colorIcon: (control.currentIndex >= (control.count - 1)) ? HusTheme.HusImage.colorButtonText : HusTheme.HusImage.colorButtonTextHover
+        colorBg: (control.currentIndex >= (control.count - 1)) ? 'transparent' : (hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg)
         colorBorder: 'transparent'
         onClicked: control.incrementCurrentIndex();
     }
@@ -673,6 +670,7 @@ HusPopup {
                 anchors.horizontalCenter: parent.horizontalCenter
                 active: __listModel.count > 1
                 sourceComponent: control.indicatorDelegate
+                z: 1
             }
 
             Loader {
@@ -681,6 +679,7 @@ HusPopup {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 30
                 sourceComponent: control.operationDelegate
+                z: 1
             }
 
             Loader {
@@ -690,6 +689,7 @@ HusPopup {
                 anchors.verticalCenter: parent.verticalCenter
                 active: __listModel.count > 1
                 sourceComponent: control.prevDelegate
+                z: 1
             }
 
             Loader {
@@ -699,6 +699,7 @@ HusPopup {
                 anchors.verticalCenter: parent.verticalCenter
                 active: __listModel.count > 1
                 sourceComponent: control.nextDelegate
+                z: 1
             }
 
             Loader {
@@ -708,6 +709,7 @@ HusPopup {
                 anchors.rightMargin: 10
                 anchors.margins: 30
                 sourceComponent: control.extraDelegate
+                z: 1
             }
 
             Loader {
@@ -716,6 +718,7 @@ HusPopup {
                 anchors.right: parent.right
                 anchors.margins: 30
                 sourceComponent: control.closeDelegate
+                z: 1
             }
         }
     }
