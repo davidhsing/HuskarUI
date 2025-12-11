@@ -706,8 +706,7 @@ HusPopup {
                 id: extraLoader
                 anchors.top: parent.top
                 anchors.right: closeLoader.left
-                anchors.rightMargin: 10
-                anchors.margins: 30
+                anchors.topMargin: 30
                 sourceComponent: control.extraDelegate
                 z: 1
             }
@@ -716,7 +715,8 @@ HusPopup {
                 id: closeLoader
                 anchors.top: parent.top
                 anchors.right: parent.right
-                anchors.margins: 30
+                anchors.topMargin: 30
+                anchors.rightMargin: 30
                 sourceComponent: control.closeDelegate
                 z: 1
             }
