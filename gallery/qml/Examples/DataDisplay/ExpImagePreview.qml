@@ -38,6 +38,7 @@ scaleInit | real | 1.0 | 初始缩放值
 scaleMin | real | 1.0 | 最小缩放值
 scaleMax | real | 5.0 | 最大缩放值
 scaleStep | real | 0.5 | 缩放步长
+centerAfterDrag | bool | true | 拖拽结束后图片是否回到中心点
 currentScale | real(readonly) | - | 当前缩放值
 currentRotation | real(readonly) | - | 当前旋转(角度)值
 currentIndex | int | - | 当前图片索引

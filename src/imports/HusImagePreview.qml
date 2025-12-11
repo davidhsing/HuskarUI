@@ -11,6 +11,7 @@ HusPopup {
     property real scaleMin: 1.0
     property real scaleMax: 5.0
     property real scaleStep: 0.5
+    property bool centerAfterDrag: true
     readonly property alias currentScale: __private.scale
     readonly property alias currentRotation: __private.rotation
     property var items: []
@@ -471,6 +472,11 @@ HusPopup {
                         }
 
                         function adjustPosition() {
+                            if (control.centerAfterDrag) {
+                                toCenterX();
+                                toCenterY();
+                                return;
+                            }
                             const r = parseInt(__private.rotation) % 360;
                             if (realSize.width > __rootItem.width) {
                                 if (__private.flipX) {
@@ -538,6 +544,7 @@ HusPopup {
                             } else {
                                 toCenterY();
                             }
+                            toCenterY();
                         }
 
                         onXChanged: calcMapRect();
