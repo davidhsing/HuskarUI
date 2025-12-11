@@ -328,8 +328,9 @@ HusPopup {
         property bool flipY: false
 
         function initObject(object) {
-            if (!object.hasOwnProperty('url')) object.url = '';
-
+            if (!object.hasOwnProperty('url')) {
+                object.url = '';
+            }
             return object;
         }
 
@@ -443,16 +444,13 @@ HusPopup {
 
                     Loader {
                         id: __image
-
                         property string sourceUrl: __rootItem.url
                         property size sourceSize: item ? item.sourceSize : Qt.size(0, 0)
-
                         property real minViewHeight: __rootItem.height - 200
                         property real aspectRatio: sourceSize.width / sourceSize.height
                         property size realSize: Qt.size(width * __private.scale, height * __private.scale)
                         property point mapTopLeft: mapToItem(parent, 0, 0)
                         property point mapBottomRight: mapToItem(parent, width, height)
-
                         sourceComponent: control.sourceDelegate
                         onRealSizeChanged: {
                             if (realSize.width < __rootItem.width || realSize.height < __rootItem.height)
@@ -465,13 +463,13 @@ HusPopup {
                         }
 
                         function toCenterX() {
-                            const centerX = __rootItem.width * 0.5 - width * 0.5;
+                            const centerX = __rootItem.width * 0.5 - width * 0.5 * __private.scale;
                             const originScaleX = (__scale.origin.x - width * 0.5) * (__private.scale - 1.0);
                             x = centerX - originScaleX * (__private.flipX ? 1 : -1);
                         }
 
                         function toCenterY() {
-                            const centerY = __rootItem.height * 0.5 - height * 0.5;
+                            const centerY = __rootItem.height * 0.5 - height * 0.5 * __private.scale;
                             const originScaleY = (__scale.origin.y - height * 0.5) * (__private.scale - 1.0);
                             y = centerY - originScaleY * (__private.flipY ? 1 : -1);
                         }
@@ -480,7 +478,7 @@ HusPopup {
                             const r = parseInt(__private.rotation) % 360;
                             if (realSize.width > __rootItem.width) {
                                 if (__private.flipX) {
-                                    if (r == 0 || r == -90 || r == 270) {
+                                    if (r === 0 || r === -90 || r === 270) {
                                         if (mapTopLeft.x < __rootItem.width) {
                                             x += (__rootItem.width - mapTopLeft.x);
                                         } else if (mapBottomRight.x > 0) {
@@ -494,7 +492,7 @@ HusPopup {
                                         }
                                     }
                                 } else {
-                                    if (r == 0 || r == -90 || r == 270) {
+                                    if (r === 0 || r === -90 || r === 270) {
                                         if (mapBottomRight.x < __rootItem.width) {
                                             x += (__rootItem.width - mapBottomRight.x);
                                         } else if (mapTopLeft.x > 0) {
@@ -514,7 +512,7 @@ HusPopup {
                             }
                             if (realSize.height > __rootItem.height) {
                                 if (__private.flipY) {
-                                    if (r == 0 || r == -270 || r == 90) {
+                                    if (r === 0 || r === -270 || r === 90) {
                                         if (mapTopLeft.y < __rootItem.height) {
                                             y += __rootItem.height - mapTopLeft.y;
                                         } else if (mapBottomRight.y > 0) {
@@ -528,7 +526,7 @@ HusPopup {
                                         }
                                     }
                                 } else {
-                                    if (r == 0 || r == -270 || r == 90) {
+                                    if (r === 0 || r === -270 || r === 90) {
                                         if (mapBottomRight.y < __rootItem.height) {
                                             y += __rootItem.height - mapBottomRight.y;
                                         } else if (mapTopLeft.y > 0) {
