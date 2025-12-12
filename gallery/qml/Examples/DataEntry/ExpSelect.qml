@@ -36,6 +36,7 @@ initValue | var | - | 初始值
 activeValue | var | - | 绑定值
 loading | bool | false | 是否在加载中
 tooltipVisible | bool | false | 是否显示文字提示
+placeholderText | string | - | 占位符文本
 colorText | color | - | 文本颜色
 colorBorder | color | - | 边框颜色
 colorBg | color | - | 背景颜色
