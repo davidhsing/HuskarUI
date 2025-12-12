@@ -101,6 +101,7 @@ Row {
             { value: 'disabled', label: 'Disabled', enabled: false },
         ]
         errorState: true
+        placeholderText: '请选择'
     }
 
     HusSelect {
@@ -143,6 +144,7 @@ Row {
                         { value: 'disabled', label: 'Disabled', enabled: false },
                     ]
                     errorState: true
+                    placeholderText: '请选择'
                 }
 
                 HusSelect {

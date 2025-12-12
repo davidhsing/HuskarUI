@@ -18,7 +18,8 @@ T.ComboBox {
     property var activeValue: null
     property bool loading: false
     property bool tooltipVisible: false
-    property color colorText: enabled ? (popup.visible ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
+    property alias placeholderText: __contentItem.placeholderText
+    property color colorText: enabled ? ((popup.visible && !editable) ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
     property color colorBorder: errorState ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? (active ? themeSource.colorBorderHover : themeSource.colorBorder) : themeSource.colorBorderDisabled)
     property color colorBg: enabled ? themeSource.colorBg : themeSource.colorBgDisabled
     property int radiusBg: themeSource.radiusBg
@@ -28,6 +29,8 @@ T.ComboBox {
     property var themeSource: HusTheme.HusSelect
 
     property Component indicatorDelegate: HusIconText {
+        leftPadding: 4
+        rightPadding: 8
         colorIcon: {
             if (control.enabled) {
                 if (__clearMouseArea.active) {
@@ -70,6 +73,9 @@ T.ComboBox {
             onExited: hovered = false;
             onClicked: function(mouse) {
                 if (active && control.clearEnabled) {
+                    if (control.editable) {
+                        control.editText = '';
+                    }
                     control.currentIndex = -1;
                     control.clickClear();
                 } else {
@@ -81,7 +87,7 @@ T.ComboBox {
                 }
                 mouse.accepted = true;
             }
-            property bool active: !control.loading && control.currentIndex >= 0 && control.count > 0 && control.hovered
+            property bool active: !control.loading && (control.displayText || control.editText) && control.hovered
             property bool hovered: false
         }
     }
@@ -103,8 +109,8 @@ T.ComboBox {
     }
 
     objectName: '__HusSelect__'
-    leftPadding: 4
-    rightPadding: 8
+    leftPadding: padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
+    rightPadding: padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
     topPadding: 4
     bottomPadding: 4
     implicitWidth: implicitContentWidth + implicitIndicatorWidth + leftPadding + rightPadding
@@ -116,22 +122,56 @@ T.ComboBox {
         family: control.themeSource.fontFamily
         pixelSize: control.themeSource.fontSize
     }
+    selectTextByMouse: control.editable
     delegate: T.ItemDelegate { }
     indicator: Loader {
-        x: control.width - width - control.rightPadding
+        x: control.mirrored ? control.padding : control.width - width - control.padding
         y: control.topPadding + (control.availableHeight - height) / 2
         sourceComponent: indicatorDelegate
     }
-    contentItem: HusText {
-        topPadding: 1
-        bottomPadding: 1
-        leftPadding: 8
-        rightPadding: control.indicator.width + control.spacing
-        text: control.displayText
+    contentItem: HusInput {
+        id: __contentItem
+        topPadding: 0
+        bottomPadding: 0
+        text: control.editable ? control.editText : control.displayText
+        placeholderText: control.placeholderText
+        readOnly: !control.editable
+        autoScroll: control.editable
         font: control.font
-        color: control.colorText
+        inputMethodHints: control.inputMethodHints
+        validator: control.validator
+        selectByMouse: control.selectTextByMouse
         verticalAlignment: Text.AlignVCenter
-        elide: Text.ElideRight
+        bgDelegate: null
+        colorText: control.colorText
+
+        HoverHandler {
+            cursorShape: control.editable ? Qt.IBeamCursor : control.hoverCursorShape
+        }
+
+        TapHandler {
+            onTapped: {
+                if (!control.editable) {
+                    if (control.popup.opened) {
+                        control.popup.close();
+                    } else {
+                        control.popup.open();
+                    }
+                } else {
+                    __openPopupTimer.restart();
+                }
+            }
+        }
+
+        Timer {
+            id: __openPopupTimer
+            interval: 100
+            onTriggered: {
+                if (!control.popup.opened) {
+                    control.popup.open();
+                }
+            }
+        }
     }
     background: Rectangle {
         color: control.colorBg
