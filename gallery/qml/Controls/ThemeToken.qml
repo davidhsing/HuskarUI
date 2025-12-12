@@ -190,13 +190,14 @@ Item {
                 pixelSize: HusTheme.Primary.fontPrimarySizeHeading3
                 weight: Font.DemiBold
             }
+            visible: root.source !== ''
         }
 
         Loader {
             id: tableLoader
             width: parent.width
             height: Math.min(400, 40 * ((galleryGlobal.componentTokens[root.source]?.length ?? 0) + 1))
-            active: root.source != ''
+            active: root.source !== ''
             asynchronous: true
             sourceComponent: HusTable {
                 propagateWheelEvent: false
