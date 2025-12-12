@@ -27,6 +27,9 @@ Item {
     property int buttonWidth: 80
     property int spacing: 8
     property bool convertLocal: true
+    property string initFolder: ''
+    property alias defaultSuffix: __fileDialog.defaultSuffix
+    property alias nameFilters: __fileDialog.nameFilters
     property string pathJoiner: ';'
 
     // Delegates
@@ -102,7 +105,9 @@ Item {
         id: __fileDialog
         visible: false
         fileMode: (control.browserMode === HusFileBrowser.Save_File) ? FileDialog.SaveFile : ((control.browserMode === HusFileBrowser.Open_File) ? FileDialog.OpenFile : FileDialog.OpenFiles)
-        currentFolder: ((control.browserMode === HusFileBrowser.Open_File || control.browserMode === HusFileBrowser.Save_File) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : currentFolder
+        currentFolder: ((control.browserMode === HusFileBrowser.Open_File || control.browserMode === HusFileBrowser.Save_File) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
+        defaultSuffix: control.defaultSuffix
+        nameFilters: control.nameFilters
         onAccepted: {
             if (control.browserMode === HusFileBrowser.Open_Files) {
                 const paths = selectedFiles.map(url => control.convertLocal ? __private.urlToLocalFile(url) : url.toString());
@@ -118,7 +123,7 @@ Item {
     FolderDialog {
         id: __folderDialog
         visible: false
-        currentFolder: control.inputText ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : currentFolder
+        currentFolder: control.inputText ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
         onAccepted: {
             control.inputText = control.convertLocal ? __private.urlToLocalFile(selectedFolder.toString()) : selectedFolder.toString();
             control.pathSelected(control.inputText);

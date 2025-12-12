@@ -38,6 +38,9 @@ buttonIconSource | int丨string | 0丨'' | 按钮图标源(来自 HusIcon)或图
 buttonWidth | int | 80 | 按钮宽度
 spacing | int | 8 | 文本框与按钮的间距
 convertLocal | bool | true | 是否转化为本地文件形式(否则带 file:/// 前缀)
+initFolder | string | - | 初始目录
+defaultSuffix | string | - | 默认的文件后缀
+nameFilters | [] | - | 文件选择过滤器
 pathJoiner | string | '; ' | 多个文件的分隔符
 \n<br/>
                        `)
@@ -84,8 +87,13 @@ Column {
     }
 
     HusFileBrowser {
-        browserMode: browserModeRadio.currentCheckedValue
         buttonText: qsTr('浏览')
+        browserMode: browserModeRadio.currentCheckedValue
+        defaultSuffix: 'jpg'
+        nameFilters: [
+            qsTr('JPEG Images (*.jpg *.jpeg)'),
+            qsTr('All Files (*)')
+        ]
     }
 }
             `
@@ -105,8 +113,13 @@ Column {
                 }
 
                 HusFileBrowser {
-                    browserMode: browserModeRadio.currentCheckedValue
                     buttonText: qsTr('浏览')
+                    browserMode: browserModeRadio.currentCheckedValue
+                    defaultSuffix: 'jpg'
+                    nameFilters: [
+                        qsTr('JPEG Images (*.jpg *.jpeg)'),
+                        qsTr('All Files (*)')
+                    ]
                 }
             }
         }
