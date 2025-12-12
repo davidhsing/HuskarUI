@@ -15,6 +15,12 @@ HusPopup {
     readonly property alias currentScale: __private.scale
     readonly property alias currentRotation: __private.rotation
     property var items: []
+    property bool extraVisible: true
+    property bool closeVisible: true
+    property bool prevVisible: true
+    property bool nextVisible: true
+    property bool indicatorVisible: true
+    property bool operationVisible: true
     property alias currentIndex: __listView.currentIndex
     readonly property alias count: __listView.count
 
@@ -668,8 +674,9 @@ HusPopup {
                 anchors.bottom: operationLoader.top
                 anchors.bottomMargin: 18
                 anchors.horizontalCenter: parent.horizontalCenter
-                active: __listModel.count > 1
                 sourceComponent: control.indicatorDelegate
+                active: __listModel.count > 1 && control.indicatorVisible
+                visible: active
                 z: 1
             }
 
@@ -679,6 +686,8 @@ HusPopup {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 30
                 sourceComponent: control.operationDelegate
+                active: control.operationVisible
+                visible: active
                 z: 1
             }
 
@@ -687,8 +696,9 @@ HusPopup {
                 anchors.left: parent.left
                 anchors.leftMargin: 30
                 anchors.verticalCenter: parent.verticalCenter
-                active: __listModel.count > 1
                 sourceComponent: control.prevDelegate
+                active: __listModel.count > 1 && control.prevVisible
+                visible: active
                 z: 1
             }
 
@@ -697,8 +707,9 @@ HusPopup {
                 anchors.right: parent.right
                 anchors.rightMargin: 30
                 anchors.verticalCenter: parent.verticalCenter
-                active: __listModel.count > 1
                 sourceComponent: control.nextDelegate
+                active: __listModel.count > 1 && control.nextVisible
+                visible: active
                 z: 1
             }
 
@@ -708,6 +719,8 @@ HusPopup {
                 anchors.right: closeLoader.left
                 anchors.topMargin: 30
                 sourceComponent: control.extraDelegate
+                active: control.extraVisible
+                visible: active
                 z: 1
             }
 
@@ -718,6 +731,8 @@ HusPopup {
                 anchors.topMargin: 30
                 anchors.rightMargin: 30
                 sourceComponent: control.closeDelegate
+                active: control.closeVisible
+                visible: active
                 z: 1
             }
         }

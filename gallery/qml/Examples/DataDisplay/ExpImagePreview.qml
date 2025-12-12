@@ -22,7 +22,7 @@ Flickable {
 \n### 支持的代理：\n
 - **sourceDelegate: Component** 预览源项目代理(可以是 \`Image/AnimatedImage/Video\` 等)，必须提供 \`sourceSize\` 属性，代理可访问属性：\n
   - \`sourceUrl: url\` 源url\n
-- **extraDelegate: Component** 额外操作区代理(位于关闭按钮代理左侧)。\n
+- **extraDelegate: Component** 额外操作代理(位于关闭按钮代理左侧)。\n
 - **closeDelegate: Component** 关闭按钮代理。\n
 - **prevDelegate: Component** 前一幅按钮代理。\n
 - **nextDelegate: Component** 后一幅按钮代理。\n
@@ -43,6 +43,12 @@ currentScale | real(readonly) | - | 当前缩放值
 currentRotation | real(readonly) | - | 当前旋转(角度)值
 currentIndex | int | - | 当前图片索引
 count | int(readonly) | - | 当前图片数量
+extraVisible | bool | true | 额外操作是否可见
+closeVisible | bool | true | 关闭按钮是否可见
+prevVisible | bool | true | 前一幅按钮是否可见
+nextVisible | bool | true | 后一幅是否可见
+indicatorVisible | bool | true | 索引指示器是否可见
+operationVisible | bool | true | 操作区域是否可见
 \n<br/>
 \n### {items}支持的属性：\n
 属性名 | 类型 | 可选/必选 | 描述
