@@ -291,6 +291,7 @@ T.ComboBox {
             }
             T.ScrollBar.vertical: HusScrollBar {
                 animationEnabled: control.animationEnabled
+                visible: __popup.opened && __popupListView.contentHeight > __popupListView.height
             }
         }
 
