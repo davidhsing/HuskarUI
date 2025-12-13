@@ -20,6 +20,7 @@ T.Button {
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
+    property bool danger: false
     property bool effectEnabled: true
     property bool noDisabledState: false
     property int hoverCursorShape: Qt.PointingHandCursor
@@ -28,6 +29,17 @@ T.Button {
     property int radiusBg: HusTheme.HusButton.radiusBg
     property color colorText: {
         if (enabled || control.noDisabledState) {
+            if (control.danger) {
+                switch(control.type) {
+                    case HusButton.Type_Primary: return 'white';
+                    case HusButton.Type_Filled:
+                    case HusButton.Type_Default:
+                    case HusButton.Type_Outlined:
+                    case HusButton.Type_Text:
+                    case HusButton.Type_Link:
+                        return control.down ? HusTheme.HusButton.colorErrorTextActive : (control.hovered ? HusTheme.HusButton.colorErrorTextHover :  HusTheme.HusButton.colorError);
+                }
+            }
             switch (control.type) {
                 case HusButton.Type_Default:
                     return control.down ? HusTheme.HusButton.colorTextActive : (control.hovered ? HusTheme.HusButton.colorTextHover : HusTheme.HusButton.colorTextDefault);
@@ -50,6 +62,20 @@ T.Button {
             return 'transparent';
         }
         if (enabled || control.noDisabledState) {
+            if (control.danger) {
+                switch(control.type) {
+                    case HusButton.Type_Primary:
+                        return control.down ? HusTheme.HusButton.colorErrorBgActive: (control.hovered ? HusTheme.HusButton.colorErrorBgHover : HusTheme.HusButton.colorErrorBg);
+                    case HusButton.Type_Filled:
+                        return control.down ? HusTheme.HusButton.colorErrorFillBgActive: (control.hovered ? HusTheme.HusButton.colorErrorFillBgHover : HusTheme.HusButton.colorErrorFillBg);
+                    case HusButton.Type_Text:
+                        return control.down ? HusTheme.HusButton.colorErrorFillBgActive: (control.hovered ? HusTheme.HusButton.colorErrorFillBg : 'transparent');
+                    case HusButton.Type_Default:
+                    case HusButton.Type_Outlined:
+                        return control.down ? HusTheme.HusButton.colorBgActive: (control.hovered ? HusTheme.HusButton.colorBgHover : HusTheme.HusButton.colorBg);
+                    default: return HusTheme.HusButton.colorBg;
+                }
+            }
             switch (control.type) {
                 case HusButton.Type_Default:
                 case HusButton.Type_Outlined:
@@ -79,6 +105,14 @@ T.Button {
             return 'transparent';
         }
         if (enabled || control.noDisabledState) {
+            if (control.danger) {
+                switch (control.type) {
+                    case HusButton.Type_Default:
+                        return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorErrorBorderHover : HusTheme.HusButton.colorDefaultBorder);
+                    default:
+                        return control.down ? HusTheme.HusButton.colorErrorBorderActive: (control.hovered ? HusTheme.HusButton.colorErrorBorderHover : HusTheme.HusButton.colorErrorBorder);
+                }
+            }
             switch (control.type) {
                 case HusButton.Type_Default:
                     return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorDefaultBorder);

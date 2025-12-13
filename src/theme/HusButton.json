@@ -30,6 +30,18 @@
         "colorBorderActive": "@colorPrimaryBorderActive",
         "colorBorderDisabled": "$alpha(@colorTextBase, 0.15)",
         "colorDefaultBorder": "$onBackground(@colorTextQuaternary, @colorBgBase)",
+        "colorError": "@colorErrorBase-5",
+        "colorErrorBg": "@colorErrorBase-5",
+        "colorErrorBgHover": "$alpha(@colorErrorBase-5, 0.85)",
+        "colorErrorBgActive": "@colorErrorBgActive",
+        "colorErrorFillBg": "$alpha(@colorErrorBase-4, 0.25)",
+        "colorErrorFillBgHover": "$alpha(@colorErrorBase-4, 0.35)",
+        "colorErrorFillBgActive": "$alpha(@colorErrorBase-4, 0.45)",
+        "colorErrorBorder": "@colorErrorBase-5",
+        "colorErrorBorderHover": "@colorErrorBorderHover",
+        "colorErrorBorderActive": "@colorErrorBorder",
+        "colorErrorTextHover": "@colorErrorTextHover",
+        "colorErrorTextActive": "@colorErrorTextActive",
         "radiusBg": "@radiusPrimary"
     }
 }

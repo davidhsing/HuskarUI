@@ -26,6 +26,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
+danger | bool | false | 是否警示状态
 effectEnabled | bool | true | 是否开启点击效果
 noDisabledState | bool | false | 无禁用状态(即被禁用时不会更改颜色)
 hoverCursorShape | int | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
@@ -73,41 +74,41 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 链接按钮{ HusButton.Type_Link }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 15
+Row {
+    spacing: 15
 
-                    HusButton {
-                        text: qsTr('默认')
-                    }
+    HusButton {
+        text: qsTr('默认')
+    }
 
-                    HusButton {
-                        text: qsTr('线框')
-                        type: HusButton.Type_Outlined
-                    }
+    HusButton {
+        text: qsTr('线框')
+        type: HusButton.Type_Outlined
+    }
 
-                    HusButton {
-                        text: qsTr('主要')
-                        type: HusButton.Type_Primary
-                    }
+    HusButton {
+        text: qsTr('主要')
+        type: HusButton.Type_Primary
+    }
 
-                    HusButton {
-                        text: qsTr('填充')
-                        type: HusButton.Type_Filled
-                    }
+    HusButton {
+        text: qsTr('填充')
+        type: HusButton.Type_Filled
+    }
 
-                    HusButton {
-                        text: qsTr('文本')
-                        type: HusButton.Type_Text
-                    }
+    HusButton {
+        text: qsTr('文本')
+        type: HusButton.Type_Text
+    }
 
-                    HusButton {
-                        text: qsTr('链接')
-                        type: HusButton.Type_Link
-                    }
-                }
+    HusButton {
+        text: qsTr('链接')
+        type: HusButton.Type_Link
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 15
@@ -146,50 +147,138 @@ contentDescription | string | '' | 内容描述(提高可用性)
         CodeBox {
             width: parent.width
             desc: qsTr(`
+通过 \`danger\` 属性设置危险按钮：\n
+                       `)
+            code: `
+import QtQuick
+import HuskarUI.Basic
+
+Row {
+    spacing: 15
+
+    HusButton {
+        text: qsTr('默认')
+        danger: true
+    }
+
+    HusButton {
+        text: qsTr('线框')
+        type: HusButton.Type_Outlined
+        danger: true
+    }
+
+    HusButton {
+        text: qsTr('主要')
+        type: HusButton.Type_Primary
+        danger: true
+    }
+
+    HusButton {
+        text: qsTr('填充')
+        type: HusButton.Type_Filled
+        danger: true
+    }
+
+    HusButton {
+        text: qsTr('文本')
+        type: HusButton.Type_Text
+        danger: true
+    }
+
+    HusButton {
+        text: qsTr('链接')
+        type: HusButton.Type_Link
+        danger: true
+    }
+}
+            `
+            exampleDelegate: Row {
+                spacing: 15
+
+                HusButton {
+                    text: qsTr('默认')
+                    danger: true
+                }
+
+                HusButton {
+                    text: qsTr('线框')
+                    type: HusButton.Type_Outlined
+                    danger: true
+                }
+
+                HusButton {
+                    text: qsTr('主要')
+                    type: HusButton.Type_Primary
+                    danger: true
+                }
+
+                HusButton {
+                    text: qsTr('填充')
+                    type: HusButton.Type_Filled
+                    danger: true
+                }
+
+                HusButton {
+                    text: qsTr('文本')
+                    type: HusButton.Type_Text
+                    danger: true
+                }
+
+                HusButton {
+                    text: qsTr('链接')
+                    type: HusButton.Type_Link
+                    danger: true
+                }
+            }
+        }
+
+        CodeBox {
+            width: parent.width
+            desc: qsTr(`
 通过 \`enabled\` 属性启用或禁用按钮，禁用的按钮不会响应任何交互。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 15
+Row {
+    spacing: 15
 
-                    HusButton {
-                        text: qsTr('默认')
-                        enabled: false
-                    }
+    HusButton {
+        text: qsTr('默认')
+        enabled: false
+    }
 
-                    HusButton {
-                        text: qsTr('线框')
-                        type: HusButton.Type_Outlined
-                        enabled: false
-                    }
+    HusButton {
+        text: qsTr('线框')
+        type: HusButton.Type_Outlined
+        enabled: false
+    }
 
-                    HusButton {
-                        text: qsTr('主要')
-                        type: HusButton.Type_Primary
-                        enabled: false
-                    }
+    HusButton {
+        text: qsTr('主要')
+        type: HusButton.Type_Primary
+        enabled: false
+    }
 
-                    HusButton {
-                        text: qsTr('填充')
-                        type: HusButton.Type_Filled
-                        enabled: false
-                    }
+    HusButton {
+        text: qsTr('填充')
+        type: HusButton.Type_Filled
+        enabled: false
+    }
 
-                    HusButton {
-                        text: qsTr('文本')
-                        type: HusButton.Type_Text
-                        enabled: false
-                    }
+    HusButton {
+        text: qsTr('文本')
+        type: HusButton.Type_Text
+        enabled: false
+    }
 
-                    HusButton {
-                        text: qsTr('链接')
-                        type: HusButton.Type_Link
-                        enabled: false
-                    }
-                }
+    HusButton {
+        text: qsTr('链接')
+        type: HusButton.Type_Link
+        enabled: false
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 15
@@ -239,41 +328,41 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 圆形{ HusButton.Shape_Circle }
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 15
+Row {
+    spacing: 15
 
-                    HusButton {
-                        text: qsTr('A')
-                        shape: HusButton.Shape_Circle
-                    }
+    HusButton {
+        text: qsTr('A')
+        shape: HusButton.Shape_Circle
+    }
 
-                    HusButton {
-                        text: qsTr('A')
-                        type: HusButton.Type_Outlined
-                        shape: HusButton.Shape_Circle
-                    }
+    HusButton {
+        text: qsTr('A')
+        type: HusButton.Type_Outlined
+        shape: HusButton.Shape_Circle
+    }
 
-                    HusButton {
-                        text: qsTr('A')
-                        type: HusButton.Type_Primary
-                        shape: HusButton.Shape_Circle
-                    }
+    HusButton {
+        text: qsTr('A')
+        type: HusButton.Type_Primary
+        shape: HusButton.Shape_Circle
+    }
 
-                    HusButton {
-                        text: qsTr('A')
-                        type: HusButton.Type_Filled
-                        shape: HusButton.Shape_Circle
-                    }
+    HusButton {
+        text: qsTr('A')
+        type: HusButton.Type_Filled
+        shape: HusButton.Shape_Circle
+    }
 
-                    HusButton {
-                        text: qsTr('A')
-                        type: HusButton.Type_Text
-                        shape: HusButton.Shape_Circle
-                    }
-                }
+    HusButton {
+        text: qsTr('A')
+        type: HusButton.Type_Text
+        shape: HusButton.Shape_Circle
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 15
