@@ -63,7 +63,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-borderVisible | bool | false | 边框是否可见
+borderVisible | bool | false | 右侧边框是否可见
 contentDescription | string | '' | 内容描述(提高可用性)
 tooltipVisible | bool | false | 是否显示工具提示
 compactMode | bool | false | 是否为紧凑模式
