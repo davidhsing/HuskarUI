@@ -22,13 +22,13 @@ T.Button {
     property bool animationEnabled: HusTheme.animationEnabled
     property bool danger: false
     property bool effectEnabled: true
-    property bool noDisabledState: false
+    property bool forceNormal: false
     property int hoverCursorShape: Qt.PointingHandCursor
     property int type: HusButton.Type_Default
     property int shape: HusButton.Shape_Default
     property int radiusBg: HusTheme.HusButton.radiusBg
     property color colorText: {
-        if (enabled || control.noDisabledState) {
+        if (enabled || control.forceNormal) {
             if (control.danger) {
                 switch(control.type) {
                     case HusButton.Type_Primary: return 'white';
@@ -61,7 +61,7 @@ T.Button {
         if (control.type === HusButton.Type_Link) {
             return 'transparent';
         }
-        if (enabled || control.noDisabledState) {
+        if (enabled || control.forceNormal) {
             if (control.danger) {
                 switch(control.type) {
                     case HusButton.Type_Primary:
@@ -104,7 +104,7 @@ T.Button {
         if (type === HusButton.Type_Link) {
             return 'transparent';
         }
-        if (enabled || control.noDisabledState) {
+        if (enabled || control.forceNormal) {
             if (control.danger) {
                 switch (control.type) {
                     case HusButton.Type_Default:
@@ -155,7 +155,7 @@ T.Button {
             visible: control.effectEnabled && control.type !== HusButton.Type_Link
             color: 'transparent'
             border.width: 0
-            border.color: (control.enabled || control.noDisabledState) ? HusTheme.HusButton.colorBorderHover : 'transparent'
+            border.color: (control.enabled || control.forceNormal) ? HusTheme.HusButton.colorBorderHover : 'transparent'
             opacity: 0.2
 
             ParallelAnimation {
@@ -194,7 +194,7 @@ T.Button {
             anchors.centerIn: parent
             radius: control.shape === HusButton.Shape_Default ? control.radiusBg : height * 0.5
             color: control.colorBg
-            border.color: (control.enabled || control.noDisabledState) ? control.colorBorder : (control.type === HusButton.Type_Link ? 'transparent' : HusTheme.HusButton.colorDefaultBorder)
+            border.color: (control.enabled || control.forceNormal) ? control.colorBorder : (control.type === HusButton.Type_Link ? 'transparent' : HusTheme.HusButton.colorDefaultBorder)
             border.width: (control.type === HusButton.Type_Filled || control.type === HusButton.Type_Text) ? 0 : 1
 
             property real realWidth: control.shape === HusButton.Shape_Default ? parent.width : parent.height
