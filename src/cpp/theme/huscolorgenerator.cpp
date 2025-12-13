@@ -5,9 +5,9 @@
 
 static const auto g_hueStep = 2; // 色相阶梯
 static const auto g_saturationStep = 0.16; // 饱和度阶梯，浅色部分
-static const auto g_saturationStep2 = 0.05; // 饱和度阶梯，深色部分
+static const auto g_saturationStep2 = 0.03; // 饱和度阶梯，深色部分
 static const auto g_brightnessStep1 = 0.05; // 亮度阶梯，浅色部分
-static const auto g_brightnessStep2 = 0.15; // 亮度阶梯，深色部分
+static const auto g_brightnessStep2 = 0.08; // 亮度阶梯，深色部分
 static const auto g_lightColorCount = 5; // 浅色数量，主色上
 static const auto g_darkColorCount = 4; // 深色数量，主色下
 
@@ -82,7 +82,8 @@ static qreal getValue(const QColor &hsv, int i, bool light = false)
     if (light) {
         value = hsv.valueF() + g_brightnessStep1 * i;
     } else {
-        value = hsv.valueF() - g_brightnessStep2 * i;
+        qreal factor = qSqrt(i) / 2.0;
+        value = hsv.valueF() - g_brightnessStep2 * factor;
     }
     if (value > 1) {
         value = 1;
