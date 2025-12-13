@@ -45,7 +45,7 @@ readOnly | bool | false | 是否只读
 readOnlyBg | bool | false | 当只读时是否采用禁用时的背景色
 text | string | '' | 文本
 placeholderText | string | '' | 占位文本
-errorState | bool | false | 是否为警示状态
+danger | bool | false | 是否为警示状态
 font | font | - | 字体
 colorText | color | - | 文本颜色
 colorPlaceholderText | color | - | 占位文本颜色

@@ -22,10 +22,6 @@ Flickable {
 \n### 支持的代理：\n
 - 无\n
 \n<br/>
-\n### 支持的属性：\n
-属性名 | 类型 | 默认值 | 描述
------- | --- | :---: | ---
-errorState | bool | false | 是否为警示状态
                        `)
         }
 
@@ -47,7 +43,7 @@ errorState | bool | false | 是否为警示状态
         CodeBox {
             width: parent.width
             desc: qsTr(`
-通过 \`errorState\` 属性设置为警示按钮，例如关闭按钮。
+通过 \`danger\` 属性设置为警示按钮，例如关闭按钮。
                        `)
             code: `
                 import QtQuick
@@ -69,7 +65,7 @@ errorState | bool | false | 是否为警示状态
                     HusCaptionButton {
                         text: qsTr('警示')
                         colorText: colorIcon
-                        errorState: true
+                        danger: true
                         iconSource: HusIcon.CloseOutlined
                     }
                 }
@@ -90,7 +86,7 @@ errorState | bool | false | 是否为警示状态
                 HusCaptionButton {
                     text: qsTr('警示')
                     colorText: colorIcon
-                    errorState: true
+                    danger: true
                     iconSource: HusIcon.CloseOutlined
                 }
             }

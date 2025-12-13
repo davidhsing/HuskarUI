@@ -30,7 +30,7 @@ active | bool(readonly) | - | 是否处于激活状态
 clearEnabled | bool | false | 是否启用清除按钮
 clearIconSource | int丨string | HusIcon.CloseCircleFilled | 清除图标源(来自 HusIcon)或图标链接
 defaultPopupMaxHeight | int | 240 | 默认弹窗最大高度
-errorState | bool | false | 是否为警示状态
+danger | bool | false | 是否为警示状态
 hoverCursorShape | enum | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
 initValue | var | - | 初始值
 activeValue | var | - | 绑定值
@@ -77,7 +77,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - { enabled: 本选择项是否启用 }\n
 通过 \`loading\` 属性设置是否在加载中。\n
 可以让 \`enabled\` 绑定 \`loading\` 实现加载完成才启用。\n
-通过 \`errorState\` 属性设置警示状态。\n
+通过 \`danger\` 属性设置警示状态。\n
 通过 \`initValue\` 属性设置初始值。\n
 通过 \`tooltipVisible\` 属性设置是否显示文字提示框(主要用于长文本)。\n
 通过 \`defaultPopupMaxHeight\` 属性设置默认弹出窗口的高度。\n
@@ -101,7 +101,7 @@ Row {
             { value: 'yiminghe', label: 'Yimingheabcdef' },
             { value: 'disabled', label: 'Disabled', enabled: false },
         ]
-        errorState: true
+        danger: true
         placeholderText: '请选择'
     }
 
@@ -144,7 +144,7 @@ Row {
                         { value: 'yiminghe', label: 'Yimingheabcdef' },
                         { value: 'disabled', label: 'Disabled', enabled: false },
                     ]
-                    errorState: true
+                    danger: true
                     placeholderText: '请选择'
                 }
 

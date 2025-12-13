@@ -7,22 +7,18 @@ Rectangle {
 
     property var targetWindow: null
     property HusWindowAgent windowAgent: null
-
     property alias layoutDirection: __row.layoutDirection
-
     property string winIcon: ''
     property alias winIconWidth: __winIconLoader.width
     property alias winIconHeight: __winIconLoader.height
     property alias winIconVisible: __winIconLoader.visible
-
     property string winTitle: targetWindow?.title ?? ''
     property font winTitleFont: Qt.font({
-                                            family: HusTheme.Primary.fontPrimaryFamily,
-                                            pixelSize: 14
-                                        })
+        family: HusTheme.Primary.fontPrimaryFamily,
+        pixelSize: 14
+    })
     property color winTitleColor: HusTheme.Primary.colorTextBase
     property alias winTitleVisible: __winTitleLoader.visible
-
     property bool returnButtonVisible: false
     property bool themeButtonVisible: false
     property bool topButtonChecked: false
@@ -30,31 +26,27 @@ Rectangle {
     property bool minimizeButtonVisible: Qt.platform.os !== 'osx'
     property bool maximizeButtonVisible: Qt.platform.os !== 'osx'
     property bool closeButtonVisible: Qt.platform.os !== 'osx'
-
     property var returnCallback: () => { }
     property var themeCallback: () => { HusTheme.darkMode = HusTheme.isDark ? HusTheme.Light : HusTheme.Dark; }
     property var topCallback: checked => { }
-    property var minimizeCallback:
-        () => {
-            if (targetWindow) {
-                HusApi.setWindowState(targetWindow, Qt.WindowMinimized);
-            }
+    property var minimizeCallback: () => {
+        if (targetWindow) {
+            HusApi.setWindowState(targetWindow, Qt.WindowMinimized);
         }
-    property var maximizeCallback:
-        () => {
-            if (!targetWindow) return;
-
-            if (targetWindow.visibility === Window.Maximized ||
-                targetWindow.visibility === Window.FullScreen) {
-                targetWindow.showNormal();
-            } else {
-                targetWindow.showMaximized();
-            }
+    }
+    property var maximizeCallback: () => {
+        if (!targetWindow) {
+            return;
         }
-    property var closeCallback:
-        () => {
-            if (targetWindow) targetWindow.close();
+        if (targetWindow.visibility === Window.Maximized || targetWindow.visibility === Window.FullScreen) {
+            targetWindow.showNormal();
+        } else {
+            targetWindow.showMaximized();
         }
+    }
+    property var closeCallback: () => {
+        if (targetWindow) targetWindow.close();
+    }
     property string contentDescription: winTitle
 
     property Component winIconDelegate: Image {
@@ -157,7 +149,7 @@ Rectangle {
             forceNormal: true
             iconSource: HusIcon.CloseOutlined
             iconSize: 14
-            errorState: true
+            danger: true
             contentDescription: qsTr('关闭')
             onClicked: control.closeCallback();
         }

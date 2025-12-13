@@ -12,7 +12,7 @@ T.ComboBox {
     property bool clearEnabled: true
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int defaultPopupMaxHeight: 240
-    property bool errorState: false
+    property bool danger: false
     property int hoverCursorShape: Qt.PointingHandCursor
     property var initValue: null
     property var activeValue: null
@@ -20,7 +20,7 @@ T.ComboBox {
     property bool tooltipVisible: false
     property alias placeholderText: __contentItem.placeholderText
     property color colorText: enabled ? ((popup.visible && !editable) ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
-    property color colorBorder: errorState ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? (active ? themeSource.colorBorderHover : themeSource.colorBorder) : themeSource.colorBorderDisabled)
+    property color colorBorder: danger ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? (active ? themeSource.colorBorderHover : themeSource.colorBorder) : themeSource.colorBorderDisabled)
     property color colorBg: enabled ? themeSource.colorBg : themeSource.colorBgDisabled
     property int radiusBg: themeSource.radiusBg
     property int radiusItemBg: themeSource.radiusItemBg

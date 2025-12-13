@@ -40,7 +40,7 @@ leftIconPadding | int(readonly) | - | 图标在左边时的填充
 rightIconPadding | int(readonly) | - | 图标在右边时的填充
 leftClearIconPadding | int(readonly) | - | 清除图标在左边时的填充
 rightClearIconPadding | int(readonly) | - | 清除图标在右边时的填充
-errorState | bool | false | 是否为警示状态
+danger | bool | false | 是否为警示状态
 colorIcon | color | - | 图标颜色
 colorText | color | - | 文本颜色
 colorBorder | color | - | 边框颜色

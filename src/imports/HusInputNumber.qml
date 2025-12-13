@@ -40,7 +40,7 @@ Item {
     property var formatter: value => value.toFixed(precision)
     property var parser: text => Number(text)
     property int defaultHandlerWidth: 24
-    property bool errorState: false
+    property bool danger: false
     property alias colorText: __input.colorText
     property color colorPrefix: themeSource.colorPrefix
     property color colorSuffix: themeSource.colorSuffix
@@ -57,7 +57,7 @@ Item {
         topLeftRadius: control.radiusBg
         bottomLeftRadius: control.radiusBg
         color: enabled ? control.themeSource.colorLabelBg : control.themeSource.colorLabelBgDisabled
-        border.color: errorState ? (__input.active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled)
+        border.color: danger ? (__input.active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled)
 
         Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
@@ -74,7 +74,7 @@ Item {
         topRightRadius: control.radiusBg
         bottomRightRadius: control.radiusBg
         color: enabled ? control.themeSource.colorLabelBg : control.themeSource.colorLabelBgDisabled
-        border.color: errorState ? (__input.active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled)
+        border.color: danger ? (__input.active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled)
 
         Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
@@ -286,7 +286,7 @@ Item {
             animationEnabled: control.animationEnabled
             leftPadding: (__prefixLoader.active ? __prefixLoader.implicitWidth : 10) + leftIconPadding + leftClearIconPadding
             rightPadding: (__suffixLoader.active ? 0 : 10) + rightIconPadding + rightClearIconPadding
-            errorState: control.errorState
+            danger: control.danger
             background: HusRectangle {
                 color: __input.colorBg
                 topLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg : 0

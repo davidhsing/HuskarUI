@@ -36,7 +36,7 @@ itemValidator | Validator | 6 | 输入项的验证器
 itemInputMethodHints | enum | Qt.ImhHiddenText | 输入项的输入法提示(例如: Qt.ImhHiddenText)
 itemPassword | bool | false | 输入项是否为密码(显示为: itemPasswordCharacter)
 itemPasswordCharacter | string | '' | 输入项的密码字符(itemPassword为true时启用)
-errorState | bool | false | 是否为警示状态
+danger | bool | false | 是否为警示状态
 formatter | function | - | 格式化器(将为每一项调用)
 colorItemText | color | - | 输入项文本颜色
 colorItemBorder | color | - | 输入项边框颜色
