@@ -342,7 +342,7 @@ HusWindow {
                     if (data.hasOwnProperty('children')) {
                         setDataProperty(key, 'badgeState', '');
                     } else {
-                        console.debug('onClickMenu', deep, key, keyPath, JSON.stringify(data));
+                        // console.debug('onClickMenu', deep, key, keyPath, JSON.stringify(data));
                         containerLoader.version = data.addVersion || data.updateVersion || '';
                         containerLoader.desc = data.desc || '';
                         containerLoader.tagState = data.state || '';
