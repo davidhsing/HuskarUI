@@ -9,7 +9,7 @@ Item {
     property string deviceId: ''
     property bool autoRecord: true
     property bool fallbackDefault: false
-    property bool recording: false
+    readonly property alias recording: __private.audioRecording
     property bool buttonVisible: true
     property alias buttonType: controlButton.type
     property string startText: qsTr('开始')
@@ -69,8 +69,8 @@ Item {
         id: mediaRecorder
         outputLocation: __private.audioLocation
         onRecorderStateChanged: {
-            control.recording = recorderState === MediaRecorder.RecordingState;
-            if (!control.recording) {
+            __private.audioRecording = recorderState === MediaRecorder.RecordingState;
+            if (!__private.audioRecording) {
                 volumeProgress.percent = 0;
             }
         }
@@ -80,11 +80,11 @@ Item {
     HusAudioProbe {
         id: audioProbe
         deviceId: control.deviceId
-        active: control.recording
+        active: __private.audioRecording
         interval: control.interval
         fallbackDefault: control.fallbackDefault
         onLevelChanged: {
-            if (control.recording) {
+            if (__private.audioRecording) {
                 volumeProgress.percent = level * 100;
             }
         }
@@ -123,7 +123,7 @@ Item {
         anchors.centerIn: parent
         iconSource: control.iconSource
         iconSize: control.iconSize
-        color: control.recording ? control.colorIconRecording : control.colorIconStopped
+        color: __private.audioRecording ? control.colorIconRecording : control.colorIconStopped
         opacity: __private.deviceValid ? 1.0 : 0.3
 
         Behavior on color {
@@ -139,9 +139,9 @@ Item {
         anchors.bottomMargin: 20
         enabled: __private.deviceValid
         visible: control.buttonVisible
-        text: control.recording ? control.endText : control.startText
+        text: __private.audioRecording ? control.endText : control.startText
         onClicked: {
-            if (control.recording) {
+            if (__private.audioRecording) {
                 mediaRecorder.stop();
             } else {
                 __private.audioLocation = control.locationCallback()
@@ -156,6 +156,7 @@ Item {
     QtObject {
         id: __private
         property string audioLocation: control.locationCallback()
+        property bool audioRecording: false
         property bool deviceValid: false
 
         function findAudioDevice() {
@@ -176,7 +177,7 @@ Item {
         function validateDevice() {
             const device = findAudioDevice(control.deviceId);
             __private.deviceValid = !!device;
-            if (!__private.deviceValid && control.recording) {
+            if (!__private.deviceValid && __private.audioRecording) {
                 mediaRecorder.stop();
             }
         }

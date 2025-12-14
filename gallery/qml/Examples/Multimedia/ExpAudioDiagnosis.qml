@@ -30,7 +30,7 @@ startText | string | 开始 | 开始按钮的文本
 endText | string | 停止 | 停止按钮的文本
 warnText | string | 设备不存在 | 设备不存在时显示的警告文本
 interval | int | 50 | 音频探针的检测间隔(毫秒)
-iconSource | int丨string | 0丨'' | 图标源(来自 HusIcon)或图标链接
+iconSource | int丨string | HusIcon.IcoMoonMic | 图标源(来自 HusIcon)或图标链接
 iconSize | int | 56 | 图标大小
 progressWidth | int | 160 | 进度条宽度
 progressHeight | int | 160 | 进度条高度
