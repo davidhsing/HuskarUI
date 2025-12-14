@@ -55,7 +55,7 @@ radiusBg | int | - | 背景圆角
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 通过 \`size\` 属性设置大小。\n
 通过 \`radiusBg\` 属性设置圆角大小(默认为size一半, 即圆形)。\n

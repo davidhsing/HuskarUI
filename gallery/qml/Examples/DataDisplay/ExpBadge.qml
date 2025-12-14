@@ -53,7 +53,7 @@ colorText | color | - | 文本颜色
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 通过 \`count \` 属性设置展示的数字，大于 overflowCount 时显示为 {overflowCount}+，为 0 时隐藏。\n
 通过 \`showZero\` 属性设置为 0 时也显示数字。\n

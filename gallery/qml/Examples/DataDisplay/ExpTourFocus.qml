@@ -53,7 +53,7 @@ focusRadius | int | 2 | 焦点圆角
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 通过 \`target\` 属性设置焦点目标。\n
 通过 \`overlayColor\` 属性设置覆盖层颜色。\n

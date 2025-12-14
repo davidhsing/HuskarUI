@@ -106,7 +106,7 @@ items | list | 可选 | 菜单模型
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法。
                        `)

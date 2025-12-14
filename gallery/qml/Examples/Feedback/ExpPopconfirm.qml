@@ -64,7 +64,7 @@ cancelText | string | '' | 取消文本
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法，支持标题和描述以及确认/取消按钮。\n
 通过 \`title\` 属性设置标题文本。\n

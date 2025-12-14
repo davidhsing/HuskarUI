@@ -89,7 +89,7 @@ cardRadius | int | 可选 | 本步骤卡片圆角
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 通过 \`currentTarget\` 属性获取当前步骤目标\n
 通过 \`currentStep\` 属性获取当前步数\n

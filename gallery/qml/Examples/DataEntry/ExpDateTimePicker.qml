@@ -85,7 +85,7 @@ radiusPopupBg | int | - | 弹窗圆角
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法，在浮层中可以选择或者输入日期。\n
 通过 \`showDate\` 属性设置是否显示日期选择部分。\n

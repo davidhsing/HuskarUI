@@ -58,7 +58,7 @@ radiusBg | int | 4 | 圆角值
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法。\n
 通过 \`leftText\` 属性设置左侧文本。\n

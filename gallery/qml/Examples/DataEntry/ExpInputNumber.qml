@@ -108,7 +108,7 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
         CodeBox {
             width: parent.width
             async: false
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 数字输入框。\n
                        `)

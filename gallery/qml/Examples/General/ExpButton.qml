@@ -28,7 +28,7 @@ Flickable {
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 danger | bool | false | 是否警示状态
 effectEnabled | bool | true | 是否开启点击效果
-forceNormal | bool | false | 无禁用状态(即被禁用时不会更改颜色)
+forceState | bool | false | 无禁用状态(即被禁用时不会更改颜色)
 hoverCursorShape | int | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
 type | enum | HusButton.Type_Default | 按钮类型(来自 HusButton)
 shape | enum | HusButton.Shape_Default | 按钮形状(来自 HusButton)

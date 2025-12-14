@@ -59,7 +59,7 @@ pathJoiner | string | '; ' | 多个文件的分隔符
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法。\n
 通过 \`browserMode\` 属性设置文件/文件夹类型。\n

@@ -55,7 +55,7 @@ colorDescription | color | - | 描述文本颜色
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法，支持图像和描述。\n
 通过 \`imageSource\` 属性设置图片地址。\n

@@ -13,13 +13,13 @@ HusIconButton {
     iconSize: HusTheme.HusCaptionButton.fontSize
     effectEnabled: false
     colorIcon: {
-        if (control.enabled || control.forceNormal) {
+        if (control.enabled || control.forceState) {
             return checked ? HusTheme.HusCaptionButton.colorIconChecked : HusTheme.HusCaptionButton.colorIcon;
         }
         return HusTheme.HusCaptionButton.colorIconDisabled;
     }
     colorBg: {
-        if (control.enabled || control.forceNormal) {
+        if (control.enabled || control.forceState) {
             if (danger) {
                 return control.down ? HusTheme.HusCaptionButton.colorErrorBgActive: (control.hovered ? HusTheme.HusCaptionButton.colorErrorBgHover : HusTheme.HusCaptionButton.colorErrorBg);
             }

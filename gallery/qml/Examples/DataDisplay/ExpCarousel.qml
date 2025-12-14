@@ -77,7 +77,7 @@ radiusIndicator | int | - | 指示器圆角半径
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法。\n
 通过 \`infinite\` 属性设置是否无限滚动。\n

@@ -79,7 +79,7 @@ descriptionFont | font | - | 描述文本字体
 
         CodeBox {
             width: parent.width
-            descTitle: qsTr('基本')
+            descTitle: qsTr('基本用法')
             desc: qsTr(`
 基础弹框。\n
 通过 \`modal\` 属性设置是否为模态。\n
