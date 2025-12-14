@@ -27,9 +27,9 @@ Item {
     property int buttonTopPadding: 8
     property int buttonBottomPadding: 8
     property font font: Qt.font({
-                                    family: HusTheme.HusButton.fontFamily,
-                                    pixelSize: HusTheme.HusButton.fontSize
-                                })
+        family: HusTheme.HusButton.fontFamily,
+        pixelSize: HusTheme.HusButton.fontSize
+    })
     property int radiusBg: HusTheme.HusButton.radiusBg
     property Component buttonDelegate: HusIconButton {
         id: __rootItem

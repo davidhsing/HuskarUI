@@ -18,9 +18,9 @@ Rectangle {
     property int tagState: HusTag.State_Default
     property string text: ''
     property font font: Qt.font({
-                                    family: HusTheme.HusTag.fontFamily,
-                                    pixelSize: HusTheme.HusTag.fontSize - 2
-                                })
+        family: HusTheme.HusTag.fontFamily,
+        pixelSize: HusTheme.HusTag.fontSize - 2
+    })
     property bool rotating: false
     property var iconSource: 0 ?? ''
     property int iconSize: HusTheme.HusButton.fontSize

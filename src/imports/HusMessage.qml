@@ -31,11 +31,10 @@ Item {
     property color colorBg: HusTheme.isDark ? HusTheme.HusMessage.colorBgDark : HusTheme.HusMessage.colorBg
     property color colorBgShadow: HusTheme.HusMessage.colorBgShadow
     property int radiusBg: HusTheme.HusMessage.radiusBg
-
     property font messageFont: Qt.font({
-                                           family: HusTheme.HusMessage.fontFamily,
-                                           pixelSize: HusTheme.HusMessage.fontSize
-                                       })
+        family: HusTheme.HusMessage.fontFamily,
+        pixelSize: HusTheme.HusMessage.fontSize
+    })
     property int messageSpacing: 8
 
     property Component messageDelegate: HusText {

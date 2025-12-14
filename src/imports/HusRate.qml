@@ -17,9 +17,9 @@ Item {
     property int iconSize: 24
     /* 文字提示 */
     property font toolTipFont: Qt.font({
-                                           family: HusTheme.HusRate.fontFamily,
-                                           pixelSize: HusTheme.HusRate.fontSize
-                                       })
+        family: HusTheme.HusRate.fontFamily,
+        pixelSize: HusTheme.HusRate.fontSize
+    })
     property bool toolTipVisible: false
     property list<string> toolTipTexts: []
     property color colorFill: HusTheme.HusRate.colorFill

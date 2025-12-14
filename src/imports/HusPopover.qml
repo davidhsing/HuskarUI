@@ -17,14 +17,14 @@ HusPopup {
     property color colorTitle: control.themeSource.colorTitle
     property color colorDescription: control.themeSource.colorDescription
     property font titleFont: Qt.font({
-                                         family: control.themeSource.fontFamily,
-                                         bold: true,
-                                         pixelSize: parseInt(control.themeSource.fontTitleSize)
-                                     })
+        family: control.themeSource.fontFamily,
+        bold: true,
+        pixelSize: parseInt(control.themeSource.fontTitleSize)
+    })
     property font descriptionFont: Qt.font({
-                                               family: control.themeSource.fontFamily,
-                                               pixelSize: parseInt(control.themeSource.fontDescriptionSize)
-                                           })
+        family: control.themeSource.fontFamily,
+        pixelSize: parseInt(control.themeSource.fontDescriptionSize)
+    })
     property Component arrowDelegate: Canvas {
         id: __arrowDelegate
         width: arrowWidth

@@ -49,17 +49,15 @@ Item {
     property color colorBg: HusTheme.isDark ? HusTheme.HusNotification.colorBgDark : HusTheme.HusNotification.colorBg
     property color colorBgShadow: HusTheme.HusNotification.colorBgShadow
     property int radiusBg: HusTheme.HusNotification.radiusBg
-
     property font messageFont: Qt.font({
-                                           family: HusTheme.HusNotification.fontFamily,
-                                           pixelSize: parseInt(HusTheme.HusNotification.fontMessageSize)
-                                       })
+        family: HusTheme.HusNotification.fontFamily,
+        pixelSize: parseInt(HusTheme.HusNotification.fontMessageSize)
+    })
     property int messageSpacing: 8
-
     property font descriptionFont: Qt.font({
-                                               family: HusTheme.HusNotification.fontFamily,
-                                               pixelSize: parseInt(HusTheme.HusNotification.fontDescriptionSize)
-                                           })
+        family: HusTheme.HusNotification.fontFamily,
+        pixelSize: parseInt(HusTheme.HusNotification.fontDescriptionSize)
+    })
     property int descriptionSpacing: 10
 
     property Component messageDelegate: HusText {

@@ -23,14 +23,14 @@ Item {
     property color colorNodeBg: HusTheme.HusTimeline.colorNodeBg
     property color colorLine: HusTheme.HusTimeline.colorLine
     property font timeFont: Qt.font({
-                                        family: HusTheme.HusTimeline.fontFamily,
-                                        pixelSize: HusTheme.HusTimeline.fontSize
-                                    })
+        family: HusTheme.HusTimeline.fontFamily,
+        pixelSize: HusTheme.HusTimeline.fontSize
+    })
     property color colorTimeText: HusTheme.HusTimeline.colorTimeText
     property font contentFont: Qt.font({
-                                           family: HusTheme.HusTimeline.fontFamily,
-                                           pixelSize: HusTheme.HusTimeline.fontSize
-                                       })
+        family: HusTheme.HusTimeline.fontFamily,
+        pixelSize: HusTheme.HusTimeline.fontSize
+    })
     property color colorContentText: HusTheme.HusTimeline.colorContentText
     property Component nodeDelegate: Component {
         Item {
