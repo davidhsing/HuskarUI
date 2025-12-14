@@ -37,10 +37,11 @@ Item {
     property var formatter: () => {
         switch (control.status) {
             case HusProgress.Status_Success:
-            return control.type === HusProgress.Type_Line ? HusIcon.CheckCircleFilled : HusIcon.CheckOutlined;
+                return control.type === HusProgress.Type_Line ? HusIcon.CheckCircleFilled : HusIcon.CheckOutlined;
             case HusProgress.Status_Exception:
-            return control.type === HusProgress.Type_Line ? HusIcon.CloseCircleFilled : HusIcon.CloseOutlined;
-            default: return `${control.percent.toFixed(control.precision)}%`;
+                return control.type === HusProgress.Type_Line ? HusIcon.CloseCircleFilled : HusIcon.CloseOutlined;
+            default:
+                return `${control.percent.toFixed(control.precision)}%`;
         }
     }
     property color colorBar: {

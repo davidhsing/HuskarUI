@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../bin/${CMAKE_BUILD_TYPE})
 
-find_package(Qt6 6.5 COMPONENTS Quick REQUIRED)
+find_package(Qt6 6.5 COMPONENTS Quick Multimedia REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
 
 #Add HuskarUIHelper
@@ -103,6 +103,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/Feedback/ExpPopconfirm.qml
         qml/Examples/Feedback/ExpPopover.qml
         qml/Examples/Feedback/ExpModal.qml
+        qml/Examples/Multimedia/ExpAudioDiagnosis.qml
         qml/Examples/Utils/ExpAsyncHasher.qml
         qml/Examples/Theme/ExpTheme.qml
         qml/Controls/CodeBox.qml
@@ -170,6 +171,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     Qt6::Quick
+    Qt6::Multimedia
     HuskarUIBasic
     $<$<BOOL:${BUILD_HUSKARUI_STATIC_LIBRARY}>:HuskarUIBasicPlugin>
 )

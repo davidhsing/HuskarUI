@@ -12,7 +12,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../.cmake/HuskarUIHelper.cmake)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(Qt6 6.5 COMPONENTS Quick QuickTemplates2 ShaderTools REQUIRED)
+find_package(Qt6 6.5 COMPONENTS Quick QuickTemplates2 ShaderTools Multimedia REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
 
 #Set header output dir.
@@ -149,11 +149,12 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusPopconfirm.qml
         imports/HusPopover.qml
         imports/HusModal.qml
+        imports/HusFileBrowser.qml
         imports/HusQRCode.qml
         imports/HusSpin.qml
         imports/HusStatusBar.qml
         imports/HusTextArea.qml
-        imports/HusFileBrowser.qml
+        imports/HusAudioDiagnosis.qml
     SOURCES
         $<$<BOOL:${WIN32}>:${HUSKARUI_RC_FILE}>
         cpp/husglobal.h
@@ -168,10 +169,11 @@ qt_add_qml_module(${PROJECT_NAME}
         cpp/theme/hussystemthemehelper.h cpp/theme/hussystemthemehelper.cpp
         cpp/utils/husapi.h cpp/utils/husapi.cpp
         cpp/utils/husasynchasher.h cpp/utils/husasynchasher.cpp
-        cpp/controls/huswindowagent.h cpp/controls/huswindowagent.cpp
+        cpp/controls/husaudioprobe.h cpp/controls/husaudioprobe.cpp
         cpp/controls/husiconfont.h cpp/controls/husiconfont.cpp
         cpp/controls/husrectangle.h cpp/controls/husrectangle.cpp
         cpp/controls/huswatermark.h cpp/controls/huswatermark.cpp
+        cpp/controls/huswindowagent.h cpp/controls/huswindowagent.cpp
 )
 
 qt_add_resources(${PROJECT_NAME} "theme"
@@ -224,6 +226,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusSpin.json
         theme/HusStatusBar.json
         theme/HusTextArea.json
+        theme/HusAudioDiagnosis.json
 )
 
 qt_add_resources(${PROJECT_NAME} "resources"
@@ -273,6 +276,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Quick
     Qt6::QuickPrivate
     Qt6::QuickTemplates2Private
+    Qt6::Multimedia
     $<$<BOOL:${BUILD_HUSKARUI_ON_DESKTOP_PLATFORM}>:QWKCore>
     $<$<BOOL:${BUILD_HUSKARUI_ON_DESKTOP_PLATFORM}>:QWKQuick>
 )

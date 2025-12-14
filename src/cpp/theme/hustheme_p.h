@@ -75,6 +75,7 @@ enum class Component : uint16_t
     HusSpin,
     HusStatusBar,
     HusTextArea,
+    HusAudioDiagnosis,
 
     Size
 };
@@ -95,7 +96,7 @@ static QHash<QString, Component> g_componentTable
     { "HusSwitch",          Component::HusSwitch           },
     { "HusScrollBar",       Component::HusScrollBar        },
     { "HusSlider",          Component::HusSlider           },
-    { "HusTabs",         Component::HusTabs          },
+    { "HusTabs",            Component::HusTabs             },
     { "HusToolTip",         Component::HusToolTip          },
     { "HusSelect",          Component::HusSelect           },
     { "HusInput",           Component::HusInput            },
@@ -109,7 +110,7 @@ static QHash<QString, Component> g_componentTable
     { "HusPagination",      Component::HusPagination       },
     { "HusPopup",           Component::HusPopup            },
     { "HusTimeline",        Component::HusTimeline         },
-    { "HusTable",       Component::HusTable        },
+    { "HusTable",           Component::HusTable            },
     { "HusTag",             Component::HusTag              },
     { "HusMessage",         Component::HusMessage          },
     { "HusAutoComplete",    Component::HusAutoComplete     },
@@ -127,6 +128,7 @@ static QHash<QString, Component> g_componentTable
     { "HusSpin",            Component::HusSpin             },
     { "HusStatusBar",       Component::HusStatusBar        },
     { "HusTextArea",        Component::HusTextArea         },
+    { "HusAudioDiagnosis",  Component::HusAudioDiagnosis   },
 };
 
 struct ThemeData

@@ -1,0 +1,109 @@
+import QtQuick
+import HuskarUI.Basic
+
+import '../../Controls'
+
+Flickable {
+    contentHeight: column.height
+    HusScrollBar.vertical: HusScrollBar { }
+
+    Column {
+        id: column
+        width: parent.width - 15
+        spacing: 30
+
+        Description {
+            desc: qsTr(`
+# HusAudioDiagnosis 音频诊断器 \n
+用于测试音频输入设备，显示实时音频信号强度的圆形指示器组件。\n
+* **继承自 { Item }**\n
+\n<br/>
+\n### 支持的属性：\n
+属性名 | 类型 | 默认值 | 描述
+------ | --- | :---: | ---
+deviceId | string | '' | 音频设备ID，指定要使用的音频输入设备
+autoRecord | bool | true | 是否自动开始录音
+fallbackDefault | bool | false | 当deviceId为空时，是否使用系统默认音频输入设备
+recording | bool (readonly) | false | 只读属性，表示当前是否正在录音
+buttonVisible | bool | true | 是否显示开始/停止按钮
+startText | string | '开始' | 开始按钮的文本
+endText | string | '停止' | 停止按钮的文本
+warnText | string | '设备不存在' | 设备不存在时显示的警告文本
+interval | int | 50 | 音频探针的检测间隔(毫秒)
+iconSource | int丨string | 0丨'' | 图标源(来自 HusIcon)或图标链接
+iconSize | int | 56 | 图标大小
+progressWidth | int | 160 | 进度条宽度
+progressHeight | int | 160 | 进度条高度
+progressGap | int | 90 | 进度条开口度
+progressGradient | bool | true | 进度条是否使用渐变色
+progressThickness | real | 12 | 进度条宽度
+colorBar | color | - | 进度条激活状态的颜色
+colorTrack | color | - | 进度条轨道的颜色
+colorWarnText | color | - | 警告文本的颜色
+colorIconRecording | color | - | 录音时图标的颜色
+colorIconStopped | color | - | 停止时图标的颜色
+\n<br/>
+                       `)
+        }
+
+        Description {
+            title: qsTr('何时使用')
+            desc: qsTr(`
+需要测试音频输入设备时。\n
+                       `)
+        }
+
+        ThemeToken {
+            source: 'HusAudioDiagnosis'
+        }
+
+        Description {
+            title: qsTr('代码演示')
+        }
+
+        CodeBox {
+            width: parent.width
+            descTitle: qsTr('基本用法')
+            desc: qsTr(`
+最简单的用法。\n
+通过 \`deviceId\` 属性设置音频输入源。\n
+通过 \`autoRecord\` 属性设置是否自动开始录音。\n
+通过 \`buttonVisible\` 属性设置按钮是否可见。\n
+通过 \`fallbackDefault\` 属性设置当输入源无效时是否使用默认的音频输入源。\n
+                       `)
+            code: `
+import QtQuick
+import HuskarUI.Basic
+
+Column {
+    spacing: 10
+
+    Rectangle {
+        width: 250
+        height: 250
+        color: HusTheme.Primary.colorBgBase
+
+        HusAudioDiagnosis {
+            anchors.centerIn: parent
+            fallbackDefault: true
+        }
+    }
+}
+            `
+            exampleDelegate: Column {
+                spacing: 10
+
+                Rectangle {
+                    width: 250
+                    height: 250
+                    color: HusTheme.Primary.colorBgBase
+
+                    HusAudioDiagnosis {
+                        anchors.centerIn: parent
+                        fallbackDefault: true
+                    }
+                }
+            }
+        }
+    }
+}

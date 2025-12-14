@@ -68,6 +68,7 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusSpin);
     HUS_PROPERTY_READONLY(QVariantMap, HusStatusBar);
     HUS_PROPERTY_READONLY(QVariantMap, HusTextArea);
+    HUS_PROPERTY_READONLY(QVariantMap, HusAudioDiagnosis);
 
 public:
     enum class DarkMode {

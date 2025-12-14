@@ -423,19 +423,6 @@ QtObject {
             ]
         },
         {
-            key: 'Utils',
-            label: qsTr('工具'),
-            iconSource: HusIcon.ToolOutlined,
-            children: [
-                {
-                    key: 'HusAsyncHasher',
-                    label: qsTr('HusAsyncHasher 异步哈希器'),
-                    source: './Examples/Utils/ExpAsyncHasher.qml',
-                    desc: qsTr('可对任意数据(url/text/object)生成加密哈希的异步散列器。')
-                }
-            ]
-        },
-        {
             key: 'Feedback',
             label: qsTr('反馈'),
             iconSource: HusIcon.MessageOutlined,
@@ -488,6 +475,33 @@ QtObject {
                     label: qsTr('HusModal 对话框'),
                     source: './Examples/Feedback/ExpModal.qml',
                     desc: qsTr('展示一个对话框，提供标题、内容区、操作区。')
+                }
+            ]
+        },
+        {
+            key: 'Multimedia',
+            label: qsTr('多媒体'),
+            iconSource: HusIcon.ToolOutlined,
+            children: [
+                {
+                    key: 'HusAudioDiagnosis',
+                    label: qsTr('HusAudioDiagnosis 音频诊断器'),
+                    source: './Examples/Multimedia/ExpAudioDiagnosis.qml',
+                    addVersion: '0.5.0.0',
+                    desc: qsTr('音频诊断器。')
+                }
+            ]
+        },
+        {
+            key: 'Utils',
+            label: qsTr('工具'),
+            iconSource: HusIcon.ToolOutlined,
+            children: [
+                {
+                    key: 'HusAsyncHasher',
+                    label: qsTr('HusAsyncHasher 异步哈希器'),
+                    source: './Examples/Utils/ExpAsyncHasher.qml',
+                    desc: qsTr('可对任意数据(url/text/object)生成加密哈希的异步散列器。')
                 }
             ]
         },
