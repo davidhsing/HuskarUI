@@ -23,6 +23,9 @@ Item {
     property int progressGap: 90
     property bool progressGradient: true
     property real progressThickness: 12
+    property var locationCallback: () => {
+        return StandardPaths.writableLocation(StandardPaths.TempLocation) + '/HusAudioDiagnosis_' + new Date().getTime() + '.m4a';
+    }
     property color colorBar: HusTheme.HusAudioDiagnosis.colorBar
     property color colorTrack: HusTheme.HusAudioDiagnosis.colorTrack
     property color colorWarningText: HusTheme.HusAudioDiagnosis.colorWarnText
@@ -141,7 +144,7 @@ Item {
             if (control.recording) {
                 mediaRecorder.stop();
             } else {
-                __private.audioLocation = __private.generateAudioLocation();
+                __private.audioLocation = control.locationCallback()
                 mediaRecorder.record();
             }
         }
@@ -152,12 +155,8 @@ Item {
 
     QtObject {
         id: __private
-        property string audioLocation: generateAudioLocation()
+        property string audioLocation: control.locationCallback()
         property bool deviceValid: false
-
-        function generateAudioLocation() {
-            return StandardPaths.writableLocation(StandardPaths.TempLocation) + '/HusAudioDiagnosis_' + new Date().getTime() + '.m4a';
-        }
 
         function findAudioDevice() {
             const devices = mediaDevices.audioInputs;

@@ -26,9 +26,9 @@ autoRecord | bool | true | 是否自动开始录音
 fallbackDefault | bool | false | 当deviceId为空时，是否使用系统默认音频输入设备
 recording | bool (readonly) | false | 只读属性，表示当前是否正在录音
 buttonVisible | bool | true | 是否显示开始/停止按钮
-startText | string | '开始' | 开始按钮的文本
-endText | string | '停止' | 停止按钮的文本
-warnText | string | '设备不存在' | 设备不存在时显示的警告文本
+startText | string | 开始 | 开始按钮的文本
+endText | string | 停止 | 停止按钮的文本
+warnText | string | 设备不存在 | 设备不存在时显示的警告文本
 interval | int | 50 | 音频探针的检测间隔(毫秒)
 iconSource | int丨string | 0丨'' | 图标源(来自 HusIcon)或图标链接
 iconSize | int | 56 | 图标大小
@@ -37,6 +37,7 @@ progressHeight | int | 160 | 进度条高度
 progressGap | int | 90 | 进度条开口度
 progressGradient | bool | true | 进度条是否使用渐变色
 progressThickness | real | 12 | 进度条宽度
+locationCallback | function | - | 音频临时文件的存储路径(必须返回字符串，完整文件名)
 colorBar | color | - | 进度条激活状态的颜色
 colorTrack | color | - | 进度条轨道的颜色
 colorWarnText | color | - | 警告文本的颜色
