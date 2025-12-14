@@ -54,7 +54,7 @@ descriptionFont | font | - | 描述文本字体
 - \`openInfo()\` 打开 \`info\` 弹框\n
 - \`openSuccess()\` 打开 \`success\` 弹框\n
 - \`openError()\` 打开 \`error\` 弹框\n
-- \`openWarning()\` 打开 \`warning\` 弹框\n
+- \`openWarn()\` 打开 \`warning\` 弹框\n
 \n<br/>
 \n### 支持的信号：\n
 - \`confirm()\` 点击确认按钮后发出\n
@@ -355,7 +355,7 @@ descriptionFont | font | - | 描述文本字体
 
                     HusButton {
                         text: 'Warning'
-                        onClicked: modal3.openWarning();
+                        onClicked: modal3.openWarn();
                     }
 
                     HusButton {
@@ -390,7 +390,7 @@ descriptionFont | font | - | 描述文本字体
 
                 HusButton {
                     text: 'Warning'
-                    onClicked: modal3.openWarning();
+                    onClicked: modal3.openWarn();
                 }
 
                 HusButton {
