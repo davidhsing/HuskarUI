@@ -47,6 +47,7 @@ HusPopup {
     property bool footerVisible: true
     property bool confirmButtonVisible: true
     property bool cancelButtonVisible: true
+    property int widthRevision: -40
     property int heightRevision: 40
     property Component bgDelegate: Rectangle {
         color: control.colorBg
@@ -125,7 +126,7 @@ HusPopup {
 
         Column {
             id: __columnLayout
-            width: parent.width - 40
+            width: parent.width + control.widthRevision
             anchors.centerIn: parent
             spacing: 10
 
