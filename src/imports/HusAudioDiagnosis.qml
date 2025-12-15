@@ -95,7 +95,7 @@ Item {
         id: warningText
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: 10
+        anchors.bottomMargin: 10
         text: control.warnText
         color: control.colorWarningText
         visible: !__private.deviceValid
@@ -114,7 +114,7 @@ Item {
         gapDegree: control.progressGap
         useGradient: control.progressGradient
         showInfo: false
-        opacity: __private.deviceValid ? 1.0 : 0.3
+        opacity: __private.deviceValid ? 1.0 : 0.5
     }
 
     // 麦克风图标
@@ -124,7 +124,7 @@ Item {
         iconSource: control.iconSource
         iconSize: control.iconSize
         color: __private.audioRecording ? control.colorIconRecording : control.colorIconStopped
-        opacity: __private.deviceValid ? 1.0 : 0.3
+        opacity: __private.deviceValid ? 1.0 : 0.5
 
         Behavior on color {
             ColorAnimation { duration: 200 }
@@ -136,7 +136,7 @@ Item {
         id: controlButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 20
+        anchors.topMargin: 10
         enabled: __private.deviceValid
         visible: control.buttonVisible
         text: __private.audioRecording ? control.endText : control.startText
@@ -171,7 +171,6 @@ Item {
             if (control.fallbackDefault && devices.length > 0) {
                 return devices[0];    // Default device
             }
-            return null;
         }
 
         function validateDevice() {
