@@ -28,13 +28,13 @@ Item {
     }
     property color colorBar: HusTheme.HusAudioDiagnosis.colorBar
     property color colorTrack: HusTheme.HusAudioDiagnosis.colorTrack
-    property color colorWarningText: HusTheme.HusAudioDiagnosis.colorWarnText
+    property color colorWarnText: HusTheme.HusAudioDiagnosis.colorWarnText
     property color colorIconRecording: HusTheme.HusAudioDiagnosis.colorIconRecording
     property color colorIconStopped: HusTheme.HusAudioDiagnosis.colorIconStopped
 
     objectName: '__HusAudioDiagnosis__'
-    implicitWidth: 200
-    implicitHeight: 240
+    implicitWidth: 180
+    implicitHeight: 180
 
     Component.onCompleted: {
         if (!control.autoRecord) {
@@ -97,8 +97,8 @@ Item {
         anchors.top: parent.top
         anchors.bottomMargin: 10
         text: control.warnText
-        color: control.colorWarningText
-        visible: !__private.deviceValid
+        color: control.colorWarnText
+        visible: !!control.warnText && !__private.deviceValid
     }
 
     // 圆形进度条
@@ -114,7 +114,6 @@ Item {
         gapDegree: control.progressGap
         useGradient: control.progressGradient
         showInfo: false
-        opacity: __private.deviceValid ? 1.0 : 0.5
     }
 
     // 麦克风图标
@@ -124,7 +123,6 @@ Item {
         iconSource: control.iconSource
         iconSize: control.iconSize
         color: __private.audioRecording ? control.colorIconRecording : control.colorIconStopped
-        opacity: __private.deviceValid ? 1.0 : 0.5
 
         Behavior on color {
             ColorAnimation { duration: 200 }
@@ -136,7 +134,6 @@ Item {
         id: controlButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.topMargin: 10
         enabled: __private.deviceValid
         visible: control.buttonVisible
         text: __private.audioRecording ? control.endText : control.startText
