@@ -42,9 +42,8 @@ HusPopup {
     })
     property bool bgVisible: true
     property bool iconVisible: true
-    property bool titleVisible: title !== ''
-    property bool descriptionVisible: description !== ''
-    property bool contentVisible: true
+    property bool titleVisible: true
+    property bool descriptionVisible: true
     property bool footerVisible: true
     property Component iconDelegate: HusIconText {
         color: control.colorIcon
@@ -128,7 +127,7 @@ HusPopup {
                     Layout.alignment: Qt.AlignVCenter
                     visible: active
                     sourceComponent: control.iconDelegate
-                    active: control.iconSource !== 0 && control.iconSource !== '' && control.iconVisible
+                    active: control.iconVisible && control.iconSource !== 0 && control.iconSource !== ''
                 }
 
                 Loader {
@@ -294,7 +293,6 @@ HusPopup {
             id: __contentLoader
             width: parent.width
             sourceComponent: control.contentDelegate
-            active: control.contentVisible
         }
     }
     onAboutToHide: {
