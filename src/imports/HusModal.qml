@@ -135,7 +135,6 @@ HusPopup {
                 Loader {
                     id: __iconLoader
                     Layout.alignment: Qt.AlignVCenter
-                    visible: active
                     sourceComponent: control.iconDelegate
                     active: control.iconVisible && control.iconSource !== 0 && control.iconSource !== ''
                     visible: active
