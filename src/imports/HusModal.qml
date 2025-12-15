@@ -45,6 +45,23 @@ HusPopup {
     property bool titleVisible: true
     property bool descriptionVisible: true
     property bool footerVisible: true
+    property bool confirmButtonVisible: true
+    property bool cancelButtonVisible: true
+    property Component bgDelegate: Rectangle {
+        color: control.colorBg
+        radius: control.radiusBg
+    }
+    property Component closeButtonDelegate: HusCaptionButton {
+        animationEnabled: control.animationEnabled
+        topPadding: 4
+        bottomPadding: 4
+        leftPadding: 8
+        rightPadding: 8
+        hoverCursorShape: Qt.PointingHandCursor
+        iconSource: HusIcon.CloseOutlined
+        radiusBg: control.themeSource.radiusCloseBg
+        onClicked: control.close();
+    }
     property Component iconDelegate: HusIconText {
         color: control.colorIcon
         iconSource: control.iconSource
@@ -79,17 +96,6 @@ HusPopup {
         type: HusButton.Type_Default
         onClicked: control.cancel();
     }
-    property Component closeButtonDelegate: HusCaptionButton {
-        animationEnabled: control.animationEnabled
-        topPadding: 4
-        bottomPadding: 4
-        leftPadding: 8
-        rightPadding: 8
-        hoverCursorShape: Qt.PointingHandCursor
-        iconSource: HusIcon.CloseOutlined
-        radiusBg: control.themeSource.radiusCloseBg
-        onClicked: control.close();
-    }
     property Component footerDelegate: Item {
         height: __footer.height
 
@@ -101,11 +107,15 @@ HusPopup {
             Loader {
                 active: control.confirmText !== ''
                 sourceComponent: control.confirmButtonDelegate
+                active: control.confirmButtonVisible
+                visible: active
             }
 
             Loader {
                 active: control.cancelText !== ''
                 sourceComponent: control.cancelButtonDelegate
+                active: control.cancelButtonVisible
+                visible: active
             }
         }
     }
@@ -128,6 +138,7 @@ HusPopup {
                     visible: active
                     sourceComponent: control.iconDelegate
                     active: control.iconVisible && control.iconSource !== 0 && control.iconSource !== ''
+                    visible: active
                 }
 
                 Loader {
@@ -136,6 +147,7 @@ HusPopup {
                     Layout.fillWidth: true
                     sourceComponent: control.titleDelegate
                     active: control.titleVisible
+                    visible: active
                 }
             }
 
@@ -146,12 +158,14 @@ HusPopup {
                 anchors.leftMargin: __iconLoader.active ? (__iconLoader.width + 10) : 0
                 sourceComponent: control.descriptionDelegate
                 active: control.descriptionVisible
+                visible: active
             }
 
             Loader {
                 width : parent.width
                 sourceComponent: control.footerDelegate
                 active: control.footerVisible
+                visible: active
             }
         }
 
@@ -162,11 +176,8 @@ HusPopup {
             anchors.topMargin: 2
             sourceComponent: control.closeButtonDelegate
             active: control.closable
+            visible: active
         }
-    }
-    property Component bgDelegate: Rectangle {
-        color: control.colorBg
-        radius: control.radiusBg
     }
 
     function openInfo() {
