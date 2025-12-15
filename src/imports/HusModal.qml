@@ -88,12 +88,14 @@ HusPopup {
         animationEnabled: control.animationEnabled
         text: control.confirmText
         type: HusButton.Type_Primary
+        visible: !!control.confirmText
         onClicked: control.confirm();
     }
     property Component cancelButtonDelegate: HusButton {
         animationEnabled: control.animationEnabled
         text: control.cancelText
         type: HusButton.Type_Default
+        visible: !!control.cancelText
         onClicked: control.cancel();
     }
     property Component footerDelegate: Item {
@@ -105,14 +107,12 @@ HusPopup {
             spacing: 10
 
             Loader {
-                active: control.confirmText !== ''
                 sourceComponent: control.confirmButtonDelegate
                 active: control.confirmButtonVisible
                 visible: active
             }
 
             Loader {
-                active: control.cancelText !== ''
                 sourceComponent: control.cancelButtonDelegate
                 active: control.cancelButtonVisible
                 visible: active
