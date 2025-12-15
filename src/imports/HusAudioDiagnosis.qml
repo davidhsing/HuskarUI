@@ -33,8 +33,8 @@ Item {
     property color colorIconStopped: HusTheme.HusAudioDiagnosis.colorIconStopped
 
     objectName: '__HusAudioDiagnosis__'
-    implicitWidth: 180
-    implicitHeight: 180
+    implicitWidth: 200
+    implicitHeight: 200
 
     Component.onCompleted: {
         if (!control.autoRecord) {
@@ -62,7 +62,7 @@ Item {
 
     AudioInput {
         id: audioInput
-        device: __private.findAudioDevice()
+        device: __private.findAudioDevice() || ''
     }
 
     MediaRecorder {
@@ -92,10 +92,10 @@ Item {
 
     // 警告文本
     HusText {
-        id: warningText
+        id: warnText
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 16
         text: control.warnText
         color: control.colorWarnText
         visible: !!control.warnText && !__private.deviceValid
