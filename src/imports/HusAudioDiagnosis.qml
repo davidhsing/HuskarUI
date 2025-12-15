@@ -41,7 +41,7 @@ Item {
             return;
         }
         __private.validateDevice();
-        if (__private.deviceValid) {
+        if (!!__private.audioDevice) {
             mediaRecorder.record();
         }
     }
@@ -62,14 +62,20 @@ Item {
 
     AudioInput {
         id: audioInput
-        device: __private.findAudioDevice() || ''
+    }
+
+    Binding {
+        target: audioInput
+        property: 'device'
+        value: __private.audioDevice
+        when: !!__private.audioDevice
     }
 
     MediaRecorder {
         id: mediaRecorder
         outputLocation: __private.audioLocation
         onRecorderStateChanged: {
-            __private.audioRecording = recorderState === MediaRecorder.RecordingState;
+            __private.audioRecording = (recorderState === MediaRecorder.RecordingState);
             if (!__private.audioRecording) {
                 volumeProgress.percent = 0;
             }
@@ -98,7 +104,7 @@ Item {
         anchors.bottomMargin: 16
         text: control.warnText
         color: control.colorWarnText
-        visible: !!control.warnText && !__private.deviceValid
+        visible: !!control.warnText && !__private.audioDevice
     }
 
     // 圆形进度条
@@ -134,7 +140,7 @@ Item {
         id: controlButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        enabled: __private.deviceValid
+        enabled: !!__private.audioDevice
         visible: control.buttonVisible
         text: __private.audioRecording ? control.endText : control.startText
         onClicked: {
@@ -153,8 +159,8 @@ Item {
     QtObject {
         id: __private
         property string audioLocation: control.locationCallback()
+        property var audioDevice: null
         property bool audioRecording: false
-        property bool deviceValid: false
 
         function findAudioDevice() {
             const devices = mediaDevices.audioInputs;
@@ -171,9 +177,8 @@ Item {
         }
 
         function validateDevice() {
-            const device = findAudioDevice(control.deviceId);
-            __private.deviceValid = !!device;
-            if (!__private.deviceValid && __private.audioRecording) {
+            __private.audioDevice = findAudioDevice(control.deviceId);
+            if (!__private.audioDevice && __private.audioRecording) {
                 mediaRecorder.stop();
             }
         }
