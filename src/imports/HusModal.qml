@@ -47,6 +47,7 @@ HusPopup {
     property bool footerVisible: true
     property bool confirmButtonVisible: true
     property bool cancelButtonVisible: true
+    property int heightRevision: 40
     property Component bgDelegate: Rectangle {
         color: control.colorBg
         radius: control.radiusBg
@@ -120,7 +121,7 @@ HusPopup {
         }
     }
     property Component contentDelegate: Item {
-        height: __columnLayout.implicitHeight + 40
+        height: __columnLayout.implicitHeight + control.heightRevision
 
         Column {
             id: __columnLayout

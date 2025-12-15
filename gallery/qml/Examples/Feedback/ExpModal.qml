@@ -56,6 +56,7 @@ descriptionVisible | bool | true | 描述是否可见
 footerVisible | bool | true | 页脚是否可见
 confirmButtonVisible | bool | true | 确认按钮是否可见
 cancelButtonVisible | bool | true | 取消按钮是否可见
+heightRevision | int | 40 | 高度修正
 \n<br/>
 \n### 支持的函数：\n
 - \`openInfo()\` 打开 \`info\` 弹框\n
