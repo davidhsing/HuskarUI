@@ -12,25 +12,26 @@ Item {
     readonly property alias recording: __private.audioRecording
     property bool buttonVisible: true
     property alias buttonType: controlButton.type
+    property alias buttonWidth: controlButton.width
     property string startText: qsTr('开始')
     property string endText: qsTr('停止')
-    property string warnText: qsTr('设备不存在')
     property int interval: 50
-    property var iconSource: HusIcon.IcoMoonMic
-    property int iconSize: 56
+    property var iconSource: HusIcon.AudioOutlined
+    property var iconSourceMuted: HusIcon.AudioMutedOutlined
+    property int iconSize: 60
     property int progressWidth: 160
     property int progressHeight: 160
     property int progressGap: 90
     property bool progressGradient: true
-    property real progressThickness: 12
+    property real progressThickness: 10
     property var locationCallback: () => {
         return StandardPaths.writableLocation(StandardPaths.TempLocation) + '/HusAudioDiagnosis_' + new Date().getTime() + '.m4a';
     }
     property color colorBar: HusTheme.HusAudioDiagnosis.colorBar
     property color colorTrack: HusTheme.HusAudioDiagnosis.colorTrack
-    property color colorWarnText: HusTheme.HusAudioDiagnosis.colorWarnText
     property color colorIconRecording: HusTheme.HusAudioDiagnosis.colorIconRecording
     property color colorIconStopped: HusTheme.HusAudioDiagnosis.colorIconStopped
+    property color colorIconMuted: HusTheme.HusAudioDiagnosis.colorIconMuted
 
     objectName: '__HusAudioDiagnosis__'
     implicitWidth: 200
@@ -41,7 +42,7 @@ Item {
             return;
         }
         __private.validateDevice();
-        if (!!__private.audioDevice) {
+        if (__private.audioDevice) {
             mediaRecorder.record();
         }
     }
@@ -96,17 +97,6 @@ Item {
         }
     }
 
-    // 警告文本
-    HusText {
-        id: warnText
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.bottomMargin: 16
-        text: control.warnText
-        color: control.colorWarnText
-        visible: !!control.warnText && !__private.audioDevice
-    }
-
     // 圆形进度条
     HusProgress {
         id: volumeProgress
@@ -126,9 +116,9 @@ Item {
     HusIconText {
         id: micIcon
         anchors.centerIn: parent
-        iconSource: control.iconSource
+        iconSource: !__private.audioDevice ? control.iconSourceMuted : control.iconSource
         iconSize: control.iconSize
-        color: __private.audioRecording ? control.colorIconRecording : control.colorIconStopped
+        color: !__private.audioDevice ? control.colorIconMuted : (__private.audioRecording ? control.colorIconRecording : control.colorIconStopped)
 
         Behavior on color {
             ColorAnimation { duration: 200 }
