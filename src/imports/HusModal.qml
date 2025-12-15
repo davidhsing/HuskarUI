@@ -40,6 +40,12 @@ HusPopup {
         family: control.themeSource.fontFamily,
         pixelSize: parseInt(control.themeSource.fontDescriptionSize)
     })
+    property bool bgVisible: true
+    property bool iconVisible: true
+    property bool titleVisible: title !== ''
+    property bool descriptionVisible: description !== ''
+    property bool contentVisible: true
+    property bool footerVisible: true
     property Component iconDelegate: HusIconText {
         color: control.colorIcon
         iconSource: control.iconSource
@@ -121,8 +127,8 @@ HusPopup {
                     id: __iconLoader
                     Layout.alignment: Qt.AlignVCenter
                     visible: active
-                    active: control.iconSource !== 0 && control.iconSource !== ''
                     sourceComponent: control.iconDelegate
+                    active: control.iconSource !== 0 && control.iconSource !== '' && control.iconVisible
                 }
 
                 Loader {
@@ -130,6 +136,7 @@ HusPopup {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.fillWidth: true
                     sourceComponent: control.titleDelegate
+                    active: control.titleVisible
                 }
             }
 
@@ -139,11 +146,13 @@ HusPopup {
                 anchors.right: parent.right
                 anchors.leftMargin: __iconLoader.active ? (__iconLoader.width + 10) : 0
                 sourceComponent: control.descriptionDelegate
+                active: control.descriptionVisible
             }
 
             Loader {
                 width : parent.width
                 sourceComponent: control.footerDelegate
+                active: control.footerVisible
             }
         }
 
@@ -200,11 +209,11 @@ HusPopup {
     x: {
         switch (control.position) {
         case HusModal.Position_Top:
-            return (parent.width - width) * 0.5;
+            return (parent.width - width) / 2;
         case HusModal.Position_Bottom:
-            return (parent.width - width) * 0.5;
+            return (parent.width - width) / 2;
         case HusModal.Position_Center:
-            return (parent.width - width) * 0.5;
+            return (parent.width - width) / 2;
         case HusModal.Position_Left:
             return positionMargin;
         case HusModal.Position_Right:
@@ -218,11 +227,11 @@ HusPopup {
         case HusModal.Position_Bottom:
             return parent.height - height - positionMargin;
         case HusModal.Position_Center:
-            return (parent.height - height) * 0.5;
+            return (parent.height - height) / 2;
         case HusModal.Position_Left:
-            return (parent.height - height) * 0.5;
+            return (parent.height - height) / 2;
         case HusModal.Position_Right:
-            return (parent.height - height) * 0.5;
+            return (parent.height - height) / 2;
         }
     }
     implicitHeight: implicitBackgroundHeight + topInset + bottomInset
@@ -278,12 +287,14 @@ HusPopup {
             width: parent.width
             height: __contentLoader.height
             sourceComponent: control.bgDelegate
+            active: control.bgVisible
         }
 
         Loader {
             id: __contentLoader
             width: parent.width
             sourceComponent: control.contentDelegate
+            active: control.contentVisible
         }
     }
     onAboutToHide: {

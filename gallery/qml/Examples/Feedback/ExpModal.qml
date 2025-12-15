@@ -20,15 +20,15 @@ Flickable {
 * **继承自 { [HusPopup](internal://HusPopup) }**\n
 \n<br/>
 \n### 支持的代理：\n
-- **iconDelegate: Component** 内容代理\n
+- **bgDelegate: Component** 背景代理\n
+- **iconDelegate: Component** 图标代理\n
 - **titleDelegate: Component** 标题代理\n
 - **descriptionDelegate: Component** 描述代理\n
+- **contentDelegate: Component** 内容代理\n
+- **footerDelegate: Component** 页脚代理(包含确认/取消按钮)\n
 - **closeButtonDelegate: Component** 右上角关闭按钮代理\n
 - **confirmButtonDelegate: Component** 确认按钮代理\n
 - **cancelButtonDelegate: Component** 取消按钮代理\n
-- **footerDelegate: Component** 底部代理(包含确认/取消按钮)\n
-- **contentDelegate: Component** 内容代理\n
-- **bgDelegate: Component** 背景代理\n
 \n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
@@ -49,6 +49,12 @@ colorTitle | color | - | 标题文本颜色
 colorDescription | color | - | 描述文本颜色
 titleFont | font | - | 标题文本字体
 descriptionFont | font | - | 描述文本字体
+bgVisible | bool | true | 背景是否可见
+iconVisible | bool | true | 图标是否可见
+titleVisible | bool | - | 标题是否可见
+descriptionVisible | bool | - | 描述是否可见
+contentVisible | bool | true | 内容是否可见
+footerVisible | bool | true | 页脚是否可见
 \n<br/>
 \n### 支持的函数：\n
 - \`openInfo()\` 打开 \`info\` 弹框\n
