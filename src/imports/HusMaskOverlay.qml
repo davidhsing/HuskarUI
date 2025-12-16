@@ -14,6 +14,7 @@ HusRectangle {
     color: control.colorBg
     parent: T.Overlay.overlay
     visible: false
+    z: 11000
 
     signal maskClicked()
 
