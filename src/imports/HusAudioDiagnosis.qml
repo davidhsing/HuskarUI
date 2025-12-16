@@ -87,7 +87,7 @@ Item {
     HusAudioProbe {
         id: audioProbe
         deviceId: control.deviceId
-        active: control.active
+        active: control.active && __private.audioRecording
         interval: control.interval
         fallbackDefault: control.fallbackDefault
         onLevelChanged: {
@@ -154,9 +154,11 @@ Item {
 
         function findAudioDevice() {
             const devices = mediaDevices.audioInputs;
-            if (control.deviceId !== '') {
+            if (control.deviceId) {
                 for (let i = 0; i < devices.length; i++) {
-                    if (devices[i].id === control.deviceId) {
+                    const id = devices[i].id;
+                    const idString = id ? (typeof id === 'string' ? id : id.toString()) : ('AudioInput-' + (i + 1));
+                    if (idString === control.deviceId) {
                         return devices[i];
                     }
                 }
