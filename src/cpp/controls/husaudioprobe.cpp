@@ -96,7 +96,8 @@ void HusAudioProbe::initializeAudioSource() {
                 break;
             }
         }
-    } else if (m_fallbackDefault) {
+    }
+    if (device.isNull() && m_fallbackDefault) {
         // Use default device
         device = QMediaDevices::defaultAudioInput();
     }

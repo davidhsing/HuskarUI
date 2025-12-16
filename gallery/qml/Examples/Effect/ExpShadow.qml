@@ -18,9 +18,6 @@ Flickable {
 # HusShadow 阴影 \n
 阴影效果。\n
 * **继承自 { MultiEffect }**\n
-\n<br/>
-\n### 支持的代理：\n
-- 无\n
                        `)
         }
 

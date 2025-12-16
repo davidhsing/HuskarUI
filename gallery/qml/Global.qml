@@ -419,6 +419,13 @@ QtObject {
                     label: qsTr('HusShadow 阴影效果'),
                     source: './Examples/Effect/ExpShadow.qml',
                     desc: qsTr('通用&统一的阴影特效。')
+                },
+                {
+                    key: 'HusMaskOverlay',
+                    label: qsTr('HusMaskOverlay 遮罩层'),
+                    source: './Examples/Effect/ExpMaskOverlay.qml',
+                    addVersion: '0.5.0.0',
+                    desc: qsTr('提供半透明背景覆盖效果。')
                 }
             ]
         },

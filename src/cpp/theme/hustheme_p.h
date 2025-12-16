@@ -76,6 +76,7 @@ enum class Component : uint16_t
     HusStatusBar,
     HusTextArea,
     HusAudioDiagnosis,
+    HusMaskOverlay,
 
     Size
 };
@@ -129,6 +130,7 @@ static QHash<QString, Component> g_componentTable
     { "HusStatusBar",       Component::HusStatusBar        },
     { "HusTextArea",        Component::HusTextArea         },
     { "HusAudioDiagnosis",  Component::HusAudioDiagnosis   },
+    { "HusMaskOverlay",     Component::HusMaskOverlay      },
 };
 
 struct ThemeData

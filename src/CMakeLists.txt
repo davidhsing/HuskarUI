@@ -155,6 +155,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusStatusBar.qml
         imports/HusTextArea.qml
         imports/HusAudioDiagnosis.qml
+        imports/HusMaskOverlay.qml
     SOURCES
         $<$<BOOL:${WIN32}>:${HUSKARUI_RC_FILE}>
         cpp/husglobal.h
@@ -227,6 +228,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusStatusBar.json
         theme/HusTextArea.json
         theme/HusAudioDiagnosis.json
+        theme/HusMaskOverlay.json
 )
 
 qt_add_resources(${PROJECT_NAME} "resources"

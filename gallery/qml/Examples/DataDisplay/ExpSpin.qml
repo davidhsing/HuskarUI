@@ -152,7 +152,7 @@ Column {
         tip: '加载中...'
         delay: 3000
         delayCallback: () => {
-            message.success('延迟函数调用完成');
+            messageApi.success('延迟函数调用完成');
         }
 
         Rectangle {
@@ -170,7 +170,7 @@ Column {
     }
 
     HusMessage {
-        id: message
+        id: messageApi
         z: 999
         parent: galleryWindow.captionBar
         width: parent.width
@@ -195,7 +195,7 @@ Column {
                     tip: '加载3秒...'
                     delay: 3000
                     delayCallback: () => {
-                        message.success('延迟函数调用完成');
+                        messageApi.success('延迟函数调用完成');
                         spinningSwitch.checked = false
                     }
 
@@ -213,7 +213,7 @@ Column {
                 }
 
                 HusMessage {
-                    id: message
+                    id: messageApi
                     z: 999
                     parent: galleryWindow.captionBar
                     width: parent.width

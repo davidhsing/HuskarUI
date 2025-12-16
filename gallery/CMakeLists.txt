@@ -24,7 +24,7 @@ if(WIN32)
         COMPANY "HuskarUI"
         DESCRIPTION ""
         VERSION "${PROJECT_VERSION}"
-        COPYRIGHT "Copyright (C) 2025. All rights reserved."
+        COPYRIGHT "Copyright (C) 2025 davidhsing. All rights reserved."
         ICONS ../resources/huskarui_icon.ico
         OUTPUT_FILE "${GALLERY_RC_FILE}"
     )
@@ -95,6 +95,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/Effect/ExpAcrylic.qml
         qml/Examples/Effect/ExpSwitchEffect.qml
         qml/Examples/Effect/ExpShadow.qml
+        qml/Examples/Effect/ExpMaskOverlay.qml
         qml/Examples/Feedback/ExpWatermark.qml
         qml/Examples/Feedback/ExpDrawer.qml
         qml/Examples/Feedback/ExpMessage.qml
