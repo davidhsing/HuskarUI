@@ -22,7 +22,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 deviceId | string | '' | 音频设备ID，指定要使用的音频输入设备
-autoRecord | bool | true | 是否自动开始录音
+active | bool | true | 是否录音
 fallbackDefault | bool | false | 设备无效时是否使用系统默认音频输入设备
 recording | bool (readonly) | false | 只读属性，表示当前是否正在录音
 buttonVisible | bool | true | 是否显示开始/停止按钮
@@ -70,7 +70,7 @@ colorIconStopped | color | - | 停止时图标的颜色
             desc: qsTr(`
 最简单的用法。\n
 通过 \`deviceId\` 属性设置音频输入源。\n
-通过 \`autoRecord\` 属性设置是否自动开始录音。\n
+通过 \`active\` 属性设置是否录音。\n
 通过 \`buttonVisible\` 属性设置按钮是否可见。\n
 通过 \`fallbackDefault\` 属性设置当输入源无效时是否使用默认的音频输入源。\n
                        `)

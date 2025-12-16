@@ -7,7 +7,7 @@ Item {
     id: control
 
     property string deviceId: ''
-    property bool autoRecord: true
+    property bool active: true
     property bool fallbackDefault: false
     readonly property alias recording: __private.audioRecording
     property bool buttonVisible: true
@@ -38,7 +38,7 @@ Item {
     implicitHeight: 200
 
     Component.onCompleted: {
-        if (!control.autoRecord) {
+        if (!control.active) {
             return;
         }
         __private.validateDevice();
@@ -87,7 +87,7 @@ Item {
     HusAudioProbe {
         id: audioProbe
         deviceId: control.deviceId
-        active: control.autoRecord || __private.audioRecording
+        active: control.active
         interval: control.interval
         fallbackDefault: control.fallbackDefault
         onLevelChanged: {
