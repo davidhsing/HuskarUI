@@ -44,6 +44,7 @@ Item {
         __private.validateDevice();
         if (__private.audioDevice) {
             mediaRecorder.record();
+            __private.audioRecording = true;
         }
     }
 
