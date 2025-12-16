@@ -9,19 +9,21 @@ Item {
     property string deviceId: ''
     property bool active: true
     property bool fallbackDefault: false
+    property bool startImmediate: false
     readonly property alias recording: __private.audioRecording
     property bool buttonVisible: true
     property alias buttonType: controlButton.type
     property alias buttonWidth: controlButton.width
+    property int buttonMargin: 8
     property string startText: qsTr('开始')
     property string endText: qsTr('停止')
-    property int interval: 50
     property var iconSource: HusIcon.AudioOutlined
     property var iconSourceMuted: HusIcon.AudioMutedOutlined
     property int iconSize: 60
+    property int probeInterval: 50
     property int progressWidth: 160
     property int progressHeight: 160
-    property int progressGap: 90
+    property int progressGap: 100
     property bool progressGradient: true
     property real progressThickness: 10
     property var locationCallback: () => {
@@ -39,11 +41,8 @@ Item {
 
     Component.onCompleted: {
         Qt.callLater(() => {
-            if (!control.active) {
-                return;
-            }
             __private.validateDevice();
-            if (__private.audioDevice) {
+            if (control.active && control.startImmediate && __private.audioDevice) {
                 mediaRecorder.record();
             }
         });
@@ -90,7 +89,7 @@ Item {
         id: audioProbe
         deviceId: control.deviceId
         active: control.active && __private.audioRecording
-        interval: control.interval
+        interval: control.probeInterval
         fallbackDefault: control.fallbackDefault
         onLevelChanged: {
             if (__private.audioRecording) {
@@ -132,6 +131,7 @@ Item {
         id: controlButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: control.buttonMargin
         enabled: !!__private.audioDevice
         visible: control.buttonVisible
         text: __private.audioRecording ? control.endText : control.startText
