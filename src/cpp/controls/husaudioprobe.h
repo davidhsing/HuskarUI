@@ -65,7 +65,7 @@ private:
 
     QString m_deviceId;
     bool m_deviceValid = false;
-    bool m_active = false;
+    bool m_active = true;
     float m_level = 0.0f;
     bool m_fallbackDefault = false;
 };

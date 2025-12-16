@@ -87,7 +87,7 @@ Item {
     HusAudioProbe {
         id: audioProbe
         deviceId: control.deviceId
-        active: __private.audioRecording
+        active: control.autoRecord || __private.audioRecording
         interval: control.interval
         fallbackDefault: control.fallbackDefault
         onLevelChanged: {
