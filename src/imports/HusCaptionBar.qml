@@ -8,7 +8,7 @@ Rectangle {
     property var targetWindow: null
     property HusWindowAgent windowAgent: null
     property alias layoutDirection: __row.layoutDirection
-    property string winIcon: ''
+    property var winIcon: ''
     property alias winIconWidth: __winIconLoader.width
     property alias winIconHeight: __winIconLoader.height
     property alias winIconVisible: __winIconLoader.visible
@@ -189,8 +189,9 @@ Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
             Component.onCompleted: {
-                if (windowAgent)
+                if (windowAgent) {
                     windowAgent.setTitleBar(__title);
+                }
             }
 
             Row {
