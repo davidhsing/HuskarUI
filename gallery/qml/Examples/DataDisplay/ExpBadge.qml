@@ -18,15 +18,13 @@ Flickable {
 # HusBadge 徽标数\n
 图标右上角的圆形徽标数字。\n
 * **继承自 { Item }**\n
-\n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
+<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 badgeState | enum | HusBadge.State_Error | 徽标状态(来自 HusBadge)
+stateEffect | bool | - | 是否有动态效果(默认 HusBadge.State_Processing 有)
 presetColor | color | '' | 预设颜色
 count | int | 0 | 徽标展示的数字
 iconSource | int丨string | 0丨'' | 徽标展示的图标(来自 HusIcon)或图标链接
@@ -413,10 +411,10 @@ colorText | color | - | 文本颜色
             descTitle: qsTr('状态点')
             desc: qsTr(`
 通过 \`badgeState\` 来设置不同的状态，支持的状态有：\n
-- 默认状态{ HusBadge.State_Default }\n
+- 默认状态(默认){ HusBadge.State_Default }\n
 - 成功状态{ HusBadge.State_Success }\n
-- 处理中状态(该状态有动效){ HusBadge.State_Processing }\n
-- 错误状态(默认){ HusBadge.State_Error }\n
+- 处理中状态(该状态默认有动效){ HusBadge.State_Processing }\n
+- 错误状态(该状态手动加了动效){ HusBadge.State_Error }\n
 - 警告状态{ HusBadge.State_Warning }\n
                        `)
             code: `
@@ -432,7 +430,7 @@ colorText | color | - | 文本颜色
 
                         HusBadge { dot: true; badgeState: HusBadge.State_Success }
                         HusBadge { dot: true; badgeState: HusBadge.State_Processing }
-                        HusBadge { dot: true; badgeState: HusBadge.State_Error }
+                        HusBadge { dot: true; badgeState: HusBadge.State_Error; stateEffect: true }
                         HusBadge { dot: true; badgeState: HusBadge.State_Warning }
                         HusBadge { dot: true; badgeState: HusBadge.State_Default }
                     }
@@ -480,7 +478,7 @@ colorText | color | - | 文本颜色
 
                     HusBadge { dot: true; badgeState: HusBadge.State_Success }
                     HusBadge { dot: true; badgeState: HusBadge.State_Processing }
-                    HusBadge { dot: true; badgeState: HusBadge.State_Error }
+                    HusBadge { dot: true; badgeState: HusBadge.State_Error; stateEffect: true }
                     HusBadge { dot: true; badgeState: HusBadge.State_Warning }
                     HusBadge { dot: true; badgeState: HusBadge.State_Default }
                 }

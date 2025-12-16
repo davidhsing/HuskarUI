@@ -15,6 +15,7 @@ Item {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property int badgeState: HusBadge.State_Error
+    property bool stateEffect: badgeState === HusBadge.State_Processing
     property string presetColor: ''
     property int count: 0
     property var iconSource: 0 ?? ''
@@ -103,7 +104,7 @@ Item {
 
     Rectangle {
         id: __effect
-        visible: control.badgeState === HusBadge.State_Processing
+        visible: control.stateEffect
         x: __border.x + (__border.width - width) * 0.5
         y: __border.y + (__border.height - height) * 0.5
         radius: height * 0.5
