@@ -38,14 +38,15 @@ Item {
     implicitHeight: 200
 
     Component.onCompleted: {
-        if (!control.active) {
-            return;
-        }
-        __private.validateDevice();
-        if (__private.audioDevice) {
-            mediaRecorder.record();
-            __private.audioRecording = true;
-        }
+        Qt.callLater(() => {
+            if (!control.active) {
+                return;
+            }
+            __private.validateDevice();
+            if (__private.audioDevice) {
+                mediaRecorder.record();
+            }
+        });
     }
 
     // 监听音频设备变化
@@ -170,7 +171,7 @@ Item {
         }
 
         function validateDevice() {
-            __private.audioDevice = findAudioDevice(control.deviceId);
+            __private.audioDevice = findAudioDevice();
             if (!__private.audioDevice) {
                 mediaRecorder.stop();
             }
