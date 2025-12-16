@@ -48,6 +48,8 @@ colorTrack | color | - | 进度条轨道的颜色
 colorIconRecording | color | - | 录音时图标的颜色
 colorIconStopped | color | - | 停止时图标的颜色
 \n<br/>
+\n### 支持的函数：
+- \`generateAudioLocation()\` 生成音频文件的存储路径
                        `)
         }
 

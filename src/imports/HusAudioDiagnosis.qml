@@ -27,7 +27,7 @@ Item {
     property bool progressGradient: true
     property real progressThickness: 10
     property var locationCallback: () => {
-        return StandardPaths.writableLocation(StandardPaths.TempLocation) + '/HusAudioDiagnosis_' + new Date().getTime() + '.m4a';
+        return generateAudioLocation();
     }
     property color colorBar: HusTheme.HusAudioDiagnosis.colorBar
     property color colorTrack: HusTheme.HusAudioDiagnosis.colorTrack
@@ -147,6 +147,10 @@ Item {
 
     onDeviceIdChanged: __private.validateDevice()
     onFallbackDefaultChanged: __private.validateDevice()
+
+    function generateAudioLocation() {
+        return StandardPaths.writableLocation(StandardPaths.TempLocation) + '/HusAudioDiagnosis_' + new Date().getTime() + '.m4a';
+    }
 
     QtObject {
         id: __private
