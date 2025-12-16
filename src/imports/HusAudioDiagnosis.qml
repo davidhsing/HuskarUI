@@ -137,7 +137,7 @@ Item {
             if (__private.audioRecording) {
                 mediaRecorder.stop();
             } else {
-                __private.audioLocation = control.locationCallback()
+                __private.audioLocation = control.locationCallback();
                 mediaRecorder.record();
             }
         }
@@ -170,7 +170,7 @@ Item {
 
         function validateDevice() {
             __private.audioDevice = findAudioDevice(control.deviceId);
-            if (!__private.audioDevice && __private.audioRecording) {
+            if (!__private.audioDevice) {
                 mediaRecorder.stop();
             }
         }
