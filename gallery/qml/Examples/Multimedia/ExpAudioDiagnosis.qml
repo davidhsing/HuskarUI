@@ -24,7 +24,7 @@ Flickable {
 deviceId | string | '' | 音频设备ID，指定要使用的音频输入设备
 active | bool | true | 是否允许录音
 fallbackDefault | bool | false | 设备无效时是否使用系统默认音频输入设备
-startImmediate | bool | true | 是否初始化后立即开始录音
+autoStart | bool | true | 是否初始化后立即开始录音
 recording | bool (readonly) | false | 只读属性，表示当前是否正在录音
 buttonVisible | bool | true | 是否显示开始/停止按钮
 buttonType | var | - | 开始/停止按钮的类型(来自HusButton)

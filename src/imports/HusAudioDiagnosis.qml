@@ -9,7 +9,7 @@ Item {
     property string deviceId: ''
     property bool active: true
     property bool fallbackDefault: false
-    property bool startImmediate: false
+    property bool autoStart: false
     readonly property alias recording: __private.audioRecording
     property bool buttonVisible: true
     property alias buttonType: controlButton.type
@@ -42,7 +42,7 @@ Item {
     Component.onCompleted: {
         Qt.callLater(() => {
             __private.validateDevice();
-            if (control.active && control.startImmediate && __private.audioDevice) {
+            if (control.active && control.autoStart && __private.audioDevice) {
                 mediaRecorder.record();
             }
         });
