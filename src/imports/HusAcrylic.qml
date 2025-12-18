@@ -9,7 +9,7 @@ Item {
     property alias sourceRect: __source.sourceRect
     property alias opacityNoise: __noiseImage.opacity
     property alias radiusBlur: __fastBlur.radius
-    property real radiusBg: 0
+    property int radiusBg: 0
     property color colorTint: '#fff'
     property real opacityTint: 0.65
     property real luminosity: 0.01
