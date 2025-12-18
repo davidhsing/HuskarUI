@@ -37,6 +37,7 @@ HusButton {
                 iconSize: control.iconSize
                 iconSource: control.loading ? HusIcon.LoadingOutlined : control.iconSource
                 verticalAlignment: Text.AlignVCenter
+                visible: control.iconSource !== 0 && control.iconSource !== ''
 
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
@@ -57,6 +58,7 @@ HusButton {
                 lineHeight: HusTheme.HusButton.fontLineHeight
                 color: control.colorText
                 elide: Text.ElideRight
+                visible: !!control.text
 
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
             }
