@@ -150,18 +150,18 @@ void HusQrCodePrivate::genQrCode()
         }
     }
 
-    m_qrCodeImage = m_qrCodeImage.scaled(q->width(), q->height());
+    m_qrCodeImage = m_qrCodeImage.scaled(qRound(q->width()), qRound(q->height()));
 
     if (m_icon && m_icon->isValid() && !m_cachedIcon.isNull()) {
         const auto iconWidth = std::min(m_qrCodeImage.width(), int(m_icon->width()));
         const auto iconHeight = std::min(m_qrCodeImage.height(), int(m_icon->height()));
         const auto icon = m_cachedIcon.scaled(iconWidth, iconHeight);
-        const auto startX = (m_qrCodeImage.width() - iconWidth) * 0.5;
-        const auto startY = (m_qrCodeImage.height() - iconHeight) * 0.5;
+        const auto startX = (m_qrCodeImage.width() - iconWidth) / 2;
+        const auto startY = (m_qrCodeImage.height() - iconHeight) / 2;
         const auto rangeX = m_qrCodeImage.width() - startX;
         const auto rangeY = m_qrCodeImage.height() - startY;
-        for (int y = startX; y < rangeX; y++) {
-            for (int x = startY; x < rangeY; x++) {
+        for (int y = startY; y < rangeY; y++) {
+            for (int x = startX; x < rangeX; x++) {
                 m_qrCodeImage.setPixelColor(x, y, icon.pixelColor(x - startX, y - startY));
             }
         }
@@ -188,10 +188,7 @@ HusQrCode::HusQrCode(QQuickItem *parent)
     });
 }
 
-HusQrCode::~HusQrCode()
-{
-
-}
+HusQrCode::~HusQrCode() = default;
 
 QString HusQrCode::text() const
 {
@@ -337,7 +334,7 @@ QSGNode *HusQrCode::updatePaintNode(QSGNode *node, UpdatePaintNodeData *)
 
     n->setRect(boundingRect());*/
 
-    QSGImageNode *n = static_cast<QSGImageNode *>(node);
+    auto *n = dynamic_cast<QSGImageNode *>(node);
     if (!n) {
         if (window()) {
             n = window()->createImageNode();

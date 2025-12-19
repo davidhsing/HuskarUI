@@ -18,7 +18,7 @@ class HUSKARUI_EXPORT HusIconSettings : public QObject
     QML_NAMED_ELEMENT(HusIconSettings)
 
 public:
-    HusIconSettings(QObject *parent = nullptr) : QObject{parent} { }
+    explicit HusIconSettings(QObject *parent = nullptr) : QObject{parent} { }
 
     [[nodiscard]] QUrl url() const;
     void setUrl(const QUrl &url);
@@ -66,24 +66,24 @@ public:
     Q_ENUM(ErrorLevel);
 
     HusQrCode(QQuickItem *parent = nullptr);
-    ~HusQrCode();
+    ~HusQrCode() override;
 
-    QString text() const;
+    [[nodiscard]] QString text() const;
     void setText(const QString &text);
 
-    int margin() const;
+    [[nodiscard]] int margin() const;
     void setMargin(int margin);
 
-    QColor color() const;
+    [[nodiscard]] QColor color() const;
     void setColor(const QColor &color);
 
-    QColor colorMargin() const;
+    [[nodiscard]] QColor colorMargin() const;
     void setColorMargin(const QColor &colorMargin);
 
-    QColor colorBg() const;
+    [[nodiscard]] QColor colorBg() const;
     void setColorBg(const QColor &colorBg);
 
-    HusQrCode::ErrorLevel errorLevel() const;
+    [[nodiscard]] HusQrCode::ErrorLevel errorLevel() const;
     void setErrorLevel(HusQrCode::ErrorLevel level);
 
     HusIconSettings *icon();
