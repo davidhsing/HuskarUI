@@ -83,6 +83,10 @@ if(WIN32)
     )
 endif()
 
+if(QT_KNOWN_POLICY_QTP0004)
+    qt_policy(SET QTP0004 NEW)
+endif()
+
 qt_add_qml_module(${PROJECT_NAME}
     URI "HuskarUI.Basic"
     VERSION 1.0
@@ -117,6 +121,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusToolTip.qml
         imports/HusSelect.qml
         imports/HusInput.qml
+        imports/HusInputInteger.qml
         imports/HusInputNumber.qml
         imports/HusInputOnce.qml
         imports/HusRate.qml
@@ -154,6 +159,8 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusSpin.qml
         imports/HusStatusBar.qml
         imports/HusTextArea.qml
+        imports/HusCheckerBoard.qml
+        imports/HusColorPicker.qml imports/HusColorPickerPanel.qml
         imports/HusAudioDiagnosis.qml
         imports/HusMaskOverlay.qml
     SOURCES
@@ -200,9 +207,11 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusSelect.json
         theme/HusMultiSelect.json
         theme/HusInput.json
+        theme/HusInputInteger.json
         theme/HusInputNumber.json
         theme/HusRate.json
         theme/HusRadio.json
+        theme/HusRadioBlock.json
         theme/HusCheckBox.json
         theme/HusDrawer.json
         theme/HusCollapse.json
@@ -227,6 +236,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusSpin.json
         theme/HusStatusBar.json
         theme/HusTextArea.json
+        theme/HusColorPicker.json
         theme/HusAudioDiagnosis.json
         theme/HusMaskOverlay.json
 )

@@ -20,7 +20,7 @@ Item {
     property color colorBg: HusTheme.HusStatusBar.colorBg
     property color colorDivider: HusTheme.HusStatusBar.colorDivider
     property color defaultColorText: HusTheme.HusStatusBar.colorText
-    property int radiusBg: 0
+    property HusRadius radiusBg: HusRadius { all: 0 }
     property string textRole: 'text'
     property string widthRole: 'width'
     property string alignRole: 'align'
@@ -34,10 +34,14 @@ Item {
     implicitWidth: parent.width
     implicitHeight: 26
 
-    Rectangle {
+    HusRectangleInternal {
         anchors.fill: parent
         color: control.colorBg
-        radius: control.radiusBg
+        radius: control.radiusBg.all
+        topLeftRadius: control.radiusBg.topLeft
+        topRightRadius: control.radiusBg.topRight
+        bottomLeftRadius: control.radiusBg.bottomLeft
+        bottomRightRadius: control.radiusBg.bottomRight
 
         RowLayout {
             anchors.fill: parent

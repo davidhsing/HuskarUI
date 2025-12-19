@@ -31,6 +31,11 @@ if(WIN32)
 endif()
 
 qt_add_executable(${PROJECT_NAME})
+
+if(QT_KNOWN_POLICY_QTP0004)
+    qt_policy(SET QTP0004 NEW)
+endif()
+
 qt_add_qml_module(${PROJECT_NAME}
     URI Gallery
     VERSION 1.0
@@ -55,6 +60,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataEntry/ExpSlider.qml
         qml/Examples/DataEntry/ExpSelect.qml
         qml/Examples/DataEntry/ExpInput.qml
+        qml/Examples/DataEntry/ExpInputInteger.qml
         qml/Examples/DataEntry/ExpInputNumber.qml
         qml/Examples/DataEntry/ExpInputOnce.qml
         qml/Examples/DataEntry/ExpRate.qml
@@ -65,6 +71,8 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataEntry/ExpMultiSelect.qml
         qml/Examples/DataEntry/ExpDateTimePicker.qml
         qml/Examples/DataEntry/ExpTextArea.qml
+        qml/Examples/DataEntry/ExpColorPicker.qml
+        qml/Examples/DataEntry/ExpColorPickerPanel.qml
         qml/Examples/DataEntry/ExpFileBrowser.qml
         qml/Examples/DataDisplay/ExpToolTip.qml
         qml/Examples/DataDisplay/ExpTourFocus.qml
@@ -84,6 +92,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataDisplay/ExpQRCode.qml
         qml/Examples/DataDisplay/ExpShield.qml
         qml/Examples/DataDisplay/ExpSpin.qml
+        qml/Examples/DataDisplay/ExpCheckerBoard.qml
         qml/Examples/Navigation/ExpMenu.qml
         qml/Examples/Navigation/ExpContextMenu.qml
         qml/Examples/Navigation/ExpScrollBar.qml
@@ -187,35 +196,22 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
         find_program(QT_DEPLOY_QT NAMES macdeployqt)
         set(QT_DEPLOY_ARGS
             ${CMAKE_CURRENT_SOURCE_DIR}/../package/${PROJECT_NAME}.app
-            --qmldir=${CMAKE_CURRENT_SOURCE_DIR}
-            --no-opengl-sw
-            --no-widgets
-            --no-virtualkeyboard
-            --no-quick3dutils
-            --no-quickcontrols2windowsstyleimpl
-            --no-quickcontrols2fusion
-            --no-quickcontrols2fusionstyleimpl
-            --no-quickcontrols2material
-            --no-quickcontrols2materialstyleimpl
-            --no-quickcontrols2universal
-            --no-quickcontrols2universalstyleimpl
-            --no-quickcontrols2imagine
-            --no-quickcontrols2imaginestyleimpl
-            --no-translations
+            -qmldir=${CMAKE_CURRENT_SOURCE_DIR}
         )
         add_custom_target(Script-DeployRelease
-                COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_SOURCE_DIR}/../package
-                COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ${CMAKE_CURRENT_SOURCE_DIR}/../package
-                COMMAND ${QT_DEPLOY_QT} ${QT_DEPLOY_ARGS}
-                COMMENT "MacOs Deploying Qt Dependencies After Build........."
-                SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
-                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_SOURCE_DIR}/../package
+            COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${PROJECT_NAME}.app ${CMAKE_CURRENT_SOURCE_DIR}/../package/${PROJECT_NAME}.app
+            COMMAND ${QT_DEPLOY_QT} ${QT_DEPLOY_ARGS}
+            COMMENT "MacOs Deploying Qt Dependencies After Build........."
+            SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         )
         add_dependencies(Script-DeployRelease ${PROJECT_NAME})
     endif()
     if(WIN32)
         find_program(QT_DEPLOY_QT NAMES windeployqt)
         set(QT_DEPLOY_ARGS
+            ${CMAKE_CURRENT_SOURCE_DIR}/../package/${PROJECT_NAME}.exe
             --qmldir=${CMAKE_CURRENT_SOURCE_DIR}
             --plugindir=${CMAKE_CURRENT_SOURCE_DIR}/../package/plugins
             --no-opengl-sw
@@ -233,7 +229,6 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
             --no-quickcontrols2imaginestyleimpl
             --no-translations
             --compiler-runtime
-            ${CMAKE_CURRENT_SOURCE_DIR}/../package/${PROJECT_NAME}.exe
         )
         add_custom_target(Script-DeployRelease
                 COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_SOURCE_DIR}/../package

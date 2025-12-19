@@ -20,9 +20,6 @@ Flickable {
 自带跟随主题切换的背景和阴影, 用来替代内置 Popup。\n
 * **继承自 { Popup }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -39,7 +36,7 @@ minimumHeight | int | 0 | 可改变的最小高度(resizable为true生效)
 maximumHeight | int | Number.NaN | 可改变的最小高度(resizable为true生效)
 colorShadow | color | - | 阴影颜色
 colorBg | color | - | 背景颜色
-radiusBg | int | - | 背景圆角半径
+radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
                        `)
         }
 
@@ -66,51 +63,53 @@ radiusBg | int | - | 背景圆角半径
 通过 \`resizable\` 设置为可改变大小 \n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Item {
-                    height: 50
+Item {
+    height: 50
 
-                    HusButton {
-                        text: (popup.opened ? qsTr('隐藏') : qsTr('显示'))
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            if (popup.opened)
-                                popup.close();
-                            else
-                                popup.open();
-                        }
-                    }
+    HusButton {
+        text: (popup.opened ? qsTr('隐藏') : qsTr('显示'))
+        type: HusButton.Type_Primary
+        onClicked: {
+            if (popup.opened)
+                popup.close();
+            else
+                popup.open();
+        }
+    }
 
-                    HusPopup {
-                        id: popup
-                        x: (parent.width - width) * 0.5
-                        y: (parent.height - height) * 0.5
-                        width: 400
-                        height: 300
-                        parent: Overlay.overlay
-                        closePolicy: HusPopup.NoAutoClose
-                        movable: true
-                        resizable: true
-                        minimumX: 0
-                        maximumX: parent.width - width
-                        minimumY: 0
-                        maximumY: parent.height - height
-                        minimumWidth: 400
-                        minimumHeight: 300
-                        contentItem: Item {
-                            HusCaptionButton {
-                                anchors.right: parent.right
-                                radiusBg: popup.radiusBg * 0.5
-                                colorText: colorIcon
-                                iconSource: HusIcon.CloseOutlined
-                                onClicked: popup.close();
-                            }
-                        }
-                    }
-                }
+    HusPopup {
+        id: popup
+        x: (parent.width - width) * 0.5
+        y: (parent.height - height) * 0.5
+        width: 400
+        height: 300
+        parent: Overlay.overlay
+        closePolicy: HusPopup.NoAutoClose
+        movable: true
+        resizable: true
+        minimumX: 0
+        maximumX: parent.width - width
+        minimumY: 0
+        maximumY: parent.height - height
+        minimumWidth: 400
+        minimumHeight: 300
+        radiusBg.topLeft: 100
+        radiusBg.bottomRight: 100
+        contentItem: Item {
+            HusCaptionButton {
+                anchors.right: parent.right
+                radiusBg.topRight: popup.radiusBg.topRight
+                colorText: colorIcon
+                iconSource: HusIcon.CloseOutlined
+                onClicked: popup.close();
+            }
+        }
+    }
+}
             `
             exampleDelegate: Item {
                 height: 50
@@ -142,10 +141,12 @@ radiusBg | int | - | 背景圆角半径
                     maximumY: parent.height - height
                     minimumWidth: 400
                     minimumHeight: 300
+                    radiusBg.topLeft: 100
+                    radiusBg.bottomRight: 100
                     contentItem: Item {
                         HusCaptionButton {
                             anchors.right: parent.right
-                            radiusBg: popup.radiusBg * 0.5
+                            radiusBg.topRight: popup.radiusBg.topRight
                             colorText: colorIcon
                             iconSource: HusIcon.CloseOutlined
                             onClicked: popup.close();

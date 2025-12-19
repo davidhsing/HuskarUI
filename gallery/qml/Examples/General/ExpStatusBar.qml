@@ -30,7 +30,7 @@ defaultFontSize | int | HusTheme.Primary.fontPrimarySize | 默认字体大小
 defaultLeftMargin | int | 10 | 默认左边距
 defaultRightMargin | int | 10 | 默认右边距
 defaultElide | int | Text.ElideRight | 默认文本省略方式
-radiusBg | int | 0 | 背景圆角半径
+radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 \n<br/>
 \n###  Model 参数说明：\n
 属性名 | 类型 | 可选/必选 | 描述

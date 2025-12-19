@@ -23,13 +23,17 @@ Item {
     property bool showIndicator: true
     property int indicatorSpacing: 6
     property bool showArrow: false
-    property int radiusIndicator: HusTheme.HusCarousel.radiusIndicator
+    property HusRadius radiusIndicator: HusRadius { all: HusTheme.HusCarousel.radiusIndicator}
     property Component contentDelegate: Item { }
-    property Component indicatorDelegate: Rectangle {
+    property Component indicatorDelegate: HusRectangleInternal {
         width: isHorizontal ? __width : __height
         height: isHorizontal ? __height : __width
         color: isCurrent ? HusTheme.HusCarousel.colorIndicatorActive : (hovered ? HusTheme.HusCarousel.colorIndicatorHover : HusTheme.HusCarousel.colorIndicator)
-        radius: control.radiusIndicator
+        radius: control.radiusIndicator.all
+        topLeftRadius: control.radiusIndicator.topLeft
+        topRightRadius: control.radiusIndicator.topRight
+        bottomLeftRadius: control.radiusIndicator.bottomLeft
+        bottomRightRadius: control.radiusIndicator.bottomRight
 
         required property int index
         required property var model

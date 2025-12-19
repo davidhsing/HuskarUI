@@ -26,7 +26,7 @@ T.Button {
     property int hoverCursorShape: Qt.PointingHandCursor
     property int type: HusButton.Type_Default
     property int shape: HusButton.Shape_Default
-    property int radiusBg: HusTheme.HusButton.radiusBg
+    property HusRadius radiusBg: HusRadius { all: HusTheme.HusButton.radiusBg }
     property color colorText: {
         if (enabled || control.forceState) {
             if (control.danger) {
@@ -187,12 +187,16 @@ T.Button {
                 }
             }
         }
-        Rectangle {
+        HusRectangleInternal {
             id: __bg
             width: realWidth
             height: realHeight
             anchors.centerIn: parent
-            radius: control.shape === HusButton.Shape_Default ? control.radiusBg : height * 0.5
+            radius: control.radiusBg?.all ?? 0
+            topLeftRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.topLeft ?? 0 : height * 0.5
+            topRightRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.topRight ?? 0 : height * 0.5
+            bottomLeftRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.bottomLeft ?? 0 : height * 0.5
+            bottomRightRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.bottomRight ?? 0 : height * 0.5
             color: control.colorBg
             border.color: (control.enabled || control.forceState) ? control.colorBorder : (control.type === HusButton.Type_Link ? 'transparent' : HusTheme.HusButton.colorDefaultBorder)
             border.width: (control.type === HusButton.Type_Filled || control.type === HusButton.Type_Text) ? 0 : 1

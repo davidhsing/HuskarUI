@@ -19,9 +19,6 @@ Flickable {
 亚克力/毛玻璃效果。\n
 * **继承自 { Item }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -29,7 +26,7 @@ sourceItem | Item | - | 源项目
 sourceRect | rect | - | 源矩形大小
 opacityNoise | real | 0.02 | 噪声图像透明度
 radiusBlur | real | 32 | 模糊半径
-radiusBg | real | 0 | 背景半径
+radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 colorTint | color | '#fff' | 色调颜色
 opacityTint | real | 0.65 | 色调透明度
 luminosity | real | 0.01 | 亮度

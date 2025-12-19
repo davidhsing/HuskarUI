@@ -18,9 +18,7 @@ Flickable {
 # HusText 文本\n
 提供统一字体和颜色的文本(替代Text)。\n
 * **继承自 { Text }**\n
-\n<br/>
-\n### 支持的代理：\n
-- 无\n
+<br/>
                        `)
         }
 

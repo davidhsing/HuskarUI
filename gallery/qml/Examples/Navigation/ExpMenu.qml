@@ -81,7 +81,7 @@ defaultSelectedKey | list | [] | 初始选中的菜单项 key 数组
 initModel | list | [] | 初始菜单模型
 colorBorder | color | - | 边框颜色
 scrollBar | HusScrollBar | - | 菜单滚动条
-radiusBg | int | - | 背景圆角
+radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 \n<br/>
 \n### 模型支持的属性：\n
 属性名 | 类型 | 可选/必选 | 描述

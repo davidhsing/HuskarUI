@@ -46,16 +46,16 @@ Item {
     property color colorSuffix: themeSource.colorSuffix
     property color colorBeforeLabel: themeSource.colorBeforeLabel
     property color colorAfterLabel: themeSource.colorAfterLabel
-    property int radiusBg: themeSource.radiusBg
+    property HusRadius radiusBg: HusRadius { all: themeSource.radiusBg }
     property var themeSource: HusTheme.HusInputNumber
 
     property alias input: __input
 
-    property Component beforeDelegate: HusRectangle {
+    property Component beforeDelegate: HusRectangleInternal {
         enabled: control.enabled
         width: Math.max(30, __beforeLoader.implicitWidth + 10)
-        topLeftRadius: control.radiusBg
-        bottomLeftRadius: control.radiusBg
+        topLeftRadius: control.radiusBg.topLeft
+        bottomLeftRadius: control.radiusBg.bottomLeft
         color: enabled ? control.themeSource.colorLabelBg : control.themeSource.colorLabelBgDisabled
         border.color: danger ? (__input.active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled)
 
@@ -68,11 +68,11 @@ Item {
             property bool isBefore: true
         }
     }
-    property Component afterDelegate: HusRectangle {
+    property Component afterDelegate: HusRectangleInternal {
         enabled: control.enabled
         width: Math.max(30, __afterLoader.implicitWidth + 10)
-        topRightRadius: control.radiusBg
-        bottomRightRadius: control.radiusBg
+        topRightRadius: control.radiusBg.topRight
+        bottomRightRadius: control.radiusBg.bottomRight
         color: enabled ? control.themeSource.colorLabelBg : control.themeSource.colorLabelBgDisabled
         border.color: danger ? (__input.active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : (enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled)
 
@@ -116,8 +116,8 @@ Item {
             iconSize: control.themeSource.fontSize - 4
             iconSource: control.upIcon
             hoverCursorShape: control.value >= control.max ? Qt.ForbiddenCursor : Qt.PointingHandCursor
-            background: HusRectangle {
-                topRightRadius: control.afterLabel?.length === 0 ? control.radiusBg : 0
+            background: HusRectangleInternal {
+                topRightRadius: control.afterLabel?.length === 0 ? control.radiusBg.topRight : 0
                 color: 'transparent'
                 border.color: __handlerRoot.colorBorder
             }
@@ -142,8 +142,8 @@ Item {
             iconSize: control.themeSource.fontSize - 4
             iconSource: control.downIcon
             hoverCursorShape: control.value <= control.min ? Qt.ForbiddenCursor : Qt.PointingHandCursor
-            background: HusRectangle {
-                bottomRightRadius: control.afterLabel?.length === 0 ? control.radiusBg : 0
+            background: HusRectangleInternal {
+                bottomRightRadius: control.afterLabel?.length === 0 ? control.radiusBg.bottomRight : 0
                 color: 'transparent'
                 border.color: __handlerRoot.colorBorder
             }
@@ -287,12 +287,12 @@ Item {
             leftPadding: (__prefixLoader.active ? __prefixLoader.implicitWidth : 10) + leftIconPadding + leftClearIconPadding
             rightPadding: (__suffixLoader.active ? 0 : 10) + rightIconPadding + rightClearIconPadding
             danger: control.danger
-            background: HusRectangle {
+            background: HusRectangleInternal {
                 color: __input.colorBg
-                topLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg : 0
-                bottomLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg : 0
-                topRightRadius: control.afterLabel?.length === 0 ? control.radiusBg : 0
-                bottomRightRadius: control.afterLabel?.length === 0 ? control.radiusBg : 0
+                topLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg.topLeft : 0
+                topRightRadius: control.afterLabel?.length === 0 ? control.radiusBg.topRight : 0
+                bottomLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg.bottomLeft : 0
+                bottomRightRadius: control.afterLabel?.length === 0 ? control.radiusBg.bottomRight : 0
             }
             clearIconDelegate: HusIconText {
                 iconSource: control.clearIconSource
@@ -378,14 +378,14 @@ Item {
                 sourceComponent: control.handlerDelegate
             }
 
-            HusRectangle {
+            HusRectangleInternal {
                 anchors.fill: parent
                 color: 'transparent'
                 border.color: __input.colorBorder
-                topLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg : 0
-                bottomLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg : 0
-                topRightRadius: control.afterLabel?.length === 0 ? control.radiusBg : 0
-                bottomRightRadius: control.afterLabel?.length === 0 ? control.radiusBg : 0
+                topLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg.topLeft : 0
+                bottomLeftRadius: control.beforeLabel?.length === 0 ? control.radiusBg.bottomLeft : 0
+                topRightRadius: control.afterLabel?.length === 0 ? control.radiusBg.topRight : 0
+                bottomRightRadius: control.afterLabel?.length === 0 ? control.radiusBg.bottomRight : 0
             }
         }
 

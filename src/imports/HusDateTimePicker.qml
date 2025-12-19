@@ -26,7 +26,6 @@ HusInput {
     property bool showTime: true
     property int datePickerMode: HusDateTimePicker.Mode_Day
     property int timePickerMode: HusDateTimePicker.Mode_HHMMSS
-
     property var initDateTime: undefined
     property var currentDateTime: new Date()
     property int currentYear: new Date().getFullYear()
@@ -37,16 +36,14 @@ HusInput {
     property int currentHours: 0
     property int currentMinutes: 0
     property int currentSeconds: 0
-
     property int visualYear: control.currentYear
     property int visualMonth: control.currentMonth
     property int visualDay: control.currentDay
     property int visualQuarter: control.currentQuarter
-
+    property var locale: Qt.locale()
     property string format: 'yyyy-MM-dd hh:mm:ss'
-
-    property int radiusItemBg: control.themeSource.radiusItemBg
-    property int radiusPopupBg: control.themeSource.radiusPopupBg
+    property HusRadius radiusItemBg: HusRadius { all: themeSource.radiusItemBg }
+    property HusRadius radiusPopupBg: HusRadius { all: themeSource.radiusPopupBg }
 
     property Component dayDelegate: HusButton {
         padding: 0
@@ -241,11 +238,15 @@ HusInput {
                     verticalAlignment: Text.AlignVCenter
                 }
                 background: Item {
-                    Rectangle {
+                    HusRectangleInternal {
                         id: selectionRect
                         anchors.fill: parent
-                        radius: control.radiusItemBg
                         color: control.themeSource.colorButtonBgActive
+                        radius: control.radiusItemBg.all
+                        topLeftRadius: control.radiusItemBg.topLeft
+                        topRightRadius: control.radiusItemBg.topRight
+                        bottomLeftRadius: control.radiusItemBg.bottomLeft
+                        bottomRightRadius: control.radiusItemBg.bottomRight
                         opacity: checked ? 1.0 : 0.0
 
                         Behavior on opacity {
@@ -254,10 +255,14 @@ HusInput {
                         }
                     }
 
-                    Rectangle {
+                    HusRectangleInternal {
                         anchors.fill: parent
-                        radius: control.radiusItemBg
                         color: hovered && !checked ? control.themeSource.colorButtonBgHover : 'transparent'
+                        radius: control.radiusItemBg.all
+                        topLeftRadius: control.radiusItemBg.topLeft
+                        topRightRadius: control.radiusItemBg.topRight
+                        bottomLeftRadius: control.radiusItemBg.bottomLeft
+                        bottomRightRadius: control.radiusItemBg.bottomRight
                         z: -1
 
                         Behavior on color {
@@ -694,7 +699,7 @@ HusInput {
                             spacing: 0
                             year: control.visualYear
                             month: control.visualMonth
-                            locale: Qt.locale()
+                            locale: control.locale
                             delegate: Item {
                                 id: __dayItem
                                 width: __dayLoader.implicitWidth + 16

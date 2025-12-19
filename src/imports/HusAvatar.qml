@@ -24,7 +24,7 @@ Item {
     property color colorBg: HusTheme.Primary.colorTextQuaternary
     property color colorIcon: 'white'
     property color colorText: 'white'
-    property int radiusBg: width * 0.5
+    property HusRadius radiusBg: HusRadius { all: control.width * 0.5 }
 
     objectName: '__HusAvatar__'
     width: __loader.width
@@ -33,10 +33,14 @@ Item {
     Component {
         id: __iconImpl
 
-        Rectangle {
+        HusRectangleInternal {
             width: control.size
             height: control.size
-            radius: control.radiusBg
+            radius: control.radiusBg.all
+            topLeftRadius: control.radiusBg.topLeft
+            topRightRadius: control.radiusBg.topRight
+            bottomLeftRadius: control.radiusBg.bottomLeft
+            bottomRightRadius: control.radiusBg.bottomRight
             color: control.colorBg
 
             HusIconText {
@@ -52,10 +56,14 @@ Item {
     Component {
         id: __imageImpl
 
-        Rectangle {
+        HusRectangleInternal {
             width: control.size
             height: control.size
-            radius: control.radiusBg
+            radius: control.radiusBg.all
+            topLeftRadius: control.radiusBg.topLeft
+            topRightRadius: control.radiusBg.topRight
+            bottomLeftRadius: control.radiusBg.bottomLeft
+            bottomRightRadius: control.radiusBg.bottomRight
             color: control.colorBg
 
             Rectangle {

@@ -18,10 +18,7 @@ Flickable {
 # HusIconButton 图标按钮\n
 带图标的按钮。\n
 * **继承自 { [HusButton](internal://HusButton) }**\n
-\n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
+<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---

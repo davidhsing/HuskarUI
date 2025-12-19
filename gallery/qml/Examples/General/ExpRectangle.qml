@@ -20,9 +20,6 @@ Flickable {
 **注意** Qt6.7 以后则可以直接使用 Rectangle。\n
 * **继承自 { QQuickPaintedItem }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---

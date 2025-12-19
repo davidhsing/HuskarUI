@@ -30,7 +30,7 @@ Item {
     property color colorMessage: HusTheme.HusMessage.colorMessage
     property color colorBg: HusTheme.isDark ? HusTheme.HusMessage.colorBgDark : HusTheme.HusMessage.colorBg
     property color colorBgShadow: HusTheme.HusMessage.colorBgShadow
-    property int radiusBg: HusTheme.HusMessage.radiusBg
+    property HusRadius radiusBg: HusRadius { all: HusTheme.HusMessage.radiusBg }
     property font messageFont: Qt.font({
         family: HusTheme.HusMessage.fontFamily,
         pixelSize: HusTheme.HusMessage.fontSize
@@ -191,10 +191,14 @@ Item {
                     shadowColor: control.colorBgShadow
                 }
 
-                Rectangle {
+                HusRectangleInternal {
                     id: __bgRect
                     anchors.fill: parent
-                    radius: control.radiusBg
+                    radius: control.radiusBg.all
+                    topLeftRadius: control.radiusBg.topLeft
+                    topRightRadius: control.radiusBg.topRight
+                    bottomLeftRadius: control.radiusBg.bottomLeft
+                    bottomRightRadius: control.radiusBg.bottomRight
                     color: control.colorBg
                     visible: false
                 }
@@ -282,7 +286,7 @@ Item {
                                 bottomPadding: 2
                                 leftPadding: 4
                                 rightPadding: 4
-                                radiusBg: 2
+                                radiusBg.all: 2
                                 animationEnabled: control.animationEnabled
                                 hoverCursorShape: Qt.PointingHandCursor
                                 iconSource: HusIcon.CloseOutlined

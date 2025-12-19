@@ -7,7 +7,7 @@
         "colorBorderDark": "#424242",
         "colorIcon": "@colorTextPrimary",
         "colorTitle": "@colorTextPrimary",
-        "colorTitleBg": "@colorFillTertiary",
+        "colorTitleBg": "@colorFillQuaternary",
         "colorContent": "@colorTextPrimary",
         "colorContentBg": "@colorBgBase",
         "colorBg": "@colorBgBase",

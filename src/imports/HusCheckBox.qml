@@ -9,7 +9,7 @@ T.CheckBox {
     property bool effectEnabled: true
     property int hoverCursorShape: Qt.PointingHandCursor
     property int indicatorSize: 18
-    property int radiusIndicator: themeSource.radiusIndicator
+    property HusRadius radiusIndicator: HusRadius { all: themeSource.radiusIndicator }
     property color colorText: enabled ? themeSource.colorText : themeSource.colorTextDisabled
     property color colorIndicator: {
         if (enabled) {
@@ -79,11 +79,15 @@ T.CheckBox {
             }
         }
 
-        Rectangle {
+        HusRectangleInternal {
             id: __bg
             width: control.indicatorSize
             height: control.indicatorSize
-            radius: control.radiusIndicator
+            radius: control.radiusIndicator.all
+            topLeftRadius: control.radiusIndicator.topLeft
+            topRightRadius: control.radiusIndicator.topRight
+            bottomLeftRadius: control.radiusIndicator.bottomLeft
+            bottomRightRadius: control.radiusIndicator.bottomRight
             color: 'transparent'
             border.color: control.colorIndicatorBorder
             border.width: 1

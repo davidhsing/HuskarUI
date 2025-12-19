@@ -13,7 +13,7 @@ T.Switch {
     property string uncheckedText: ''
     property var checkedIconSource: 0 ?? ''
     property var uncheckedIconSource: 0 ?? ''
-    property int radiusBg: __bg.height * 0.5
+    property HusRadius radiusBg: HusRadius { all: control.implicitIndicatorHeight * 0.5 }
     property color colorHandle: HusTheme.HusSwitch.colorHandle
     property color colorBg: {
         if (!enabled)
@@ -103,12 +103,16 @@ T.Switch {
                 }
             }
         }
-        Rectangle {
+        HusRectangleInternal {
             id: __bg
             width: Math.max(Math.max(checkedWidth, uncheckedWidth) + __handle.width, height * 2)
             height: hasContent ? Math.max(checkedHeight, uncheckedHeight, 22) : 22
             anchors.centerIn: parent
-            radius: control.radiusBg
+            radius: control.radiusBg.all
+            topLeftRadius: control.radiusBg.topLeft
+            topRightRadius: control.radiusBg.topRight
+            bottomLeftRadius: control.radiusBg.bottomLeft
+            bottomRightRadius: control.radiusBg.bottomRight
             color: control.colorBg
             clip: true
 

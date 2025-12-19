@@ -36,6 +36,8 @@ clearEnabled | bool丨'active' | false | 是否启用清除按钮(active-仅当�
 clearIconSource | int丨string | HusIcon.CloseCircleFilled | 清除图标源(来自 HusIcon)或图标链接
 clearIconSize | int | - | 清除图标大小
 clearIconPosition | enum | HusInput.Position_Right | 清除图标位置(来自 HusInput)
+clearLeftMargin | int | 5 | 清除图标左边距
+clearRightMargin | int | 5 | 清除图标右边距
 leftIconPadding | int(readonly) | - | 图标在左边时的填充
 rightIconPadding | int(readonly) | - | 图标在右边时的填充
 leftClearIconPadding | int(readonly) | - | 清除图标在左边时的填充
@@ -45,7 +47,7 @@ colorIcon | color | - | 图标颜色
 colorText | color | - | 文本颜色
 colorBorder | color | - | 边框颜色
 colorBg | color | - | 背景颜色
-radiusBg | int | - | 背景圆角
+radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 readOnlyBg | bool | false | 当只读时是否采用禁用时的背景色
 contentDescription | string | '' | 内容描述(提高可用性)
 \n<br/>

@@ -51,8 +51,8 @@ visualMonth | int | - | 弹窗显示的月份(通常不需要使用)
 visualDay | int | - | 弹窗显示的天数(通常不需要使用)
 visualQuarter | int | - | 弹窗显示的季度(通常不需要使用)
 format | string | 'yyyy-MM-dd hh:mm:ss' | 日期时间格式
-radiusItemBg | int | - | 选择项圆角
-radiusPopupBg | int | - | 弹窗圆角
+radiusItemBg | [HusRadius](internal://HusRadius) | - | 选择项圆角半径
+radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
 \n<br/>
 \n### 支持的函数：\n
 - \`setDateTime(date: jsDate)\` 设置当前日期时间为 \`date\` \n

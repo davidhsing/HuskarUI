@@ -49,9 +49,14 @@ HusPopup {
     property bool cancelButtonVisible: true
     property int widthRevision: -40
     property int heightRevision: 40
-    property Component bgDelegate: Rectangle {
+    property HusRadius radiusCloseBg: HusRadius { all: themeSource.radiusCloseBg }
+    property Component bgDelegate: HusRectangleInternal {
         color: control.colorBg
-        radius: control.radiusBg
+        radius: control.radiusBg.all
+        topLeftRadius: control.radiusBg.topLeft
+        topRightRadius: control.radiusBg.topRight
+        bottomLeftRadius: control.radiusBg.bottomLeft
+        bottomRightRadius: control.radiusBg.bottomRight
     }
     property Component closeButtonDelegate: HusCaptionButton {
         animationEnabled: control.animationEnabled
@@ -61,7 +66,7 @@ HusPopup {
         rightPadding: 8
         hoverCursorShape: Qt.PointingHandCursor
         iconSource: HusIcon.CloseOutlined
-        radiusBg: control.themeSource.radiusCloseBg
+        radiusBg: radiusCloseBg
         onClicked: control.close();
     }
     property Component iconDelegate: HusIconText {

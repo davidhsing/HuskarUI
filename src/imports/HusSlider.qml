@@ -44,19 +44,19 @@ Item {
         else
             return hovered ? HusTheme.HusSlider.colorTrackHover : HusTheme.HusSlider.colorTrack;
     }
-    property int radiusBg: HusTheme.HusSlider.radiusBg
+    property HusRadius radiusBg: HusRadius { all: HusTheme.HusSlider.radiusBg }
     property Component handleToolTipDelegate: Item { }
     property Component handleDelegate: Rectangle {
         id: __handleItem
         x: {
-            if (control.orientation == Qt.Horizontal) {
+            if (control.orientation === Qt.Horizontal) {
                 return slider.leftPadding + visualPosition * (slider.availableWidth - width);
             } else {
                 return slider.topPadding + (slider.availableWidth - width) * 0.5;
             }
         }
         y: {
-            if (control.orientation == Qt.Horizontal) {
+            if (control.orientation === Qt.Horizontal) {
                 return slider.topPadding + (slider.availableHeight - height) * 0.5;
             } else {
                 return slider.leftPadding + visualPosition * (slider.availableHeight - height);
@@ -100,25 +100,29 @@ Item {
         }
     }
     property Component bgDelegate: Item {
-        Rectangle {
-            width: control.orientation == Qt.Horizontal ? parent.width : 4
-            height: control.orientation == Qt.Horizontal ? 4 : parent.height
-            anchors.horizontalCenter: control.orientation == Qt.Horizontal ? undefined : parent.horizontalCenter
-            anchors.verticalCenter: control.orientation == Qt.Horizontal ? parent.verticalCenter : undefined
-            radius: control.radiusBg
+        HusRectangleInternal {
+            width: control.orientation === Qt.Horizontal ? parent.width : 4
+            height: control.orientation === Qt.Horizontal ? 4 : parent.height
+            anchors.horizontalCenter: control.orientation === Qt.Horizontal ? undefined : parent.horizontalCenter
+            anchors.verticalCenter: control.orientation === Qt.Horizontal ? parent.verticalCenter : undefined
             color: control.colorBg
+            radius: control.radiusBg.all
+            topLeftRadius: control.radiusBg.topLeft
+            topRightRadius: control.radiusBg.topRight
+            bottomLeftRadius: control.radiusBg.bottomLeft
+            bottomRightRadius: control.radiusBg.bottomRight
 
             Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
             Rectangle {
                 x: {
-                    if (control.orientation == Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal)
                         return range ? (slider.first.visualPosition * parent.width) : 0;
                     else
                         return 0;
                 }
                 y: {
-                    if (control.orientation == Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal)
                         return 0;
                     else
                         return range ? (slider.second.visualPosition * parent.height) : slider.visualPosition * parent.height;

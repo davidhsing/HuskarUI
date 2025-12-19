@@ -209,6 +209,19 @@ QtObject {
                     desc: qsTr('新增 clearIconDelegate。\n新增 bgDelegate代理。\n新增清除图标相关属性和信号。')
                 },
                 {
+                    key: 'HusInputInteger',
+                    label: qsTr('HusInputInteger 整数输入框'),
+                    source: './Examples/DataEntry/ExpInputInteger.qml',
+                    desc: qsTr('等同于 HusInputNumber，但只支持整数。')
+                },
+                {
+                    key: 'HusInputNumber',
+                    label: qsTr('HusInputNumber 数字输入框'),
+                    source: './Examples/DataEntry/ExpInputNumber.qml',
+                    updateVersion: '0.5.0.0',
+                    desc: qsTr('新增 colorPrefix, colorSuffix。\n新增 colorBeforeLabel, colorAfterLabel。')
+                },
+                {
                     key: 'HusInputOnce',
                     label: qsTr('HusInputOnce 一次性口令输入框'),
                     source: './Examples/DataEntry/ExpInputOnce.qml',
@@ -239,17 +252,22 @@ QtObject {
                     desc: qsTr('收集用户的多项选择。')
                 },
                 {
+                    key: 'HusColorPicker',
+                    label: qsTr('HusColorPicker 颜色选择器'),
+                    source: './Examples/DataEntry/ExpColorPicker.qml',
+                    desc: qsTr('用于选择颜色的弹出式窗口。')
+                },
+                {
+                    key: 'HusColorPickerPanel',
+                    label: qsTr('HusColorPickerPanel 颜色选择器面板'),
+                    source: './Examples/DataEntry/ExpColorPickerPanel.qml',
+                    desc: qsTr('用于选择颜色的面板。')
+                },
+                {
                     key: 'HusAutoComplete',
                     label: qsTr('HusAutoComplete 自动完成'),
                     source: './Examples/DataEntry/ExpAutoComplete.qml',
                     desc: qsTr('输入框自动完成功能。')
-                },
-                {
-                    key: 'HusInputNumber',
-                    label: qsTr('HusInputNumber 数字输入框'),
-                    source: './Examples/DataEntry/ExpInputNumber.qml',
-                    updateVersion: '0.5.0.0',
-                    desc: qsTr('新增 colorPrefix, colorSuffix。\n新增 colorBeforeLabel, colorAfterLabel。')
                 },
                 {
                     key: 'HusMultiSelect',
@@ -366,6 +384,12 @@ QtObject {
                     label: qsTr('HusImagePreview 图片预览'),
                     source: './Examples/DataDisplay/ExpImagePreview.qml',
                     desc: qsTr('用于预览的图片的基本工具，提供常用的图片变换(平移/缩放/翻转/旋转)操作。')
+                },
+                {
+                    key: 'HusCheckerBoard',
+                    label: qsTr('HusCheckerBoard 棋盘格'),
+                    source: './Examples/DataDisplay/ExpCheckerBoard.qml',
+                    desc: qsTr('用于创建双色棋盘格。')
                 },
                 {
                     key: 'HusEmpty',

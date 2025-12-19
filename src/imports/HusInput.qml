@@ -21,6 +21,8 @@ T.TextField {
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int clearIconSize: themeSource.fontClearIconSize
     property int clearIconPosition: HusInput.Position_Right
+    property int clearLeftMargin: 5
+    property int clearRightMargin: 5
     property bool readOnlyBg: false
     readonly property int leftIconPadding: (iconPosition === HusInput.Position_Left) ? __private.iconSize : 0
     readonly property int rightIconPadding: (iconPosition === HusInput.Position_Right) ? __private.iconSize : 0
@@ -43,7 +45,7 @@ T.TextField {
     property color colorText: enabled ? themeSource.colorText : themeSource.colorTextDisabled
     property color colorBorder: danger ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : ((!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder))
     property color colorBg: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
-    property int radiusBg: themeSource.radiusBg
+    property HusRadius radiusBg: HusRadius { all: themeSource.radiusBg }
     property string contentDescription: ''
     property var themeSource: HusTheme.HusInput
 
@@ -80,10 +82,14 @@ T.TextField {
             }
         }
     }
-    property Component bgDelegate: Rectangle {
+    property Component bgDelegate: HusRectangleInternal {
         color: control.colorBg
         border.color: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : control.colorBorder
-        radius: control.radiusBg
+        radius: control.radiusBg.all
+        topLeftRadius: control.radiusBg.topLeft
+        topRightRadius: control.radiusBg.topRight
+        bottomLeftRadius: control.radiusBg.bottomLeft
+        bottomRightRadius: control.radiusBg.bottomRight
     }
 
     objectName: '__HusInput__'
@@ -142,8 +148,8 @@ T.TextField {
                 return undefined;
             }
         }
-        anchors.leftMargin: 5
-        anchors.rightMargin: 5
+        anchors.leftMargin: control.clearLeftMargin
+        anchors.rightMargin: control.clearRightMargin
         anchors.verticalCenter: parent.verticalCenter
         sourceComponent: control.clearIconDelegate
     }

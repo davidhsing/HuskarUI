@@ -7,7 +7,7 @@ HusIconButton {
     objectName: '__HusCaptionButton__'
     leftPadding: 12
     rightPadding: 12
-    radiusBg: 0
+    radiusBg.all: 0
     hoverCursorShape: Qt.ArrowCursor
     type: HusButton.Type_Text
     iconSize: HusTheme.HusCaptionButton.fontSize

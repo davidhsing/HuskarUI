@@ -1,17 +1,8 @@
 {
+    "__init__": {
+        "__import__": ["HusRadio"]
+    },
     "__style__": {
-        "fontFamily": "@fontPrimaryFamily",
-        "fontSize": "@fontPrimarySize",
-        "colorText": "@colorTextBase",
-        "colorTextDisabled": "@colorPrimaryTextDisabled",
-        "colorIndicator": "@colorBgBase",
-        "colorIndicatorChecked": "@colorPrimary",
-        "colorIndicatorDisabled": "$alpha(@colorTextBase, 0.05)",
-        "colorIndicatorBorder": "@colorTextQuaternary",
-        "colorIndicatorBorderChecked": "@colorPrimaryBorderActive",
-        "colorEffectBg": "@colorTextTertiary",
-        "radiusIndicator": "8",
-
         "colorBlockText": "@colorTextBase",
         "colorBlockTextFilledChecked": "#fff",
         "colorBlockTextChecked": "@colorPrimary",

@@ -28,11 +28,8 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusCaptionButton);
     HUS_PROPERTY_READONLY(QVariantMap, HusTour);
     HUS_PROPERTY_READONLY(QVariantMap, HusMenu);
+    HUS_PROPERTY_READONLY(QVariantMap, HusColorPicker);
     HUS_PROPERTY_READONLY(QVariantMap, HusDivider);
-    HUS_PROPERTY_READONLY(QVariantMap, HusFormItem);
-    HUS_PROPERTY_READONLY(QVariantMap, HusGroupBox);
-    HUS_PROPERTY_READONLY(QVariantMap, HusEmpty);
-    HUS_PROPERTY_READONLY(QVariantMap, HusShield);
     HUS_PROPERTY_READONLY(QVariantMap, HusSwitch);
     HUS_PROPERTY_READONLY(QVariantMap, HusScrollBar);
     HUS_PROPERTY_READONLY(QVariantMap, HusSlider);
@@ -40,9 +37,11 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusToolTip);
     HUS_PROPERTY_READONLY(QVariantMap, HusSelect);
     HUS_PROPERTY_READONLY(QVariantMap, HusInput);
+    HUS_PROPERTY_READONLY(QVariantMap, HusInputInteger);
     HUS_PROPERTY_READONLY(QVariantMap, HusInputNumber);
     HUS_PROPERTY_READONLY(QVariantMap, HusRate);
     HUS_PROPERTY_READONLY(QVariantMap, HusRadio);
+    HUS_PROPERTY_READONLY(QVariantMap, HusRadioBlock);
     HUS_PROPERTY_READONLY(QVariantMap, HusCheckBox);
     HUS_PROPERTY_READONLY(QVariantMap, HusDrawer);
     HUS_PROPERTY_READONLY(QVariantMap, HusCollapse);
@@ -64,12 +63,16 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusPopconfirm);
     HUS_PROPERTY_READONLY(QVariantMap, HusPopover);
     HUS_PROPERTY_READONLY(QVariantMap, HusModal);
+    HUS_PROPERTY_READONLY(QVariantMap, HusTextArea);
+    HUS_PROPERTY_READONLY(QVariantMap, HusAudioDiagnosis);
     HUS_PROPERTY_READONLY(QVariantMap, HusQRCode);
     HUS_PROPERTY_READONLY(QVariantMap, HusSpin);
     HUS_PROPERTY_READONLY(QVariantMap, HusStatusBar);
-    HUS_PROPERTY_READONLY(QVariantMap, HusTextArea);
-    HUS_PROPERTY_READONLY(QVariantMap, HusAudioDiagnosis);
     HUS_PROPERTY_READONLY(QVariantMap, HusMaskOverlay);
+    HUS_PROPERTY_READONLY(QVariantMap, HusFormItem);
+    HUS_PROPERTY_READONLY(QVariantMap, HusGroupBox);
+    HUS_PROPERTY_READONLY(QVariantMap, HusEmpty);
+    HUS_PROPERTY_READONLY(QVariantMap, HusShield);
 
 public:
     enum class DarkMode {

@@ -30,10 +30,10 @@ Item {
     property int radioWidth: 120
     property int radioHeight: 30
     property font font: Qt.font({
-        family: HusTheme.HusRadio.fontFamily,
-        pixelSize: HusTheme.HusRadio.fontSize
+        family: HusTheme.HusRadioBlock.fontFamily,
+        pixelSize: HusTheme.HusRadioBlock.fontSize
     })
-    property int radiusBg: HusTheme.HusRadio.radiusBlockBg
+    property HusRadius radiusBg: HusRadius { all: HusTheme.HusRadioBlock.radiusBlockBg }
     property Component toolTipDelegate: HusToolTip {
         text: toolTip.text ?? ''
         delay: toolTip.delay ?? 500
@@ -68,34 +68,34 @@ Item {
         type: HusButton.Type_Default
         iconSource: modelData.icon ?? 0
         text: modelData.label
-        colorBorder: (enabled && checked) ? HusTheme.HusRadio.colorBlockBorderChecked :
-                                            HusTheme.HusRadio.colorBlockBorder;
+        colorBorder: (enabled && checked) ? HusTheme.HusRadioBlock.colorBlockBorderChecked :
+                                            HusTheme.HusRadioBlock.colorBlockBorder;
         colorText: {
             if (enabled) {
                 if (control.type == HusRadioBlock.Type_Filled) {
-                    return checked ? HusTheme.HusRadio.colorBlockTextFilledChecked :
-                                     hovered ? HusTheme.HusRadio.colorBlockTextChecked :
-                                               HusTheme.HusRadio.colorBlockText;
+                    return checked ? HusTheme.HusRadioBlock.colorBlockTextFilledChecked :
+                                     hovered ? HusTheme.HusRadioBlock.colorBlockTextChecked :
+                                               HusTheme.HusRadioBlock.colorBlockText;
                 } else {
-                    return (checked || hovered) ? HusTheme.HusRadio.colorBlockTextChecked :
-                                                  HusTheme.HusRadio.colorBlockText;
+                    return (checked || hovered) ? HusTheme.HusRadioBlock.colorBlockTextChecked :
+                                                  HusTheme.HusRadioBlock.colorBlockText;
                 }
             } else {
-                return HusTheme.HusRadio.colorTextDisabled;
+                return HusTheme.HusRadioBlock.colorTextDisabled;
             }
         }
         colorBg: {
             if (enabled) {
                 if (control.type == HusRadioBlock.Type_Filled) {
-                    return down ? (checked ? HusTheme.HusRadio.colorBlockBgActive : HusTheme.HusRadio.colorBlockBg) :
-                                  hovered ? (checked ? HusTheme.HusRadio.colorBlockBgHover : HusTheme.HusRadio.colorBlockBg) :
-                                            checked ? HusTheme.HusRadio.colorBlockBgChecked :
-                                                      HusTheme.HusRadio.colorBlockBg;
+                    return down ? (checked ? HusTheme.HusRadioBlock.colorBlockBgActive : HusTheme.HusRadioBlock.colorBlockBg) :
+                                  hovered ? (checked ? HusTheme.HusRadioBlock.colorBlockBgHover : HusTheme.HusRadioBlock.colorBlockBg) :
+                                            checked ? HusTheme.HusRadioBlock.colorBlockBgChecked :
+                                                      HusTheme.HusRadioBlock.colorBlockBg;
                 } else {
-                    return HusTheme.HusRadio.colorBlockBg;
+                    return HusTheme.HusRadioBlock.colorBlockBg;
                 }
             } else {
-                return checked ? HusTheme.HusRadio.colorBlockBgCheckedDisabled : HusTheme.HusRadio.colorBlockBgDisabled;
+                return checked ? HusTheme.HusRadioBlock.colorBlockBgCheckedDisabled : HusTheme.HusRadioBlock.colorBlockBgDisabled;
             }
         }
         checkable: true
@@ -108,7 +108,7 @@ Item {
                 visible: __rootItem.effectEnabled
                 color: 'transparent'
                 border.width: 0
-                border.color: __rootItem.enabled ? HusTheme.HusRadio.colorBlockEffectBg : 'transparent'
+                border.color: __rootItem.enabled ? HusTheme.HusRadioBlock.colorBlockEffectBg : 'transparent'
                 opacity: 0.2
 
                 ParallelAnimation {
@@ -141,16 +141,16 @@ Item {
                 }
             }
 
-            HusRectangle {
+            HusRectangleInternal {
                 id: __bg
                 width: parent.width
                 height: parent.height
                 anchors.centerIn: parent
                 color: __rootItem.colorBg
-                topLeftRadius: index == 0 ? control.radiusBg : 0
-                bottomLeftRadius: index == 0 ? control.radiusBg : 0
-                topRightRadius: index === (count - 1) ? control.radiusBg : 0
-                bottomRightRadius: index === (count - 1) ? control.radiusBg : 0
+                topLeftRadius: index == 0 ? control.radiusBg.topLeft : 0
+                topRightRadius: index === (count - 1) ? control.radiusBg.topRight : 0
+                bottomLeftRadius: index == 0 ? control.radiusBg.bottomLeft : 0
+                bottomRightRadius: index === (count - 1) ? control.radiusBg.bottomRight : 0
                 border.width: 1
                 border.color: __rootItem.colorBorder
 

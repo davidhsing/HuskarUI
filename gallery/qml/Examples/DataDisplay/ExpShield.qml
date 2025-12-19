@@ -36,7 +36,7 @@ colorLeftBg | color | - | 左侧背景色
 colorRightBg | color | - | 右侧背景色
 colorLeftText | color | - | 左侧文本颜色
 colorRightText | color | - | 右侧文本颜色
-radiusBg | int | 4 | 圆角值
+radiusBg | [HusRadius](internal://HusRadius) | 4 | 圆角值
 \n<br/>
                        `)
         }

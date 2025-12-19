@@ -65,21 +65,21 @@ colorText | color | - | 文本颜色
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { count: 5 }
                     }
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { count: 0; showZero: true }
                     }
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge {
                             iconSource: HusIcon.ClockCircleOutlined
@@ -95,21 +95,21 @@ colorText | color | - | 文本颜色
 
                 HusAvatar {
                     size: 40
-                    radiusBg: 6
+                    radiusBg.all: 6
 
                     HusBadge { count: 5 }
                 }
 
                 HusAvatar {
                     size: 40
-                    radiusBg: 6
+                    radiusBg.all: 6
 
                     HusBadge { count: 0; showZero: true }
                 }
 
                 HusAvatar {
                     size: 40
-                    radiusBg: 6
+                    radiusBg.all: 6
 
                     HusBadge {
                         iconSource: HusIcon.ClockCircleOutlined
@@ -186,28 +186,28 @@ colorText | color | - | 文本颜色
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { count: 99 }
                     }
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { count: 100 }
                     }
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { count: 99; overflowCount: 10 }
                     }
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { count: 1000; overflowCount: 999 }
                     }
@@ -218,28 +218,28 @@ colorText | color | - | 文本颜色
 
                 HusAvatar {
                     size: 40
-                    radiusBg: 6
+                    radiusBg.all: 6
 
                     HusBadge { count: 99 }
                 }
 
                 HusAvatar {
                     size: 40
-                    radiusBg: 6
+                    radiusBg.all: 6
 
                     HusBadge { count: 100 }
                 }
 
                 HusAvatar {
                     size: 40
-                    radiusBg: 6
+                    radiusBg.all: 6
 
                     HusBadge { count: 99; overflowCount: 10 }
                 }
 
                 HusAvatar {
                     size: 40
-                    radiusBg: 6
+                    radiusBg.all: 6
 
                     HusBadge { count: 1000; overflowCount: 999 }
                 }
@@ -318,7 +318,7 @@ colorText | color | - | 文本颜色
 
                         HusAvatar {
                             size: 40
-                            radiusBg: 6
+                            radiusBg.all: 6
 
                             HusBadge { id: badge; count: 5 }
                         }
@@ -345,7 +345,7 @@ colorText | color | - | 文本颜色
 
                         HusAvatar {
                             size: 40
-                            radiusBg: 6
+                            radiusBg.all: 6
 
                             HusBadge { id: badge2; count: 0; dot: true }
                         }
@@ -366,7 +366,7 @@ colorText | color | - | 文本颜色
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { id: badge; count: 5 }
                     }
@@ -393,7 +393,7 @@ colorText | color | - | 文本颜色
 
                     HusAvatar {
                         size: 40
-                        radiusBg: 6
+                        radiusBg.all: 6
 
                         HusBadge { id: badge2; count: 0; dot: true }
                     }

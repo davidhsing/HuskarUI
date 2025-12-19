@@ -20,9 +20,6 @@ Flickable {
 用于在多个备选项中选中单个状态。\n
 * **继承自 { RadioButton }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -32,7 +29,7 @@ hoverCursorShape | enum | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Q
 colorText | color | - | 文本颜色
 colorIndicator | color | - | 指示器颜色
 colorIndicatorBorder | color | - | 指示器边框颜色
-radiusIndicator | int | 8 | 指示器圆角
+radiusIndicator | [HusRadius](internal://HusRadius) | 8 | 指示器圆角半径
 contentDescription | string | '' | 内容描述(提高可用性)
                        `)
         }

@@ -20,9 +20,6 @@ Flickable {
 单的文字提示气泡框。\n
 * **继承自 { ToolTip }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -31,6 +28,7 @@ arrowVisible | bool | false | 是否显示箭头
 position | enum | HusToolTip.Position_Top | 文字提示的位置(来自 HusToolTip)
 colorText | color | - | 文本颜色
 colorBg | color | - | 背景颜色
+radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
                        `)
         }
 

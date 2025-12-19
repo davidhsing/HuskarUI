@@ -19,9 +19,6 @@ Flickable {
 上下文菜单，通常作为右键单击后显示的菜单。\n
 * **继承自 { [HusPopup](internal://HusPopup) }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -34,7 +31,7 @@ defaultMenuWidth | int | 140 | 默认菜单宽度
 defaultMenuHieght | int | 40 | 默认菜单高度
 defaultMenuSpacing | int | 4 | 默认菜单间隔
 subMenuOffset | int | -4 | 子菜单偏移
-radiusBg | int | - | 背景圆角
+radiusMenuBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 \n<br/>
 \n### 支持的信号：\n
 - \`clickMenu(deep: int, key: string, keyPath: var, data: var)\` 点击任意菜单项时发出\n
