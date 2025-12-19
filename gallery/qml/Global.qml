@@ -106,6 +106,12 @@ QtObject {
                     desc: qsTr('新增窗口额外按钮代理 winExtraButtonsDelegate。')
                 },
                 {
+                    key: 'HusRadius',
+                    label: qsTr('HusRadius 圆角半径'),
+                    source: './Examples/General/ExpRadius.qml',
+                    desc: qsTr('提供四方向的圆角半径类型。')
+                },
+                {
                     key: 'HusStatusBar',
                     label: qsTr('HusStatusBar 状态栏'),
                     source: './Examples/General/ExpStatusBar.qml',
@@ -399,11 +405,10 @@ QtObject {
                     desc: qsTr('显示一个表示空状态的图像和描述文本。')
                 },
                 {
-                    key: 'HusQRCode',
-                    label: qsTr('HusQRCode 二维码'),
+                    key: 'HusQrCode',
+                    label: qsTr('HusQrCode 二维码'),
                     source: './Examples/DataDisplay/ExpQRCode.qml',
-                    addVersion: '0.5.0.0',
-                    desc: qsTr('显示一个二维码。')
+                    desc: qsTr('将文本转换生成二维码，支持自定义配色和 Logo 配置。')
                 },
                 {
                     key: 'HusShield',

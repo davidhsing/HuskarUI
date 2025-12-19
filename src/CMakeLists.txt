@@ -155,7 +155,6 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusPopover.qml
         imports/HusModal.qml
         imports/HusFileBrowser.qml
-        imports/HusQRCode.qml
         imports/HusSpin.qml
         imports/HusStatusBar.qml
         imports/HusTextArea.qml
@@ -177,11 +176,16 @@ qt_add_qml_module(${PROJECT_NAME}
         cpp/theme/hussystemthemehelper.h cpp/theme/hussystemthemehelper.cpp
         cpp/utils/husapi.h cpp/utils/husapi.cpp
         cpp/utils/husasynchasher.h cpp/utils/husasynchasher.cpp
-        cpp/controls/husaudioprobe.h cpp/controls/husaudioprobe.cpp
         cpp/controls/husiconfont.h cpp/controls/husiconfont.cpp
         cpp/controls/husrectangle.h cpp/controls/husrectangle.cpp
         cpp/controls/huswatermark.h cpp/controls/huswatermark.cpp
         cpp/controls/huswindowagent.h cpp/controls/huswindowagent.cpp
+        # QR-Code-generator
+        cpp/controls/husqrcode.h cpp/controls/husqrcode.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/QR-Code-generator/cpp/qrcodegen.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/QR-Code-generator/cpp/qrcodegen.cpp
+        # Multimedia
+        cpp/controls/husaudioprobe.h cpp/controls/husaudioprobe.cpp
 )
 
 qt_add_resources(${PROJECT_NAME} "theme"
@@ -232,7 +236,6 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusPopconfirm.json
         theme/HusPopover.json
         theme/HusModal.json
-        theme/HusQRCode.json
         theme/HusSpin.json
         theme/HusStatusBar.json
         theme/HusTextArea.json
@@ -252,7 +255,6 @@ qt_add_resources(${PROJECT_NAME} "resources"
         resources/images/star.png
         resources/images/stripes.png
         resources/font/HuskarUI-Icons.ttf
-        resources/js/qrcode-svg.min.js
 )
 
 qt_add_shaders(${PROJECT_NAME} "shaders"

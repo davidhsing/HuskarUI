@@ -50,6 +50,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/General/ExpCopyableText.qml
         qml/Examples/General/ExpRectangle.qml
         qml/Examples/General/ExpPopup.qml
+        qml/Examples/General/ExpRadius.qml
         qml/Examples/General/ExpText.qml
         qml/Examples/General/ExpButtonBlock.qml
         qml/Examples/General/ExpCaptionBar.qml
@@ -158,7 +159,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE  #VSCode 打印需要屏蔽此属性
+    # WIN32_EXECUTABLE TRUE  #VSCode 打印需要屏蔽此属性
 )
 
 # Configure Android_OpenSSL

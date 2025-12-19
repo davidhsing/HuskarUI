@@ -517,7 +517,6 @@ void HusThemePrivate::registerDefaultComponentTheme(const QString &componentName
             ADD_COMPONENT_CASE(HusModal)
             ADD_COMPONENT_CASE(HusTextArea)
             ADD_COMPONENT_CASE(HusAudioDiagnosis)
-            ADD_COMPONENT_CASE(HusQRCode)
             ADD_COMPONENT_CASE(HusSpin)
             ADD_COMPONENT_CASE(HusStatusBar)
             ADD_COMPONENT_CASE(HusMaskOverlay)

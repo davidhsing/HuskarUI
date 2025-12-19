@@ -65,7 +65,6 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusModal);
     HUS_PROPERTY_READONLY(QVariantMap, HusTextArea);
     HUS_PROPERTY_READONLY(QVariantMap, HusAudioDiagnosis);
-    HUS_PROPERTY_READONLY(QVariantMap, HusQRCode);
     HUS_PROPERTY_READONLY(QVariantMap, HusSpin);
     HUS_PROPERTY_READONLY(QVariantMap, HusStatusBar);
     HUS_PROPERTY_READONLY(QVariantMap, HusMaskOverlay);
@@ -155,7 +154,7 @@ public:
      * @brief 设置动画基础速度
      * @param durationFast [Fast 动画持续时间(ms)]
      * @param durationMid  [Mid  动画持续时间(ms)]
-     * @param duratoinSlow [Slow 动画持续时间(ms)]
+     * @param durationSlow [Slow 动画持续时间(ms)]
      */
     Q_INVOKABLE void installThemePrimaryAnimationBase(int durationFast, int durationMid, int durationSlow);
 
