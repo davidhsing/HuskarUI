@@ -28,8 +28,10 @@ Flickable {
 ------ | --- | :---: | ---
 size | int | 30 | 头像大小
 iconSource | int丨string | 0 | 头像图标(来自 HusIcon)或图标链接
-imageSource | url | '' | 头像图像
 imageMipmap | bool | false | 是否开启层级映射
+imageSource | url | '' | 头像图像
+fallbackImageSource | url | '' | 加载失败时显示的头像图像占位符
+emptyAsError | bool | false | 是否将空的头像 source 视为加载失败(触发 fallback)
 textSource | string | '' | 头像文本
 textFont | font | - | 文本字体(文本头像时生效)
 textSize | enum | HusAvatar.Size_Fixed | 文本大小模式(来自 HusAvatar)

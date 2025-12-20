@@ -12,8 +12,10 @@ Item {
 
     property int size: 30
     property var iconSource: 0 ?? ''
-    property var imageSource: ''
     property bool imageMipmap: false
+    property var imageSource: ''
+    property var fallbackImageSource: ''
+    property bool emptyAsError: false
     property string textSource: ''
     property font textFont: Qt.font({
         family: HusTheme.Primary.fontPrimaryFamily,
@@ -74,12 +76,14 @@ Item {
                 visible: false
             }
 
-            Image {
+            HusImage {
                 id: __imageSource
                 anchors.fill: parent
                 mipmap: control.imageMipmap
                 source: control.imageSource
+                fallback: control.fallbackImageSource
                 sourceSize: Qt.size(width, height)
+                emptyAsError: control.emptyAsError
                 layer.enabled: true
                 visible: false
             }
