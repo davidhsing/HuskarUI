@@ -34,6 +34,7 @@ autoChange | bool | true | 默认颜色值
 changeValue | color | defaultValue | 更改的颜色值
 title | string | '' | 弹窗标题
 alphaEnabled | bool | true | 透明度是否启用
+clearEnabled | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
 open | bool | false | 弹窗是否打开
 format | string | 'hex' | 颜色格式
 presets | list | [] | 预设颜色列表
@@ -57,6 +58,8 @@ colors | list | 必选 | 颜色列表
 expanded | bool | 可选 | 默认是否展开
 \n<br/>
 \n### 支持的函数：\n
+- \`invertColor(color: color): color\` 将 \`color\` 反转\n
+- \`isTransparent(color: color, alpha: bool): bool \` 判断 \`color\` 是否为空(透明色), 参数 \`alpha\`是否比较透明度, 默认 \`true\`\n
 - \`toHexString(color: color): string\` 将 \`color\` 转为16进制字符串\n
 - \`toHsvString(color: color): string\` 将 \`color\` 转为hsv/hsva字符串\n
 - \`toRgbString(color: color): string\` 将 \`color\` 转为rgb/rgba字符串\n
@@ -89,42 +92,42 @@ expanded | bool | 可选 | 默认是否展开
 基本用法在 [HusColorPicker](internal://HusColorPicker) 中已有示例。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRadioBlock {
-                        id: orientatioRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: 'Horizontal', value: Qt.Horizontal },
-                            { label: 'Vertical', value: Qt.Vertical },
-                        ]
-                    }
+    HusRadioBlock {
+        id: orientatioRadio
+        initCheckedIndex: 0
+        model: [
+            { label: 'Horizontal', value: Qt.Horizontal },
+            { label: 'Vertical', value: Qt.Vertical },
+        ]
+    }
 
-                    HusRadioBlock {
-                        id: layoutDirectionRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: 'LeftToRight', value: Qt.LeftToRight },
-                            { label: 'RightToLeft', value: Qt.RightToLeft },
-                        ]
-                    }
+    HusRadioBlock {
+        id: layoutDirectionRadio
+        initCheckedIndex: 0
+        model: [
+            { label: 'LeftToRight', value: Qt.LeftToRight },
+            { label: 'RightToLeft', value: Qt.RightToLeft },
+        ]
+    }
 
-                    HusColorPickerPanel {
-                        title: 'color picker panel'
-                        defaultValue: '#1677ff'
-                        presets: [
-                            { label: 'primary', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Blue) },
-                            { label: 'red', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Red), expanded: false },
-                            { label: 'green', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Green) },
-                        ]
-                        presetsOrientation: orientatioRadio.currentCheckedValue
-                        presetsLayoutDirection: layoutDirectionRadio.currentCheckedValue
-                    }
-                }
+    HusColorPickerPanel {
+        title: 'color picker panel'
+        defaultValue: '#1677ff'
+        presets: [
+            { label: 'primary', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Blue) },
+            { label: 'red', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Red), expanded: false },
+            { label: 'green', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Green) },
+        ]
+        presetsOrientation: orientatioRadio.currentCheckedValue
+        presetsLayoutDirection: layoutDirectionRadio.currentCheckedValue
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -149,6 +152,7 @@ expanded | bool | 可选 | 默认是否展开
 
                 HusColorPickerPanel {
                     title: 'color picker panel'
+                    clearEnabled: true
                     defaultValue: '#1677ff'
                     presets: [
                         { label: 'primary', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Blue) },

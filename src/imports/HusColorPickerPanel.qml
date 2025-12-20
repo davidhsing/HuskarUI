@@ -11,11 +11,12 @@ T.Control {
     property bool animationEnabled: HusTheme.animationEnabled
     property bool active: hovered || visualFocus
     readonly property color value: autoChange ? __private.value : changeValue
-    property color defaultValue: '#fff'
+    property color defaultValue: Qt.rgba(0, 0, 0, 0)
     property bool autoChange: true
     property color changeValue: defaultValue
     property string title: ''
     property bool alphaEnabled: true
+    property bool clearEnabled: false
     property string format: 'hex'
     property var presets: []
     property int presetsOrientation: Qt.Vertical
@@ -86,6 +87,7 @@ T.Control {
                 radius: 6
             }
 
+            // 色板
             Rectangle {
                 anchors.fill: parent
                 radius: 6
@@ -127,6 +129,11 @@ T.Control {
                 function handleMouse(mouse) {
                     __private.s = Math.max(0, Math.min(1, mouse.x / width));
                     __private.v = 1 - Math.max(0, Math.min(1, mouse.y / height));
+                    // 如果透明度为 0，恢复为1确保颜色可见
+                    if (control.alphaEnabled && __private.a === 0) {
+                        __private.a = 1;
+                        __private.updateInput();
+                    }
                 }
             }
         }
@@ -277,9 +284,65 @@ T.Control {
                 }
 
                 Rectangle {
+                    id: __colorPreview
                     anchors.fill: parent
                     radius: 4
-                    color: __private.value
+                    color: control.isTransparent(__private.value, control.alphaEnabled) ? control.themeSource.colorBg : __private.value
+                    border.color: control.themeSource.colorBorder
+                    border.width: control.isTransparent(__private.value, control.alphaEnabled) ? 1 : 0
+                }
+
+                // 空状态时的斜线
+                Canvas {
+                    id: __emptyCanvas
+                    anchors.fill: parent
+                    visible: control.isTransparent(__private.value, control.alphaEnabled)
+                    onPaint: {
+                        const ctx = getContext('2d');
+                        ctx.strokeStyle = '#f759ab';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(ctx.lineWidth, height - ctx.lineWidth);
+                        ctx.lineTo(width - ctx.lineWidth, ctx.lineWidth);
+                        ctx.stroke();
+                    }
+
+                    Connections {
+                        target: __private
+                        function onValueChanged() {
+                            if (control.clearEnabled) {
+                                __emptyCanvas.requestPaint();
+                            }
+                        }
+                    }
+                }
+
+                // 清除按钮
+                HusIconText {
+                    anchors.centerIn: parent
+                    iconSource: HusIcon.CloseCircleOutlined
+                    iconSize: 16
+                    colorIcon: control.invertColor(__private.value)
+                    visible: control.clearEnabled && !control.isTransparent(__private.value, control.alphaEnabled) && __hoverHandler.hovered
+                    scale: __hoverHandler.hovered ? 1.1 : 1.0
+
+                    Behavior on scale {
+                        enabled: control.animationEnabled
+                        NumberAnimation { duration: HusTheme.Primary.durationFast }
+                    }
+                }
+
+                HoverHandler {
+                    id: __hoverHandler
+                    cursorShape: control.clearEnabled && !control.isTransparent(__private.value, control.alphaEnabled) ? Qt.PointingHandCursor : Qt.ArrowCursor
+                }
+
+                TapHandler {
+                    onTapped: {
+                        if (control.clearEnabled && !control.isTransparent(__private.value, control.alphaEnabled)) {
+                            __private.clearColor();
+                        }
+                    }
                 }
             }
         }
@@ -329,13 +392,18 @@ T.Control {
                     }
                     font: control.inputFont
                     text: __private.toHex(__private.value)
-                    validator: RegularExpressionValidator { regularExpression: /[0-9a-fA-F]{6}/ }
-                    maximumLength: 6
+                    validator: RegularExpressionValidator {
+                        regularExpression: control.alphaEnabled ? /[0-9a-fA-F]{6}([0-9a-fA-F]{2})?/ : /[0-9a-fA-F]{6}/
+                    }
+                    maximumLength: control.alphaEnabled ? 8 : 6
                     inputMethodHints: Qt.ImhHiddenText
                     onTextEdited: {
                         if (length === 6) {
                             const color = Qt.color('#' + text);
                             color.a = __private.a;
+                            __private.updateHSV(color);
+                        } else if (length === 8) {
+                            const color = Qt.color('#' + text);
                             __private.updateHSV(color);
                         }
                     }
@@ -427,10 +495,7 @@ T.Control {
                     Component.onCompleted: __private.valueChanged();
 
                     function updateRGB() {
-                        const color = Qt.rgba(__rInput.value / 255,
-                                              __gInput.value / 255,
-                                              __bInput.value / 255,
-                                              __private.a);
+                        const color = Qt.rgba(__rInput.value / 255, __gInput.value / 255, __bInput.value / 255, __private.a);
                         __private.updateHSV(color);
                     }
 
@@ -712,6 +777,17 @@ T.Control {
         }
     }
 
+    function invertColor(color: color): color {
+        const r = 1 - color.r;
+        const g = 1 - color.g;
+        const b = 1 - color.b;
+        return Qt.rgba(r, g, b, color.a);
+    }
+
+    function isTransparent(color: color, alpha = true): bool {
+        return color.r === 0 && color.g === 0 && color.b === 0 && (color.a === 0 || !alpha);
+    }
+
     function toHexString(color: color): string {
         if (control.alphaEnabled) {
             const noAlpha = Qt.rgba(color.r, color.g, color.b, 1);
@@ -752,14 +828,18 @@ T.Control {
 
         signal updateInput()
 
-        property real h: 0 // Hue (0-1)
-        property real s: 1 // Saturation (0-1)
-        property real v: 1 // Value (0-1)
-        property real a: 1 // Alpha (0-1)
+        property real h: 0    // Hue (0-1)
+        property real s: 1    // Saturation (0-1)
+        property real v: 1    // Value (0-1)
+        property real a: 1    // Alpha (0-1)
 
         property color value: Qt.hsva(h, s, v, alphaEnabled ? a : 1)
 
         onValueChanged: control.change(value);
+
+        function clearColor() {
+            updateHSV(Qt.rgba(0, 0, 0, 0));
+        }
 
         function updateHSV(color) {
             if (color.valid) {
@@ -781,7 +861,11 @@ T.Control {
             const hexRed = floatToHex(color.r * 255);
             const hexGreen = floatToHex(color.g * 255);
             const hexBlue = floatToHex(color.b * 255);
-            return hexRed + hexGreen + hexBlue;
+            let result = hexRed + hexGreen + hexBlue;
+            if (control.alphaEnabled && color.a < 1) {
+                result += floatToHex(color.a * 255);
+            }
+            return result;
         }
     }
 }

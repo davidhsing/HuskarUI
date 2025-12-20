@@ -14,7 +14,7 @@ T.Control {
     property alias defaultValue: __colorPickerPanel.defaultValue
     property alias autoChange: __colorPickerPanel.autoChange
     property alias changeValue: __colorPickerPanel.changeValue
-    property bool showText: false
+    property bool textVisible: false
     property var textFormatter: color => {
         switch (format.toLowerCase()) {
             case 'hex': return toHexString(color);
@@ -24,6 +24,7 @@ T.Control {
     }
     property alias title: __colorPickerPanel.title
     property alias alphaEnabled: __colorPickerPanel.alphaEnabled
+    property alias clearEnabled: __colorPickerPanel.clearEnabled
     property alias open: __popup.visible
     property alias format: __colorPickerPanel.format
     property alias presets: __colorPickerPanel.presets
@@ -80,20 +81,46 @@ T.Control {
             }
 
             HusRectangleInternal {
+                id: __colorPreview
                 anchors.fill: parent
                 radius: control.radiusTriggerBg.all
                 topLeftRadius: control.radiusTriggerBg.topLeft
                 topRightRadius: control.radiusTriggerBg.topRight
                 bottomLeftRadius: control.radiusTriggerBg.bottomLeft
                 bottomRightRadius: control.radiusTriggerBg.bottomRight
-                color: control.value
+                color: control.isTransparent(control.value, false) ? control.themeSource.colorBg : control.value
                 border.color: control.themeSource.colorBorder
+            }
+
+            // 空状态时的斜线
+            Canvas {
+                id: __emptyCanvas
+                anchors.fill: parent
+                visible: control.isTransparent(control.value, control.alphaEnabled)
+                onPaint: {
+                    const ctx = getContext('2d');
+                    ctx.strokeStyle = '#f759ab';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(ctx.lineWidth, height - ctx.lineWidth);
+                    ctx.lineTo(width - ctx.lineWidth, ctx.lineWidth);
+                    ctx.stroke();
+                }
+
+                Connections {
+                    target: control
+                    function onValueChanged() {
+                        if (control.clearEnabled) {
+                            __emptyCanvas.requestPaint();
+                        }
+                    }
+                }
             }
         }
 
         Loader {
             Layout.preferredHeight: 24 * control.sizeRatio
-            active: control.showText
+            active: control.textVisible
             visible: active
             sourceComponent: control.textDelegate
         }
@@ -182,6 +209,14 @@ T.Control {
         property real yCenter: y + height * 0.5
         property bool isLeft: xCenter < control.width * 0.5
         property bool isTop: yCenter < control.height * 0.5
+    }
+
+    function invertColor(color: color): color {
+        return __colorPickerPanel.invertColor(color);
+    }
+
+    function isTransparent(color: color, alpha = true): bool {
+        return __colorPickerPanel.isTransparent(color, alpha);
     }
 
     function toHexString(color: color): string {
