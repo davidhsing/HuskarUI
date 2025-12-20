@@ -30,6 +30,7 @@ T.Control {
     property alias presets: __colorPickerPanel.presets
     property alias presetsOrientation: __colorPickerPanel.presetsOrientation
     property alias presetsLayoutDirection: __colorPickerPanel.presetsLayoutDirection
+    readonly property alias transparent: __colorPickerPanel.transparent
     property alias titleFont: __colorPickerPanel.titleFont
     property alias inputFont: __colorPickerPanel.inputFont
     property alias colorBg: __colorPickerPanel.colorBg
@@ -88,7 +89,7 @@ T.Control {
                 topRightRadius: control.radiusTriggerBg.topRight
                 bottomLeftRadius: control.radiusTriggerBg.bottomLeft
                 bottomRightRadius: control.radiusTriggerBg.bottomRight
-                color: control.isTransparent(control.value, false) ? control.themeSource.colorBg : control.value
+                color: control.transparent ? control.themeSource.colorBg : control.value
                 border.color: control.themeSource.colorBorder
             }
 
@@ -96,7 +97,7 @@ T.Control {
             Canvas {
                 id: __emptyCanvas
                 anchors.fill: parent
-                visible: control.isTransparent(control.value, control.alphaEnabled)
+                visible: control.transparent
                 onPaint: {
                     const ctx = getContext('2d');
                     ctx.strokeStyle = '#f759ab';

@@ -21,6 +21,7 @@ T.Control {
     property var presets: []
     property int presetsOrientation: Qt.Vertical
     property int presetsLayoutDirection: Qt.LeftToRight
+    readonly property alias transparent: __private.transparent
     property alias titleFont: control.font
     property font inputFont: Qt.font({
         family: control.themeSource.fontFamilyInput,
@@ -129,6 +130,8 @@ T.Control {
                 function handleMouse(mouse) {
                     __private.s = Math.max(0, Math.min(1, mouse.x / width));
                     __private.v = 1 - Math.max(0, Math.min(1, mouse.y / height));
+                    // 重置透明状态
+                    __private.transparent = false;
                     // 如果透明度为 0，恢复为1确保颜色可见
                     if (control.alphaEnabled && __private.a === 0) {
                         __private.a = 1;
@@ -148,6 +151,7 @@ T.Control {
                 Layout.alignment: Qt.AlignVCenter
                 spacing: 4
 
+                // 色相
                 Item {
                     id: __hueSlider
                     width: parent.width
@@ -202,6 +206,7 @@ T.Control {
                     }
                 }
 
+                // 透明度
                 Loader {
                     width: parent.width
                     height: 12
@@ -265,6 +270,7 @@ T.Control {
 
                             function handleMouse(mouse) {
                                 __private.a = Math.max(0, Math.min(1, mouse.x / width));
+                                __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
                                 __private.updateInput();
                             }
                         }
@@ -287,16 +293,16 @@ T.Control {
                     id: __colorPreview
                     anchors.fill: parent
                     radius: 4
-                    color: control.isTransparent(__private.value, control.alphaEnabled) ? control.themeSource.colorBg : __private.value
+                    color: __private.transparent ? control.themeSource.colorBg : __private.value
                     border.color: control.themeSource.colorBorder
-                    border.width: control.isTransparent(__private.value, control.alphaEnabled) ? 1 : 0
+                    border.width: __private.transparent ? 1 : 0
                 }
 
                 // 空状态时的斜线
                 Canvas {
                     id: __emptyCanvas
                     anchors.fill: parent
-                    visible: control.isTransparent(__private.value, control.alphaEnabled)
+                    visible: __private.transparent
                     onPaint: {
                         const ctx = getContext('2d');
                         ctx.strokeStyle = '#f759ab';
@@ -323,7 +329,7 @@ T.Control {
                     iconSource: HusIcon.CloseCircleOutlined
                     iconSize: 16
                     colorIcon: control.invertColor(__private.value)
-                    visible: control.clearEnabled && !control.isTransparent(__private.value, control.alphaEnabled) && __hoverHandler.hovered
+                    visible: control.clearEnabled && !__private.transparent && __hoverHandler.hovered
                     scale: __hoverHandler.hovered ? 1.1 : 1.0
 
                     Behavior on scale {
@@ -334,7 +340,7 @@ T.Control {
 
                 HoverHandler {
                     id: __hoverHandler
-                    cursorShape: control.clearEnabled && !control.isTransparent(__private.value, control.alphaEnabled) ? Qt.PointingHandCursor : Qt.ArrowCursor
+                    cursorShape: control.clearEnabled && !__private.transparent ? Qt.PointingHandCursor : Qt.ArrowCursor
                 }
 
                 TapHandler {
@@ -398,13 +404,16 @@ T.Control {
                     maximumLength: control.alphaEnabled ? 8 : 6
                     inputMethodHints: Qt.ImhHiddenText
                     onTextEdited: {
+                        let color = undefined;
                         if (length === 6) {
-                            const color = Qt.color('#' + text);
+                            color = Qt.color('#' + text);
                             color.a = __private.a;
-                            __private.updateHSV(color);
                         } else if (length === 8) {
-                            const color = Qt.color('#' + text);
+                            color = Qt.color('#' + text);
+                        }
+                        if (color) {
                             __private.updateHSV(color);
+                            __private.transparent = control.alphaEnabled && control.isTransparent(color);
                         }
                     }
                 }
@@ -433,7 +442,11 @@ T.Control {
                         max: 359
                         font: control.inputFont
                         inputMethodHints: Qt.ImhHiddenText
-                        onValueModified: __private.h = value / 359;
+                        onValueModified: {
+                            __private.h = value / 359;
+                            // 重置透明状态
+                            __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
+                        }
                     }
 
                     HusInputInteger {
@@ -452,7 +465,11 @@ T.Control {
                         formatter: (value) => value + '%'
                         parser: (text) => text.replace('%', '')
                         inputMethodHints: Qt.ImhHiddenText
-                        onValueModified: __private.s = value * 0.01;
+                        onValueModified: {
+                            __private.s = value * 0.01;
+                            // 重置透明状态
+                            __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
+                        }
                     }
 
                     HusInputInteger {
@@ -471,7 +488,11 @@ T.Control {
                         formatter: (value) => value + '%'
                         parser: (text) => text.replace('%', '')
                         inputMethodHints: Qt.ImhHiddenText
-                        onValueModified: __private.v = value * 0.01;
+                        onValueModified: {
+                            __private.v = value * 0.01;
+                            // 重置透明状态
+                            __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
+                        }
                     }
 
                     Connections {
@@ -513,7 +534,11 @@ T.Control {
                         max: 255
                         font: control.inputFont
                         inputMethodHints: Qt.ImhHiddenText
-                        onValueModified: parent.updateRGB();
+                        onValueModified: {
+                            parent.updateRGB();
+                            // 重置透明状态
+                            __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
+                        }
                     }
 
                     HusInputInteger {
@@ -530,7 +555,11 @@ T.Control {
                         max: 255
                         font: control.inputFont
                         inputMethodHints: Qt.ImhHiddenText
-                        onValueModified: parent.updateRGB();
+                        onValueModified: {
+                            parent.updateRGB();
+                            // 重置透明状态
+                            __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
+                        }
                     }
 
                     HusInputInteger {
@@ -547,7 +576,11 @@ T.Control {
                         max: 255
                         font: control.inputFont
                         inputMethodHints: Qt.ImhHiddenText
-                        onValueModified: parent.updateRGB();
+                        onValueModified: {
+                            parent.updateRGB();
+                            // 重置透明状态
+                            __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
+                        }
                     }
 
                     Connections {
@@ -580,7 +613,11 @@ T.Control {
                     formatter: (value) => value + '%'
                     parser: (text) => text.replace('%', '')
                     inputMethodHints: Qt.ImhHiddenText
-                    onValueModified: __private.a = value * 0.01;
+                    onValueModified: {
+                        __private.a = value * 0.01;
+                        __private.transparent = control.alphaEnabled && control.isTransparent(control.value);
+                    }
+
                     Component.onCompleted: __private.updateInput();
 
                     Connections {
@@ -656,6 +693,7 @@ T.Control {
                         }
                     }
 
+                    // 预设颜色
                     Flow {
                         id: __presetColorFlow
                         width: parent.width
@@ -699,7 +737,10 @@ T.Control {
                                     anchors.fill: parent
                                     cursorShape: Qt.PointingHandCursor
                                     onClicked: {
-                                        __private.updateHSV(Qt.color(modelData));
+                                        const color = Qt.color(modelData);
+                                        __private.updateHSV(color);
+                                        // 重置透明状态
+                                        __private.transparent = control.alphaEnabled && control.isTransparent(color);
                                     }
                                 }
                             }
@@ -834,11 +875,13 @@ T.Control {
         property real a: 1    // Alpha (0-1)
 
         property color value: Qt.hsva(h, s, v, alphaEnabled ? a : 1)
+        property bool transparent: control.isTransparent(control.defaultValue, control.alphaEnabled)
 
         onValueChanged: control.change(value);
 
         function clearColor() {
             updateHSV(Qt.rgba(0, 0, 0, 0));
+            __private.transparent = true;
         }
 
         function updateHSV(color) {

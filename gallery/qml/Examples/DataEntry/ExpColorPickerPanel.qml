@@ -40,6 +40,7 @@ format | string | 'hex' | 颜色格式
 presets | list | [] | 预设颜色列表
 presetsOrientation | enum | Qt.Vertical | 预设颜色视图的方向(来自 Qt.*)
 presetsLayoutDirection | enum | Qt.LeftToRight | 预设颜色视图的布局方向(来自 Qt.*)
+transparent | bool (readonly) | - | 只读属性，表示当前是否是透明色(被清除了颜色)
 titleFont | font | - | 标题字体
 inputFont | font | - | 输入框文本字体
 colorBg | color | - | 背景颜色
