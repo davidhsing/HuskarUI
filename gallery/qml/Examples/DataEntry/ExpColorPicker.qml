@@ -31,9 +31,9 @@ Flickable {
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 active | bool | - | 是否处于激活状态
 value | color | '' | 当前的颜色值(autoChange为false时等于changeValue)
-defaultValue | color | '#fff' | 默认颜色值
+defaultValue | color | Qt.rgba(0, 0, 0, 0) | 默认颜色值
 autoChange | bool | true | 默认颜色值
-changeValue | color | defaultValue | 更改的颜色值
+changedValue | color | defaultValue | 更改的颜色值
 textVisible | bool | false | 是否显示文本
 textFormatter | function(color): string | - | 文本格式化器
 title | string | '' | 弹窗标题
@@ -74,7 +74,7 @@ expanded | bool | 可选 | 默认是否展开
 - \`toRgbString(color: color): string\` 将 \`color\` 转为rgb/rgba字符串\n
 \n<br/>
 \n### 支持的信号：\n
-- \`change(color: color)\` 颜色改变时发出\n
+- \`colorChanged(color: color)\` 颜色改变时发出\n
   - \`color\` 当前的颜色\n
                        `)
         }
@@ -270,7 +270,7 @@ Column {
             descTitle: qsTr('受控模式')
             desc: qsTr(`
 通过 \`autoChange\` 属性设置自动更新值。\n
-为否时 \`value\` 值为 \`changeValue\`，此时可手动设置 \`changeValue\` 来更新 \`value\`。\n
+为否时 \`value\` 值为 \`changedValue\`，此时可手动设置 \`changedValue\` 来更新 \`value\`。\n
                        `)
             code: `
 import QtQuick
@@ -284,7 +284,7 @@ Column {
         defaultValue: '#1677ff'
         textVisible: true
         autoChange: false
-        onChange: color => selectColor = color;
+        onColorChanged: color => selectColor = color;
         property color selectColor: value
         footerDelegate: Item {
             height: 45
@@ -302,7 +302,7 @@ Column {
                 HusButton {
                     text: qsTr('Accept')
                     onClicked: {
-                        noAutoChangePicker.changeValue = noAutoChangePicker.selectColor;
+                        noAutoChangePicker.changedValue = noAutoChangePicker.selectColor;
                         noAutoChangePicker.open = false;
                     }
                 }
@@ -310,7 +310,7 @@ Column {
                 HusButton {
                     text: qsTr('Cancel')
                     onClicked: {
-                        noAutoChangePicker.changeValue = noAutoChangePicker.value;
+                        noAutoChangePicker.changedValue = noAutoChangePicker.value;
                         noAutoChangePicker.defaultValue = noAutoChangePicker.value;
                         noAutoChangePicker.open = false;
                     }
@@ -328,7 +328,7 @@ Column {
                     defaultValue: '#1677ff'
                     textVisible: true
                     autoChange: false
-                    onChange: color => selectColor = color;
+                    onColorChanged: color => selectColor = color;
                     property color selectColor: value
                     footerDelegate: Item {
                         height: 45
@@ -346,7 +346,7 @@ Column {
                             HusButton {
                                 text: qsTr('Accept')
                                 onClicked: {
-                                    noAutoChangePicker.changeValue = noAutoChangePicker.selectColor;
+                                    noAutoChangePicker.changedValue = noAutoChangePicker.selectColor;
                                     noAutoChangePicker.open = false;
                                 }
                             }
@@ -354,7 +354,7 @@ Column {
                             HusButton {
                                 text: qsTr('Cancel')
                                 onClicked: {
-                                    noAutoChangePicker.changeValue = noAutoChangePicker.value;
+                                    noAutoChangePicker.changedValue = noAutoChangePicker.value;
                                     noAutoChangePicker.defaultValue = noAutoChangePicker.value;
                                     noAutoChangePicker.open = false;
                                 }

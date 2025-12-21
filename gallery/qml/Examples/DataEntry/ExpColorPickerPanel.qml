@@ -29,9 +29,9 @@ Flickable {
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 active | bool | - | 是否处于激活状态
 value | color | '' | 当前的颜色值(autoChange为false时等于changeValue)
-defaultValue | color | '#fff' | 默认颜色值
+defaultValue | color | Qt.rgba(0, 0, 0, 0) | 默认颜色值
 autoChange | bool | true | 默认颜色值
-changeValue | color | defaultValue | 更改的颜色值
+changedValue | color | defaultValue | 更改的颜色值
 title | string | '' | 弹窗标题
 alphaEnabled | bool | true | 透明度是否启用
 clearEnabled | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
@@ -66,7 +66,7 @@ expanded | bool | 可选 | 默认是否展开
 - \`toRgbString(color: color): string\` 将 \`color\` 转为rgb/rgba字符串\n
 \n<br/>
 \n### 支持的信号：\n
-- \`change(color: color)\` 颜色改变时发出\n
+- \`colorChanged(color: color)\` 颜色改变时发出\n
   - \`color\` 当前的颜色\n
                        `)
         }

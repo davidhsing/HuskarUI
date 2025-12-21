@@ -6,14 +6,14 @@ import HuskarUI.Basic
 T.Control {
     id: control
 
-    signal change(color: color)
+    signal colorChanged(color: color)
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool active: hovered || visualFocus
-    readonly property color value: autoChange ? __private.value : changeValue
+    readonly property color value: autoChange ? __private.value : changedValue
     property color defaultValue: Qt.rgba(0, 0, 0, 0)
     property bool autoChange: true
-    property color changeValue: defaultValue
+    property color changedValue: defaultValue
     property string title: ''
     property bool alphaEnabled: true
     property bool clearEnabled: false
@@ -315,7 +315,7 @@ T.Control {
 
                     Connections {
                         target: __private
-                        function onValueChanged() {
+                        function onTransparentChanged() {
                             if (control.clearEnabled) {
                                 __emptyCanvas.requestPaint();
                             }
@@ -818,6 +818,11 @@ T.Control {
         }
     }
 
+    onAlphaEnabledChanged: {
+        __private.a = alphaEnabled ? 1 : 0;
+        __private.transparent = __private.transparent || control.isTransparent(control.value)
+    }
+
     function invertColor(color: color): color {
         const r = 1 - color.r;
         const g = 1 - color.g;
@@ -877,7 +882,7 @@ T.Control {
         property color value: Qt.hsva(h, s, v, alphaEnabled ? a : 1)
         property bool transparent: control.isTransparent(control.defaultValue, control.alphaEnabled)
 
-        onValueChanged: control.change(value);
+        onValueChanged: control.colorChanged(value);
 
         function clearColor() {
             updateHSV(Qt.rgba(0, 0, 0, 0));
