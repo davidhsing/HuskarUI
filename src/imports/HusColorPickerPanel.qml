@@ -838,7 +838,7 @@ T.Control {
         const r = Math.round(color.r * 255).toString(16).padStart(2, '0').toUpperCase();
         const g = Math.round(color.g * 255).toString(16).padStart(2, '0').toUpperCase();
         const b = Math.round(color.b * 255).toString(16).padStart(2, '0').toUpperCase();
-        if (!alpha || Math.round(color.a * 100) >= 100) {
+        if (!alpha || color.a >= 1) {
             return `#${r}${g}${b}`;
         }
         const a = Math.round(color.a * 255).toString(16).padStart(2, '0').toUpperCase();
@@ -849,7 +849,7 @@ T.Control {
         const h = Math.round(color.hsvHue * 359);
         const s = Math.round(color.hsvSaturation * 100);
         const v = Math.round(color.hsvValue * 100);
-        if (!alpha || Math.round(color.a * 100) >= 100) {
+        if (!alpha || color.a >= 1) {
             return `hsv(${h}, ${s}%, ${v}%)`;
         }
         return `hsva(${h}, ${s}%, ${v}%, ${color.a.toFixed(2)})`;
@@ -859,7 +859,7 @@ T.Control {
         const r = Math.round(color.r * 255);
         const g = Math.round(color.g * 255);
         const b = Math.round(color.b * 255);
-        if (!alpha || Math.round(color.a * 100) >= 100) {
+        if (!alpha || color.a >= 1) {
             return `rgb(${r}, ${g}, ${b})`;
         }
         return `rgba(${r}, ${g}, ${b}, ${color.a.toFixed(2)})`;
