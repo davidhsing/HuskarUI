@@ -6,7 +6,7 @@
         "fontSizeTitle": "@fontPrimarySize",
         "fontFamilyInput": "@fontPrimaryFamily",
         "fontSizeInput": "@fontPrimarySize",
-        "colorText": "@colorTextBase",
+        "colorText": "@colorTextSecondary",
         "colorTextDisabled": "@colorPrimaryTextDisabled",
         "colorTitle": "@colorTextPrimary",
         "colorInput": "@colorTextPrimary",
