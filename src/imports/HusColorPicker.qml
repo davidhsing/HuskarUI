@@ -197,8 +197,8 @@ T.Control {
                 active: control.active
                 locale: control.locale
                 background: Item { }
-                onColorChanged: {
-                    color => control.colorChanged(color);
+                onColorChanged: color => {
+                    control.colorChanged(color);
                 }
 
                 Component.onCompleted: {
