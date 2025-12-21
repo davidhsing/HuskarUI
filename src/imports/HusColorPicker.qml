@@ -224,15 +224,15 @@ T.Control {
         return __colorPickerPanel.isTransparent(color, alpha);
     }
 
-    function toHexString(color: color): string {
-        return __colorPickerPanel.toHexString(color);
+    function toHexString(color: color, alpha = true): string {
+        return __colorPickerPanel.toHexString(color, alpha);
     }
 
-    function toHsvString(color: color): string {
-        return __colorPickerPanel.toHsvString(color);
+    function toHsvString(color: color, alpha = true): string {
+        return __colorPickerPanel.toHsvString(color, alpha);
     }
 
-    function toRgbString(color: color): string {
-        return __colorPickerPanel.toRgbString(color);
+    function toRgbString(color: color, alpha = true): string {
+        return __colorPickerPanel.toRgbString(color, alpha);
     }
 }

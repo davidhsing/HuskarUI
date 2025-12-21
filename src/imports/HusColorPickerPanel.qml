@@ -834,39 +834,35 @@ T.Control {
         return color.r === 0 && color.g === 0 && color.b === 0 && (color.a === 0 || !alpha);
     }
 
-    function toHexString(color: color): string {
-        if (control.alphaEnabled) {
-            const noAlpha = Qt.rgba(color.r, color.g, color.b, 1);
-            const colorStr = String(noAlpha).toUpperCase();
-            const a =  Math.round(color.a * 100);
-            return a >= 100 ? `${colorStr}` : `${colorStr},${a}%`;
-        } else{
-            return String(color).toUpperCase();
+    function toHexString(color: color, alpha = true): string {
+        const r = Math.round(color.r * 255).toString(16).padStart(2, '0').toUpperCase();
+        const g = Math.round(color.g * 255).toString(16).padStart(2, '0').toUpperCase();
+        const b = Math.round(color.b * 255).toString(16).padStart(2, '0').toUpperCase();
+        if (!alpha || Math.round(color.a * 100) >= 100) {
+            return `#${r}${g}${b}`;
         }
+        const a = Math.round(color.a * 255).toString(16).padStart(2, '0').toUpperCase();
+        return `#${r}${g}${b}${a}`;
     }
 
-    function toHsvString(color: color): string {
+    function toHsvString(color: color, alpha = true): string {
         const h = Math.round(color.hsvHue * 359);
         const s = Math.round(color.hsvSaturation * 100);
         const v = Math.round(color.hsvValue * 100);
-        if (control.alphaEnabled) {
-            const a =  Math.round(color.a * 100);
-            return a >= 100 ? `hsv(${h}, ${s}%, ${v}%)` : `hsva(${h}, ${s}%, ${v}%, ${color.a.toFixed(2)})`;
-        } else {
+        if (!alpha || Math.round(color.a * 100) >= 100) {
             return `hsv(${h}, ${s}%, ${v}%)`;
         }
+        return `hsva(${h}, ${s}%, ${v}%, ${color.a.toFixed(2)})`;
     }
 
-    function toRgbString(color: color): string {
+    function toRgbString(color: color, alpha = true): string {
         const r = Math.round(color.r * 255);
         const g = Math.round(color.g * 255);
         const b = Math.round(color.b * 255);
-        if (control.alphaEnabled) {
-            const a =  Math.round(color.a * 100);
-            return a >= 100 ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${color.a.toFixed(2)})`;
-        } else {
+        if (!alpha || Math.round(color.a * 100) >= 100) {
             return `rgb(${r}, ${g}, ${b})`;
         }
+        return `rgba(${r}, ${g}, ${b}, ${color.a.toFixed(2)})`;
     }
 
     QtObject {
