@@ -111,8 +111,8 @@ T.Control {
             }
 
             Rectangle {
-                x: __private.s * parent.width - radius
-                y: (1 - __private.v) * parent.height - radius
+                x: __private.visualS * parent.width - radius
+                y: (1 - __private.visualV) * parent.height - radius
                 width: 16
                 height: width
                 radius: width * 0.5
@@ -849,13 +849,11 @@ T.Control {
         __private.valueUpdating = true;
         if (control.autoChange) {
             if (String(color) !== String(__private.value)) {
-                __private.s = Math.max(0, color.hsvSaturation);
-                __private.v = Math.max(0, color.hsvValue);
-                if (control.alphaEnabled) {
-                    __private.a = color.a;
-                }
-                __private.updateInput();
+                __private.updateHSV(color);
                 __private.transparent = control.isTransparent(color, control.alphaEnabled);
+                // 只更新视觉位置到右上角，不影响实际颜色值
+                __private.visualS = 1;
+                __private.visualV = 1;
             }
         } else {
             if (String(color) !== String(control.changeableValue)) {
@@ -905,6 +903,9 @@ T.Control {
         property real s: 1    // Saturation (0-1)
         property real v: 1    // Value (0-1)
         property real a: 1    // Alpha (0-1)
+
+        property real visualS: s
+        property real visualV: v
 
         property color value: Qt.hsva(h, s, v, alphaEnabled ? a : 1)
         property bool valueUpdating: false
