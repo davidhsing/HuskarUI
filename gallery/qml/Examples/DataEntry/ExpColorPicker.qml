@@ -73,6 +73,7 @@ expanded | bool | 可选 | 默认是否展开
 \n### 支持的函数：\n
 - \`invertColor(color: color): color\` 将 \`color\` 反转\n
 - \`isTransparent(color: color, alpha: bool): bool \` 判断 \`color\` 是否为空(透明色), 参数 \`alpha\`是否比较透明度, 默认 \`true\`\n
+- \`setValue(color: color): void\` 将 \`color\` 设置为当前颜色值(注意关联的 autoChange)\n
 - \`toHexString(color: color, alpha: bool): string\` 将 \`color\` 转为 hex 字符串, 参数 \`alpha\`是否包含透明度, 默认 \`true\`\n
 - \`toHsvString(color: color, alpha: bool): string\` 将 \`color\` 转为 hsv 字符串, 参数 \`alpha\`是否包含透明度, 默认 \`true\`\n
 - \`toRgbString(color: color, alpha: bool): string\` 将 \`color\` 转为 rgb 字符串, 参数 \`alpha\`是否包含透明度, 默认 \`true\`\n

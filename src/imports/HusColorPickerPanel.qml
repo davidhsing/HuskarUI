@@ -843,6 +843,16 @@ T.Control {
         return color.r === 0 && color.g === 0 && color.b === 0 && (color.a === 0 || !alpha);
     }
 
+    function setValue(color: color): void {
+        if (control.autoChange) {
+            __private.value = color;
+            __private.transparent = control.isTransparent(color, control.alphaEnabled)
+            __private.updateHSV(color);
+        } else {
+            control.changeableValue = color;
+        }
+    }
+
     function toHexString(color: color, alpha = true): string {
         const r = Math.round(color.r * 255).toString(16).padStart(2, '0').toUpperCase();
         const g = Math.round(color.g * 255).toString(16).padStart(2, '0').toUpperCase();

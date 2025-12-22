@@ -227,6 +227,10 @@ T.Control {
         return __colorPickerPanel.isTransparent(color, alpha);
     }
 
+    function setValue(color: color): void {
+        __colorPickerPanel.setValue(color);
+    }
+
     function toHexString(color: color, alpha = true): string {
         return __colorPickerPanel.toHexString(color, alpha);
     }
