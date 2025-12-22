@@ -41,8 +41,10 @@ T.Control {
     property alias colorTitle: __colorPickerPanel.colorTitle
     property alias colorPresetIcon: __colorPickerPanel.colorPresetIcon
     property alias colorPresetText: __colorPickerPanel.colorPresetText
-    property int previewWidth: 24
-    property int previewHeight: 24
+    property real previewWidth: 24
+    property real previewHeight: 24
+    property real previewLeftMargin: 0
+    property real previewRightMargin: 0
     property real sizeRatio: 1.0
     property HusRadius radiusTriggerBg: HusRadius { all: themeSource.radiusTriggerBg }
     property HusRadius radiusPopupBg: HusRadius { all: themeSource.radiusPopupBg }
@@ -85,6 +87,8 @@ T.Control {
             HusRectangleInternal {
                 id: __colorPreview
                 anchors.fill: parent
+                anchors.leftMargin: control.previewLeftMargin * control.sizeRatio
+                anchors.rightMargin: control.previewRightMargin * control.sizeRatio
                 radius: control.radiusTriggerBg.all
                 topLeftRadius: control.radiusTriggerBg.topLeft
                 topRightRadius: control.radiusTriggerBg.topRight
