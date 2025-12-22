@@ -11,7 +11,7 @@ T.Control {
     property bool animationEnabled: HusTheme.animationEnabled
     property bool active: hovered || visualFocus
     readonly property alias value: __colorPickerPanel.value
-    property color defaultValue: Qt.rgba(0, 0, 0, 0)
+    property alias defaultValue: __colorPickerPanel.defaultValue
     property alias autoChange: __colorPickerPanel.autoChange
     property alias changeableValue: __colorPickerPanel.changeableValue
     property alias changeableSync: __colorPickerPanel.changeableSync
@@ -202,10 +202,6 @@ T.Control {
                 background: Item { }
                 onColorChanged: color => {
                     control.colorChanged(color);
-                }
-
-                Component.onCompleted: {
-                    __colorPickerPanel.defaultValue = control.defaultValue;
                 }
             }
             Loader {
