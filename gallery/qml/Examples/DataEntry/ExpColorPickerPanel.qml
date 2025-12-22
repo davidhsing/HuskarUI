@@ -31,7 +31,7 @@ active | bool | - | 是否处于激活状态
 value | color | '' | 当前的颜色值(autoChange为false时等于changeValue)
 defaultValue | color | Qt.rgba(0, 0, 0, 0) | 默认颜色值
 autoChange | bool | true | 默认颜色值
-changedValue | color | defaultValue | 更改的颜色值
+changeableValue | color | defaultValue | 更改的颜色值
 title | string | '' | 弹窗标题
 alphaEnabled | bool | true | 透明度是否启用
 clearEnabled | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)

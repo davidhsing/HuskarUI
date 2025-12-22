@@ -10,10 +10,10 @@ T.Control {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool active: hovered || visualFocus
-    readonly property color value: autoChange ? __private.value : changedValue
+    readonly property color value: autoChange ? __private.value : changeableValue
     property color defaultValue: Qt.rgba(0, 0, 0, 0)
     property bool autoChange: true
-    property color changedValue: defaultValue
+    property color changeableValue: defaultValue
     property string title: ''
     property bool alphaEnabled: true
     property bool clearEnabled: false

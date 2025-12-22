@@ -33,7 +33,7 @@ active | bool | - | 是否处于激活状态
 value | color | '' | 当前的颜色值(autoChange为false时等于changeValue)
 defaultValue | color | Qt.rgba(0, 0, 0, 0) | 默认颜色值
 autoChange | bool | true | 默认颜色值
-changedValue | color | defaultValue | 更改的颜色值
+changeableValue | color | defaultValue | 更改的颜色值
 textVisible | bool | false | 是否显示文本
 textFormatter | function(color): string | - | 文本格式化器
 title | string | '' | 弹窗标题
@@ -270,7 +270,7 @@ Column {
             descTitle: qsTr('受控模式')
             desc: qsTr(`
 通过 \`autoChange\` 属性设置自动更新值。\n
-为否时 \`value\` 值为 \`changedValue\`，此时可手动设置 \`changedValue\` 来更新 \`value\`。\n
+为否时 \`value\` 值为 \`changeableValue\`，此时可手动设置 \`changeableValue\` 来更新 \`value\`。\n
                        `)
             code: `
 import QtQuick
@@ -302,7 +302,7 @@ Column {
                 HusButton {
                     text: qsTr('Accept')
                     onClicked: {
-                        noAutoChangePicker.changedValue = noAutoChangePicker.selectColor;
+                        noAutoChangePicker.changeableValue = noAutoChangePicker.selectColor;
                         noAutoChangePicker.open = false;
                     }
                 }
@@ -310,7 +310,7 @@ Column {
                 HusButton {
                     text: qsTr('Cancel')
                     onClicked: {
-                        noAutoChangePicker.changedValue = noAutoChangePicker.value;
+                        noAutoChangePicker.changeableValue = noAutoChangePicker.value;
                         noAutoChangePicker.defaultValue = noAutoChangePicker.value;
                         noAutoChangePicker.open = false;
                     }
@@ -346,7 +346,7 @@ Column {
                             HusButton {
                                 text: qsTr('Accept')
                                 onClicked: {
-                                    noAutoChangePicker.changedValue = noAutoChangePicker.selectColor;
+                                    noAutoChangePicker.changeableValue = noAutoChangePicker.selectColor;
                                     noAutoChangePicker.open = false;
                                 }
                             }
@@ -354,7 +354,7 @@ Column {
                             HusButton {
                                 text: qsTr('Cancel')
                                 onClicked: {
-                                    noAutoChangePicker.changedValue = noAutoChangePicker.value;
+                                    noAutoChangePicker.changeableValue = noAutoChangePicker.value;
                                     noAutoChangePicker.defaultValue = noAutoChangePicker.value;
                                     noAutoChangePicker.open = false;
                                 }

@@ -13,7 +13,7 @@ T.Control {
     readonly property alias value: __colorPickerPanel.value
     property color defaultValue: Qt.rgba(0, 0, 0, 0)
     property alias autoChange: __colorPickerPanel.autoChange
-    property alias changedValue: __colorPickerPanel.changedValue
+    property alias changeableValue: __colorPickerPanel.changeableValue
     property bool textVisible: false
     property var textFormatter: color => {
         switch (format.toLowerCase()) {
