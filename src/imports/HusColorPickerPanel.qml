@@ -826,9 +826,8 @@ T.Control {
 
     onChangeableValueChanged: {
         if (control.changeableSync) {
-            __private.value = changeableValue;
-            __private.transparent = control.isTransparent(changeableValue, control.alphaEnabled)
             __private.updateHSV(changeableValue);
+            __private.transparent = control.isTransparent(changeableValue, control.alphaEnabled);
         }
     }
 
