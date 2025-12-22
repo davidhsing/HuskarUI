@@ -844,6 +844,7 @@ T.Control {
     }
 
     function setValue(color: color): void {
+        __private.valueUpdating = true;
         if (control.autoChange) {
             if (String(color) !== String(__private.value)) {
                 __private.updateHSV(color);
@@ -854,6 +855,7 @@ T.Control {
                 control.changeableValue = color;
             }
         }
+        __private.valueUpdating = false;
     }
 
     function toHexString(color: color, alpha = true): string {
@@ -898,10 +900,13 @@ T.Control {
         property real a: 1    // Alpha (0-1)
 
         property color value: Qt.hsva(h, s, v, alphaEnabled ? a : 1)
+        property bool valueUpdating: false
         property bool transparent: control.isTransparent(control.defaultValue, control.alphaEnabled)
 
         onValueChanged: {
-            control.colorChanged(value);
+            if (!valueUpdating) {
+                control.colorChanged(value);
+            }
         }
 
         function clearColor() {
