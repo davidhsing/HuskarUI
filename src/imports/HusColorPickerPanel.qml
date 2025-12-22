@@ -843,10 +843,18 @@ T.Control {
     }
 
     function setValue(color: color): void {
+        if (!color.valid) {
+            return;
+        }
         __private.valueUpdating = true;
         if (control.autoChange) {
             if (String(color) !== String(__private.value)) {
-                __private.updateHSV(color);
+                __private.s = Math.max(0, color.hsvSaturation);
+                __private.v = Math.max(0, color.hsvValue);
+                if (control.alphaEnabled) {
+                    __private.a = color.a;
+                }
+                __private.updateInput();
                 __private.transparent = control.isTransparent(color, control.alphaEnabled);
             }
         } else {
