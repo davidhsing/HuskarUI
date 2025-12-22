@@ -55,6 +55,9 @@ colorTitle | color | - | 标题颜色
 colorInput | color | - | 输入框文本颜色
 colorPresetIcon | color | - | 预设视图图标颜色
 colorPresetText | color | - | 预设视图文本颜色
+previewWidth | int | 24 | 预览小方块的宽度
+previewHeight | int | 24 | 预览小方块的高度
+sizeRatio | real | 1.0 | 整体的缩放比例
 radiusTriggerBg | [HusRadius](internal://HusRadius) | - | 触发器背景圆角
 radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗背景圆角
 popup | [HusPopup](internal://HusPopup) | - | 访问内部弹窗

@@ -41,9 +41,11 @@ T.Control {
     property alias colorTitle: __colorPickerPanel.colorTitle
     property alias colorPresetIcon: __colorPickerPanel.colorPresetIcon
     property alias colorPresetText: __colorPickerPanel.colorPresetText
+    property int previewWidth: 24
+    property int previewHeight: 24
+    property real sizeRatio: 1.0
     property HusRadius radiusTriggerBg: HusRadius { all: themeSource.radiusTriggerBg }
     property HusRadius radiusPopupBg: HusRadius { all: themeSource.radiusPopupBg }
-    property real sizeRatio: 1.0
     property var themeSource: HusTheme.HusColorPicker
     property alias popup: __popup
     property alias panel: __colorPickerPanel
@@ -70,8 +72,8 @@ T.Control {
         spacing: 4
 
         Item {
-            Layout.preferredWidth: 24 * control.sizeRatio
-            Layout.preferredHeight: 24 * control.sizeRatio
+            Layout.preferredWidth: Math.max(0, control.previewWidth) * control.sizeRatio
+            Layout.preferredHeight: Math.max(0, control.previewHeight) * control.sizeRatio
 
             HusCheckerBoard {
                 anchors.fill: parent

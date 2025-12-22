@@ -824,6 +824,12 @@ T.Control {
         __private.transparent = __private.transparent || control.isTransparent(control.value)
     }
 
+    onChangeableValueChanged: {
+        if (control.changeableSync) {
+            __private.value = changeableValue;
+        }
+    }
+
     function invertColor(color: color): color {
         const r = 1 - color.r;
         const g = 1 - color.g;
@@ -881,11 +887,6 @@ T.Control {
 
         onValueChanged: {
             control.colorChanged(value);
-        }
-        onChangeableValueChanged: {
-            if (control.changeableSync) {
-                __private.value = changeableValue;
-            }
         }
 
         function clearColor() {
