@@ -14,6 +14,7 @@ T.Control {
     property color defaultValue: Qt.rgba(0, 0, 0, 0)
     property bool autoChange: true
     property color changeableValue: defaultValue
+    property bool changeableSync: false
     property string title: ''
     property bool alphaEnabled: true
     property bool clearEnabled: false
@@ -878,7 +879,14 @@ T.Control {
         property color value: Qt.hsva(h, s, v, alphaEnabled ? a : 1)
         property bool transparent: control.isTransparent(control.defaultValue, control.alphaEnabled)
 
-        onValueChanged: control.colorChanged(value);
+        onValueChanged: {
+            control.colorChanged(value);
+        }
+        onChangeableValueChanged: {
+            if (control.changeableSync) {
+                __private.value = changeableValue;
+            }
+        }
 
         function clearColor() {
             updateHSV(Qt.rgba(0, 0, 0, 0));

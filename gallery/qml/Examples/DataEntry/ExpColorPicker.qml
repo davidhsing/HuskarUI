@@ -34,6 +34,7 @@ value | color | '' | 当前的颜色值(autoChange为false时等于changeValue)
 defaultValue | color | Qt.rgba(0, 0, 0, 0) | 默认颜色值
 autoChange | bool | true | 默认颜色值
 changeableValue | color | defaultValue | 更改的颜色值
+changeableSync | bool | false | 是否自动同步更改的颜色值到颜色值(changeableValue->value)
 textVisible | bool | false | 是否显示文本
 textFormatter | function(color): string | - | 文本格式化器
 title | string | '' | 弹窗标题

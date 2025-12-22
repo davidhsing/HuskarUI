@@ -14,6 +14,7 @@ T.Control {
     property color defaultValue: Qt.rgba(0, 0, 0, 0)
     property alias autoChange: __colorPickerPanel.autoChange
     property alias changeableValue: __colorPickerPanel.changeableValue
+    property alias changeableSync: __colorPickerPanel.changeableSync
     property bool textVisible: false
     property var textFormatter: color => {
         switch (format.toLowerCase()) {
