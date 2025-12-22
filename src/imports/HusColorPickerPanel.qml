@@ -845,10 +845,14 @@ T.Control {
 
     function setValue(color: color): void {
         if (control.autoChange) {
-            __private.updateHSV(color);
-            __private.transparent = control.isTransparent(color, control.alphaEnabled)
+            if (String(color) !== String(__private.value)) {
+                __private.updateHSV(color);
+                __private.transparent = control.isTransparent(color, control.alphaEnabled);
+            }
         } else {
-            control.changeableValue = color;
+            if (String(color) !== String(control.changeableValue)) {
+                control.changeableValue = color;
+            }
         }
     }
 
