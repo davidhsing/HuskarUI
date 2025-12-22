@@ -120,6 +120,7 @@ Column {
     }
 
     HusColorPickerPanel {
+        id: colorPickerPanel
         title: 'color picker panel'
         defaultValue: '#1677ff'
         presets: [
@@ -129,6 +130,13 @@ Column {
         ]
         presetsOrientation: orientatioRadio.currentCheckedValue
         presetsLayoutDirection: layoutDirectionRadio.currentCheckedValue
+    }
+
+    HusButton {
+        text: qsTr('Set color')
+        onClicked: {
+            colorPickerPanel.setValue('#1677ff')
+        }
     }
 }
             `
@@ -154,6 +162,7 @@ Column {
                 }
 
                 HusColorPickerPanel {
+                    id: colorPickerPanel
                     title: 'color picker panel'
                     clearEnabled: true
                     defaultValue: '#1677ff'
@@ -164,6 +173,13 @@ Column {
                     ]
                     presetsOrientation: orientatioRadio.currentCheckedValue
                     presetsLayoutDirection: layoutDirectionRadio.currentCheckedValue
+                }
+
+                HusButton {
+                    text: qsTr('Set color')
+                    onClicked: {
+                        colorPickerPanel.setValue('#1677ff')
+                    }
                 }
             }
         }

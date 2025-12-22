@@ -845,9 +845,8 @@ T.Control {
 
     function setValue(color: color): void {
         if (control.autoChange) {
-            __private.value = color;
-            __private.transparent = control.isTransparent(color, control.alphaEnabled)
             __private.updateHSV(color);
+            __private.transparent = control.isTransparent(color, control.alphaEnabled)
         } else {
             control.changeableValue = color;
         }

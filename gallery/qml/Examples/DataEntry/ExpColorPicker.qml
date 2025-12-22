@@ -132,6 +132,7 @@ Column {
             desc: qsTr(`
 通过 \`alphaEnabled\` 属性设置是否启用透明度。\n
 通过 \`clearEnabled\` 属性设置是否允许清除。\n
+通过 \`setValue\` 方法设置颜色。\n
                        `)
             code: `
 import QtQuick
@@ -147,8 +148,16 @@ Column {
     }
 
     HusColorPicker {
+        id: colorPicker
         defaultValue: '#1677ff'
         alphaEnabled: alphaCheckBox.checked
+    }
+
+    HusButton {
+        text: qsTr('Set color')
+        onClicked: {
+            colorPicker.setValue('#1677ff')
+        }
     }
 }
             `
@@ -168,9 +177,17 @@ Column {
                 }
 
                 HusColorPicker {
+                    id: colorPicker
                     defaultValue: '#1677ff'
                     alphaEnabled: alphaCheckBox.checked
                     clearEnabled: clearCheckBox.checked
+                }
+
+                HusButton {
+                    text: qsTr('Set color')
+                    onClicked: {
+                        colorPicker.setValue('#1677ff')
+                    }
                 }
             }
         }
