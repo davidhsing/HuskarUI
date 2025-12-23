@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import HuskarUI.Basic
-
 import '../../Controls'
 
 Flickable {
@@ -66,7 +65,7 @@ Flickable {
                             radius: HusTheme.Primary.radiusPrimary
 
                             property bool hovered: false
-                            property bool isCurrent: index == repeater.currentIndex
+                            property bool isCurrent: index === repeater.currentIndex
 
                             Behavior on color { ColorAnimation { } }
                             Behavior on border.color { ColorAnimation { } }

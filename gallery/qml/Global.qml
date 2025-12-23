@@ -554,6 +554,11 @@ QtObject {
                     key: 'HusTheme',
                     label: qsTr('HusTheme 主题定制'),
                     source: './Examples/Theme/ExpTheme.qml',
+                },
+                {
+                    key: 'ThemeTokens',
+                    label: qsTr('ThemeTokens 主题变量'),
+                    source: './Examples/Theme/ExpThemeTokens.qml',
                 }
             ]
         }

@@ -34,8 +34,13 @@ Item {
                 text: qsTr('确认')
                 onClicked: {
                     editPopup.edit.value = editInput.text;
-                    galleryGlobal.componentTokens[root.source][editPopup.row].tokenValue.value = editPopup.edit.value;
-                    HusTheme.installComponentToken(root.source, editPopup.edit.token, editInput.text);
+                    if (root.source === '#') {
+                        // 对于公共主题变量，使用 installIndexToken
+                        HusTheme.installIndexToken(editPopup.edit.token, editInput.text);
+                    } else {
+                        galleryGlobal.componentTokens[root.source][editPopup.row].tokenValue.value = editPopup.edit.value;
+                        HusTheme.installComponentToken(root.source, editPopup.edit.token, editInput.text);
+                    }
                     editPopup.close();
                 }
             }
@@ -51,7 +56,12 @@ Item {
                 text: qsTr('重置')
                 onClicked: {
                     editPopup.edit.value = editPopup.edit.rawValue;
-                    HusTheme.installComponentToken(root.source, editPopup.edit.token, editPopup.edit.rawValue);
+                    if (root.source === '#') {
+                        // 对于公共主题变量，使用 installIndexToken
+                        HusTheme.installIndexToken(editPopup.edit.token, editPopup.edit.rawValue);
+                    } else {
+                        HusTheme.installComponentToken(root.source, editPopup.edit.token, editPopup.edit.rawValue);
+                    }
                     editPopup.close();
                 }
             }
@@ -141,7 +151,7 @@ Item {
         id: colorTagDelegate
 
         Item {
-            property var theCellData: HusTheme[root.source][cellData]
+            property var theCellData: (root.source === '#') ? cellData : HusTheme[root.source][cellData]
 
             Row {
                 anchors.left: parent.left
@@ -184,20 +194,20 @@ Item {
         UpdateDesc { }
 
         HusText {
-            text: qsTr('主题变量（Design Token）')
+            text: (root.source === '#') ? qsTr('公共主题变量（Design Token）') : qsTr('主题变量（Design Token）')
             width: parent.width
             font {
                 pixelSize: HusTheme.Primary.fontPrimarySizeHeading3
                 weight: Font.DemiBold
             }
-            visible: root.source !== ''
+            visible: !!root.source
         }
 
         Loader {
             id: tableLoader
             width: parent.width
-            height: Math.min(400, 40 * ((galleryGlobal.componentTokens[root.source]?.length ?? 0) + 1))
-            active: root.source !== ''
+            height: Math.min(500, 40 * ((root.source ? galleryGlobal.primaryTokens.length : galleryGlobal.componentTokens[root.source]?.length ?? 0)) + 1)
+            active: !!root.source
             asynchronous: true
             sourceComponent: HusTable {
                 propagateWheelEvent: false
@@ -226,11 +236,25 @@ Item {
                     }
                 ]
                 Component.onCompleted: {
-                    if (root.source != '') {
-                        const model = galleryGlobal.componentTokens[root.source];
-                        height = Math.min(400, defaultColumnHeaderHeight + model.length * minimumRowHeight);
-                        initModel = model;
+                    if (!root.source) {
+                        return;
                     }
+                    let model;
+                    if (root.source === '#') {
+                        model = galleryGlobal.primaryTokens.map(token => ({
+                            tokenName: token.label.substring(1), // 移除 @ 前缀
+                            tokenValue: {
+                                token: token.label.substring(1),
+                                value: token.label,
+                                rawValue: token.label
+                            },
+                            tokenCalcValue: HusTheme.Primary[token.label.substring(1)] || token.label
+                        }));
+                    } else {
+                        model = galleryGlobal.componentTokens[root.source];
+                    }
+                    initModel = model;
+                    height = Math.min(500, defaultColumnHeaderHeight + model.length * minimumRowHeight);
                 }
             }
         }

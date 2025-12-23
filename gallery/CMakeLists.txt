@@ -117,6 +117,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/Multimedia/ExpAudioDiagnosis.qml
         qml/Examples/Utils/ExpAsyncHasher.qml
         qml/Examples/Theme/ExpTheme.qml
+        qml/Examples/Theme/ExpThemeTokens.qml
         qml/Controls/CodeBox.qml
         qml/Controls/Description.qml
         qml/Controls/CodeRunner.qml
