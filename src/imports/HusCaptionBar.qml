@@ -78,7 +78,9 @@ Rectangle {
             iconSource: HusTheme.isDark ? HusIcon.MoonOutlined : HusIcon.SunOutlined
             iconSize: 14
             contentDescription: qsTr('明暗主题切换')
-            onClicked: control.themeCallback();
+            onClicked: {
+                control.themeCallback();
+            }
         }
 
         HusCaptionButton {
@@ -91,7 +93,9 @@ Rectangle {
             checkable: true
             checked: control.topButtonChecked
             contentDescription: qsTr('置顶')
-            onClicked: control.topCallback(checked);
+            onClicked: {
+                control.topCallback(checked);
+            }
         }
     }
     property Component winExtraButtonsDelegate: Item { }
@@ -110,12 +114,14 @@ Rectangle {
         HusCaptionButton {
             id: __minimizeButton
             height: parent.height
-            visible: control.minimizeButtonVisible
             forceState: true
             iconSource: HusIcon.LineOutlined
             iconSize: 14
             contentDescription: qsTr('最小化')
-            onClicked: control.minimizeCallback();
+            visible: control.minimizeButtonVisible
+            onClicked: {
+                control.minimizeCallback();
+            }
         }
 
         HusCaptionButton {
@@ -123,6 +129,7 @@ Rectangle {
             height: parent.height
             forceState: true
             iconSize: 14
+            visible: control.maximizeButtonVisible
             contentItem: HusIconText {
                 iconSource: HusIcon.SwitcherTwotonePath3
                 iconSize: __maximizeButton.iconSize
@@ -140,7 +147,9 @@ Rectangle {
                 }
             }
             contentDescription: qsTr('最大化')
-            onClicked: control.maximizeCallback();
+            onClicked: {
+                control.maximizeCallback();
+            }
         }
 
         HusCaptionButton {
@@ -152,7 +161,9 @@ Rectangle {
             iconSize: 14
             danger: true
             contentDescription: qsTr('关闭')
-            onClicked: control.closeCallback();
+            onClicked: {
+                control.closeCallback();
+            }
         }
     }
 
@@ -160,13 +171,15 @@ Rectangle {
     color: 'transparent'
 
     function addInteractionItem(item) {
-        if (windowAgent)
+        if (windowAgent) {
             windowAgent.setHitTestVisible(item, true);
+        }
     }
 
     function removeInteractionItem(item) {
-        if (windowAgent)
+        if (windowAgent) {
             windowAgent.setHitTestVisible(item, false);
+        }
     }
 
     RowLayout {
