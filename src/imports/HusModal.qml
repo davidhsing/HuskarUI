@@ -204,7 +204,7 @@ HusPopup {
         open();
     }
 
-    function openWarn() {
+    function openWarning() {
         iconSource = HusIcon.ExclamationCircleFilled;
         colorIcon = HusTheme.Primary.colorWarning;
         open();

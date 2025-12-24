@@ -63,7 +63,7 @@ heightRevision | int | 40 | 高度修正(相对于代理组件)
 - \`openInfo()\` 打开 \`info\` 弹框\n
 - \`openSuccess()\` 打开 \`success\` 弹框\n
 - \`openError()\` 打开 \`error\` 弹框\n
-- \`openWarn()\` 打开 \`warning\` 弹框\n
+- \`openWarning()\` 打开 \`warning\` 弹框\n
 \n<br/>
 \n### 支持的信号：\n
 - \`confirm()\` 点击确认按钮后发出\n
@@ -364,7 +364,7 @@ Row {
 
     HusButton {
         text: 'Warning'
-        onClicked: modal3.openWarn();
+        onClicked: modal3.openWarning();
     }
 
     HusButton {
@@ -399,7 +399,7 @@ Row {
 
                 HusButton {
                     text: 'Warning'
-                    onClicked: modal3.openWarn();
+                    onClicked: modal3.openWarning();
                 }
 
                 HusButton {
