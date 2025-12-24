@@ -4,9 +4,9 @@
         "fontLabelSize": "@fontPrimarySize",
         "fontFeedbackFamily": "@fontPrimaryFamily",
         "fontFeedbackSize": "$subtract(@fontPrimarySize, 1)",
-        "colorLabel": "@colorTextBase",
+        "colorLabelText": "@colorTextPrimary",
         "colorLabelRequired": "@colorError",
-        "colorFeedbackNormal": "@colorTextBase",
+        "colorFeedbackNormal": "@colorTextPrimary",
         "colorFeedbackSuccess": "@colorSuccess",
         "colorFeedbackError": "@colorError"
     }

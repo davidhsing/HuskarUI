@@ -6,9 +6,14 @@ Item {
     id: control
 
     // 枚举定义
-    enum Layout {
+    enum LayoutType {
         Layout_Vertical = 0,
         Layout_Horizontal = 1
+    }
+
+    enum LabelAlignment {
+        Align_Left = 0,
+        Align_Right = 1
     }
 
     enum ValidationStatus {
@@ -21,15 +26,15 @@ Item {
     property bool animationEnabled: HusTheme.animationEnabled
     property bool required: false
     property int requiredSpacing: 4
-    property string label: ''
-    property int labelAlign: Text.AlignLeft
-    property string colonText: ':'
-    property bool showColon: false
     property int layout: HusFormItem.Layout_Vertical
-    property int labelWidth: 80
-    property int labelSpacing: 4
+    property string labelText: ''
+    property int labelAlign: HusFormItem.Align_Left
+    property int labelWidth: 100
+    property int labelSpacing: (layout === HusFormItem.Layout_Vertical) ? 4 : 10
+    property string colonText: ':'
+    property bool colonVisible: false
     property int feedbackSpacing: 2
-    property bool showEmptyFeedback: true
+    property bool emptyFeedbackVisible: true
     property int topMargin: 0
     property int bottomMargin: 0
     property int leftMargin: 0
@@ -40,7 +45,7 @@ Item {
 
     // 主题
     property var themeSource: HusTheme.HusFormItem
-    property color colorLabel: themeSource.colorLabel
+    property color colorLabelText: themeSource.colorLabelText
     property color colorLabelRequired: themeSource.colorLabelRequired
     property color colorFeedbackSuccess: themeSource.colorFeedbackSuccess
     property color colorFeedbackError: themeSource.colorFeedbackError
@@ -155,18 +160,25 @@ Item {
     Component {
         id: __horizontalComponent
         RowLayout {
+            id: __horizontalRowLayout
             spacing: control.labelSpacing
             anchors.topMargin: control.topMargin
             anchors.bottomMargin: control.bottomMargin
             anchors.leftMargin: control.leftMargin
             anchors.rightMargin: control.rightMargin
+            // 计算最大高度
+            property real maxContentHeight: 0
 
             // 标签区域
             Loader {
+                id: __labelLoader
+                Layout.alignment: (layout === HusFormItem.Layout_Vertical) ? Qt.AlignVCenter : Qt.AlignTop
                 Layout.preferredWidth: control.labelWidth
-                Layout.fillHeight: true
-                Layout.alignment: Qt.AlignVCenter
+                Layout.preferredHeight: __horizontalRowLayout.maxContentHeight
                 sourceComponent: __labelComponent
+                onLoaded: {
+                    __horizontalRowLayout.recalculateMaxHeight();
+                }
             }
 
             // 内容和反馈列
@@ -179,11 +191,15 @@ Item {
                 Item {
                     id: __horizontalContentArea
                     Layout.fillWidth: true
-                    Layout.preferredHeight: childrenRect ? childrenRect.height : 0
+                    Layout.fillHeight: true
+                    onChildrenRectChanged: {
+                        __horizontalRowLayout.recalculateMaxHeight();
+                    }
                     Component.onCompleted: {
                         for (let i = 0; i < __contentItem.data.length; i++) {
                             __contentItem.data[i].parent = __horizontalContentArea;
                         }
+                        __horizontalRowLayout.recalculateMaxHeight();
                     }
                 }
 
@@ -193,6 +209,19 @@ Item {
                     Layout.alignment: Qt.AlignTop
                     sourceComponent: __feedbackComponent
                 }
+            }
+
+            // 延迟计算函数
+            function recalculateMaxHeight() {
+                Qt.callLater(function() {
+                    const labelHeight = __labelLoader.item ? __labelLoader.item.implicitHeight : 0;
+                    const contentHeight = __horizontalContentArea.childrenRect.height;
+                    __horizontalRowLayout.maxContentHeight = Math.max(labelHeight, contentHeight, 0);
+                    if (__labelLoader.item) {
+                        __labelLoader.Layout.preferredHeight = __horizontalRowLayout.maxContentHeight;
+                    }
+                    __horizontalContentArea.Layout.preferredHeight = __horizontalRowLayout.maxContentHeight;
+                });
             }
         }
     }
@@ -208,36 +237,43 @@ Item {
     Component {
         id: __labelComponent
         RowLayout {
-            visible: !!control.colorLabel
             spacing: control.required ? control.requiredSpacing : 0
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            Layout.alignment: Qt.AlignVCenter
+            visible: !!control.labelText
+
+            Item {
+                Layout.fillWidth: control.labelAlign === HusFormItem.Align_Right
+            }
 
             // 必填星号
             HusText {
+                Layout.alignment: Qt.AlignVCenter
+                Layout.topMargin: parseInt(control.themeSource.fontLabelSize) / 3
                 text: '*'
                 color: control.colorLabelRequired
                 font {
                     family: control.themeSource.fontLabelFamily
                     pixelSize: control.themeSource.fontLabelSize
                 }
+                verticalAlignment: Text.AlignVCenter
                 visible: control.required
-                Layout.alignment: Qt.AlignVCenter
             }
 
             // 标签文本
             HusText {
-                text: control.label + (control.showColon ? control.colonText : '')
-                color: control.colorLabel
+                Layout.alignment: Qt.AlignVCenter
+                Layout.fillHeight: true
+                text: control.labelText + (control.colonVisible ? control.colonText : '')
+                color: control.colorLabelText
                 font {
                     family: control.themeSource.fontLabelFamily
                     pixelSize: control.themeSource.fontLabelSize
                 }
-                horizontalAlignment: control.labelAlign
-                visible: !!control.label
-                Layout.alignment: Qt.AlignVCenter
-                Layout.fillWidth: true
+                verticalAlignment: Text.AlignVCenter
+                visible: !!control.labelText
+            }
+
+            Item {
+                Layout.fillWidth: control.labelAlign === HusFormItem.Align_Left
             }
         }
     }
@@ -262,7 +298,7 @@ Item {
                 family: control.themeSource.fontFeedbackFamily
                 pixelSize: control.themeSource.fontFeedbackSize
             }
-            visible: !!__private.feedbackText || control.showEmptyFeedback
+            visible: !!__private.feedbackText || control.emptyFeedbackVisible
 
             Behavior on opacity {
                 enabled: control.animationEnabled

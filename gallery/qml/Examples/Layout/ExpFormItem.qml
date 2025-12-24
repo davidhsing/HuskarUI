@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls.Basic
 import HuskarUI.Basic
-
 import '../../Controls'
 
 Flickable {
@@ -22,27 +21,28 @@ Flickable {
 \n<br/>
 \n### 支持的代理：\n
 - **contentDelegate: Component** 内容代理\n
+\n<br/>
 \n### 支持的属性：
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否启用动画
 layout | int | HusFormItem.Layout_Vertical | 布局方式（来自 HusFormItem）
-label | string | '' | 标签文本
-labelAlign | int | Text.AlignLeft | 标签文本对齐方式（Text.AlignLeft/AlignRight/AlignHCenter）
-required | bool | false | 是否必填，为 true 时标签前显示红色 *
-requiredSpacing | int | 4 | 红色 * 与标签的间距
+required | bool | false | 是否必填，为 true 时标签前显示红色星号
+requiredSpacing | int | 4 | 红色星号与标签的间距
+labelText | string | '' | 标签文本
+labelAlign | int | - | 标签文本水平对齐方式(HusFormItem.Align_Left/Align_Right), 垂直居中
+labelWidth | int | 100 | 水平布局时标签宽度
+labelSpacing | int | 4/10 | 标签与输入组件的间距,水平布局默认10,垂直布局默认4
 colonText | string | ':' | 标签末尾分隔符文本
-showColon | bool | true | 是否显示标签末尾分隔符
-labelWidth | int | 80 | 水平布局时标签宽度
-labelSpacing | int | 4 | 标签与输入组件的间距
+colonVisible | bool | true | 是否显示标签末尾分隔符
 feedbackSpacing | int | 2 | 输入组件与反馈文本的间距
-showEmptyFeedback | bool | true | 当反馈文本为空时，依然保留反馈文本的区域
+emptyFeedbackVisible | bool | true | 当反馈文本为空时，依然保留反馈文本的区域
 topMargin | int | 0 | 上边距
 bottomMargin | int | 0 | 下边距
 leftMargin | int | 0 | 左边距
 rightMargin | int | 0 | 右边距
 validator | function | - | 验证函数，参数为任意自定义对象，返回 {valid: bool, message: string} 或 boolean 或 undefined
-colorLabel | color | HusTheme.Primary.colorTextBase | 标签颜色
+colorLabelText | color | HusTheme.Primary.colorTextPrimary | 标签颜色
 colorLabelRequired | color | HusTheme.Primary.colorError | 必填星号颜色
 colorFeedbackSuccess | color | HusTheme.Primary.colorSuccess | 成功状态颜色
 colorFeedbackError | color | HusTheme.Primary.colorError | 错误状态颜色
@@ -83,29 +83,53 @@ import QtQuick
 import HuskarUI.Basic
 
 Column {
-    spacing: 2
+    spacing: 20
+
+    HusRadioBlock {
+        id: horizontalAlignRadio
+        initCheckedIndex: 0
+        model: [
+            { label: 'Left', value: HusFormItem.Align_Left },
+            { label: 'Right', value: HusFormItem.Align_Right }
+        ]
+    }
 
     HusFormItem {
-        label: "用户名"
+        labelText: '用户名'
         width: parent.width
+        layout: HusFormItem.Layout_Horizontal
+        labelAlign: horizontalAlignRadio.currentCheckedValue
+        required: true
 
         HusInput {
             width: parent.width
-            placeholderText: "请输入用户名"
+            placeholderText: '请输入用户名'
         }
     }
 }
             `
             exampleDelegate: Column {
-                spacing: 2
+                spacing: 20
+
+                HusRadioBlock {
+                    id: horizontalAlignRadio
+                    initCheckedIndex: 0
+                    model: [
+                        { label: 'Left', value: HusFormItem.Align_Left },
+                        { label: 'Right', value: HusFormItem.Align_Right }
+                    ]
+                }
 
                 HusFormItem {
-                    label: "用户名"
+                    labelText: '用户名'
                     width: parent.width
+                    layout: HusFormItem.Layout_Horizontal
+                    labelAlign: horizontalAlignRadio.currentCheckedValue
+                    required: true
 
                     HusInput {
                         width: parent.width
-                        placeholderText: "请输入用户名"
+                        placeholderText: '请输入用户名'
                     }
                 }
             }
@@ -122,36 +146,46 @@ import QtQuick
 import HuskarUI.Basic
 
 Column {
-    spacing: 2
+    spacing: 20
+
+    HusRadioBlock {
+        id: verticalAlignRadio
+        initCheckedIndex: 0
+        model: [
+            { label: 'Left', value: HusFormItem.Align_Left },
+            { label: 'Right', value: HusFormItem.Align_Right }
+        ]
+    }
 
     HusFormItem {
         id: usernameItem
         width: parent.width
         required: true
-        label: "用户名"
-        validator: function() {
+        labelText: '用户名'
+        labelAlign: verticalAlignRadio.currentCheckedValue
+        validator: () => {
             if (!username.text) {
                 return {
                     valid: false,
-                    message: "用户名不能为空"
+                    message: '用户名不能为空'
                 };
             }
             if (username.text.length < 3) {
                 return {
                     valid: false,
-                    message: "用户名至少3个字符"
+                    message: '用户名至少3个字符'
                 };
             }
             return {
                 valid: true,
-                message: "用户名可用"
+                message: '用户名可用'
             };
         }
 
         HusInput {
             id: username
             width: parent.width
-            placeholderText: "请输入用户名"
+            placeholderText: '请输入用户名'
             onTextChanged: usernameItem.validate()
         }
     }
@@ -160,67 +194,78 @@ Column {
         id: emailItem
         width: parent.width
         required: true
-        label: "邮箱"
-        validator: function() {
+        labelText: '邮箱'
+        labelAlign: verticalAlignRadio.currentCheckedValue
+        validator: () => {
             if (!email.text) {
                 return {
                     valid: false,
-                    message: "邮箱不能为空"
+                    message: '邮箱不能为空'
                 };
             }
             const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
             if (!emailRegex.test(email.text)) {
                 return {
                     valid: false,
-                    message: "邮箱格式不正确"
+                    message: '邮箱格式不正确'
                 };
             }
             return {
                 valid: true,
-                message: "邮箱格式正确"
+                message: '邮箱格式正确'
             };
         }
 
         HusInput {
             id: email
             width: parent.width
-            placeholderText: "请输入邮箱"
+            placeholderText: '请输入邮箱'
             onTextChanged: emailItem.validate()
         }
     }
 }
             `
             exampleDelegate: Column {
-                spacing: 2
+                spacing: 20
+
+                HusRadioBlock {
+                    id: verticalAlignRadio
+                    initCheckedIndex: 0
+                    model: [
+                        { label: 'Left', value: HusFormItem.Align_Left },
+                        { label: 'Right', value: HusFormItem.Align_Right }
+                    ]
+                }
 
                 HusFormItem {
                     id: usernameItem
                     width: parent.width
                     required: true
-                    label: "用户名"
-                    validator: function() {
+                    labelText: '用户名'
+                    labelAlign: verticalAlignRadio.currentCheckedValue
+                    validator: () => {
                         if (!username.text) {
                             return {
                                 valid: false,
-                                message: "用户名不能为空"
+                                message: '用户名不能为空'
                             };
                         }
                         if (username.text.length < 3) {
                             return {
                                 valid: false,
-                                message: "用户名至少3个字符"
+                                message: '用户名至少3个字符'
                             };
                         }
                         return {
                             valid: true,
-                            message: "用户名可用"
+                            message: '用户名可用'
                         };
                     }
 
                     HusInput {
                         id: username
                         width: parent.width
-                        placeholderText: "请输入用户名"
+                        placeholderText: '请输入用户名'
                         onTextChanged: usernameItem.validate()
                     }
                 }
@@ -229,31 +274,32 @@ Column {
                     id: emailItem
                     width: parent.width
                     required: true
-                    label: "邮箱"
-                    validator: function() {
+                    labelText: '邮箱'
+                    labelAlign: verticalAlignRadio.currentCheckedValue
+                    validator: () => {
                         if (!email.text) {
                             return {
                                 valid: false,
-                                message: "邮箱不能为空"
+                                message: '邮箱不能为空'
                             };
                         }
                         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                         if (!emailRegex.test(email.text)) {
                             return {
                                 valid: false,
-                                message: "邮箱格式不正确"
+                                message: '邮箱格式不正确'
                             };
                         }
                         return {
                             valid: true,
-                            message: "邮箱格式正确"
+                            message: '邮箱格式正确'
                         };
                     }
 
                     HusInput {
                         id: email
                         width: parent.width
-                        placeholderText: "请输入邮箱"
+                        placeholderText: '请输入邮箱'
                         onTextChanged: emailItem.validate()
                     }
                 }
