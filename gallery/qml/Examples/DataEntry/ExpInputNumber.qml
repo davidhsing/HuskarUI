@@ -113,25 +113,25 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
 数字输入框。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusInputNumber {
-                        width: 120
-                        min: 0
-                        max: 10
-                    }
+    HusInputNumber {
+        width: 120
+        min: 0
+        max: 10
+    }
 
-                    HusInputNumber {
-                        width: 120
-                        min: 0
-                        max: 10
-                        clearEnabled: 'active'
-                    }
-                }
+    HusInputNumber {
+        width: 120
+        min: 0
+        max: 10
+        clearEnabled: 'active'
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -161,64 +161,64 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
 通过 \`currentBeforeLabel\` / \`currentAfterLabel\` 属性获取当前前置/后置标签。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusInputNumber {
-                        width: 240
-                        value: 100
-                        beforeLabel: '+'
-                        afterLabel: '$'
-                    }
+    HusInputNumber {
+        width: 240
+        value: 100
+        beforeLabel: '+'
+        afterLabel: '$'
+    }
 
-                    HusInputNumber {
-                        width: 240
-                        value: 100
-                        beforeLabel: [
-                            { label: '+', value: 'add' },
-                            { label: '-', value: 'minus' },
-                        ]
-                        afterLabel: [
-                            { label: '$', value: 'USD' },
-                            { label: '€', value: 'EUR' },
-                            { label: '£', value: 'GBP' },
-                            { label: '¥', value: 'CNY' },
-                        ]
-                        prefix: currentAfterLabel
-                    }
+    HusInputNumber {
+        width: 240
+        value: 100
+        beforeLabel: [
+            { label: '+', value: 'add' },
+            { label: '-', value: 'minus' },
+        ]
+        afterLabel: [
+            { label: '$', value: 'USD' },
+            { label: '€', value: 'EUR' },
+            { label: '£', value: 'GBP' },
+            { label: '¥', value: 'CNY' },
+        ]
+        prefix: currentAfterLabel
+    }
 
-                    HusInputNumber {
-                        width: 240
-                        value: 100
-                        afterLabel: String.fromCharCode(HusIcon.SettingOutlined)
-                    }
+    HusInputNumber {
+        width: 240
+        value: 100
+        afterLabel: String.fromCharCode(HusIcon.SettingOutlined)
+    }
 
-                    HusInputNumber {
-                        enabled: false
-                        width: 240
-                        value: 100
-                        beforeLabel: [
-                            { label: '+', value: 'add' },
-                            { label: '-', value: 'minus' },
-                        ]
-                    }
+    HusInputNumber {
+        enabled: false
+        width: 240
+        value: 100
+        beforeLabel: [
+            { label: '+', value: 'add' },
+            { label: '-', value: 'minus' },
+        ]
+    }
 
-                    HusInputNumber {
-                        enabled: false
-                        width: 240
-                        value: 100
-                        beforeLabel: [
-                            { label: '+', value: 'add' },
-                            { label: '-', value: 'minus' },
-                        ]
-                        afterLabel: String.fromCharCode(HusIcon.SettingOutlined)
-                        prefix: '¥'
-                        suffix: 'RMB'
-                    }
-                }
+    HusInputNumber {
+        enabled: false
+        width: 240
+        value: 100
+        beforeLabel: [
+            { label: '+', value: 'add' },
+            { label: '-', value: 'minus' },
+        ]
+        afterLabel: String.fromCharCode(HusIcon.SettingOutlined)
+        prefix: '¥'
+        suffix: 'RMB'
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -286,22 +286,22 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
 通过 \`step\` 属性设置每次改变的步数，可以为小数。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusInputNumber {
-                        width: 200
-                        value: 1
-                        min: 0
-                        max: 10
-                        step: 0.0000000001
-                        precision: 10
-                    }
-                }
+    HusInputNumber {
+        width: 200
+        value: 1
+        min: 0
+        max: 10
+        step: 0.0000000001
+        precision: 10
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -326,29 +326,29 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
 通过 \`parser\` 解析字符串为数值，以内部能够正确处理数值，往往需要配合 \`formatter\` 一起使用。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusInputNumber {
-                        width: 200
-                        value: 1000
-                        formatter: (value) => '$ ' + String(value).replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, '\$1,')
-                        parser: (text) => text.replace(/\\$\\s?|(,*)/g, '')
-                    }
+    HusInputNumber {
+        width: 200
+        value: 1000
+        formatter: (value) => '$ ' + String(value).replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, '\$1,')
+        parser: (text) => text.replace(/\\$\\s?|(,*)/g, '')
+    }
 
-                    HusInputNumber {
-                        width: 200
-                        value: 50
-                        min: 0
-                        max: 100
-                        formatter: (value) => value + '%'
-                        parser: (text) => text.replace('%', '')
-                    }
-                }
+    HusInputNumber {
+        width: 200
+        value: 50
+        min: 0
+        max: 100
+        formatter: (value) => value + '%'
+        parser: (text) => text.replace('%', '')
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -379,38 +379,38 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
 通过 \`prefix\` / \`suffix\` 属性设置前缀/后缀字符串(或图标)。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusInputNumber {
-                        width: 200
-                        prefix: '￥'
-                    }
+    HusInputNumber {
+        width: 200
+        prefix: '￥'
+    }
 
-                    HusInputNumber {
-                        width: 200
-                        beforeLabel: String.fromCharCode(HusIcon.UserOutlined)
-                        prefix: '￥'
-                    }
+    HusInputNumber {
+        width: 200
+        beforeLabel: String.fromCharCode(HusIcon.UserOutlined)
+        prefix: '￥'
+    }
 
-                    HusInputNumber {
-                        width: 200
-                        beforeLabel: String.fromCharCode(HusIcon.UserOutlined)
-                        prefix: '￥'
-                        suffix: 'RMB'
-                    }
+    HusInputNumber {
+        width: 200
+        beforeLabel: String.fromCharCode(HusIcon.UserOutlined)
+        prefix: '￥'
+        suffix: 'RMB'
+    }
 
-                    HusInputNumber {
-                        enabled: false
-                        width: 200
-                        beforeLabel: String.fromCharCode(HusIcon.UserOutlined)
-                        prefix: '￥'
-                    }
-                }
+    HusInputNumber {
+        enabled: false
+        width: 200
+        beforeLabel: String.fromCharCode(HusIcon.UserOutlined)
+        prefix: '￥'
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -450,27 +450,27 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
 通过 \`useWheel\` 属性设置是否使用鼠标滚轮控制。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusInputNumber {
-                        width: 140
-                        min: 0
-                        max: 10
-                        useWheel: wheelCheckBox.checked
-                    }
+    HusInputNumber {
+        width: 140
+        min: 0
+        max: 10
+        useWheel: wheelCheckBox.checked
+    }
 
-                    HusCheckBox {
-                        id: wheelCheckBox
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: 'Toggle mouse wheel'
-                        checked: false
-                    }
-                }
+    HusCheckBox {
+        id: wheelCheckBox
+        anchors.verticalCenter: parent.verticalCenter
+        text: 'Toggle mouse wheel'
+        checked: false
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -499,27 +499,27 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
 通过 \`useKeyboard\` 属性设置是否使用键盘控制。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusInputNumber {
-                        width: 140
-                        min: 0
-                        max: 10
-                        useKeyboard: keyboardCheckBox.checked
-                    }
+    HusInputNumber {
+        width: 140
+        min: 0
+        max: 10
+        useKeyboard: keyboardCheckBox.checked
+    }
 
-                    HusCheckBox {
-                        id: keyboardCheckBox
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: 'Toggle keyboard'
-                        checked: true
-                    }
-                }
+    HusCheckBox {
+        id: keyboardCheckBox
+        anchors.verticalCenter: parent.verticalCenter
+        text: 'Toggle keyboard'
+        checked: true
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10

@@ -57,38 +57,38 @@ colorText | color | - | 文本颜色
 通过 \`showZero\` 属性设置为 0 时也显示数字。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 20
+Row {
+    spacing: 20
 
-                    HusAvatar {
-                        size: 40
-                        radiusBg.all: 6
+    HusAvatar {
+        size: 40
+        radiusBg.all: 6
 
-                        HusBadge { count: 5 }
-                    }
+        HusBadge { count: 5 }
+    }
 
-                    HusAvatar {
-                        size: 40
-                        radiusBg.all: 6
+    HusAvatar {
+        size: 40
+        radiusBg.all: 6
 
-                        HusBadge { count: 0; showZero: true }
-                    }
+        HusBadge { count: 0; showZero: true }
+    }
 
-                    HusAvatar {
-                        size: 40
-                        radiusBg.all: 6
+    HusAvatar {
+        size: 40
+        radiusBg.all: 6
 
-                        HusBadge {
-                            iconSource: HusIcon.ClockCircleOutlined
-                            colorBorder: 'transparent'
-                            colorBg: 'transparent'
-                            colorText: '#f5222d'
-                        }
-                    }
-                }
+        HusBadge {
+            iconSource: HusIcon.ClockCircleOutlined
+            colorBorder: 'transparent'
+            colorBg: 'transparent'
+            colorText: '#f5222d'
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 20
@@ -128,27 +128,27 @@ colorText | color | - | 文本颜色
 不包裹任何元素即是独立使用，可自定样式展现。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusSwitch {
-                        id: showSwitch
-                        checked: false
-                    }
+    HusSwitch {
+        id: showSwitch
+        checked: false
+    }
 
-                    HusBadge { count: showSwitch.checked ? 11 : 0; showZero: true; colorBg: '#faad14' }
-                    HusBadge { count: showSwitch.checked ? 25 : 0 }
-                    HusBadge {
-                        iconSource: showSwitch.checked ? HusIcon.ClockCircleOutlined : 0
-                        colorBorder: 'transparent'
-                        colorBg: 'transparent'
-                        colorText: '#f5222d'
-                    }
-                    HusBadge { count: showSwitch.checked ? 109 : 0; colorBg: '#52c41a' }
-                }
+    HusBadge { count: showSwitch.checked ? 11 : 0; showZero: true; colorBg: '#faad14' }
+    HusBadge { count: showSwitch.checked ? 25 : 0 }
+    HusBadge {
+        iconSource: showSwitch.checked ? HusIcon.ClockCircleOutlined : 0
+        colorBorder: 'transparent'
+        colorBg: 'transparent'
+        colorText: '#f5222d'
+    }
+    HusBadge { count: showSwitch.checked ? 109 : 0; colorBg: '#52c41a' }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -178,40 +178,40 @@ colorText | color | - | 文本颜色
 超过 \`overflowCount\` 的会显示为 \`{overflowCount}+\`，默认的 \`overflowCount\` 为 99。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 20
+Row {
+    spacing: 20
 
-                    HusAvatar {
-                        size: 40
-                        radiusBg.all: 6
+    HusAvatar {
+        size: 40
+        radiusBg.all: 6
 
-                        HusBadge { count: 99 }
-                    }
+        HusBadge { count: 99 }
+    }
 
-                    HusAvatar {
-                        size: 40
-                        radiusBg.all: 6
+    HusAvatar {
+        size: 40
+        radiusBg.all: 6
 
-                        HusBadge { count: 100 }
-                    }
+        HusBadge { count: 100 }
+    }
 
-                    HusAvatar {
-                        size: 40
-                        radiusBg.all: 6
+    HusAvatar {
+        size: 40
+        radiusBg.all: 6
 
-                        HusBadge { count: 99; overflowCount: 10 }
-                    }
+        HusBadge { count: 99; overflowCount: 10 }
+    }
 
-                    HusAvatar {
-                        size: 40
-                        radiusBg.all: 6
+    HusAvatar {
+        size: 40
+        radiusBg.all: 6
 
-                        HusBadge { count: 1000; overflowCount: 999 }
-                    }
-                }
+        HusBadge { count: 1000; overflowCount: 999 }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 20
@@ -253,29 +253,29 @@ colorText | color | - | 文本颜色
 没有具体的数字。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 20
+Row {
+    spacing: 20
 
-                    HusIconText {
-                        iconSize: 18
-                        iconSource: HusIcon.NotificationOutlined
+    HusIconText {
+        iconSize: 18
+        iconSource: HusIcon.NotificationOutlined
 
-                        HusBadge { dot: true }
-                    }
+        HusBadge { dot: true }
+    }
 
-                    HusButton {
-                        padding: 0
-                        topPadding: 0
-                        bottomPadding: 0
-                        type: HusButton.Type_Link
-                        text: 'Link something'
+    HusButton {
+        padding: 0
+        topPadding: 0
+        bottomPadding: 0
+        type: HusButton.Type_Link
+        text: 'Link something'
 
-                        HusBadge { dot: true }
-                    }
-                }
+        HusBadge { dot: true }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 20
@@ -306,56 +306,56 @@ colorText | color | - | 文本颜色
 展示动态变化的效果。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 20
-                    width: parent.width
+Column {
+    spacing: 20
+    width: parent.width
 
-                    Row {
-                        spacing: 20
+    Row {
+        spacing: 20
 
-                        HusAvatar {
-                            size: 40
-                            radiusBg.all: 6
+        HusAvatar {
+            size: 40
+            radiusBg.all: 6
 
-                            HusBadge { id: badge; count: 5 }
-                        }
+            HusBadge { id: badge; count: 5 }
+        }
 
-                        HusButtonBlock {
-                            model: [
-                                { iconSource: HusIcon.MinusOutlined, autoRepeat: true },
-                                { iconSource: HusIcon.PlusOutlined, autoRepeat: true },
-                                { iconSource: HusIcon.QuestionOutlined, autoRepeat: true },
-                            ]
-                            onClicked:
-                                (index) => {
-                                    switch (index) {
-                                        case 0: badge.count = Math.max(0, badge.count - 1); break;
-                                        case 1: badge.count++; break;
-                                        case 2: badge.count = Math.floor(Math.random() * 100); break;
-                                    }
-                                }
-                        }
-                    }
-
-                    Row {
-                        spacing: 20
-
-                        HusAvatar {
-                            size: 40
-                            radiusBg.all: 6
-
-                            HusBadge { id: badge2; count: 0; dot: true }
-                        }
-
-                        HusSwitch {
-                            checked: true
-                            onCheckedChanged: badge2.dot = checked;
-                        }
+        HusButtonBlock {
+            model: [
+                { iconSource: HusIcon.MinusOutlined, autoRepeat: true },
+                { iconSource: HusIcon.PlusOutlined, autoRepeat: true },
+                { iconSource: HusIcon.QuestionOutlined, autoRepeat: true },
+            ]
+            onClicked:
+                (index) => {
+                    switch (index) {
+                        case 0: badge.count = Math.max(0, badge.count - 1); break;
+                        case 1: badge.count++; break;
+                        case 2: badge.count = Math.floor(Math.random() * 100); break;
                     }
                 }
+        }
+    }
+
+    Row {
+        spacing: 20
+
+        HusAvatar {
+            size: 40
+            radiusBg.all: 6
+
+            HusBadge { id: badge2; count: 0; dot: true }
+        }
+
+        HusSwitch {
+            checked: true
+            onCheckedChanged: badge2.dot = checked;
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 20
@@ -418,57 +418,57 @@ colorText | color | - | 文本颜色
 - 警告状态{ HusBadge.State_Warning }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-                    width: parent.width
+Column {
+    spacing: 10
+    width: parent.width
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusBadge { dot: true; badgeState: HusBadge.State_Success }
-                        HusBadge { dot: true; badgeState: HusBadge.State_Processing }
-                        HusBadge { dot: true; badgeState: HusBadge.State_Error; stateEffect: true }
-                        HusBadge { dot: true; badgeState: HusBadge.State_Warning }
-                        HusBadge { dot: true; badgeState: HusBadge.State_Default }
-                    }
+        HusBadge { dot: true; badgeState: HusBadge.State_Success }
+        HusBadge { dot: true; badgeState: HusBadge.State_Processing }
+        HusBadge { dot: true; badgeState: HusBadge.State_Error; stateEffect: true }
+        HusBadge { dot: true; badgeState: HusBadge.State_Warning }
+        HusBadge { dot: true; badgeState: HusBadge.State_Default }
+    }
 
-                    Column {
-                        spacing: 10
+    Column {
+        spacing: 10
 
-                        Row {
-                            spacing: 10
-                            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Success }
-                            HusText { text: 'Success' }
-                        }
+        Row {
+            spacing: 10
+            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Success }
+            HusText { text: 'Success' }
+        }
 
-                        Row {
-                            spacing: 10
-                            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Processing }
-                            HusText { text: 'Processing' }
-                        }
+        Row {
+            spacing: 10
+            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Processing }
+            HusText { text: 'Processing' }
+        }
 
-                        Row {
-                            spacing: 10
-                            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Error }
-                            HusText { text: 'Error' }
-                        }
+        Row {
+            spacing: 10
+            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Error }
+            HusText { text: 'Error' }
+        }
 
-                        Row {
-                            spacing: 10
-                            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Warning }
-                            HusText { text: 'Warning' }
-                        }
+        Row {
+            spacing: 10
+            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Warning }
+            HusText { text: 'Warning' }
+        }
 
-                        Row {
-                            spacing: 10
-                            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Default }
-                            HusText { text: 'Default' }
-                        }
-                    }
-                }
+        Row {
+            spacing: 10
+            HusBadge { anchors.verticalCenter: parent.verticalCenter; dot: true; badgeState: HusBadge.State_Default }
+            HusText { text: 'Default' }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -529,30 +529,30 @@ colorText | color | - | 文本颜色
 **['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']** \n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-                    width: parent.width
+Column {
+    spacing: 10
+    width: parent.width
 
-                    Repeater {
-                        model: ['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']
-                        delegate: Row {
-                            spacing: 10
+    Repeater {
+        model: ['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']
+        delegate: Row {
+            spacing: 10
 
-                            HusBadge {
-                                anchors.verticalCenter: parent.verticalCenter
-                                dot: true
-                                presetColor: modelData
-                            }
+            HusBadge {
+                anchors.verticalCenter: parent.verticalCenter
+                dot: true
+                presetColor: modelData
+            }
 
-                            HusText {
-                                text: modelData
-                            }
-                        }
-                    }
-                }
+            HusText {
+                text: modelData
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

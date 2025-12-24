@@ -54,122 +54,122 @@ border.style | int | Qt.SolidLine | 边框线样式(来自 Qt.*)
 使用方法等同于 \`Rectangle\`
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 15
+Column {
+    width: parent.width
+    spacing: 15
 
-                    HusRadioBlock {
-                        id: styleRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: qsTr('实线'), value: Qt.SolidLine },
-                            { label: qsTr('虚线'), value: Qt.DashLine },
-                            { label: qsTr('虚点线'), value: Qt.DashDotLine },
-                            { label: qsTr('虚点点线'), value: Qt.DashDotDotLine }
-                        ]
-                    }
+    HusRadioBlock {
+        id: styleRadio
+        initCheckedIndex: 0
+        model: [
+            { label: qsTr('实线'), value: Qt.SolidLine },
+            { label: qsTr('虚线'), value: Qt.DashLine },
+            { label: qsTr('虚点线'), value: Qt.DashDotLine },
+            { label: qsTr('虚点点线'), value: Qt.DashDotDotLine }
+        ]
+    }
 
-                    HusSlider {
-                        id: bordrWidthSlider
-                        width: 150
-                        height: 30
-                        min: 0
-                        max: 20
-                        stepSize: 1
-                        value: 1
+    HusSlider {
+        id: bordrWidthSlider
+        width: 150
+        height: 30
+        min: 0
+        max: 20
+        stepSize: 1
+        value: 1
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('边框线宽: ') + parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('边框线宽: ') + parent.currentValue.toFixed(0);
+        }
+    }
 
-                    HusSlider {
-                        id: topLeftSlider
-                        width: 150
-                        height: 30
-                        min: 0
-                        max: 100
-                        stepSize: 1
+    HusSlider {
+        id: topLeftSlider
+        width: 150
+        height: 30
+        min: 0
+        max: 100
+        stepSize: 1
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('左上圆角: ') + parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('左上圆角: ') + parent.currentValue.toFixed(0);
+        }
+    }
 
-                    HusSlider {
-                        id: topRightSlider
-                        width: 150
-                        height: 30
-                        min: 0
-                        max: 100
-                        stepSize: 1
+    HusSlider {
+        id: topRightSlider
+        width: 150
+        height: 30
+        min: 0
+        max: 100
+        stepSize: 1
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('右上圆角: ') + parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('右上圆角: ') + parent.currentValue.toFixed(0);
+        }
+    }
 
-                    HusSlider {
-                        id: bottomLeftSlider
-                        width: 150
-                        height: 30
-                        min: 0
-                        max: 100
-                        stepSize: 1
+    HusSlider {
+        id: bottomLeftSlider
+        width: 150
+        height: 30
+        min: 0
+        max: 100
+        stepSize: 1
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('左下圆角: ') + parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('左下圆角: ') + parent.currentValue.toFixed(0);
+        }
+    }
 
-                    HusSlider {
-                        id: bottomRightSlider
-                        width: 150
-                        height: 30
-                        min: 0
-                        max: 100
-                        stepSize: 1
+    HusSlider {
+        id: bottomRightSlider
+        width: 150
+        height: 30
+        min: 0
+        max: 100
+        stepSize: 1
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('右下圆角: ') + parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('右下圆角: ') + parent.currentValue.toFixed(0);
+        }
+    }
 
-                    HusRectangle {
-                        width: 200
-                        height: 200
-                        border.width: bordrWidthSlider.currentValue
-                        border.color: HusTheme.Primary.colorTextBase
-                        border.style: styleRadio.currentCheckedValue
-                        topLeftRadius: topLeftSlider.currentValue
-                        topRightRadius: topRightSlider.currentValue
-                        bottomLeftRadius: bottomLeftSlider.currentValue
-                        bottomRightRadius: bottomRightSlider.currentValue
-                        gradient: Gradient {
-                            GradientStop { position: 0.0; color: 'red' }
-                            GradientStop { position: 0.33; color: 'yellow' }
-                            GradientStop { position: 1.0; color: 'green' }
-                        }
-                    }
-                }
+    HusRectangle {
+        width: 200
+        height: 200
+        border.width: bordrWidthSlider.currentValue
+        border.color: HusTheme.Primary.colorTextBase
+        border.style: styleRadio.currentCheckedValue
+        topLeftRadius: topLeftSlider.currentValue
+        topRightRadius: topRightSlider.currentValue
+        bottomLeftRadius: bottomLeftSlider.currentValue
+        bottomRightRadius: bottomRightSlider.currentValue
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: 'red' }
+            GradientStop { position: 0.33; color: 'yellow' }
+            GradientStop { position: 1.0; color: 'green' }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15

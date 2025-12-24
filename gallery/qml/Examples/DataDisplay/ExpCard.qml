@@ -76,18 +76,18 @@ colorBodyDescription | color | - | 主体部分描述颜色
 包含标题、内容、操作区域。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusCard {
-                        title: qsTr('Card title')
-                        extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
-                        bodyDescription: qsTr('Card content\\nCard content\\nCard content')
-                    }
-                }
+    HusCard {
+        title: qsTr('Card title')
+        extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
+        bodyDescription: qsTr('Card content\\nCard content\\nCard content')
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -113,83 +113,83 @@ colorBodyDescription | color | - | 主体部分描述颜色
 将代理设置为 \`Item {}\` 可以隐藏该部分。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Layouts
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
+Row {
+    width: parent.width
 
-                    HusCard {
-                        id: card
-                        title: qsTr('Card title')
-                        extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
-                        coverSource: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-                        bodyAvatarIcon: HusIcon.AccountBookOutlined
-                        bodyTitle: 'Card Meta title'
-                        bodyDescription: 'This is the description'
-                        actionDelegate: Item {
-                            height: 45
+    HusCard {
+        id: card
+        title: qsTr('Card title')
+        extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
+        coverSource: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+        bodyAvatarIcon: HusIcon.AccountBookOutlined
+        bodyTitle: 'Card Meta title'
+        bodyDescription: 'This is the description'
+        actionDelegate: Item {
+            height: 45
 
-                            HusDivider {
-                                width: parent.width
-                                height: 1
-                            }
+            HusDivider {
+                width: parent.width
+                height: 1
+            }
 
-                            RowLayout {
-                                width: parent.width
-                                height: parent.height
+            RowLayout {
+                width: parent.width
+                height: parent.height
 
-                                Item {
-                                    Layout.preferredWidth: parent.width / 3
-                                    Layout.fillHeight: true
+                Item {
+                    Layout.preferredWidth: parent.width / 3
+                    Layout.fillHeight: true
 
-                                    HusIconText {
-                                        anchors.centerIn: parent
-                                        iconSource: HusIcon.SettingOutlined
-                                        iconSize: 16
-                                    }
-                                }
-
-                                Item {
-                                    Layout.preferredWidth: parent.width / 3
-                                    Layout.fillHeight: true
-
-                                    HusDivider {
-                                        width: 1
-                                        height: parent.height * 0.5
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        orientation: Qt.Vertical
-                                    }
-
-                                    HusIconText {
-                                        anchors.centerIn: parent
-                                        iconSource: HusIcon.EditOutlined
-                                        iconSize: 16
-                                    }
-                                }
-
-                                Item {
-                                    Layout.preferredWidth: parent.width / 3
-                                    Layout.fillHeight: true
-
-                                    HusDivider {
-                                        width: 1
-                                        height: parent.height * 0.5
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        orientation: Qt.Vertical
-                                    }
-
-                                    HusIconText {
-                                        anchors.centerIn: parent
-                                        iconSource: HusIcon.EllipsisOutlined
-                                        iconSize: 16
-                                    }
-                                }
-                            }
-                        }
+                    HusIconText {
+                        anchors.centerIn: parent
+                        iconSource: HusIcon.SettingOutlined
+                        iconSize: 16
                     }
                 }
+
+                Item {
+                    Layout.preferredWidth: parent.width / 3
+                    Layout.fillHeight: true
+
+                    HusDivider {
+                        width: 1
+                        height: parent.height * 0.5
+                        anchors.verticalCenter: parent.verticalCenter
+                        orientation: Qt.Vertical
+                    }
+
+                    HusIconText {
+                        anchors.centerIn: parent
+                        iconSource: HusIcon.EditOutlined
+                        iconSize: 16
+                    }
+                }
+
+                Item {
+                    Layout.preferredWidth: parent.width / 3
+                    Layout.fillHeight: true
+
+                    HusDivider {
+                        width: 1
+                        height: parent.height * 0.5
+                        anchors.verticalCenter: parent.verticalCenter
+                        orientation: Qt.Vertical
+                    }
+
+                    HusIconText {
+                        anchors.centerIn: parent
+                        iconSource: HusIcon.EllipsisOutlined
+                        iconSize: 16
+                    }
+                }
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 40

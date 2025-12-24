@@ -39,16 +39,16 @@ Flickable {
 使用方法等同于 \`Text\`
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 15
+Row {
+    spacing: 15
 
-                    HusText {
-                        text: qsTr('HusText文本')
-                    }
-                }
+    HusText {
+        text: qsTr('HusText文本')
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 15

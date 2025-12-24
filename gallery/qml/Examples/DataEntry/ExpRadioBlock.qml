@@ -99,52 +99,52 @@ toolTip.timeout | int | 可选 | 文字提示超时(ms)
 - 线框样式的按钮(无填充) { HusRadioBlock.Type_Outlined }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRadioBlock {
-                        initCheckedIndex: 0
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear' },
-                            { label: 'Orange', value: 'Orange' },
-                            { icon: HusIcon.QuestionOutlined, value: 'Orange' },
-                        ]
-                    }
+    HusRadioBlock {
+        initCheckedIndex: 0
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+            { icon: HusIcon.QuestionOutlined, value: 'Orange' },
+        ]
+    }
 
-                    HusRadioBlock {
-                        initCheckedIndex: 1
-                        type: HusRadioBlock.Type_Outlined
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear' },
-                            { label: 'Orange', value: 'Orange' },
-                            { icon: HusIcon.QuestionOutlined, value: 'Orange' },
-                        ]
-                    }
+    HusRadioBlock {
+        initCheckedIndex: 1
+        type: HusRadioBlock.Type_Outlined
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+            { icon: HusIcon.QuestionOutlined, value: 'Orange' },
+        ]
+    }
 
-                    HusRadioBlock {
-                        initCheckedIndex: 2
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear', enabled: false },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
+    HusRadioBlock {
+        initCheckedIndex: 2
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear', enabled: false },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
 
-                    HusRadioBlock {
-                        enabled: false
-                        initCheckedIndex: 2
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear', enabled: false },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
-                }
+    HusRadioBlock {
+        enabled: false
+        initCheckedIndex: 2
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear', enabled: false },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -199,33 +199,33 @@ toolTip.timeout | int | 可选 | 文字提示超时(ms)
 - 固定大小(将使用radioWidth/radioHeight) { HusRadioBlock.Size_Fixed }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRadioBlock {
-                        initCheckedIndex: 0
-                        size: HusRadioBlock.Size_Fixed
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear' },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
+    HusRadioBlock {
+        initCheckedIndex: 0
+        size: HusRadioBlock.Size_Fixed
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
 
-                    HusRadioBlock {
-                        initCheckedIndex: 0
-                        size: HusRadioBlock.Size_Auto
-                        type: HusRadioBlock.Type_Outlined
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear' },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
-                }
+    HusRadioBlock {
+        initCheckedIndex: 0
+        size: HusRadioBlock.Size_Auto
+        type: HusRadioBlock.Type_Outlined
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

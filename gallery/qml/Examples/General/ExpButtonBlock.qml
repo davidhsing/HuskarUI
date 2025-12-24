@@ -95,56 +95,56 @@ autoRepeat | bool | 可选 | 本按钮是否自动重复(参见 Button.autoRepea
 - { autoRepeat: 本按钮是否自动重复(参见Button.autoRepeat) }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusButtonBlock {
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear' },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
+    HusButtonBlock {
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
 
-                    HusButtonBlock {
-                        model: [
-                            { label: 'Default', type: HusButton.Type_Default },
-                            { label: 'Outlined', type: HusButton.Type_Outlined },
-                            { label: 'Primary', type: HusButton.Type_Primary },
-                            { label: 'Filled', type: HusButton.Type_Filled },
-                            { label: 'Text', type: HusButton.Type_Text },
-                        ]
-                    }
+    HusButtonBlock {
+        model: [
+            { label: 'Default', type: HusButton.Type_Default },
+            { label: 'Outlined', type: HusButton.Type_Outlined },
+            { label: 'Primary', type: HusButton.Type_Primary },
+            { label: 'Filled', type: HusButton.Type_Filled },
+            { label: 'Text', type: HusButton.Type_Text },
+        ]
+    }
 
-                    HusButtonBlock {
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear', enabled: false },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
+    HusButtonBlock {
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear', enabled: false },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
 
-                    HusButtonBlock {
-                        enabled: false
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear', enabled: false },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
+    HusButtonBlock {
+        enabled: false
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear', enabled: false },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
 
-                    HusButtonBlock {
-                        model: [
-                            { iconSource: HusIcon.PlusOutlined },
-                            { iconSource: HusIcon.MinusOutlined },
-                            { iconSource: HusIcon.CloseOutlined },
-                            { label: ' / ' },
-                        ]
-                    }
-                }
+    HusButtonBlock {
+        model: [
+            { iconSource: HusIcon.PlusOutlined },
+            { iconSource: HusIcon.MinusOutlined },
+            { iconSource: HusIcon.CloseOutlined },
+            { label: ' / ' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -203,30 +203,30 @@ autoRepeat | bool | 可选 | 本按钮是否自动重复(参见 Button.autoRepea
 - 固定大小(将使用buttonWidth/buttonHeight) { HusButtonBlock.Size_Fixed }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusButtonBlock {
-                        size: HusButtonBlock.Size_Auto
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear' },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
+    HusButtonBlock {
+        size: HusButtonBlock.Size_Auto
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
 
-                    HusButtonBlock {
-                        size: HusButtonBlock.Size_Fixed
-                        model: [
-                            { label: 'Apple', value: 'Apple' },
-                            { label: 'Pear', value: 'Pear' },
-                            { label: 'Orange', value: 'Orange' },
-                        ]
-                    }
-                }
+    HusButtonBlock {
+        size: HusButtonBlock.Size_Fixed
+        model: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

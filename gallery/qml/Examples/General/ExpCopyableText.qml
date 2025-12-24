@@ -44,16 +44,16 @@ Qml中普通文本(Text)无法复制，因此在需要可复制的文本时建�
 使用方法等同于 \`TextEdit\`
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 15
+Row {
+    spacing: 15
 
-                    HusCopyableText {
-                        text: qsTr('可以复制我')
-                    }
-                }
+    HusCopyableText {
+        text: qsTr('可以复制我')
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 15

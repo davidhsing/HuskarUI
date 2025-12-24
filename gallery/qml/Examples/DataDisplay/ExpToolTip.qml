@@ -59,82 +59,82 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 - 文字提示在项目右方{ HusToolTip.Position_Right }\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Layouts
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    GridLayout {
-                        width: 400
-                        rows: 3
-                        columns: 3
+    GridLayout {
+        width: 400
+        rows: 3
+        columns: 3
 
-                        HusButton {
-                            Layout.alignment: Qt.AlignHCenter
-                            Layout.columnSpan: 3
-                            text: qsTr('上方')
+        HusButton {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.columnSpan: 3
+            text: qsTr('上方')
 
-                            HusToolTip {
-                                visible: parent.hovered
-                                arrowVisible: true
-                                text: qsTr('上方文字提示')
-                            }
-                        }
+            HusToolTip {
+                visible: parent.hovered
+                arrowVisible: true
+                text: qsTr('上方文字提示')
+            }
+        }
 
-                        HusButton {
-                            Layout.alignment: Qt.AlignLeft
-                            text: qsTr('左方')
+        HusButton {
+            Layout.alignment: Qt.AlignLeft
+            text: qsTr('左方')
 
-                            HusToolTip {
-                                visible: parent.hovered
-                                arrowVisible: true
-                                text: qsTr('左方文字提示')
-                                position: HusToolTip.Position_Left
-                            }
-                        }
+            HusToolTip {
+                visible: parent.hovered
+                arrowVisible: true
+                text: qsTr('左方文字提示')
+                position: HusToolTip.Position_Left
+            }
+        }
 
-                        HusButton {
-                            Layout.alignment: Qt.AlignCenter
-                            text: qsTr('箭头中心')
+        HusButton {
+            Layout.alignment: Qt.AlignCenter
+            text: qsTr('箭头中心')
 
-                            HusToolTip {
-                                x: 0
-                                visible: parent.hovered
-                                arrowVisible: true
-                                text: qsTr('箭头中心会自动指向 parent 的中心')
-                                position: HusToolTip.Position_Top
-                            }
-                        }
+            HusToolTip {
+                x: 0
+                visible: parent.hovered
+                arrowVisible: true
+                text: qsTr('箭头中心会自动指向 parent 的中心')
+                position: HusToolTip.Position_Top
+            }
+        }
 
-                        HusButton {
-                            Layout.alignment: Qt.AlignRight
-                            text: qsTr('右方')
+        HusButton {
+            Layout.alignment: Qt.AlignRight
+            text: qsTr('右方')
 
-                            HusToolTip {
-                                visible: parent.hovered
-                                arrowVisible: true
-                                text: qsTr('右方文字提示')
-                                position: HusToolTip.Position_Right
-                            }
-                        }
+            HusToolTip {
+                visible: parent.hovered
+                arrowVisible: true
+                text: qsTr('右方文字提示')
+                position: HusToolTip.Position_Right
+            }
+        }
 
-                        HusButton {
-                            Layout.alignment: Qt.AlignHCenter
-                            Layout.columnSpan: 3
-                            text: qsTr('下方')
+        HusButton {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.columnSpan: 3
+            text: qsTr('下方')
 
-                            HusToolTip {
-                                visible: parent.hovered
-                                arrowVisible: true
-                                text: qsTr('下方文字提示')
-                                position: HusToolTip.Position_Bottom
-                            }
-                        }
-                    }
-                }
+            HusToolTip {
+                visible: parent.hovered
+                arrowVisible: true
+                text: qsTr('下方文字提示')
+                position: HusToolTip.Position_Bottom
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

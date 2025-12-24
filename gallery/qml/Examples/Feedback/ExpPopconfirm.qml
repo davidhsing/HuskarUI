@@ -73,35 +73,35 @@ cancelText | string | '' | 取消文本
 通过 \`cancelText\` 属性设置取消文本。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    HusButton {
-                        text: 'Delete'
-                        type: HusButton.Type_Outlined
-                        onClicked: popconfirm.open();
+Row {
+    HusButton {
+        text: 'Delete'
+        type: HusButton.Type_Outlined
+        onClicked: popconfirm.open();
 
-                        HusPopconfirm {
-                            id: popconfirm
-                            x: (parent.width - width) * 0.5
-                            y: parent.height + 6
-                            width: 300
-                            title: 'Delete the task'
-                            description: 'Are you sure to delete this task?'
-                            confirmText: 'Yes'
-                            cancelText: 'No'
-                            onConfirm: {
-                                message.success('Click on Yes');
-                                close();
-                            }
-                            onCancel: {
-                                message.error('Click on No');
-                                close();
-                            }
-                        }
-                    }
-                }
+        HusPopconfirm {
+            id: popconfirm
+            x: (parent.width - width) * 0.5
+            y: parent.height + 6
+            width: 300
+            title: 'Delete the task'
+            description: 'Are you sure to delete this task?'
+            confirmText: 'Yes'
+            cancelText: 'No'
+            onConfirm: {
+                message.success('Click on Yes');
+                close();
+            }
+            onCancel: {
+                message.error('Click on No');
+                close();
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 HusButton {
@@ -138,64 +138,64 @@ cancelText | string | '' | 取消文本
 通过 \`iconSource\` 属性设置图标源。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusButton {
-                        text: 'Add'
-                        type: HusButton.Type_Outlined
-                        onClicked: popconfirm2.open();
+    HusButton {
+        text: 'Add'
+        type: HusButton.Type_Outlined
+        onClicked: popconfirm2.open();
 
-                        HusPopconfirm {
-                            id: popconfirm2
-                            x: (parent.width - width) * 0.5
-                            y: parent.height + 6
-                            iconSource: HusIcon.QuestionCircleOutlined
-                            width: 300
-                            title: 'Add the task'
-                            description: 'Are you sure to add this task?'
-                            confirmText: 'Yes'
-                            cancelText: 'No'
-                            onConfirm: {
-                                message.success('Click on Yes');
-                                close();
-                            }
-                            onCancel: {
-                                message.error('Click on No');
-                                close();
-                            }
-                        }
-                    }
+        HusPopconfirm {
+            id: popconfirm2
+            x: (parent.width - width) * 0.5
+            y: parent.height + 6
+            iconSource: HusIcon.QuestionCircleOutlined
+            width: 300
+            title: 'Add the task'
+            description: 'Are you sure to add this task?'
+            confirmText: 'Yes'
+            cancelText: 'No'
+            onConfirm: {
+                message.success('Click on Yes');
+                close();
+            }
+            onCancel: {
+                message.error('Click on No');
+                close();
+            }
+        }
+    }
 
-                    HusButton {
-                        text: 'Delete'
-                        type: HusButton.Type_Outlined
-                        onClicked: popconfirm3.open();
+    HusButton {
+        text: 'Delete'
+        type: HusButton.Type_Outlined
+        onClicked: popconfirm3.open();
 
-                        HusPopconfirm {
-                            id: popconfirm3
-                            x: (parent.width - width) * 0.5
-                            y: parent.height + 6
-                            iconSource: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
-                            width: 300
-                            title: 'Delete the task'
-                            description: 'Are you sure to delete this task?'
-                            confirmText: 'Yes'
-                            cancelText: 'No'
-                            onConfirm: {
-                                message.success('Click on Yes');
-                                close();
-                            }
-                            onCancel: {
-                                message.error('Click on No');
-                                close();
-                            }
-                        }
-                    }
-                }
+        HusPopconfirm {
+            id: popconfirm3
+            x: (parent.width - width) * 0.5
+            y: parent.height + 6
+            iconSource: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
+            width: 300
+            title: 'Delete the task'
+            description: 'Are you sure to delete this task?'
+            confirmText: 'Yes'
+            cancelText: 'No'
+            onConfirm: {
+                message.success('Click on Yes');
+                close();
+            }
+            onCancel: {
+                message.error('Click on No');
+                close();
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -262,26 +262,26 @@ cancelText | string | '' | 取消文本
 \`confirmText\` 为空则不显示确认按钮，\`cancelText\` 为空则不显示取消按钮。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    HusButton {
-                        text: 'Hover Tooltip'
-                        type: HusButton.Type_Primary
+Row {
+    HusButton {
+        text: 'Hover Tooltip'
+        type: HusButton.Type_Primary
 
-                        HusPopconfirm {
-                            id: popconfirm4
-                            x: (parent.width - width) * 0.5
-                            y: parent.height + 6
-                            width: 150
-                            title: 'Tooltip'
-                            description: 'This is tooltip!'
-                            iconSource: 0
-                            visible: parent.hovered
-                        }
-                    }
-                }
+        HusPopconfirm {
+            id: popconfirm4
+            x: (parent.width - width) * 0.5
+            y: parent.height + 6
+            width: 150
+            title: 'Tooltip'
+            description: 'This is tooltip!'
+            iconSource: 0
+            visible: parent.hovered
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 HusButton {

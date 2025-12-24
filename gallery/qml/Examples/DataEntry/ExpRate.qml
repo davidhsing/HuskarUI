@@ -90,27 +90,27 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
 通过 \`enabled\` 设置是否只读(进行鼠标交互)。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRate {
-                        initValue: 3
-                    }
+    HusRate {
+        initValue: 3
+    }
 
-                    HusRate {
-                        allowHalf: true
-                        initValue: 3.5
-                    }
+    HusRate {
+        allowHalf: true
+        initValue: 3.5
+    }
 
-                    HusRate {
-                        allowHalf: true
-                        initValue: 2.5
-                        enabled: false
-                    }
-                }
+    HusRate {
+        allowHalf: true
+        initValue: 2.5
+        enabled: false
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -141,18 +141,18 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
 **注意** 文字提示并非弹出，需要注意clip。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRate {
-                        initValue: 3
-                        toolTipVisible: true
-                        toolTipTexts: ['terrible', 'bad', 'normal', 'good', 'wonderful']
-                    }
-                }
+    HusRate {
+        initValue: 3
+        toolTipVisible: true
+        toolTipTexts: ['terrible', 'bad', 'normal', 'good', 'wonderful']
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -176,34 +176,34 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
 通过 \`halfIcon\` 设置半星图标。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRate {
-                        allowHalf: true
-                        initValue: 3
-                        colorFill: 'red'
-                        colorEmpty: 'red'
-                        colorHalf: 'red'
-                        fillIcon: HusIcon.HeartFilled
-                        emptyIcon: HusIcon.HeartOutlined
-                        halfIcon: HusIcon.HeartFilled
-                    }
+    HusRate {
+        allowHalf: true
+        initValue: 3
+        colorFill: 'red'
+        colorEmpty: 'red'
+        colorHalf: 'red'
+        fillIcon: HusIcon.HeartFilled
+        emptyIcon: HusIcon.HeartOutlined
+        halfIcon: HusIcon.HeartFilled
+    }
 
-                    HusRate {
-                        allowHalf: true
-                        initValue: 3
-                        colorFill: 'green'
-                        colorEmpty: 'green'
-                        colorHalf: 'green'
-                        fillIcon: HusIcon.LikeFilled
-                        emptyIcon: HusIcon.LikeOutlined
-                        halfIcon: HusIcon.LikeFilled
-                    }
-                }
+    HusRate {
+        allowHalf: true
+        initValue: 3
+        colorFill: 'green'
+        colorEmpty: 'green'
+        colorHalf: 'green'
+        fillIcon: HusIcon.LikeFilled
+        emptyIcon: HusIcon.LikeOutlined
+        halfIcon: HusIcon.LikeFilled
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -240,63 +240,63 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
 通过 \`halfDelegate\` 设置半星代理组件。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRate {
-                        id: custom1
-                        initValue: 3
-                        colorFill: 'red'
-                        fillDelegate: HusText {
-                            width: custom1.iconSize
-                            height: custom1.iconSize
-                            color: custom1.colorFill
-                            font {
-                                family: HusTheme.Primary.fontPrimaryFamily
-                                pixelSize: custom1.iconSize
-                            }
-                            text: index + 1
-                        }
-                        emptyDelegate: HusText {
-                            width: custom1.iconSize
-                            height: custom1.iconSize
-                            color: custom1.colorEmpty
-                            font {
-                                family: HusTheme.Primary.fontPrimaryFamily
-                                pixelSize: custom1.iconSize
-                            }
-                            text: index + 1
-                        }
-                    }
+    HusRate {
+        id: custom1
+        initValue: 3
+        colorFill: 'red'
+        fillDelegate: HusText {
+            width: custom1.iconSize
+            height: custom1.iconSize
+            color: custom1.colorFill
+            font {
+                family: HusTheme.Primary.fontPrimaryFamily
+                pixelSize: custom1.iconSize
+            }
+            text: index + 1
+        }
+        emptyDelegate: HusText {
+            width: custom1.iconSize
+            height: custom1.iconSize
+            color: custom1.colorEmpty
+            font {
+                family: HusTheme.Primary.fontPrimaryFamily
+                pixelSize: custom1.iconSize
+            }
+            text: index + 1
+        }
+    }
 
-                    HusRate {
-                        id: custom2
-                        initValue: 3
-                        colorFill: 'red'
-                        fillDelegate: HusIconText {
-                            iconSource: {
-                                if (index <= 2) return HusIcon.FrownOutlined;
-                                else if (index == 3) return HusIcon.MehOutlined;
-                                else return HusIcon.SmileOutlined;
-                            }
-                            iconSize: custom2.iconSize
-                            color: custom2.colorFill
-                            scale: hovered ? 1.1 : 1.0
-                        }
-                        emptyDelegate: HusIconText {
-                            iconSource: {
-                                if (index <= 2) return HusIcon.FrownOutlined;
-                                else if (index == 3) return HusIcon.MehOutlined;
-                                else return HusIcon.SmileOutlined;
-                            }
-                            iconSize: custom2.iconSize
-                            color: custom2.colorEmpty
-                        }
-                    }
-                }
+    HusRate {
+        id: custom2
+        initValue: 3
+        colorFill: 'red'
+        fillDelegate: HusIconText {
+            iconSource: {
+                if (index <= 2) return HusIcon.FrownOutlined;
+                else if (index == 3) return HusIcon.MehOutlined;
+                else return HusIcon.SmileOutlined;
+            }
+            iconSize: custom2.iconSize
+            color: custom2.colorFill
+            scale: hovered ? 1.1 : 1.0
+        }
+        emptyDelegate: HusIconText {
+            iconSource: {
+                if (index <= 2) return HusIcon.FrownOutlined;
+                else if (index == 3) return HusIcon.MehOutlined;
+                else return HusIcon.SmileOutlined;
+            }
+            iconSize: custom2.iconSize
+            color: custom2.colorEmpty
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -360,79 +360,79 @@ halfIcon | int丨string | HusIcon.StarFilled丨'' | 半星图标(来自 HusIcon)
 提供一个半星助手：\`halfRateHelper\` 来把任意项变为半星，通过 \`layer.effect\` 来使用它。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusRate {
-                        id: custom3
-                        allowHalf: true
-                        initValue: 3.5
-                        colorFill: 'green'
-                        colorEmpty: 'green'
-                        colorHalf: 'green'
-                        fillDelegate: Canvas {
-                            width: custom3.iconSize
-                            height: custom3.iconSize
-                            onPaint: {
-                                const size = custom3.iconSize * 0.5;
-                                custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorFill);
-                            }
-                        }
-                        emptyDelegate: Canvas {
-                            width: custom3.iconSize
-                            height: custom3.iconSize
-                            onPaint: {
-                                const size = custom3.iconSize * 0.5;
-                                custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
-                            }
-                        }
-                        halfDelegate: Canvas {
-                            width: custom3.iconSize
-                            height: custom3.iconSize
-                            onPaint: {
-                                const size = custom3.iconSize * 0.5;
-                                custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
-                            }
+    HusRate {
+        id: custom3
+        allowHalf: true
+        initValue: 3.5
+        colorFill: 'green'
+        colorEmpty: 'green'
+        colorHalf: 'green'
+        fillDelegate: Canvas {
+            width: custom3.iconSize
+            height: custom3.iconSize
+            onPaint: {
+                const size = custom3.iconSize * 0.5;
+                custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorFill);
+            }
+        }
+        emptyDelegate: Canvas {
+            width: custom3.iconSize
+            height: custom3.iconSize
+            onPaint: {
+                const size = custom3.iconSize * 0.5;
+                custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
+            }
+        }
+        halfDelegate: Canvas {
+            width: custom3.iconSize
+            height: custom3.iconSize
+            onPaint: {
+                const size = custom3.iconSize * 0.5;
+                custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
+            }
 
-                            Canvas {
-                                width: custom3.iconSize
-                                height: custom3.iconSize
-                                layer.enabled: true
-                                layer.effect: custom3.halfRateHelper
-                                onPaint: {
-                                    const size = custom3.iconSize * 0.5;
-                                    custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorFill);
-                                }
-                            }
-                        }
-
-                        function drawHexagon(ctx, x, y, radius, color, isFill = true) {
-                            ctx.beginPath();
-                            for (let i = 0; i < 6; i++) {
-                                const angle = (i * Math.PI / 3) - Math.PI / 6;
-                                const xPos = x + radius * Math.cos(angle);
-                                const yPos = y + radius * Math.sin(angle);
-                                if (i === 0) {
-                                    ctx.moveTo(xPos, yPos);
-                                } else {
-                                    ctx.lineTo(xPos, yPos);
-                                }
-                            }
-                            ctx.closePath();
-                            if (isFill) {
-                                ctx.fillStyle = color;
-                                ctx.fill();
-                            } else {
-                                ctx.lineWidth = 1;
-                                ctx.strokeStyle = color;
-                                ctx.stroke();
-                            }
-                        }
-                    }
+            Canvas {
+                width: custom3.iconSize
+                height: custom3.iconSize
+                layer.enabled: true
+                layer.effect: custom3.halfRateHelper
+                onPaint: {
+                    const size = custom3.iconSize * 0.5;
+                    custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorFill);
                 }
+            }
+        }
+
+        function drawHexagon(ctx, x, y, radius, color, isFill = true) {
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI / 3) - Math.PI / 6;
+                const xPos = x + radius * Math.cos(angle);
+                const yPos = y + radius * Math.sin(angle);
+                if (i === 0) {
+                    ctx.moveTo(xPos, yPos);
+                } else {
+                    ctx.lineTo(xPos, yPos);
+                }
+            }
+            ctx.closePath();
+            if (isFill) {
+                ctx.fillStyle = color;
+                ctx.fill();
+            } else {
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = color;
+                ctx.stroke();
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

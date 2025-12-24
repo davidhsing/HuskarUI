@@ -64,25 +64,25 @@ colorOverlay | color | - | 覆盖层颜色
 基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区(非抽屉区)关闭。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    HusButton {
-                        type: HusButton.Type_Primary
-                        text: qsTr('打开')
-                        onClicked: drawer.open();
+Row {
+    HusButton {
+        type: HusButton.Type_Primary
+        text: qsTr('打开')
+        onClicked: drawer.open();
 
-                        HusDrawer {
-                            id: drawer
-                            title: qsTr('Basic Drawer')
-                            contentDelegate: HusCopyableText {
-                                leftPadding: 15
-                                text: 'Some contents...\\nSome contents...\\nSome contents...'
-                            }
-                        }
-                    }
-                }
+        HusDrawer {
+            id: drawer
+            title: qsTr('Basic Drawer')
+            contentDelegate: HusCopyableText {
+                leftPadding: 15
+                text: 'Some contents...\\nSome contents...\\nSome contents...'
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 HusButton {
@@ -116,49 +116,49 @@ colorOverlay | color | - | 覆盖层颜色
 - 末尾位置{ HusDrawer.Position_End }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusButton {
-                        type: HusButton.Type_Primary
-                        text: qsTr('打开')
-                        onClicked: drawer2.open();
+    HusButton {
+        type: HusButton.Type_Primary
+        text: qsTr('打开')
+        onClicked: drawer2.open();
 
-                        HusDrawer {
-                            id: drawer2
-                            edge: edgeRadio.currentCheckedValue
-                            title: qsTr('Basic Drawer')
-                            closePosition: closeRadio.currentCheckedValue
-                            contentDelegate: HusCopyableText {
-                                leftPadding: 15
-                                text: 'Some contents...\nSome contents...\nSome contents...'
-                            }
-                        }
-                    }
+        HusDrawer {
+            id: drawer2
+            edge: edgeRadio.currentCheckedValue
+            title: qsTr('Basic Drawer')
+            closePosition: closeRadio.currentCheckedValue
+            contentDelegate: HusCopyableText {
+                leftPadding: 15
+                text: 'Some contents...\nSome contents...\nSome contents...'
+            }
+        }
+    }
 
-                    HusRadioBlock {
-                        id: edgeRadio
-                        initCheckedIndex: 3
-                        model: [
-                            { label: 'Top', value: Qt.TopEdge },
-                            { label: 'Bottom', value: Qt.BottomEdge },
-                            { label: 'Left', value: Qt.LeftEdge },
-                            { label: 'Right', value: Qt.RightEdge }
-                        ]
-                    }
+    HusRadioBlock {
+        id: edgeRadio
+        initCheckedIndex: 3
+        model: [
+            { label: 'Top', value: Qt.TopEdge },
+            { label: 'Bottom', value: Qt.BottomEdge },
+            { label: 'Left', value: Qt.LeftEdge },
+            { label: 'Right', value: Qt.RightEdge }
+        ]
+    }
 
-                    HusRadioBlock {
-                        id: closeRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: 'Start', value: HusDrawer.Position_Start },
-                            { label: 'End', value: HusDrawer.Position_End }
-                        ]
-                    }
-                }
+    HusRadioBlock {
+        id: closeRadio
+        initCheckedIndex: 0
+        model: [
+            { label: 'Start', value: HusDrawer.Position_Start },
+            { label: 'End', value: HusDrawer.Position_End }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

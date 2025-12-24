@@ -104,59 +104,59 @@ radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
 年月日时分秒遵从一般日期格式 \`yyyy MM dd hh mm ss\`，而 \`w\` 将替换为周数，\`q\` 将替换为季度。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusDateTimePicker {
-                        placeholderText: qsTr('请选择日期时间')
-                        format: qsTr('yyyy-MM-dd hh:mm:ss')
-                    }
+    HusDateTimePicker {
+        placeholderText: qsTr('请选择日期时间')
+        format: qsTr('yyyy-MM-dd hh:mm:ss')
+    }
 
-                    HusDateTimePicker {
-                        placeholderText: qsTr('请选择日期')
-                        datePickerMode: HusDateTimePicker.Mode_Day
-                        showTime: false
-                        format: qsTr('yyyy-MM-dd')
-                    }
+    HusDateTimePicker {
+        placeholderText: qsTr('请选择日期')
+        datePickerMode: HusDateTimePicker.Mode_Day
+        showTime: false
+        format: qsTr('yyyy-MM-dd')
+    }
 
-                    HusDateTimePicker {
-                        placeholderText: qsTr('请选择周')
-                        datePickerMode: HusDateTimePicker.Mode_Week
-                        showTime: false
-                        format: qsTr('yyyy-w周')
-                    }
+    HusDateTimePicker {
+        placeholderText: qsTr('请选择周')
+        datePickerMode: HusDateTimePicker.Mode_Week
+        showTime: false
+        format: qsTr('yyyy-w周')
+    }
 
-                    HusDateTimePicker {
-                        placeholderText: qsTr('请选择月份')
-                        datePickerMode: HusDateTimePicker.Mode_Month
-                        showTime: false
-                        format: qsTr('yyyy-MM')
-                    }
+    HusDateTimePicker {
+        placeholderText: qsTr('请选择月份')
+        datePickerMode: HusDateTimePicker.Mode_Month
+        showTime: false
+        format: qsTr('yyyy-MM')
+    }
 
-                    HusDateTimePicker {
-                        placeholderText: qsTr('请选择季度')
-                        datePickerMode: HusDateTimePicker.Mode_Quarter
-                        showTime: false
-                        format: qsTr('yyyy-Qq')
-                    }
+    HusDateTimePicker {
+        placeholderText: qsTr('请选择季度')
+        datePickerMode: HusDateTimePicker.Mode_Quarter
+        showTime: false
+        format: qsTr('yyyy-Qq')
+    }
 
-                    HusDateTimePicker {
-                        placeholderText: qsTr('请选择年份')
-                        datePickerMode: HusDateTimePicker.Mode_Year
-                        showTime: false
-                        format: qsTr('yyyy')
-                    }
+    HusDateTimePicker {
+        placeholderText: qsTr('请选择年份')
+        datePickerMode: HusDateTimePicker.Mode_Year
+        showTime: false
+        format: qsTr('yyyy')
+    }
 
-                    HusDateTimePicker {
-                        placeholderText: qsTr('请选择时间')
-                        showDate: false
-                        timePickerMode: HusDateTimePicker.Mode_HHMMSS
-                        format: qsTr('hh:mm:ss')
-                    }
-                }
+    HusDateTimePicker {
+        placeholderText: qsTr('请选择时间')
+        showDate: false
+        timePickerMode: HusDateTimePicker.Mode_HHMMSS
+        format: qsTr('hh:mm:ss')
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -217,30 +217,30 @@ radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
 可任意选择小时分钟秒/小时分钟/分钟秒三种模式。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusDateTimePicker {
-                        showDate: false
-                        timePickerMode: HusDateTimePicker.Mode_HHMMSS
-                        format: 'hh:mm:ss'
-                    }
+    HusDateTimePicker {
+        showDate: false
+        timePickerMode: HusDateTimePicker.Mode_HHMMSS
+        format: 'hh:mm:ss'
+    }
 
-                    HusDateTimePicker {
-                        showDate: false
-                        timePickerMode: HusDateTimePicker.Mode_HHMM
-                        format: 'hh:mm'
-                    }
+    HusDateTimePicker {
+        showDate: false
+        timePickerMode: HusDateTimePicker.Mode_HHMM
+        format: 'hh:mm'
+    }
 
-                    HusDateTimePicker {
-                        showDate: false
-                        timePickerMode: HusDateTimePicker.Mode_MMSS
-                        format: 'mm:ss'
-                    }
-                }
+    HusDateTimePicker {
+        showDate: false
+        timePickerMode: HusDateTimePicker.Mode_MMSS
+        format: 'mm:ss'
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -274,55 +274,55 @@ radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
 通过 \`dayDelegate\` 属性设置日代理。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusDateTimePicker {
-                        id: customDatePicker
-                        initDateTime: new Date(2025, 4, 1)
-                        placeholderText: qsTr('请选择日期')
-                        datePickerMode: HusDateTimePicker.Mode_Day
-                        showTime: false
-                        format: qsTr('yyyy-MM-dd')
-                        dayDelegate: HusButton {
-                            padding: 0
-                            implicitWidth: 50
-                            implicitHeight: 50
-                            type: isCurrentDay || isHovered ? HusButton.Type_Primary : HusButton.Type_Link
-                            text: \`<span>\${model.day}</span>\${getHoliday()}\`
-                            effectEnabled: false
-                            colorText: isCurrentDay ? 'white' : HusTheme.Primary.colorTextBase
-                            Component.onCompleted: contentItem.textFormat = Text.RichText;
+    HusDateTimePicker {
+        id: customDatePicker
+        initDateTime: new Date(2025, 4, 1)
+        placeholderText: qsTr('请选择日期')
+        datePickerMode: HusDateTimePicker.Mode_Day
+        showTime: false
+        format: qsTr('yyyy-MM-dd')
+        dayDelegate: HusButton {
+            padding: 0
+            implicitWidth: 50
+            implicitHeight: 50
+            type: isCurrentDay || isHovered ? HusButton.Type_Primary : HusButton.Type_Link
+            text: \`<span>\${model.day}</span>\${getHoliday()}\`
+            effectEnabled: false
+            colorText: isCurrentDay ? 'white' : HusTheme.Primary.colorTextBase
+            Component.onCompleted: contentItem.textFormat = Text.RichText;
 
-                            function getHoliday() {
-                                if (model.month === 4 && model.day === 1) {
-                                    return \`<br/><span style=\'color:red\'>劳动节</span>\`;
-                                } else if (model.month === 4 && model.day === 21) {
-                                    return \`<br/><span style=\'color:red\'>小满</span>\`;
-                                } else if (model.month === 4 && model.day === 31) {
-                                    return \`<br/><span style=\'color:red\'>端午节</span>\`;
-                                } else {
-                                    const lunarDaysMay2025 = [
-                                      '初四', '初五', '初六', '初七', '初八',
-                                      '初九', '初十', '十一', '十二', '十三',
-                                      '十四', '十五', '十六', '十七', '十八',
-                                      '十九', '二十', '廿一', '廿二', '廿三',
-                                      '廿四', '廿五', '廿六', '廿七', '廿八',
-                                      '廿九', '三十', '初一', '初二', '初三',
-                                      '初四'
-                                    ];
-                                    if (model.month === 4)
-                                        return \`<br/><span style='color:\${colorText}'>\${lunarDaysMay2025[model.day - 1]}</span>\`;
-                                    else
-                                        return '';
-                                }
-                            }
-                        }
-                    }
+            function getHoliday() {
+                if (model.month === 4 && model.day === 1) {
+                    return \`<br/><span style=\'color:red\'>劳动节</span>\`;
+                } else if (model.month === 4 && model.day === 21) {
+                    return \`<br/><span style=\'color:red\'>小满</span>\`;
+                } else if (model.month === 4 && model.day === 31) {
+                    return \`<br/><span style=\'color:red\'>端午节</span>\`;
+                } else {
+                    const lunarDaysMay2025 = [
+                      '初四', '初五', '初六', '初七', '初八',
+                      '初九', '初十', '十一', '十二', '十三',
+                      '十四', '十五', '十六', '十七', '十八',
+                      '十九', '二十', '廿一', '廿二', '廿三',
+                      '廿四', '廿五', '廿六', '廿七', '廿八',
+                      '廿九', '三十', '初一', '初二', '初三',
+                      '初四'
+                    ];
+                    if (model.month === 4)
+                        return \`<br/><span style='color:\${colorText}'>\${lunarDaysMay2025[model.day - 1]}</span>\`;
+                    else
+                        return '';
                 }
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

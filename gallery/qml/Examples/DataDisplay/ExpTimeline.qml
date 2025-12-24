@@ -111,32 +111,32 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
 如果未给出 \`time\`，则不会显示时间部分\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusTimeline {
-                        width: parent.width
-                        height: 200
-                        initModel: [
-                            {
-                                content: 'Create a services site',
-                            },
-                            {
-                                content: 'Solve initial network problems',
-                            },
-                            {
-                                content: 'Technical testing',
-                            },
-                            {
-                                content: 'Network problems being solved',
-                            }
-                        ]
-                    }
-                }
+    HusTimeline {
+        width: parent.width
+        height: 200
+        initModel: [
+            {
+                content: 'Create a services site',
+            },
+            {
+                content: 'Solve initial network problems',
+            },
+            {
+                content: 'Technical testing',
+            },
+            {
+                content: 'Network problems being solved',
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -171,41 +171,41 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
 通过模型数据的 \`iconSize\` 属性设置图标的大小\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusTimeline {
-                        width: parent.width
-                        height: 300
-                        initModel: [
-                            {
-                                colorNode: HusTheme.Primary.colorSuccess,
-                                content: 'Create a services site',
-                            },
-                            {
-                                colorNode: HusTheme.Primary.colorError,
-                                content: 'Solve initial network problems 1\nSolve initial network problems 2\nSolve initial network problems 3',
-                            },
-                            {
-                                colorNode: HusTheme.Primary.colorWarning,
-                                content: 'Technical testing 1\nTechnical testing 2\nTechnical testing 3',
-                            },
-                            {
-                                content: 'Network problems being solved',
-                            },
-                            {
-                                colorNode: '#00CCFF',
-                                icon: HusIcon.SmileOutlined,
-                                iconSize: 20,
-                                content: 'Custom icon testing',
-                            }
-                        ]
-                    }
-                }
+    HusTimeline {
+        width: parent.width
+        height: 300
+        initModel: [
+            {
+                colorNode: HusTheme.Primary.colorSuccess,
+                content: 'Create a services site',
+            },
+            {
+                colorNode: HusTheme.Primary.colorError,
+                content: 'Solve initial network problems 1\nSolve initial network problems 2\nSolve initial network problems 3',
+            },
+            {
+                colorNode: HusTheme.Primary.colorWarning,
+                content: 'Technical testing 1\nTechnical testing 2\nTechnical testing 3',
+            },
+            {
+                content: 'Network problems being solved',
+            },
+            {
+                colorNode: '#00CCFF',
+                icon: HusIcon.SmileOutlined,
+                iconSize: 20,
+                content: 'Custom icon testing',
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -248,46 +248,46 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
 稍后，可通过 \`set()\` 或 \`setProperty()\` 函数将其设置为 \`false\` 结束加载状态\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusButton {
-                        text: 'Stop loading'
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            loadingTimeline.set(3, {
-                                                    time: new Date(),
-                                                    loading: false,
-                                                    content: 'New Content',
-                                                });
-                        }
-                    }
+    HusButton {
+        text: 'Stop loading'
+        type: HusButton.Type_Primary
+        onClicked: {
+            loadingTimeline.set(3, {
+                                    time: new Date(),
+                                    loading: false,
+                                    content: 'New Content',
+                                });
+        }
+    }
 
-                    HusTimeline {
-                        id: loadingTimeline
-                        width: parent.width
-                        height: 200
-                        initModel: [
-                            {
-                                content: 'Create a services site',
-                            },
-                            {
-                                content: 'Solve initial network problems',
-                            },
-                            {
-                                content: 'Technical testing',
-                            },
-                            {
-                                loading: true,
-                                content: 'Recording...',
-                            }
-                        ]
-                    }
-                }
+    HusTimeline {
+        id: loadingTimeline
+        width: parent.width
+        height: 200
+        initModel: [
+            {
+                content: 'Create a services site',
+            },
+            {
+                content: 'Solve initial network problems',
+            },
+            {
+                content: 'Technical testing',
+            },
+            {
+                loading: true,
+                content: 'Recording...',
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -341,57 +341,57 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
 或通过属性 \`defaultTimeFormat\` 统一设置默认的时间格式\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusButton {
-                        text: 'Toggle Reverse'
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            reverseTimeline.reverse = !reverseTimeline.reverse;
-                        }
-                    }
+    HusButton {
+        text: 'Toggle Reverse'
+        type: HusButton.Type_Primary
+        onClicked: {
+            reverseTimeline.reverse = !reverseTimeline.reverse;
+        }
+    }
 
-                    HusRadioBlock {
-                        id: modeRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: 'Left', value: HusTimeline.Mode_Left },
-                            { label: 'Right', value: HusTimeline.Mode_Right },
-                            { label: 'Alternate', value: HusTimeline.Mode_Alternate }
-                        ]
-                    }
+    HusRadioBlock {
+        id: modeRadio
+        initCheckedIndex: 0
+        model: [
+            { label: 'Left', value: HusTimeline.Mode_Left },
+            { label: 'Right', value: HusTimeline.Mode_Right },
+            { label: 'Alternate', value: HusTimeline.Mode_Alternate }
+        ]
+    }
 
-                    HusTimeline {
-                        id: reverseTimeline
-                        width: parent.width
-                        height: 200
-                        mode: modeRadio.currentCheckedValue
-                        initModel: [
-                            {
-                                time: new Date(2020, 2, 19),
-                                content: 'Create a services site',
-                            },
-                            {
-                                time: new Date(2022, 2, 19),
-                                content: 'Solve initial network problems',
-                            },
-                            {
-                                content: 'Technical testing',
-                            },
-                            {
-                                time: new Date(2024, 2, 19),
-                                timeFormat: 'yyyy-MM-dd-hh:mm:ss',
-                                loading: true,
-                                content: 'Recording...',
-                            }
-                        ]
-                    }
-                }
+    HusTimeline {
+        id: reverseTimeline
+        width: parent.width
+        height: 200
+        mode: modeRadio.currentCheckedValue
+        initModel: [
+            {
+                time: new Date(2020, 2, 19),
+                content: 'Create a services site',
+            },
+            {
+                time: new Date(2022, 2, 19),
+                content: 'Solve initial network problems',
+            },
+            {
+                content: 'Technical testing',
+            },
+            {
+                time: new Date(2024, 2, 19),
+                timeFormat: 'yyyy-MM-dd-hh:mm:ss',
+                loading: true,
+                content: 'Recording...',
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -449,39 +449,39 @@ contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text
 通过模型数据的 \`contentFormat\` 属性设置内容的文本格式，参见 \`Text.textFormat\`\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusTimeline {
-                        width: parent.width
-                        height: 300
-                        initModel: [
-                            {
-                                time: new Date(2020, 2, 19),
-                                content: '<p style=\'color:red\'>HTML Text</p><br><img src=\'https://avatars.githubusercontent.com/u/9333918?v=4\' width=\'50\' height=\'50\'>',
-                                contentFormat: Text.RichText
-                            },
-                            {
-                                time: new Date(2022, 2, 19),
-                                content: 'Solve initial network problems',
-                            },
-                            {
-                                content: 'Technical testing',
-                            },
-                            {
-                                time: new Date(2024, 2, 19),
-                                timeFormat: 'yyyy-MM-dd-hh:mm:ss',
-                                loading: true,
-                                content: '### Markdown Text\n - Line 1\n - Line 2',
-                                contentFormat: Text.MarkdownText
-                            }
-                        ]
-                    }
-                }
+    HusTimeline {
+        width: parent.width
+        height: 300
+        initModel: [
+            {
+                time: new Date(2020, 2, 19),
+                content: '<p style=\'color:red\'>HTML Text</p><br><img src=\'https://avatars.githubusercontent.com/u/9333918?v=4\' width=\'50\' height=\'50\'>',
+                contentFormat: Text.RichText
+            },
+            {
+                time: new Date(2022, 2, 19),
+                content: 'Solve initial network problems',
+            },
+            {
+                content: 'Technical testing',
+            },
+            {
+                time: new Date(2024, 2, 19),
+                timeFormat: 'yyyy-MM-dd-hh:mm:ss',
+                loading: true,
+                content: '### Markdown Text\n - Line 1\n - Line 2',
+                contentFormat: Text.MarkdownText
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

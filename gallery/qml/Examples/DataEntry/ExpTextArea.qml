@@ -90,30 +90,30 @@ horScrollBar | [HusScrollBar](internal://HusScrollBar) | - | 访问内部水平�
 通过 \`maxLength\` 属性设置最大字符长度。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusTextArea {
-                        width: parent.width
-                        height: 120
-                        minResizeHeight: 30
-                        resizable: true
-                        placeholderText: 'Basic usage'
-                    }
+    HusTextArea {
+        width: parent.width
+        height: 120
+        minResizeHeight: 30
+        resizable: true
+        placeholderText: 'Basic usage'
+    }
 
-                    HusTextArea {
-                        width: parent.width
-                        height: 120
-                        minResizeHeight: 30
-                        resizable: true
-                        maxLength: 6
-                        placeholderText: 'maxLength is 6'
-                    }
-                }
+    HusTextArea {
+        width: parent.width
+        height: 120
+        minResizeHeight: 30
+        resizable: true
+        maxLength: 6
+        placeholderText: 'maxLength is 6'
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -145,27 +145,27 @@ horScrollBar | [HusScrollBar](internal://HusScrollBar) | - | 访问内部水平�
 当 \`minRows\` 和 \`maxRows\` 属性大于 \`0\` 时，自动限制高度。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusTextArea {
-                        width: parent.width
-                        placeholderText: 'Autosize height based on content lines'
-                        autoSize: true
-                    }
+    HusTextArea {
+        width: parent.width
+        placeholderText: 'Autosize height based on content lines'
+        autoSize: true
+    }
 
-                    HusTextArea {
-                        width: parent.width
-                        placeholderText: 'Autosize height with minimum and maximum number of lines'
-                        autoSize: true
-                        minRows: 2
-                        maxRows: 6
-                    }
-                }
+    HusTextArea {
+        width: parent.width
+        placeholderText: 'Autosize height with minimum and maximum number of lines'
+        autoSize: true
+        minRows: 2
+        maxRows: 6
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -193,26 +193,26 @@ horScrollBar | [HusScrollBar](internal://HusScrollBar) | - | 访问内部水平�
 带数字的提示。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
+Column {
+    width: parent.width
 
-                    HusTextArea {
-                        id: textArea1
-                        width: parent.width
-                        maxLength: 20
-                        autoSize: true
-                        placeholderText: 'maxLength is 20'
-                    }
+    HusTextArea {
+        id: textArea1
+        width: parent.width
+        maxLength: 20
+        autoSize: true
+        placeholderText: 'maxLength is 20'
+    }
 
-                    HusText {
-                        anchors.right: parent.right
-                        text: \`\${textArea1.length}/\${textArea1.maxLength}\`
-                        color: textArea1.colorPlaceholderText
-                    }
-                }
+    HusText {
+        anchors.right: parent.right
+        text: \`\${textArea1.length}/\${textArea1.maxLength}\`
+        color: textArea1.colorPlaceholderText
+    }
+}
             `
             exampleDelegate: Column {
 

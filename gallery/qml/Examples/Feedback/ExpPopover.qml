@@ -82,42 +82,42 @@ descriptionFont | font | - | 描述文本字体
 通过 \`description\` 属性设置描述文本。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusButton {
-                        text: 'Hover'
-                        type: HusButton.Type_Outlined
+    HusButton {
+        text: 'Hover'
+        type: HusButton.Type_Outlined
 
-                        HusPopover {
-                            x: (parent.width - width) * 0.5
-                            y: parent.height + 6
-                            width: 300
-                            visible: parent.hovered || parent.down
-                            closePolicy: HusPopover.NoAutoClose
-                            title: 'Hover details'
-                            description: 'What are you doing here?'
-                        }
-                    }
+        HusPopover {
+            x: (parent.width - width) * 0.5
+            y: parent.height + 6
+            width: 300
+            visible: parent.hovered || parent.down
+            closePolicy: HusPopover.NoAutoClose
+            title: 'Hover details'
+            description: 'What are you doing here?'
+        }
+    }
 
-                    HusButton {
-                        text: 'Click'
-                        type: HusButton.Type_Outlined
-                        onClicked: popover.open();
+    HusButton {
+        text: 'Click'
+        type: HusButton.Type_Outlined
+        onClicked: popover.open();
 
-                        HusPopover {
-                            id: popover
-                            x: (parent.width - width) * 0.5
-                            y: parent.height + 6
-                            width: 300
-                            title: 'Click details'
-                            description: 'What are you doing here?'
-                        }
-                    }
-                }
+        HusPopover {
+            id: popover
+            x: (parent.width - width) * 0.5
+            y: parent.height + 6
+            width: 300
+            title: 'Click details'
+            description: 'What are you doing here?'
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10

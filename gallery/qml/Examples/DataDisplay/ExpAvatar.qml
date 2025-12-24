@@ -63,75 +63,75 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 通过 \`radiusBg\` 属性设置圆角大小(默认为size一半, 即圆形)。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusAvatar {
-                            size: 100
-                            iconSource: HusIcon.UserOutlined
-                        }
+        HusAvatar {
+            size: 100
+            iconSource: HusIcon.UserOutlined
+        }
 
-                        HusAvatar {
-                            size: 80
-                            iconSource: HusIcon.UserOutlined
-                        }
+        HusAvatar {
+            size: 80
+            iconSource: HusIcon.UserOutlined
+        }
 
-                        HusAvatar {
-                            size: 60
-                            iconSource: HusIcon.UserOutlined
-                        }
+        HusAvatar {
+            size: 60
+            iconSource: HusIcon.UserOutlined
+        }
 
-                        HusAvatar {
-                            size: 40
-                            iconSource: HusIcon.UserOutlined
-                        }
+        HusAvatar {
+            size: 40
+            iconSource: HusIcon.UserOutlined
+        }
 
-                        HusAvatar {
-                            size: 20
-                            iconSource: HusIcon.UserOutlined
-                        }
-                    }
+        HusAvatar {
+            size: 20
+            iconSource: HusIcon.UserOutlined
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusAvatar {
-                            size: 100
-                            iconSource: HusIcon.UserOutlined
-                            radiusBg.all: 6
-                        }
+        HusAvatar {
+            size: 100
+            iconSource: HusIcon.UserOutlined
+            radiusBg.all: 6
+        }
 
-                        HusAvatar {
-                            size: 80
-                            iconSource: HusIcon.UserOutlined
-                            radiusBg.all: 6
-                        }
+        HusAvatar {
+            size: 80
+            iconSource: HusIcon.UserOutlined
+            radiusBg.all: 6
+        }
 
-                        HusAvatar {
-                            size: 60
-                            iconSource: HusIcon.UserOutlined
-                            radiusBg.all: 6
-                        }
+        HusAvatar {
+            size: 60
+            iconSource: HusIcon.UserOutlined
+            radiusBg.all: 6
+        }
 
-                        HusAvatar {
-                            size: 40
-                            iconSource: HusIcon.UserOutlined
-                            radiusBg.all: 6
-                        }
+        HusAvatar {
+            size: 40
+            iconSource: HusIcon.UserOutlined
+            radiusBg.all: 6
+        }
 
-                        HusAvatar {
-                            size: 20
-                            iconSource: HusIcon.UserOutlined
-                            radiusBg.all: 6
-                        }
-                    }
-                }
+        HusAvatar {
+            size: 20
+            iconSource: HusIcon.UserOutlined
+            radiusBg.all: 6
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -208,45 +208,45 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 支持三种类型：图片、图标以及字符型头像。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        iconSource: HusIcon.UserOutlined
-                    }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        iconSource: HusIcon.UserOutlined
+    }
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        textSource: 'U'
-                    }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        textSource: 'U'
+    }
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        textSource: 'USER'
-                    }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        textSource: 'USER'
+    }
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        imageSource: 'https://avatars.githubusercontent.com/u/9333918?v=4'
-                    }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        imageSource: 'https://avatars.githubusercontent.com/u/9333918?v=4'
+    }
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        textSource: 'U'
-                        colorText: '#F56A00'
-                        colorBg: '#FDE3CF'
-                    }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        textSource: 'U'
+        colorText: '#F56A00'
+        colorBg: '#FDE3CF'
+    }
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        iconSource: HusIcon.UserOutlined
-                        colorBg: '#87D068'
-                    }
-                }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        iconSource: HusIcon.UserOutlined
+        colorBg: '#87D068'
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -296,40 +296,40 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 通过 \`textGap\` 属性设置字符距离左右两侧边界单位像素。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        size: 40
-                        textSource: changeButton.userList[changeButton.index]
-                        colorBg: changeButton.colorList[changeButton.index]
-                        textSize: HusAvatar.Size_Fixed
-                    }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        size: 40
+        textSource: changeButton.userList[changeButton.index]
+        colorBg: changeButton.colorList[changeButton.index]
+        textSize: HusAvatar.Size_Fixed
+    }
 
-                    HusAvatar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        size: 40
-                        textSource: changeButton.userList[changeButton.index]
-                        colorBg: changeButton.colorList[changeButton.index]
-                        textSize: HusAvatar.Size_Auto
-                    }
+    HusAvatar {
+        anchors.verticalCenter: parent.verticalCenter
+        size: 40
+        textSource: changeButton.userList[changeButton.index]
+        colorBg: changeButton.colorList[changeButton.index]
+        textSize: HusAvatar.Size_Auto
+    }
 
-                    HusButton {
-                        id: changeButton
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: qsTr('ChangeUser')
-                        onClicked: {
-                            index = (index + 1) % 4;
-                        }
-                        property int index: 0
-                        property var userList: ['U', 'Lucy', 'Tom', 'Edward']
-                        property var colorList: ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae']
-                    }
-                }
+    HusButton {
+        id: changeButton
+        anchors.verticalCenter: parent.verticalCenter
+        text: qsTr('ChangeUser')
+        onClicked: {
+            index = (index + 1) % 4;
+        }
+        property int index: 0
+        property var userList: ['U', 'Lucy', 'Tom', 'Edward']
+        property var colorList: ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae']
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10

@@ -81,24 +81,24 @@ sourceObject | QObject* | null | 目标的源指针
 通过 \`sourceText\` 属性设置需要进行哈希计算的目标源文本。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    HusCopyableText {
-                        text: '[Source] ' + hasher.sourceText
-                    }
+Column {
+    HusCopyableText {
+        text: '[Source] ' + hasher.sourceText
+    }
 
-                    HusCopyableText {
-                        text: '[Result] ' + hasher.hashValue
-                    }
+    HusCopyableText {
+        text: '[Result] ' + hasher.hashValue
+    }
 
-                    HusAsyncHasher {
-                        id: hasher
-                        algorithm: HusAsyncHasher.Md5
-                        sourceText: 'HuskarUI'
-                    }
-                }
+    HusAsyncHasher {
+        id: hasher
+        algorithm: HusAsyncHasher.Md5
+        sourceText: 'HuskarUI'
+    }
+}
             `
             exampleDelegate: Column {
                 HusCopyableText {

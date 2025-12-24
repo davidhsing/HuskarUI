@@ -238,74 +238,74 @@ filterInput | string | 单元格的过滤输入
 简单的表格，最后一列是各种操作。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusTable {
-                        width: parent.width
-                        height: 200
-                        color: '#fff'
-                        columns: [
-                            {
-                                title: 'Name',
-                                dataIndex: 'name',
-                                delegate: textDelegate,
-                                width: 200
-                            },
-                            {
-                                title: 'Age',
-                                dataIndex: 'age',
-                                delegate: textDelegate,
-                                width: 100
-                            },
-                            {
-                                title: 'Address',
-                                dataIndex: 'address',
-                                delegate: textDelegate,
-                                width: 300
-                            },
-                            {
-                                title: 'Tags',
-                                dataIndex: 'tags',
-                                delegate: tagsDelegate,
-                                width: 200
-                            },
-                            {
-                                title: 'Action',
-                                dataIndex: 'action',
-                                delegate: actionDelegate,
-                                width: 300
-                            }
-                        ]
-                        initModel: [
-                            {
-                                key: '1',
-                                name: 'John Brown',
-                                age: 32,
-                                address: 'New York No. 1 Lake Park',
-                                tags: ['nice', 'developer'],
-                            },
-                            {
-                                key: '2',
-                                name: 'Jim Green',
-                                age: 42,
-                                address: 'London No. 1 Lake Park',
-                                tags: ['loser'],
-                            },
-                            {
-                                key: '3',
-                                name: 'Joe Black',
-                                age: 32,
-                                address: 'Sydney No. 1 Lake Park',
-                                tags: ['cool', 'teacher'],
-                            }
-                        ]
-                    }
-                }
+    HusTable {
+        width: parent.width
+        height: 200
+        color: '#fff'
+        columns: [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                delegate: textDelegate,
+                width: 200
+            },
+            {
+                title: 'Age',
+                dataIndex: 'age',
+                delegate: textDelegate,
+                width: 100
+            },
+            {
+                title: 'Address',
+                dataIndex: 'address',
+                delegate: textDelegate,
+                width: 300
+            },
+            {
+                title: 'Tags',
+                dataIndex: 'tags',
+                delegate: tagsDelegate,
+                width: 200
+            },
+            {
+                title: 'Action',
+                dataIndex: 'action',
+                delegate: actionDelegate,
+                width: 300
+            }
+        ]
+        initModel: [
+            {
+                key: '1',
+                name: 'John Brown',
+                age: 32,
+                address: 'New York No. 1 Lake Park',
+                tags: ['nice', 'developer'],
+            },
+            {
+                key: '2',
+                name: 'Jim Green',
+                age: 42,
+                address: 'London No. 1 Lake Park',
+                tags: ['loser'],
+            },
+            {
+                key: '3',
+                name: 'Joe Black',
+                age: 32,
+                address: 'Sydney No. 1 Lake Park',
+                tags: ['cool', 'teacher'],
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -384,117 +384,117 @@ filterInput | string | 单元格的过滤输入
 通过 \`alternatingRow\` 设置是否交替显示行背景。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusIconButton {
-                            text: qsTr('Reload')
-                            type: HusButton.Type_Primary
-                            enabled: tableView.checkedKeys.length > 0
-                            onClicked: {
-                                loading = true;
-                                reloadTimer.restart();
-                            }
+        HusIconButton {
+            text: qsTr('Reload')
+            type: HusButton.Type_Primary
+            enabled: tableView.checkedKeys.length > 0
+            onClicked: {
+                loading = true;
+                reloadTimer.restart();
+            }
 
-                            Timer {
-                                id: reloadTimer
-                                interval: 2000
-                                onTriggered: {
-                                    parent.loading = false;
-                                    tableView.clearAllCheckedKeys();
-                                }
-                            }
-                        }
-
-                        HusButton {
-                            text: qsTr('ScrollToRow 0')
-                            type: HusButton.Type_Primary
-                            onClicked: tableView.scrollToRow(0);
-                        }
-
-                        HusButton {
-                            text: qsTr('ScrollToRow 99')
-                            type: HusButton.Type_Primary
-                            onClicked: tableView.scrollToRow(99);
-                        }
-
-                        HusCheckBox {
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: qsTr('Switch alternatingRow')
-                            onClicked: tableView.alternatingRow = checked;
-                        }
-                    }
-
-                    HusTable {
-                        id: tableView
-                        width: parent.width
-                        height: 400
-                        columns: [
-                            {
-                                title: 'Name',
-                                dataIndex: 'name',
-                                delegate: textDelegate,
-                                width: 200,
-                                minimumWidth: 100,
-                                maximumWidth: 400,
-                                align: 'center',
-                                selectionType: 'checkbox',
-                            },
-                            {
-                                title: 'Age',
-                                dataIndex: 'age',
-                                delegate: textDelegate,
-                                width: 100,
-                                editable: true,
-                            },
-                            {
-                                title: 'Address',
-                                dataIndex: 'address',
-                                delegate: textDelegate,
-                                width: 300
-                            },
-                            {
-                                title: 'Tags',
-                                dataIndex: 'tags',
-                                delegate: tagsDelegate,
-                                width: 350,
-                            },
-                            {
-                                title: 'Action',
-                                dataIndex: 'action',
-                                delegate: actionDelegate,
-                                width: 200
-                            }
-                        ]
-                    }
-
-                    HusPagination {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        total: 1000
-                        pageSize: 100
-                        showQuickJumper: true
-                        onCurrentPageIndexChanged: {
-                            /*! 生成一些数据 */
-                            tableView.initModel = Array.from({ length: pageSize }).map(
-                                        (_, i) => {
-                                            return {
-                                                key: String(i + currentPageIndex * pageSize),
-                                                name: \`Edward King \${i + currentPageIndex * pageSize}\`,
-                                                age: i % 30 + 30,
-                                                address: \`London, Park Lane no. \${i + currentPageIndex * pageSize}\`,
-                                                tags: ['nice', 'cool', 'loser', 'teacher', 'developer'].splice(0, i % 5 + 1),
-                                            }
-                                        });
-                        }
-                    }
+            Timer {
+                id: reloadTimer
+                interval: 2000
+                onTriggered: {
+                    parent.loading = false;
+                    tableView.clearAllCheckedKeys();
                 }
+            }
+        }
+
+        HusButton {
+            text: qsTr('ScrollToRow 0')
+            type: HusButton.Type_Primary
+            onClicked: tableView.scrollToRow(0);
+        }
+
+        HusButton {
+            text: qsTr('ScrollToRow 99')
+            type: HusButton.Type_Primary
+            onClicked: tableView.scrollToRow(99);
+        }
+
+        HusCheckBox {
+            anchors.verticalCenter: parent.verticalCenter
+            text: qsTr('Switch alternatingRow')
+            onClicked: tableView.alternatingRow = checked;
+        }
+    }
+
+    HusTable {
+        id: tableView
+        width: parent.width
+        height: 400
+        columns: [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                delegate: textDelegate,
+                width: 200,
+                minimumWidth: 100,
+                maximumWidth: 400,
+                align: 'center',
+                selectionType: 'checkbox',
+            },
+            {
+                title: 'Age',
+                dataIndex: 'age',
+                delegate: textDelegate,
+                width: 100,
+                editable: true,
+            },
+            {
+                title: 'Address',
+                dataIndex: 'address',
+                delegate: textDelegate,
+                width: 300
+            },
+            {
+                title: 'Tags',
+                dataIndex: 'tags',
+                delegate: tagsDelegate,
+                width: 350,
+            },
+            {
+                title: 'Action',
+                dataIndex: 'action',
+                delegate: actionDelegate,
+                width: 200
+            }
+        ]
+    }
+
+    HusPagination {
+        anchors.horizontalCenter: parent.horizontalCenter
+        total: 1000
+        pageSize: 100
+        showQuickJumper: true
+        onCurrentPageIndexChanged: {
+            /*! 生成一些数据 */
+            tableView.initModel = Array.from({ length: pageSize }).map(
+                        (_, i) => {
+                            return {
+                                key: String(i + currentPageIndex * pageSize),
+                                name: \`Edward King \${i + currentPageIndex * pageSize}\`,
+                                age: i % 30 + 30,
+                                address: \`London, Park Lane no. \${i + currentPageIndex * pageSize}\`,
+                                tags: ['nice', 'cool', 'loser', 'teacher', 'developer'].splice(0, i % 5 + 1),
+                            }
+                        });
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -616,75 +616,75 @@ filterInput | string | 单元格的过滤输入
 - 设置 \`columns\` 对应列中的 \`filterInput\`，接着调用 \`filter()\` 函数即可对该列实现过滤。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusTable {
-                        id: sortAndFilterTable
-                        width: parent.width
-                        height: 400
-                        columns: [
-                            {
-                                title: 'Name',
-                                dataIndex: 'name',
-                                delegate: textDelegate,
-                                width: 200,
-                                minimumWidth: 100,
-                                maximumWidth: 400,
-                                align: 'center',
-                                selectionType: 'checkbox',
-                            },
-                            {
-                                title: 'Age',
-                                dataIndex: 'age',
-                                delegate: textDelegate,
-                                width: 150,
-                                sorter: (a, b) => a.age - b.age,
-                                sortDirections: ['descend', 'false'],
-                                onFilter: (value, record) => String(record.age).includes(value)
-                            },
-                            {
-                                title: 'Address',
-                                dataIndex: 'address',
-                                delegate: textDelegate,
-                                width: 300,
-                                sorter: (a, b) => a.address.length - b.address.length,
-                                sortDirections: ['ascend', 'descend', 'false'],
-                                onFilter: (value, record) => record.address.includes(value)
-                            },
-                            {
-                                title: 'Tags',
-                                dataIndex: 'tags',
-                                delegate: tagsDelegate,
-                                width: 350,
-                            },
-                        ]
-                    }
+    HusTable {
+        id: sortAndFilterTable
+        width: parent.width
+        height: 400
+        columns: [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                delegate: textDelegate,
+                width: 200,
+                minimumWidth: 100,
+                maximumWidth: 400,
+                align: 'center',
+                selectionType: 'checkbox',
+            },
+            {
+                title: 'Age',
+                dataIndex: 'age',
+                delegate: textDelegate,
+                width: 150,
+                sorter: (a, b) => a.age - b.age,
+                sortDirections: ['descend', 'false'],
+                onFilter: (value, record) => String(record.age).includes(value)
+            },
+            {
+                title: 'Address',
+                dataIndex: 'address',
+                delegate: textDelegate,
+                width: 300,
+                sorter: (a, b) => a.address.length - b.address.length,
+                sortDirections: ['ascend', 'descend', 'false'],
+                onFilter: (value, record) => record.address.includes(value)
+            },
+            {
+                title: 'Tags',
+                dataIndex: 'tags',
+                delegate: tagsDelegate,
+                width: 350,
+            },
+        ]
+    }
 
-                    HusPagination {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        total: 1000
-                        pageSize: 100
-                        showQuickJumper: true
-                        onCurrentPageIndexChanged: {
-                            /*! 生成一些数据 */
-                            sortAndFilterTable.initModel = Array.from({ length: pageSize }).map(
-                                        (_, i) => {
-                                            return {
-                                                key: String(i + currentPageIndex * pageSize),
-                                                name: \`Edward King \${i + currentPageIndex * pageSize}\`,
-                                                age: i % 30 + 30,
-                                                address: \`London, Park Lane no. \${i + currentPageIndex * pageSize}\`,
-                                                tags: ['nice', 'cool', 'loser', 'teacher', 'developer'].splice(0, i % 5 + 1),
-                                            }
-                                        });
-                        }
-                    }
-                }
+    HusPagination {
+        anchors.horizontalCenter: parent.horizontalCenter
+        total: 1000
+        pageSize: 100
+        showQuickJumper: true
+        onCurrentPageIndexChanged: {
+            /*! 生成一些数据 */
+            sortAndFilterTable.initModel = Array.from({ length: pageSize }).map(
+                        (_, i) => {
+                            return {
+                                key: String(i + currentPageIndex * pageSize),
+                                name: \`Edward King \${i + currentPageIndex * pageSize}\`,
+                                age: i % 30 + 30,
+                                address: \`London, Park Lane no. \${i + currentPageIndex * pageSize}\`,
+                                tags: ['nice', 'cool', 'loser', 'teacher', 'developer'].splice(0, i % 5 + 1),
+                            }
+                        });
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -794,67 +794,67 @@ filterInput | string | 单元格的过滤输入
 - [QML 和 C++ 之间的数据类型转换](https://doc.qt.io/qt-6/zh/qtqml-cppintegration-data.html)\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
-                import Gallery
+import QtQuick
+import HuskarUI.Basic
+import Gallery
 
-                Column {
-                    spacing: 10
-                    width: parent.width
+Column {
+    spacing: 10
+    width: parent.width
 
-                    HusButton {
-                        text: qsTr('Import 10 pieces data from C++')
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            const list = DataGenerator.genTableData(10);
-                            for (const object of list) {
-                                cppTable.appendRow(object);
-                            }
-                        }
-                    }
+    HusButton {
+        text: qsTr('Import 10 pieces data from C++')
+        type: HusButton.Type_Primary
+        onClicked: {
+            const list = DataGenerator.genTableData(10);
+            for (const object of list) {
+                cppTable.appendRow(object);
+            }
+        }
+    }
 
-                    HusTable {
-                        id: cppTable
-                        width: parent.width
-                        height: 400
-                        columns: [
-                            {
-                                title: 'Name',
-                                dataIndex: 'name',
-                                delegate: textDelegate,
-                                width: 200
-                            },
-                            {
-                                title: 'Age',
-                                dataIndex: 'age',
-                                delegate: textDelegate,
-                                width: 100
-                            },
-                            {
-                                title: 'Address',
-                                dataIndex: 'address',
-                                delegate: textDelegate,
-                                width: 300
-                            },
-                            {
-                                title: 'Tags',
-                                dataIndex: 'tags',
-                                delegate: tagsDelegate,
-                                width: 200
-                            },
-                            {
-                                title: 'Action',
-                                dataIndex: 'action',
-                                delegate: actionDelegate,
-                                width: 300
-                            }
-                        ]
+    HusTable {
+        id: cppTable
+        width: parent.width
+        height: 400
+        columns: [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                delegate: textDelegate,
+                width: 200
+            },
+            {
+                title: 'Age',
+                dataIndex: 'age',
+                delegate: textDelegate,
+                width: 100
+            },
+            {
+                title: 'Address',
+                dataIndex: 'address',
+                delegate: textDelegate,
+                width: 300
+            },
+            {
+                title: 'Tags',
+                dataIndex: 'tags',
+                delegate: tagsDelegate,
+                width: 200
+            },
+            {
+                title: 'Action',
+                dataIndex: 'action',
+                delegate: actionDelegate,
+                width: 300
+            }
+        ]
 
-                        Component.onCompleted: {
-                            initModel = DataGenerator.genTableData(10);
-                        }
-                    }
-                }
+        Component.onCompleted: {
+            initModel = DataGenerator.genTableData(10);
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

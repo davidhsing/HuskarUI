@@ -88,47 +88,47 @@ contentDescription | string | '' | 内容描述(提高可用性)
 通过 \`currentValue\` 获取当前值，当 \`range\` 为 \`true\` 时返回 \`[minValue, maxValue]\`，否则返回 \`value\`。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    HusSlider {
-                        width: 300
-                        height: 30
-                        value: 50
+Column {
+    HusSlider {
+        width: 300
+        height: 30
+        value: 50
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: parent.currentValue.toFixed(0);
+        }
+    }
 
-                    HusSlider {
-                        width: 300
-                        height: 30
-                        range: true
-                        value: [20, 50]
+    HusSlider {
+        width: 300
+        height: 30
+        range: true
+        value: [20, 50]
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: {
-                                const v = parent.currentValue;
-                                return v[0].toFixed(0) + ', '+ v[1].toFixed(0);
-                            }
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: {
+                const v = parent.currentValue;
+                return v[0].toFixed(0) + ', '+ v[1].toFixed(0);
+            }
+        }
+    }
 
-                    HusSlider {
-                        width: 300
-                        height: 30
-                        value: 50
-                        enabled: false
-                    }
-                }
+    HusSlider {
+        width: 300
+        height: 30
+        value: 50
+        enabled: false
+    }
+}
             `
             exampleDelegate: Column {
                 HusSlider {
@@ -179,45 +179,45 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 垂直滚动条{ Qt.Vertical }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    height: 310 + HusTheme.Primary.fontPrimarySize
-                    spacing: 30
+Row {
+    height: 310 + HusTheme.Primary.fontPrimarySize
+    spacing: 30
 
-                    HusSlider {
-                        width: 30
-                        height: 300
-                        value: 50
-                        orientation: Qt.Vertical
+    HusSlider {
+        width: 30
+        height: 300
+        value: 50
+        orientation: Qt.Vertical
 
-                        HusCopyableText {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.top: parent.bottom
-                            anchors.topMargin: 10
-                            text: parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.bottom
+            anchors.topMargin: 10
+            text: parent.currentValue.toFixed(0);
+        }
+    }
 
-                    HusSlider {
-                        width: 30
-                        height: 300
-                        range: true
-                        value: [20, 50]
-                        orientation: Qt.Vertical
+    HusSlider {
+        width: 30
+        height: 300
+        range: true
+        value: [20, 50]
+        orientation: Qt.Vertical
 
-                        HusCopyableText {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.top: parent.bottom
-                            anchors.topMargin: 10
-                            text: {
-                                const v = parent.currentValue;
-                                return v[0].toFixed(0) + ', '+ v[1].toFixed(0);
-                            }
-                        }
-                    }
-                }
+        HusCopyableText {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.bottom
+            anchors.topMargin: 10
+            text: {
+                const v = parent.currentValue;
+                return v[0].toFixed(0) + ', '+ v[1].toFixed(0);
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 height: 310 + HusTheme.Primary.fontPrimarySize
@@ -266,58 +266,58 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 滑块在拖动时不会对齐，但只有在释放滑块后才会对齐 { HusSlider.SnapOnRelease }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    HusSlider {
-                        width: 300
-                        height: 30
-                        min: 0
-                        max: 10
-                        stepSize: 1
-                        snapMode: HusSlider.NoSnap
+Column {
+    HusSlider {
+        width: 300
+        height: 30
+        min: 0
+        max: 10
+        stepSize: 1
+        snapMode: HusSlider.NoSnap
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: parent.currentValue;
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: parent.currentValue;
+        }
+    }
 
-                    HusSlider {
-                        width: 300
-                        height: 30
-                        min: 0
-                        max: 10
-                        stepSize: 1
-                        snapMode: HusSlider.SnapAlways
+    HusSlider {
+        width: 300
+        height: 30
+        min: 0
+        max: 10
+        stepSize: 1
+        snapMode: HusSlider.SnapAlways
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: parent.currentValue;
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: parent.currentValue;
+        }
+    }
 
-                    HusSlider {
-                        width: 300
-                        height: 30
-                        min: 0
-                        max: 10
-                        stepSize: 1
-                        snapMode: HusSlider.SnapOnRelease
+    HusSlider {
+        width: 300
+        height: 30
+        min: 0
+        max: 10
+        stepSize: 1
+        snapMode: HusSlider.SnapOnRelease
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: parent.currentValue;
-                        }
-                    }
-                }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: parent.currentValue;
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 HusSlider {

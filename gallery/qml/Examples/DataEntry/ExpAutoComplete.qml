@@ -85,20 +85,20 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
 基本使用，通过 \`options\` 设置自动完成的数据源。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusAutoComplete {
-                        width: 180
-                        placeholderText: 'Basic Usage'
-                        onSearch: function(input) {
-                            options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
-                        }
-                    }
-                }
+    HusAutoComplete {
+        width: 180
+        placeholderText: 'Basic Usage'
+        onSearch: function(input) {
+            options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -120,28 +120,28 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
 可以返回自定义的 \`options\` 的 label。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusAutoComplete {
-                        width: 180
-                        placeholderText: 'Custom Options'
-                        onSearch: function(input) {
-                            if (!input || input.includes('@')) {
-                                options = [];
-                            } else {
-                                options = ['gmail.com', '163.com', 'qq.com'].map(
-                                            (domain) => ({
-                                                             label: \`\${input}@\${domain}\`,
-                                                             value: \`\${input}@\${domain}\`,
-                                                         }));
-                            }
-                        }
-                    }
-                }
+    HusAutoComplete {
+        width: 180
+        placeholderText: 'Custom Options'
+        onSearch: function(input) {
+            if (!input || input.includes('@')) {
+                options = [];
+            } else {
+                options = ['gmail.com', '163.com', 'qq.com'].map(
+                            (domain) => ({
+                                             label: \`\${input}@\${domain}\`,
+                                             value: \`\${input}@\${domain}\`,
+                                         }));
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -172,23 +172,23 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
 通过 \`filterOption\` 设置过滤选项，它是形如：\`function(input: string, option: var): bool { }\` 的函数。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusAutoComplete {
-                        width: 180
-                        placeholderText: 'try to type \`b\`'
-                        options: [
-                            { label: 'Burns Bay Road' },
-                            { label: 'Downing Street' },
-                            { label: 'Wall Street' },
-                        ]
-                        filterOption: (input, option) => option.label.toUpperCase().indexOf(input.toUpperCase()) !== -1
-                    }
-                }
+    HusAutoComplete {
+        width: 180
+        placeholderText: 'try to type \`b\`'
+        options: [
+            { label: 'Burns Bay Road' },
+            { label: 'Downing Street' },
+            { label: 'Wall Street' },
+        ]
+        filterOption: (input, option) => option.label.toUpperCase().indexOf(input.toUpperCase()) !== -1
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -213,64 +213,64 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
 查询模式: 确定类目 示例。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusAutoComplete {
-                        width: 280
-                        tooltipVisible: true
-                        placeholderText: 'input here'
-                        options: [
-                            { label: 'HuskarUI', option: 'Libraries' },
-                            { label: 'HuskarUI for Qml' },
-                            { label: 'HuskarUI FAQ', option: 'Solutions' },
-                            { label: 'HuskarUI for Qml FAQ' },
-                            { label: 'HuskarUI', option: 'Copyright' },
-                            { label: 'Copyright (C) 2025 davidhsing. All rights reserved.' },
-                        ]
-                        labelDelegate: Column {
-                            id: delegateColumn
+    HusAutoComplete {
+        width: 280
+        tooltipVisible: true
+        placeholderText: 'input here'
+        options: [
+            { label: 'HuskarUI', option: 'Libraries' },
+            { label: 'HuskarUI for Qml' },
+            { label: 'HuskarUI FAQ', option: 'Solutions' },
+            { label: 'HuskarUI for Qml FAQ' },
+            { label: 'HuskarUI', option: 'Copyright' },
+            { label: 'Copyright (C) 2025 davidhsing. All rights reserved.' },
+        ]
+        labelDelegate: Column {
+            id: delegateColumn
 
-                            property string option: modelData.option ?? ''
+            property string option: modelData.option ?? ''
 
-                            Loader {
-                                active: delegateColumn.option !== ''
-                                sourceComponent: HusDivider {
-                                    width: delegateColumn.width
-                                    height: 30
-                                    titleAlign: HusDivider.Align_Center
-                                    title: delegateColumn.option
-                                    colorText: 'red'
-                                }
-                            }
-
-                            HusText {
-                                id: label
-                                text: textData
-                                color: HusTheme.HusAutoComplete.colorItemText
-                                elide: Text.ElideRight
-                                verticalAlignment: Text.AlignVCenter
-                            }
-                        }
-                        labelBgDelegate: Item {
-                            property string option: modelData.option ?? ''
-
-                            Rectangle {
-                                width: parent.width
-                                height: option == '' ? parent.height : parent.height - 30
-                                anchors.bottom: parent.bottom
-                                clip: true
-                                radius: 2
-                                color: highlighted ? HusTheme.HusAutoComplete.colorItemBgActive :
-                                                     hovered ? HusTheme.HusAutoComplete.colorItemBgHover :
-                                                               HusTheme.HusAutoComplete.colorItemBg;
-                            }
-                        }
-                    }
+            Loader {
+                active: delegateColumn.option !== ''
+                sourceComponent: HusDivider {
+                    width: delegateColumn.width
+                    height: 30
+                    titleAlign: HusDivider.Align_Center
+                    title: delegateColumn.option
+                    colorText: 'red'
                 }
+            }
+
+            HusText {
+                id: label
+                text: textData
+                color: HusTheme.HusAutoComplete.colorItemText
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+            }
+        }
+        labelBgDelegate: Item {
+            property string option: modelData.option ?? ''
+
+            Rectangle {
+                width: parent.width
+                height: option == '' ? parent.height : parent.height - 30
+                anchors.bottom: parent.bottom
+                clip: true
+                radius: 2
+                color: highlighted ? HusTheme.HusAutoComplete.colorItemBgActive :
+                                     hovered ? HusTheme.HusAutoComplete.colorItemBgHover :
+                                               HusTheme.HusAutoComplete.colorItemBg;
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -336,61 +336,61 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
 查询模式: 不确定类目 示例。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: -8
+Row {
+    spacing: -8
 
-                    HusAutoComplete {
-                        width: 280
-                        height: 40
-                        rightPadding: 20
-                        tooltipVisible: true
-                        placeholderText: 'input here'
-                        onSearch: function(input) {
-                            if (!input) {
-                                options = [];
-                            } else {
-                                const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
-                                options =
-                                        Array.from({ length: getRandomInt(5) })
-                                            .join('.')
-                                            .split('.')
-                                            .map((_, idx) => {
-                                                     const category = \`\${input}\${idx}\`;
-                                                     return {
-                                                         value: category,
-                                                         label: \`Found \${input} on <span style='color:#1677FF'>\${category}</span> \${getRandomInt(200, 100)} results\`
-                                                     }
-                                                 });
-                            }
-                        }
-                        labelDelegate: HusText {
-                            text: textData
-                            color: HusTheme.HusAutoComplete.colorItemText
-                            elide: Text.ElideRight
-                            verticalAlignment: Text.AlignVCenter
-                            textFormat: Text.RichText
-                        }
-                    }
+    HusAutoComplete {
+        width: 280
+        height: 40
+        rightPadding: 20
+        tooltipVisible: true
+        placeholderText: 'input here'
+        onSearch: function(input) {
+            if (!input) {
+                options = [];
+            } else {
+                const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
+                options =
+                        Array.from({ length: getRandomInt(5) })
+                            .join('.')
+                            .split('.')
+                            .map((_, idx) => {
+                                     const category = \`\${input}\${idx}\`;
+                                     return {
+                                         value: category,
+                                         label: \`Found \${input} on <span style='color:#1677FF'>\${category}</span> \${getRandomInt(200, 100)} results\`
+                                     }
+                                 });
+            }
+        }
+        labelDelegate: HusText {
+            text: textData
+            color: HusTheme.HusAutoComplete.colorItemText
+            elide: Text.ElideRight
+            verticalAlignment: Text.AlignVCenter
+            textFormat: Text.RichText
+        }
+    }
 
-                    HusIconButton {
-                        id: searchButton
-                        height: 40
-                        type: HusButton.Type_Primary
-                        iconSource: HusIcon.SearchOutlined
-                        background: HusRectangle {
-                            topLeftRadius: 0
-                            bottomLeftRadius: 0
-                            topRightRadius: searchButton.radiusBg
-                            bottomRightRadius: searchButton.radiusBg
-                            color: searchButton.colorBg
-                            border.color: searchButton.colorBorder
-                            border.width: 1
-                        }
-                    }
-                }
+    HusIconButton {
+        id: searchButton
+        height: 40
+        type: HusButton.Type_Primary
+        iconSource: HusIcon.SearchOutlined
+        background: HusRectangle {
+            topLeftRadius: 0
+            bottomLeftRadius: 0
+            topRightRadius: searchButton.radiusBg
+            bottomRightRadius: searchButton.radiusBg
+            color: searchButton.colorBg
+            border.color: searchButton.colorBorder
+            border.width: 1
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: -8
@@ -458,21 +458,21 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
 - 清除图标在输入框右边{ HusAutoComplete.Position_Right }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusAutoComplete {
-                        width: 240
-                        clearIconSource: HusIcon.CloseSquareFilled
-                        placeholderText: 'Customized clear icon'
-                        onSearch: function(input) {
-                            options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
-                        }
-                    }
-                }
+    HusAutoComplete {
+        width: 240
+        clearIconSource: HusIcon.CloseSquareFilled
+        placeholderText: 'Customized clear icon'
+        onSearch: function(input) {
+            options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10

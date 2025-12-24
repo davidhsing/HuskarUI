@@ -47,28 +47,28 @@ maximumY | real | Number.MAX_VALUE | 可移动的最大y坐标
 通过 \`target\` 设置要移动的目标。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Rectangle {
-                    color: 'transparent'
-                    border.color: HusTheme.Primary.colorTextQuaternary
-                    width: 400
-                    height: 400
-                    clip: true
+Rectangle {
+    color: 'transparent'
+    border.color: HusTheme.Primary.colorTextQuaternary
+    width: 400
+    height: 400
+    clip: true
 
-                    Rectangle {
-                        width: 100
-                        height: 100
-                        color: 'red'
+    Rectangle {
+        width: 100
+        height: 100
+        color: 'red'
 
-                        HusMouseMoveArea {
-                            anchors.fill: parent
-                            target: parent
-                            preventStealing: true
-                        }
-                    }
-                }
+        HusMouseMoveArea {
+            anchors.fill: parent
+            target: parent
+            preventStealing: true
+        }
+    }
+}
             `
             exampleDelegate: Rectangle {
                 color: 'transparent'

@@ -63,58 +63,58 @@ radiusMenuBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 使用方法大致等同于 \`HusMenu\`，区别是 \`HusContextMenu\` 内建为弹窗。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                MouseArea {
-                    width: parent.width
-                    height: parent.height
-                    acceptedButtons: Qt.RightButton
-                    onClicked:
-                        (mouse) => {
-                            if (mouse.button === Qt.RightButton) {
-                                contextMenu.x = mouseX;
-                                contextMenu.y = mouseY;
-                                contextMenu.open();
-                            }
-                        }
+MouseArea {
+    width: parent.width
+    height: parent.height
+    acceptedButtons: Qt.RightButton
+    onClicked:
+        (mouse) => {
+            if (mouse.button === Qt.RightButton) {
+                contextMenu.x = mouseX;
+                contextMenu.y = mouseY;
+                contextMenu.open();
+            }
+        }
 
-                    HusContextMenu {
-                        id: contextMenu
-                        initModel: [
-                            {
-                                key: 'New',
-                                label: 'New',
-                                iconSource: HusIcon.FileOutlined,
-                                children: [
-                                    { key: 'NewFolder', label: 'Folder', },
-                                    { key: 'NewImage', label: 'Image File', },
-                                    { key: 'NewText', label: 'Text File', },
-                                    {
-                                        key: 'NewText',
-                                        label: 'Other',
-                                        children: [
-                                            { key: 'Other1', label: 'Other1', },
-                                            { key: 'Other2', label: 'Other2', },
-                                        ]
-                                    }
-                                ]
-                            },
-                            { key: 'Open', label: 'Open', iconSource: HusIcon.FormOutlined, },
-                            { key: 'Save', label: 'Save', iconSource: HusIcon.SaveOutlined },
-                            { type: 'divider' },
-                            { key: 'Exit', label: 'Exit', iconSource: HusIcon.IcoMoonExit },
+    HusContextMenu {
+        id: contextMenu
+        initModel: [
+            {
+                key: 'New',
+                label: 'New',
+                iconSource: HusIcon.FileOutlined,
+                children: [
+                    { key: 'NewFolder', label: 'Folder', },
+                    { key: 'NewImage', label: 'Image File', },
+                    { key: 'NewText', label: 'Text File', },
+                    {
+                        key: 'NewText',
+                        label: 'Other',
+                        children: [
+                            { key: 'Other1', label: 'Other1', },
+                            { key: 'Other2', label: 'Other2', },
                         ]
-                        onClickMenu: (deep, key, keyPath, data) => copyableText.append('Click: ' + key);
                     }
+                ]
+            },
+            { key: 'Open', label: 'Open', iconSource: HusIcon.FormOutlined, },
+            { key: 'Save', label: 'Save', iconSource: HusIcon.SaveOutlined },
+            { type: 'divider' },
+            { key: 'Exit', label: 'Exit', iconSource: HusIcon.IcoMoonExit },
+        ]
+        onClickMenu: (deep, key, keyPath, data) => copyableText.append('Click: ' + key);
+    }
 
-                    HusCopyableText {
-                        id: copyableText
-                        anchors.fill: parent
-                        clip: true
-                        text: 'Please right-click with the mouse.'
-                    }
-                }
+    HusCopyableText {
+        id: copyableText
+        anchors.fill: parent
+        clip: true
+        text: 'Please right-click with the mouse.'
+    }
+}
             `
             exampleDelegate: MouseArea {
                 width: parent.width
@@ -173,55 +173,55 @@ radiusMenuBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 对于单选或多选菜单，只需简单自定义代理。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Item {
-                    width: parent.width
-                    height: parent.height
+Item {
+    width: parent.width
+    height: parent.height
 
-                    Component {
-                        id: checkIconDelegate
+    Component {
+        id: checkIconDelegate
 
-                        HusIconText {
-                            width: menuButton.iconSize
-                            iconSize: menuButton.iconSize
-                            iconSource: isDark ? (HusTheme.isDark ? HusIcon.CheckOutlined : 0) :
-                                                 (HusTheme.isDark ? 0 : HusIcon.CheckOutlined)
-                            property bool isDark: menuButton.model.key === 'Dark'
-                        }
-                    }
+        HusIconText {
+            width: menuButton.iconSize
+            iconSize: menuButton.iconSize
+            iconSource: isDark ? (HusTheme.isDark ? HusIcon.CheckOutlined : 0) :
+                                 (HusTheme.isDark ? 0 : HusIcon.CheckOutlined)
+            property bool isDark: menuButton.model.key === 'Dark'
+        }
+    }
 
-                    HusButton {
-                        text: qsTr('Open menu')
-                        onClicked: {
-                            contextMenu2.x = width + 5;
-                            contextMenu2.y = 0;
-                            contextMenu2.open();
-                        }
+    HusButton {
+        text: qsTr('Open menu')
+        onClicked: {
+            contextMenu2.x = width + 5;
+            contextMenu2.y = 0;
+            contextMenu2.open();
+        }
 
-                        HusContextMenu {
-                            id: contextMenu2
-                            initModel: [
-                                { key: 'Open', label: 'Open', iconSource: HusIcon.FormOutlined, },
-                                { key: 'Save', label: 'Save', iconSource: HusIcon.SaveOutlined },
-                                { type: 'divider' },
-                                { key: 'Exit', label: 'Exit', iconSource: HusIcon.IcoMoonExit },
-                                { type: 'divider' },
-                                { key: 'Dark', label: 'Dark', iconDelegate: checkIconDelegate, },
-                                { key: 'Light', label: 'Light', iconDelegate: checkIconDelegate, },
-                            ]
-                            onClickMenu:
-                                (deep, key, keyPath, data) => {
-                                    if (key === 'Dark') {
-                                        galleryWindow.captionBar.themeCallback();
-                                    } else if (key === 'Light') {
-                                        galleryWindow.captionBar.themeCallback();
-                                    }
-                                }
-                        }
+        HusContextMenu {
+            id: contextMenu2
+            initModel: [
+                { key: 'Open', label: 'Open', iconSource: HusIcon.FormOutlined, },
+                { key: 'Save', label: 'Save', iconSource: HusIcon.SaveOutlined },
+                { type: 'divider' },
+                { key: 'Exit', label: 'Exit', iconSource: HusIcon.IcoMoonExit },
+                { type: 'divider' },
+                { key: 'Dark', label: 'Dark', iconDelegate: checkIconDelegate, },
+                { key: 'Light', label: 'Light', iconDelegate: checkIconDelegate, },
+            ]
+            onClickMenu:
+                (deep, key, keyPath, data) => {
+                    if (key === 'Dark') {
+                        galleryWindow.captionBar.themeCallback();
+                    } else if (key === 'Light') {
+                        galleryWindow.captionBar.themeCallback();
                     }
                 }
+        }
+    }
+}
             `
             exampleDelegate: Item {
                 height: 100

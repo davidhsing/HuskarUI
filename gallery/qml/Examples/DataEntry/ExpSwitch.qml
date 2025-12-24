@@ -62,12 +62,12 @@ contentDescription | string | '' | 内容描述(提高可用性)
 最简单的用法。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    HusSwitch { }
-                }
+Row {
+    HusSwitch { }
+}
             `
             exampleDelegate: Row {
                 HusSwitch { }
@@ -80,23 +80,23 @@ contentDescription | string | '' | 内容描述(提高可用性)
 Switch 失效状态，由 \`enabled\` 属性控制。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 15
+Column {
+    spacing: 15
 
-                    HusSwitch {
-                        id: switch1
-                        enabled: false
-                    }
+    HusSwitch {
+        id: switch1
+        enabled: false
+    }
 
-                    HusButton {
-                        text: qsTr('切换 enabled')
-                        type: HusButton.Type_Primary
-                        onClicked: switch1.enabled = !switch1.enabled;
-                    }
-                }
+    HusButton {
+        text: qsTr('切换 enabled')
+        type: HusButton.Type_Primary
+        onClicked: switch1.enabled = !switch1.enabled;
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -126,22 +126,22 @@ Switch 支持两种文本：\n
 **注意**：如果两种同时设置了，则显示为图标。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 15
+Column {
+    spacing: 15
 
-                    HusSwitch {
-                        checkedText: qsTr('开启')
-                        uncheckedText: qsTr('关闭')
-                    }
+    HusSwitch {
+        checkedText: qsTr('开启')
+        uncheckedText: qsTr('关闭')
+    }
 
-                    HusSwitch {
-                        checkedIconSource: HusIcon.CheckOutlined
-                        uncheckedIconSource: HusIcon.CloseOutlined
-                    }
-                }
+    HusSwitch {
+        checkedIconSource: HusIcon.CheckOutlined
+        uncheckedIconSource: HusIcon.CloseOutlined
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -165,27 +165,27 @@ Switch 支持两种文本：\n
 可以让 \`enabled\` 绑定 \`loading\` 实现加载完成才启用。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 15
+Column {
+    spacing: 15
 
-                    HusSwitch {
-                        loading: true
-                        checked: true
-                    }
+    HusSwitch {
+        loading: true
+        checked: true
+    }
 
-                    HusSwitch {
-                        loading: true
-                        checked: true
-                        enabled: !loading
-                    }
+    HusSwitch {
+        loading: true
+        checked: true
+        enabled: !loading
+    }
 
-                    HusSwitch {
-                        loading: true
-                    }
-                }
+    HusSwitch {
+        loading: true
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -213,21 +213,21 @@ Switch 支持两种文本：\n
 通过 \`handleDelegate\` 属性定义开关把手的代理。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 15
+Column {
+    spacing: 15
 
-                    HusSwitch {
-                        id: switch2
-                        radiusBg.all: 2
-                        handleDelegate: Rectangle {
-                            radius: 2
-                            color: switch2.colorHandle
-                        }
-                    }
-                }
+    HusSwitch {
+        id: switch2
+        radiusBg.all: 2
+        handleDelegate: Rectangle {
+            radius: 2
+            color: switch2.colorHandle
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15

@@ -51,26 +51,26 @@ colorIcon | color | - | 图标颜色(即箭头颜色)
 使用方法和 \`ScrollBar\` 一致。
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Item {
-                    Flickable {
-                        width: 200
-                        height: 200
-                        contentWidth: 400
-                        contentHeight: 400
-                        ScrollBar.vertical: HusScrollBar { }
-                        ScrollBar.horizontal: HusScrollBar { }
-                        clip: true
+Item {
+    Flickable {
+        width: 200
+        height: 200
+        contentWidth: 400
+        contentHeight: 400
+        ScrollBar.vertical: HusScrollBar { }
+        ScrollBar.horizontal: HusScrollBar { }
+        clip: true
 
-                        HusIconText {
-                            iconSize: 400
-                            iconSource: HusIcon.BugOutlined
-                        }
-                    }
-                }
+        HusIconText {
+            iconSize: 400
+            iconSource: HusIcon.BugOutlined
+        }
+    }
+}
             `
             exampleDelegate: Item {
                 height: 200

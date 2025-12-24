@@ -59,33 +59,33 @@ contentDescription | string | '' | 内容描述(提高可用性)
 通过 \`enabled\` 设置是否启用。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusCheckBox {
-                        text: qsTr('Checkbox')
-                    }
+    HusCheckBox {
+        text: qsTr('Checkbox')
+    }
 
-                    HusCheckBox {
-                        text: qsTr('Disabled')
-                        enabled: false
-                    }
+    HusCheckBox {
+        text: qsTr('Disabled')
+        enabled: false
+    }
 
-                    HusCheckBox {
-                        text: qsTr('Disabled')
-                        checkState: Qt.PartiallyChecked
-                        enabled: false
-                    }
+    HusCheckBox {
+        text: qsTr('Disabled')
+        checkState: Qt.PartiallyChecked
+        enabled: false
+    }
 
-                    HusCheckBox {
-                        text: qsTr('Disabled')
-                        checkState: Qt.Checked
-                        enabled: false
-                    }
-                }
+    HusCheckBox {
+        text: qsTr('Disabled')
+        checkState: Qt.Checked
+        enabled: false
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -119,53 +119,53 @@ contentDescription | string | '' | 内容描述(提高可用性)
 使用 \`ButtonGroup(QtQuick原生组件)\` 来实现全选效果，具体可参考 \`CheckBox\` 文档。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    ButtonGroup {
-                        id: childGroup
-                        exclusive: false
-                        checkState: parentBox.checkState
-                    }
+    ButtonGroup {
+        id: childGroup
+        exclusive: false
+        checkState: parentBox.checkState
+    }
 
-                    HusCheckBox {
-                        id: parentBox
-                        text: qsTr('Parent')
-                        checkState: childGroup.checkState
-                    }
+    HusCheckBox {
+        id: parentBox
+        text: qsTr('Parent')
+        checkState: childGroup.checkState
+    }
 
-                    HusCheckBox {
-                        checked: true
-                        text: qsTr('Child 1')
-                        leftPadding: indicator.width
-                        ButtonGroup.group: childGroup
-                    }
+    HusCheckBox {
+        checked: true
+        text: qsTr('Child 1')
+        leftPadding: indicator.width
+        ButtonGroup.group: childGroup
+    }
 
-                    HusCheckBox {
-                        text: qsTr('Child 2')
-                        leftPadding: indicator.width
-                        ButtonGroup.group: childGroup
-                    }
+    HusCheckBox {
+        text: qsTr('Child 2')
+        leftPadding: indicator.width
+        ButtonGroup.group: childGroup
+    }
 
-                    HusCheckBox {
-                        text: qsTr('More...')
-                        leftPadding: indicator.width
-                        ButtonGroup.group: childGroup
+    HusCheckBox {
+        text: qsTr('More...')
+        leftPadding: indicator.width
+        ButtonGroup.group: childGroup
 
-                        HusInput {
-                            width: 110
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            visible: parent.checked
-                            placeholderText: qsTr('Please input')
-                        }
-                    }
-                }
+        HusInput {
+            width: 110
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            visible: parent.checked
+            placeholderText: qsTr('Please input')
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

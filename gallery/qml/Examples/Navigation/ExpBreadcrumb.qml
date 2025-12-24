@@ -111,46 +111,46 @@ items | list | 可选 | 菜单模型
 最简单的用法。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    Row {
-                        width: parent.width
-                        spacing: 10
-    
-                        HusButton {
-                            text: 'Reset'
-                            type: HusButton.Type_Primary
-                            onClicked: breadcrumb.reset();
-                        }
-        
-                        HusButton {
-                            text: 'Clear But First'
-                            onClicked: {
-                                breadcrumb.clearButFirst();
-                                breadcrumb.append({
-                                    title: 'Another Application',
-                                });
-                            }
-                        }
-                    }
+    Row {
+        width: parent.width
+        spacing: 10
 
-                    HusBreadcrumb {
-                        id: breadcrumb
-                        width: parent.width
-                        initModel: [
-                            { title: 'Home' },
-                            { title: 'Application Center' },
-                            { title: 'Application List' },
-                            { title: 'An Application', },
-                        ]
-                        onClick: (index, data) => remove(index + 1, count - index - 1);
-                    }
-                }
+        HusButton {
+            text: 'Reset'
+            type: HusButton.Type_Primary
+            onClicked: breadcrumb.reset();
+        }
+
+        HusButton {
+            text: 'Clear But First'
+            onClicked: {
+                breadcrumb.clearButFirst();
+                breadcrumb.append({
+                    title: 'Another Application',
+                });
+            }
+        }
+    }
+
+    HusBreadcrumb {
+        id: breadcrumb
+        width: parent.width
+        initModel: [
+            { title: 'Home' },
+            { title: 'Application Center' },
+            { title: 'Application List' },
+            { title: 'An Application', },
+        ]
+        onClick: (index, data) => remove(index + 1, count - index - 1);
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -203,17 +203,17 @@ items | list | 可选 | 菜单模型
 通过 \`iconSource\` 将图标放在文字前面, 如果设置了 \`loading\`, 则显示为加载中。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusBreadcrumb {
-                    width: parent.width
-                    initModel: [
-                        { iconSource: HusIcon.HomeOutlined },
-                        { iconSource: HusIcon.UserOutlined, title: 'Application List' },
-                        { loading: true, title: 'Application', },
-                    ]
-                }
+HusBreadcrumb {
+    width: parent.width
+    initModel: [
+        { iconSource: HusIcon.HomeOutlined },
+        { iconSource: HusIcon.UserOutlined, title: 'Application List' },
+        { loading: true, title: 'Application', },
+    ]
+}
             `
             exampleDelegate: HusBreadcrumb {
                 initModel: [
@@ -231,19 +231,19 @@ items | list | 可选 | 菜单模型
 通过 \`separator\` 属性设置分隔符。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusBreadcrumb {
-                    width: parent.width
-                    separator: '>'
-                    initModel: [
-                        { title: 'Home' },
-                        { title: 'Application Center' },
-                        { title: 'Application List' },
-                        { title: 'An Application', },
-                    ]
-                }
+HusBreadcrumb {
+    width: parent.width
+    separator: '>'
+    initModel: [
+        { title: 'Home' },
+        { title: 'Application Center' },
+        { title: 'Application List' },
+        { title: 'An Application', },
+    ]
+}
             `
             exampleDelegate: HusBreadcrumb {
                 separator: '>'
@@ -263,18 +263,18 @@ items | list | 可选 | 菜单模型
 通过 \`model.separator\` 属性自定义单独的分隔符。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusBreadcrumb {
-                    width: parent.width
-                    initModel: [
-                        { title: 'Location', separator: ':' },
-                        { title: 'Application Center' },
-                        { title: 'Application List' },
-                        { title: 'An Application', },
-                    ]
-                }
+HusBreadcrumb {
+    width: parent.width
+    initModel: [
+        { title: 'Location', separator: ':' },
+        { title: 'Application Center' },
+        { title: 'Application List' },
+        { title: 'An Application', },
+    ]
+}
             `
             exampleDelegate: HusBreadcrumb {
                 initModel: [
@@ -296,27 +296,27 @@ items | list | 可选 | 菜单模型
 通过 \`model.menu.width\` 属性设置菜单的宽度：\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusBreadcrumb {
-                    width: parent.width
-                    initModel: [
-                        { title: 'HuskarUI'  },
-                        { title: 'Component' },
-                        {
-                            title: 'General',
-                            menu: {
-                                items: [
-                                    { label: 'General' },
-                                    { label: 'Layout' },
-                                    { label: 'Navigation' },
-                                ]
-                            }
-                        },
-                        { title: 'Button' },
-                    ]
-                }
+HusBreadcrumb {
+    width: parent.width
+    initModel: [
+        { title: 'HuskarUI'  },
+        { title: 'Component' },
+        {
+            title: 'General',
+            menu: {
+                items: [
+                    { label: 'General' },
+                    { label: 'Layout' },
+                    { label: 'Navigation' },
+                ]
+            }
+        },
+        { title: 'Button' },
+    ]
+}
             `
             exampleDelegate: HusBreadcrumb {
                 initModel: [

@@ -147,43 +147,43 @@ Row {
 通过 \`placeholderText\` 设置占位符文本。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusMultiSelect {
-                        width: 200
-                        textRole: 'desc'
-                        searchEnabled: false
-                        placeholderText: 'select one country'
-                        options: [
-                            {
-                                label: 'China',
-                                value: 'china',
-                                desc: '🇨🇳 China (中国)',
-                            },
-                            {
-                                label: 'USA',
-                                value: 'usa',
-                                desc: '🇺🇸 USA (美国)',
-                            },
-                            {
-                                label: 'Japan',
-                                value: 'japan',
-                                desc: '🇯🇵 Japan (日本)',
-                            },
-                            {
-                                label: 'Korea',
-                                value: 'korea',
-                                desc: '🇰🇷 Korea (韩国)',
-                            },
-                        ]
-                        initValue: ['china', 'usa']
-                    }
-                }
+    HusMultiSelect {
+        width: 200
+        textRole: 'desc'
+        searchEnabled: false
+        placeholderText: 'select one country'
+        options: [
+            {
+                label: 'China',
+                value: 'china',
+                desc: '🇨🇳 China (中国)',
+            },
+            {
+                label: 'USA',
+                value: 'usa',
+                desc: '🇺🇸 USA (美国)',
+            },
+            {
+                label: 'Japan',
+                value: 'japan',
+                desc: '🇯🇵 Japan (日本)',
+            },
+            {
+                label: 'Korea',
+                value: 'korea',
+                desc: '🇰🇷 Korea (韩国)',
+            },
+        ]
+        initValue: ['china', 'usa']
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -230,57 +230,57 @@ Row {
 通过 \`suffixDelegate\` 设置后缀代理。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusMultiSelect {
-                        width: 200
-                        prefix: 'User'
-                        options: [
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
-                        ]
-                    }
+    HusMultiSelect {
+        width: 200
+        prefix: 'User'
+        options: [
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'disabled', label: 'Disabled', disabled: true },
+        ]
+    }
 
-                    HusMultiSelect {
-                        width: 200
-                        prefixDelegate: HusIconText { iconSource: HusIcon.SmileOutlined }
-                        options: [
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
-                        ]
-                    }
+    HusMultiSelect {
+        width: 200
+        prefixDelegate: HusIconText { iconSource: HusIcon.SmileOutlined }
+        options: [
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'disabled', label: 'Disabled', disabled: true },
+        ]
+    }
 
-                    HusMultiSelect {
-                        width: 200
-                        suffix: 'User'
-                        options: [
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
-                        ]
-                    }
+    HusMultiSelect {
+        width: 200
+        suffix: 'User'
+        options: [
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'disabled', label: 'Disabled', disabled: true },
+        ]
+    }
 
-                    HusMultiSelect {
-                        width: 200
-                        suffixDelegate: HusIconText { iconSource: HusIcon.SmileOutlined }
-                        options: [
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
-                        ]
-                    }
-                }
+    HusMultiSelect {
+        width: 200
+        suffixDelegate: HusIconText { iconSource: HusIcon.SmileOutlined }
+        options: [
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'disabled', label: 'Disabled', disabled: true },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -346,28 +346,28 @@ Row {
 隐藏下拉列表中已选择的选项。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusMultiSelect {
-                    width: 500
-                    filterOption:
-                        (input, option) => {
-                            filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
-                            return filteredOptions.indexOf(option.label) != -1;
-                        }
-                    onSelect: {
-                        filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
-                        options = filteredOptions.map((item) => ({ label: item }));
-                    }
-                    onRemoveTag: {
-                        filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
-                        options = filteredOptions.map((item) => ({ label: item }));
-                    }
-                    Component.onCompleted: options = theOptions.map((item) => ({ label: item }));
-                    property var theOptions: ['Apples', 'Nails', 'Bananas', 'Helicopters']
-                    property var filteredOptions: []
-                }
+HusMultiSelect {
+    width: 500
+    filterOption:
+        (input, option) => {
+            filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
+            return filteredOptions.indexOf(option.label) != -1;
+        }
+    onSelect: {
+        filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
+        options = filteredOptions.map((item) => ({ label: item }));
+    }
+    onRemoveTag: {
+        filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
+        options = filteredOptions.map((item) => ({ label: item }));
+    }
+    Component.onCompleted: options = theOptions.map((item) => ({ label: item }));
+    property var theOptions: ['Apples', 'Nails', 'Bananas', 'Helicopters']
+    property var filteredOptions: []
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -402,26 +402,26 @@ Row {
 通过 \`tagDelegate\` 设置标签代理。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusMultiSelect {
-                    id: customTag
-                    width: 500
-                    tagDelegate: HusTag {
-                        text: tagData.label
-                        presetColor: tagData.value
-                        closeIconSource: HusIcon.CloseOutlined
-                        closeIconSize: 12
-                        onClose: customTag.removeTagAtIndex(index);
-                    }
-                    options: [
-                        { label: 'gold', value: 'gold' },
-                        { label: 'lime', value: 'lime' },
-                        { label: 'green', value: 'green' },
-                        { label: 'cyan', value: 'cyan' },
-                    ]
-                }
+HusMultiSelect {
+    id: customTag
+    width: 500
+    tagDelegate: HusTag {
+        text: tagData.label
+        presetColor: tagData.value
+        closeIconSource: HusIcon.CloseOutlined
+        closeIconSize: 12
+        onClose: customTag.removeTagAtIndex(index);
+    }
+    options: [
+        { label: 'gold', value: 'gold' },
+        { label: 'lime', value: 'lime' },
+        { label: 'green', value: 'green' },
+        { label: 'cyan', value: 'cyan' },
+    ]
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -453,25 +453,25 @@ Row {
 通过设置 \`maxTagCount\` 约束最多可选中的数量，当超出限制时会变成禁止选中状态。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusMultiSelect {
-                    width: 500
-                    maxTagCount: 3
-                    suffix: \`\${tagCount}/\${maxTagCount}\`
-                    options: [
-                        { value: 'Ava Swift', label: 'Ava Swift' },
-                        { value: 'Cole Reed', label: 'Cole Reed' },
-                        { value: 'Mia Blake', label: 'Mia Blake' },
-                        { value: 'Jake Stone', label: 'Jake Stone' },
-                        { value: 'Lily Lane', label: 'Lily Lane' },
-                        { value: 'Ryan Chase', label: 'Ryan Chase' },
-                        { value: 'Zoe Fox', label: 'Zoe Fox' },
-                        { value: 'Alex Grey', label: 'Alex Grey' },
-                        { value: 'Elle Blair', label: 'Elle Blair' },
-                    ]
-                }
+HusMultiSelect {
+    width: 500
+    maxTagCount: 3
+    suffix: \`\${tagCount}/\${maxTagCount}\`
+    options: [
+        { value: 'Ava Swift', label: 'Ava Swift' },
+        { value: 'Cole Reed', label: 'Cole Reed' },
+        { value: 'Mia Blake', label: 'Mia Blake' },
+        { value: 'Jake Stone', label: 'Jake Stone' },
+        { value: 'Lily Lane', label: 'Lily Lane' },
+        { value: 'Ryan Chase', label: 'Ryan Chase' },
+        { value: 'Zoe Fox', label: 'Zoe Fox' },
+        { value: 'Alex Grey', label: 'Alex Grey' },
+        { value: 'Elle Blair', label: 'Elle Blair' },
+    ]
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -502,25 +502,25 @@ Row {
 100000 选择项。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Loader {
-                    asynchronous: true
-                    sourceComponent: HusMultiSelect {
-                        width: 500
-                        genDefaultKey: false
-                        filterOption: (input, option) => option.label.toUpperCase().indexOf(input.toUpperCase()) !== -1
-                        Component.onCompleted: {
-                            const list = [];
-                            for (let i = 0; i < 100000; i++) {
-                                const label = \`\${i.toString(36)}\${i}\`;
-                                list.push({ key: label, label: label, disabled: i === 10 });
-                            }
-                            options = list;
-                        }
-                    }
-                }
+Loader {
+    asynchronous: true
+    sourceComponent: HusMultiSelect {
+        width: 500
+        genDefaultKey: false
+        filterOption: (input, option) => option.label.toUpperCase().indexOf(input.toUpperCase()) !== -1
+        Component.onCompleted: {
+            const list = [];
+            for (let i = 0; i < 100000; i++) {
+                const label = \`\${i.toString(36)}\${i}\`;
+                list.push({ key: label, label: label, disabled: i === 10 });
+            }
+            options = list;
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10

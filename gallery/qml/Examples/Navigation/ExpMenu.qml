@@ -173,56 +173,56 @@ bgDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBgDelegate)
 点击任意菜单项将发出 \`clickMenu(deep, menuKey, menuData)\` 信号。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Item {
-                    width: parent.width
-                    height: 200
+Item {
+    width: parent.width
+    height: 200
 
-                    HusButton {
-                        text: qsTr('添加')
-                        anchors.right: parent.right
-                        onClicked: menu.append({
-                                                    label: qsTr('Test'),
-                                                    iconSource: HusIcon.HomeOutlined,
-                                                    contentDelegate: myContentDelegate
-                                               });
-                    }
+    HusButton {
+        text: qsTr('添加')
+        anchors.right: parent.right
+        onClicked: menu.append({
+                                    label: qsTr('Test'),
+                                    iconSource: HusIcon.HomeOutlined,
+                                    contentDelegate: myContentDelegate
+                               });
+    }
 
-                    HusMenu {
-                        id: menu
-                        height: parent.height
-                        initModel: [
+    HusMenu {
+        id: menu
+        height: parent.height
+        initModel: [
+            {
+                label: qsTr('首页1'),
+                iconSource: HusIcon.HomeOutlined
+            },
+            {
+                label: qsTr('首页2'),
+                iconSource: HusIcon.HomeOutlined,
+                children: [
+                    {
+                        label: qsTr('首页2-1'),
+                        iconSource: HusIcon.HomeOutlined,
+                        children: [
                             {
-                                label: qsTr('首页1'),
-                                iconSource: HusIcon.HomeOutlined
-                            },
-                            {
-                                label: qsTr('首页2'),
+                                label: qsTr('首页2-1-1'),
                                 iconSource: HusIcon.HomeOutlined,
-                                children: [
-                                    {
-                                        label: qsTr('首页2-1'),
-                                        iconSource: HusIcon.HomeOutlined,
-                                        children: [
-                                            {
-                                                label: qsTr('首页2-1-1'),
-                                                iconSource: HusIcon.HomeOutlined,
-                                                contentDelegate: myContentDelegate
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                label: qsTr('首页3'),
-                                iconSource: HusIcon.HomeOutlined,
-                                enabled: false
+                                contentDelegate: myContentDelegate
                             }
                         ]
                     }
-                }
+                ]
+            },
+            {
+                label: qsTr('首页3'),
+                iconSource: HusIcon.HomeOutlined,
+                enabled: false
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Item {
                 height: 200
@@ -281,76 +281,76 @@ bgDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBgDelegate)
 通过 \`popupMaxHeight\` 属性设置弹窗的最大高度(最小高度是自动计算的)。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusRadioBlock {
-                        id: popupModeRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: qsTr('默认模式'), value: false },
-                            { label: qsTr('弹出模式'), value: true }
-                        ]
-                    }
+    HusRadioBlock {
+        id: popupModeRadio
+        initCheckedIndex: 0
+        model: [
+            { label: qsTr('默认模式'), value: false },
+            { label: qsTr('弹出模式'), value: true }
+        ]
+    }
 
-                    HusMenu {
-                        height: 250
-                        popupMode: popupModeRadio.currentCheckedValue
-                        popupWidth: 150
-                        initModel: [
+    HusMenu {
+        height: 250
+        popupMode: popupModeRadio.currentCheckedValue
+        popupWidth: 150
+        initModel: [
+            {
+                label: qsTr('首页1'),
+                iconSource: HusIcon.HomeOutlined
+            },
+            {
+                label: qsTr('首页2'),
+                iconSource: HusIcon.HomeOutlined,
+                children: [
+                    {
+                        label: qsTr('首页2-1'),
+                        iconSource: HusIcon.HomeOutlined,
+                        children: [
                             {
-                                label: qsTr('首页1'),
+                                label: qsTr('首页2-1-1'),
                                 iconSource: HusIcon.HomeOutlined
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        label: qsTr('首页2-2'),
+                        iconSource: HusIcon.HomeOutlined,
+                        children: [
                             {
-                                label: qsTr('首页2'),
-                                iconSource: HusIcon.HomeOutlined,
-                                children: [
-                                    {
-                                        label: qsTr('首页2-1'),
-                                        iconSource: HusIcon.HomeOutlined,
-                                        children: [
-                                            {
-                                                label: qsTr('首页2-1-1'),
-                                                iconSource: HusIcon.HomeOutlined
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        label: qsTr('首页2-2'),
-                                        iconSource: HusIcon.HomeOutlined,
-                                        children: [
-                                            {
-                                                label: qsTr('首页2-2-1'),
-                                                iconSource: HusIcon.HomeOutlined
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                label: qsTr('首页3'),
-                                iconSource: HusIcon.HomeOutlined,
-                                children: [
-                                    {
-                                        label: qsTr('首页3-1'),
-                                        iconSource: HusIcon.HomeOutlined,
-                                        children: [
-                                            {
-                                                label: qsTr('首页3-1-1'),
-                                                iconSource: HusIcon.HomeOutlined
-                                            }
-                                        ]
-                                    }
-                                ]
+                                label: qsTr('首页2-2-1'),
+                                iconSource: HusIcon.HomeOutlined
                             }
                         ]
                     }
-                }
+                ]
+            },
+            {
+                label: qsTr('首页3'),
+                iconSource: HusIcon.HomeOutlined,
+                children: [
+                    {
+                        label: qsTr('首页3-1'),
+                        iconSource: HusIcon.HomeOutlined,
+                        children: [
+                            {
+                                label: qsTr('首页3-1-1'),
+                                iconSource: HusIcon.HomeOutlined
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -433,76 +433,76 @@ bgDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBgDelegate)
 **注意** 使用 \`defaultMenuWidth\` 来设置宽度。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusRadioBlock {
-                        id: compactModeRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: qsTr('默认模式'), value: false },
-                            { label: qsTr('紧凑模式'), value: true }
-                        ]
-                    }
+    HusRadioBlock {
+        id: compactModeRadio
+        initCheckedIndex: 0
+        model: [
+            { label: qsTr('默认模式'), value: false },
+            { label: qsTr('紧凑模式'), value: true }
+        ]
+    }
 
-                    HusMenu {
-                        height: 250
-                        compactMode: compactModeRadio.currentCheckedValue
-                        popupWidth: 150
-                        initModel: [
+    HusMenu {
+        height: 250
+        compactMode: compactModeRadio.currentCheckedValue
+        popupWidth: 150
+        initModel: [
+            {
+                label: qsTr('首页1'),
+                iconSource: HusIcon.HomeOutlined
+            },
+            {
+                label: qsTr('首页2'),
+                iconSource: HusIcon.HomeOutlined,
+                children: [
+                    {
+                        label: qsTr('首页2-1'),
+                        iconSource: HusIcon.HomeOutlined,
+                        children: [
                             {
-                                label: qsTr('首页1'),
+                                label: qsTr('首页2-1-1'),
                                 iconSource: HusIcon.HomeOutlined
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        label: qsTr('首页2-2'),
+                        iconSource: HusIcon.HomeOutlined,
+                        children: [
                             {
-                                label: qsTr('首页2'),
-                                iconSource: HusIcon.HomeOutlined,
-                                children: [
-                                    {
-                                        label: qsTr('首页2-1'),
-                                        iconSource: HusIcon.HomeOutlined,
-                                        children: [
-                                            {
-                                                label: qsTr('首页2-1-1'),
-                                                iconSource: HusIcon.HomeOutlined
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        label: qsTr('首页2-2'),
-                                        iconSource: HusIcon.HomeOutlined,
-                                        children: [
-                                            {
-                                                label: qsTr('首页2-2-1'),
-                                                iconSource: HusIcon.HomeOutlined
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                label: qsTr('首页3'),
-                                iconSource: HusIcon.HomeOutlined,
-                                children: [
-                                    {
-                                        label: qsTr('首页3-1'),
-                                        iconSource: HusIcon.HomeOutlined,
-                                        children: [
-                                            {
-                                                label: qsTr('首页3-1-1'),
-                                                iconSource: HusIcon.HomeOutlined
-                                            }
-                                        ]
-                                    }
-                                ]
+                                label: qsTr('首页2-2-1'),
+                                iconSource: HusIcon.HomeOutlined
                             }
                         ]
                     }
-                }
+                ]
+            },
+            {
+                label: qsTr('首页3'),
+                iconSource: HusIcon.HomeOutlined,
+                children: [
+                    {
+                        label: qsTr('首页3-1'),
+                        iconSource: HusIcon.HomeOutlined,
+                        children: [
+                            {
+                                label: qsTr('首页3-1-1'),
+                                iconSource: HusIcon.HomeOutlined
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

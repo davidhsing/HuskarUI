@@ -79,26 +79,26 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 输入项背景圆角
 通过 \`itemValidator\` 属性设置验证器。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusInputOnce {
-                        length: 6
-                    }
+    HusInputOnce {
+        length: 6
+    }
 
-                    HusInputOnce {
-                        length: 6
-                        enabled: false
-                    }
+    HusInputOnce {
+        length: 6
+        enabled: false
+    }
 
-                    HusInputOnce {
-                        length: 6
-                        itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
-                    }
-                }
+    HusInputOnce {
+        length: 6
+        itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -127,18 +127,18 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 输入项背景圆角
 格式化器是形如：\`function(text: string): string { }\` 的函数。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusInputOnce {
-                        length: 6
-                        itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
-                        formatter: (text) => text.toUpperCase();
-                    }
-                }
+    HusInputOnce {
+        length: 6
+        itemValidator: RegularExpressionValidator { regularExpression: /[a-zA-Z]?/ }
+        formatter: (text) => text.toUpperCase();
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -159,25 +159,25 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 输入项背景圆角
 通过 \`currentInput\` 属性获取当前所有项输入文本和。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusInputOnce {
-                        id: password
-                        length: 6
-                        itemPassword: true
-                        itemPasswordCharacter: '●'
-                        itemValidator: RegularExpressionValidator { regularExpression: /[0-9a-zA-Z]?/ }
-                    }
+    HusInputOnce {
+        id: password
+        length: 6
+        itemPassword: true
+        itemPasswordCharacter: '●'
+        itemValidator: RegularExpressionValidator { regularExpression: /[0-9a-zA-Z]?/ }
+    }
 
-                    HusCopyableText {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: qsTr('当前输入: ') + password.currentInput
-                    }
-                }
+    HusCopyableText {
+        anchors.verticalCenter: parent.verticalCenter
+        text: qsTr('当前输入: ') + password.currentInput
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -204,38 +204,38 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 输入项背景圆角
 通过 \`dividerDelegate\` 属性设置分隔器代理(用于分隔输入项)。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 10
+Row {
+    spacing: 10
 
-                    HusInputOnce {
-                        id: activationCodeInput
-                        length: 4
-                        characterLength: 4
-                        itemWidth: 80
-                        itemSpacing: 5
-                        itemValidator: RegularExpressionValidator { regularExpression: /[0-9a-zA-Z]{1,4}/ }
-                        formatter: (text) => text.toUpperCase();
-                        dividerDelegate: Item {
-                            width: 12
-                            height: activationCodeInput.itemHeight
+    HusInputOnce {
+        id: activationCodeInput
+        length: 4
+        characterLength: 4
+        itemWidth: 80
+        itemSpacing: 5
+        itemValidator: RegularExpressionValidator { regularExpression: /[0-9a-zA-Z]{1,4}/ }
+        formatter: (text) => text.toUpperCase();
+        dividerDelegate: Item {
+            width: 12
+            height: activationCodeInput.itemHeight
 
-                            Rectangle {
-                                width: 12
-                                height: 1
-                                color: HusTheme.Primary.colorTextBase
-                                anchors.verticalCenter: parent.verticalCenter
-                            }
-                        }
-                    }
+            Rectangle {
+                width: 12
+                height: 1
+                color: HusTheme.Primary.colorTextBase
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
+    }
 
-                    HusCopyableText {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: qsTr('当前输入: ') + activationCodeInput.currentInput
-                    }
-                }
+    HusCopyableText {
+        anchors.verticalCenter: parent.verticalCenter
+        text: qsTr('当前输入: ') + activationCodeInput.currentInput
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10

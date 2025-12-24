@@ -106,78 +106,78 @@ cardRadius | int | 可选 | 本步骤卡片圆角
 - { cardRadius: 本步骤卡片圆角 }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusButton {
-                        text: qsTr('漫游步骤')
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            tourStep.resetStep();
-                            tourStep.open();
-                        }
+    HusButton {
+        text: qsTr('漫游步骤')
+        type: HusButton.Type_Primary
+        onClicked: {
+            tourStep.resetStep();
+            tourStep.open();
+        }
 
-                        HusTourStep {
-                            id: tourStep
-                            closable: closableRadio.currentCheckedValue
-                            stepModel: [
-                                {
-                                    target: tourStepButton1,
-                                    title: qsTr('步骤1'),
-                                    titleColor: '#3fcc9b',
-                                    description: qsTr('这是步骤1\\n========'),
-                                },
-                                {
-                                    target: tourStepButton2,
-                                    title: qsTr('步骤2'),
-                                    description: qsTr('这是步骤2\\n!!!!!!!!!!'),
-                                    descriptionColor: '#3116ff'
-                                },
-                                {
-                                    target: tourStep3Button,
-                                    cardColor: '#ffa2eb',
-                                    title: qsTr('步骤3'),
-                                    titleColor: 'red',
-                                    description: qsTr('这是步骤3\\n##############')
-                                }
-                            ]
-                        }
-                    }
-
-                    Row {
-                        spacing: 10
-
-                        HusButton {
-                            id: tourStepButton1
-                            text: qsTr('漫游步骤1')
-                            type: HusButton.Type_Outlined
-                        }
-
-                        HusButton {
-                            id: tourStepButton2
-                            text: qsTr('漫游步骤2')
-                            type: HusButton.Type_Outlined
-                        }
-
-                        HusButton {
-                            id: tourStepButton3
-                            text: qsTr('漫游步骤3   ####')
-                            type: HusButton.Type_Outlined
-                        }
-                    }
-
-                    HusRadioBlock {
-                        id: closableRadio
-                        initCheckedIndex: 0
-                        model: [
-                            { label: 'Closable', value: true},
-                            { label: 'Non-closable', value: false }
-                        ]
-                    }
+        HusTourStep {
+            id: tourStep
+            closable: closableRadio.currentCheckedValue
+            stepModel: [
+                {
+                    target: tourStepButton1,
+                    title: qsTr('步骤1'),
+                    titleColor: '#3fcc9b',
+                    description: qsTr('这是步骤1\\n========'),
+                },
+                {
+                    target: tourStepButton2,
+                    title: qsTr('步骤2'),
+                    description: qsTr('这是步骤2\\n!!!!!!!!!!'),
+                    descriptionColor: '#3116ff'
+                },
+                {
+                    target: tourStep3Button,
+                    cardColor: '#ffa2eb',
+                    title: qsTr('步骤3'),
+                    titleColor: 'red',
+                    description: qsTr('这是步骤3\\n##############')
                 }
+            ]
+        }
+    }
+
+    Row {
+        spacing: 10
+
+        HusButton {
+            id: tourStepButton1
+            text: qsTr('漫游步骤1')
+            type: HusButton.Type_Outlined
+        }
+
+        HusButton {
+            id: tourStepButton2
+            text: qsTr('漫游步骤2')
+            type: HusButton.Type_Outlined
+        }
+
+        HusButton {
+            id: tourStepButton3
+            text: qsTr('漫游步骤3   ####')
+            type: HusButton.Type_Outlined
+        }
+    }
+
+    HusRadioBlock {
+        id: closableRadio
+        initCheckedIndex: 0
+        model: [
+            { label: 'Closable', value: true},
+            { label: 'Non-closable', value: false }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -260,116 +260,116 @@ cardRadius | int | 可选 | 本步骤卡片圆角
 通过 \`stepCardDelegate\` 属性自定义卡片。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
+
+Column {
+    spacing: 10
+
+    HusButton {
+        text: qsTr('开始漫游')
+        type: HusButton.Type_Primary
+        onClicked: {
+            tourStep2.open();
+        }
+
+        HusTourStep {
+            id: tourStep2
+            penetrationEvent: true
+            focusMargin: marginSlider.currentValue
+            focusRadius: radiusSlider.currentValue
+            stepModel: [{ target: tourStepGrid }]
+            stepCardDelegate: Rectangle {
+                id: __stepCardDelegate
+                width: 520
+                height: column2.height + 20
+                color: tourStep2.colorStepCard
+                radius: tourStep2.radiusStepCard
+
+                property var stepData: tourStep2.stepModel[tourStep2.currentStep]
 
                 Column {
+                    id: column2
+                    width: parent.width - 20
+                    anchors.centerIn: parent
                     spacing: 10
 
-                    HusButton {
-                        text: qsTr('开始漫游')
-                        type: HusButton.Type_Primary
+                    HusCaptionButton {
+                        anchors.right: parent.right
+                        iconSource: HusIcon.CloseOutlined
                         onClicked: {
-                            tourStep2.open();
-                        }
-
-                        HusTourStep {
-                            id: tourStep2
-                            penetrationEvent: true
-                            focusMargin: marginSlider.currentValue
-                            focusRadius: radiusSlider.currentValue
-                            stepModel: [{ target: tourStepGrid }]
-                            stepCardDelegate: Rectangle {
-                                id: __stepCardDelegate
-                                width: 520
-                                height: column2.height + 20
-                                color: tourStep2.colorStepCard
-                                radius: tourStep2.radiusStepCard
-
-                                property var stepData: tourStep2.stepModel[tourStep2.currentStep]
-
-                                Column {
-                                    id: column2
-                                    width: parent.width - 20
-                                    anchors.centerIn: parent
-                                    spacing: 10
-
-                                    HusCaptionButton {
-                                        anchors.right: parent.right
-                                        iconSource: HusIcon.CloseOutlined
-                                        onClicked: {
-                                            tourStep2.close();
-                                        }
-                                    }
-
-                                    Image {
-                                        width: parent.width
-                                        height: 120
-                                        source: 'https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png'
-                                    }
-
-                                    HusText {
-                                        text: 'Upload File'
-                                        font.bold: true
-                                    }
-
-                                    HusText {
-                                        text: 'Put your files here.'
-                                    }
-
-                                    HusButton {
-                                        anchors.right: parent.right
-                                        text: qsTr('结束导览')
-                                        type: HusButton.Type_Primary
-                                        onClicked: {
-                                            tourStep2.close();
-                                        }
-                                    }
-                                }
-                            }
+                            tourStep2.close();
                         }
                     }
 
-                    Grid {
-                        id: tourStepGrid
-                        spacing: 10
-                        columns: 2
-                        verticalItemAlignment: Grid.AlignVCenter
+                    Image {
+                        width: parent.width
+                        height: 120
+                        source: 'https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png'
+                    }
 
-                        HusText {
-                            text: 'Margin: '
-                        }
+                    HusText {
+                        text: 'Upload File'
+                        font.bold: true
+                    }
 
-                        HusSlider {
-                            id: marginSlider
-                            width: 200
-                            height: 30
-                            min: 0
-                            max: 30
-                            value: 5
-                            handleToolTipDelegate: HusToolTip {
-                                visible: handleHovered || handlePressed
-                                text: marginSlider.currentValue.toFixed(0)
-                            }
-                        }
+                    HusText {
+                        text: 'Put your files here.'
+                    }
 
-                        HusText {
-                            text: 'Radius: '
-                        }
-
-                        HusSlider {
-                            id: radiusSlider
-                            width: 200
-                            height: 30
-                            min: 0
-                            max: 30
-                            handleToolTipDelegate: HusToolTip {
-                                visible: handleHovered || handlePressed
-                                text: radiusSlider.currentValue.toFixed(0)
-                            }
+                    HusButton {
+                        anchors.right: parent.right
+                        text: qsTr('结束导览')
+                        type: HusButton.Type_Primary
+                        onClicked: {
+                            tourStep2.close();
                         }
                     }
                 }
+            }
+        }
+    }
+
+    Grid {
+        id: tourStepGrid
+        spacing: 10
+        columns: 2
+        verticalItemAlignment: Grid.AlignVCenter
+
+        HusText {
+            text: 'Margin: '
+        }
+
+        HusSlider {
+            id: marginSlider
+            width: 200
+            height: 30
+            min: 0
+            max: 30
+            value: 5
+            handleToolTipDelegate: HusToolTip {
+                visible: handleHovered || handlePressed
+                text: marginSlider.currentValue.toFixed(0)
+            }
+        }
+
+        HusText {
+            text: 'Radius: '
+        }
+
+        HusSlider {
+            id: radiusSlider
+            width: 200
+            height: 30
+            min: 0
+            max: 30
+            handleToolTipDelegate: HusToolTip {
+                visible: handleHovered || handlePressed
+                text: radiusSlider.currentValue.toFixed(0)
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

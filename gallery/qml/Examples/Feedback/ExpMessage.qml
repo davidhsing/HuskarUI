@@ -97,29 +97,29 @@ colorIcon | color | 可选 | 消息图标颜色
 一般消息，**注意** 推荐通过将 \`parent\` 设置为窗口标题栏(window.captionBar)从而将其置于顶层。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Item {
-                    width: parent.width
+Item {
+    width: parent.width
 
-                    HusMessage {
-                        id: message
-                        z: 999
-                        parent: root.captionBar
-                        width: parent.width
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.bottom
-                    }
+    HusMessage {
+        id: message
+        z: 999
+        parent: root.captionBar
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+    }
 
-                    HusButton {
-                        type: HusButton.Type_Primary
-                        text: 'Display normal message'
-                        onClicked: {
-                            message.info('Hello, HuskarUI!');
-                        }
-                    }
-                }
+    HusButton {
+        type: HusButton.Type_Primary
+        text: 'Display normal message'
+        onClicked: {
+            message.info('Hello, HuskarUI!');
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 HusMessage {
@@ -148,43 +148,43 @@ colorIcon | color | 可选 | 消息图标颜色
 包括成功、失败、警告。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusMessage {
-                        id: message1
-                        z: 999
-                        parent: root.captionBar
-                        width: parent.width
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.bottom
-                    }
+    HusMessage {
+        id: message1
+        z: 999
+        parent: root.captionBar
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+    }
 
-                    HusButton {
-                        text: 'Success'
-                        onClicked: {
-                            message1.success('This is a success message');
-                        }
-                    }
+    HusButton {
+        text: 'Success'
+        onClicked: {
+            message1.success('This is a success message');
+        }
+    }
 
-                    HusButton {
-                        text: 'Error'
-                        onClicked: {
-                            message1.error('This is an error message');
-                        }
-                    }
+    HusButton {
+        text: 'Error'
+        onClicked: {
+            message1.error('This is an error message');
+        }
+    }
 
-                    HusButton {
-                        text: 'Warning'
-                        onClicked: {
-                            message1.warning('This is a warning message');
-                        }
-                    }
-                }
+    HusButton {
+        text: 'Warning'
+        onClicked: {
+            message1.warning('This is a warning message');
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -229,33 +229,33 @@ colorIcon | color | 可选 | 消息图标颜色
 自定义时长 10000ms，默认时长为 3000ms。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusMessage {
-                        id: message2
-                        z: 999
-                        parent: root.captionBar
-                        width: parent.width
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.bottom
-                    }
+    HusMessage {
+        id: message2
+        z: 999
+        parent: root.captionBar
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+    }
 
-                    HusButton {
-                        text: 'Customized display duration'
-                        onClicked: {
-                            message2.open({
-                                              'type': HusMessage.Type_Success,
-                                              'message': 'This is a prompt message for success, and it will disappear in 10 seconds',
-                                              'duration': 10000
-                                          });
-                        }
-                    }
-                }
+    HusButton {
+        text: 'Customized display duration'
+        onClicked: {
+            message2.open({
+                              'type': HusMessage.Type_Success,
+                              'message': 'This is a prompt message for success, and it will disappear in 10 seconds',
+                              'duration': 10000
+                          });
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -290,44 +290,44 @@ colorIcon | color | 可选 | 消息图标颜色
 **注意** \`close()\` 需要设置 \`key\` 属性。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusMessage {
-                        id: message3
-                        z: 999
-                        parent: root.captionBar
-                        width: parent.width
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.bottom
-                    }
+    HusMessage {
+        id: message3
+        z: 999
+        parent: root.captionBar
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+    }
 
-                    HusButton {
-                        property int index: 0
-                        text: 'Display a loading indicator'
-                        onClicked: {
-                            let key = String(++index);
-                            message3.open({
-                                              'key': key,
-                                              'loading': true,
-                                              'message': 'Action in progress...',
-                                              'duration': 60 * 60 * 1000
-                                          });
-                            setTimeout(() => message3.close(key), 2500);
-                        }
+    HusButton {
+        property int index: 0
+        text: 'Display a loading indicator'
+        onClicked: {
+            let key = String(++index);
+            message3.open({
+                              'key': key,
+                              'loading': true,
+                              'message': 'Action in progress...',
+                              'duration': 60 * 60 * 1000
+                          });
+            setTimeout(() => message3.close(key), 2500);
+        }
 
-                        function setTimeout(callback, interval) {
-                            let timer = Qt.createQmlObject(\`import QtQuick; Timer{}\`, Qt.application);
-                            timer.interval = interval;
-                            timer.triggered.connect(() => { callback(); timer.destroy(); });
-                            timer.start();
-                        }
-                    }
-                }
+        function setTimeout(callback, interval) {
+            let timer = Qt.createQmlObject(\`import QtQuick; Timer{}\`, Qt.application);
+            timer.interval = interval;
+            timer.triggered.connect(() => { callback(); timer.destroy(); });
+            timer.start();
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -374,34 +374,34 @@ colorIcon | color | 可选 | 消息图标颜色
 通过 \`closeButtonVisible\` 显示关闭按钮。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Item {
-                    width: parent.width
+Item {
+    width: parent.width
 
-                    HusMessage {
-                        id: message4
-                        z: 999
-                        parent: root.captionBar
-                        width: parent.width
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.bottom
-                        closeButtonVisible: true
-                    }
+    HusMessage {
+        id: message4
+        z: 999
+        parent: root.captionBar
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+        closeButtonVisible: true
+    }
 
-                    HusButton {
-                        text: 'Display custom message'
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            message4.open({
-                                              'message': 'This is a custom message',
-                                              'iconSource': HusIcon.AccountBookOutlined,
-                                              'colorIcon': 'red'
-                                          });
-                        }
-                    }
-                }
+    HusButton {
+        text: 'Display custom message'
+        type: HusButton.Type_Primary
+        onClicked: {
+            message4.open({
+                              'message': 'This is a custom message',
+                              'iconSource': HusIcon.AccountBookOutlined,
+                              'colorIcon': 'red'
+                          });
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 HusMessage {
@@ -419,10 +419,10 @@ colorIcon | color | 可选 | 消息图标颜色
                     type: HusButton.Type_Primary
                     onClicked: {
                         message4.open({
-                                          'message': 'This is a custom message',
-                                          'iconSource': HusIcon.AccountBookOutlined,
-                                          'colorIcon': 'red'
-                                      });
+                            'message': 'This is a custom message',
+                            'iconSource': HusIcon.AccountBookOutlined,
+                            'colorIcon': 'red'
+                        });
                     }
                 }
             }

@@ -88,44 +88,43 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 清除图标在输入框右边{ HusInput.Position_Right }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusInput {
-                        width: 150
-                        placeholderText: 'Basic Usage'
-                    }
+    HusInput {
+        width: 150
+        placeholderText: 'Basic Usage'
+    }
 
-                    HusInput {
-                        width: 150
-                        placeholderText: 'Clear Active'
-                        clearEnabled: 'active'
-                    }
+    HusInput {
+        width: 150
+        placeholderText: 'Clear Active'
+        clearEnabled: 'active'
+    }
 
-                    HusInput {
-                        width: 150
-                        iconPosition: HusInput.Position_Left
-                        iconSource: HusIcon.UserOutlined
-                        placeholderText: 'Username'
-                    }
+    HusInput {
+        width: 150
+        iconPosition: HusInput.Position_Left
+        iconSource: HusIcon.UserOutlined
+        placeholderText: 'Username'
+    }
 
-                    HusInput {
-                        width: 150
-                        iconPosition: HusInput.Position_Right
-                        iconSource: HusIcon.UserOutlined
-                        placeholderText: 'Username'
-                    }
+    HusInput {
+        width: 150
+        iconPosition: HusInput.Position_Right
+        iconSource: HusIcon.UserOutlined
+        placeholderText: 'Username'
+    }
 
-                    HusInput {
-                        width: 150
-                        placeholderText: 'Disabled'
-                        enabled: false
-                    }
-                }
-
+    HusInput {
+        width: 150
+        placeholderText: 'Disabled'
+        enabled: false
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

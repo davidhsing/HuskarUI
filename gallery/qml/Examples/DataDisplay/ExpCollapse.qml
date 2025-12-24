@@ -93,35 +93,35 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 通过 \`defaultActiveKey\` 属性设置默认激活(即展开)键，这个例子默认展开了第一个。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusCollapse {
-                        width: parent.width
-                        defaultActiveKey: ['1']
-                        initModel: [
-                            {
-                                key: '1',
-                                title: 'This is panel header 1',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '2',
-                                title: 'This is panel header 2',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '3',
-                                title: 'This is panel header 3',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            }
-                        ]
-                    }
-                }
+    HusCollapse {
+        width: parent.width
+        defaultActiveKey: ['1']
+        initModel: [
+            {
+                key: '1',
+                title: 'This is panel header 1',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '2',
+                title: 'This is panel header 2',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '3',
+                title: 'This is panel header 3',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -158,35 +158,35 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 通过 \`accordion\` 属性设置手风琴模式，始终只有一个面板处在激活状态。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusCollapse {
-                        width: parent.width
-                        accordion: true
-                        initModel: [
-                            {
-                                key: '1',
-                                title: 'This is panel header 1',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '2',
-                                title: 'This is panel header 2',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '3',
-                                title: 'This is panel header 3',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            }
-                        ]
-                    }
-                }
+    HusCollapse {
+        width: parent.width
+        accordion: true
+        initModel: [
+            {
+                key: '1',
+                title: 'This is panel header 1',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '2',
+                title: 'This is panel header 2',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '3',
+                title: 'This is panel header 3',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -222,77 +222,77 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 通过 \`contentDelegate\` 属性设置自定义内容代理，可以实现嵌套折叠面板。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusCollapse {
-                        id: collapse
-                        width: parent.width
-                        contentDelegate: Item {
-                            Component.onCompleted: {
-                                if (model.children) {
-                                    childrenCollapse.visible = true;
-                                    for (let i = 0; i < model.children.count; i++) {
-                                        childrenCollapse.append(model.children.get(i));
-                                    }
-                                    height= Qt.binding(() => childrenCollapse.height + 20);
-                                } else {
-                                    defaultContent.visible = true;
-                                    height = defaultContent.height;
-                                }
-                            }
-
-                            HusCopyableText {
-                                id: defaultContent
-                                width: parent.width
-                                padding: 16
-                                topPadding: 8
-                                bottomPadding: 8
-                                text: model.content
-                                font: collapse.contentFont
-                                wrapMode: Text.WordWrap
-                                color: collapse.colorContent
-                                visible: false
-                            }
-
-                            HusCollapse {
-                                id: childrenCollapse
-                                width: parent.width - 20
-                                anchors.centerIn: parent
-                                defaultActiveKey: ['1-1']
-                                visible: false
-                            }
-                        }
-                        initModel: [
-                            {
-                                key: '1',
-                                title: 'This is panel header 1',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.',
-                                children: [
-                                    {
-                                        key: '1-1',
-                                        title: 'This is panel header 1-1',
-                                        content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                                    }
-                                ]
-                            },
-                            {
-                                key: '2',
-                                title: 'This is panel header 2',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '3',
-                                title: 'This is panel header 3',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            }
-                        ]
+    HusCollapse {
+        id: collapse
+        width: parent.width
+        contentDelegate: Item {
+            Component.onCompleted: {
+                if (model.children) {
+                    childrenCollapse.visible = true;
+                    for (let i = 0; i < model.children.count; i++) {
+                        childrenCollapse.append(model.children.get(i));
                     }
+                    height= Qt.binding(() => childrenCollapse.height + 20);
+                } else {
+                    defaultContent.visible = true;
+                    height = defaultContent.height;
                 }
+            }
+
+            HusCopyableText {
+                id: defaultContent
+                width: parent.width
+                padding: 16
+                topPadding: 8
+                bottomPadding: 8
+                text: model.content
+                font: collapse.contentFont
+                wrapMode: Text.WordWrap
+                color: collapse.colorContent
+                visible: false
+            }
+
+            HusCollapse {
+                id: childrenCollapse
+                width: parent.width - 20
+                anchors.centerIn: parent
+                defaultActiveKey: ['1-1']
+                visible: false
+            }
+        }
+        initModel: [
+            {
+                key: '1',
+                title: 'This is panel header 1',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.',
+                children: [
+                    {
+                        key: '1-1',
+                        title: 'This is panel header 1-1',
+                        content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+                    }
+                ]
+            },
+            {
+                key: '2',
+                title: 'This is panel header 2',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '3',
+                title: 'This is panel header 3',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -370,35 +370,35 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 通过 \`spacing\` 属性设置面板之间的间隔以分离各个面板。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusCollapse {
-                        width: parent.width
-                        spacing: 10
-                        initModel: [
-                            {
-                                key: '1',
-                                title: 'This is panel header 1',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '2',
-                                title: 'This is panel header 2',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '3',
-                                title: 'This is panel header 3',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            }
-                        ]
-                    }
-                }
+    HusCollapse {
+        width: parent.width
+        spacing: 10
+        initModel: [
+            {
+                key: '1',
+                title: 'This is panel header 1',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '2',
+                title: 'This is panel header 2',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '3',
+                title: 'This is panel header 3',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -434,35 +434,35 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 通过 \`expandIcon\` 属性设置展开图标, 设置为 0 则不显示图标。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusCollapse {
-                        width: parent.width
-                        expandIcon: HusIcon.CaretRightOutlined
-                        initModel: [
-                            {
-                                key: '1',
-                                title: 'This is panel header 1',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '2',
-                                title: 'This is panel header 2',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            },
-                            {
-                                key: '3',
-                                title: 'This is panel header 3',
-                                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
-                            }
-                        ]
-                    }
-                }
+    HusCollapse {
+        width: parent.width
+        expandIcon: HusIcon.CaretRightOutlined
+        initModel: [
+            {
+                key: '1',
+                title: 'This is panel header 1',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '2',
+                title: 'This is panel header 2',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            },
+            {
+                key: '3',
+                title: 'This is panel header 3',
+                content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+            }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

@@ -70,44 +70,44 @@ colorIcon | color | - | 图标颜色
 点击关闭图标将发送 \`close\` 信号。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusTag {
-                            text: 'Tag 1'
-                        }
+        HusTag {
+            text: 'Tag 1'
+        }
 
-                        HusTag {
-                            text: 'Link'
+        HusTag {
+            text: 'Link'
 
-                            MouseArea {
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                cursorShape: Qt.PointingHandCursor
-                                onClicked: {
-                                    Qt.openUrlExternally('https://github.com/davidhsing/HuskarUI');
-                                }
-                            }
-                        }
-
-                        HusTag {
-                            text: 'Prevent Default'
-                            closeIconSource: HusIcon.CloseOutlined
-                        }
-
-                        HusTag {
-                            text: 'Tag 2'
-                            closeIconSource: HusIcon.CloseCircleOutlined
-                        }
-                    }
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onClicked: {
+                    Qt.openUrlExternally('https://github.com/davidhsing/HuskarUI');
                 }
+            }
+        }
+
+        HusTag {
+            text: 'Prevent Default'
+            closeIconSource: HusIcon.CloseOutlined
+        }
+
+        HusTag {
+            text: 'Tag 2'
+            closeIconSource: HusIcon.CloseCircleOutlined
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -155,37 +155,37 @@ colorIcon | color | - | 图标颜色
 如果预设颜色不在该列表中，则为自定义标签。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        Repeater {
-                            model: [ 'red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta' ]
-                            delegate: HusTag {
-                                text: modelData
-                                presetColor: modelData
-                            }
-                        }
-                    }
+        Repeater {
+            model: [ 'red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta' ]
+            delegate: HusTag {
+                text: modelData
+                presetColor: modelData
+            }
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        Repeater {
-                            model: [ '#f50', '#2db7f5', '#87d068', '#108ee9' ]
-                            delegate: HusTag {
-                                text: modelData
-                                presetColor: modelData
-                            }
-                        }
-                    }
-                }
+        Repeater {
+            model: [ '#f50', '#2db7f5', '#87d068', '#108ee9' ]
+            delegate: HusTag {
+                text: modelData
+                presetColor: modelData
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -223,48 +223,48 @@ colorIcon | color | - | 图标颜色
 简单生成一组标签，利用 \`close()\` 信号可以实现动态添加和删除。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    Flow {
-                        width: parent.width
-                        spacing: 10
+    Flow {
+        width: parent.width
+        spacing: 10
 
-                        Repeater {
-                            id: editRepeater
-                            model: ListModel {
-                                id: editTagsModel
-                                ListElement { tag: 'Unremovable'; removable: false }
-                                ListElement { tag: 'Tag 1'; removable: true }
-                                ListElement { tag: 'Tag 2'; removable: true }
-                            }
-                            delegate: HusTag {
-                                text: tag
-                                closeIconSource: removable ? HusIcon.CloseOutlined : 0
-                                onClose: {
-                                    editTagsModel.remove(index, 1);
-                                }
-                            }
-                        }
-
-                        HusInput {
-                            width: 100
-                            font.pixelSize: HusTheme.Primary.fontPrimarySize - 2
-                            iconSource: HusIcon.PlusOutlined
-                            placeholderText: 'New Tag'
-                            colorBg: 'transparent'
-                            onAccepted: {
-                                focus = false;
-                                editTagsModel.append({ tag: text, removable: true })
-                                clear();
-                            }
-                        }
-                    }
+        Repeater {
+            id: editRepeater
+            model: ListModel {
+                id: editTagsModel
+                ListElement { tag: 'Unremovable'; removable: false }
+                ListElement { tag: 'Tag 1'; removable: true }
+                ListElement { tag: 'Tag 2'; removable: true }
+            }
+            delegate: HusTag {
+                text: tag
+                closeIconSource: removable ? HusIcon.CloseOutlined : 0
+                onClose: {
+                    editTagsModel.remove(index, 1);
                 }
+            }
+        }
+
+        HusInput {
+            width: 100
+            font.pixelSize: HusTheme.Primary.fontPrimarySize - 2
+            iconSource: HusIcon.PlusOutlined
+            placeholderText: 'New Tag'
+            colorBg: 'transparent'
+            onAccepted: {
+                focus = false;
+                editTagsModel.append({ tag: text, removable: true })
+                clear();
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -313,37 +313,37 @@ colorIcon | color | - | 图标颜色
 通过 \`iconSource\` 设置左侧图标。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusTag {
-                        text: 'Twitter'
-                        iconSource: HusIcon.TwitterOutlined
-                        presetColor: '#55acee'
-                    }
+    HusTag {
+        text: 'Twitter'
+        iconSource: HusIcon.TwitterOutlined
+        presetColor: '#55acee'
+    }
 
-                    HusTag {
-                        text: 'Youtube'
-                        iconSource: HusIcon.YoutubeOutlined
-                        presetColor: '#cd201f'
-                    }
+    HusTag {
+        text: 'Youtube'
+        iconSource: HusIcon.YoutubeOutlined
+        presetColor: '#cd201f'
+    }
 
-                    HusTag {
-                        text: 'Facebook '
-                        iconSource: HusIcon.FacebookOutlined
-                        presetColor: '#3b5999'
-                    }
+    HusTag {
+        text: 'Facebook '
+        iconSource: HusIcon.FacebookOutlined
+        presetColor: '#3b5999'
+    }
 
-                    HusTag {
-                        text: 'LinkedIn'
-                        iconSource: HusIcon.LinkedinOutlined
-                        presetColor: '#55acee'
-                    }
-                }
+    HusTag {
+        text: 'LinkedIn'
+        iconSource: HusIcon.LinkedinOutlined
+        presetColor: '#55acee'
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -387,83 +387,83 @@ colorIcon | color | - | 图标颜色
 - 警告状态{ HusTag.State_Warning }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusTag {
-                            text: 'success'
-                            tagState: HusTag.State_Success
-                        }
+        HusTag {
+            text: 'success'
+            tagState: HusTag.State_Success
+        }
 
-                        HusTag {
-                            text: 'processing'
-                            tagState: HusTag.State_Processing
-                        }
+        HusTag {
+            text: 'processing'
+            tagState: HusTag.State_Processing
+        }
 
-                        HusTag {
-                            text: 'error'
-                            tagState: HusTag.State_Error
-                        }
+        HusTag {
+            text: 'error'
+            tagState: HusTag.State_Error
+        }
 
-                        HusTag {
-                            text: 'warning'
-                            tagState: HusTag.State_Warning
-                        }
+        HusTag {
+            text: 'warning'
+            tagState: HusTag.State_Warning
+        }
 
-                        HusTag {
-                            text: 'default'
-                            tagState: HusTag.State_Default
-                        }
-                    }
+        HusTag {
+            text: 'default'
+            tagState: HusTag.State_Default
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusTag {
-                            text: 'success'
-                            tagState: HusTag.State_Success
-                            iconSource: HusIcon.CheckCircleOutlined
-                        }
+        HusTag {
+            text: 'success'
+            tagState: HusTag.State_Success
+            iconSource: HusIcon.CheckCircleOutlined
+        }
 
-                        HusTag {
-                            text: 'processing'
-                            rotating: true
-                            tagState: HusTag.State_Processing
-                            iconSource: HusIcon.SyncOutlined
-                        }
+        HusTag {
+            text: 'processing'
+            rotating: true
+            tagState: HusTag.State_Processing
+            iconSource: HusIcon.SyncOutlined
+        }
 
-                        HusTag {
-                            text: 'error'
-                            tagState: HusTag.State_Error
-                            iconSource: HusIcon.CloseCircleOutlined
-                        }
+        HusTag {
+            text: 'error'
+            tagState: HusTag.State_Error
+            iconSource: HusIcon.CloseCircleOutlined
+        }
 
-                        HusTag {
-                            text: 'warning'
-                            tagState: HusTag.State_Warning
-                            iconSource: HusIcon.ExclamationCircleOutlined
-                        }
+        HusTag {
+            text: 'warning'
+            tagState: HusTag.State_Warning
+            iconSource: HusIcon.ExclamationCircleOutlined
+        }
 
-                        HusTag {
-                            text: 'waiting'
-                            tagState: HusTag.State_Default
-                            iconSource: HusIcon.ClockCircleOutlined
-                        }
+        HusTag {
+            text: 'waiting'
+            tagState: HusTag.State_Default
+            iconSource: HusIcon.ClockCircleOutlined
+        }
 
-                        HusTag {
-                            text: 'stop'
-                            tagState: HusTag.State_Default
-                            iconSource: HusIcon.MinusCircleOutlined
-                        }
-                    }
-                }
+        HusTag {
+            text: 'stop'
+            tagState: HusTag.State_Default
+            iconSource: HusIcon.MinusCircleOutlined
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

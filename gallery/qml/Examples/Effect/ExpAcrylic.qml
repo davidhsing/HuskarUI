@@ -53,96 +53,96 @@ luminosity | real | 0.01 | 亮度
 通过 \`radiusBlur\` 模糊半径。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
+Column {
 
-                    HusSlider {
-                        id: opacityTintSlider
-                        width: 200
-                        height: 30
-                        min: 0.0
-                        max: 1.0
-                        stepSize: 0.01
-                        value: 0.65
+    HusSlider {
+        id: opacityTintSlider
+        width: 200
+        height: 30
+        min: 0.0
+        max: 1.0
+        stepSize: 0.01
+        value: 0.65
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('色调透明度: ') + parent.currentValue.toFixed(2);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('色调透明度: ') + parent.currentValue.toFixed(2);
+        }
+    }
 
-                    HusSlider {
-                        id: luminositySlider
-                        width: 200
-                        height: 30
-                        min: 0.0
-                        max: 1.0
-                        stepSize: 0.01
-                        value: 0.01
+    HusSlider {
+        id: luminositySlider
+        width: 200
+        height: 30
+        min: 0.0
+        max: 1.0
+        stepSize: 0.01
+        value: 0.01
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('亮度: ') + parent.currentValue.toFixed(2);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('亮度: ') + parent.currentValue.toFixed(2);
+        }
+    }
 
-                    HusSlider {
-                        id: radiusBlurSlider
-                        width: 200
-                        height: 30
-                        min: 0
-                        max: 128
-                        stepSize: 1
-                        value: 32
+    HusSlider {
+        id: radiusBlurSlider
+        width: 200
+        height: 30
+        min: 0
+        max: 128
+        stepSize: 1
+        value: 32
 
-                        HusCopyableText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.right
-                            anchors.leftMargin: 10
-                            text: qsTr('模糊半径: ') + parent.currentValue.toFixed(0);
-                        }
-                    }
+        HusCopyableText {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.right
+            anchors.leftMargin: 10
+            text: qsTr('模糊半径: ') + parent.currentValue.toFixed(0);
+        }
+    }
 
-                    Rectangle {
-                        width: 400
-                        height: 400
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        color: 'transparent'
-                        border.color: HusTheme.Primary.colorTextBase
+    Rectangle {
+        width: 400
+        height: 400
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: 'transparent'
+        border.color: HusTheme.Primary.colorTextBase
 
-                        HusIconText {
-                            id: source
-                            iconSize: 400
-                            iconSource: HusIcon.BugOutlined
-                            colorIcon: HusTheme.Primary.colorPrimary
-                        }
+        HusIconText {
+            id: source
+            iconSize: 400
+            iconSource: HusIcon.BugOutlined
+            colorIcon: HusTheme.Primary.colorPrimary
+        }
 
-                        HusAcrylic {
-                            x: (source.width - width) * 0.5
-                            y: (source.height - height) * 0.5
-                            width: 200
-                            height: width
-                            sourceItem: source
-                            opacityTint: opacityTintSlider.currentValue
-                            luminosity: luminositySlider.currentValue
-                            radiusBlur: radiusBlurSlider.currentValue
+        HusAcrylic {
+            x: (source.width - width) * 0.5
+            y: (source.height - height) * 0.5
+            width: 200
+            height: width
+            sourceItem: source
+            opacityTint: opacityTintSlider.currentValue
+            luminosity: luminositySlider.currentValue
+            radiusBlur: radiusBlurSlider.currentValue
 
-                            DragHandler {
-                                target: parent
-                                xAxis.minimum: source.x
-                                xAxis.maximum: source.x + source.width - parent.width
-                                yAxis.minimum: source.y
-                                yAxis.maximum: source.y + source.height - parent.height
-                            }
-                        }
-                    }
-                }
+            DragHandler {
+                target: parent
+                xAxis.minimum: source.x
+                xAxis.maximum: source.x + source.width - parent.width
+                yAxis.minimum: source.y
+                yAxis.maximum: source.y + source.height - parent.height
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
 

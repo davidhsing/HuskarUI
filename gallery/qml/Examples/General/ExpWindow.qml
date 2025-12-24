@@ -75,33 +75,33 @@ HusWindow {
 \`\`\`
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Item {
-                    height: 50
+Item {
+    height: 50
 
-                    HusButton {
-                        text: (windowLoader.visible ? qsTr('隐藏') : qsTr('显示')) + qsTr('窗口')
-                        type: HusButton.Type_Primary
-                        onClicked: windowLoader.visible = !windowLoader.visible;
-                    }
+    HusButton {
+        text: (windowLoader.visible ? qsTr('隐藏') : qsTr('显示')) + qsTr('窗口')
+        type: HusButton.Type_Primary
+        onClicked: windowLoader.visible = !windowLoader.visible;
+    }
 
-                    Loader {
-                        id: windowLoader
-                        visible: false
-                        sourceComponent: HusWindow {
-                            width: 600
-                            height: 400
-                            visible: windowLoader.visible
-                            title: qsTr('无边框窗口')
-                            captionBar.winIconWidth: 0
-                            captionBar.winIconHeight: 0
-                            captionBar.winIconDelegate: Item { }
-                            captionBar.closeCallback: () => windowLoader.visible = false;
-                        }
-                    }
-                }
+    Loader {
+        id: windowLoader
+        visible: false
+        sourceComponent: HusWindow {
+            width: 600
+            height: 400
+            visible: windowLoader.visible
+            title: qsTr('无边框窗口')
+            captionBar.winIconWidth: 0
+            captionBar.winIconHeight: 0
+            captionBar.winIconDelegate: Item { }
+            captionBar.closeCallback: () => windowLoader.visible = false;
+        }
+    }
+}
             `
             exampleDelegate: Item {
                 height: 50

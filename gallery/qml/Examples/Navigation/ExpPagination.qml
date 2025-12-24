@@ -77,13 +77,13 @@ quickJumperSuffix | string | - | 快捷跳转的后置文本(为空则不显示)
 基础分页，通过 \`currentPageIndex\` 设置当前页索引。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusPagination {
-                    currentPageIndex: 0
-                    total: 50
-                }
+HusPagination {
+    currentPageIndex: 0
+    total: 50
+}
             `
             exampleDelegate: HusPagination {
                 currentPageIndex: 0
@@ -102,35 +102,35 @@ quickJumperSuffix | string | - | 快捷跳转的后置文本(为空则不显示)
 - { value: 每页数量 }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusPagination {
-                        currentPageIndex: 6
-                        total: 500
-                        pageSizeModel: [
-                            { label: qsTr('10条每页'), value: 10 },
-                            { label: qsTr('20条每页'), value: 20 },
-                            { label: qsTr('30条每页'), value: 30 },
-                            { label: qsTr('40条每页'), value: 40 }
-                        ]
-                    }
+    HusPagination {
+        currentPageIndex: 6
+        total: 500
+        pageSizeModel: [
+            { label: qsTr('10条每页'), value: 10 },
+            { label: qsTr('20条每页'), value: 20 },
+            { label: qsTr('30条每页'), value: 30 },
+            { label: qsTr('40条每页'), value: 40 }
+        ]
+    }
 
-                    HusPagination {
-                        enabled: false
-                        currentPageIndex: 6
-                        total: 500
-                        pageSizeModel: [
-                            { label: qsTr('10条每页'), value: 10 },
-                            { label: qsTr('20条每页'), value: 20 },
-                            { label: qsTr('30条每页'), value: 30 },
-                            { label: qsTr('40条每页'), value: 40 }
-                        ]
-                    }
-                }
+    HusPagination {
+        enabled: false
+        currentPageIndex: 6
+        total: 500
+        pageSizeModel: [
+            { label: qsTr('10条每页'), value: 10 },
+            { label: qsTr('20条每页'), value: 20 },
+            { label: qsTr('30条每页'), value: 30 },
+            { label: qsTr('40条每页'), value: 40 }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -167,37 +167,37 @@ quickJumperSuffix | string | - | 快捷跳转的后置文本(为空则不显示)
 通过 \`showQuickJumper\` 显示快速跳转项，可通过 \`quickJumperDelegate\` 自定义。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusPagination {
-                        currentPageIndex: 6
-                        total: 500
-                        showQuickJumper: true
-                        pageSizeModel: [
-                            { label: qsTr('10条每页'), value: 10 },
-                            { label: qsTr('20条每页'), value: 20 },
-                            { label: qsTr('30条每页'), value: 30 },
-                            { label: qsTr('40条每页'), value: 40 }
-                        ]
-                    }
+    HusPagination {
+        currentPageIndex: 6
+        total: 500
+        showQuickJumper: true
+        pageSizeModel: [
+            { label: qsTr('10条每页'), value: 10 },
+            { label: qsTr('20条每页'), value: 20 },
+            { label: qsTr('30条每页'), value: 30 },
+            { label: qsTr('40条每页'), value: 40 }
+        ]
+    }
 
-                    HusPagination {
-                        enabled: false
-                        currentPageIndex: 6
-                        total: 500
-                        showQuickJumper: true
-                        pageSizeModel: [
-                            { label: qsTr('10条每页'), value: 10 },
-                            { label: qsTr('20条每页'), value: 20 },
-                            { label: qsTr('30条每页'), value: 30 },
-                            { label: qsTr('40条每页'), value: 40 }
-                        ]
-                    }
-                }
+    HusPagination {
+        enabled: false
+        currentPageIndex: 6
+        total: 500
+        showQuickJumper: true
+        pageSizeModel: [
+            { label: qsTr('10条每页'), value: 10 },
+            { label: qsTr('20条每页'), value: 20 },
+            { label: qsTr('30条每页'), value: 30 },
+            { label: qsTr('40条每页'), value: 40 }
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -236,29 +236,29 @@ quickJumperSuffix | string | - | 快捷跳转的后置文本(为空则不显示)
 通过 \`prevButtonDelegate\` 和 \`nextButtonDelegate\` 自定义上一步和下一步按钮。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                HusPagination {
-                    currentPageIndex: 2
-                    total: 500
-                    pageSizeModel: [
-                        { label: qsTr('10条每页'), value: 10 },
-                        { label: qsTr('20条每页'), value: 20 },
-                        { label: qsTr('30条每页'), value: 30 },
-                        { label: qsTr('40条每页'), value: 40 }
-                    ]
-                    prevButtonDelegate: HusButton {
-                        text: 'Previous'
-                        type: HusButton.Type_Link
-                        onClicked: gotoPrevPage();
-                    }
-                    nextButtonDelegate: HusButton {
-                        text: 'Next'
-                        type: HusButton.Type_Link
-                        onClicked: gotoNextPage();
-                    }
-                }
+HusPagination {
+    currentPageIndex: 2
+    total: 500
+    pageSizeModel: [
+        { label: qsTr('10条每页'), value: 10 },
+        { label: qsTr('20条每页'), value: 20 },
+        { label: qsTr('30条每页'), value: 30 },
+        { label: qsTr('40条每页'), value: 40 }
+    ]
+    prevButtonDelegate: HusButton {
+        text: 'Previous'
+        type: HusButton.Type_Link
+        onClicked: gotoPrevPage();
+    }
+    nextButtonDelegate: HusButton {
+        text: 'Next'
+        type: HusButton.Type_Link
+        onClicked: gotoNextPage();
+    }
+}
             `
             exampleDelegate: HusPagination {
                 currentPageIndex: 2

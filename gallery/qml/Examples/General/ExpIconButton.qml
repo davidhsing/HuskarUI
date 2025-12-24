@@ -57,53 +57,53 @@ colorIcon | color | - | 图标颜色
 - 图标处于结束位置{ HusIconButton.Position_End }
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 15
+Row {
+    spacing: 15
 
-                    HusIconButton {
-                        text: qsTr('搜索')
-                        iconSource: HusIcon.SearchOutlined
-                    }
+    HusIconButton {
+        text: qsTr('搜索')
+        iconSource: HusIcon.SearchOutlined
+    }
 
-                    HusIconButton {
-                        text: qsTr('搜索')
-                        type: HusButton.Type_Outlined
-                        iconSource: HusIcon.SearchOutlined
-                    }
+    HusIconButton {
+        text: qsTr('搜索')
+        type: HusButton.Type_Outlined
+        iconSource: HusIcon.SearchOutlined
+    }
 
-                    HusIconButton {
-                        type: HusButton.Type_Primary
-                        iconSource: HusIcon.SearchOutlined
-                    }
+    HusIconButton {
+        type: HusButton.Type_Primary
+        iconSource: HusIcon.SearchOutlined
+    }
 
-                    HusIconButton {
-                        text: qsTr('搜索')
-                        type: HusButton.Type_Primary
-                        iconSource: HusIcon.SearchOutlined
-                    }
+    HusIconButton {
+        text: qsTr('搜索')
+        type: HusButton.Type_Primary
+        iconSource: HusIcon.SearchOutlined
+    }
 
-                    HusIconButton {
-                        text: qsTr('搜索')
-                        type: HusButton.Type_Primary
-                        iconSource: HusIcon.SearchOutlined
-                        iconPosition: HusIconButton.Position_End
-                    }
+    HusIconButton {
+        text: qsTr('搜索')
+        type: HusButton.Type_Primary
+        iconSource: HusIcon.SearchOutlined
+        iconPosition: HusIconButton.Position_End
+    }
 
-                    HusIconButton {
-                        text: qsTr('搜索')
-                        type: HusButton.Type_Filled
-                        iconSource: HusIcon.SearchOutlined
-                    }
+    HusIconButton {
+        text: qsTr('搜索')
+        type: HusButton.Type_Filled
+        iconSource: HusIcon.SearchOutlined
+    }
 
-                    HusIconButton {
-                        text: qsTr('搜索')
-                        type: HusButton.Type_Text
-                        iconSource: HusIcon.SearchOutlined
-                    }
-                }
+    HusIconButton {
+        text: qsTr('搜索')
+        type: HusButton.Type_Text
+        iconSource: HusIcon.SearchOutlined
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 15

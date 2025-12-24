@@ -43,29 +43,29 @@ Flickable {
 通过 \`danger\` 属性设置为警示按钮，例如关闭按钮。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    spacing: 15
+Row {
+    spacing: 15
 
-                    HusCaptionButton {
-                        iconSource: HusIcon.CloseOutlined
-                    }
+    HusCaptionButton {
+        iconSource: HusIcon.CloseOutlined
+    }
 
-                    HusCaptionButton {
-                        text: qsTr('普通')
-                        colorText: colorIcon
-                        iconSource: HusIcon.CloseOutlined
-                    }
+    HusCaptionButton {
+        text: qsTr('普通')
+        colorText: colorIcon
+        iconSource: HusIcon.CloseOutlined
+    }
 
-                    HusCaptionButton {
-                        text: qsTr('警示')
-                        colorText: colorIcon
-                        danger: true
-                        iconSource: HusIcon.CloseOutlined
-                    }
-                }
+    HusCaptionButton {
+        text: qsTr('警示')
+        colorText: colorIcon
+        danger: true
+        iconSource: HusIcon.CloseOutlined
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 15

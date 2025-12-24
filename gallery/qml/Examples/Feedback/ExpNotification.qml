@@ -112,121 +112,121 @@ colorIcon | color | 可选 | 通知图标颜色
 一般通知，**注意** 推荐通过将 \`parent\` 设置为窗口覆盖层 \`Overlay.overlay\` 从而将其置于顶层。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Item {
-                    width: parent.width
+Item {
+    width: parent.width
 
-                    HusNotification {
-                        id: notification1
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_TopLeft
-                    }
+    HusNotification {
+        id: notification1
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_TopLeft
+    }
 
-                    HusNotification {
-                        id: notification2
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_TopRight
-                    }
+    HusNotification {
+        id: notification2
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_TopRight
+    }
 
-                    HusNotification {
-                        id: notification3
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_BottomLeft
-                    }
+    HusNotification {
+        id: notification3
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_BottomLeft
+    }
 
-                    HusNotification {
-                        id: notification4
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_BottomRight
-                    }
+    HusNotification {
+        id: notification4
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_BottomRight
+    }
 
-                    HusNotification {
-                        id: notification5
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_Top
-                    }
+    HusNotification {
+        id: notification5
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_Top
+    }
 
-                    HusNotification {
-                        id: notification6
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_Bottom
-                    }
+    HusNotification {
+        id: notification6
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_Bottom
+    }
 
-                    Grid {
-                        rows: 3
-                        columns: 2
-                        spacing: 10
+    Grid {
+        rows: 3
+        columns: 2
+        spacing: 10
 
-                        HusIconButton {
-                            type: HusButton.Type_Primary
-                            iconSource: HusIcon.RadiusUpleftOutlined
-                            text: 'TopLeft'
-                            onClicked: {
-                                notification1.info('Notification TopLeft', 'Hello, HuskarUI!');
-                            }
-                        }
+        HusIconButton {
+            type: HusButton.Type_Primary
+            iconSource: HusIcon.RadiusUpleftOutlined
+            text: 'TopLeft'
+            onClicked: {
+                notification1.info('Notification TopLeft', 'Hello, HuskarUI!');
+            }
+        }
 
-                        HusIconButton {
-                            type: HusButton.Type_Primary
-                            iconSource: HusIcon.RadiusUprightOutlined
-                            text: 'TopRight'
-                            onClicked: {
-                                notification2.info('Notification TopRight', 'Hello, HuskarUI!');
-                            }
-                        }
+        HusIconButton {
+            type: HusButton.Type_Primary
+            iconSource: HusIcon.RadiusUprightOutlined
+            text: 'TopRight'
+            onClicked: {
+                notification2.info('Notification TopRight', 'Hello, HuskarUI!');
+            }
+        }
 
-                        HusIconButton {
-                            type: HusButton.Type_Primary
-                            iconSource: HusIcon.RadiusBottomleftOutlined
-                            text: 'BottomLeft'
-                            onClicked: {
-                                notification3.info('Notification BottomLeft', 'Hello, HuskarUI!');
-                            }
-                        }
+        HusIconButton {
+            type: HusButton.Type_Primary
+            iconSource: HusIcon.RadiusBottomleftOutlined
+            text: 'BottomLeft'
+            onClicked: {
+                notification3.info('Notification BottomLeft', 'Hello, HuskarUI!');
+            }
+        }
 
-                        HusIconButton {
-                            type: HusButton.Type_Primary
-                            iconSource: HusIcon.RadiusBottomrightOutlined
-                            text: 'BottomRight'
-                            onClicked: {
-                                notification4.info('Notification BottomRight', 'Hello, HuskarUI!');
-                            }
-                        }
+        HusIconButton {
+            type: HusButton.Type_Primary
+            iconSource: HusIcon.RadiusBottomrightOutlined
+            text: 'BottomRight'
+            onClicked: {
+                notification4.info('Notification BottomRight', 'Hello, HuskarUI!');
+            }
+        }
 
-                        HusIconButton {
-                            type: HusButton.Type_Primary
-                            iconSource: HusIcon.BorderTopOutlined
-                            text: 'Top'
-                            onClicked: {
-                                notification5.info('Notification Top', 'Hello, HuskarUI!');
-                            }
-                        }
+        HusIconButton {
+            type: HusButton.Type_Primary
+            iconSource: HusIcon.BorderTopOutlined
+            text: 'Top'
+            onClicked: {
+                notification5.info('Notification Top', 'Hello, HuskarUI!');
+            }
+        }
 
-                        HusIconButton {
-                            type: HusButton.Type_Primary
-                            iconSource: HusIcon.BorderBottomOutlined
-                            text: 'Bottom'
-                            onClicked: {
-                                notification6.info('Notification Bottom', 'Hello, HuskarUI!');
-                            }
-                        }
-                    }
-                }
+        HusIconButton {
+            type: HusButton.Type_Primary
+            iconSource: HusIcon.BorderBottomOutlined
+            text: 'Bottom'
+            onClicked: {
+                notification6.info('Notification Bottom', 'Hello, HuskarUI!');
+            }
+        }
+    }
+}
             `
             exampleDelegate: Row {
 
@@ -347,28 +347,28 @@ colorIcon | color | 可选 | 通知图标颜色
 自定义通知框自动关闭的延时，通过 \`duration\` 属性设置持续时间，默认 4.5s。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Item {
-                    width: parent.width
-                    HusNotification {
-                        id: notification7
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_TopRight
-                    }
+Item {
+    width: parent.width
+    HusNotification {
+        id: notification7
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_TopRight
+    }
 
-                    HusButton {
-                        type: HusButton.Type_Primary
-                        text: 'Open the notification box'
-                        onClicked: {
-                            notification7.info('Notification Title', 'I will never close automatically. This is a purposely very very long description that has many many characters and words.', 99999999);
-                        }
-                    }
-                }
+    HusButton {
+        type: HusButton.Type_Primary
+        text: 'Open the notification box'
+        onClicked: {
+            notification7.info('Notification Title', 'I will never close automatically. This is a purposely very very long description that has many many characters and words.', 99999999);
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 HusNotification {
@@ -396,50 +396,50 @@ colorIcon | color | 可选 | 通知图标颜色
 包括成功、信息、失败、警告。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusNotification {
-                        id: notification8
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_TopRight
-                    }
+    HusNotification {
+        id: notification8
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_TopRight
+    }
 
-                    HusButton {
-                        text: 'Success'
-                        onClicked: {
-                            notification8.success('Notification Title', 'This is a success notification!');
-                        }
-                    }
+    HusButton {
+        text: 'Success'
+        onClicked: {
+            notification8.success('Notification Title', 'This is a success notification!');
+        }
+    }
 
-                    HusButton {
-                        text: 'Info'
-                        onClicked: {
-                            notification8.info('Notification Title', 'This is a info notification!');
-                        }
-                    }
+    HusButton {
+        text: 'Info'
+        onClicked: {
+            notification8.info('Notification Title', 'This is a info notification!');
+        }
+    }
 
-                    HusButton {
-                        text: 'Warning'
-                        onClicked: {
-                            notification8.warning('Notification Title', 'This is a warning notification!');
-                        }
-                    }
+    HusButton {
+        text: 'Warning'
+        onClicked: {
+            notification8.warning('Notification Title', 'This is a warning notification!');
+        }
+    }
 
-                    HusButton {
-                        text: 'Error'
-                        onClicked: {
-                            notification8.error('Notification Title', 'This is an error notification!');
-                        }
-                    }
-                }
+    HusButton {
+        text: 'Error'
+        onClicked: {
+            notification8.error('Notification Title', 'This is an error notification!');
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -489,30 +489,30 @@ colorIcon | color | 可选 | 通知图标颜色
 通过 \`showProgress\` 属性设置是否显示进度条。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusNotification {
-                        id: notification9
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_TopRight
-                        showProgress: true
-                    }
+    HusNotification {
+        id: notification9
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_TopRight
+        showProgress: true
+    }
 
-                    HusButton {
-                        text: 'Show progress notification'
-                        onClicked: {
-                            notification9.info('Notification Title', 'This is a show progress notification!');
-                        }
-                    }
-                }
+    HusButton {
+        text: 'Show progress notification'
+        onClicked: {
+            notification9.info('Notification Title', 'This is a show progress notification!');
+        }
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -544,58 +544,58 @@ colorIcon | color | 可选 | 通知图标颜色
 通过 \`stackThreshold\` 属性设置堆叠阈值。\n
                        `)
             code: `
-                import QtQuick
-                import QtQuick.Controls.Basic
-                import HuskarUI.Basic
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusNotification {
-                        id: notification10
-                        parent: Overlay.overlay
-                        anchors.fill: parent
-                        anchors.topMargin: captionBar.height
-                        position: HusNotification.Position_TopRight
-                        stackMode: stackSwitch.checked
-                        stackThreshold: stackThresholdInput.value
-                    }
+    HusNotification {
+        id: notification10
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.Position_TopRight
+        stackMode: stackSwitch.checked
+        stackThreshold: stackThresholdInput.value
+    }
 
-                    HusButton {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: 'Open the notification box'
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            notification10.open({
-                                                    message: 'Notification Title',
-                                                    description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-                                                    duration: 99999999
-                                                });
-                        }
-                    }
+    HusButton {
+        anchors.verticalCenter: parent.verticalCenter
+        text: 'Open the notification box'
+        type: HusButton.Type_Primary
+        onClicked: {
+            notification10.open({
+                                    message: 'Notification Title',
+                                    description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+                                    duration: 99999999
+                                });
+        }
+    }
 
-                    HusText {
-                        text: 'Enabled stackMode:'
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
+    HusText {
+        text: 'Enabled stackMode:'
+        anchors.verticalCenter: parent.verticalCenter
+    }
 
-                    HusSwitch {
-                        id: stackSwitch
-                        anchors.verticalCenter: parent.verticalCenter
-                        checked: true
-                    }
+    HusSwitch {
+        id: stackSwitch
+        anchors.verticalCenter: parent.verticalCenter
+        checked: true
+    }
 
-                    HusInputNumber {
-                        id: stackThresholdInput
-                        width: 200
-                        anchors.verticalCenter: parent.verticalCenter
-                        prefix: 'Threshold: '
-                        value: 5
-                        min: 1
-                        max: 10
-                    }
-                }
+    HusInputNumber {
+        id: stackThresholdInput
+        width: 200
+        anchors.verticalCenter: parent.verticalCenter
+        prefix: 'Threshold: '
+        value: 5
+        min: 1
+        max: 10
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10

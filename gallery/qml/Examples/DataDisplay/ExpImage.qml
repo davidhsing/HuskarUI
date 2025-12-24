@@ -19,9 +19,6 @@ Flickable {
 可预览的图片。\n
 * **继承自 { Image }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -281,24 +278,24 @@ Item {
 通过 \`items\` 设置预览图片模型。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusImage {
-                        width: 200
-                        height: 300
-                        previewEnabled: true
-                        source: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp'
-                        items: [
-                            { url: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp' },
-                            { url: 'https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp' },
-                            { url: 'https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp' },
-                        ]
-                    }
-                }
+    HusImage {
+        width: 200
+        height: 300
+        previewEnabled: true
+        source: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp'
+        items: [
+            { url: 'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp' },
+            { url: 'https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp' },
+            { url: 'https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -325,22 +322,22 @@ Item {
 图片源 \`source\` 可以和预览源 \`items\` 完全不同。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    HusImage {
-                        width: 200
-                        height: width
-                        previewEnabled: true
-                        source: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200'
-                        items: [
-                            { url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' },
-                        ]
-                    }
-                }
+    HusImage {
+        width: 200
+        height: width
+        previewEnabled: true
+        source: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200'
+        items: [
+            { url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -365,48 +362,48 @@ Item {
 通过 \`scaleStep\` 设置每次缩放的步长。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
+Column {
+    spacing: 10
 
-                    Row {
-                        height: 30
+    Row {
+        height: 30
 
-                        HusText {
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: 'scaleStep: '
-                        }
+        HusText {
+            anchors.verticalCenter: parent.verticalCenter
+            text: 'scaleStep: '
+        }
 
-                        HusInputNumber {
-                            id: stepInputNumber
-                            height: parent.height
-                            width: 120
-                            value: 0.5
-                            step: 0.1
-                            min: 0.1
-                            max: 5
-                            precision: 1
-                        }
-                    }
+        HusInputNumber {
+            id: stepInputNumber
+            height: parent.height
+            width: 120
+            value: 0.5
+            step: 0.1
+            min: 0.1
+            max: 5
+            precision: 1
+        }
+    }
 
-                    HusButton {
-                        text: 'Show image preview'
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            imagePreview1.open();
-                        }
-                    }
+    HusButton {
+        text: 'Show image preview'
+        type: HusButton.Type_Primary
+        onClicked: {
+            imagePreview1.open();
+        }
+    }
 
-                    HusImagePreview {
-                        id: imagePreview1
-                        scaleStep: stepInputNumber.value
-                        items: [
-                            { url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' },
-                        ]
-                    }
-                }
+    HusImagePreview {
+        id: imagePreview1
+        scaleStep: stepInputNumber.value
+        items: [
+            { url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' },
+        ]
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

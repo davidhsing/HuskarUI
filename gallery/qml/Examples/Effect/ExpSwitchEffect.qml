@@ -73,127 +73,127 @@ maskColorization | real | 0 | 着色强度(0.0~1.0)
 通过 \`startSwitch\` 函数开始切换。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusButton {
-                        id: startButton
-                        leftPadding: 20
-                        rightPadding: 20
-                        text: qsTr('开始')
-                        type: HusButton.Type_Primary
-                        onClicked: {
-                            direction = !direction;
-                            if (direction) {
-                                switchEffect.startSwitch(item1, item2)
-                            } else {
-                                switchEffect.startSwitch(item2, item1)
-                            }
-                        }
-                        property bool direction: false
-                    }
+    HusButton {
+        id: startButton
+        leftPadding: 20
+        rightPadding: 20
+        text: qsTr('开始')
+        type: HusButton.Type_Primary
+        onClicked: {
+            direction = !direction;
+            if (direction) {
+                switchEffect.startSwitch(item1, item2)
+            } else {
+                switchEffect.startSwitch(item2, item1)
+            }
+        }
+        property bool direction: false
+    }
 
-                    Row {
-                        height: 30
-                        spacing: 10
+    Row {
+        height: 30
+        spacing: 10
 
-                        HusText {
-                            text: qsTr('持续时间')
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
+        HusText {
+            text: qsTr('持续时间')
+            anchors.verticalCenter: parent.verticalCenter
+        }
 
-                        HusSlider {
-                            id: durationSlider
-                            width: 240
-                            height: parent.height
-                            min: 0
-                            max: 3000
-                            value: 1500
-                        }
+        HusSlider {
+            id: durationSlider
+            width: 240
+            height: parent.height
+            min: 0
+            max: 3000
+            value: 1500
+        }
 
-                        HusText {
-                            text: durationSlider.currentValue.toFixed(0)
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+        HusText {
+            text: durationSlider.currentValue.toFixed(0)
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-                    HusRadioBlock {
-                        id: effectType
-                        initCheckedIndex: 0
-                        model: [
-                            { 'label': qsTr('无'), 'value': HusSwitchEffect.Type_None, 'duration': 0 },
-                            { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.Type_Opacity, 'duration': 800 },
-                            { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.Type_Blurry, 'duration': 1200 },
-                            {
-                                'label': qsTr('遮罩特效'),
-                                'value': HusSwitchEffect.Type_Mask,
-                                'duration': 1500,
-                                'maskScaleEnabled': true,
-                                'maskRotationEnabled': true,
-                                'maskSource': 'qrc:/HuskarUI/resources/images/star.png',
-                            },
-                            {
-                                'label': qsTr('百叶窗特效'),
-                                'value': HusSwitchEffect.Type_Blinds,
-                                'duration': 1500,
-                            },
-                            {
-                                'label': qsTr('3D翻转特效'),
-                                'value': HusSwitchEffect.Type_3DFlip,
-                                'duration': 1500,
-                            },
-                            {
-                                'label': qsTr('雷电特效'),
-                                'value': HusSwitchEffect.Type_Thunder,
-                                'duration': 1500,
-                            },
-                        ]
-                        onClicked: function(index, radioData) {
-                            switchEffect.type = radioData.value;
-                            switchEffect.maskScaleEnabled = radioData.maskScaleEnabled ?? false;
-                            switchEffect.maskRotationEnabled = radioData.maskRotationEnabled ?? false;
-                            switchEffect.maskSource = radioData.maskSource || '';
-                            durationSlider.value = radioData.duration;
-                        }
-                    }
+    HusRadioBlock {
+        id: effectType
+        initCheckedIndex: 0
+        model: [
+            { 'label': qsTr('无'), 'value': HusSwitchEffect.Type_None, 'duration': 0 },
+            { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.Type_Opacity, 'duration': 800 },
+            { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.Type_Blurry, 'duration': 1200 },
+            {
+                'label': qsTr('遮罩特效'),
+                'value': HusSwitchEffect.Type_Mask,
+                'duration': 1500,
+                'maskScaleEnabled': true,
+                'maskRotationEnabled': true,
+                'maskSource': 'qrc:/HuskarUI/resources/images/star.png',
+            },
+            {
+                'label': qsTr('百叶窗特效'),
+                'value': HusSwitchEffect.Type_Blinds,
+                'duration': 1500,
+            },
+            {
+                'label': qsTr('3D翻转特效'),
+                'value': HusSwitchEffect.Type_3DFlip,
+                'duration': 1500,
+            },
+            {
+                'label': qsTr('雷电特效'),
+                'value': HusSwitchEffect.Type_Thunder,
+                'duration': 1500,
+            },
+        ]
+        onClicked: function(index, radioData) {
+            switchEffect.type = radioData.value;
+            switchEffect.maskScaleEnabled = radioData.maskScaleEnabled ?? false;
+            switchEffect.maskRotationEnabled = radioData.maskRotationEnabled ?? false;
+            switchEffect.maskSource = radioData.maskSource || '';
+            durationSlider.value = radioData.duration;
+        }
+    }
 
-                    Item {
-                        width: parent.width
-                        height: 500
+    Item {
+        width: parent.width
+        height: 500
 
-                        Image {
-                            id: item1
-                            width: parent.width
-                            height: parent.height
-                            source: 'qrc:/Gallery/images/swithc_effect1.jpg'
-                            visible: true
-                        }
+        Image {
+            id: item1
+            width: parent.width
+            height: parent.height
+            source: 'qrc:/Gallery/images/swithc_effect1.jpg'
+            visible: true
+        }
 
-                        Image {
-                            id: item2
-                            width: parent.width
-                            height: parent.height
-                            source: 'qrc:/Gallery/images/swithc_effect2.jpg'
-                            visible: false
-                        }
+        Image {
+            id: item2
+            width: parent.width
+            height: parent.height
+            source: 'qrc:/Gallery/images/swithc_effect2.jpg'
+            visible: false
+        }
 
-                        HusSwitchEffect {
-                            id: switchEffect
-                            anchors.fill: parent
-                            duration: durationSlider.currentValue
-                            maskScale: animationTime * 3
-                            maskRotation: (1.0 - animationTime) * 360
-                            onFinished: {
-                                item1.visible = !startButton.direction;
-                                item2.visible = startButton.direction;
-                            }
-                        }
-                    }
-                }
+        HusSwitchEffect {
+            id: switchEffect
+            anchors.fill: parent
+            duration: durationSlider.currentValue
+            maskScale: animationTime * 3
+            maskRotation: (1.0 - animationTime) * 360
+            onFinished: {
+                item1.visible = !startButton.direction;
+                item2.visible = startButton.direction;
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

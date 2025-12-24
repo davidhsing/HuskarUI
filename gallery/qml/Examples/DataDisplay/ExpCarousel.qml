@@ -83,50 +83,50 @@ radiusIndicator | [HusRadius](internal://HusRadius) | - | 指示器圆角半径
 通过 \`infinite\` 属性设置是否无限滚动。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-                    width: parent.width
+Column {
+    spacing: 10
+    width: parent.width
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusText { text: qsTr('无限滚动') }
+        HusText { text: qsTr('无限滚动') }
 
-                        HusSwitch {
-                            id: infiniteSwitch
-                            checked: true
-                        }
-                    }
+        HusSwitch {
+            id: infiniteSwitch
+            checked: true
+        }
+    }
 
-                    HusCarousel {
-                        id: carousel1
-                        width: parent.width
-                        height: 200
-                        infinite: infiniteSwitch.checked
-                        initModel: [
-                            { label: '1' },
-                            { label: '2' },
-                            { label: '3' },
-                            { label: '4' },
-                        ]
-                        contentDelegate: Rectangle {
-                            width: carousel1.width
-                            height: carousel1.height
-                            color: '#364d79'
+    HusCarousel {
+        id: carousel1
+        width: parent.width
+        height: 200
+        infinite: infiniteSwitch.checked
+        initModel: [
+            { label: '1' },
+            { label: '2' },
+            { label: '3' },
+            { label: '4' },
+        ]
+        contentDelegate: Rectangle {
+            width: carousel1.width
+            height: carousel1.height
+            color: '#364d79'
 
-                            HusText {
-                                anchors.centerIn: parent
-                                text: model.label
-                                color: 'white'
-                                font.pixelSize: 16
-                                font.bold: true
-                            }
-                        }
-                    }
-                }
+            HusText {
+                anchors.centerIn: parent
+                text: model.label
+                color: 'white'
+                font.pixelSize: 16
+                font.bold: true
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -181,50 +181,50 @@ radiusIndicator | [HusRadius](internal://HusRadius) | - | 指示器圆角半径
 - 垂直滚动，指示器在右方{ HusCarousel.Position_Right }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-                    width: parent.width
+Column {
+    spacing: 10
+    width: parent.width
 
-                    HusRadioBlock {
-                        id: positionBlock
-                        initCheckedIndex: 1
-                        model: [
-                            { label: qsTr('上'), value: HusCarousel.Position_Top },
-                            { label: qsTr('下'), value: HusCarousel.Position_Bottom },
-                            { label: qsTr('左'), value: HusCarousel.Position_Left },
-                            { label: qsTr('右'), value: HusCarousel.Position_Right }
-                        ]
-                    }
+    HusRadioBlock {
+        id: positionBlock
+        initCheckedIndex: 1
+        model: [
+            { label: qsTr('上'), value: HusCarousel.Position_Top },
+            { label: qsTr('下'), value: HusCarousel.Position_Bottom },
+            { label: qsTr('左'), value: HusCarousel.Position_Left },
+            { label: qsTr('右'), value: HusCarousel.Position_Right }
+        ]
+    }
 
-                    HusCarousel {
-                        id: carousel2
-                        width: parent.width
-                        height: 200
-                        position: positionBlock.currentCheckedValue
-                        initModel: [
-                            { label: '1' },
-                            { label: '2' },
-                            { label: '3' },
-                            { label: '4' },
-                        ]
-                        contentDelegate: Rectangle {
-                            width: carousel2.width
-                            height: carousel2.height
-                            color: '#364d79'
+    HusCarousel {
+        id: carousel2
+        width: parent.width
+        height: 200
+        position: positionBlock.currentCheckedValue
+        initModel: [
+            { label: '1' },
+            { label: '2' },
+            { label: '3' },
+            { label: '4' },
+        ]
+        contentDelegate: Rectangle {
+            width: carousel2.width
+            height: carousel2.height
+            color: '#364d79'
 
-                            HusText {
-                                anchors.centerIn: parent
-                                text: model.label
-                                color: 'white'
-                                font.pixelSize: 16
-                                font.bold: true
-                            }
-                        }
-                    }
-                }
+            HusText {
+                anchors.centerIn: parent
+                text: model.label
+                color: 'white'
+                font.pixelSize: 16
+                font.bold: true
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -276,39 +276,39 @@ radiusIndicator | [HusRadius](internal://HusRadius) | - | 指示器圆角半径
 通过 \`autoplaySpeed\` 属性设置自动切换时间。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-                    width: parent.width
+Column {
+    spacing: 10
+    width: parent.width
 
-                    HusCarousel {
-                        id: carousel4
-                        width: parent.width
-                        height: 200
-                        autoplay: true
-                        initModel: [
-                            { label: '1' },
-                            { label: '2' },
-                            { label: '3' },
-                            { label: '4' },
-                        ]
-                        contentDelegate: Rectangle {
-                            width: carousel4.width
-                            height: carousel4.height
-                            color: '#364d79'
+    HusCarousel {
+        id: carousel4
+        width: parent.width
+        height: 200
+        autoplay: true
+        initModel: [
+            { label: '1' },
+            { label: '2' },
+            { label: '3' },
+            { label: '4' },
+        ]
+        contentDelegate: Rectangle {
+            width: carousel4.width
+            height: carousel4.height
+            color: '#364d79'
 
-                            HusText {
-                                anchors.centerIn: parent
-                                text: model.label
-                                color: 'white'
-                                font.pixelSize: 16
-                                font.bold: true
-                            }
-                        }
-                    }
-                }
+            HusText {
+                anchors.centerIn: parent
+                text: model.label
+                color: 'white'
+                font.pixelSize: 16
+                font.bold: true
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -348,39 +348,39 @@ radiusIndicator | [HusRadius](internal://HusRadius) | - | 指示器圆角半径
 通过 \`showArrow\` 属性设置是否显示切换箭头。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    spacing: 10
-                    width: parent.width
+Column {
+    spacing: 10
+    width: parent.width
 
-                    HusCarousel {
-                        id: carousel5
-                        width: parent.width
-                        height: 200
-                        showArrow: true
-                        initModel: [
-                            { label: '1' },
-                            { label: '2' },
-                            { label: '3' },
-                            { label: '4' },
-                        ]
-                        contentDelegate: Rectangle {
-                            width: carousel5.width
-                            height: carousel5.height
-                            color: '#364d79'
+    HusCarousel {
+        id: carousel5
+        width: parent.width
+        height: 200
+        showArrow: true
+        initModel: [
+            { label: '1' },
+            { label: '2' },
+            { label: '3' },
+            { label: '4' },
+        ]
+        contentDelegate: Rectangle {
+            width: carousel5.width
+            height: carousel5.height
+            color: '#364d79'
 
-                            HusText {
-                                anchors.centerIn: parent
-                                text: model.label
-                                color: 'white'
-                                font.pixelSize: 16
-                                font.bold: true
-                            }
-                        }
-                    }
-                }
+            HusText {
+                anchors.centerIn: parent
+                text: model.label
+                color: 'white'
+                font.pixelSize: 16
+                font.bold: true
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10

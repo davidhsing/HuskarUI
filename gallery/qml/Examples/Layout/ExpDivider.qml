@@ -65,40 +65,40 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 居右{ HusDivider.Align_Right }
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 15
+Column {
+    width: parent.width
+    spacing: 15
 
-                    HusText {
-                        width: parent.width
-                        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
-                        wrapMode: Text.WrapAnywhere
-                    }
+    HusText {
+        width: parent.width
+        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
+        wrapMode: Text.WrapAnywhere
+    }
 
-                    HusDivider {
-                        width: parent.width
-                        height: 30
-                        title: qsTr('水平分割线-居左')
-                        titleAlign: HusDivider.Align_Left
-                    }
+    HusDivider {
+        width: parent.width
+        height: 30
+        title: qsTr('水平分割线-居左')
+        titleAlign: HusDivider.Align_Left
+    }
 
-                    HusDivider {
-                        width: parent.width
-                        height: 30
-                        title: qsTr('水平分割线-居中')
-                        titleAlign: HusDivider.Align_Center
-                    }
+    HusDivider {
+        width: parent.width
+        height: 30
+        title: qsTr('水平分割线-居中')
+        titleAlign: HusDivider.Align_Center
+    }
 
-                    HusDivider {
-                        width: parent.width
-                        height: 30
-                        title: qsTr('水平分割线-居右')
-                        titleAlign: HusDivider.Align_Right
-                    }
-                }
+    HusDivider {
+        width: parent.width
+        height: 30
+        title: qsTr('水平分割线-居右')
+        titleAlign: HusDivider.Align_Right
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -141,32 +141,32 @@ contentDescription | string | '' | 内容描述(提高可用性)
 如果需要垂直标题，请自行添加\`\\n\`
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 15
+Column {
+    width: parent.width
+    spacing: 15
 
-                    HusText {
-                        width: parent.width
-                        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
-                        wrapMode: Text.WrapAnywhere
-                    }
+    HusText {
+        width: parent.width
+        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
+        wrapMode: Text.WrapAnywhere
+    }
 
-                    HusDivider {
-                        width: parent.width
-                        height: 30
-                        title: qsTr('水平分割线')
-                    }
+    HusDivider {
+        width: parent.width
+        height: 30
+        title: qsTr('水平分割线')
+    }
 
-                    HusDivider {
-                        width: 30
-                        height: 200
-                        orientation: Qt.Vertical
-                        title: qsTr('垂\\n直\\n分\\n割\\n线')
-                    }
-                }
+    HusDivider {
+        width: 30
+        height: 200
+        orientation: Qt.Vertical
+        title: qsTr('垂\\n直\\n分\\n割\\n线')
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -200,32 +200,32 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 虚线{ HusDivider.DashLine }
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 15
+Column {
+    width: parent.width
+    spacing: 15
 
-                    HusText {
-                        width: parent.width
-                        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
-                        wrapMode: Text.WrapAnywhere
-                    }
+    HusText {
+        width: parent.width
+        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
+        wrapMode: Text.WrapAnywhere
+    }
 
-                    HusDivider {
-                        width: parent.width
-                        height: 30
-                        title: qsTr('实线分割线')
-                    }
+    HusDivider {
+        width: parent.width
+        height: 30
+        title: qsTr('实线分割线')
+    }
 
-                    HusDivider {
-                        width: parent.width
-                        height: 30
-                        style: HusDivider.DashLine
-                        title: qsTr('虚线分割线')
-                    }
-                }
+    HusDivider {
+        width: parent.width
+        height: 30
+        style: HusDivider.DashLine
+        title: qsTr('虚线分割线')
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 15

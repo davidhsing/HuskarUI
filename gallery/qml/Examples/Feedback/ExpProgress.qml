@@ -79,19 +79,19 @@ colorInfo | color | - | 进度条信息文本颜色
 - 激活状态(仅条形进度条有效){ HusProgress.Status_Active }\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    HusProgress { width: parent.width; percent: 30 }
-                    HusProgress { width: parent.width; percent: 50; status: HusProgress.Status_Active }
-                    HusProgress { width: parent.width; percent: 70; status: HusProgress.Status_Exception }
-                    HusProgress { width: parent.width; percent: 100; status: HusProgress.Status_Success }
-                    HusProgress { width: parent.width; percent: 50; showInfo: false }
-                }
+    HusProgress { width: parent.width; percent: 30 }
+    HusProgress { width: parent.width; percent: 50; status: HusProgress.Status_Active }
+    HusProgress { width: parent.width; percent: 70; status: HusProgress.Status_Exception }
+    HusProgress { width: parent.width; percent: 100; status: HusProgress.Status_Success }
+    HusProgress { width: parent.width; percent: 50; showInfo: false }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -111,17 +111,17 @@ colorInfo | color | - | 进度条信息文本颜色
 圆形进度条。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75 }
-                    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75; status: HusProgress.Status_Exception }
-                    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 100; status: HusProgress.Status_Success }
-                }
+    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75 }
+    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75; status: HusProgress.Status_Exception }
+    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 100; status: HusProgress.Status_Success }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -140,28 +140,28 @@ colorInfo | color | - | 进度条信息文本颜色
 若想要修改缺口的角度，可以设置 \`gapDegree\` 为你想要的值。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusProgress {
-                        width: 120
-                        height: width
-                        type: HusProgress.Type_Dashboard
-                        percent: 75
-                    }
+    HusProgress {
+        width: 120
+        height: width
+        type: HusProgress.Type_Dashboard
+        percent: 75
+    }
 
-                    HusProgress {
-                        width: 120
-                        height: width
-                        type: HusProgress.Type_Dashboard
-                        percent: 75
-                        gapDegree: 30
-                    }
-                }
+    HusProgress {
+        width: 120
+        height: width
+        type: HusProgress.Type_Dashboard
+        percent: 75
+        gapDegree: 30
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -190,61 +190,61 @@ colorInfo | color | - | 进度条信息文本颜色
 会动的进度条才是好进度条。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
-                    property real newPercent: 0
+Column {
+    width: parent.width
+    spacing: 10
+    property real newPercent: 0
 
-                    HusProgress {
-                        width: parent.width
-                        type: HusProgress.Type_Line
-                        percent: newPercent
-                        status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
-                    }
+    HusProgress {
+        width: parent.width
+        type: HusProgress.Type_Line
+        percent: newPercent
+        status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+    }
 
-                    Row {
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Circle
-                            percent: newPercent
-                            gapDegree: 30
-                            status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
-                        }
+    Row {
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Circle
+            percent: newPercent
+            gapDegree: 30
+            status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+        }
 
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Dashboard
-                            percent: newPercent
-                            status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
-                        }
-                    }
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Dashboard
+            percent: newPercent
+            status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+        }
+    }
 
-                    Row {
-                        HusIconButton {
-                            padding: 10
-                            radiusBg.all: 0
-                            iconSource: HusIcon.MinusOutlined
-                            onClicked: {
-                                if (newPercent - 10 >= 0)
-                                    newPercent -= 10;
-                            }
-                        }
-                        HusIconButton {
-                            padding: 10
-                            radiusBg.all: 0
-                            iconSource: HusIcon.PlusOutlined
-                            onClicked: {
-                                if (newPercent + 10 <= 100)
-                                    newPercent += 10;
-                            }
-                        }
-                    }
-                }
+    Row {
+        HusIconButton {
+            padding: 10
+            radiusBg.all: 0
+            iconSource: HusIcon.MinusOutlined
+            onClicked: {
+                if (newPercent - 10 >= 0)
+                    newPercent -= 10;
+            }
+        }
+        HusIconButton {
+            padding: 10
+            radiusBg.all: 0
+            iconSource: HusIcon.PlusOutlined
+            onClicked: {
+                if (newPercent + 10 <= 100)
+                    newPercent += 10;
+            }
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -306,30 +306,30 @@ colorInfo | color | - | 进度条信息文本颜色
 通过 \`formatter\` 属性指定格式，格式化器是形如：\`function(): string { }\` 的函数。\n。
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Row {
-                    width: parent.width
-                    spacing: 10
+Row {
+    width: parent.width
+    spacing: 10
 
-                    HusProgress {
-                        width: 120
-                        height: width
-                        type: HusProgress.Type_Circle
-                        percent: 75
-                        formatter: () => \`\${percent} Days\`
-                    }
+    HusProgress {
+        width: 120
+        height: width
+        type: HusProgress.Type_Circle
+        percent: 75
+        formatter: () => \`\${percent} Days\`
+    }
 
-                    HusProgress {
-                        width: 120
-                        height: width
-                        type: HusProgress.Type_Circle
-                        percent: 100
-                        status: HusProgress.Status_Success
-                        formatter: () => 'Done'
-                    }
-                }
+    HusProgress {
+        width: 120
+        height: width
+        type: HusProgress.Type_Circle
+        percent: 100
+        status: HusProgress.Status_Success
+        formatter: () => 'Done'
+    }
+}
             `
             exampleDelegate: Row {
                 spacing: 10
@@ -361,105 +361,105 @@ colorInfo | color | - | 进度条信息文本颜色
 通过 \`gradientStops\` 属性设置渐变色，它是形如 \`{ '0%': '#108ee9', '100%': '#87d068' }\` 的对象。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    property var twoColors: {
-                        '0%': '#108ee9',
-                        '100%': '#87d068',
-                    }
-                    property var conicColors: {
-                        '0%': '#87d068',
-                        '50%': '#ffe58f',
-                        '100%': '#ffccc7',
-                    };
+    property var twoColors: {
+        '0%': '#108ee9',
+        '100%': '#87d068',
+    }
+    property var conicColors: {
+        '0%': '#87d068',
+        '50%': '#ffe58f',
+        '100%': '#ffccc7',
+    };
 
-                    Column {
-                        spacing: 10
+    Column {
+        spacing: 10
 
-                        HusProgress {
-                            width: 600
-                            percent: 99.9
-                            useGradient: true
-                            gradientStops: twoColors
-                        }
+        HusProgress {
+            width: 600
+            percent: 99.9
+            useGradient: true
+            gradientStops: twoColors
+        }
 
-                        HusProgress {
-                            width: 600
-                            percent: 50
-                            useGradient: true
-                            gradientStops: twoColors
-                        }
-                    }
+        HusProgress {
+            width: 600
+            percent: 50
+            useGradient: true
+            gradientStops: twoColors
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Circle
-                            percent: 75
-                            useGradient: true
-                            gradientStops: twoColors
-                        }
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Circle
+            percent: 75
+            useGradient: true
+            gradientStops: twoColors
+        }
 
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Circle
-                            status: HusProgress.Status_Success
-                            percent: 100
-                            useGradient: true
-                            gradientStops: twoColors
-                        }
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Circle
+            status: HusProgress.Status_Success
+            percent: 100
+            useGradient: true
+            gradientStops: twoColors
+        }
 
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Circle
-                            percent: 93
-                            useGradient: true
-                            gradientStops: conicColors
-                        }
-                    }
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Circle
+            percent: 93
+            useGradient: true
+            gradientStops: conicColors
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Dashboard
-                            percent: 75
-                            useGradient: true
-                            gradientStops: twoColors
-                        }
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Dashboard
+            percent: 75
+            useGradient: true
+            gradientStops: twoColors
+        }
 
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Dashboard
-                            status: HusProgress.Status_Success
-                            percent: 100
-                            useGradient: true
-                            gradientStops: twoColors
-                        }
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Dashboard
+            status: HusProgress.Status_Success
+            percent: 100
+            useGradient: true
+            gradientStops: twoColors
+        }
 
-                        HusProgress {
-                            width: 120
-                            height: width
-                            type: HusProgress.Type_Dashboard
-                            percent: 93
-                            useGradient: true
-                            gradientStops: conicColors
-                        }
-                    }
-                }
+        HusProgress {
+            width: 120
+            height: width
+            type: HusProgress.Type_Dashboard
+            percent: 93
+            useGradient: true
+            gradientStops: conicColors
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
@@ -566,137 +566,137 @@ colorInfo | color | - | 进度条信息文本颜色
 通过将 \`currentStep\` 设置当前的步骤值。\n
                        `)
             code: `
-                import QtQuick
-                import HuskarUI.Basic
+import QtQuick
+import HuskarUI.Basic
 
-                Column {
-                    width: parent.width
-                    spacing: 10
+Column {
+    width: parent.width
+    spacing: 10
 
-                    Column {
-                        HusCopyableText {
-                            text: \`Custom step count: \${stepCoutSlider.currentValue}\`
-                        }
+    Column {
+        HusCopyableText {
+            text: \`Custom step count: \${stepCoutSlider.currentValue}\`
+        }
 
-                        HusSlider {
-                            id: stepCoutSlider
-                            width: 200
-                            height: 30
-                            min: 1
-                            max: 100
-                            value: 8
-                            stepSize: 1
-                        }
+        HusSlider {
+            id: stepCoutSlider
+            width: 200
+            height: 30
+            min: 1
+            max: 100
+            value: 8
+            stepSize: 1
+        }
 
-                        HusCopyableText {
-                            text: \`Custom gap: \${gapCountSlider.currentValue}\`
-                        }
+        HusCopyableText {
+            text: \`Custom gap: \${gapCountSlider.currentValue}\`
+        }
 
-                        HusSlider {
-                            id: gapCountSlider
-                            width: 200
-                            height: 30
-                            min: 0
-                            max: 40
-                            value: 4
-                            stepSize: 4
-                            snapMode: HusSlider.SnapAlways
-                        }
+        HusSlider {
+            id: gapCountSlider
+            width: 200
+            height: 30
+            min: 0
+            max: 40
+            value: 4
+            stepSize: 4
+            snapMode: HusSlider.SnapAlways
+        }
 
-                        HusCopyableText {
-                            text: \`Custom bar thickness: \${barThicknessSlider.currentValue}\`
-                        }
+        HusCopyableText {
+            text: \`Custom bar thickness: \${barThicknessSlider.currentValue}\`
+        }
 
-                        HusSlider {
-                            id: barThicknessSlider
-                            width: 200
-                            height: 30
-                            min: 4
-                            max: 40
-                            value: 8
-                            stepSize: 1
-                        }
-                    }
+        HusSlider {
+            id: barThicknessSlider
+            width: 200
+            height: 30
+            min: 4
+            max: 40
+            value: 8
+            stepSize: 1
+        }
+    }
 
-                    Column {
-                        spacing: 10
+    Column {
+        spacing: 10
 
-                        HusProgress {
-                            width: 600
-                            height: Math.min(40, Math.max(barThickness, 16))
-                            barThickness: barThicknessSlider.currentValue
-                            percent: 75
-                            gap: gapCountSlider.currentValue
-                            steps: Math.round(stepCoutSlider.currentValue)
-                            currentStep: Math.floor(percent / 100 * steps)
-                        }
+        HusProgress {
+            width: 600
+            height: Math.min(40, Math.max(barThickness, 16))
+            barThickness: barThicknessSlider.currentValue
+            percent: 75
+            gap: gapCountSlider.currentValue
+            steps: Math.round(stepCoutSlider.currentValue)
+            currentStep: Math.floor(percent / 100 * steps)
+        }
 
-                        HusProgress {
-                            width: 600
-                            height: Math.min(40, Math.max(barThickness, 16))
-                            status: HusProgress.Status_Exception
-                            barThickness: barThicknessSlider.currentValue
-                            percent: 75
-                            gap: gapCountSlider.currentValue
-                            steps: Math.round(stepCoutSlider.currentValue)
-                            currentStep: Math.floor(percent / 100 * steps)
-                        }
-                    }
+        HusProgress {
+            width: 600
+            height: Math.min(40, Math.max(barThickness, 16))
+            status: HusProgress.Status_Exception
+            barThickness: barThicknessSlider.currentValue
+            percent: 75
+            gap: gapCountSlider.currentValue
+            steps: Math.round(stepCoutSlider.currentValue)
+            currentStep: Math.floor(percent / 100 * steps)
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusProgress {
-                            width: 200
-                            height: width
-                            type: HusProgress.Type_Circle
-                            barThickness: barThicknessSlider.currentValue
-                            percent: 75
-                            gap: gapCountSlider.currentValue
-                            steps: Math.round(stepCoutSlider.currentValue)
-                            currentStep: Math.floor(percent / 100 * steps)
-                        }
+        HusProgress {
+            width: 200
+            height: width
+            type: HusProgress.Type_Circle
+            barThickness: barThicknessSlider.currentValue
+            percent: 75
+            gap: gapCountSlider.currentValue
+            steps: Math.round(stepCoutSlider.currentValue)
+            currentStep: Math.floor(percent / 100 * steps)
+        }
 
-                        HusProgress {
-                            width: 200
-                            height: width
-                            type: HusProgress.Type_Circle
-                            status: HusProgress.Status_Exception
-                            barThickness: barThicknessSlider.currentValue
-                            percent: 75
-                            gap: gapCountSlider.currentValue
-                            steps: Math.round(stepCoutSlider.currentValue)
-                            currentStep: Math.floor(percent / 100 * steps)
-                        }
-                    }
+        HusProgress {
+            width: 200
+            height: width
+            type: HusProgress.Type_Circle
+            status: HusProgress.Status_Exception
+            barThickness: barThicknessSlider.currentValue
+            percent: 75
+            gap: gapCountSlider.currentValue
+            steps: Math.round(stepCoutSlider.currentValue)
+            currentStep: Math.floor(percent / 100 * steps)
+        }
+    }
 
-                    Row {
-                        spacing: 10
+    Row {
+        spacing: 10
 
-                        HusProgress {
-                            width: 200
-                            height: width
-                            type: HusProgress.Type_Dashboard
-                            barThickness: barThicknessSlider.currentValue
-                            percent: 75
-                            gap: gapCountSlider.currentValue
-                            steps: Math.round(stepCoutSlider.currentValue)
-                            currentStep: Math.floor(percent / 100 * steps)
-                        }
+        HusProgress {
+            width: 200
+            height: width
+            type: HusProgress.Type_Dashboard
+            barThickness: barThicknessSlider.currentValue
+            percent: 75
+            gap: gapCountSlider.currentValue
+            steps: Math.round(stepCoutSlider.currentValue)
+            currentStep: Math.floor(percent / 100 * steps)
+        }
 
-                        HusProgress {
-                            width: 200
-                            height: width
-                            type: HusProgress.Type_Dashboard
-                            status: HusProgress.Status_Exception
-                            barThickness: barThicknessSlider.currentValue
-                            percent: 75
-                            gap: gapCountSlider.currentValue
-                            steps: Math.round(stepCoutSlider.currentValue)
-                            currentStep: Math.floor(percent / 100 * steps)
-                        }
-                    }
-                }
+        HusProgress {
+            width: 200
+            height: width
+            type: HusProgress.Type_Dashboard
+            status: HusProgress.Status_Exception
+            barThickness: barThicknessSlider.currentValue
+            percent: 75
+            gap: gapCountSlider.currentValue
+            steps: Math.round(stepCoutSlider.currentValue)
+            currentStep: Math.floor(percent / 100 * steps)
+        }
+    }
+}
             `
             exampleDelegate: Column {
                 spacing: 10
