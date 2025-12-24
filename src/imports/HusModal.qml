@@ -186,39 +186,6 @@ HusPopup {
         }
     }
 
-    function openInfo() {
-        iconSource = HusIcon.ExclamationCircleFilled;
-        colorIcon = HusTheme.Primary.colorInfo;
-        open();
-    }
-
-    function openSuccess() {
-        iconSource = HusIcon.CheckCircleFilled;
-        colorIcon = HusTheme.Primary.colorSuccess;
-        open();
-    }
-
-    function openError() {
-        iconSource = HusIcon.CloseCircleFilled;
-        colorIcon = HusTheme.Primary.colorError;
-        open();
-    }
-
-    function openWarning() {
-        iconSource = HusIcon.ExclamationCircleFilled;
-        colorIcon = HusTheme.Primary.colorWarning;
-        open();
-    }
-
-    function close() {
-        if (!visible || __private.isClosing) return;
-        if (animationEnabled) {
-            __private.startClosing();
-        } else {
-            visible = false;
-        }
-    }
-
     objectName: '__HusModal__'
     themeSource: HusTheme.HusModal
     parent: T.Overlay.overlay
@@ -326,17 +293,6 @@ HusPopup {
         }
     }
 
-    QtObject {
-        id: __private
-
-        property bool isClosing: false
-
-        function startClosing() {
-            if (isClosing) return;
-            isClosing = true;
-        }
-    }
-
     NumberAnimation {
         running: __private.isClosing
         target: control
@@ -359,5 +315,48 @@ HusPopup {
         to: 0.5
         easing.type: Easing.InQuad
         duration: control.animationEnabled ? HusTheme.Primary.durationMid : 0
+    }
+
+    function openInfo() {
+        iconSource = HusIcon.ExclamationCircleFilled;
+        colorIcon = HusTheme.Primary.colorInfo;
+        open();
+    }
+
+    function openSuccess() {
+        iconSource = HusIcon.CheckCircleFilled;
+        colorIcon = HusTheme.Primary.colorSuccess;
+        open();
+    }
+
+    function openError() {
+        iconSource = HusIcon.CloseCircleFilled;
+        colorIcon = HusTheme.Primary.colorError;
+        open();
+    }
+
+    function openWarning() {
+        iconSource = HusIcon.ExclamationCircleFilled;
+        colorIcon = HusTheme.Primary.colorWarning;
+        open();
+    }
+
+    function close() {
+        if (!visible || __private.isClosing) return;
+        if (animationEnabled) {
+            __private.startClosing();
+        } else {
+            visible = false;
+        }
+    }
+
+    QtObject {
+        id: __private
+        property bool isClosing: false
+
+        function startClosing() {
+            if (isClosing) return;
+            isClosing = true;
+        }
     }
 }

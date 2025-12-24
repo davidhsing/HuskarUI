@@ -45,106 +45,10 @@ Item {
         wrapMode: Text.WrapAnywhere
     }
 
-    function info(message: string, duration = 3000) {
-        open({
-                 'message': message,
-                 'type': HusMessage.Type_Message,
-                 'duration': duration
-             });
-    }
-
-    function success(message: string, duration = 3000) {
-        open({
-                 'message': message,
-                 'type': HusMessage.Type_Success,
-                 'duration': duration
-             });
-    }
-
-    function error(message: string, duration = 3000) {
-        open({
-                 'message': message,
-                 'type': HusMessage.Type_Error,
-                 'duration': duration
-             });
-    }
-
-    function warning(message: string, duration = 3000) {
-        open({
-                 'message': message,
-                 'type': HusMessage.Type_Warning,
-                 'duration': duration
-             });
-    }
-
-    function loading(message: string, duration = 3000) {
-        open({
-                 'loading': true,
-                 'message': message,
-                 'type': HusMessage.Type_Message,
-                 'duration': duration
-             });
-    }
-
-    function open(object) {
-        __listModel.append(__private.initObject(object));
-    }
-
-    function close(key: string) {
-        for (let i = 0; i < __listModel.count; i++) {
-            const object = __listModel.get(i);
-            if (object.key && object.key === key) {
-                const item = __repeater.itemAt(i);
-                if (item)
-                    item.removeSelf();
-                break;
-            }
-        }
-    }
-
-    function getMessage(key: string): var {
-        for (let i = 0; i < __listModel.count; i++) {
-            const object = __listModel.get(i);
-            if (object.key && object.key === key) {
-                return object;
-            }
-        }
-        return undefined;
-    }
-
-    function setProperty(key: string, property: string, value: var) {
-        for (let i = 0; i < __listModel.count; i++) {
-            const object = __listModel.get(i);
-            if (object.key && object.key === key) {
-                __listModel.setProperty(i, property, value);
-                break;
-            }
-        }
-    }
-
     objectName: '__HusMessage__'
 
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
     Behavior on colorMessage { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
-
-    QtObject {
-        id: __private
-
-        function initObject(object) {
-            if (!object.hasOwnProperty('key')) object.key = '';
-            if (!object.hasOwnProperty('loading')) object.loading = false;
-            if (!object.hasOwnProperty('message')) object.message = '';
-            if (!object.hasOwnProperty('type')) object.type = HusMessage.Type_None;
-            if (!object.hasOwnProperty('duration')) object.duration = 3000;
-            if (!object.hasOwnProperty('iconSize')) object.iconSize = control.defaultIconSize;
-            if (!object.hasOwnProperty('iconSource')) object.iconSource = 0;
-
-            if (!object.hasOwnProperty('colorIcon')) object.colorIcon = '';
-            else object.colorIcon = String(object.colorIcon);
-
-            return object;
-        }
-    }
 
     Column {
         anchors.top: parent.top
@@ -238,8 +142,12 @@ Item {
                             Layout.alignment: Qt.AlignVCenter
                             iconSize: __rootItem.iconSize
                             iconSource: {
-                                if (__rootItem.loading) return HusIcon.LoadingOutlined;
-                                if (__rootItem.iconSource != 0) return __rootItem.iconSource;
+                                if (__rootItem.loading) {
+                                    return HusIcon.LoadingOutlined;
+                                }
+                                if (__rootItem.iconSource !== 0 && __rootItem.iconSource !== '') {
+                                    return __rootItem.iconSource;
+                                }
                                 switch (type) {
                                     case HusMessage.Type_Success: return HusIcon.CheckCircleFilled;
                                     case HusMessage.Type_Warning: return HusIcon.ExclamationCircleFilled;
@@ -249,9 +157,13 @@ Item {
                                 }
                             }
                             colorIcon: {
-                                if (__rootItem.loading) return HusTheme.Primary.colorInfo;
-                                if (__rootItem.colorIcon !== '') return __rootItem.colorIcon;
-                                switch ((type)) {
+                                if (__rootItem.loading) {
+                                    return HusTheme.Primary.colorInfo;
+                                }
+                                if (__rootItem.colorIcon !== '') {
+                                    return __rootItem.colorIcon;
+                                }
+                                switch (type) {
                                     case HusMessage.Type_Success: return HusTheme.Primary.colorSuccess;
                                     case HusMessage.Type_Warning: return HusTheme.Primary.colorWarning;
                                     case HusMessage.Type_Message: return HusTheme.Primary.colorInfo;
@@ -299,6 +211,113 @@ Item {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    QtObject {
+        id: __private
+
+        function initObject(object: var): var {
+            if (!object.hasOwnProperty('key')) {
+                object.key = '';
+            }
+            if (!object.hasOwnProperty('loading')) {
+                object.loading = false;
+            }
+            if (!object.hasOwnProperty('message')) {
+                object.message = '';
+            }
+            if (!object.hasOwnProperty('type')) {
+                object.type = HusMessage.Type_None;
+            }
+            if (!object.hasOwnProperty('duration')) {
+                object.duration = 3000;
+            }
+            if (!object.hasOwnProperty('iconSize')) {
+                object.iconSize = control.defaultIconSize;
+            }
+            if (!object.hasOwnProperty('iconSource')) {
+                object.iconSource = 0;
+            }
+            object.colorIcon = !object.hasOwnProperty('colorIcon') ? '' : String(object.colorIcon);
+            return object;
+        }
+    }
+
+    function info(message: string, duration = 3000): void {
+        open({
+            'message': message,
+            'type': HusMessage.Type_Message,
+            'duration': duration
+        });
+    }
+
+    function success(message: string, duration = 3000): void {
+        open({
+            'message': message,
+            'type': HusMessage.Type_Success,
+            'duration': duration
+        });
+    }
+
+    function error(message: string, duration = 3000): void {
+        open({
+            'message': message,
+            'type': HusMessage.Type_Error,
+            'duration': duration
+        });
+    }
+
+    function warning(message: string, duration = 3000): void {
+        open({
+            'message': message,
+            'type': HusMessage.Type_Warning,
+            'duration': duration
+        });
+    }
+
+    function loading(message: string, duration = 3000): void {
+        open({
+            'loading': true,
+            'message': message,
+            'type': HusMessage.Type_Message,
+            'duration': duration
+        });
+    }
+
+    function open(object): void {
+        __listModel.append(__private.initObject(object));
+    }
+
+    function close(key: string): void {
+        for (let i = 0; i < __listModel.count; i++) {
+            const object = __listModel.get(i);
+            if (object.key && object.key === key) {
+                const item = __repeater.itemAt(i);
+                if (item)
+                    item.removeSelf();
+                break;
+            }
+        }
+    }
+
+    function getMessage(key: string): var {
+        for (let i = 0; i < __listModel.count; i++) {
+            const object = __listModel.get(i);
+            if (object.key && object.key === key) {
+                return object;
+            }
+        }
+        return undefined;
+    }
+
+    function setProperty(key: string, property: string, value: var): void {
+        for (let i = 0; i < __listModel.count; i++) {
+            const object = __listModel.get(i);
+            if (object.key && object.key === key) {
+                __listModel.setProperty(i, property, value);
+                break;
             }
         }
     }
