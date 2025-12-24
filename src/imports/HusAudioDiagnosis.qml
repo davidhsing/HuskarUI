@@ -16,7 +16,7 @@ Item {
     property alias buttonWidth: controlButton.width
     property int buttonMargin: 8
     property string startText: qsTr('开始')
-    property string endText: qsTr('停止')
+    property string stopText: qsTr('停止')
     property var iconSource: HusIcon.AudioOutlined
     property var iconSourceMuted: HusIcon.AudioMutedOutlined
     property int iconSize: 60
@@ -134,7 +134,7 @@ Item {
         anchors.bottomMargin: control.buttonMargin
         enabled: !!__private.audioDevice
         visible: control.buttonVisible
-        text: __private.audioRecording ? control.endText : control.startText
+        text: __private.audioRecording ? control.stopText : control.startText
         onClicked: {
             if (__private.audioRecording) {
                 mediaRecorder.stop();

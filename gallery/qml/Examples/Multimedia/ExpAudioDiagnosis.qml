@@ -31,8 +31,7 @@ buttonType | var | - | 开始/停止按钮的类型(来自HusButton)
 buttonWidth | int | - | 开始/停止按钮的宽度
 buttonMargin | int | 8 | 开始/停止按钮的底部到父组件底部的间距
 startText | string | 开始 | 开始按钮的文本
-endText | string | 停止 | 停止按钮的文本
-warnText | string | 设备不存在 | 设备不存在时显示的警告文本
+stopText | string | 停止 | 停止按钮的文本
 iconSource | int丨string | HusIcon.AudioOutlined | 图标源(来自 HusIcon)或图标链接
 iconSourceMuted | int丨string | HusIcon.AudioMutedOutlined | 设备无效时的图标源(来自 HusIcon)或图标链接
 iconSize | int | 60 | 图标大小
