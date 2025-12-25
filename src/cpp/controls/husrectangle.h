@@ -8,8 +8,7 @@
 
 QT_FORWARD_DECLARE_CLASS(HusRectanglePrivate)
 
-class HUSKARUI_EXPORT HusRadius: public QObject
-{
+class HUSKARUI_EXPORT HusRadius: public QObject {
     Q_OBJECT
     QML_NAMED_ELEMENT(HusRadius)
 
@@ -52,8 +51,50 @@ private:
     qreal m_bottomRight = -1.;
 };
 
-class HUSKARUI_EXPORT HusPen: public QObject
-{
+class HUSKARUI_EXPORT HusMargin: public QObject {
+    Q_OBJECT
+    QML_NAMED_ELEMENT(HusMargin)
+
+    Q_PROPERTY(qreal all READ all WRITE setAll NOTIFY allChanged FINAL)
+    Q_PROPERTY(qreal left READ left WRITE setLeft NOTIFY leftChanged FINAL)
+    Q_PROPERTY(qreal top READ top WRITE setTop NOTIFY topChanged FINAL)
+    Q_PROPERTY(qreal right READ right WRITE setRight NOTIFY rightChanged FINAL)
+    Q_PROPERTY(qreal bottom READ bottom WRITE setBottom NOTIFY bottomChanged FINAL)
+
+public:
+    explicit HusMargin(QObject *parent = nullptr) : QObject{parent} { }
+
+    [[nodiscard]] qreal all() const;
+    void setAll(qreal all);
+
+    [[nodiscard]] qreal left() const;
+    void setLeft(qreal left);
+
+    [[nodiscard]] qreal top() const;
+    void setTop(qreal top);
+
+    [[nodiscard]] qreal right() const;
+    void setRight(qreal right);
+
+    [[nodiscard]] qreal bottom() const;
+    void setBottom(qreal bottom);
+
+signals:
+    void allChanged();
+    void leftChanged();
+    void topChanged();
+    void rightChanged();
+    void bottomChanged();
+
+private:
+    qreal m_all = 0.;
+    qreal m_left = 0.;
+    qreal m_top = 0.;
+    qreal m_right = 0.;
+    qreal m_bottom = 0.;
+};
+
+class HUSKARUI_EXPORT HusPen: public QObject {
     Q_OBJECT
     QML_NAMED_ELEMENT(HusPen)
 
@@ -69,8 +110,7 @@ public:
     }
 };
 
-class HUSKARUI_EXPORT HusRectangle: public QQuickPaintedItem
-{
+class HUSKARUI_EXPORT HusRectangle: public QQuickPaintedItem {
     Q_OBJECT
     QML_NAMED_ELEMENT(HusRectangle)
 
@@ -134,8 +174,7 @@ private:
 # include <private/qquickrectangle_p.h>
 
 /*! 内部矩形, 作为高版本基础控件时在内部使用, 但无法使用 border.style */
-class HusRectangleInternal: public QQuickRectangle
-{
+class HusRectangleInternal: public QQuickRectangle {
     Q_OBJECT
     QML_NAMED_ELEMENT(HusRectangleInternal)
 
@@ -145,8 +184,7 @@ public:
 
 #else
 
-class HusRectangleInternal: public HusRectangle
-{
+class HusRectangleInternal: public HusRectangle {
     Q_OBJECT
     QML_NAMED_ELEMENT(HusRectangleInternal)
 

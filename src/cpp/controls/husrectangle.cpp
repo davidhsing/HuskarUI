@@ -9,15 +9,14 @@
 #include <private/qqmlglobal_p.h>
 #include <private/qquickrectangle_p.h>
 
-qreal HusRadius::all() const
-{
+qreal HusRadius::all() const {
     return m_all;
 }
 
-void HusRadius::setAll(const qreal all)
-{
-    if (m_all == all)
+void HusRadius::setAll(const qreal all) {
+    if (m_all == all) {
         return;
+    }
 
     m_all = all;
     emit allChanged();
@@ -28,18 +27,18 @@ void HusRadius::setAll(const qreal all)
     setBottomRight(all);
 }
 
-qreal HusRadius::topLeft() const
-{
-    if (m_topLeft >= 0.)
+qreal HusRadius::topLeft() const {
+    if (m_topLeft >= 0.) {
         return m_topLeft;
+    }
 
     return m_all;
 }
 
-void HusRadius::setTopLeft(qreal topLeft)
-{
-    if (m_topLeft == topLeft)
+void HusRadius::setTopLeft(const qreal topLeft) {
+    if (m_topLeft == topLeft) {
         return;
+    }
 
     if (topLeft < 0) {
         qmlWarning(this) << "topLeftRadius (" << topLeft << ") cannot be less than 0.";
@@ -50,18 +49,17 @@ void HusRadius::setTopLeft(qreal topLeft)
     emit topLeftChanged();
 }
 
-qreal HusRadius::topRight() const
-{
+qreal HusRadius::topRight() const {
     if (m_topRight >= 0.)
         return m_topRight;
 
     return m_all;
 }
 
-void HusRadius::setTopRight(qreal topRight)
-{
-    if (m_topRight == topRight)
+void HusRadius::setTopRight(const qreal topRight) {
+    if (m_topRight == topRight) {
         return;
+    }
 
     if (topRight < 0) {
         qmlWarning(this) << "topRightRadius (" << topRight << ") cannot be less than 0.";
@@ -72,18 +70,18 @@ void HusRadius::setTopRight(qreal topRight)
     emit topRightChanged();
 }
 
-qreal HusRadius::bottomLeft() const
-{
-    if (m_bottomLeft >= 0.)
+qreal HusRadius::bottomLeft() const {
+    if (m_bottomLeft >= 0.) {
         return m_bottomLeft;
+    }
 
     return m_all;
 }
 
-void HusRadius::setBottomLeft(qreal bottomLeft)
-{
-    if (m_bottomLeft == bottomLeft)
+void HusRadius::setBottomLeft(qreal bottomLeft) {
+    if (m_bottomLeft == bottomLeft) {
         return;
+    }
 
     if (bottomLeft < 0) {
         qmlWarning(this) << "bottomLeftRadius (" << bottomLeft << ") cannot be less than 0.";
@@ -94,18 +92,18 @@ void HusRadius::setBottomLeft(qreal bottomLeft)
     emit bottomLeftChanged();
 }
 
-qreal HusRadius::bottomRight() const
-{
-    if (m_bottomRight >= 0.)
+qreal HusRadius::bottomRight() const {
+    if (m_bottomRight >= 0.) {
         return m_bottomRight;
+    }
 
     return m_all;
 }
 
-void HusRadius::setBottomRight(qreal bottomRight)
-{
-    if (m_bottomRight == bottomRight)
+void HusRadius::setBottomRight(const qreal bottomRight) {
+    if (m_bottomRight == bottomRight) {
         return;
+    }
 
     if (bottomRight < 0) {
         qmlWarning(this) << "bottomRightRadius (" << bottomRight << ") cannot be less than 0.";
@@ -114,6 +112,111 @@ void HusRadius::setBottomRight(qreal bottomRight)
 
     m_bottomRight = bottomRight;
     emit bottomRightChanged();
+}
+
+qreal HusMargin::all() const {
+    return m_all;
+}
+
+void HusMargin::setAll(const qreal all) {
+    if (m_all == all) {
+        return;
+    }
+
+    m_all = all;
+    emit allChanged();
+
+    setLeft(all);
+    setTop(all);
+    setRight(all);
+    setBottom(all);
+}
+
+qreal HusMargin::left() const {
+    if (m_left >= 0.) {
+        return m_left;
+    }
+
+    return m_all;
+}
+
+void HusMargin::setLeft(const qreal left) {
+    if (m_left == left) {
+        return;
+    }
+
+    if (left < 0) {
+        qmlWarning(this) << "left (" << left << ") cannot be less than 0.";
+        return;
+    }
+
+    m_left = left;
+    emit leftChanged();
+}
+
+qreal HusMargin::top() const {
+    if (m_top >= 0.) {
+        return m_top;
+    }
+
+    return m_all;
+}
+
+void HusMargin::setTop(const qreal top) {
+    if (m_top == top) {
+        return;
+    }
+
+    if (top < 0) {
+        qmlWarning(this) << "top (" << top << ") cannot be less than 0.";
+        return;
+    }
+
+    m_top = top;
+    emit topChanged();
+}
+
+qreal HusMargin::right() const {
+    if (m_right >= 0.) {
+        return m_right;
+    }
+
+    return m_all;
+}
+
+void HusMargin::setRight(const qreal right) {
+    if (m_right == right) {
+        return;
+    }
+
+    if (right < 0) {
+        qmlWarning(this) << "right (" << right << ") cannot be less than 0.";
+        return;
+    }
+
+    m_right = right;
+    emit rightChanged();
+}
+
+qreal HusMargin::bottom() const {
+    if (m_bottom >= 0.)
+        return m_bottom;
+
+    return m_all;
+}
+
+void HusMargin::setBottom(const qreal bottom) {
+    if (m_bottom == bottom) {
+        return;
+    }
+
+    if (bottom < 0) {
+        qmlWarning(this) << "bottom (" << bottom << ") cannot be less than 0.";
+        return;
+    }
+
+    m_bottom = bottom;
+    emit bottomChanged();
 }
 
 class HusRectanglePrivate
