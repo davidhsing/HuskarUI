@@ -176,9 +176,6 @@ Item {
                 Layout.preferredWidth: control.labelWidth
                 Layout.preferredHeight: __horizontalRowLayout.maxContentHeight
                 sourceComponent: __labelComponent
-                onLoaded: {
-                    __horizontalRowLayout.recalculateMaxHeight();
-                }
             }
 
             // 内容和反馈列
@@ -193,13 +190,17 @@ Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     onChildrenRectChanged: {
-                        __horizontalRowLayout.recalculateMaxHeight();
+                        if (control.layout === HusFormItem.Layout_Horizontal) {
+                            __horizontalRowLayout.recalculateMaxHeight();
+                        }
                     }
                     Component.onCompleted: {
                         for (let i = 0; i < __contentItem.data.length; i++) {
                             __contentItem.data[i].parent = __horizontalContentArea;
                         }
-                        __horizontalRowLayout.recalculateMaxHeight();
+                        if (control.layout === HusFormItem.Layout_Horizontal) {
+                            __horizontalRowLayout.recalculateMaxHeight();
+                        }
                     }
                 }
 

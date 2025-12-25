@@ -83,7 +83,7 @@ import QtQuick
 import HuskarUI.Basic
 
 Column {
-    spacing: 20
+    spacing: 10
 
     HusRadioBlock {
         id: horizontalAlignRadio
@@ -109,7 +109,7 @@ Column {
 }
             `
             exampleDelegate: Column {
-                spacing: 20
+                spacing: 10
 
                 HusRadioBlock {
                     id: horizontalAlignRadio
@@ -146,7 +146,7 @@ import QtQuick
 import HuskarUI.Basic
 
 Column {
-    spacing: 20
+    spacing: 10
 
     HusRadioBlock {
         id: verticalAlignRadio
@@ -226,7 +226,7 @@ Column {
 }
             `
             exampleDelegate: Column {
-                spacing: 20
+                spacing: 10
 
                 HusRadioBlock {
                     id: verticalAlignRadio

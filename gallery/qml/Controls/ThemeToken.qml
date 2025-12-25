@@ -162,6 +162,7 @@ Item {
                 Rectangle {
                     width: tag.height
                     height: tag.height
+                    radius: 4
                     color: {
                         try {
                             Qt.color(value);
