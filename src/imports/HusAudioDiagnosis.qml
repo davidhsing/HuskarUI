@@ -14,7 +14,7 @@ Item {
     property bool buttonVisible: true
     property alias buttonType: controlButton.type
     property alias buttonWidth: controlButton.width
-    property int buttonMargin: 8
+    property int buttonMargin: 16
     property string startText: qsTr('开始')
     property string stopText: qsTr('停止')
     property var iconSource: HusIcon.AudioOutlined
@@ -23,7 +23,7 @@ Item {
     property int probeInterval: 50
     property int progressWidth: 160
     property int progressHeight: 160
-    property int progressGap: 100
+    property int progressGap: 120
     property bool progressGradient: true
     property real progressThickness: 10
     property var locationCallback: () => {
