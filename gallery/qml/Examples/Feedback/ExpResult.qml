@@ -41,7 +41,9 @@ titleVisible | bool | true | 标题是否可见
 descriptionVisible | bool | true | 描述是否可见
 actionVisible | bool | true | 操作区是否可见
 footerVisible | bool | true | 页脚是否可见
-iconImageSource | url | - | 自定义图标图片源
+iconImageSource | url | - | 自定义图片源
+iconImageWidth | int | - | 自定义图片的宽度
+iconImageHeight | int | - | 自定义图片的高度
 iconSource | url | - | 图标源
 iconSize | int | 80 | 图标大小
 colorIcon | color | - | 图标颜色
@@ -100,7 +102,7 @@ HusResult {
     titleText: 'Successfully Purchased Cloud Server ECS'
     descriptionText: 'Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.'
     actionDelegate: Item {
-        anchors.fill: parent
+        height: 40
 
         Row {
             spacing: 10
@@ -124,26 +126,7 @@ HusResult {
                 titleText: 'Successfully Purchased Cloud Server ECS'
                 descriptionText: 'Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.'
                 actionDelegate: Item {
-                    anchors.fill: parent
-
-                    Row {
-                        spacing: 10
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-
-                        HusButton {
-                            text: "Go Console"
-                            type: HusButton.Type_Primary
-                        }
-
-                        HusButton {
-                            text: "Buy Again"
-                            type: HusButton.Type_Default
-                        }
-                    }
-                }
-                footerDelegate: Item {
-                    anchors.fill: parent
+                    height: 40
 
                     Row {
                         spacing: 10
@@ -179,7 +162,7 @@ HusResult {
     titleText: 'Submission Failed'
     descriptionText: 'Please check and modify the following information before resubmitting.'
     actionDelegate: Item {
-        anchors.fill: parent
+        height: 40
 
         Row {
             spacing: 10
@@ -203,7 +186,7 @@ HusResult {
                 titleText: 'Submission Failed'
                 descriptionText: 'Please check and modify the following information before resubmitting.'
                 actionDelegate: Item {
-                    anchors.fill: parent
+                    height: 40
 
                     Row {
                         spacing: 10
@@ -237,8 +220,9 @@ import HuskarUI.Basic
 HusResult {
     type: HusResult.Type_Info
     titleText: 'Your operation has been executed'
+    descriptionVisible: false
     actionDelegate: Item {
-        anchors.fill: parent
+        height: 40
 
         Row {
             spacing: 10
@@ -260,8 +244,9 @@ HusResult {
             exampleDelegate: HusResult {
                 type: HusResult.Type_Info
                 titleText: 'Your operation has been executed'
+                descriptionVisible: false
                 actionDelegate: Item {
-                    anchors.fill: parent
+                    height: 40
 
                     Row {
                         spacing: 10
@@ -295,13 +280,14 @@ import HuskarUI.Basic
 HusResult {
     type: HusResult.Type_Warning
     titleText: 'There are some problems with your operation.'
+    descriptionVisible: false
     extraPosition: HusResult.Position_End
     extraDelegate: HusIconButton {
         iconSource: HusIcon.CloseOutlined
         type: HusIconButton.Type_Text
     }
     actionDelegate: Item {
-        anchors.fill: parent
+        height: 40
 
         Row {
             spacing: 10
@@ -323,13 +309,14 @@ HusResult {
             exampleDelegate: HusResult {
                 type: HusResult.Type_Warning
                 titleText: 'There are some problems with your operation.'
+                descriptionVisible: false
                 extraPosition: HusResult.Position_End
                 extraDelegate: HusIconButton {
                     iconSource: HusIcon.CloseOutlined
                     type: HusIconButton.Type_Text
                 }
                 actionDelegate: Item {
-                    anchors.fill: parent
+                    height: 40
 
                     Row {
                         spacing: 10
@@ -366,7 +353,7 @@ HusResult {
     descriptionText: 'This result uses a custom image as the icon.'
     iconImageSource: 'qrc:/HuskarUI/resources/images/empty-default.svg'
     actionDelegate: Item {
-        anchors.fill: parent
+        height: 40
 
         Row {
             spacing: 10
@@ -391,7 +378,7 @@ HusResult {
                 descriptionText: 'This result uses a custom image as the icon.'
                 iconImageSource: 'qrc:/HuskarUI/resources/images/empty-default.svg'
                 actionDelegate: Item {
-                    anchors.fill: parent
+                    height: 40
 
                     Row {
                         spacing: 10

@@ -29,6 +29,8 @@ Item {
     property var iconImageFallback: ''
     property int iconImageFillMode: Image.PreserveAspectFit
     property bool iconImageEmptyAsError: false
+    property int iconImageWidth: -1
+    property int iconImageHeight: -1
     property bool iconVisible: true
     property color colorIcon: {
         switch (control.type) {
@@ -71,8 +73,8 @@ Item {
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusResult.radiusBg }
 
     // Margin properties
-    property HusMargin marginExtra: HusMargin { all: 8 }
-    property HusMargin marginIcon: HusMargin { all: 0 }
+    property HusMargin marginExtra: HusMargin { all: 0 }
+    property HusMargin marginIcon: HusMargin { top: 4; bottom: 0 }
     property HusMargin marginTitle: HusMargin { top: 4; bottom: 0 }
     property HusMargin marginDescription: HusMargin { all: 0 }
     property HusMargin marginAction: HusMargin { all: 0 }
@@ -95,11 +97,13 @@ Item {
             HusImage {
                 id: __iconImage
                 anchors.fill: parent
-                source: control.iconImageSource
                 emptyAsError: control.iconImageEmptyAsError
                 fallback: control.iconImageFallback
                 fillMode: control.iconImageFillMode
                 horizontalAlignment: Text.AlignHCenter
+                width: control.iconImageWidth > 0 ? control.iconImageWidth : implicitWidth
+                height: control.iconImageHeight > 0 ? control.iconImageHeight : implicitHeight
+                source: control.iconImageSource
             }
         }
 
@@ -162,18 +166,20 @@ Item {
 
         // Extra content (top left or top right)
         Item {
-            Layout.fillWidth: true
-            Layout.topMargin: control.marginExtra.top
-            Layout.leftMargin: control.extraPosition === HusResult.Position_Start ? control.marginExtra.left : 0
-            Layout.rightMargin: control.extraPosition === HusResult.Position_End ? control.marginExtra.right : 0
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: control.marginExtra.top
+            anchors.leftMargin: control.extraPosition === HusResult.Position_Start ? control.marginExtra.left : 0
+            anchors.rightMargin: control.extraPosition === HusResult.Position_End ? control.marginExtra.right : 0
             implicitHeight: __extraLoader.item ? __extraLoader.item.implicitHeight : 0
             visible: control.extraVisible
 
             Loader {
                 id: __extraLoader
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.alignment: control.extraPosition === HusResult.Position_Start ? Qt.AlignLeft : Qt.AlignRight
+                anchors.top: parent.top
+                anchors.left: control.extraPosition === HusResult.Position_Start ? parent.left : undefined
+                anchors.right: control.extraPosition === HusResult.Position_End ? parent.right : undefined
                 sourceComponent: control.extraDelegate
                 active: control.extraVisible
                 visible: active
@@ -186,114 +192,81 @@ Item {
             anchors.fill: parent
             spacing: control.spacing
 
-            Component.onCompleted: {
-                height = Qt.binding(() => __mainColumn.implicitHeight);
-            }
-
             // Icon
-            Item {
-                id: __iconItem
+            Loader {
+                id: __iconLoader
                 Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                 Layout.topMargin: control.marginIcon.top
                 Layout.bottomMargin: control.marginIcon.bottom
                 Layout.leftMargin: control.marginIcon.left
                 Layout.rightMargin: control.marginIcon.right
-                implicitHeight: __iconLoader.item ? __iconLoader.item.implicitHeight : 0
-                visible: control.iconVisible
-
-                Loader {
-                    id: __iconLoader
-                    anchors.fill: parent
-                    sourceComponent: control.iconDelegate
-                    active: control.iconVisible
-                    visible: active
-                }
+                sourceComponent: control.iconDelegate
+                active: control.iconVisible
+                visible: active
             }
 
             // Title
-            Item {
-                id: __titleItem
+            Loader {
+                id: __titleLoader
                 Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                 Layout.topMargin: control.marginTitle.top
                 Layout.bottomMargin: control.marginTitle.bottom
                 Layout.leftMargin: control.marginTitle.left
                 Layout.rightMargin: control.marginTitle.right
-                implicitHeight: __titleLoader.item ? __titleLoader.item.implicitHeight : 0
-                visible: control.titleVisible
-
-                Loader {
-                    id: __titleLoader
-                    anchors.fill: parent
-                    sourceComponent: control.titleDelegate
-                    active: control.titleVisible
-                    visible: active
-                }
+                sourceComponent: control.titleDelegate
+                active: control.titleVisible
+                visible: active
             }
 
             // Description
-            Item {
+            Loader {
+                id: __descriptionLoader
                 Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                 Layout.topMargin: control.marginDescription.top
                 Layout.bottomMargin: control.marginDescription.bottom
                 Layout.leftMargin: control.marginDescription.left
                 Layout.rightMargin: control.marginDescription.right
-                implicitHeight: __descriptionLoader.item ? __descriptionLoader.item.implicitHeight : 0
-                visible: control.descriptionVisible
-
-                Loader {
-                    id: __descriptionLoader
-                    anchors.fill: parent
-                    sourceComponent: control.descriptionDelegate
-                    active: control.descriptionVisible
-                    visible: active
-                }
+                sourceComponent: control.descriptionDelegate
+                active: control.descriptionVisible
+                visible: active
             }
 
             // Action
-            Item {
+            Loader {
+                id: __actionLoader
                 Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                 Layout.topMargin: control.marginAction.top
                 Layout.bottomMargin: control.marginAction.bottom
                 Layout.leftMargin: control.marginAction.left
                 Layout.rightMargin: control.marginAction.right
-                Layout.preferredHeight: __actionLoader.item ? __actionLoader.item.implicitHeight : 0
-                visible: control.actionVisible
-
-                Loader {
-                    id: __actionLoader
-                    Layout.alignment: Qt.AlignHCenter
-                    anchors.fill: parent
-                    sourceComponent: control.actionDelegate
-                    active: control.actionVisible
-                    visible: active
-                }
+                sourceComponent: control.actionDelegate
+                active: control.actionVisible
+                visible: active
             }
 
             // Footer
-            Item {
-                Layout.alignment: Qt.AlignHCenter
+            Loader {
+                id: __footerLoader
                 Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                 Layout.topMargin: control.marginFooter.top
                 Layout.bottomMargin: control.marginFooter.bottom
                 Layout.leftMargin: control.marginFooter.left
                 Layout.rightMargin: control.marginFooter.right
-                implicitHeight: __footerLoader.item ? __footerLoader.item.implicitHeight : 0
-                visible: control.footerVisible
-
-                Loader {
-                    id: __footerLoader
-                    anchors.fill: parent
-                    sourceComponent: control.footerDelegate
-                    active: control.footerVisible
-                    visible: active
-                }
+                sourceComponent: control.footerDelegate
+                active: control.footerVisible
+                visible: active
             }
         }
     }
 
     objectName: '__HusResult__'
-    implicitWidth: __contentLoader.implicitWidth
-    implicitHeight: __contentLoader.implicitHeight
+    implicitWidth: Math.max(__bgLoader.implicitWidth, __contentLoader.implicitWidth)
+    implicitHeight: Math.max(__bgLoader.implicitHeight, __contentLoader.implicitHeight)
     width: parent.width
     height: implicitHeight
 
