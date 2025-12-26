@@ -1,0 +1,415 @@
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
+import '../../Controls'
+
+Flickable {
+    contentHeight: column.height
+    HusScrollBar.vertical: HusScrollBar { }
+
+    Column {
+        id: column
+        width: parent.width - 15
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 30
+
+        Description
+// language=HTML
+        {
+            width: parent.width
+            title: qsTr('HusResult 结果')
+            desc: qsTr(`
+用于反馈一系列操作任务的处理结果。\n
+* **继承自 { Item }**\n
+\n<br/>
+\n### 支持的代理：\n
+- **bgDelegate: Component** 背景代理\n
+- **contentDelegate: Component** 内容代理(以下所有代理的入口)\n
+- **extraDelegate: Component** 额外操作代理\n
+- **titleDelegate: Component** 标题代理\n
+- **descriptionDelegate: Component** 描述代理\n
+- **actionDelegate: Component** 操作代理\n
+- **footerDelegate: Component** 页脚代理\n
+\n<br/>
+\n### 支持的属性：\n
+属性名 | 类型 | 默认值 | 描述
+------ | --- | :---: | ---
+type | ResultType | Type_Info | 结果类型
+iconVisible | bool | true | 图标是否可见
+extraVisible | bool | true | 额外内容是否可见
+titleVisible | bool | true | 标题是否可见
+descriptionVisible | bool | true | 描述是否可见
+actionVisible | bool | true | 操作区是否可见
+footerVisible | bool | true | 页脚是否可见
+iconImageSource | url | - | 自定义图标图片源
+iconSource | url | - | 图标源
+iconSize | int | 80 | 图标大小
+colorIcon | color | - | 图标颜色
+extraPosition | HusResult.ExtraPosition | Position_End | 额外内容位置
+titleText | string | - | 标题文本
+titleFont | font | - | 标题字体
+descriptionText | string | - | 描述文本
+descriptionFont | font | - | 描述字体
+spacing | int | 16 | 间距
+colorBg | color | - | 背景颜色
+radiusBg | [HusRadius](internal://HusRadius) | 6 | 圆角半径
+marginExtra | [HusMargin](internal://HusMargin) | 0 | 额外内容边距
+marginIcon | [HusMargin](internal://HusMargin) | 0 | 图标边距
+marginTitle | [HusMargin](internal://HusMargin) | 0 | 标题边距
+marginDescription | [HusMargin](internal://HusMargin) | 0 | 描述边距
+marginAction | [HusMargin](internal://HusMargin) | 0 | 操作区边距
+marginFooter | [HusMargin](internal://HusMargin) | 0 | 页脚边距
+\n<br/>
+\n### 枚举：
+- \`HusResult.Type_Info\` 信息
+- \`HusResult.Type_Warning\` 警告
+- \`HusResult.Type_Success\` 成功
+- \`HusResult.Type_Error\` 错误
+- \`HusResult.Position_Start\` 左侧
+- \`HusResult.Position_End\` 右侧
+            `)
+        }
+
+        Description {
+            width: parent.width
+            title: qsTr('何时使用')
+            desc: qsTr('当有重要的操作需要告知用户处理结果时使用。')
+        }
+
+        ThemeToken {
+            source: 'HusResult'
+        }
+
+        Description {
+            width: parent.width
+            title: qsTr('代码演示')
+        }
+
+        CodeBox {
+            width: parent.width
+            async: false
+            descTitle: qsTr('成功')
+            desc: qsTr('表示操作成功完成。')
+            code: `
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
+
+HusResult {
+    type: HusResult.Type_Success
+    titleText: 'Successfully Purchased Cloud Server ECS'
+    descriptionText: 'Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.'
+    actionDelegate: Item {
+        anchors.fill: parent
+
+        Row {
+            spacing: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+            HusButton {
+                text: "Go Console"
+                type: HusButton.Type_Primary
+            }
+
+            HusButton {
+                text: "Buy Again"
+                type: HusButton.Type_Default
+            }
+        }
+    }
+}`
+            exampleDelegate: HusResult {
+                type: HusResult.Type_Success
+                titleText: 'Successfully Purchased Cloud Server ECS'
+                descriptionText: 'Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.'
+                actionDelegate: Item {
+                    anchors.fill: parent
+
+                    Row {
+                        spacing: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        HusButton {
+                            text: "Go Console"
+                            type: HusButton.Type_Primary
+                        }
+
+                        HusButton {
+                            text: "Buy Again"
+                            type: HusButton.Type_Default
+                        }
+                    }
+                }
+                footerDelegate: Item {
+                    anchors.fill: parent
+
+                    Row {
+                        spacing: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        HusButton {
+                            text: "Go Console"
+                            type: HusButton.Type_Primary
+                        }
+
+                        HusButton {
+                            text: "Buy Again"
+                            type: HusButton.Type_Default
+                        }
+                    }
+                }
+            }
+        }
+
+        CodeBox {
+            width: parent.width
+            async: false
+            descTitle: qsTr('失败')
+            desc: qsTr('表示操作失败。')
+            code: `
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
+
+HusResult {
+    type: HusResult.Type_Error
+    titleText: 'Submission Failed'
+    descriptionText: 'Please check and modify the following information before resubmitting.'
+    actionDelegate: Item {
+        anchors.fill: parent
+
+        Row {
+            spacing: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+            HusButton {
+                text: "Go Console"
+                type: HusButton.Type_Primary
+            }
+
+            HusButton {
+                text: "Buy Again"
+                type: HusButton.Type_Default
+            }
+        }
+    }
+}`
+            exampleDelegate: HusResult {
+                type: HusResult.Type_Error
+                titleText: 'Submission Failed'
+                descriptionText: 'Please check and modify the following information before resubmitting.'
+                actionDelegate: Item {
+                    anchors.fill: parent
+
+                    Row {
+                        spacing: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        HusButton {
+                            text: "Go Console"
+                            type: HusButton.Type_Primary
+                        }
+
+                        HusButton {
+                            text: "Buy Again"
+                            type: HusButton.Type_Default
+                        }
+                    }
+                }
+            }
+        }
+
+        CodeBox {
+            width: parent.width
+            async: false
+            descTitle: qsTr('信息')
+            desc: qsTr('表示操作信息提示。')
+            code: `
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
+
+HusResult {
+    type: HusResult.Type_Info
+    titleText: 'Your operation has been executed'
+    actionDelegate: Item {
+        anchors.fill: parent
+
+        Row {
+            spacing: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+            HusButton {
+                text: "Go Console"
+                type: HusButton.Type_Primary
+            }
+
+            HusButton {
+                text: "Buy Again"
+                type: HusButton.Type_Default
+            }
+        }
+    }
+}`
+            exampleDelegate: HusResult {
+                type: HusResult.Type_Info
+                titleText: 'Your operation has been executed'
+                actionDelegate: Item {
+                    anchors.fill: parent
+
+                    Row {
+                        spacing: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        HusButton {
+                            text: "Go Console"
+                            type: HusButton.Type_Primary
+                        }
+
+                        HusButton {
+                            text: "Buy Again"
+                            type: HusButton.Type_Default
+                        }
+                    }
+                }
+            }
+        }
+
+        CodeBox {
+            width: parent.width
+            async: false
+            descTitle: qsTr('警告')
+            desc: qsTr('表示操作警告。')
+            code: `
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
+
+HusResult {
+    type: HusResult.Type_Warning
+    titleText: 'There are some problems with your operation.'
+    extraPosition: HusResult.Position_End
+    extraDelegate: HusIconButton {
+        iconSource: HusIcon.CloseOutlined
+        type: HusIconButton.Type_Text
+    }
+    actionDelegate: Item {
+        anchors.fill: parent
+
+        Row {
+            spacing: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+            HusButton {
+                text: "Go Console"
+                type: HusButton.Type_Primary
+            }
+
+            HusButton {
+                text: "Buy Again"
+                type: HusButton.Type_Default
+            }
+        }
+    }
+}`
+            exampleDelegate: HusResult {
+                type: HusResult.Type_Warning
+                titleText: 'There are some problems with your operation.'
+                extraPosition: HusResult.Position_End
+                extraDelegate: HusIconButton {
+                    iconSource: HusIcon.CloseOutlined
+                    type: HusIconButton.Type_Text
+                }
+                actionDelegate: Item {
+                    anchors.fill: parent
+
+                    Row {
+                        spacing: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        HusButton {
+                            text: "Go Console"
+                            type: HusButton.Type_Primary
+                        }
+
+                        HusButton {
+                            text: "Buy Again"
+                            type: HusButton.Type_Default
+                        }
+                    }
+                }
+            }
+        }
+
+        CodeBox {
+            width: parent.width
+            async: false
+            descTitle: qsTr('自定义图片')
+            desc: qsTr('使用自定义图片作为图标。')
+            code: `
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
+
+HusResult {
+    type: HusResult.Type_Success
+    titleText: 'Custom Image Result'
+    descriptionText: 'This result uses a custom image as the icon.'
+    iconImageSource: 'qrc:/HuskarUI/resources/images/empty-default.svg'
+    actionDelegate: Item {
+        anchors.fill: parent
+
+        Row {
+            spacing: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+            HusButton {
+                text: "Go Console"
+                type: HusButton.Type_Primary
+            }
+
+            HusButton {
+                text: "Buy Again"
+                type: HusButton.Type_Default
+            }
+        }
+    }
+}`
+            exampleDelegate: HusResult {
+                type: HusResult.Type_Success
+                titleText: 'Custom Image Result'
+                descriptionText: 'This result uses a custom image as the icon.'
+                iconImageSource: 'qrc:/HuskarUI/resources/images/empty-default.svg'
+                actionDelegate: Item {
+                    anchors.fill: parent
+
+                    Row {
+                        spacing: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        HusButton {
+                            text: "Go Console"
+                            type: HusButton.Type_Primary
+                        }
+
+                        HusButton {
+                            text: "Buy Again"
+                            type: HusButton.Type_Default
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

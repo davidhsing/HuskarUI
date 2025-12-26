@@ -102,15 +102,13 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusCaptionButton.qml
         imports/HusTourFocus.qml imports/HusTourStep.qml
         imports/HusIconText.qml
+        imports/HusCheckerBoard.qml
+        imports/HusColorPicker.qml imports/HusColorPickerPanel.qml
         imports/HusCopyableText.qml
         imports/HusCaptionBar.qml
         imports/HusWindow.qml
         imports/HusMenu.qml
         imports/HusDivider.qml
-        imports/HusFormItem.qml
-        imports/HusGroupBox.qml
-        imports/HusEmpty.qml
-        imports/HusShield.qml
         imports/HusSwitch.qml
         imports/HusScrollBar.qml
         imports/HusMouseMoveArea.qml
@@ -152,16 +150,19 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusShadow.qml
         imports/HusNotification.qml
         imports/HusPopconfirm.qml
-        imports/HusPopover.qml
         imports/HusModal.qml
         imports/HusFileBrowser.qml
+        imports/HusTextArea.qml
+        imports/HusAudioDiagnosis.qml
+        imports/HusPopover.qml
+        imports/HusEmpty.qml
         imports/HusSpin.qml
         imports/HusStatusBar.qml
-        imports/HusTextArea.qml
-        imports/HusCheckerBoard.qml
-        imports/HusColorPicker.qml imports/HusColorPickerPanel.qml
-        imports/HusAudioDiagnosis.qml
+        imports/HusFormItem.qml
+        imports/HusGroupBox.qml
         imports/HusMaskOverlay.qml
+        imports/HusResult.qml
+        imports/HusShield.qml
     SOURCES
         $<$<BOOL:${WIN32}>:${HUSKARUI_RC_FILE}>
         cpp/husglobal.h
@@ -196,13 +197,10 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusCaptionButton.json
         theme/HusTour.json
         theme/HusIconText.json
+        theme/HusColorPicker.json
         theme/HusCopyableText.json
         theme/HusMenu.json
         theme/HusDivider.json
-        theme/HusFormItem.json
-        theme/HusGroupBox.json
-        theme/HusEmpty.json
-        theme/HusShield.json
         theme/HusSwitch.json
         theme/HusScrollBar.json
         theme/HusSlider.json
@@ -234,14 +232,18 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusDateTimePicker.json
         theme/HusNotification.json
         theme/HusPopconfirm.json
-        theme/HusPopover.json
         theme/HusModal.json
+        theme/HusTextArea.json
+        theme/HusAudioDiagnosis.json
+        theme/HusPopover.json
+        theme/HusEmpty.json
         theme/HusSpin.json
         theme/HusStatusBar.json
-        theme/HusTextArea.json
-        theme/HusColorPicker.json
-        theme/HusAudioDiagnosis.json
+        theme/HusFormItem.json
+        theme/HusGroupBox.json
         theme/HusMaskOverlay.json
+        theme/HusResult.json
+        theme/HusShield.json
 )
 
 qt_add_resources(${PROJECT_NAME} "resources"

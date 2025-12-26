@@ -189,16 +189,17 @@
         "HusDateTimePicker": ":/HuskarUI/theme/HusDateTimePicker.json",
         "HusNotification": ":/HuskarUI/theme/HusNotification.json",
         "HusPopconfirm": ":/HuskarUI/theme/HusPopconfirm.json",
-        "HusPopover": ":/HuskarUI/theme/HusPopover.json",
         "HusModal": ":/HuskarUI/theme/HusModal.json",
         "HusTextArea": ":/HuskarUI/theme/HusTextArea.json",
         "HusAudioDiagnosis": ":/HuskarUI/theme/HusAudioDiagnosis.json",
+        "HusPopover": ":/HuskarUI/theme/HusPopover.json",
+        "HusEmpty": ":/HuskarUI/theme/HusEmpty.json",
         "HusSpin": ":/HuskarUI/theme/HusSpin.json",
         "HusStatusBar": ":/HuskarUI/theme/HusStatusBar.json",
-        "HusMaskOverlay": ":/HuskarUI/theme/HusMaskOverlay.json",
         "HusFormItem": ":/HuskarUI/theme/HusFormItem.json",
         "HusGroupBox": ":/HuskarUI/theme/HusGroupBox.json",
-        "HusEmpty": ":/HuskarUI/theme/HusEmpty.json",
+        "HusMaskOverlay": ":/HuskarUI/theme/HusMaskOverlay.json",
+        "HusResult": ":/HuskarUI/theme/HusResult.json",
         "HusShield": ":/HuskarUI/theme/HusShield.json"
     }
 }

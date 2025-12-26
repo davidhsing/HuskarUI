@@ -61,16 +61,17 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusDateTimePicker);
     HUS_PROPERTY_READONLY(QVariantMap, HusNotification);
     HUS_PROPERTY_READONLY(QVariantMap, HusPopconfirm);
-    HUS_PROPERTY_READONLY(QVariantMap, HusPopover);
     HUS_PROPERTY_READONLY(QVariantMap, HusModal);
     HUS_PROPERTY_READONLY(QVariantMap, HusTextArea);
     HUS_PROPERTY_READONLY(QVariantMap, HusAudioDiagnosis);
+    HUS_PROPERTY_READONLY(QVariantMap, HusPopover);
+    HUS_PROPERTY_READONLY(QVariantMap, HusEmpty);
     HUS_PROPERTY_READONLY(QVariantMap, HusSpin);
     HUS_PROPERTY_READONLY(QVariantMap, HusStatusBar);
-    HUS_PROPERTY_READONLY(QVariantMap, HusMaskOverlay);
     HUS_PROPERTY_READONLY(QVariantMap, HusFormItem);
     HUS_PROPERTY_READONLY(QVariantMap, HusGroupBox);
-    HUS_PROPERTY_READONLY(QVariantMap, HusEmpty);
+    HUS_PROPERTY_READONLY(QVariantMap, HusMaskOverlay);
+    HUS_PROPERTY_READONLY(QVariantMap, HusResult);
     HUS_PROPERTY_READONLY(QVariantMap, HusShield);
 
 public:

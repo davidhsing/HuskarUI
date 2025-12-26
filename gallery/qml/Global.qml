@@ -511,6 +511,13 @@ QtObject {
                     label: qsTr('HusModal 对话框'),
                     source: './Examples/Feedback/ExpModal.qml',
                     desc: qsTr('展示一个对话框，提供标题、内容区、操作区。')
+                },
+                {
+                    key: 'HusResult',
+                    label: qsTr('HusResult 结果'),
+                    source: './Examples/Feedback/ExpResult.qml',
+                    addVersion: '0.5.0.0',
+                    desc: qsTr('用于反馈一系列操作任务的处理结果。')
                 }
             ]
         },
