@@ -81,90 +81,6 @@ Item {
     onInfiniteChanged: __private.updateModel();
     onInitModelChanged: __private.updateModel();
 
-    function switchTo(index, animated = true) {
-        if (animated)
-            __listView.currentIndex = infinite ? index + 1 : index;
-        else
-            __listView.positionViewAtIndex(infinite ? 1 : 0, ListView.SnapPosition);
-    }
-
-    function switchToPrev() {
-        if (infinite && __listView.currentIndex === 0) {
-            __listView.positionViewAtIndex(__listView.count - 2, ListView.SnapPosition);
-            __listView.decrementCurrentIndex();
-        } else {
-            __listView.decrementCurrentIndex();
-        }
-    }
-
-    function switchToNext() {
-        if (infinite && __listView.currentIndex === __listView.count - 1) {
-            __listView.positionViewAtIndex(1, ListView.SnapPosition);
-            __listView.incrementCurrentIndex();
-        } else {
-            __listView.incrementCurrentIndex();
-        }
-    }
-
-    function getSuitableIndicatorWidth(contentWidth, indicatorMaxWidth = 18) {
-        let indicatorWidth = 0;
-        let totalWidth = 0;
-        do {
-            if (indicatorWidth >= indicatorMaxWidth) {
-                break;
-            }
-            totalWidth = (++indicatorWidth) * __listModel.count + indicatorSpacing * (__listModel.count - 1) + indicatorMaxWidth;
-        } while (totalWidth < contentWidth);
-        return indicatorWidth;
-    }
-
-    QtObject {
-        id: __private
-        property bool isHorizontal: control.position === HusCarousel.Position_Top || control.position === HusCarousel.Position_Bottom
-        property int indicatorWidth: control.getSuitableIndicatorWidth(__listView.width)
-
-        function updateModel() {
-            if (control.initModel.length > 0) {
-                const model = control.infinite ? [control.initModel[control.initModel.length - 1], ...control.initModel, control.initModel[0]] : [...control.initModel];
-                __listModel.clear();
-                for (const item of model) {
-                    __listModel.append(item);
-                }
-                __resetTimer.restart();
-            } else {
-                __listModel.clear();
-            }
-        }
-
-        function getVirtualModelIndex(index) {
-            if (control.infinite) {
-                if (index === 0) {
-                    return 1;
-                } else if (index === (__listModel.count - 2)) {
-                    return __listModel.count - 1;
-                } else {
-                    return index + 1;
-                }
-            } else {
-                return index;
-            }
-        }
-
-        function getRealModelIndex(index) {
-            if (control.infinite) {
-                if (index === 0) {
-                    return __listModel.count - 3;
-                } else if ((index) === (__listModel.count - 1)) {
-                    return 0;
-                } else {
-                    return index - 1;
-                }
-            } else {
-                return index;
-            }
-        }
-    }
-
     Timer {
         id: __resetTimer
         interval: 33
@@ -215,19 +131,9 @@ Item {
         onOrientationChanged: {
             positionViewAtIndex(control.infinite ? 1 : 0, ListView.SnapPosition);
         }
-        onFlickStarted: updateInfiniteIndex();
-        onDragStarted: updateInfiniteIndex();
-        onMovementEnded: updateInfiniteIndex();
-
-        function updateInfiniteIndex() {
-            if (control.infinite) {
-                if (__listView.currentIndex === 0) {
-                    __listView.positionViewAtIndex(count - 2, ListView.SnapPosition);
-                } else if (__listView.currentIndex === count - 1) {
-                    __listView.positionViewAtIndex(1, ListView.SnapPosition);
-                }
-            }
-        }
+        onFlickStarted: __private.updateInfiniteIndex();
+        onDragStarted: __private.updateInfiniteIndex();
+        onMovementEnded: __private.updateInfiniteIndex();
 
         Loader {
             active: control.position ===  HusCarousel.Position_Top && control.showIndicator
@@ -303,6 +209,100 @@ Item {
             anchors.right: __private.isHorizontal ? parent.right : undefined
             sourceComponent: control.nextDelegate
             property bool showNext: control.infinite ? true : (control.currentIndex !== __listModel.count - 1)
+        }
+    }
+
+    function switchTo(index, animated = true) {
+        if (animated)
+            __listView.currentIndex = infinite ? index + 1 : index;
+        else
+            __listView.positionViewAtIndex(infinite ? 1 : 0, ListView.SnapPosition);
+    }
+
+    function switchToPrev() {
+        if (infinite && __listView.currentIndex === 0) {
+            __listView.positionViewAtIndex(__listView.count - 2, ListView.SnapPosition);
+            __listView.decrementCurrentIndex();
+        } else {
+            __listView.decrementCurrentIndex();
+        }
+    }
+
+    function switchToNext() {
+        if (infinite && __listView.currentIndex === __listView.count - 1) {
+            __listView.positionViewAtIndex(1, ListView.SnapPosition);
+            __listView.incrementCurrentIndex();
+        } else {
+            __listView.incrementCurrentIndex();
+        }
+    }
+
+    function getSuitableIndicatorWidth(contentWidth, indicatorMaxWidth = 18) {
+        let indicatorWidth = 0;
+        let totalWidth = 0;
+        do {
+            if (indicatorWidth >= indicatorMaxWidth) {
+                break;
+            }
+            totalWidth = (++indicatorWidth) * __listModel.count + indicatorSpacing * (__listModel.count - 1) + indicatorMaxWidth;
+        } while (totalWidth < contentWidth);
+        return indicatorWidth;
+    }
+
+    QtObject {
+        id: __private
+        property bool isHorizontal: control.position === HusCarousel.Position_Top || control.position === HusCarousel.Position_Bottom
+        property int indicatorWidth: control.getSuitableIndicatorWidth(__listView.width)
+
+        function updateInfiniteIndex() {
+            if (control.infinite) {
+                if (__listView.currentIndex === 0) {
+                    __listView.positionViewAtIndex(count - 2, ListView.SnapPosition);
+                } else if (__listView.currentIndex === count - 1) {
+                    __listView.positionViewAtIndex(1, ListView.SnapPosition);
+                }
+            }
+        }
+
+        function updateModel() {
+            if (control.initModel.length > 0) {
+                const model = control.infinite ? [control.initModel[control.initModel.length - 1], ...control.initModel, control.initModel[0]] : [...control.initModel];
+                __listModel.clear();
+                for (const item of model) {
+                    __listModel.append(item);
+                }
+                __resetTimer.restart();
+            } else {
+                __listModel.clear();
+            }
+        }
+
+        function getVirtualModelIndex(index) {
+            if (control.infinite) {
+                if (index === 0) {
+                    return 1;
+                } else if (index === (__listModel.count - 2)) {
+                    return __listModel.count - 1;
+                } else {
+                    return index + 1;
+                }
+            } else {
+                return index;
+            }
+        }
+
+        function getRealModelIndex(index) {
+            if (control.infinite) {
+                if (index === 0) {
+                    return __listModel.count - 3;
+                } else if ((index) === (__listModel.count - 1)) {
+                    return 0;
+                } else {
+                    return index - 1;
+                }
+            } else {
+                return index;
+            }
         }
     }
 }
