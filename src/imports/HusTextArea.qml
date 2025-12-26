@@ -170,6 +170,10 @@ Item {
         }
     }
 
+    Accessible.role: Accessible.EditableText
+    Accessible.editable: control.readOnly
+    Accessible.description: control.contentDescription
+
     function scrollToBegin() {
         __textArea.cursorPosition = 0;
     }
@@ -191,8 +195,4 @@ Item {
             }
         }
     }
-
-    Accessible.role: Accessible.EditableText
-    Accessible.editable: control.readOnly
-    Accessible.description: control.contentDescription
 }

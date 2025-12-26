@@ -33,12 +33,6 @@ Item {
 
     objectName: '__HusMouseResizeArea__'
 
-    QtObject {
-        id: __private
-        property point startPos: Qt.point(0, 0)
-        property point fixedPos: Qt.point(0, 0)
-    }
-
     MouseArea {
         id: area1
         x: -areaMarginSize * 0.5
@@ -51,35 +45,33 @@ Item {
         onEntered: cursorShape = Qt.SizeFDiagCursor;
         onExited: cursorShape = Qt.ArrowCursor;
         onPressed: (mouse) => __private.startPos = Qt.point(mouseX, mouseY);
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetX = mouse.x - __private.startPos.x;
-                    let offsetY = mouse.y - __private.startPos.y;
-                    //如果本次调整小于最小限制，则调整为最小，大于最大则调整为最大
-                    if (maximumWidth != Number.NaN && (target.width - offsetX) > maximumWidth) {
-                        target.x += (target.width - maximumWidth);
-                        target.width = maximumWidth;
-                    } else if ((target.width - offsetX) < minimumWidth) {
-                        target.x += (target.width - minimumWidth);
-                        target.width = minimumWidth;
-                    } else {
-                        target.x += offsetX;
-                        target.width -= offsetX;
-                    }
-
-                    if (maximumHeight != Number.NaN && (target.height - offsetY) > maximumHeight) {
-                        target.y += (target.height - maximumHeight);
-                        target.height = maximumHeight;
-                    } else if ((target.height - offsetY) < minimumHeight) {
-                        target.y += (target.height - minimumHeight);
-                        target.height = minimumHeight;
-                    } else {
-                        target.y += offsetY;
-                        target.height -= offsetY;
-                    }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetX = mouse.x - __private.startPos.x;
+                let offsetY = mouse.y - __private.startPos.y;
+                // 如果本次调整小于最小限制，则调整为最小，大于最大则调整为最大
+                if (maximumWidth !== Number.NaN && (target.width - offsetX) > maximumWidth) {
+                    target.x += (target.width - maximumWidth);
+                    target.width = maximumWidth;
+                } else if ((target.width - offsetX) < minimumWidth) {
+                    target.x += (target.width - minimumWidth);
+                    target.width = minimumWidth;
+                } else {
+                    target.x += offsetX;
+                    target.width -= offsetX;
+                }
+                if (maximumHeight !== Number.NaN && (target.height - offsetY) > maximumHeight) {
+                    target.y += (target.height - maximumHeight);
+                    target.height = maximumHeight;
+                } else if ((target.height - offsetY) < minimumHeight) {
+                    target.y += (target.height - minimumHeight);
+                    target.height = minimumHeight;
+                } else {
+                    target.y += offsetY;
+                    target.height -= offsetY;
                 }
             }
+        }
     }
 
     MouseArea {
@@ -94,22 +86,21 @@ Item {
         onEntered: cursorShape = Qt.SizeVerCursor;
         onExited: cursorShape = Qt.ArrowCursor;
         onPressed: (mouse) => __private.startPos = Qt.point(mouseX, mouseY);
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetY = mouse.y - __private.startPos.y;
-                    if (maximumHeight != Number.NaN && (target.height - offsetY) > maximumHeight) {
-                        target.y += (target.height - maximumHeight);
-                        target.height = maximumHeight;
-                    } else if ((target.height - offsetY) < minimumHeight) {
-                        target.y += (target.height - minimumHeight);
-                        target.height = minimumHeight;
-                    } else {
-                        target.y += offsetY;
-                        target.height -= offsetY;
-                    }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetY = mouse.y - __private.startPos.y;
+                if (maximumHeight !== Number.NaN && (target.height - offsetY) > maximumHeight) {
+                    target.y += (target.height - maximumHeight);
+                    target.height = maximumHeight;
+                } else if ((target.height - offsetY) < minimumHeight) {
+                    target.y += (target.height - minimumHeight);
+                    target.height = minimumHeight;
+                } else {
+                    target.y += offsetY;
+                    target.height -= offsetY;
                 }
             }
+        }
     }
 
     MouseArea {
@@ -123,39 +114,36 @@ Item {
         preventStealing: control.preventStealing
         onEntered: cursorShape = Qt.SizeBDiagCursor;
         onExited: cursorShape = Qt.ArrowCursor;
-        onPressed:
-            (mouse) => {
-                if (control.target) {
-                    __private.startPos = Qt.point(mouseX, mouseY);
-                    __private.fixedPos = Qt.point(target.x, target.y);
+        onPressed: (mouse) => {
+            if (control.target) {
+                __private.startPos = Qt.point(mouseX, mouseY);
+                __private.fixedPos = Qt.point(target.x, target.y);
+            }
+        }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetX = mouse.x - __private.startPos.x;
+                let offsetY = mouse.y - __private.startPos.y;
+                target.x = __private.fixedPos.x;
+                if (maximumWidth !== Number.NaN && (target.width + offsetX) > maximumWidth) {
+                    target.width = maximumWidth;
+                } else if ((target.width + offsetX) < minimumWidth) {
+                    target.width = minimumWidth;
+                } else {
+                    target.width += offsetX;
+                }
+                if (maximumHeight !== Number.NaN && (target.height - offsetY) > maximumHeight) {
+                    target.y += (target.height - maximumHeight);
+                    target.height = maximumHeight;
+                } else if ((target.height - offsetY) < minimumHeight) {
+                    target.y += (target.height - minimumHeight);
+                    target.height = minimumHeight;
+                } else {
+                    target.y += offsetY;
+                    target.height -= offsetY;
                 }
             }
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetX = mouse.x - __private.startPos.x;
-                    let offsetY = mouse.y - __private.startPos.y;
-                    target.x = __private.fixedPos.x;
-                    if (maximumWidth != Number.NaN && (target.width + offsetX) > maximumWidth) {
-                        target.width = maximumWidth;
-                    } else if ((target.width + offsetX) < minimumWidth) {
-                        target.width = minimumWidth;
-                    } else {
-                        target.width += offsetX;
-                    }
-
-                    if (maximumHeight != Number.NaN && (target.height - offsetY) > maximumHeight) {
-                        target.y += (target.height - maximumHeight);
-                        target.height = maximumHeight;
-                    } else if ((target.height - offsetY) < minimumHeight) {
-                        target.y += (target.height - minimumHeight);
-                        target.height = minimumHeight;
-                    } else {
-                        target.y += offsetY;
-                        target.height -= offsetY;
-                    }
-                }
-            }
+        }
     }
 
     MouseArea {
@@ -169,26 +157,24 @@ Item {
         preventStealing: control.preventStealing
         onEntered: cursorShape = Qt.SizeHorCursor;
         onExited: cursorShape = Qt.ArrowCursor;
-        onPressed:
-            (mouse) => {
-                __private.startPos = Qt.point(mouseX, mouseY);
-            }
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetX = mouse.x - __private.startPos.x;
-                    if (maximumWidth != Number.NaN && (target.width - offsetX) > maximumWidth) {
-                        target.x += (target.width - maximumWidth);
-                        target.width = maximumWidth;
-                    } else if ((target.width - offsetX) < minimumWidth) {
-                        target.x += (target.width - minimumWidth);
-                        target.width = minimumWidth;
-                    } else {
-                        target.x += offsetX;
-                        target.width -= offsetX;
-                    }
+        onPressed: (mouse) => {
+            __private.startPos = Qt.point(mouseX, mouseY);
+        }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetX = mouse.x - __private.startPos.x;
+                if (maximumWidth !== Number.NaN && (target.width - offsetX) > maximumWidth) {
+                    target.x += (target.width - maximumWidth);
+                    target.width = maximumWidth;
+                } else if ((target.width - offsetX) < minimumWidth) {
+                    target.x += (target.width - minimumWidth);
+                    target.width = minimumWidth;
+                } else {
+                    target.x += offsetX;
+                    target.width -= offsetX;
                 }
             }
+        }
     }
 
     HusMouseMoveArea {
@@ -214,27 +200,25 @@ Item {
         property real fixedX: 0
         onEntered: cursorShape = Qt.SizeHorCursor;
         onExited: cursorShape = Qt.ArrowCursor;
-        onPressed:
-            (mouse) => {
-                if (target) {
-                    __private.startPos = Qt.point(mouseX, mouseY);
-                    __private.fixedPos = Qt.point(target.x, target.y);
+        onPressed: (mouse) => {
+            if (target) {
+                __private.startPos = Qt.point(mouseX, mouseY);
+                __private.fixedPos = Qt.point(target.x, target.y);
+            }
+        }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetX = mouse.x - __private.startPos.x;
+                target.x = __private.fixedPos.x;
+                if (maximumWidth !== Number.NaN && (target.width + offsetX) > maximumWidth) {
+                    target.width = maximumWidth;
+                } else if ((target.width + offsetX) < minimumWidth) {
+                    target.width = minimumWidth;
+                } else {
+                    target.width += offsetX;
                 }
             }
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetX = mouse.x - __private.startPos.x;
-                    target.x = __private.fixedPos.x;
-                    if (maximumWidth != Number.NaN && (target.width + offsetX) > maximumWidth) {
-                        target.width = maximumWidth;
-                    } else if ((target.width + offsetX) < minimumWidth) {
-                        target.width = minimumWidth;
-                    } else {
-                        target.width += offsetX;
-                    }
-                }
-            }
+        }
     }
 
     MouseArea {
@@ -249,39 +233,36 @@ Item {
         property real fixedX: 0
         onEntered: cursorShape = Qt.SizeBDiagCursor;
         onExited: cursorShape = Qt.ArrowCursor;
-        onPressed:
-            (mouse) => {
-                if (target) {
-                    __private.startPos = Qt.point(mouseX, mouseY);
-                    __private.fixedPos = Qt.point(target.x, target.y);
+        onPressed: (mouse) => {
+            if (target) {
+                __private.startPos = Qt.point(mouseX, mouseY);
+                __private.fixedPos = Qt.point(target.x, target.y);
+            }
+        }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetX = mouse.x - __private.startPos.x;
+                let offsetY = mouse.y - __private.startPos.y;
+                if (maximumWidth !== Number.NaN && (target.width - offsetX) > maximumWidth) {
+                    target.x += (target.width - maximumWidth);
+                    target.width = maximumWidth;
+                } else if ((target.width - offsetX) < minimumWidth) {
+                    target.x += (target.width - minimumWidth);
+                    target.width = minimumWidth;
+                } else {
+                    target.x += offsetX;
+                    target.width -= offsetX;
+                }
+                target.y = __private.fixedPos.y;
+                if (maximumHeight !== Number.NaN && (target.height + offsetY) > maximumHeight) {
+                    target.height = maximumHeight;
+                } else if ((target.height + offsetY) < minimumHeight) {
+                    target.height = minimumHeight;
+                } else {
+                    target.height += offsetY;
                 }
             }
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetX = mouse.x - __private.startPos.x;
-                    let offsetY = mouse.y - __private.startPos.y;
-                    if (maximumWidth != Number.NaN && (target.width - offsetX) > maximumWidth) {
-                        target.x += (target.width - maximumWidth);
-                        target.width = maximumWidth;
-                    } else if ((target.width - offsetX) < minimumWidth) {
-                        target.x += (target.width - minimumWidth);
-                        target.width = minimumWidth;
-                    } else {
-                        target.x += offsetX;
-                        target.width -= offsetX;
-                    }
-
-                    target.y = __private.fixedPos.y;
-                    if (maximumHeight != Number.NaN && (target.height + offsetY) > maximumHeight) {
-                        target.height = maximumHeight;
-                    } else if ((target.height + offsetY) < minimumHeight) {
-                        target.height = minimumHeight;
-                    } else {
-                        target.height += offsetY;
-                    }
-                }
-            }
+        }
     }
 
     MouseArea {
@@ -296,27 +277,25 @@ Item {
         property real fixedX: 0
         onEntered: cursorShape = Qt.SizeVerCursor;
         onExited: cursorShape = Qt.ArrowCursor;
-        onPressed:
-            (mouse) => {
-                if (target) {
-                    __private.startPos = Qt.point(mouseX, mouseY);
-                    __private.fixedPos = Qt.point(target.x, target.y);
+        onPressed: (mouse) => {
+            if (target) {
+                __private.startPos = Qt.point(mouseX, mouseY);
+                __private.fixedPos = Qt.point(target.x, target.y);
+            }
+        }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetY = mouse.y - __private.startPos.y;
+                target.y = __private.fixedPos.y;
+                if (maximumHeight !== Number.NaN && (target.height + offsetY) > maximumHeight) {
+                    target.height = maximumHeight;
+                } else if ((target.height + offsetY) < minimumHeight) {
+                    target.height = minimumHeight;
+                } else {
+                    target.height += offsetY;
                 }
             }
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetY = mouse.y - __private.startPos.y;
-                    target.y = __private.fixedPos.y;
-                    if (maximumHeight != Number.NaN && (target.height + offsetY) > maximumHeight) {
-                        target.height = maximumHeight;
-                    } else if ((target.height + offsetY) < minimumHeight) {
-                        target.height = minimumHeight;
-                    } else {
-                        target.height += offsetY;
-                    }
-                }
-            }
+        }
     }
 
     MouseArea {
@@ -330,36 +309,39 @@ Item {
         preventStealing: control.preventStealing
         onEntered: cursorShape = Qt.SizeFDiagCursor;
         onExited: cursorShape = Qt.ArrowCursor;
-        onPressed:
-            (mouse) => {
-                if (target) {
-                    __private.startPos = Qt.point(mouseX, mouseY);
-                    __private.fixedPos = Qt.point(target.x, target.y);
+        onPressed: (mouse) => {
+            if (target) {
+                __private.startPos = Qt.point(mouseX, mouseY);
+                __private.fixedPos = Qt.point(target.x, target.y);
+            }
+        }
+        onPositionChanged: (mouse) => {
+            if (pressed && target) {
+                let offsetX = mouse.x - __private.startPos.x;
+                let offsetY = mouse.y - __private.startPos.y;
+                target.x = __private.fixedPos.x;
+                if (maximumWidth !== Number.NaN && (target.width + offsetX) > maximumWidth) {
+                    target.width = maximumWidth;
+                } else if ((target.width + offsetX) < minimumWidth) {
+                    target.width = minimumWidth;
+                } else {
+                    target.width += offsetX;
+                }
+                target.y = __private.fixedPos.y;
+                if (maximumHeight !== Number.NaN && (target.height + offsetY) > maximumHeight) {
+                    target.height = maximumHeight;
+                } else if ((target.height + offsetY) < minimumHeight) {
+                    target.height = minimumHeight;
+                } else {
+                    target.height += offsetY;
                 }
             }
-        onPositionChanged:
-            (mouse) => {
-                if (pressed && target) {
-                    let offsetX = mouse.x - __private.startPos.x;
-                    let offsetY = mouse.y - __private.startPos.y;
-                    target.x = __private.fixedPos.x;
-                    if (maximumWidth != Number.NaN && (target.width + offsetX) > maximumWidth) {
-                        target.width = maximumWidth;
-                    } else if ((target.width + offsetX) < minimumWidth) {
-                        target.width = minimumWidth;
-                    } else {
-                        target.width += offsetX;
-                    }
+        }
+    }
 
-                    target.y = __private.fixedPos.y;
-                    if (maximumHeight != Number.NaN && (target.height + offsetY) > maximumHeight) {
-                        target.height = maximumHeight;
-                    } else if ((target.height + offsetY) < minimumHeight) {
-                        target.height = minimumHeight;
-                    } else {
-                        target.height += offsetY;
-                    }
-                }
-            }
+    QtObject {
+        id: __private
+        property point startPos: Qt.point(0, 0)
+        property point fixedPos: Qt.point(0, 0)
     }
 }

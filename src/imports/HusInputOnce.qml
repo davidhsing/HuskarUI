@@ -38,39 +38,6 @@ Item {
             item.item.selectThis();
     }
 
-    function setInput(inputs) {
-        for (let i = 0; i < inputs.length; i++) {
-            setInputAtIndex(i, input);
-        }
-    }
-
-    function setInputAtIndex(index, input) {
-        const item = __repeater.itemAt(index << 1);
-        if (item) {
-            currentIndex = index;
-            item.item.text = formatter(input);
-        }
-    }
-
-    function getInput() {
-        let input = '';
-        for (let i = 0; i < __repeater.count; i++) {
-            const item = __repeater.itemAt(i);
-            if (item && item.index % 2 == 0) {
-                input += item.item.text;
-            }
-        }
-        return input;
-    }
-
-    function getInputAtIndex(index) {
-        const item = __repeater.itemAt(index << 1);
-        if (item) {
-            return item.item.text;
-        }
-        return '';
-    }
-
     Component {
         id: __inputDelegate
 
@@ -157,5 +124,38 @@ Item {
                 required property int index
             }
         }
+    }
+
+    function setInput(inputs) {
+        for (let i = 0; i < inputs.length; i++) {
+            setInputAtIndex(i, input);
+        }
+    }
+
+    function setInputAtIndex(index, input) {
+        const item = __repeater.itemAt(index << 1);
+        if (item) {
+            currentIndex = index;
+            item.item.text = formatter(input);
+        }
+    }
+
+    function getInput() {
+        let input = '';
+        for (let i = 0; i < __repeater.count; i++) {
+            const item = __repeater.itemAt(i);
+            if (item && item.index % 2 == 0) {
+                input += item.item.text;
+            }
+        }
+        return input;
+    }
+
+    function getInputAtIndex(index) {
+        const item = __repeater.itemAt(index << 1);
+        if (item) {
+            return item.item.text;
+        }
+        return '';
     }
 }

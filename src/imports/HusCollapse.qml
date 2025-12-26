@@ -82,67 +82,11 @@ Item {
         }
     }
 
-    function get(index) {
-        return __listModel.get(index);
-    }
-
-    function set(index, object) {
-        __listModel.set(index, object);
-    }
-
-    function setProperty(index, propertyName, value) {
-        __listModel.setProperty(index, propertyName, value);
-    }
-
-    function move(from, to, count = 1) {
-        __listModel.move(from, to, count);
-    }
-
-    function insert(index, object) {
-        __listModel.insert(index, object);
-    }
-
-    function append(object) {
-        __listModel.append(object);
-    }
-
-    function remove(index, count = 1) {
-        __listModel.remove(index, count);
-    }
-
-    function clear() {
-        __listModel.clear();
-    }
-
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorTitle { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorTitleBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorContent { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
     Behavior on colorContentBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
-
-    QtObject {
-        id: __private
-        function calcActiveKey() {
-            if (control.accordion) {
-                for (let i = 0; i < __listView.count; i++) {
-                    const item = __listView.itemAtIndex(i);
-                    if (item && item.active) {
-                        control.activeKey = item.model.key;
-                        break;
-                    }
-                }
-            } else {
-                let keys = [];
-                for (let i = 0; i < __listView.count; i++) {
-                    const item = __listView.itemAtIndex(i);
-                    if (item && item.active) {
-                        keys.push(item.model.key);
-                    }
-                }
-                control.activeKey = keys;
-            }
-        }
-    }
 
     ListView {
         id: __listView
@@ -265,6 +209,62 @@ Item {
             topRightRadius: control.radiusBg.topRight
             bottomLeftRadius: control.radiusBg.bottomLeft
             bottomRightRadius: control.radiusBg.bottomRight
+        }
+    }
+
+    function get(index) {
+        return __listModel.get(index);
+    }
+
+    function set(index, object) {
+        __listModel.set(index, object);
+    }
+
+    function setProperty(index, propertyName, value) {
+        __listModel.setProperty(index, propertyName, value);
+    }
+
+    function move(from, to, count = 1) {
+        __listModel.move(from, to, count);
+    }
+
+    function insert(index, object) {
+        __listModel.insert(index, object);
+    }
+
+    function append(object) {
+        __listModel.append(object);
+    }
+
+    function remove(index, count = 1) {
+        __listModel.remove(index, count);
+    }
+
+    function clear() {
+        __listModel.clear();
+    }
+
+    QtObject {
+        id: __private
+        function calcActiveKey() {
+            if (control.accordion) {
+                for (let i = 0; i < __listView.count; i++) {
+                    const item = __listView.itemAtIndex(i);
+                    if (item && item.active) {
+                        control.activeKey = item.model.key;
+                        break;
+                    }
+                }
+            } else {
+                let keys = [];
+                for (let i = 0; i < __listView.count; i++) {
+                    const item = __listView.itemAtIndex(i);
+                    if (item && item.active) {
+                        keys.push(item.model.key);
+                    }
+                }
+                control.activeKey = keys;
+            }
         }
     }
 }

@@ -98,12 +98,6 @@ T.ScrollBar {
         }
     }
 
-    QtObject {
-        id: __private
-        property bool visible: control.hovered || control.pressed || !exit
-        property bool exit: true
-    }
-
     Timer {
         id: __exitTimer
         interval: 800
@@ -156,4 +150,10 @@ T.ScrollBar {
 
     Accessible.role: Accessible.ScrollBar
     Accessible.description: control.contentDescription
+
+    QtObject {
+        id: __private
+        property bool visible: control.hovered || control.pressed || !exit
+        property bool exit: true
+    }
 }

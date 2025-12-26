@@ -88,26 +88,6 @@ HusInput {
         }
     }
 
-    function clearInput() {
-        control.clear();
-        control.textEdited();
-        __popupListView.currentIndex = __popupListView.selectIndex = -1;
-    }
-
-    function openPopup() {
-        if (!__popup.opened)
-            __popup.open();
-    }
-
-    function closePopup() {
-        __popup.close();
-    }
-
-    function filter() {
-        __private.model = options.filter(option => filterOption(text, option) === true);
-        __popupListView.currentIndex = __popupListView.selectIndex = -1;
-    }
-
     Item {
         id: __private
         property var window: Window.window
@@ -236,5 +216,25 @@ HusInput {
         }
 
         Binding on height { when: __popup.opened; value: __popup.implicitHeight }
+    }
+
+    function clearInput() {
+        control.clear();
+        control.textEdited();
+        __popupListView.currentIndex = __popupListView.selectIndex = -1;
+    }
+
+    function openPopup() {
+        if (!__popup.opened)
+            __popup.open();
+    }
+
+    function closePopup() {
+        __popup.close();
+    }
+
+    function filter() {
+        __private.model = options.filter(option => filterOption(text, option) === true);
+        __popupListView.currentIndex = __popupListView.selectIndex = -1;
     }
 }

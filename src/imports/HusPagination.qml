@@ -84,44 +84,6 @@ Item {
         }
     }
 
-    function gotoPageIndex(index: int) {
-        if (index <= 0) {
-            control.currentPageIndex = 0;
-        } else if (index < pageTotal) {
-            control.currentPageIndex = index;
-        } else {
-            control.currentPageIndex = (pageTotal - 1);
-        }
-    }
-
-    function gotoPrevPage() {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-        }
-    }
-
-    function gotoPrev5Page() {
-        if (currentPageIndex > 5) {
-            currentPageIndex -= 5;
-        } else {
-            currentPageIndex = 0;
-        }
-    }
-
-    function gotoNextPage() {
-        if (currentPageIndex < pageTotal) {
-            currentPageIndex++;
-        }
-    }
-
-    function gotoNext5Page() {
-        if ((currentPageIndex + 5) < pageTotal) {
-            currentPageIndex += 5;
-        } else {
-            currentPageIndex = pageTotal - 1;
-        }
-    }
-
     component PaginationButton: HusButton {
         padding: 0
         width: control.defaultButtonWidth
@@ -243,11 +205,6 @@ Item {
         }
     }
 
-    QtObject {
-        id: __private
-        property int pageButtonHalfCount: Math.ceil(control.pageButtonMaxCount * 0.5)
-    }
-
     Row {
         id: __row
         spacing: control.defaultButtonSpacing
@@ -321,5 +278,48 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             sourceComponent: control.showQuickJumper ? control.quickJumperDelegate : null
         }
+    }
+
+    function gotoPageIndex(index: int) {
+        if (index <= 0) {
+            control.currentPageIndex = 0;
+        } else if (index < pageTotal) {
+            control.currentPageIndex = index;
+        } else {
+            control.currentPageIndex = (pageTotal - 1);
+        }
+    }
+
+    function gotoPrevPage() {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+        }
+    }
+
+    function gotoPrev5Page() {
+        if (currentPageIndex > 5) {
+            currentPageIndex -= 5;
+        } else {
+            currentPageIndex = 0;
+        }
+    }
+
+    function gotoNextPage() {
+        if (currentPageIndex < pageTotal) {
+            currentPageIndex++;
+        }
+    }
+
+    function gotoNext5Page() {
+        if ((currentPageIndex + 5) < pageTotal) {
+            currentPageIndex += 5;
+        } else {
+            currentPageIndex = pageTotal - 1;
+        }
+    }
+
+    QtObject {
+        id: __private
+        property int pageButtonHalfCount: Math.ceil(control.pageButtonMaxCount * 0.5)
     }
 }

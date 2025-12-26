@@ -79,32 +79,6 @@ HusInput {
         }
     }
 
-    function setDateTime(date: var) {
-        if (date)
-            __private.selectDateTime(date);
-    }
-
-    function getDateTime(): var {
-        return __private.getDateTime();
-    }
-
-    function setDateTimeString(dateTimeString: string) {
-        __private.setDateTimeString(dateTimeString);
-    }
-
-    function getDateTimeString(): string {
-        return __private.getDateTimeString();
-    }
-
-    function openPicker() {
-        if (!__picker.opened)
-            __picker.open();
-    }
-
-    function closePicker() {
-        __picker.close();
-    }
-
     objectName: '__HusDateTimePicker__'
     width: showDate && showTime ? 210 : 160
     themeSource: HusTheme.HusDateTimePicker
@@ -1081,5 +1055,33 @@ HusInput {
                 }
             }
         }
+    }
+
+    function setDateTime(date: var) {
+        if (date) {
+            __private.selectDateTime(date);
+        }
+    }
+
+    function getDateTime(): var {
+        return __private.getDateTime();
+    }
+
+    function setDateTimeString(dateTimeString: string) {
+        __private.setDateTimeString(dateTimeString);
+    }
+
+    function getDateTimeString(): string {
+        return __private.getDateTimeString();
+    }
+
+    function openPicker() {
+        if (!__picker.opened) {
+            __picker.open();
+        }
+    }
+
+    function closePicker() {
+        __picker.close();
     }
 }

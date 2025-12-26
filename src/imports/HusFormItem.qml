@@ -57,44 +57,6 @@ Item {
     implicitWidth: __mainLoader.implicitWidth
     implicitHeight: __mainLoader.implicitHeight
 
-    QtObject {
-        id: __private
-        property int validationStatus: HusFormItem.Validation_None
-        property string feedbackText: ''
-
-        function validateInternal(param) {
-            if (typeof control.validator !== 'function') {
-                __private.validationStatus = HusFormItem.Validation_None;
-                __private.feedbackText = '';
-                return;
-            }
-            try {
-                // 调用 validator，如果提供了参数则传递参数，否则不传参数
-                let result = (arguments.length > 0) ? control.validator(param) : control.validator();
-                // 处理 undefined 返回值 - 清空反馈
-                if (result === undefined) {
-                    __private.validationStatus = HusFormItem.Validation_None;
-                    __private.feedbackText = '';
-                    return;
-                }
-                // 支持返回布尔值
-                if (typeof result === 'boolean') {
-                    __private.validationStatus = result ? HusFormItem.Validation_Success : HusFormItem.Validation_Error;
-                    __private.feedbackText = result ? qsTr('校验通过') : qsTr('校验不通过');
-                }
-                // 支持返回对象 {valid: bool, message: string}
-                else if (typeof result === 'object' && result !== null) {
-                    __private.validationStatus = result.valid ? HusFormItem.Validation_Success : HusFormItem.Validation_Error;
-                    __private.feedbackText = result.message || '';
-                }
-            } catch (ex) {
-                console.error('HusFormItem Validation error:', ex);
-                __private.validationStatus = HusFormItem.Validation_Error;
-                __private.feedbackText = qsTr('验证出错');
-            }
-        }
-    }
-
     // 主布局加载器
     Loader {
         id: __mainLoader
@@ -332,5 +294,43 @@ Item {
             allValid = false;
         }
         return allValid;
+    }
+
+    QtObject {
+        id: __private
+        property int validationStatus: HusFormItem.Validation_None
+        property string feedbackText: ''
+
+        function validateInternal(param) {
+            if (typeof control.validator !== 'function') {
+                __private.validationStatus = HusFormItem.Validation_None;
+                __private.feedbackText = '';
+                return;
+            }
+            try {
+                // 调用 validator，如果提供了参数则传递参数，否则不传参数
+                let result = (arguments.length > 0) ? control.validator(param) : control.validator();
+                // 处理 undefined 返回值 - 清空反馈
+                if (result === undefined) {
+                    __private.validationStatus = HusFormItem.Validation_None;
+                    __private.feedbackText = '';
+                    return;
+                }
+                // 支持返回布尔值
+                if (typeof result === 'boolean') {
+                    __private.validationStatus = result ? HusFormItem.Validation_Success : HusFormItem.Validation_Error;
+                    __private.feedbackText = result ? qsTr('校验通过') : qsTr('校验不通过');
+                }
+                // 支持返回对象 {valid: bool, message: string}
+                else if (typeof result === 'object' && result !== null) {
+                    __private.validationStatus = result.valid ? HusFormItem.Validation_Success : HusFormItem.Validation_Error;
+                    __private.feedbackText = result.message || '';
+                }
+            } catch (ex) {
+                console.error('HusFormItem Validation error:', ex);
+                __private.validationStatus = HusFormItem.Validation_Error;
+                __private.feedbackText = qsTr('验证出错');
+            }
+        }
     }
 }

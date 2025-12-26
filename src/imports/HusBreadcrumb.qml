@@ -149,6 +149,66 @@ Item {
     }
     onInitModelChanged: reset();
 
+    ListView{
+        id: __listView
+        width: parent.width
+        height: parent.height
+        orientation: ListView.Horizontal
+        model: ListModel { id: __listModel }
+        clip: true
+        spacing: control.spacing
+        boundsBehavior: ListView.StopAtBounds
+        add: Transition {
+            NumberAnimation {
+                properties: 'opacity'
+                from: 0
+                to: 1
+                duration: control.animationEnabled ? HusTheme.Primary.durationFast : 0
+            }
+        }
+        remove: Transition {
+            NumberAnimation {
+                properties: 'opacity'
+                from: 1
+                to: 0
+                duration: control.animationEnabled ? HusTheme.Primary.durationFast : 0
+            }
+        }
+        delegate: Item {
+            id: __rootItem
+            width: __row.implicitWidth
+            height: __listView.height
+
+            required property int index
+            required property var model
+            property bool isCurrent: (index + 1) === __listModel.count
+
+            Row {
+                id: __row
+                width: parent.width
+                height: parent.height
+                spacing: control.spacing
+
+                Loader {
+                    anchors.verticalCenter: parent.verticalCenter
+                    sourceComponent: model.itemDelegate
+                    property alias index: __rootItem.index
+                    property alias model: __rootItem.model
+                    property alias isCurrent: __rootItem.isCurrent
+                }
+
+                Loader {
+                    anchors.verticalCenter: parent.verticalCenter
+                    active: index + 1 !== __listModel.count
+                    sourceComponent: model.separatorDelegate
+                    property alias index: __rootItem.index
+                    property alias model: __rootItem.model
+                    property alias isCurrent: __rootItem.isCurrent
+                }
+            }
+        }
+    }
+
     function get(index) {
         return __listModel.get(index);
     }
@@ -220,66 +280,6 @@ Item {
             if (!object.hasOwnProperty('menu')) object.menu = {};
 
             return object;
-        }
-    }
-
-    ListView{
-        id: __listView
-        width: parent.width
-        height: parent.height
-        orientation: ListView.Horizontal
-        model: ListModel { id: __listModel }
-        clip: true
-        spacing: control.spacing
-        boundsBehavior: ListView.StopAtBounds
-        add: Transition {
-            NumberAnimation {
-                properties: 'opacity'
-                from: 0
-                to: 1
-                duration: control.animationEnabled ? HusTheme.Primary.durationFast : 0
-            }
-        }
-        remove: Transition {
-            NumberAnimation {
-                properties: 'opacity'
-                from: 1
-                to: 0
-                duration: control.animationEnabled ? HusTheme.Primary.durationFast : 0
-            }
-        }
-        delegate: Item {
-            id: __rootItem
-            width: __row.implicitWidth
-            height: __listView.height
-
-            required property int index
-            required property var model
-            property bool isCurrent: (index + 1) === __listModel.count
-
-            Row {
-                id: __row
-                width: parent.width
-                height: parent.height
-                spacing: control.spacing
-
-                Loader {
-                    anchors.verticalCenter: parent.verticalCenter
-                    sourceComponent: model.itemDelegate
-                    property alias index: __rootItem.index
-                    property alias model: __rootItem.model
-                    property alias isCurrent: __rootItem.isCurrent
-                }
-
-                Loader {
-                    anchors.verticalCenter: parent.verticalCenter
-                    active: index + 1 !== __listModel.count
-                    sourceComponent: model.separatorDelegate
-                    property alias index: __rootItem.index
-                    property alias model: __rootItem.model
-                    property alias isCurrent: __rootItem.isCurrent
-                }
-            }
         }
     }
 }

@@ -5,17 +5,16 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum SnapMode
-    {
-        NoSnap = 0,
-        SnapAlways = 1,
-        SnapOnRelease = 2
-    }
-
     signal firstMoved()
     signal firstReleased()
     signal secondMoved()
     signal secondReleased()
+
+    enum SnapMode {
+        NoSnap = 0,
+        SnapAlways = 1,
+        SnapOnRelease = 2
+    }
 
     property bool animationEnabled: HusTheme.animationEnabled
     property int hoverCursorShape: Qt.PointingHandCursor
@@ -128,13 +127,13 @@ Item {
                         return range ? (slider.second.visualPosition * parent.height) : slider.visualPosition * parent.height;
                 }
                 width: {
-                    if (control.orientation == Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal)
                         return range ? (slider.second.visualPosition * parent.width - x) : slider.visualPosition * parent.width;
                     else
                         return parent.width;
                 }
                 height: {
-                    if (control.orientation == Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal)
                         return parent.height;
                     else
                         return range ? (slider.first.visualPosition * parent.height - y) : ((1.0 - slider.visualPosition) * parent.height);
@@ -150,43 +149,6 @@ Item {
 
     objectName: '__HusSlider__'
     onValueChanged: __private.fromValueUpdate();
-
-    QtObject {
-        id: __private
-
-        function fromValueUpdate() {
-            if (__sliderLoader.item) {
-                if (range) {
-                    __sliderLoader.item.setValues(...value);
-                } else {
-                    __sliderLoader.item.value = value;
-                }
-            }
-        }
-    }
-
-    function decrease(first = true) {
-        if (__sliderLoader.item) {
-            if (range) {
-                if (first)
-                    __sliderLoader.item.first.decrease();
-                else
-                    __sliderLoader.item.second.decrease();
-            } else {
-                __sliderLoader.item.decrease();
-            }
-        }
-    }
-    function increase(first = true) {
-        if (range) {
-            if (first)
-                __sliderLoader.item.first.increase();
-            else
-                __sliderLoader.item.second.increase();
-        } else {
-            __sliderLoader.item.decrease();
-        }
-    }
 
     Component {
         id: __sliderComponent
@@ -280,4 +242,44 @@ Item {
     Accessible.description: control.contentDescription
     Accessible.onIncreaseAction: increase();
     Accessible.onDecreaseAction: decrease();
+
+    function decrease(first = true) {
+        if (__sliderLoader.item) {
+            if (range) {
+                if (first) {
+                    __sliderLoader.item.first.decrease();
+                } else {
+                    __sliderLoader.item.second.decrease();
+                }
+            } else {
+                __sliderLoader.item.decrease();
+            }
+        }
+    }
+
+    function increase(first = true) {
+        if (range) {
+            if (first) {
+                __sliderLoader.item.first.increase();
+            } else {
+                __sliderLoader.item.second.increase();
+            }
+        } else {
+            __sliderLoader.item.decrease();
+        }
+    }
+
+    QtObject {
+        id: __private
+
+        function fromValueUpdate() {
+            if (__sliderLoader.item) {
+                if (range) {
+                    __sliderLoader.item.setValues(...value);
+                } else {
+                    __sliderLoader.item.value = value;
+                }
+            }
+        }
+    }
 }

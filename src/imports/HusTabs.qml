@@ -7,23 +7,20 @@ Item {
     id: control
     clip: true
 
-    enum TabPosition
-    {
+    enum TabPosition {
         Position_Top = 0,
         Position_Bottom = 1,
         Position_Left = 2,
         Position_Right = 3
     }
 
-    enum TabType
-    {
+    enum TabType {
         Type_Default = 0,
         Type_Card = 1,
         Type_CardEditable = 2
     }
 
-    enum TabSize
-    {
+    enum TabSize {
         Size_Auto = 0,
         Size_Fixed = 1
     }

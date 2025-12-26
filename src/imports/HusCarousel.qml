@@ -23,7 +23,7 @@ Item {
     property bool showIndicator: true
     property int indicatorSpacing: 6
     property bool showArrow: false
-    property HusRadius radiusIndicator: HusRadius { all: HusTheme.HusCarousel.radiusIndicator}
+    property HusRadius radiusIndicator: HusRadius { all: HusTheme.HusCarousel.radiusIndicator }
     property Component contentDelegate: Item { }
     property Component indicatorDelegate: HusRectangleInternal {
         width: isHorizontal ? __width : __height

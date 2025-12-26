@@ -81,13 +81,6 @@ Rectangle {
         id: husColorGenerator
     }
 
-    QtObject {
-        id: __private
-        property bool isCustom: false
-        property color presetColor: '#000'
-        property var colorArray: HusThemeFunctions.genColor(presetColor, !HusTheme.isDark, HusTheme.Primary.colorBgBase)
-    }
-
     Row {
         id: __row
         anchors.centerIn: parent
@@ -148,5 +141,12 @@ Rectangle {
                 onTapped: control.close();
             }
         }
+    }
+
+    QtObject {
+        id: __private
+        property bool isCustom: false
+        property color presetColor: '#000'
+        property var colorArray: HusThemeFunctions.genColor(presetColor, !HusTheme.isDark, HusTheme.Primary.colorBgBase)
     }
 }

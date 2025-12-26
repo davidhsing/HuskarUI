@@ -23,11 +23,6 @@ Item {
         __contentItem.implicitHeight
     )
 
-    QtObject {
-        id: __private
-        property bool spinVisible: control.spinning
-    }
-
     Timer {
         id: __delayTimer
         interval: control.delay
@@ -172,5 +167,10 @@ Item {
                 ColorAnimation { duration: HusTheme.Primary.durationFast }
             }
         }
+    }
+
+    QtObject {
+        id: __private
+        property bool spinVisible: control.spinning
     }
 }

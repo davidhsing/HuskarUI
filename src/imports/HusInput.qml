@@ -5,12 +5,12 @@ import HuskarUI.Basic
 T.TextField {
     id: control
 
+    signal clickClear()
+
     enum IconPosition {
         Position_Left = 0,
         Position_Right = 1
     }
-
-    signal clickClear()
 
     property bool animationEnabled: HusTheme.animationEnabled
     readonly property bool active: hovered || activeFocus
@@ -115,12 +115,6 @@ T.TextField {
     Behavior on colorBorder { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
 
-    QtObject {
-        id: __private
-        property int iconSize: __iconLoader.active ? __iconLoader.width : 0
-        property int clearIconSize: __clearIconLoader.active ? __clearIconLoader.width : 0
-    }
-
     Loader {
         id: __iconLoader
         active: control.iconSource !== 0 && control.iconSource !== ''
@@ -157,4 +151,10 @@ T.TextField {
     Accessible.role: Accessible.EditableText
     Accessible.editable: control.readOnly
     Accessible.description: control.contentDescription
+
+    QtObject {
+        id: __private
+        property int iconSize: __iconLoader.active ? __iconLoader.width : 0
+        property int clearIconSize: __clearIconLoader.active ? __clearIconLoader.width : 0
+    }
 }

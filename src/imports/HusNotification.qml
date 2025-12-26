@@ -76,92 +76,6 @@ Item {
         wrapMode: Text.WrapAnywhere
     }
 
-    function info(message: string, description: string, duration = 4500) {
-        open({
-                 'message': message,
-                 'description': description,
-                 'type': HusNotification.Type_Message,
-                 'duration': duration
-             });
-    }
-
-    function success(message: string, description: string, duration = 4500) {
-        open({
-                 'message': message,
-                 'description': description,
-                 'type': HusNotification.Type_Success,
-                 'duration': duration
-             });
-    }
-
-    function error(message: string, description: string, duration = 4500) {
-        open({
-                 'message': message,
-                 'description': description,
-                 'type': HusNotification.Type_Error,
-                 'duration': duration
-             });
-    }
-
-    function warning(message: string, description: string, duration = 4500) {
-        open({
-                 'message': message,
-                 'description': description,
-                 'type': HusNotification.Type_Warning,
-                 'duration': duration
-             });
-    }
-
-    function loading(message: string, description: string, duration = 4500) {
-        open({
-                 'loading': true,
-                 'message': message,
-                 'description': description,
-                 'type': HusNotification.Type_Message,
-                 'duration': duration
-             });
-    }
-
-    function open(object) {
-        __listModel.insert(0, __private.initObject(object));
-    }
-
-    function close(key: string) {
-        for (let i = 0; i < __listModel.count; i++) {
-            const object = __listModel.get(i);
-            if (object.key && object.key === key) {
-                const item = __repeater.itemAt(i);
-                if (item)
-                    item.removeSelf();
-                break;
-            }
-        }
-    }
-
-    function clear() {
-        __listModel.clear();
-    }
-
-    function getNotification(key: string): var {
-        for (let i = 0; i < __listModel.count; i++) {
-            const object = __listModel.get(i);
-            if (object.key && object.key === key) {
-                return object;
-            }
-        }
-        return undefined;
-    }
-
-    function setProperty(key: string, property: string, value: var) {
-        for (let i = 0; i < __listModel.count; i++) {
-            const object = __listModel.get(i);
-            if (object.key && object.key === key) {
-                __listModel.setProperty(i, property, value);
-                break;
-            }
-        }
-    }
-
     objectName: '__HusNotification__'
 
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
@@ -434,6 +348,92 @@ Item {
 
         HoverHandler {
             id: __hoverHandler
+        }
+    }
+
+    function info(message: string, description: string, duration = 4500) {
+        open({
+            'message': message,
+            'description': description,
+            'type': HusNotification.Type_Message,
+            'duration': duration
+        });
+    }
+
+    function success(message: string, description: string, duration = 4500) {
+        open({
+            'message': message,
+            'description': description,
+            'type': HusNotification.Type_Success,
+            'duration': duration
+        });
+    }
+
+    function error(message: string, description: string, duration = 4500) {
+        open({
+            'message': message,
+            'description': description,
+            'type': HusNotification.Type_Error,
+            'duration': duration
+        });
+    }
+
+    function warning(message: string, description: string, duration = 4500) {
+        open({
+            'message': message,
+            'description': description,
+            'type': HusNotification.Type_Warning,
+            'duration': duration
+        });
+    }
+
+    function loading(message: string, description: string, duration = 4500) {
+        open({
+            'loading': true,
+            'message': message,
+            'description': description,
+            'type': HusNotification.Type_Message,
+            'duration': duration
+        });
+    }
+
+    function open(object) {
+        __listModel.insert(0, __private.initObject(object));
+    }
+
+    function close(key: string) {
+        for (let i = 0; i < __listModel.count; i++) {
+            const object = __listModel.get(i);
+            if (object.key && object.key === key) {
+                const item = __repeater.itemAt(i);
+                if (item)
+                    item.removeSelf();
+                break;
+            }
+        }
+    }
+
+    function clear() {
+        __listModel.clear();
+    }
+
+    function getNotification(key: string): var {
+        for (let i = 0; i < __listModel.count; i++) {
+            const object = __listModel.get(i);
+            if (object.key && object.key === key) {
+                return object;
+            }
+        }
+        return undefined;
+    }
+
+    function setProperty(key: string, property: string, value: var) {
+        for (let i = 0; i < __listModel.count; i++) {
+            const object = __listModel.get(i);
+            if (object.key && object.key === key) {
+                __listModel.setProperty(i, property, value);
+                break;
+            }
         }
     }
 }

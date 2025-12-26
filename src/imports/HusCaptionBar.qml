@@ -170,18 +170,6 @@ Rectangle {
     objectName: '__HusCaptionBar__'
     color: 'transparent'
 
-    function addInteractionItem(item) {
-        if (windowAgent) {
-            windowAgent.setHitTestVisible(item, true);
-        }
-    }
-
-    function removeInteractionItem(item) {
-        if (windowAgent) {
-            windowAgent.setHitTestVisible(item, false);
-        }
-    }
-
     RowLayout {
         id: __row
         anchors.fill: parent
@@ -260,4 +248,16 @@ Rectangle {
     Accessible.role: Accessible.TitleBar
     Accessible.name: control.contentDescription
     Accessible.description: control.contentDescription
+
+    function addInteractionItem(item) {
+        if (windowAgent) {
+            windowAgent.setHitTestVisible(item, true);
+        }
+    }
+
+    function removeInteractionItem(item) {
+        if (windowAgent) {
+            windowAgent.setHitTestVisible(item, false);
+        }
+    }
 }

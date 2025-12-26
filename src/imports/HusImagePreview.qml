@@ -208,85 +208,6 @@ HusPopup {
         }
     }
 
-    function get(index) {
-        return __listModel.get(index);
-    }
-
-    function set(index, object) {
-        __listModel.set(index, __private.initObject(object));
-    }
-
-    function setProperty(index, propertyName, value) {
-        __listModel.setProperty(index, propertyName, value);
-    }
-
-    function move(from, to, count = 1) {
-        __listModel.move(from, to, count);
-    }
-
-    function insert(index, object) {
-        __listModel.insert(index, __private.initObject(object));
-    }
-
-    function append(object) {
-        __listModel.append(__private.initObject(object));
-    }
-
-    function remove(index, count = 1) {
-        __listModel.remove(index, count);
-    }
-
-    function clear() {
-        __listModel.clear();
-    }
-
-    function zoomIn() {
-        __private.isCenterScale = true;
-        const nextScale = __private.scale + scaleStep;
-        if (nextScale < scaleMax)
-            __private.scale = nextScale;
-        else
-            __private.scale = scaleMax;
-    }
-
-    function zoomOut() {
-        __private.isCenterScale = true;
-        const nextScale = __private.scale - scaleStep;
-        if (nextScale > scaleMin)
-            __private.scale = nextScale;
-        else
-            __private.scale = scaleMin;
-    }
-
-    function flipX() {
-        __private.flipX = !__private.flipX;
-    }
-
-    function flipY() {
-        __private.flipY = !__private.flipY;
-    }
-
-    function rotate(angle: real) {
-        __private.rotation += angle;
-    }
-
-    function resetTransform() {
-        __private.isCenterScale = true;
-        __private.flipX = false;
-        __private.flipY = false;
-        __private.scale = control.scaleInit;
-        __private.rotation = control.rotationInit;
-        __private.toCenter();
-    }
-
-    function incrementCurrentIndex() {
-        __listView.incrementCurrentIndex();
-    }
-
-    function decrementCurrentIndex() {
-        __listView.decrementCurrentIndex();
-    }
-
     onItemsChanged:  {
         clear();
         for (const object of items) {
@@ -313,36 +234,6 @@ HusPopup {
         __private.visible = false;
     }
     background: Item { }
-
-    QtObject {
-        id: __private
-
-        signal toCenter()
-
-        property bool visible: false
-        property real rotation: control.rotationInit
-        property real scale: control.scaleInit
-        property real scaleOriginX: 0.0
-        property real scaleOriginY: 0.0
-        property bool isCenterScale: true
-        property bool flipX: false
-        property bool flipY: false
-
-        function initObject(object) {
-            if (!object.hasOwnProperty('url')) {
-                object.url = '';
-            }
-            return object;
-        }
-
-        Behavior on scale {
-            enabled: control.animationEnabled
-            NumberAnimation {
-                duration: HusTheme.Primary.durationMid
-                easing.type: Easing.OutCubic
-            }
-        }
-    }
 
     Rectangle {
         anchors.fill: parent
@@ -734,6 +625,115 @@ HusPopup {
                 active: control.closeVisible
                 visible: active
                 z: 1
+            }
+        }
+    }
+
+    function get(index) {
+        return __listModel.get(index);
+    }
+
+    function set(index, object) {
+        __listModel.set(index, __private.initObject(object));
+    }
+
+    function setProperty(index, propertyName, value) {
+        __listModel.setProperty(index, propertyName, value);
+    }
+
+    function move(from, to, count = 1) {
+        __listModel.move(from, to, count);
+    }
+
+    function insert(index, object) {
+        __listModel.insert(index, __private.initObject(object));
+    }
+
+    function append(object) {
+        __listModel.append(__private.initObject(object));
+    }
+
+    function remove(index, count = 1) {
+        __listModel.remove(index, count);
+    }
+
+    function clear() {
+        __listModel.clear();
+    }
+
+    function zoomIn() {
+        __private.isCenterScale = true;
+        const nextScale = __private.scale + scaleStep;
+        if (nextScale < scaleMax)
+            __private.scale = nextScale;
+        else
+            __private.scale = scaleMax;
+    }
+
+    function zoomOut() {
+        __private.isCenterScale = true;
+        const nextScale = __private.scale - scaleStep;
+        if (nextScale > scaleMin)
+            __private.scale = nextScale;
+        else
+            __private.scale = scaleMin;
+    }
+
+    function flipX() {
+        __private.flipX = !__private.flipX;
+    }
+
+    function flipY() {
+        __private.flipY = !__private.flipY;
+    }
+
+    function rotate(angle: real) {
+        __private.rotation += angle;
+    }
+
+    function resetTransform() {
+        __private.isCenterScale = true;
+        __private.flipX = false;
+        __private.flipY = false;
+        __private.scale = control.scaleInit;
+        __private.rotation = control.rotationInit;
+        __private.toCenter();
+    }
+
+    function incrementCurrentIndex() {
+        __listView.incrementCurrentIndex();
+    }
+
+    function decrementCurrentIndex() {
+        __listView.decrementCurrentIndex();
+    }
+
+    QtObject {
+        id: __private
+
+        signal toCenter()
+
+        property bool visible: false
+        property real rotation: control.rotationInit
+        property real scale: control.scaleInit
+        property real scaleOriginX: 0.0
+        property real scaleOriginY: 0.0
+        property bool isCenterScale: true
+        property bool flipX: false
+        property bool flipY: false
+
+        function initObject(object) {
+            if (!object.hasOwnProperty('url')) {
+                object.url = '';
+            }
+            return object;
+        }
+
+        Behavior on scale {
+            enabled: control.animationEnabled
+            NumberAnimation {
+                duration: HusTheme.Primary.durationMid
+                easing.type: Easing.OutCubic
             }
         }
     }

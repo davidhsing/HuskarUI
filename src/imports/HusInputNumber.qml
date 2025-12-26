@@ -164,59 +164,6 @@ Item {
     onCurrentBeforeLabelChanged: valueChanged();
     Component.onCompleted: valueChanged();
 
-    function increase() {
-        value = value + step > max ? max : value + step;
-    }
-
-    function decrease() {
-        value = value - step < min ? min : value - step;
-    }
-
-    function getFullText() {
-        return __input.text;
-    }
-
-    function select(start: int, end: int) {
-        __input.select(start, end);
-    }
-
-    function selectAll(start: int, end: int) {
-        __input.selectAll(start, end);
-    }
-
-    function selectWord(start: int, end: int) {
-        __input.selectWord(start, end);
-    }
-
-    function clear() {
-        __input.clear();
-        control.valueChanged();
-    }
-
-    function copy() {
-        __input.copy();
-    }
-
-    function cut() {
-        __input.cut();
-        control.valueChanged();
-    }
-
-    function paste() {
-        __input.paste();
-        control.valueChanged();
-    }
-
-    function redo() {
-        __input.redo();
-        control.valueChanged();
-    }
-
-    function undo() {
-        __input.undo();
-        control.valueChanged();
-    }
-
     Component {
         id: __selectComp
 
@@ -395,5 +342,58 @@ Item {
             active: control.afterLabel?.length !== 0
             sourceComponent: control.afterDelegate
         }
+    }
+
+    function increase() {
+        value = value + step > max ? max : value + step;
+    }
+
+    function decrease() {
+        value = value - step < min ? min : value - step;
+    }
+
+    function getFullText() {
+        return __input.text;
+    }
+
+    function select(start: int, end: int) {
+        __input.select(start, end);
+    }
+
+    function selectAll(start: int, end: int) {
+        __input.selectAll(start, end);
+    }
+
+    function selectWord(start: int, end: int) {
+        __input.selectWord(start, end);
+    }
+
+    function clear() {
+        __input.clear();
+        control.valueChanged();
+    }
+
+    function copy() {
+        __input.copy();
+    }
+
+    function cut() {
+        __input.cut();
+        control.valueChanged();
+    }
+
+    function paste() {
+        __input.paste();
+        control.valueChanged();
+    }
+
+    function redo() {
+        __input.redo();
+        control.valueChanged();
+    }
+
+    function undo() {
+        __input.undo();
+        control.valueChanged();
     }
 }

@@ -17,19 +17,6 @@ HusPopup {
     property int subMenuOffset: -4
     property HusRadius radiusMenuBg: HusRadius { all: HusTheme.Primary.radiusPrimary }
 
-    function open() {
-        visible = true;
-        if (parent && parent instanceof Item) {
-            const pos = parent.mapToItem(null, x, y);
-            if ((pos.x + implicitWidth + 6) > __private.window.width) {
-                x = parent.mapFromItem(null, __private.window.width - 6, 0).x - implicitWidth;
-            }
-            if ((pos.y + implicitHeight + 6) > __private.window.height) {
-                y = parent.mapFromItem(null, 0, __private.window.height - 6).y - implicitHeight;
-            }
-        }
-    }
-
     objectName: '__HusContextMenu__'
     implicitWidth: defaultMenuWidth
     implicitHeight: implicitContentHeight
@@ -169,5 +156,18 @@ HusPopup {
     Item {
         id: __private
         property var window: Window.window
+    }
+
+    function open() {
+        visible = true;
+        if (parent && parent instanceof Item) {
+            const pos = parent.mapToItem(null, x, y);
+            if ((pos.x + implicitWidth + 6) > __private.window.width) {
+                x = parent.mapFromItem(null, __private.window.width - 6, 0).x - implicitWidth;
+            }
+            if ((pos.y + implicitHeight + 6) > __private.window.height) {
+                y = parent.mapFromItem(null, 0, __private.window.height - 6).y - implicitHeight;
+            }
+        }
     }
 }

@@ -118,128 +118,6 @@ Item {
         __listView.model = initModel;
     }
 
-    function gotoMenu(key) {
-        __private.gotoMenuKey = key;
-        __private.gotoMenu(key);
-    }
-
-    function get(index) {
-        if (index >= 0 && index < __listView.model.length) {
-            return __listView.model[index];
-        }
-        return undefined;
-    }
-
-    function set(index, object) {
-        if (index >= 0 && index < __listView.model.length) {
-            __listView.model[index] = object;
-            __listView.modelChanged();
-        }
-    }
-
-    function setProperty(index, propertyName, value) {
-        if (index >= 0 && index < __listView.model.length) {
-            __listView.model[index][propertyName] = value;
-            __listView.modelChanged();
-        }
-    }
-
-    /*
-    function getData(key) {
-        const findItemFunc = list => {
-            for (const item of list) {
-                if (item.hasOwnProperty('key') && item.key === key) {
-                    return item;
-                } else {
-                    if (item.hasOwnProperty('children')) {
-                        const data = findItemFunc(item.children);
-                        if (data !== undefined) {
-                            return data;
-                        }
-                    }
-                }
-            }
-            return undefined;
-        }
-
-        return findItemFunc(__listView.model);
-    }
-    */
-
-    function setData(key, data) {
-        const setItemFunc = list => {
-            for (let i = 0; i < list.length; i++) {
-                let item = list[i];
-                if (item.hasOwnProperty('key') && item.key === key) {
-                    list[i] = data;
-                    return true;
-                } else {
-                    if (item.hasOwnProperty('children')) {
-                        if (setItemFunc(item.children)) {
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-        if (setItemFunc(__listView.model)) {
-            __private.setData(key, data);
-        }
-    }
-
-    function setDataProperty(key, propertyName, value) {
-        const setItemFunc = list => {
-            for (let i = 0; i < list.length; i++) {
-                let item = list[i];
-                if (item.hasOwnProperty('key') && item.key === key) {
-                    list[i][propertyName] = value;
-                    return true;
-                } else {
-                    if (item.hasOwnProperty('children')) {
-                        if (setItemFunc(item.children)) {
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-        if (setItemFunc(__listView.model)) {
-            __private.setDataProperty(key, propertyName, value);
-        }
-    }
-
-    function move(from, to, count = 1) {
-        if (from >= 0 && from < __listView.model.length && to >= 0 && to < __listView.model.length) {
-            const objects = __listView.model.splice(from, count);
-            __listView.model.splice(to, 0, ...objects);
-            __listView.modelChanged();
-        }
-    }
-
-    function insert(index, object) {
-        __listView.model.splice(index, 0, object);
-        __listView.modelChanged();
-    }
-
-    function append(object) {
-        __listView.model.push(object);
-        __listView.modelChanged();
-    }
-
-    function remove(index, count = 1) {
-        if (index >= 0 && index < __listView.model.length) {
-            __listView.model.splice(index, count);
-            __listView.modelChanged();
-        }
-    }
-
-    function clear() {
-        __private.gotoMenuKey = '';
-        __listView.model = [];
-    }
-
     component MenuButton: HusButton {
         id: __menuButtonImpl
 
@@ -710,4 +588,126 @@ Item {
 
     Accessible.role: Accessible.Tree
     Accessible.description: control.contentDescription
+
+    function gotoMenu(key) {
+        __private.gotoMenuKey = key;
+        __private.gotoMenu(key);
+    }
+
+    function get(index) {
+        if (index >= 0 && index < __listView.model.length) {
+            return __listView.model[index];
+        }
+        return undefined;
+    }
+
+    function set(index, object) {
+        if (index >= 0 && index < __listView.model.length) {
+            __listView.model[index] = object;
+            __listView.modelChanged();
+        }
+    }
+
+    function setProperty(index, propertyName, value) {
+        if (index >= 0 && index < __listView.model.length) {
+            __listView.model[index][propertyName] = value;
+            __listView.modelChanged();
+        }
+    }
+
+    /*
+    function getData(key) {
+        const findItemFunc = list => {
+            for (const item of list) {
+                if (item.hasOwnProperty('key') && item.key === key) {
+                    return item;
+                } else {
+                    if (item.hasOwnProperty('children')) {
+                        const data = findItemFunc(item.children);
+                        if (data !== undefined) {
+                            return data;
+                        }
+                    }
+                }
+            }
+            return undefined;
+        }
+
+        return findItemFunc(__listView.model);
+    }
+    */
+
+    function setData(key, data) {
+        const setItemFunc = list => {
+            for (let i = 0; i < list.length; i++) {
+                let item = list[i];
+                if (item.hasOwnProperty('key') && item.key === key) {
+                    list[i] = data;
+                    return true;
+                } else {
+                    if (item.hasOwnProperty('children')) {
+                        if (setItemFunc(item.children)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        if (setItemFunc(__listView.model)) {
+            __private.setData(key, data);
+        }
+    }
+
+    function setDataProperty(key, propertyName, value) {
+        const setItemFunc = list => {
+            for (let i = 0; i < list.length; i++) {
+                let item = list[i];
+                if (item.hasOwnProperty('key') && item.key === key) {
+                    list[i][propertyName] = value;
+                    return true;
+                } else {
+                    if (item.hasOwnProperty('children')) {
+                        if (setItemFunc(item.children)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        if (setItemFunc(__listView.model)) {
+            __private.setDataProperty(key, propertyName, value);
+        }
+    }
+
+    function move(from, to, count = 1) {
+        if (from >= 0 && from < __listView.model.length && to >= 0 && to < __listView.model.length) {
+            const objects = __listView.model.splice(from, count);
+            __listView.model.splice(to, 0, ...objects);
+            __listView.modelChanged();
+        }
+    }
+
+    function insert(index, object) {
+        __listView.model.splice(index, 0, object);
+        __listView.modelChanged();
+    }
+
+    function append(object) {
+        __listView.model.push(object);
+        __listView.modelChanged();
+    }
+
+    function remove(index, count = 1) {
+        if (index >= 0 && index < __listView.model.length) {
+            __listView.model.splice(index, count);
+            __listView.modelChanged();
+        }
+    }
+
+    function clear() {
+        __private.gotoMenuKey = '';
+        __listView.model = [];
+    }
 }

@@ -156,13 +156,6 @@ Item {
         isDone = true;
     }
 
-    QtObject {
-        id: __private
-        property real doneValue: 0    /* 是否支持半星动画 */
-        property bool supportsHalfAnimation: control.allowHalf &&
-                                             ((fillIcon === HusIcon.StarFilled && emptyIcon === HusIcon.StarFilled) || halfIcon !== emptyIcon)
-    }
-
     MouseArea {
         id: __mouseArea
         width: __row.width
@@ -324,5 +317,12 @@ Item {
                 }
             }
         }
+    }
+
+    QtObject {
+        id: __private
+        property real doneValue: 0    /* 是否支持半星动画 */
+        property bool supportsHalfAnimation: control.allowHalf &&
+            ((fillIcon === HusIcon.StarFilled && emptyIcon === HusIcon.StarFilled) || halfIcon !== emptyIcon)
     }
 }
