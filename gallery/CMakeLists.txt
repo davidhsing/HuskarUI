@@ -51,6 +51,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/General/ExpRectangle.qml
         qml/Examples/General/ExpPopup.qml
         qml/Examples/General/ExpRadius.qml
+        qml/Examples/General/ExpMargin.qml
         qml/Examples/General/ExpText.qml
         qml/Examples/General/ExpButtonBlock.qml
         qml/Examples/General/ExpCaptionBar.qml

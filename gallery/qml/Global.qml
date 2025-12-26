@@ -112,6 +112,13 @@ QtObject {
                     desc: qsTr('提供四方向的圆角半径类型。')
                 },
                 {
+                    key: 'HusMargin',
+                    label: qsTr('HusMargin 边距'),
+                    source: './Examples/General/ExpMargin.qml',
+                    addVersion: '0.5.0.0',
+                    desc: qsTr('提供四方向的边距类型。')
+                },
+                {
                     key: 'HusStatusBar',
                     label: qsTr('HusStatusBar 状态栏'),
                     source: './Examples/General/ExpStatusBar.qml',
