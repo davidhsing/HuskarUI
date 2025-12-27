@@ -13,12 +13,10 @@ Flickable {
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 30
 
-        Description
-// language=HTML
-        {
+        Description {
             width: parent.width
-            title: qsTr('HusResult 结果')
             desc: qsTr(`
+# HusResult 结果 \n
 用于反馈一系列操作任务的处理结果。\n
 * **继承自 { Item }**\n
 \n<br/>
@@ -35,6 +33,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 type | ResultType | Type_Info | 结果类型
+borderVisible | bool | true | 外侧边框是否可见
 iconVisible | bool | true | 图标是否可见
 extraVisible | bool | true | 额外内容是否可见
 titleVisible | bool | true | 标题是否可见

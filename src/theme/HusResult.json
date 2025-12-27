@@ -5,6 +5,7 @@
         "fontDescriptionFamily": "@fontPrimaryFamily",
         "fontDescriptionSize": "@fontPrimarySize",
         "colorBg": "@colorBgContainer",
+        "colorBorder": "@colorBorderSecondary",
         "colorTitle": "@colorTextPrimary",
         "colorDescription": "@colorTextSecondary",
         "radiusBg": "@radiusPrimary"

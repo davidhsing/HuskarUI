@@ -19,6 +19,7 @@ Item {
 
     // Basic properties
     property bool animationEnabled: HusTheme.animationEnabled
+    property bool borderVisible: true
     property int spacing: 16
     property int type: HusResult.Type_Info
 
@@ -153,6 +154,8 @@ Item {
     property Component footerDelegate: Item { }
 
     property Component bgDelegate: HusRectangleInternal {
+        border.color: HusTheme.HusResult.colorBorder
+        border.width: 1
         color: control.colorBg
         radius: control.radiusBg.all
         topLeftRadius: control.radiusBg.topLeft
