@@ -105,17 +105,17 @@ HusResult {
         height: 40
 
         Row {
-            spacing: 10
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
 
             HusButton {
-                text: "Go Console"
+                text: 'Go Console'
                 type: HusButton.Type_Primary
             }
 
             HusButton {
-                text: "Buy Again"
+                text: 'Buy Again'
                 type: HusButton.Type_Default
             }
         }
@@ -129,17 +129,17 @@ HusResult {
                     height: 40
 
                     Row {
-                        spacing: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
+                        spacing: 10
 
                         HusButton {
-                            text: "Go Console"
+                            text: 'Go Console'
                             type: HusButton.Type_Primary
                         }
 
                         HusButton {
-                            text: "Buy Again"
+                            text: 'Buy Again'
                             type: HusButton.Type_Default
                         }
                     }
@@ -165,17 +165,17 @@ HusResult {
         height: 40
 
         Row {
-            spacing: 10
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
 
             HusButton {
-                text: "Go Console"
+                text: 'Go Console'
                 type: HusButton.Type_Primary
             }
 
             HusButton {
-                text: "Buy Again"
+                text: 'Buy Again'
                 type: HusButton.Type_Default
             }
         }
@@ -189,17 +189,17 @@ HusResult {
                     height: 40
 
                     Row {
-                        spacing: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
+                        spacing: 10
 
                         HusButton {
-                            text: "Go Console"
+                            text: 'Go Console'
                             type: HusButton.Type_Primary
                         }
 
                         HusButton {
-                            text: "Buy Again"
+                            text: 'Buy Again'
                             type: HusButton.Type_Default
                         }
                     }
@@ -225,17 +225,17 @@ HusResult {
         height: 40
 
         Row {
-            spacing: 10
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
 
             HusButton {
-                text: "Go Console"
+                text: 'Go Console'
                 type: HusButton.Type_Primary
             }
 
             HusButton {
-                text: "Buy Again"
+                text: 'Buy Again'
                 type: HusButton.Type_Default
             }
         }
@@ -249,17 +249,17 @@ HusResult {
                     height: 40
 
                     Row {
-                        spacing: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
+                        spacing: 10
 
                         HusButton {
-                            text: "Go Console"
+                            text: 'Go Console'
                             type: HusButton.Type_Primary
                         }
 
                         HusButton {
-                            text: "Buy Again"
+                            text: 'Buy Again'
                             type: HusButton.Type_Default
                         }
                     }
@@ -290,17 +290,17 @@ HusResult {
         height: 40
 
         Row {
-            spacing: 10
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
 
             HusButton {
-                text: "Go Console"
+                text: 'Go Console'
                 type: HusButton.Type_Primary
             }
 
             HusButton {
-                text: "Buy Again"
+                text: 'Buy Again'
                 type: HusButton.Type_Default
             }
         }
@@ -319,17 +319,17 @@ HusResult {
                     height: 40
 
                     Row {
-                        spacing: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
+                        spacing: 10
 
                         HusButton {
-                            text: "Go Console"
+                            text: 'Go Console'
                             type: HusButton.Type_Primary
                         }
 
                         HusButton {
-                            text: "Buy Again"
+                            text: 'Buy Again'
                             type: HusButton.Type_Default
                         }
                     }
@@ -356,17 +356,17 @@ HusResult {
         height: 40
 
         Row {
-            spacing: 10
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
 
             HusButton {
-                text: "Go Console"
+                text: 'Go Console'
                 type: HusButton.Type_Primary
             }
 
             HusButton {
-                text: "Buy Again"
+                text: 'Buy Again'
                 type: HusButton.Type_Default
             }
         }
@@ -381,17 +381,17 @@ HusResult {
                     height: 40
 
                     Row {
-                        spacing: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
+                        spacing: 10
 
                         HusButton {
-                            text: "Go Console"
+                            text: 'Go Console'
                             type: HusButton.Type_Primary
                         }
 
                         HusButton {
-                            text: "Buy Again"
+                            text: 'Buy Again'
                             type: HusButton.Type_Default
                         }
                     }
