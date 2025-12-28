@@ -150,7 +150,7 @@ T.Button {
             id: __effect
             width: __bg.width
             height: __bg.height
-            radius: __bg.radius
+            radius: control.shape === HusButton.Shape_Circle ? height * 0.5 : __bg.radius
             anchors.centerIn: parent
             visible: control.effectEnabled && control.type !== HusButton.Type_Link
             color: 'transparent'
