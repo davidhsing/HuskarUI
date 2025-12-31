@@ -24,13 +24,14 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 emptyAsError | bool | false | 是否将空的 source 视为加载失败(触发 fallback)
-forceHoverCursor | bool | false | 是否强制鼠标为 hoverCursorShape(参考多张图片预览)
+forceHoverCursor | bool | false | 是否强制鼠标为 hoverCursorShape
 previewEnabled | bool | false | 是否启用预览
 hovered | bool(readonly) | - | 鼠标是否悬浮
 hoverCursorShape | int | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
 fallback | url | '' | 加载失败时显示的图像占位符
 placeholder | url | '' | 加载时显示的图像占位符
 items | list | [] | 预览图片源
+previewText | string | '预览' | 预览文字
 \n<br/>
 \n### {items}支持的属性：\n
 属性名 | 类型 | 可选/必选 | 描述

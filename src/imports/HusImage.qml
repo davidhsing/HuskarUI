@@ -13,6 +13,7 @@ Image {
     property var fallback: ''
     property var placeholder: ''
     property var items: []
+    property string previewText: qsTr('预览')
 
     objectName: '__HusImage__'
     onSourceChanged: {
@@ -74,12 +75,12 @@ Image {
                     anchors.verticalCenter: parent.verticalCenter
                     colorIcon: HusTheme.HusImage.colorText
                     iconSource: HusIcon.EyeOutlined
-                    iconSize: HusTheme.HusImage.fontSize + 2
+                    iconSize: HusTheme.HusImage.fontSize
                 }
 
                 HusText {
                     anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr('预览')
+                    text: control.previewText
                     color: HusTheme.HusImage.colorText
                 }
             }
