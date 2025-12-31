@@ -50,6 +50,7 @@ colorIcon | color | - | 图标颜色
         CodeBox {
             width: parent.width
             desc: qsTr(`
+通过 \`loading\` 属性设置是否在加载中\n
 通过 \`iconSource\` 属性设置图标源{ HusIcon中定义 }\n
 通过 \`iconSize\` 属性设置图标大小\n
 通过 \`iconPosition\` 属性设置图标位置，支持的位置有：\n
@@ -103,6 +104,11 @@ Row {
         type: HusButton.Type_Text
         iconSource: HusIcon.SearchOutlined
     }
+    
+    HusIconButton {
+        text: qsTr('加载中')
+        loading: true
+    }
 }
             `
             exampleDelegate: Row {
@@ -149,6 +155,10 @@ Row {
                     iconSource: HusIcon.SearchOutlined
                 }
 
+                HusIconButton {
+                    text: qsTr('加载中')
+                    loading: true
+                }
             }
         }
     }

@@ -17,6 +17,8 @@ HusButton {
     property color colorIcon: colorText
 
     objectName: '__HusIconButton__'
+    enabled: control.loading ? false : control.enabled
+
     contentItem: Item {
         implicitWidth: __row.implicitWidth
         implicitHeight: Math.max(__icon.implicitHeight, __text.implicitHeight)
@@ -37,7 +39,7 @@ HusButton {
                 iconSize: control.iconSize
                 iconSource: control.loading ? HusIcon.LoadingOutlined : control.iconSource
                 verticalAlignment: Text.AlignVCenter
-                visible: control.iconSource !== 0 && control.iconSource !== ''
+                visible: control.loading || (control.iconSource !== 0 && control.iconSource !== '')
 
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
 
