@@ -145,6 +145,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusBreadcrumb.qml
         imports/HusImage.qml
         imports/HusImagePreview.qml
+        imports/HusAnimatedImage.qml
         imports/HusMultiSelect.qml
         imports/HusDateTimePicker.qml
         imports/HusShadow.qml

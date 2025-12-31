@@ -399,6 +399,12 @@ QtObject {
                     desc: qsTr('用于预览的图片的基本工具，提供常用的图片变换(平移/缩放/翻转/旋转)操作。')
                 },
                 {
+                    key: 'HusAnimatedImage',
+                    label: qsTr('HusAnimatedImage 动态图片'),
+                    source: './Examples/DataDisplay/ExpAnimatedImage.qml',
+                    desc: qsTr('可预览的动态图片。')
+                },
+                {
                     key: 'HusCheckerBoard',
                     label: qsTr('HusCheckerBoard 棋盘格'),
                     source: './Examples/DataDisplay/ExpCheckerBoard.qml',
