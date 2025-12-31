@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls.Basic
 import HuskarUI.Basic
-
 import '../../Controls'
 
 Flickable {
@@ -199,7 +198,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
             desc: qsTr(`
 通过 \`lineStyle\` 属性改变线条风格，支持的风格：\n
 - 实线(默认){ HusDivider.Solid_Line }\n
-- 虚线{ HusDivider.Dashed_Line }
+- 虚线{ HusDivider.Dash_Line }
                        `)
             code: `
                 import QtQuick
@@ -224,7 +223,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
                     HusDivider {
                         width: parent.width
                         height: 30
-                        lineStyle: HusDivider.Dashed_Line
+                        lineStyle: HusDivider.Dash_Line
                         title: qsTr('虚线分割线')
                     }
                 }
@@ -247,7 +246,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
                 HusDivider {
                     width: parent.width
                     height: 30
-                    lineStyle: HusDivider.Dashed_Line
+                    lineStyle: HusDivider.Dash_Line
                     title: qsTr('虚线分割线')
                 }
             }
