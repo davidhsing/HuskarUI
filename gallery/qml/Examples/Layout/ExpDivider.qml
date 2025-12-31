@@ -31,10 +31,12 @@ title | string | '' | 标题
 titleFont | font | - | 标题字体
 titleAlign | enum | HusDivider.Align_Left | 标题对齐(来自 HusDivider)
 titlePadding | int | 20 | 标题填充
+lineStyle | enum | HusDivider.Solid_Line | 分割线样式(来自 HusDivider)
+lineWidth | real | 1 | 分割线宽度
+dashPattern | list | [4, 2] | 分割线虚线模式
+orientation | enum | Qt.Horizontal | 方向(Qt.Horizontal 或 Qt.Vertical)
 colorText | color | - | 标题颜色
 colorSplit | color | - | 分割线颜色
-style | enum | HusDivider.SolidLine | 分割线样式(来自 HusDivider)
-orientation | enum | Qt.Horizontal | 方向(Qt.Horizontal 或 Qt.Vertical)
 contentDescription | string | '' | 内容描述(提高可用性)
                        `)
         }
@@ -65,40 +67,40 @@ contentDescription | string | '' | 内容描述(提高可用性)
 - 居右{ HusDivider.Align_Right }
                        `)
             code: `
-import QtQuick
-import HuskarUI.Basic
+                import QtQuick
+                import HuskarUI.Basic
 
-Column {
-    width: parent.width
-    spacing: 15
+                Column {
+                    width: parent.width
+                    spacing: 15
 
-    HusText {
-        width: parent.width
-        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
-        wrapMode: Text.WrapAnywhere
-    }
+                    HusText {
+                        width: parent.width
+                        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
+                        wrapMode: Text.WrapAnywhere
+                    }
 
-    HusDivider {
-        width: parent.width
-        height: 30
-        title: qsTr('水平分割线-居左')
-        titleAlign: HusDivider.Align_Left
-    }
+                    HusDivider {
+                        width: parent.width
+                        height: 30
+                        title: qsTr('水平分割线-居左')
+                        titleAlign: HusDivider.Align_Left
+                    }
 
-    HusDivider {
-        width: parent.width
-        height: 30
-        title: qsTr('水平分割线-居中')
-        titleAlign: HusDivider.Align_Center
-    }
+                    HusDivider {
+                        width: parent.width
+                        height: 30
+                        title: qsTr('水平分割线-居中')
+                        titleAlign: HusDivider.Align_Center
+                    }
 
-    HusDivider {
-        width: parent.width
-        height: 30
-        title: qsTr('水平分割线-居右')
-        titleAlign: HusDivider.Align_Right
-    }
-}
+                    HusDivider {
+                        width: parent.width
+                        height: 30
+                        title: qsTr('水平分割线-居右')
+                        titleAlign: HusDivider.Align_Right
+                    }
+                }
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -141,32 +143,32 @@ Column {
 如果需要垂直标题，请自行添加\`\\n\`
                        `)
             code: `
-import QtQuick
-import HuskarUI.Basic
+                import QtQuick
+                import HuskarUI.Basic
 
-Column {
-    width: parent.width
-    spacing: 15
+                Column {
+                    width: parent.width
+                    spacing: 15
 
-    HusText {
-        width: parent.width
-        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
-        wrapMode: Text.WrapAnywhere
-    }
+                    HusText {
+                        width: parent.width
+                        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
+                        wrapMode: Text.WrapAnywhere
+                    }
 
-    HusDivider {
-        width: parent.width
-        height: 30
-        title: qsTr('水平分割线')
-    }
+                    HusDivider {
+                        width: parent.width
+                        height: 30
+                        title: qsTr('水平分割线')
+                    }
 
-    HusDivider {
-        width: 30
-        height: 200
-        orientation: Qt.Vertical
-        title: qsTr('垂\\n直\\n分\\n割\\n线')
-    }
-}
+                    HusDivider {
+                        width: 30
+                        height: 200
+                        orientation: Qt.Vertical
+                        title: qsTr('垂\\n直\\n分\\n割\\n线')
+                    }
+                }
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -195,37 +197,37 @@ Column {
         CodeBox {
             width: parent.width
             desc: qsTr(`
-通过 \`style\` 属性改变线条风格，支持的风格：\n
-- 实线(默认){ HusDivider.SolidLine }\n
-- 虚线{ HusDivider.DashLine }
+通过 \`lineStyle\` 属性改变线条风格，支持的风格：\n
+- 实线(默认){ HusDivider.Solid_Line }\n
+- 虚线{ HusDivider.Dashed_Line }
                        `)
             code: `
-import QtQuick
-import HuskarUI.Basic
+                import QtQuick
+                import HuskarUI.Basic
 
-Column {
-    width: parent.width
-    spacing: 15
+                Column {
+                    width: parent.width
+                    spacing: 15
 
-    HusText {
-        width: parent.width
-        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
-        wrapMode: Text.WrapAnywhere
-    }
+                    HusText {
+                        width: parent.width
+                        text: qsTr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.')
+                        wrapMode: Text.WrapAnywhere
+                    }
 
-    HusDivider {
-        width: parent.width
-        height: 30
-        title: qsTr('实线分割线')
-    }
+                    HusDivider {
+                        width: parent.width
+                        height: 30
+                        title: qsTr('实线分割线')
+                    }
 
-    HusDivider {
-        width: parent.width
-        height: 30
-        style: HusDivider.DashLine
-        title: qsTr('虚线分割线')
-    }
-}
+                    HusDivider {
+                        width: parent.width
+                        height: 30
+                        lineStyle: HusDivider.Dashed_Line
+                        title: qsTr('虚线分割线')
+                    }
+                }
             `
             exampleDelegate: Column {
                 spacing: 15
@@ -245,7 +247,7 @@ Column {
                 HusDivider {
                     width: parent.width
                     height: 30
-                    style: HusDivider.DashLine
+                    lineStyle: HusDivider.Dashed_Line
                     title: qsTr('虚线分割线')
                 }
             }

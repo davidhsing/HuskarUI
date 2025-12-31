@@ -9,7 +9,7 @@ T.ComboBox {
 
     property bool animationEnabled: HusTheme.animationEnabled
     readonly property bool active: hovered || activeFocus
-    property bool clearEnabled: true
+    property bool clearEnabled: false
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int defaultPopupMaxHeight: 240
     property bool danger: false

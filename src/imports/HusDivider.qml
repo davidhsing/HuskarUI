@@ -1,3 +1,26 @@
+/*
+ * HuskarUI
+ *
+ * Copyright (C) mengps (MenPenS) (MIT License)
+ * https://github.com/mengps/HuskarUI
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * - The above copyright notice and this permission notice shall be included in
+ *   all copies or substantial portions of the Software.
+ * - The Software is provided "as is", without warranty of any kind, express or
+ *   implied, including but not limited to the warranties of merchantability,
+ *   fitness for a particular purpose and noninfringement. In no event shall the
+ *   authors or copyright holders be liable for any claim, damages or other
+ *   liability, whether in an action of contract, tort or otherwise, arising from,
+ *   out of or in connection with the Software or the use or other dealings in the
+ *   Software.
+ */
+
 import QtQuick
 import QtQuick.Shapes
 import HuskarUI.Basic
@@ -11,23 +34,27 @@ Item {
         Align_Right = 2
     }
 
-    enum Style {
-        SolidLine = 0,
-        DashLine = 1
+    enum LineStyle {
+        Solid_Line = 0,
+        Dashed_Line = 1
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
     property string title: ''
     property font titleFont: Qt.font({
-        family: HusTheme.HusDivider.fontFamily,
-        pixelSize: HusTheme.HusDivider.fontSize
+        family: themeSource.fontFamily,
+        pixelSize: parseInt(themeSource.fontSize)
     })
     property int titleAlign: HusDivider.Align_Left
     property int titlePadding: 20
-    property color colorText: HusTheme.HusDivider.colorText
-    property color colorSplit: HusTheme.HusDivider.colorSplit
-    property int style: HusDivider.SolidLine
+    property int lineStyle: HusDivider.Solid_Line
+    property real lineWidth: 1
+    property list<real> dashPattern: [4, 2]
     property int orientation: Qt.Horizontal
+    property color colorText: themeSource.colorText
+    property color colorSplit: themeSource.colorSplit
+    property var themeSource: HusTheme.HusDivider
+
     property Component titleDelegate: HusText {
         text: control.title
         font: control.titleFont
@@ -40,12 +67,14 @@ Item {
         property real lineY: __titleLoader.y + __titleLoader.implicitHeight * 0.5
 
         ShapePath {
-            strokeStyle: control.style === HusDivider.SolidLine ? ShapePath.SolidLine : ShapePath.DashLine
+            strokeStyle: control.lineStyle === HusDivider.Solid_Line ? ShapePath.Solid_Line : ShapePath.Dashed_Line
             strokeColor: control.colorSplit
-            strokeWidth: 1
+            strokeWidth: control.lineWidth
+            dashPattern: control.dashPattern
             fillColor: 'transparent'
             startX: control.orientation === Qt.Horizontal ? 0 : __shape.lineX
             startY: control.orientation === Qt.Horizontal ? __shape.lineY : 0
+
             PathLine {
                 x: {
                     if (control.orientation === Qt.Horizontal) {
@@ -59,9 +88,10 @@ Item {
         }
 
         ShapePath {
-            strokeStyle: control.style === HusDivider.SolidLine ? ShapePath.SolidLine : ShapePath.DashLine
+            strokeStyle: control.lineStyle === HusDivider.Solid_Line ? ShapePath.Solid_Line : ShapePath.Dashed_Line
             strokeColor: control.colorSplit
-            strokeWidth: 1
+            strokeWidth: control.lineWidth
+            dashPattern: control.dashPattern
             fillColor: 'transparent'
             startX: {
                 if (control.orientation === Qt.Horizontal) {
@@ -93,7 +123,7 @@ Item {
 
     Loader {
         id: __splitLoader
-        sourceComponent: splitDelegate
+        sourceComponent: control.splitDelegate
     }
 
     Loader {
@@ -109,7 +139,7 @@ Item {
         anchors.rightMargin: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.Align_Right) ? control.titlePadding : 0
         anchors.horizontalCenter: (control.orientation !== Qt.Horizontal || control.titleAlign === HusDivider.Align_Center) ? parent.horizontalCenter : undefined
         anchors.verticalCenter: (control.orientation === Qt.Horizontal || control.titleAlign === HusDivider.Align_Center) ? parent.verticalCenter : undefined
-        sourceComponent: titleDelegate
+        sourceComponent: control.titleDelegate
     }
 
     Accessible.role: Accessible.Separator
