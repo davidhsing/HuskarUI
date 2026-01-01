@@ -5,7 +5,7 @@ import HuskarUI.Basic
 T.Button {
     id: control
 
-    enum Type {
+    enum ButtonType {
         TypeDefault = 0,
         TypeOutlined = 1,
         TypePrimary = 2,
@@ -14,7 +14,7 @@ T.Button {
         TypeLink = 5
     }
 
-    enum Shape {
+    enum ButtonShape {
         ShapeDefault = 0,
         ShapeCircle = 1
     }

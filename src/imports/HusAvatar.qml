@@ -5,7 +5,7 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum TextSiz {
+    enum TextSize {
         SizeFixed = 0,
         SizeAuto = 1
     }
