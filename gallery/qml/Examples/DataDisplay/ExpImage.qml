@@ -153,7 +153,7 @@ Column {
 
     HusButton {
         text: 'Reload'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             placeholderImage.random = Date.now();
         }
@@ -174,7 +174,7 @@ Column {
 
                 HusButton {
                     text: 'Reload'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         placeholderImage.random = Date.now();
                     }
@@ -391,7 +391,7 @@ Column {
 
     HusButton {
         text: 'Show image preview'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             imagePreview1.open();
         }
@@ -431,7 +431,7 @@ Column {
 
                 HusButton {
                     text: 'Show image preview'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         imagePreview1.open();
                     }

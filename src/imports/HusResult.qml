@@ -6,22 +6,22 @@ Item {
     id: control
 
     enum ResultType {
-        Type_Info = 0,
-        Type_Warning = 1,
-        Type_Success = 2,
-        Type_Error = 3
+        TypeInfo = 0,
+        TypeWarning = 1,
+        TypeSuccess = 2,
+        TypeError = 3
     }
 
     enum ExtraPosition {
-        Position_Start = 0,
-        Position_End = 1
+        PositionStart = 0,
+        PositionEnd = 1
     }
 
     // Basic properties
     property bool animationEnabled: HusTheme.animationEnabled
     property bool borderVisible: true
     property int spacing: 16
-    property int type: HusResult.Type_Info
+    property int type: HusResult.TypeInfo
 
     // Icon properties
     property var iconSource: 0 ?? ''
@@ -35,16 +35,16 @@ Item {
     property bool iconVisible: true
     property color colorIcon: {
         switch (control.type) {
-            case HusResult.Type_Info: return HusTheme.Primary.colorInfo;
-            case HusResult.Type_Warning: return HusTheme.Primary.colorWarning;
-            case HusResult.Type_Success: return HusTheme.Primary.colorSuccess;
-            case HusResult.Type_Error: return HusTheme.Primary.colorError;
+            case HusResult.TypeInfo: return HusTheme.Primary.colorInfo;
+            case HusResult.TypeWarning: return HusTheme.Primary.colorWarning;
+            case HusResult.TypeSuccess: return HusTheme.Primary.colorSuccess;
+            case HusResult.TypeError: return HusTheme.Primary.colorError;
             default: return HusTheme.Primary.colorInfo;
         }
     }
 
     // Extra properties
-    property int extraPosition: HusResult.Position_End
+    property int extraPosition: HusResult.PositionEnd
     property bool extraVisible: true
 
     // Title properties
@@ -116,10 +116,10 @@ Item {
                 color: control.colorIcon
                 iconSource: {
                     switch (control.type) {
-                        case HusResult.Type_Info: return HusIcon.ExclamationCircleFilled;
+                        case HusResult.TypeInfo: return HusIcon.ExclamationCircleFilled;
                         case HusResult.Type_Warn: return HusIcon.ExclamationCircleFilled;
-                        case HusResult.Type_Success: return HusIcon.CheckCircleFilled;
-                        case HusResult.Type_Error: return HusIcon.CloseCircleFilled;
+                        case HusResult.TypeSuccess: return HusIcon.CheckCircleFilled;
+                        case HusResult.TypeError: return HusIcon.CloseCircleFilled;
                         default: return HusIcon.ExclamationCircleFilled;
                     }
                 }
@@ -173,16 +173,16 @@ Item {
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.topMargin: control.marginExtra.top
-            anchors.leftMargin: control.extraPosition === HusResult.Position_Start ? control.marginExtra.left : 0
-            anchors.rightMargin: control.extraPosition === HusResult.Position_End ? control.marginExtra.right : 0
+            anchors.leftMargin: control.extraPosition === HusResult.PositionStart ? control.marginExtra.left : 0
+            anchors.rightMargin: control.extraPosition === HusResult.PositionEnd ? control.marginExtra.right : 0
             implicitHeight: __extraLoader.item ? __extraLoader.item.implicitHeight : 0
             visible: control.extraVisible
 
             Loader {
                 id: __extraLoader
                 anchors.top: parent.top
-                anchors.left: control.extraPosition === HusResult.Position_Start ? parent.left : undefined
-                anchors.right: control.extraPosition === HusResult.Position_End ? parent.right : undefined
+                anchors.left: control.extraPosition === HusResult.PositionStart ? parent.left : undefined
+                anchors.right: control.extraPosition === HusResult.PositionEnd ? parent.right : undefined
                 sourceComponent: control.extraDelegate
                 active: control.extraVisible
                 visible: active

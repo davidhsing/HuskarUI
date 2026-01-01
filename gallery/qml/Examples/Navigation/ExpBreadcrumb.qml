@@ -124,7 +124,7 @@ Column {
 
         HusButton {
             text: 'Reset'
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             onClicked: breadcrumb.reset();
         }
 
@@ -161,7 +161,7 @@ Column {
 
                     HusButton {
                         text: 'Reset'
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         onClicked: breadcrumb.reset();
                     }
 

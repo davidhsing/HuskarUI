@@ -153,7 +153,7 @@ T.CheckBox {
                         const midPointX = width * 0.4;
                         const endX = width * 0.8;
                         const midPointY = height * 0.75;
-                        const startY = height * 0.5;
+                        const startY = height / 2;
                         const endY = height * 0.2;
 
                         ctx.beginPath();
@@ -210,11 +210,11 @@ T.CheckBox {
                 id: __partialCheckMark
                 x: (parent.width - width) / 2
                 y: (parent.height - height) / 2
-                width: parent.width * 0.5
-                height: parent.height * 0.5
+                width: parent.width / 2
+                height: parent.height / 2
                 color: control.colorIndicator
                 visible: control.checkState === Qt.PartiallyChecked
-                radius: parent.radius * 0.5
+                radius: parent.radius / 2
 
                 Behavior on opacity {
                     enabled: control.animationEnabled

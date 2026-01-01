@@ -116,7 +116,7 @@ Item {
                 closePolicy: HusPopup.NoAutoClose | HusPopup.CloseOnPressOutsideParent | HusPopup.CloseOnEscape
                 onHoveredChanged: {
                     if (hovered) {
-                        x = (parent.width - implicitWidth) * 0.5;
+                        x = (parent.width - implicitWidth) / 2;
                         y = parent.height + 2;
                         open();
                     }

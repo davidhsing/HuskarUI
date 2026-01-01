@@ -6,31 +6,31 @@ Item {
     id: control
 
     enum ImageStyle {
-        Style_None = 0,
-        Style_Default = 1,
-        Style_Simple = 2
+        ImageNone = 0,
+        ImageDefault = 1,
+        ImageSimple = 2
     }
 
     property int imageStyle: HusEmpty.Image_Default
     property string imageSource: {
         switch (imageStyle) {
-            case HusEmpty.Style_None: return '';
-            case HusEmpty.Style_Default: return 'qrc:/HuskarUI/resources/images/empty-default.svg';
-            case HusEmpty.Style_Simple: return 'qrc:/HuskarUI/resources/images/empty-simple.svg';
+            case HusEmpty.ImageNone: return '';
+            case HusEmpty.ImageDefault: return 'qrc:/HuskarUI/resources/images/empty-default.svg';
+            case HusEmpty.ImageSimple: return 'qrc:/HuskarUI/resources/images/empty-simple.svg';
         }
     }
     property int imageWidth: {
         switch (imageStyle) {
-            case HusEmpty.Style_None: return width / 3;
-            case HusEmpty.Style_Default: return 92;
-            case HusEmpty.Style_Simple: return 64;
+            case HusEmpty.ImageNone: return width / 3;
+            case HusEmpty.ImageDefault: return 92;
+            case HusEmpty.ImageSimple: return 64;
         }
     }
     property int imageHeight: {
         switch (imageStyle) {
-            case HusEmpty.Style_None: return height / 3;
-            case HusEmpty.Style_Default: return 76;
-            case HusEmpty.Style_Simple: return 41;
+            case HusEmpty.ImageNone: return height / 3;
+            case HusEmpty.ImageDefault: return 76;
+            case HusEmpty.ImageSimple: return 41;
         }
     }
     property bool showDescription: true

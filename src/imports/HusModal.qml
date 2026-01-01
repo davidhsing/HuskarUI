@@ -7,17 +7,17 @@ HusPopup {
     id: control
 
     enum Position {
-        Position_Top = 0,
-        Position_Bottom = 1,
-        Position_Center = 2,
-        Position_Left = 3,
-        Position_Right = 4
+        PositionTop = 0,
+        PositionBottom = 1,
+        PositionCenter = 2,
+        PositionLeft = 3,
+        PositionRight = 4
     }
 
     signal confirm()
     signal cancel()
 
-    property int position: HusModal.Position_Center
+    property int position: HusModal.PositionCenter
     property int positionMargin: 120
     property bool closable: true
     property bool maskClosable: true
@@ -94,14 +94,14 @@ HusPopup {
     property Component confirmButtonDelegate: HusButton {
         animationEnabled: control.animationEnabled
         text: control.confirmText
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         visible: !!control.confirmText
         onClicked: control.confirm();
     }
     property Component cancelButtonDelegate: HusButton {
         animationEnabled: control.animationEnabled
         text: control.cancelText
-        type: HusButton.Type_Default
+        type: HusButton.TypeDefault
         visible: !!control.cancelText
         onClicked: control.cancel();
     }
@@ -191,29 +191,29 @@ HusPopup {
     parent: T.Overlay.overlay
     x: {
         switch (control.position) {
-        case HusModal.Position_Top:
+        case HusModal.PositionTop:
             return (parent.width - width) / 2;
-        case HusModal.Position_Bottom:
+        case HusModal.PositionBottom:
             return (parent.width - width) / 2;
-        case HusModal.Position_Center:
+        case HusModal.PositionCenter:
             return (parent.width - width) / 2;
-        case HusModal.Position_Left:
+        case HusModal.PositionLeft:
             return positionMargin;
-        case HusModal.Position_Right:
+        case HusModal.PositionRight:
             return parent.width - width - positionMargin;
         }
     }
     y: {
         switch (control.position) {
-        case HusModal.Position_Top:
+        case HusModal.PositionTop:
             return positionMargin;
-        case HusModal.Position_Bottom:
+        case HusModal.PositionBottom:
             return parent.height - height - positionMargin;
-        case HusModal.Position_Center:
+        case HusModal.PositionCenter:
             return (parent.height - height) / 2;
-        case HusModal.Position_Left:
+        case HusModal.PositionLeft:
             return (parent.height - height) / 2;
-        case HusModal.Position_Right:
+        case HusModal.PositionRight:
             return (parent.height - height) / 2;
         }
     }

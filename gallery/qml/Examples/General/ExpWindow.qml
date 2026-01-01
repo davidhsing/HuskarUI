@@ -20,9 +20,6 @@ Flickable {
 跨平台无边框窗口的最佳实现，基于 [QWindowKit](https://github.com/stdware/qwindowkit)。\n
 * **继承自 { Window }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -31,7 +28,7 @@ captionBar | [HusCaptionBar](internal://HusCaptionBar) | - | 窗口标题栏
 windowAgent | HusWindowAgent | - | 窗口代理
 followThemeSwitch | bool | true | 是否跟随系统明/暗模式自动切换
 initialized | bool | false | 指示窗口是否已经初始化完毕
-specialEffect | enum | HusWindow.None | 特殊效果(来自 HusWindow)
+specialEffect | enum | HusWindow.EffectNone | 特殊效果(来自 HusWindow)
 \n<br/>
 \n### 支持的函数：\n
 - \`setMacSystemButtonsVisible(visible: bool): bool\` 设置是否显示系统按钮(MacOSX有效) \n
@@ -83,7 +80,7 @@ Item {
 
     HusButton {
         text: (windowLoader.visible ? qsTr('隐藏') : qsTr('显示')) + qsTr('窗口')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: windowLoader.visible = !windowLoader.visible;
     }
 
@@ -108,7 +105,7 @@ Item {
 
                 HusButton {
                     text: (windowLoader.visible ? qsTr('隐藏') : qsTr('显示')) + qsTr('窗口')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: windowLoader.visible = !windowLoader.visible;
                 }
 

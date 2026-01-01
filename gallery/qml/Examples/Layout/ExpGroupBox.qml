@@ -28,8 +28,8 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否启用动画
 title | string | '' | 标题文本 |
-titlePosition | enum | Position_Top | 标题位置(Position_Top/Position_Bottom)（来自 HusGroupBox）
-titleAlign | enum | Align_Left | 标题对齐方式(Align_Left/Align_Center/Align_Right)（来自 HusGroupBox）
+titlePosition | enum | PositionTop | 标题位置(PositionTop/PositionBottom)（来自 HusGroupBox）
+titleAlign | enum | AlignLeft | 标题对齐方式(AlignLeft/AlignCenter/AlignRight)（来自 HusGroupBox）
 titlePadding | int | 20 | 标题距离边框的水平距离
 titleLeftPadding | int | 4 | 标题左侧内边距
 titleRightPadding | int | 4 | 标题右侧内边距
@@ -107,7 +107,7 @@ Row {
         width: 250
         height: 150
         title: "顶部标题"
-        titlePosition: HusGroupBox.Position_Top
+        titlePosition: HusGroupBox.PositionTop
 
         HusText {
             anchors.centerIn: parent
@@ -119,7 +119,7 @@ Row {
         width: 250
         height: 150
         title: "底部标题"
-        titlePosition: HusGroupBox.Position_Bottom
+        titlePosition: HusGroupBox.PositionBottom
 
         HusText {
             anchors.centerIn: parent
@@ -135,7 +135,7 @@ Row {
                     width: 250
                     height: 150
                     title: qsTr("顶部标题")
-                    titlePosition: HusGroupBox.Position_Top
+                    titlePosition: HusGroupBox.PositionTop
 
                     HusText {
                         anchors.centerIn: parent
@@ -147,7 +147,7 @@ Row {
                     width: 250
                     height: 150
                     title: qsTr("底部标题")
-                    titlePosition: HusGroupBox.Position_Bottom
+                    titlePosition: HusGroupBox.PositionBottom
 
                     HusText {
                         anchors.centerIn: parent
@@ -170,7 +170,7 @@ Column {
         width: 400
         height: 100
         title: "左对齐"
-        titleAlign: HusGroupBox.Align_Left
+        titleAlign: HusGroupBox.AlignLeft
 
         HusText {
             anchors.centerIn: parent
@@ -182,7 +182,7 @@ Column {
         width: 400
         height: 100
         title: "居中对齐"
-        titleAlign: HusGroupBox.Align_Center
+        titleAlign: HusGroupBox.AlignCenter
 
         HusText {
             anchors.centerIn: parent
@@ -194,7 +194,7 @@ Column {
         width: 400
         height: 100
         title: "右对齐"
-        titleAlign: HusGroupBox.Align_Right
+        titleAlign: HusGroupBox.AlignRight
 
         HusText {
             anchors.centerIn: parent
@@ -210,7 +210,7 @@ Column {
                     width: 400
                     height: 100
                     title: qsTr("左对齐")
-                    titleAlign: HusGroupBox.Align_Left
+                    titleAlign: HusGroupBox.AlignLeft
 
                     HusText {
                         anchors.centerIn: parent
@@ -222,7 +222,7 @@ Column {
                     width: 400
                     height: 100
                     title: qsTr("居中对齐")
-                    titleAlign: HusGroupBox.Align_Center
+                    titleAlign: HusGroupBox.AlignCenter
 
                     HusText {
                         anchors.centerIn: parent
@@ -234,7 +234,7 @@ Column {
                     width: 400
                     height: 100
                     title: qsTr("右对齐")
-                    titleAlign: HusGroupBox.Align_Right
+                    titleAlign: HusGroupBox.AlignRight
 
                     HusText {
                         anchors.centerIn: parent

@@ -34,7 +34,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-position | enum | HusModal.Position_Center | 弹框出现的位置(来自 HusModal)
+position | enum | HusModal.PositionCenter | 弹框出现的位置(来自 HusModal)
 positionMargin | int | 120 | 弹框出现位置距离窗口边缘的距离
 closable | bool | true | 是否显示右上角的关闭按钮
 maskClosable | bool | true | 点击蒙层是否允许关闭
@@ -107,7 +107,7 @@ Column {
 
     HusButton {
         text: 'Open Modal'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: modal1.open();
 
         HusModal {
@@ -143,11 +143,11 @@ Column {
         id: positionRadio
         initCheckedIndex: 0
         model: [
-            { label: 'Top', value: HusModal.Position_Top},
-            { label: 'Bottom', value: HusModal.Position_Bottom },
-            { label: 'Center', value: HusModal.Position_Center },
-            { label: 'Left', value: HusModal.Position_Left },
-            { label: 'Right', value: HusModal.Position_Right }
+            { label: 'Top', value: HusModal.PositionTop},
+            { label: 'Bottom', value: HusModal.PositionBottom },
+            { label: 'Center', value: HusModal.PositionCenter },
+            { label: 'Left', value: HusModal.PositionLeft },
+            { label: 'Right', value: HusModal.PositionRight }
         ]
     }
 
@@ -166,7 +166,7 @@ Column {
 
                 HusButton {
                     text: 'Open Modal'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: modal1.open();
 
                     HusModal {
@@ -202,11 +202,11 @@ Column {
                     id: positionRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'Top', value: HusModal.Position_Top},
-                        { label: 'Bottom', value: HusModal.Position_Bottom },
-                        { label: 'Center', value: HusModal.Position_Center },
-                        { label: 'Left', value: HusModal.Position_Left },
-                        { label: 'Right', value: HusModal.Position_Right }
+                        { label: 'Top', value: HusModal.PositionTop},
+                        { label: 'Bottom', value: HusModal.PositionBottom },
+                        { label: 'Center', value: HusModal.PositionCenter },
+                        { label: 'Left', value: HusModal.PositionLeft },
+                        { label: 'Right', value: HusModal.PositionRight }
                     ]
                 }
 
@@ -238,7 +238,7 @@ Column {
 
     HusButton {
         text: 'Open Modal'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: modal2.open();
 
         HusModal {
@@ -255,13 +255,13 @@ Column {
 
                     HusButton {
                         text: 'Return'
-                        type: HusButton.Type_Outlined
+                        type: HusButton.TypeOutlined
                         onClicked: modal2.close();
                     }
 
                     HusIconButton {
                         text: 'Submit'
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         onClicked: {
                             loading = true;
                             submitTimer.restart();
@@ -279,7 +279,7 @@ Column {
 
                     HusButton {
                         text: 'Search on Google'
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         onClicked: Qt.openUrlExternally('https://google.com');
                     }
                 }
@@ -293,7 +293,7 @@ Column {
 
                 HusButton {
                     text: 'Open Modal with customized footer'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: modal2.open();
 
                     HusModal {
@@ -310,13 +310,13 @@ Column {
 
                                 HusButton {
                                     text: 'Return'
-                                    type: HusButton.Type_Outlined
+                                    type: HusButton.TypeOutlined
                                     onClicked: modal2.close();
                                 }
 
                                 HusIconButton {
                                     text: 'Submit'
-                                    type: HusButton.Type_Primary
+                                    type: HusButton.TypePrimary
                                     onClicked: {
                                         loading = true;
                                         submitTimer.restart();
@@ -334,7 +334,7 @@ Column {
 
                                 HusButton {
                                     text: 'Search on Google'
-                                    type: HusButton.Type_Primary
+                                    type: HusButton.TypePrimary
                                     onClicked: Qt.openUrlExternally('https://google.com');
                                 }
                             }

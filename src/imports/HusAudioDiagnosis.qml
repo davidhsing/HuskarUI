@@ -104,7 +104,7 @@ Item {
         anchors.centerIn: parent
         width: control.progressWidth
         height: control.progressHeight
-        type: HusProgress.Type_Dashboard
+        type: HusProgress.TypeDashboard
         colorBar: control.colorBar
         colorTrack: control.colorTrack
         barThickness: control.progressThickness

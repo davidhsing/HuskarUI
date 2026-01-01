@@ -5,10 +5,10 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Horizontal_Align {
-        Align_Left = 0,
-        Align_Center = 1,
-        Align_Right = 2
+    enum AlignType {
+        AlignLeft = 0,
+        AlignCenter = 1,
+        AlignRight = 2
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
@@ -57,7 +57,7 @@ Item {
                     required property int index
 
                     property int itemWidth: modelData[control.widthRole] ?? 0
-                    property int itemAlign: modelData[control.alignRole] ?? HusStatusBar.Align_Left
+                    property int itemAlign: modelData[control.alignRole] ?? HusStatusBar.AlignLeft
                     property color itemColorText: modelData[control.colorTextRole] ?? control.defaultColorText
                     property int itemFontSize: modelData[control.fontSizeRole] ?? control.defaultFontSize
                     property int itemLeftMargin: modelData[control.leftMarginRole] ?? control.defaultLeftMargin
@@ -77,13 +77,13 @@ Item {
                         font.pixelSize: __item.itemFontSize
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: {
-                            if (__item.itemAlign === HusStatusBar.Align_Left) {
+                            if (__item.itemAlign === HusStatusBar.AlignLeft) {
                                 return Text.AlignLeft;
                             }
-                            else if (__item.itemAlign === HusStatusBar.Align_Right) {
+                            else if (__item.itemAlign === HusStatusBar.AlignRight) {
                                 return Text.AlignRight;
                             }
-                            else if (__item.itemAlign === HusStatusBar.Align_Center) {
+                            else if (__item.itemAlign === HusStatusBar.AlignCenter) {
                                 return Text.AlignHCenter;
                             }
                             else {

@@ -297,10 +297,10 @@ colorBg | color | 'transparent' | 背景颜色
 
                     HusButton {
                         text: 'Hover me'
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
 
                         HusPopover {
-                            x: (parent.width - width) * 0.5
+                            x: (parent.width - width) / 2
                             y: parent.height + 6
                             width: 160
                             visible: parent.hovered || parent.down
@@ -318,10 +318,10 @@ colorBg | color | 'transparent' | 背景颜色
 
                 HusButton {
                     text: 'Hover me'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
 
                     HusPopover {
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 160
                         visible: parent.hovered || parent.down

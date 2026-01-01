@@ -22,9 +22,9 @@ HusWindow {
     }
     Component.onCompleted: {
         if (Qt.platform.os === 'windows') {
-            if (setSpecialEffect(HusWindow.Win_DwmBlur)) return;
+            if (setSpecialEffect(HusWindow.EffectWinDwmBlur)) return;
         } else if (Qt.platform.os === 'osx') {
-            if (setSpecialEffect(HusWindow.Mac_BlurEffect)) return;
+            if (setSpecialEffect(HusWindow.EffectMacBlurEffect)) return;
         }
         HusApi.setWindowStaysOnTopHint(root, true);
     }
@@ -115,7 +115,7 @@ HusWindow {
             height: parent.height
             anchors.left: codeBlock.right
             orientation: Qt.Vertical
-            titleAlign: HusDivider.Align_Center
+            titleAlign: HusDivider.AlignCenter
             titleDelegate: HusIconButton {
                 padding: 5
                 iconSize: HusTheme.Primary.fontPrimarySizeHeading4

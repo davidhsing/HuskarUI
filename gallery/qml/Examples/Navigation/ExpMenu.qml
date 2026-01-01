@@ -29,7 +29,7 @@ Flickable {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 text: 'Success'
-                tagState: HusTag.State_Success
+                tagState: HusTag.StateSuccess
             }
         }
     }

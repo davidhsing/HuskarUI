@@ -25,7 +25,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 imageSource | string | '' | 自定义的图片地址(优先显示此地址)
-imageStyle | int | HusEmpty.Style_Default | 预设的图片样式(来自 HusEmpty)
+imageStyle | int | HusEmpty.ImageDefault | 预设的图片样式(来自 HusEmpty)
 imageWidth | int | - | 图片宽度
 imageHeight | int | - | 图片高度
 showDescription | bool | true | 是否显示描述文本
@@ -72,9 +72,9 @@ Column {
         id: imageStyleRadio
         initCheckedIndex: 1
         model: [
-            { label: 'None', value: HusEmpty.Style_None },
-            { label: 'Default', value: HusEmpty.Style_Default },
-            { label: 'Simple', value: HusEmpty.Style_Simple }
+            { label: 'None', value: HusEmpty.ImageNone },
+            { label: 'Default', value: HusEmpty.ImageDefault },
+            { label: 'Simple', value: HusEmpty.ImageSimple }
         ]
     }
 
@@ -98,9 +98,9 @@ Column {
                     id: imageStyleRadio
                     initCheckedIndex: 1
                     model: [
-                        { label: 'None', value: HusEmpty.Style_None },
-                        { label: 'Default', value: HusEmpty.Style_Default },
-                        { label: 'Simple', value: HusEmpty.Style_Simple }
+                        { label: 'None', value: HusEmpty.ImageNone },
+                        { label: 'Default', value: HusEmpty.ImageDefault },
+                        { label: 'Simple', value: HusEmpty.ImageSimple }
                     ]
                 }
 

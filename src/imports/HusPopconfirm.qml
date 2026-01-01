@@ -17,7 +17,7 @@ HusPopover {
         topPadding: 4
         bottomPadding: 4
         text: control.confirmText
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: control.confirm();
     }
     property Component cancelButtonDelegate: HusButton {
@@ -26,7 +26,7 @@ HusPopover {
         topPadding: 4
         bottomPadding: 4
         text: control.cancelText
-        type: HusButton.Type_Default
+        type: HusButton.TypeDefault
         onClicked: control.cancel();
     }
 

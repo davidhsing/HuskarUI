@@ -6,13 +6,13 @@ Item {
 
     enum EffectType
     {
-        Type_None,
-        Type_Opacity,
-        Type_Blurry,
-        Type_Mask,
-        Type_Blinds,
-        Type_3DFlip,
-        Type_Thunder
+        TypeNone,
+        TypeOpacity,
+        TypeBlurry,
+        TypeMask,
+        TypeBlinds,
+        Type3dFlip,
+        TypeThunder
     }
 
     signal started();
@@ -28,7 +28,7 @@ Item {
         () => {
             control.visible = false;
         }
-    property int type: HusSwitchEffect.Type_None
+    property int type: HusSwitchEffect.TypeNone
     property int duration: 800
     readonly property real animationTime: __private.inAnimation
     property alias easing: __animation.easing
@@ -86,7 +86,7 @@ Item {
     }
 
     Loader {
-        active: control.type === HusSwitchEffect.Type_Opacity
+        active: control.type === HusSwitchEffect.TypeOpacity
         anchors.fill: parent
         sourceComponent: Item {
             MultiEffect {
@@ -103,7 +103,7 @@ Item {
     }
 
     Loader {
-        active: control.type === HusSwitchEffect.Type_Blurry
+        active: control.type === HusSwitchEffect.TypeBlurry
         anchors.fill: parent
         sourceComponent: Item {
             MultiEffect {
@@ -130,7 +130,7 @@ Item {
     }
 
     Loader{
-        active: control.type === HusSwitchEffect.Type_Mask
+        active: control.type === HusSwitchEffect.TypeMask
         anchors.fill: parent
         sourceComponent: Item {
             Item {
@@ -171,7 +171,7 @@ Item {
     }
 
     Loader {
-        active: control.type === HusSwitchEffect.Type_Blinds
+        active: control.type === HusSwitchEffect.TypeBlinds
         anchors.fill: parent
         sourceComponent: Item {
             Item {
@@ -210,7 +210,7 @@ Item {
     }
 
     Loader {
-        active: control.type === HusSwitchEffect.Type_3DFlip
+        active: control.type === HusSwitchEffect.Type3dFlip
         anchors.fill: parent
         sourceComponent: Item {
             MultiEffect {
@@ -286,7 +286,7 @@ Item {
     }
 
     Loader {
-        active: control.type === HusSwitchEffect.Type_Thunder
+        active: control.type === HusSwitchEffect.TypeThunder
         anchors.fill: parent
         sourceComponent: Item {
             property real _xPos: Math.sin(__private.inAnimation * Math.PI * 50) * width * 0.03 * (0.5 - Math.abs(0.5 - __private.inAnimation))

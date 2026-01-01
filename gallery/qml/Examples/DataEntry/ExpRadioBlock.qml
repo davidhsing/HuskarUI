@@ -41,10 +41,10 @@ count | int | model.length | 单选数量
 initCheckedIndex | int | -1 | 初始选择的单选项索引
 currentCheckedIndex | int | -1 | 当前选择的单选项索引
 currentCheckedValue | var | undefined | 当前选择的单选项的值
-type | enum | HusRadioBlock.Type_Filled | 单选项类型(来自 HusRadioBlock)
-size | enum | HusRadioBlock.Size_Auto | 单选项大小(来自 HusRadioBlock)
-radioWidth | int | 120 | 单选项宽度(size == HusRadioBlock.Size_Fixed 生效)
-radioHeight | int | 30 | 单选项高度(size == HusRadioBlock.Size_Fixed 生效)
+type | enum | HusRadioBlock.TypeFilled | 单选项类型(来自 HusRadioBlock)
+size | enum | HusRadioBlock.SizeAuto | 单选项大小(来自 HusRadioBlock)
+radioWidth | int | 120 | 单选项宽度(size == HusRadioBlock.SizeFixed 生效)
+radioHeight | int | 30 | 单选项高度(size == HusRadioBlock.SizeFixed 生效)
 font | font | true | 单选项字体
 radiusBg | [HusRadius](internal://HusRadius) | - | 单选项背景圆角
 contentDescription | string | '' | 内容描述(提高可用性)
@@ -95,8 +95,8 @@ toolTip.timeout | int | 可选 | 文字提示超时(ms)
 - { enabled: 本单选项是否启用 }\n
 - { icon: 本单选项图标 }\n
 通过 \`type\` 属性设置单选块的类型，支持的类型：\n
-- 填充样式的按钮(默认) { HusRadioBlock.Type_Filled }\n
-- 线框样式的按钮(无填充) { HusRadioBlock.Type_Outlined }\n
+- 填充样式的按钮(默认) { HusRadioBlock.TypeFilled }\n
+- 线框样式的按钮(无填充) { HusRadioBlock.TypeOutlined }\n
                        `)
             code: `
 import QtQuick
@@ -117,7 +117,7 @@ Column {
 
     HusRadioBlock {
         initCheckedIndex: 1
-        type: HusRadioBlock.Type_Outlined
+        type: HusRadioBlock.TypeOutlined
         model: [
             { label: 'Apple', value: 'Apple' },
             { label: 'Pear', value: 'Pear' },
@@ -161,7 +161,7 @@ Column {
 
                 HusRadioBlock {
                     initCheckedIndex: 1
-                    type: HusRadioBlock.Type_Outlined
+                    type: HusRadioBlock.TypeOutlined
                     model: [
                         { label: 'Apple', value: 'Apple' },
                         { label: 'Pear', value: 'Pear' },
@@ -195,8 +195,8 @@ Column {
             width: parent.width
             desc: qsTr(`
 通过 \`size\` 属性设置单选块调整大小的模式，支持的大小：\n
-- 自动计算大小(默认) { HusRadioBlock.Size_Auto }\n
-- 固定大小(将使用radioWidth/radioHeight) { HusRadioBlock.Size_Fixed }\n
+- 自动计算大小(默认) { HusRadioBlock.SizeAuto }\n
+- 固定大小(将使用radioWidth/radioHeight) { HusRadioBlock.SizeFixed }\n
                        `)
             code: `
 import QtQuick
@@ -207,7 +207,7 @@ Column {
 
     HusRadioBlock {
         initCheckedIndex: 0
-        size: HusRadioBlock.Size_Fixed
+        size: HusRadioBlock.SizeFixed
         model: [
             { label: 'Apple', value: 'Apple' },
             { label: 'Pear', value: 'Pear' },
@@ -217,8 +217,8 @@ Column {
 
     HusRadioBlock {
         initCheckedIndex: 0
-        size: HusRadioBlock.Size_Auto
-        type: HusRadioBlock.Type_Outlined
+        size: HusRadioBlock.SizeAuto
+        type: HusRadioBlock.TypeOutlined
         model: [
             { label: 'Apple', value: 'Apple' },
             { label: 'Pear', value: 'Pear' },
@@ -232,7 +232,7 @@ Column {
 
                 HusRadioBlock {
                     initCheckedIndex: 0
-                    size: HusRadioBlock.Size_Fixed
+                    size: HusRadioBlock.SizeFixed
                     model: [
                         { label: 'Apple', value: 'Apple' },
                         { label: 'Pear', value: 'Pear' },
@@ -242,8 +242,8 @@ Column {
 
                 HusRadioBlock {
                     initCheckedIndex: 0
-                    size: HusRadioBlock.Size_Auto
-                    type: HusRadioBlock.Type_Outlined
+                    size: HusRadioBlock.SizeAuto
+                    type: HusRadioBlock.TypeOutlined
                     model: [
                         { label: 'Apple', value: 'Apple' },
                         { label: 'Pear', value: 'Pear' },

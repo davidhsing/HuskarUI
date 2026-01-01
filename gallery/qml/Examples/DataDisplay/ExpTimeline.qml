@@ -41,7 +41,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 initModel | list | [] | 初始模型数组
-mode | enum | HusTimeline.Mode_Left | 时间节点展现模式(来自 HusTimeline)
+mode | enum | HusTimeline.ModeLeft | 时间节点展现模式(来自 HusTimeline)
 reverse | bool | false | 文本颜色
 defaultNodeSize | int | 11 | 默认圆圈大小
 defaultLineWidth | int | 1 | 默认线条宽度
@@ -257,7 +257,7 @@ Column {
 
     HusButton {
         text: 'Stop loading'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             loadingTimeline.set(3, {
                                     time: new Date(),
@@ -294,7 +294,7 @@ Column {
 
                 HusButton {
                     text: 'Stop loading'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         loadingTimeline.set(3, {
                                                 time: new Date(),
@@ -333,9 +333,9 @@ Column {
             desc: qsTr(`
 通过属性 \`reverse\` 控制节点排序，为 false 时按正序排列，为 true 时按倒序排列\n
 通过属性 \`mode\` 控制节点展现模式，支持的模式：\n
-- 时间在轴左侧(默认){ HusTimeline.Mode_Left }\n
-- 时间在轴右侧{ HusTimeline.Mode_Right }\n
-- 交替展现{ HusTimeline.Mode_Alternate }\n
+- 时间在轴左侧(默认){ HusTimeline.ModeLeft }\n
+- 时间在轴右侧{ HusTimeline.ModeRight }\n
+- 交替展现{ HusTimeline.ModeAlternate }\n
 通过模型数据的 \`time\` 属性设置时间，类型为 \`Date\`\n
 通过模型数据的 \`timeFormat\` 属性设置时间的格式 \n
 或通过属性 \`defaultTimeFormat\` 统一设置默认的时间格式\n
@@ -350,7 +350,7 @@ Column {
 
     HusButton {
         text: 'Toggle Reverse'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             reverseTimeline.reverse = !reverseTimeline.reverse;
         }
@@ -360,9 +360,9 @@ Column {
         id: modeRadio
         initCheckedIndex: 0
         model: [
-            { label: 'Left', value: HusTimeline.Mode_Left },
-            { label: 'Right', value: HusTimeline.Mode_Right },
-            { label: 'Alternate', value: HusTimeline.Mode_Alternate }
+            { label: 'Left', value: HusTimeline.ModeLeft },
+            { label: 'Right', value: HusTimeline.ModeRight },
+            { label: 'Alternate', value: HusTimeline.ModeAlternate }
         ]
     }
 
@@ -398,7 +398,7 @@ Column {
 
                 HusButton {
                     text: 'Toggle Reverse'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         reverseTimeline.reverse = !reverseTimeline.reverse;
                     }
@@ -408,9 +408,9 @@ Column {
                     id: modeRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'Left', value: HusTimeline.Mode_Left },
-                        { label: 'Right', value: HusTimeline.Mode_Right },
-                        { label: 'Alternate', value: HusTimeline.Mode_Alternate }
+                        { label: 'Left', value: HusTimeline.ModeLeft },
+                        { label: 'Right', value: HusTimeline.ModeRight },
+                        { label: 'Alternate', value: HusTimeline.ModeAlternate }
                     ]
                 }
 

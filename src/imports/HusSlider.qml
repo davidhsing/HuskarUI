@@ -51,19 +51,19 @@ Item {
             if (control.orientation === Qt.Horizontal) {
                 return slider.leftPadding + visualPosition * (slider.availableWidth - width);
             } else {
-                return slider.topPadding + (slider.availableWidth - width) * 0.5;
+                return slider.topPadding + (slider.availableWidth - width) / 2;
             }
         }
         y: {
             if (control.orientation === Qt.Horizontal) {
-                return slider.topPadding + (slider.availableHeight - height) * 0.5;
+                return slider.topPadding + (slider.availableHeight - height) / 2;
             } else {
                 return slider.leftPadding + visualPosition * (slider.availableHeight - height);
             }
         }
         implicitWidth: active ? 18 : 14
         implicitHeight: active ? 18 : 14
-        radius: height * 0.5
+        radius: height / 2
         color: control.colorHandle
         border.color: {
             if (control.enabled) {

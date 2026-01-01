@@ -5,16 +5,16 @@ Item {
     id: control
 
     enum Position {
-        Position_Top = 0,
-        Position_Bottom = 1,
-        Position_Left = 2,
-        Position_Right = 3
+        PositionTop = 0,
+        PositionBottom = 1,
+        PositionLeft = 2,
+        PositionRight = 3
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
     property var initModel: []
     property int currentIndex: -1
-    property int position: HusCarousel.Position_Bottom
+    property int position: HusCarousel.PositionBottom
     property int speed: 500
     property bool infinite: true
     property bool autoplay: false
@@ -37,7 +37,7 @@ Item {
 
         required property int index
         required property var model
-        property bool isHorizontal: control.position === HusCarousel.Position_Top || control.position === HusCarousel.Position_Bottom
+        property bool isHorizontal: control.position === HusCarousel.PositionTop || control.position === HusCarousel.PositionBottom
         property bool isCurrent: index === control.currentIndex
         property bool hovered: __hoverHandler.hovered
 
@@ -64,7 +64,7 @@ Item {
         iconSource: __private.isHorizontal ? HusIcon.LeftOutlined : HusIcon.UpOutlined
         iconSize: 20
         colorIcon: hovered ? HusTheme.HusCarousel.colorArrowHover : HusTheme.HusCarousel.colorArrow
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
         onClicked: control.switchToPrev();
     }
     property Component nextDelegate: HusIconButton {
@@ -73,7 +73,7 @@ Item {
         iconSource: __private.isHorizontal ? HusIcon.RightOutlined : HusIcon.DownOutlined
         iconSize: 20
         colorIcon: hovered ? HusTheme.HusCarousel.colorArrowHover : HusTheme.HusCarousel.colorArrow
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
         onClicked: control.switchToNext();
     }
 
@@ -136,7 +136,7 @@ Item {
         onMovementEnded: __private.updateInfiniteIndex();
 
         Loader {
-            active: control.position ===  HusCarousel.Position_Top && control.showIndicator
+            active: control.position ===  HusCarousel.PositionTop && control.showIndicator
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top:  parent.top
             anchors.topMargin: 10
@@ -150,7 +150,7 @@ Item {
         }
 
         Loader {
-            active: control.position === HusCarousel.Position_Bottom && control.showIndicator
+            active: control.position === HusCarousel.PositionBottom && control.showIndicator
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
@@ -164,7 +164,7 @@ Item {
         }
 
         Loader {
-            active: control.position === HusCarousel.Position_Left && control.showIndicator
+            active: control.position === HusCarousel.PositionLeft && control.showIndicator
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: 10
@@ -178,7 +178,7 @@ Item {
         }
 
         Loader {
-            active: control.position === HusCarousel.Position_Right && control.showIndicator
+            active: control.position === HusCarousel.PositionRight && control.showIndicator
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 10
@@ -251,7 +251,7 @@ Item {
 
     QtObject {
         id: __private
-        property bool isHorizontal: control.position === HusCarousel.Position_Top || control.position === HusCarousel.Position_Bottom
+        property bool isHorizontal: control.position === HusCarousel.PositionTop || control.position === HusCarousel.PositionBottom
         property int indicatorWidth: control.getSuitableIndicatorWidth(__listView.width)
 
         function updateInfiniteIndex() {

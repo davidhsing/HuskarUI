@@ -6,8 +6,8 @@ Item {
     id: control
 
     enum Size {
-        Size_Auto = 0,
-        Size_Fixed = 1
+        SizeAuto = 0,
+        SizeFixed = 1
     }
 
     signal pressed(index: int, buttonData: var)
@@ -19,7 +19,7 @@ Item {
     property int hoverCursorShape: Qt.PointingHandCursor
     property var model: []
     property int count: model.length
-    property int size: HusButtonBlock.Size_Auto
+    property int size: HusButtonBlock.SizeAuto
     property int buttonWidth: 120
     property int buttonHeight: 30
     property int buttonLeftPadding: 10
@@ -48,14 +48,14 @@ Item {
         rightPadding: control.buttonRightPadding
         topPadding: control.buttonTopPadding
         bottomPadding: control.buttonBottomPadding
-        implicitWidth: control.size == HusButtonBlock.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
+        implicitWidth: control.size == HusButtonBlock.SizeAuto ? (implicitContentWidth + leftPadding + rightPadding) :
                                                                  control.buttonWidth
-        implicitHeight: control.size == HusButtonBlock.Size_Auto ? (implicitContentHeight + topPadding + bottomPadding) :
+        implicitHeight: control.size == HusButtonBlock.SizeAuto ? (implicitContentHeight + topPadding + bottomPadding) :
                                                                   control.buttonHeight
         z: (hovered || checked) ? 1 : 0
         enabled: control.enabled && (modelData.enabled === undefined ? true : modelData.enabled)
         font: control.font
-        type: modelData.type ?? HusButton.Type_Default
+        type: modelData.type ?? HusButton.TypeDefault
         iconSource: modelData.iconSource ?? 0
         text: modelData.label
         background: Item {

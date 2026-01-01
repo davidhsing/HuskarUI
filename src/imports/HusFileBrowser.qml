@@ -7,13 +7,13 @@ Item {
     id: control
 
     enum BrowserMode {
-        Open_File,
-        Open_Files,
-        Open_Folder,
-        Save_File
+        OpenFile,
+        OpenFiles,
+        OpenFolder,
+        SaveFile
     }
 
-    property int browserMode: HusFileBrowser.Open_File
+    property int browserMode: HusFileBrowser.OpenFile
     property string defaultFolder: ''
     property string inputText: ''
     property string inputPlaceholder: ''
@@ -22,7 +22,7 @@ Item {
     property bool inputReadOnlyBg: false
     property bool buttonEnabled: true
     property string buttonText: qsTr('浏览')
-    property int buttonType: HusButton.Type_Default
+    property int buttonType: HusButton.TypeDefault
     property var buttonIconSource: 0 ?? ''
     property int buttonWidth: 80
     property int spacing: 8
@@ -104,12 +104,12 @@ Item {
     FileDialog {
         id: __fileDialog
         visible: false
-        fileMode: (control.browserMode === HusFileBrowser.Save_File) ? FileDialog.SaveFile : ((control.browserMode === HusFileBrowser.Open_File) ? FileDialog.OpenFile : FileDialog.OpenFiles)
-        currentFolder: ((control.browserMode === HusFileBrowser.Open_File || control.browserMode === HusFileBrowser.Save_File) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
+        fileMode: (control.browserMode === HusFileBrowser.SaveFile) ? FileDialog.SaveFile : ((control.browserMode === HusFileBrowser.OpenFile) ? FileDialog.OpenFile : FileDialog.OpenFiles)
+        currentFolder: ((control.browserMode === HusFileBrowser.OpenFile || control.browserMode === HusFileBrowser.SaveFile) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
         defaultSuffix: control.defaultSuffix
         nameFilters: control.nameFilters
         onAccepted: {
-            if (control.browserMode === HusFileBrowser.Open_Files) {
+            if (control.browserMode === HusFileBrowser.OpenFiles) {
                 const paths = selectedFiles.map(url => control.convertLocal ? __private.urlToLocalFile(url) : url.toString());
                 control.inputText = paths.join(control.pathJoiner);
                 control.pathsSelected(paths);
@@ -134,7 +134,7 @@ Item {
         id: __private
 
         function openDialog() {
-            if (control.browserMode === HusFileBrowser.Open_Folder) {
+            if (control.browserMode === HusFileBrowser.OpenFolder) {
                 __folderDialog.open();
             } else {
                 __fileDialog.open();

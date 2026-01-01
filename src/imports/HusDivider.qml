@@ -5,15 +5,15 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Align {
-        Align_Left = 0,
-        Align_Center = 1,
-        Align_Right = 2
+    enum AlignType {
+        AlignLeft = 0,
+        AlignCenter = 1,
+        AlignRight = 2
     }
 
     enum LineStyle {
-        Solid_Line = 0,
-        Dash_Line = 1
+        LineSolid = 0,
+        LineDashed = 1
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
@@ -22,9 +22,9 @@ Item {
         family: themeSource.fontFamily,
         pixelSize: parseInt(themeSource.fontSize)
     })
-    property int titleAlign: HusDivider.Align_Left
+    property int titleAlign: HusDivider.AlignLeft
     property int titlePadding: 20
-    property int lineStyle: HusDivider.Solid_Line
+    property int lineStyle: HusDivider.LineSolid
     property real lineWidth: 1
     property list<real> dashPattern: [4, 2]
     property int orientation: Qt.Horizontal
@@ -40,11 +40,11 @@ Item {
     property Component splitDelegate: Shape {
         id: __shape
 
-        property real lineX: __titleLoader.x + __titleLoader.implicitWidth * 0.5
-        property real lineY: __titleLoader.y + __titleLoader.implicitHeight * 0.5
+        property real lineX: __titleLoader.x + __titleLoader.implicitWidth / 2
+        property real lineY: __titleLoader.y + __titleLoader.implicitHeight / 2
 
         ShapePath {
-            strokeStyle: control.lineStyle === HusDivider.Solid_Line ? ShapePath.SolidLine : ShapePath.DashLine
+            strokeStyle: control.lineStyle === HusDivider.LineSolid ? ShapePath.SolidLine : ShapePath.DashLine
             strokeColor: control.colorSplit
             strokeWidth: control.lineWidth
             dashPattern: control.dashPattern
@@ -65,7 +65,7 @@ Item {
         }
 
         ShapePath {
-            strokeStyle: control.lineStyle === HusDivider.Solid_Line ? ShapePath.SolidLine : ShapePath.DashLine
+            strokeStyle: control.lineStyle === HusDivider.LineSolid ? ShapePath.SolidLine : ShapePath.DashLine
             strokeColor: control.colorSplit
             strokeWidth: control.lineWidth
             dashPattern: control.dashPattern
@@ -106,16 +106,16 @@ Item {
     Loader {
         id: __titleLoader
         z: 1
-        anchors.top: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.Align_Left) ? parent.top : undefined
-        anchors.topMargin: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.Align_Left) ? control.titlePadding : 0
-        anchors.bottom: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.Align_Right) ? parent.right : undefined
-        anchors.bottomMargin: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.Align_Right) ? control.titlePadding : 0
-        anchors.left: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.Align_Left) ? parent.left : undefined
-        anchors.leftMargin: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.Align_Left) ? control.titlePadding : 0
-        anchors.right: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.Align_Right) ? parent.right : undefined
-        anchors.rightMargin: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.Align_Right) ? control.titlePadding : 0
-        anchors.horizontalCenter: (control.orientation !== Qt.Horizontal || control.titleAlign === HusDivider.Align_Center) ? parent.horizontalCenter : undefined
-        anchors.verticalCenter: (control.orientation === Qt.Horizontal || control.titleAlign === HusDivider.Align_Center) ? parent.verticalCenter : undefined
+        anchors.top: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.AlignLeft) ? parent.top : undefined
+        anchors.topMargin: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.AlignLeft) ? control.titlePadding : 0
+        anchors.bottom: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.AlignRight) ? parent.right : undefined
+        anchors.bottomMargin: (control.orientation !== Qt.Horizontal && control.titleAlign === HusDivider.AlignRight) ? control.titlePadding : 0
+        anchors.left: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.AlignLeft) ? parent.left : undefined
+        anchors.leftMargin: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.AlignLeft) ? control.titlePadding : 0
+        anchors.right: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.AlignRight) ? parent.right : undefined
+        anchors.rightMargin: (control.orientation === Qt.Horizontal && control.titleAlign === HusDivider.AlignRight) ? control.titlePadding : 0
+        anchors.horizontalCenter: (control.orientation !== Qt.Horizontal || control.titleAlign === HusDivider.AlignCenter) ? parent.horizontalCenter : undefined
+        anchors.verticalCenter: (control.orientation === Qt.Horizontal || control.titleAlign === HusDivider.AlignCenter) ? parent.verticalCenter : undefined
         sourceComponent: control.titleDelegate
     }
 

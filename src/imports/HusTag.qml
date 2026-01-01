@@ -5,17 +5,17 @@ Rectangle {
     id: control
 
     enum State {
-        State_Default = 0,
-        State_Success = 1,
-        State_Processing = 2,
-        State_Error = 3,
-        State_Warning  = 4
+        StateDefault = 0,
+        StateSuccess = 1,
+        StateProcessing = 2,
+        StateError = 3,
+        StateWarning  = 4
     }
 
     signal close()
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property int tagState: HusTag.State_Default
+    property int tagState: HusTag.StateDefault
     property string text: ''
     property font font: Qt.font({
         family: HusTheme.HusTag.fontFamily,
@@ -41,11 +41,11 @@ Rectangle {
     radius: HusTheme.HusTag.radiusBg
     onTagStateChanged: {
         switch (tagState) {
-        case HusTag.State_Success: presetColor = '#52c41a'; break;
-        case HusTag.State_Processing: presetColor = '#1677ff'; break;
-        case HusTag.State_Error: presetColor = '#ff4d4f'; break;
-        case HusTag.State_Warning: presetColor = '#faad14'; break;
-        case HusTag.State_Default:
+        case HusTag.StateSuccess: presetColor = '#52c41a'; break;
+        case HusTag.StateProcessing: presetColor = '#1677ff'; break;
+        case HusTag.StateError: presetColor = '#ff4d4f'; break;
+        case HusTag.StateWarning: presetColor = '#faad14'; break;
+        case HusTag.StateDefault:
         default: presetColor = '';
         }
     }
@@ -66,7 +66,7 @@ Rectangle {
         case 'magenta': preset = HusColorGenerator.Preset_Magenta; break;
         }
 
-        if (tagState == HusTag.State_Default) {
+        if (tagState == HusTag.StateDefault) {
             __private.isCustom = preset == -1 ? true : false;
             __private.presetColor = preset == -1 ? '#000' : husColorGenerator.presetToColor(preset);
         } else {

@@ -5,15 +5,15 @@ HusButton {
     id: control
 
     enum IconPosition {
-        Position_Start = 0,
-        Position_End = 1
+        PositionStart = 0,
+        PositionEnd = 1
     }
 
     property bool loading: false
     property var iconSource: 0 ?? ''
     property int iconSize: HusTheme.HusButton.fontSize
     property int iconSpacing: 5
-    property int iconPosition: HusIconButton.Position_Start
+    property int iconPosition: HusIconButton.PositionStart
     property color colorIcon: colorText
 
     objectName: '__HusIconButton__'
@@ -30,7 +30,7 @@ HusButton {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             spacing: control.iconSpacing
-            layoutDirection: control.iconPosition === HusIconButton.Position_Start ? Qt.LeftToRight : Qt.RightToLeft
+            layoutDirection: control.iconPosition === HusIconButton.PositionStart ? Qt.LeftToRight : Qt.RightToLeft
 
             HusIconText {
                 id: __icon

@@ -48,7 +48,7 @@ Flickable {
             Rectangle {
                 color: 'red'
                 opacity: 0.1
-                x: startWidth.advanceWidth + (displayText.width - displayWidth.advanceWidth) * 0.5
+                x: startWidth.advanceWidth + (displayText.width - displayWidth.advanceWidth) / 2
                 width: filterWidth.advanceWidth
                 height: parent.height
             }
@@ -90,12 +90,12 @@ Flickable {
                 spacing: 4
 
                 HusButton {
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     text: qsTr(`Invite`)
                 }
 
                 HusButton {
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     text: qsTr(`Delete`)
                 }
             }
@@ -396,7 +396,7 @@ Column {
 
         HusIconButton {
             text: qsTr('Reload')
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             enabled: tableView.checkedKeys.length > 0
             onClicked: {
                 loading = true;
@@ -415,13 +415,13 @@ Column {
 
         HusButton {
             text: qsTr('ScrollToRow 0')
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             onClicked: tableView.scrollToRow(0);
         }
 
         HusButton {
             text: qsTr('ScrollToRow 99')
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             onClicked: tableView.scrollToRow(99);
         }
 
@@ -504,7 +504,7 @@ Column {
 
                     HusIconButton {
                         text: qsTr('Reload')
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         enabled: tableView.checkedKeys.length > 0
                         onClicked: {
                             loading = true;
@@ -523,13 +523,13 @@ Column {
 
                     HusButton {
                         text: qsTr('ScrollToRow 0')
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         onClicked: tableView.scrollToRow(0);
                     }
 
                     HusButton {
                         text: qsTr('ScrollToRow 99')
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         onClicked: tableView.scrollToRow(99);
                     }
 
@@ -804,7 +804,7 @@ Column {
 
     HusButton {
         text: qsTr('Import 10 pieces data from C++')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             const list = DataGenerator.genTableData(10);
             for (const object of list) {
@@ -861,7 +861,7 @@ Column {
 
                 HusButton {
                     text: qsTr('Import 10 pieces data from C++')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         const list = DataGenerator.genTableData(10);
                         for (const object of list) {

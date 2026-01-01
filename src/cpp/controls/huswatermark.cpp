@@ -274,15 +274,15 @@ void HusWatermark::paint(QPainter *painter)
     int columnCount = std::round(height() / stepY + 1);
     for (int row = 0; row < rowCount; row++) {
         for (int column = 0; column < columnCount; column++) {
-            qreal x = stepX * row + d->m_offset.x() + markWidth * 0.5;
-            qreal y = stepY * column + d->m_offset.y() + markHeight * 0.5;
+            qreal x = stepX * row + d->m_offset.x() + markWidth / 2;
+            qreal y = stepY * column + d->m_offset.y() + markHeight / 2;
             painter->save();
             painter->translate(x, y);
             painter->rotate(d->m_rotate);
             if (d->m_cachedImage.isNull()) {
-                painter->drawText(QRectF(-markWidth * 0.5, -markHeight * 0.5, markWidth, markHeight), d->m_text);
+                painter->drawText(QRectF(-markWidth / 2, -markHeight / 2, markWidth, markHeight), d->m_text);
             } else {
-                painter->drawImage(QRectF(-markWidth * 0.5, -markHeight * 0.5, markWidth, markHeight), d->m_cachedImage);
+                painter->drawImage(QRectF(-markWidth / 2, -markHeight / 2, markWidth, markHeight), d->m_cachedImage);
             }
             painter->restore();
         }

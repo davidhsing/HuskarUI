@@ -275,12 +275,12 @@ HusWindow {
 
                         Repeater {
                             model: [
-                                { 'label': qsTr('无'), 'value': HusSwitchEffect.Type_None, 'duration': 0 },
-                                { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.Type_Opacity, 'duration': 200 },
-                                { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.Type_Blurry, 'duration': 350 },
+                                { 'label': qsTr('无'), 'value': HusSwitchEffect.TypeNone, 'duration': 0 },
+                                { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.TypeOpacity, 'duration': 200 },
+                                { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.TypeBlurry, 'duration': 350 },
                                 {
                                     'label': qsTr('遮罩特效'),
-                                    'value': HusSwitchEffect.Type_Mask,
+                                    'value': HusSwitchEffect.TypeMask,
                                     'duration': 800,
                                     'maskScaleEnabled': true,
                                     'maskRotationEnabled': true,
@@ -288,18 +288,18 @@ HusWindow {
                                 },
                                 {
                                     'label': qsTr('百叶窗特效'),
-                                    'value': HusSwitchEffect.Type_Blinds,
+                                    'value': HusSwitchEffect.TypeBlinds,
                                     'duration': 800,
                                     'maskSource': 'qrc:/HuskarUI/resources/images/hblinds.png'
                                 },
                                 {
                                     'label': qsTr('3D翻转特效'),
-                                    'value': HusSwitchEffect.Type_3DFlip,
+                                    'value': HusSwitchEffect.Type3dFlip,
                                     'duration': 800,
                                     'maskSource': 'qrc:/HuskarUI/resources/images/smoke.png'
                                 },                            {
                                     'label': qsTr('雷电特效'),
-                                    'value': HusSwitchEffect.Type_Thunder,
+                                    'value': HusSwitchEffect.TypeThunder,
                                     'duration': 800,
                                     'maskSource': 'qrc:/HuskarUI/resources/images/stripes.png'
                                 },
@@ -346,16 +346,16 @@ HusWindow {
                             Component.onCompleted: {
                                 if (Qt.platform.os === 'windows'){
                                     model = [
-                                                { 'label': qsTr('无'), 'value': HusWindow.None },
-                                                { 'label': qsTr('模糊'), 'value': HusWindow.Win_DwmBlur },
-                                                { 'label': qsTr('亚克力'), 'value': HusWindow.Win_AcrylicMaterial },
-                                                { 'label': qsTr('云母'), 'value': HusWindow.Win_Mica },
-                                                { 'label': qsTr('云母变体'), 'value': HusWindow.Win_MicaAlt }
+                                                { 'label': qsTr('无'), 'value': HusWindow.EffectNone },
+                                                { 'label': qsTr('模糊'), 'value': HusWindow.EffectWinDwmBlur },
+                                                { 'label': qsTr('亚克力'), 'value': HusWindow.EffectWinAcrylicMaterial },
+                                                { 'label': qsTr('云母'), 'value': HusWindow.EffectWinMica },
+                                                { 'label': qsTr('云母变体'), 'value': HusWindow.EffectWinMicaAlt }
                                             ];
                                 } else if (Qt.platform.os === 'osx') {
                                     model = [
-                                                { 'label': qsTr('无'), 'value': HusWindow.None },
-                                                { 'label': qsTr('模糊'), 'value': HusWindow.Mac_BlurEffect },
+                                                { 'label': qsTr('无'), 'value': HusWindow.EffectNone },
+                                                { 'label': qsTr('模糊'), 'value': HusWindow.EffectMacBlurEffect },
                                             ];
                                 }
                             }

@@ -66,7 +66,7 @@ Column {
 
     HusButton {
         text: qsTr('漫游焦点')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             tourFocus.open();
         }
@@ -83,7 +83,7 @@ Column {
         HusButton {
             id: tourFocus1
             text: qsTr('漫游焦点1')
-            type: HusButton.Type_Outlined
+            type: HusButton.TypeOutlined
         }
     }
 }
@@ -93,7 +93,7 @@ Column {
 
                 HusButton {
                     text: qsTr('漫游焦点')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         tourFocus.open();
                     }
@@ -110,7 +110,7 @@ Column {
                     HusButton {
                         id: tourFocusButton
                         text: qsTr('漫游焦点1')
-                        type: HusButton.Type_Outlined
+                        type: HusButton.TypeOutlined
                     }
                 }
             }
@@ -132,7 +132,7 @@ Column {
 
     HusButton {
         text: qsTr('穿透焦点')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             tourFocus2.open();
         }
@@ -188,12 +188,12 @@ Column {
 
         HusButton {
             text: qsTr('漫游焦点1')
-            type: HusButton.Type_Outlined
+            type: HusButton.TypeOutlined
         }
 
         HusButton {
             text: qsTr('关闭')
-            type: HusButton.Type_Outlined
+            type: HusButton.TypeOutlined
             onClicked: tourFocus2.close();
         }
     }
@@ -204,7 +204,7 @@ Column {
 
                 HusButton {
                     text: qsTr('穿透焦点')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         tourFocus2.open();
                     }
@@ -260,12 +260,12 @@ Column {
 
                     HusButton {
                         text: qsTr('漫游焦点1')
-                        type: HusButton.Type_Outlined
+                        type: HusButton.TypeOutlined
                     }
 
                     HusButton {
                         text: qsTr('关闭')
-                        type: HusButton.Type_Outlined
+                        type: HusButton.TypeOutlined
                         onClicked: tourFocus2.close();
                     }
                 }

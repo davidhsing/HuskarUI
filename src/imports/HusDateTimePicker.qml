@@ -6,26 +6,26 @@ import HuskarUI.Basic
 HusInput {
     id: control
 
-    enum DatePickerMode {
-        Mode_Year = 0,
-        Mode_Quarter = 1,
-        Mode_Month = 2,
-        Mode_Week = 3,
-        Mode_Day = 4
+    enum PickerMode {
+        ModeYear = 0,
+        ModeQuarter = 1,
+        ModeMonth = 2,
+        ModeWeek = 3,
+        ModeDay = 4
     }
 
-    enum TimePickerMode {
-        Mode_HHMMSS = 0,
-        Mode_HHMM = 1,
-        Mode_MMSS = 2
+    enum TimeFormat {
+        FormatHHMMSS = 0,
+        FormatHHMM = 1,
+        FormatMMSS = 2
     }
 
     signal selected(date: var)
 
     property bool showDate: true
     property bool showTime: true
-    property int datePickerMode: HusDateTimePicker.Mode_Day
-    property int timePickerMode: HusDateTimePicker.Mode_HHMMSS
+    property int pickerMode: HusDateTimePicker.ModeDay
+    property int timeFormat: HusDateTimePicker.FormatHHMMSS
     property var initDateTime: undefined
     property var currentDateTime: new Date()
     property int currentYear: new Date().getFullYear()
@@ -50,7 +50,7 @@ HusInput {
         implicitWidth: 28
         implicitHeight: 28
         animationEnabled: control.animationEnabled
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         text: model.day
         font {
             family: control.themeSource.fontFamily
@@ -60,7 +60,7 @@ HusInput {
         effectEnabled: false
         colorBorder: model.today ? control.themeSource.colorDayBorderToday : 'transparent'
         colorText: {
-            if (control.datePickerMode === HusDateTimePicker.Mode_Week) {
+            if (control.pickerMode === HusDateTimePicker.ModeWeek) {
                 return isCurrentWeek || isHoveredWeek ? 'white' : isCurrentVisualMonth ? control.themeSource.colorDayText :
                                                                                          control.themeSource.colorDayTextNone;
             } else {
@@ -69,7 +69,7 @@ HusInput {
             }
         }
         colorBg: {
-            if (control.datePickerMode === HusDateTimePicker.Mode_Week) {
+            if (control.pickerMode === HusDateTimePicker.ModeWeek) {
                 return 'transparent';
             } else {
                 return isCurrentDay ? control.themeSource.colorDayBgCurrent :
@@ -85,10 +85,10 @@ HusInput {
     iconSource: (__private.interactive && control.hovered && control.length !== 0) ?
                     HusIcon.CloseCircleFilled : control.showDate ? HusIcon.CalendarOutlined :
                                                                    HusIcon.ClockCircleOutlined
-    iconPosition: HusInput.Position_Right
+    iconPosition: HusInput.PositionRight
     iconDelegate: HusIconText {
-        anchors.left: control.iconPosition === HusDateTimePicker.Position_Left ? parent.left : undefined
-        anchors.right: control.iconPosition === HusDateTimePicker.Position_Right ? parent.right : undefined
+        anchors.left: control.iconPosition === HusDateTimePicker.PositionLeft ? parent.left : undefined
+        anchors.right: control.iconPosition === HusDateTimePicker.PositionRight ? parent.right : undefined
         anchors.margins: 5
         anchors.verticalCenter: parent.verticalCenter
         iconSource: control.iconSource
@@ -276,7 +276,7 @@ HusInput {
         leftPadding: 8
         rightPadding: 8
         animationEnabled: control.animationEnabled
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
         font {
             family: control.themeSource.fontFamily
             pixelSize: control.themeSource.fontSize
@@ -290,7 +290,7 @@ HusInput {
 
         property bool isPickYear: false
         property bool isPickMonth: false
-        property bool isPickQuarter: control.datePickerMode == HusDateTimePicker.Mode_Quarter
+        property bool isPickQuarter: control.pickerMode == HusDateTimePicker.ModeQuarter
 
         PageButton {
             Layout.alignment: Qt.AlignVCenter
@@ -349,8 +349,8 @@ HusInput {
                 }
 
                 PageButton {
-                    visible: control.datePickerMode != HusDateTimePicker.Mode_Year &&
-                             control.datePickerMode != HusDateTimePicker.Mode_Quarter &&
+                    visible: control.pickerMode != HusDateTimePicker.ModeYear &&
+                             control.pickerMode != HusDateTimePicker.ModeQuarter &&
                              !__pickerHeaderComp.isPickQuarter &&
                              !__pickerHeaderComp.isPickYear
                     text: (control.visualMonth + 1) + qsTr('月')
@@ -435,7 +435,7 @@ HusInput {
                 const month = date.getMonth();
                 const weekNumber = HusApi.getWeekNumber(date);
                 const quarter = Math.floor(month / 3) + 1;
-                if (control.datePickerMode === HusDateTimePicker.Mode_Week) {
+                if (control.pickerMode === HusDateTimePicker.ModeWeek) {
                     let inputDate = date;
                     let weekYear = date.getFullYear();
                     if (weekNumber === 1 && month === 11) {
@@ -443,7 +443,7 @@ HusInput {
                         inputDate = new Date(weekYear + 1, 0, 0, date.getHours(), date.getMinutes(), date.getSeconds());
                     }
                     control.text = Qt.formatDateTime(inputDate, control.format.replace('w', String(weekNumber)));
-                } else if (control.datePickerMode == HusDateTimePicker.Mode_Quarter) {
+                } else if (control.pickerMode == HusDateTimePicker.ModeQuarter) {
                     control.text = Qt.formatDateTime(date, control.format.replace('q', String(quarter)));
                 } else {
                     control.text = Qt.formatDateTime(date, control.format);
@@ -484,7 +484,7 @@ HusInput {
             const month = date.getMonth();
             const weekNumber = HusApi.getWeekNumber(date);
             const quarter = Math.floor(month / 3) + 1;
-            if (control.datePickerMode === HusDateTimePicker.Mode_Week) {
+            if (control.pickerMode === HusDateTimePicker.ModeWeek) {
                 let inputDate = date;
                 let weekYear = date.getFullYear();
                 if (weekNumber === 1 && month === 11) {
@@ -492,7 +492,7 @@ HusInput {
                     inputDate = new Date(weekYear + 1, 0, 0);
                 }
                 text = Qt.formatDateTime(inputDate, control.format.replace('w', String(weekNumber)));
-            } else if (control.datePickerMode == HusDateTimePicker.Mode_Quarter) {
+            } else if (control.pickerMode == HusDateTimePicker.ModeQuarter) {
                 text = Qt.formatDateTime(date, control.format.replace('q', String(quarter)));
             } else {
                 text = Qt.formatDateTime(date, control.format);
@@ -546,7 +546,7 @@ HusInput {
 
     HusPopup {
         id: __picker
-        x: (control.width - implicitWidth) * 0.5
+        x: (control.width - implicitWidth) / 2
         y: control.height + 6
         implicitWidth: implicitContentWidth + leftPadding + rightPadding
         implicitHeight: implicitContentHeight + topPadding + bottomPadding
@@ -582,27 +582,27 @@ HusInput {
             control.visualDay = control.currentDay;
             control.visualQuarter = control.currentQuarter;
 
-            switch (control.datePickerMode) {
-            case HusDateTimePicker.Mode_Day:
-            case HusDateTimePicker.Mode_Week:
+            switch (control.pickerMode) {
+            case HusDateTimePicker.ModeDay:
+            case HusDateTimePicker.ModeWeek:
             {
                 __pickerHeader.isPickYear = false;
                 __pickerHeader.isPickMonth = false;
                 __pickerHeader.isPickQuarter = false;
             } break;
-            case HusDateTimePicker.Mode_Month:
+            case HusDateTimePicker.ModeMonth:
             {
                 __pickerHeader.isPickYear = false;
                 __pickerHeader.isPickMonth = true;
                 __pickerHeader.isPickQuarter = false;
             } break;
-            case HusDateTimePicker.Mode_Quarter:
+            case HusDateTimePicker.ModeQuarter:
             {
                 __pickerHeader.isPickYear = false;
                 __pickerHeader.isPickMonth = false;
                 __pickerHeader.isPickQuarter = true;
             } break;
-            case HusDateTimePicker.Mode_Year:
+            case HusDateTimePicker.ModeYear:
             {
                 __pickerHeader.isPickYear = true;
                 __pickerHeader.isPickMonth = false;
@@ -646,7 +646,7 @@ HusInput {
 
                         T.DayOfWeekRow {
                             id: __dayOfWeekRow
-                            visible: (control.datePickerMode == HusDateTimePicker.Mode_Day || control.datePickerMode == HusDateTimePicker.Mode_Week) &&
+                            visible: (control.pickerMode == HusDateTimePicker.ModeDay || control.pickerMode == HusDateTimePicker.ModeWeek) &&
                                      !__pickerHeader.isPickYear && !__pickerHeader.isPickMonth
                             locale: __monthGrid.locale
                             spacing: 10
@@ -697,7 +697,7 @@ HusInput {
                                     anchors.verticalCenter: parent.verticalCenter
                                     clip: true
                                     color: {
-                                        if (control.datePickerMode === HusDateTimePicker.Mode_Week) {
+                                        if (control.pickerMode === HusDateTimePicker.ModeWeek) {
                                             return __dayItem.isCurrentWeek ? control.themeSource.colorDayItemBgCurrent :
                                                                              __dayItem.isHoveredWeek ? control.themeSource.colorDayItemBgHover :
                                                                                                        control.themeSource.colorDayItemBg;
@@ -777,15 +777,15 @@ HusInput {
                                         checked: year == control.visualYear
                                         onClicked: {
                                             control.visualYear = year;
-                                            if (control.datePickerMode == HusDateTimePicker.Mode_Day ||
-                                                    control.datePickerMode == HusDateTimePicker.Mode_Week ||
-                                                    control.datePickerMode == HusDateTimePicker.Mode_Month) {
+                                            if (control.pickerMode == HusDateTimePicker.ModeDay ||
+                                                    control.pickerMode == HusDateTimePicker.ModeWeek ||
+                                                    control.pickerMode == HusDateTimePicker.ModeMonth) {
                                                 __pickerHeader.isPickYear = false;
                                                 __pickerHeader.isPickMonth = true;
-                                            } else if (control.datePickerMode == HusDateTimePicker.Mode_Quarter) {
+                                            } else if (control.pickerMode == HusDateTimePicker.ModeQuarter) {
                                                 __pickerHeader.isPickYear = false;
                                                 __pickerHeader.isPickQuarter = true;
-                                            } else if (control.datePickerMode == HusDateTimePicker.Mode_Year) {
+                                            } else if (control.pickerMode == HusDateTimePicker.ModeYear) {
                                                 __private.selectDateTime(new Date(control.visualYear + 1, 0, 0), !(control.showDate && control.showTime));
                                             }
                                         }
@@ -825,10 +825,10 @@ HusInput {
                                         checked: month == control.visualMonth
                                         onClicked: {
                                             control.visualMonth = month;
-                                            if (control.datePickerMode == HusDateTimePicker.Mode_Day ||
-                                                    control.datePickerMode == HusDateTimePicker.Mode_Week) {
+                                            if (control.pickerMode == HusDateTimePicker.ModeDay ||
+                                                    control.pickerMode == HusDateTimePicker.ModeWeek) {
                                                 __pickerHeader.isPickMonth = false;
-                                            } else if (control.datePickerMode == HusDateTimePicker.Mode_Month) {
+                                            } else if (control.pickerMode == HusDateTimePicker.ModeMonth) {
                                                 __private.selectDateTime(new Date(control.visualYear, control.visualMonth + 1, 0),
                                                                          !(control.showDate && control.showTime));
                                             }
@@ -867,7 +867,7 @@ HusInput {
                                             control.visualQuarter = quarter;
                                             __pickerHeader.isPickYear = false;
 
-                                            if (control.datePickerMode == HusDateTimePicker.Mode_Quarter) {
+                                            if (control.pickerMode == HusDateTimePicker.ModeQuarter) {
                                                 __private.selectDateTime(new Date(control.visualYear, (quarter - 1) * 3 + 1, 0),
                                                                          !(control.showDate && control.showTime));
                                             }
@@ -880,7 +880,7 @@ HusInput {
 
                         Loader {
                             width: parent.width
-                            active: control.datePickerMode == HusDateTimePicker.Mode_Day && !control.showTime
+                            active: control.pickerMode == HusDateTimePicker.ModeDay && !control.showTime
                             sourceComponent: Rectangle {
                                 height: 1
                                 color: control.themeSource.colorSplitLine
@@ -889,10 +889,10 @@ HusInput {
 
                         Loader {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            active: control.datePickerMode == HusDateTimePicker.Mode_Day && !control.showTime
+                            active: control.pickerMode == HusDateTimePicker.ModeDay && !control.showTime
                             sourceComponent: HusButton {
                                 animationEnabled: control.animationEnabled
-                                type: HusButton.Type_Link
+                                type: HusButton.TypeLink
                                 text: qsTr('今天')
                                 onClicked: __private.selectDateTime(new Date(), !(control.showDate && control.showTime));
                             }
@@ -931,12 +931,12 @@ HusInput {
                                     bold: true
                                 }
                                 text: {
-                                    switch (control.timePickerMode) {
-                                    case HusDateTimePicker.Mode_HHMMSS:
+                                    switch (control.timeFormat) {
+                                    case HusDateTimePicker.FormatHHMMSS:
                                         return `${__hourListView.checkValue}:${__minuteListView.checkValue}:${__secondListView.checkValue}`;
-                                    case HusDateTimePicker.Mode_HHMM:
+                                    case HusDateTimePicker.FormatHHMM:
                                         return `${__hourListView.checkValue}:${__minuteListView.checkValue}`;
-                                    case HusDateTimePicker.Mode_MMSS:
+                                    case HusDateTimePicker.FormatMMSS:
                                         return `${__minuteListView.checkValue}:${__secondListView.checkValue}`;
                                     }
                                 }
@@ -959,8 +959,8 @@ HusInput {
                             TimeListView {
                                 id: __hourListView
                                 model: 24
-                                visible: control.timePickerMode == HusDateTimePicker.Mode_HHMMSS ||
-                                         control.timePickerMode == HusDateTimePicker.Mode_HHMM
+                                visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
+                                         control.timeFormat == HusDateTimePicker.FormatHHMM
 
                                 Rectangle {
                                     width: 1
@@ -973,16 +973,16 @@ HusInput {
                             TimeListView {
                                 id: __minuteListView
                                 model: 60
-                                visible: control.timePickerMode == HusDateTimePicker.Mode_HHMMSS ||
-                                         control.timePickerMode == HusDateTimePicker.Mode_HHMM ||
-                                         control.timePickerMode == HusDateTimePicker.Mode_MMSS
+                                visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
+                                         control.timeFormat == HusDateTimePicker.FormatHHMM ||
+                                         control.timeFormat == HusDateTimePicker.FormatMMSS
 
                                 Rectangle {
                                     width: 1
                                     height: parent.height
                                     anchors.right: parent.right
-                                    visible: control.timePickerMode == HusDateTimePicker.Mode_HHMMSS ||
-                                             control.timePickerMode == HusDateTimePicker.Mode_MMSS
+                                    visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
+                                             control.timeFormat == HusDateTimePicker.FormatMMSS
                                     color: control.themeSource.colorSplitLine
                                 }
                             }
@@ -990,8 +990,8 @@ HusInput {
                             TimeListView {
                                 id: __secondListView
                                 model: 60
-                                visible: control.timePickerMode == HusDateTimePicker.Mode_HHMMSS ||
-                                         control.timePickerMode == HusDateTimePicker.Mode_MMSS
+                                visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
+                                         control.timeFormat == HusDateTimePicker.FormatMMSS
                             }
                         }
                     }
@@ -1017,7 +1017,7 @@ HusInput {
                             anchors.leftMargin: 5
                             anchors.bottom: parent.bottom
                             animationEnabled: control.animationEnabled
-                            type: HusButton.Type_Link
+                            type: HusButton.TypeLink
                             text: qsTr('此刻')
                             colorBg: 'transparent'
                             onClicked: {
@@ -1042,7 +1042,7 @@ HusInput {
                             anchors.rightMargin: 5
                             anchors.bottom: parent.bottom
                             animationEnabled: control.animationEnabled
-                            type: HusButton.Type_Primary
+                            type: HusButton.TypePrimary
                             text: qsTr('确定')
                             onClicked: {
                                 __hourListView.initValue(__hourListView.checkValue);

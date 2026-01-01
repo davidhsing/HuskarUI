@@ -293,12 +293,12 @@ HusWindow {
     captionBar.winIconVisible: false
     Component.onCompleted: {
         if (Qt.platform.os === 'windows') {
-            if (setSpecialEffect(HusWindow.Win_MicaAlt)) return;
-            if (setSpecialEffect(HusWindow.Win_Mica)) return;
-            if (setSpecialEffect(HusWindow.Win_AcrylicMaterial)) return;
-            if (setSpecialEffect(HusWindow.Win_DwmBlur)) return;
+            if (setSpecialEffect(HusWindow.EffectWinMicaAlt)) return;
+            if (setSpecialEffect(HusWindow.EffectWinMica)) return;
+            if (setSpecialEffect(HusWindow.EffectWinAcrylicMaterial)) return;
+            if (setSpecialEffect(HusWindow.EffectWinDwmBlur)) return;
         } else if (Qt.platform.os === 'osx') {
-            if (setSpecialEffect(HusWindow.Mac_BlurEffect)) return;
+            if (setSpecialEffect(HusWindow.EffectMacBlurEffect)) return;
         }
     }
 }

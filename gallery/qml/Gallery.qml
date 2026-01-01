@@ -39,12 +39,12 @@ HusWindow {
     }
     Component.onCompleted: {
         if (Qt.platform.os === 'windows') {
-            if (setSpecialEffect(HusWindow.Win_MicaAlt)) return;
-            if (setSpecialEffect(HusWindow.Win_Mica)) return;
-            if (setSpecialEffect(HusWindow.Win_AcrylicMaterial)) return;
-            if (setSpecialEffect(HusWindow.Win_DwmBlur)) return;
+            if (setSpecialEffect(HusWindow.EffectWinMicaAlt)) return;
+            if (setSpecialEffect(HusWindow.EffectWinMica)) return;
+            if (setSpecialEffect(HusWindow.EffectWinAcrylicMaterial)) return;
+            if (setSpecialEffect(HusWindow.EffectWinDwmBlur)) return;
         } else if (Qt.platform.os === 'osx') {
-            if (setSpecialEffect(HusWindow.Mac_BlurEffect)) return;
+            if (setSpecialEffect(HusWindow.EffectMacBlurEffect)) return;
         }
     }
     onWidthChanged: {
@@ -76,7 +76,7 @@ HusWindow {
         active: false
         anchors.fill: galleryWindow.contentItem
         sourceComponent: ThemeSwitchItem {
-            opacity: galleryWindow.specialEffect == HusWindow.None ? 1.0 : galleryBackground.opacity
+            opacity: galleryWindow.specialEffect == HusWindow.EffectNone ? 1.0 : galleryBackground.opacity
             target: galleryWindow.contentItem
             isDark: HusTheme.isDark
             onSwitchStarted: {
@@ -84,7 +84,7 @@ HusWindow {
                 themeSwitchLoader.changeDark();
             }
             onAnimationFinished: {
-                if (galleryWindow.specialEffect === HusWindow.None)
+                if (galleryWindow.specialEffect === HusWindow.EffectNone)
                     galleryWindow.color = HusTheme.Primary.colorBgBase;
                 themeSwitchLoader.active = false;
             }
@@ -259,7 +259,7 @@ HusWindow {
             anchors.left: galleryMenu.left
             anchors.right: galleryMenu.right
             anchors.margins: 10
-            type: HusButton.Type_Text
+            type: HusButton.TypeText
             colorText: HusTheme.Primary.colorTextBase
             iconSource: HusIcon.SearchOutlined
             iconSize: searchComponent.iconSize
@@ -384,7 +384,7 @@ HusWindow {
             width: galleryMenu.width
             height: 40
             anchors.bottom: aboutButton.top
-            type: HusButton.Type_Text
+            type: HusButton.TypeText
             radiusBg.all: 0
             text: galleryMenu.compactMode ? '' : qsTr('创建')
             colorText: HusTheme.Primary.colorTextBase
@@ -402,7 +402,7 @@ HusWindow {
             width: galleryMenu.width
             height: 40
             anchors.bottom: setttingsButton.top
-            type: HusButton.Type_Text
+            type: HusButton.TypeText
             radiusBg.all: 0
             text: galleryMenu.compactMode ? '' : qsTr('关于')
             colorText: HusTheme.Primary.colorTextBase
@@ -420,7 +420,7 @@ HusWindow {
             width: galleryMenu.width
             height: 40
             anchors.bottom: parent.bottom
-            type: HusButton.Type_Text
+            type: HusButton.TypeText
             radiusBg.all: 0
             text: galleryMenu.compactMode ? '' : qsTr('设置')
             colorText: HusTheme.Primary.colorTextBase
@@ -448,7 +448,7 @@ HusWindow {
                 id: gallerySwitchEffect
                 anchors.fill: parent
                 duration: 0
-                type: HusSwitchEffect.Type_None
+                type: HusSwitchEffect.TypeNone
                 maskScale: animationTime * 3
                 maskRotation: (1.0 - animationTime) * 360
                 onFinished: {

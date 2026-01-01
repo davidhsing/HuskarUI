@@ -9,11 +9,11 @@ Item {
     id: control
 
     enum MessageType {
-        Type_None = 0,
-        Type_Success = 1,
-        Type_Warning = 2,
-        Type_Message = 3,
-        Type_Error = 4
+        TypeNone = 0,
+        TypeSuccess = 1,
+        TypeWarning = 2,
+        TypeMessage = 3,
+        TypeError = 4
     }
 
     signal closed(key: string)
@@ -149,10 +149,10 @@ Item {
                                     return __rootItem.iconSource;
                                 }
                                 switch (type) {
-                                    case HusMessage.Type_Success: return HusIcon.CheckCircleFilled;
-                                    case HusMessage.Type_Warning: return HusIcon.ExclamationCircleFilled;
-                                    case HusMessage.Type_Message: return HusIcon.ExclamationCircleFilled;
-                                    case HusMessage.Type_Error: return HusIcon.CloseCircleFilled;
+                                    case HusMessage.TypeSuccess: return HusIcon.CheckCircleFilled;
+                                    case HusMessage.TypeWarning: return HusIcon.ExclamationCircleFilled;
+                                    case HusMessage.TypeMessage: return HusIcon.ExclamationCircleFilled;
+                                    case HusMessage.TypeError: return HusIcon.CloseCircleFilled;
                                     default: return 0;
                                 }
                             }
@@ -164,10 +164,10 @@ Item {
                                     return __rootItem.colorIcon;
                                 }
                                 switch (type) {
-                                    case HusMessage.Type_Success: return HusTheme.Primary.colorSuccess;
-                                    case HusMessage.Type_Warning: return HusTheme.Primary.colorWarning;
-                                    case HusMessage.Type_Message: return HusTheme.Primary.colorInfo;
-                                    case HusMessage.Type_Error: return HusTheme.Primary.colorError;
+                                    case HusMessage.TypeSuccess: return HusTheme.Primary.colorSuccess;
+                                    case HusMessage.TypeWarning: return HusTheme.Primary.colorWarning;
+                                    case HusMessage.TypeMessage: return HusTheme.Primary.colorInfo;
+                                    case HusMessage.TypeError: return HusTheme.Primary.colorError;
                                     default: return HusTheme.Primary.colorInfo;
                                 }
                             }
@@ -229,7 +229,7 @@ Item {
                 object.message = '';
             }
             if (!object.hasOwnProperty('type')) {
-                object.type = HusMessage.Type_None;
+                object.type = HusMessage.TypeNone;
             }
             if (!object.hasOwnProperty('duration')) {
                 object.duration = 3000;
@@ -248,7 +248,7 @@ Item {
     function info(message: string, duration = 3000): void {
         open({
             'message': message,
-            'type': HusMessage.Type_Message,
+            'type': HusMessage.TypeMessage,
             'duration': duration
         });
     }
@@ -256,7 +256,7 @@ Item {
     function success(message: string, duration = 3000): void {
         open({
             'message': message,
-            'type': HusMessage.Type_Success,
+            'type': HusMessage.TypeSuccess,
             'duration': duration
         });
     }
@@ -264,7 +264,7 @@ Item {
     function error(message: string, duration = 3000): void {
         open({
             'message': message,
-            'type': HusMessage.Type_Error,
+            'type': HusMessage.TypeError,
             'duration': duration
         });
     }
@@ -272,7 +272,7 @@ Item {
     function warning(message: string, duration = 3000): void {
         open({
             'message': message,
-            'type': HusMessage.Type_Warning,
+            'type': HusMessage.TypeWarning,
             'duration': duration
         });
     }
@@ -281,7 +281,7 @@ Item {
         open({
             'loading': true,
             'message': message,
-            'type': HusMessage.Type_Message,
+            'type': HusMessage.TypeMessage,
             'duration': duration
         });
     }

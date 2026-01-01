@@ -91,7 +91,7 @@ Item {
         enabled: control.enabled
         width: enabled && (__input.hovered || control.alwaysShowHandler) ? control.defaultHandlerWidth : 0
 
-        property real halfHeight: height * 0.5
+        property real halfHeight: height / 2
         property real hoverHeight: height * 0.6
         property real noHoverHeight: height * 0.4
         property color colorBorder: enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled

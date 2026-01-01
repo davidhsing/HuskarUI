@@ -250,12 +250,12 @@ HusPagination {
     ]
     prevButtonDelegate: HusButton {
         text: 'Previous'
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
         onClicked: gotoPrevPage();
     }
     nextButtonDelegate: HusButton {
         text: 'Next'
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
         onClicked: gotoNextPage();
     }
 }
@@ -271,12 +271,12 @@ HusPagination {
                 ]
                 prevButtonDelegate: HusButton {
                     text: 'Previous'
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     onClicked: gotoPrevPage();
                 }
                 nextButtonDelegate: HusButton {
                     text: 'Next'
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     onClicked: gotoNextPage();
                 }
             }

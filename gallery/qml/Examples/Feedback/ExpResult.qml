@@ -32,7 +32,7 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-type | ResultType | Type_Info | 结果类型
+type | ResultType | TypeInfo | 结果类型
 borderVisible | bool | true | 外侧边框是否可见
 iconVisible | bool | true | 图标是否可见
 extraVisible | bool | true | 额外内容是否可见
@@ -46,7 +46,7 @@ iconImageHeight | int | - | 自定义图片的高度
 iconSource | url | - | 图标源
 iconSize | int | 80 | 图标大小
 colorIcon | color | - | 图标颜色
-extraPosition | HusResult.ExtraPosition | Position_End | 额外内容位置
+extraPosition | HusResult.ExtraPosition | PositionEnd | 额外内容位置
 titleText | string | - | 标题文本
 titleFont | font | - | 标题字体
 descriptionText | string | - | 描述文本
@@ -62,12 +62,12 @@ marginAction | [HusMargin](internal://HusMargin) | 0 | 操作区边距
 marginFooter | [HusMargin](internal://HusMargin) | 0 | 页脚边距
 \n<br/>
 \n### 枚举：
-- \`HusResult.Type_Info\` 信息
-- \`HusResult.Type_Warning\` 警告
-- \`HusResult.Type_Success\` 成功
-- \`HusResult.Type_Error\` 错误
-- \`HusResult.Position_Start\` 左侧
-- \`HusResult.Position_End\` 右侧
+- \`HusResult.TypeInfo\` 信息
+- \`HusResult.TypeWarning\` 警告
+- \`HusResult.TypeSuccess\` 成功
+- \`HusResult.TypeError\` 错误
+- \`HusResult.PositionStart\` 左侧
+- \`HusResult.PositionEnd\` 右侧
             `)
         }
 
@@ -97,7 +97,7 @@ import QtQuick.Layouts
 import HuskarUI.Basic
 
 HusResult {
-    type: HusResult.Type_Success
+    type: HusResult.TypeSuccess
     titleText: 'Successfully Purchased Cloud Server ECS'
     descriptionText: 'Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.'
     actionDelegate: Item {
@@ -110,18 +110,18 @@ HusResult {
 
             HusButton {
                 text: 'Go Console'
-                type: HusButton.Type_Primary
+                type: HusButton.TypePrimary
             }
 
             HusButton {
                 text: 'Buy Again'
-                type: HusButton.Type_Default
+                type: HusButton.TypeDefault
             }
         }
     }
 }`
             exampleDelegate: HusResult {
-                type: HusResult.Type_Success
+                type: HusResult.TypeSuccess
                 titleText: 'Successfully Purchased Cloud Server ECS'
                 descriptionText: 'Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.'
                 actionDelegate: Item {
@@ -134,12 +134,12 @@ HusResult {
 
                         HusButton {
                             text: 'Go Console'
-                            type: HusButton.Type_Primary
+                            type: HusButton.TypePrimary
                         }
 
                         HusButton {
                             text: 'Buy Again'
-                            type: HusButton.Type_Default
+                            type: HusButton.TypeDefault
                         }
                     }
                 }
@@ -157,7 +157,7 @@ import QtQuick.Layouts
 import HuskarUI.Basic
 
 HusResult {
-    type: HusResult.Type_Error
+    type: HusResult.TypeError
     titleText: 'Submission Failed'
     descriptionText: 'Please check and modify the following information before resubmitting.'
     actionDelegate: Item {
@@ -170,18 +170,18 @@ HusResult {
 
             HusButton {
                 text: 'Go Console'
-                type: HusButton.Type_Primary
+                type: HusButton.TypePrimary
             }
 
             HusButton {
                 text: 'Buy Again'
-                type: HusButton.Type_Default
+                type: HusButton.TypeDefault
             }
         }
     }
 }`
             exampleDelegate: HusResult {
-                type: HusResult.Type_Error
+                type: HusResult.TypeError
                 titleText: 'Submission Failed'
                 descriptionText: 'Please check and modify the following information before resubmitting.'
                 actionDelegate: Item {
@@ -194,12 +194,12 @@ HusResult {
 
                         HusButton {
                             text: 'Go Console'
-                            type: HusButton.Type_Primary
+                            type: HusButton.TypePrimary
                         }
 
                         HusButton {
                             text: 'Buy Again'
-                            type: HusButton.Type_Default
+                            type: HusButton.TypeDefault
                         }
                     }
                 }
@@ -217,7 +217,7 @@ import QtQuick.Layouts
 import HuskarUI.Basic
 
 HusResult {
-    type: HusResult.Type_Info
+    type: HusResult.TypeInfo
     titleText: 'Your operation has been executed'
     descriptionVisible: false
     actionDelegate: Item {
@@ -230,18 +230,18 @@ HusResult {
 
             HusButton {
                 text: 'Go Console'
-                type: HusButton.Type_Primary
+                type: HusButton.TypePrimary
             }
 
             HusButton {
                 text: 'Buy Again'
-                type: HusButton.Type_Default
+                type: HusButton.TypeDefault
             }
         }
     }
 }`
             exampleDelegate: HusResult {
-                type: HusResult.Type_Info
+                type: HusResult.TypeInfo
                 titleText: 'Your operation has been executed'
                 descriptionVisible: false
                 actionDelegate: Item {
@@ -254,12 +254,12 @@ HusResult {
 
                         HusButton {
                             text: 'Go Console'
-                            type: HusButton.Type_Primary
+                            type: HusButton.TypePrimary
                         }
 
                         HusButton {
                             text: 'Buy Again'
-                            type: HusButton.Type_Default
+                            type: HusButton.TypeDefault
                         }
                     }
                 }
@@ -277,13 +277,13 @@ import QtQuick.Layouts
 import HuskarUI.Basic
 
 HusResult {
-    type: HusResult.Type_Warning
+    type: HusResult.TypeWarning
     titleText: 'There are some problems with your operation.'
     descriptionVisible: false
-    extraPosition: HusResult.Position_End
+    extraPosition: HusResult.PositionEnd
     extraDelegate: HusIconButton {
         iconSource: HusIcon.CloseOutlined
-        type: HusIconButton.Type_Text
+        type: HusIconButton.TypeText
     }
     actionDelegate: Item {
         height: 40
@@ -295,24 +295,24 @@ HusResult {
 
             HusButton {
                 text: 'Go Console'
-                type: HusButton.Type_Primary
+                type: HusButton.TypePrimary
             }
 
             HusButton {
                 text: 'Buy Again'
-                type: HusButton.Type_Default
+                type: HusButton.TypeDefault
             }
         }
     }
 }`
             exampleDelegate: HusResult {
-                type: HusResult.Type_Warning
+                type: HusResult.TypeWarning
                 titleText: 'There are some problems with your operation.'
                 descriptionVisible: false
-                extraPosition: HusResult.Position_End
+                extraPosition: HusResult.PositionEnd
                 extraDelegate: HusIconButton {
                     iconSource: HusIcon.CloseOutlined
-                    type: HusIconButton.Type_Text
+                    type: HusIconButton.TypeText
                 }
                 actionDelegate: Item {
                     height: 40
@@ -324,12 +324,12 @@ HusResult {
 
                         HusButton {
                             text: 'Go Console'
-                            type: HusButton.Type_Primary
+                            type: HusButton.TypePrimary
                         }
 
                         HusButton {
                             text: 'Buy Again'
-                            type: HusButton.Type_Default
+                            type: HusButton.TypeDefault
                         }
                     }
                 }
@@ -347,7 +347,7 @@ import QtQuick.Layouts
 import HuskarUI.Basic
 
 HusResult {
-    type: HusResult.Type_Success
+    type: HusResult.TypeSuccess
     titleText: 'Custom Image Result'
     descriptionText: 'This result uses a custom image as the icon.'
     iconImageSource: 'qrc:/HuskarUI/resources/images/empty-default.svg'
@@ -361,18 +361,18 @@ HusResult {
 
             HusButton {
                 text: 'Go Console'
-                type: HusButton.Type_Primary
+                type: HusButton.TypePrimary
             }
 
             HusButton {
                 text: 'Buy Again'
-                type: HusButton.Type_Default
+                type: HusButton.TypeDefault
             }
         }
     }
 }`
             exampleDelegate: HusResult {
-                type: HusResult.Type_Success
+                type: HusResult.TypeSuccess
                 titleText: 'Custom Image Result'
                 descriptionText: 'This result uses a custom image as the icon.'
                 iconImageSource: 'qrc:/HuskarUI/resources/images/empty-default.svg'
@@ -386,12 +386,12 @@ HusResult {
 
                         HusButton {
                             text: 'Go Console'
-                            type: HusButton.Type_Primary
+                            type: HusButton.TypePrimary
                         }
 
                         HusButton {
                             text: 'Buy Again'
-                            type: HusButton.Type_Default
+                            type: HusButton.TypeDefault
                         }
                     }
                 }

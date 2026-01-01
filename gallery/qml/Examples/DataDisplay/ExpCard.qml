@@ -84,7 +84,7 @@ Row {
 
     HusCard {
         title: qsTr('Card title')
-        extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
+        extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
         bodyDescription: qsTr('Card content\\nCard content\\nCard content')
     }
 }
@@ -94,7 +94,7 @@ Row {
 
                 HusCard {
                     title: qsTr('Card title')
-                    extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
+                    extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
                     bodyDescription: qsTr('Card content\nCard content\nCard content')
                 }
             }
@@ -123,7 +123,7 @@ Row {
     HusCard {
         id: card
         title: qsTr('Card title')
-        extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
+        extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
         coverSource: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
         bodyAvatarIcon: HusIcon.AccountBookOutlined
         bodyTitle: 'Card Meta title'
@@ -157,7 +157,7 @@ Row {
 
                     HusDivider {
                         width: 1
-                        height: parent.height * 0.5
+                        height: parent.height / 2
                         anchors.verticalCenter: parent.verticalCenter
                         orientation: Qt.Vertical
                     }
@@ -175,7 +175,7 @@ Row {
 
                     HusDivider {
                         width: 1
-                        height: parent.height * 0.5
+                        height: parent.height / 2
                         anchors.verticalCenter: parent.verticalCenter
                         orientation: Qt.Vertical
                     }
@@ -197,7 +197,7 @@ Row {
                 HusCard {
                     id: card
                     title: qsTr('Card title')
-                    extraDelegate: HusButton { type: HusButton.Type_Link; text: qsTr('More') }
+                    extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
                     coverSource: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
                     bodyAvatarIcon: HusIcon.AccountBookOutlined
                     bodyTitle: qsTr('Card Meta title')
@@ -231,7 +231,7 @@ Row {
 
                                 HusDivider {
                                     width: 1
-                                    height: parent.height * 0.5
+                                    height: parent.height / 2
                                     anchors.verticalCenter: parent.verticalCenter
                                     orientation: Qt.Vertical
                                 }
@@ -249,7 +249,7 @@ Row {
 
                                 HusDivider {
                                     width: 1
-                                    height: parent.height * 0.5
+                                    height: parent.height / 2
                                     anchors.verticalCenter: parent.verticalCenter
                                     orientation: Qt.Vertical
                                 }

@@ -7,15 +7,15 @@ T.ToolTip {
 
     enum Position
     {
-        Position_Top = 0,
-        Position_Bottom = 1,
-        Position_Left = 2,
-        Position_Right = 3
+        PositionTop = 0,
+        PositionBottom = 1,
+        PositionLeft = 2,
+        PositionRight = 3
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool arrowVisible: false
-    property int position: HusToolTip.Position_Top
+    property int position: HusToolTip.PositionTop
     property color colorShadow: HusTheme.HusToolTip.colorShadow
     property color colorText: HusTheme.HusToolTip.colorText
     property color colorBg: HusTheme.isDark ? HusTheme.HusToolTip.colorBgDark : HusTheme.HusToolTip.colorBg
@@ -30,25 +30,25 @@ T.ToolTip {
             ctx.fillStyle = colorBg;
             ctx.beginPath();
             switch (position) {
-            case HusToolTip.Position_Top: {
+            case HusToolTip.PositionTop: {
                 ctx.moveTo(0, 0);
                 ctx.lineTo(width, 0);
-                ctx.lineTo(width * 0.5, height);
+                ctx.lineTo(width / 2, height);
             } break;
-            case HusToolTip.Position_Bottom: {
+            case HusToolTip.PositionBottom: {
                 ctx.moveTo(0, height);
                 ctx.lineTo(width, height);
-                ctx.lineTo(width * 0.5, 0);
+                ctx.lineTo(width / 2, 0);
             } break;
-            case HusToolTip.Position_Left: {
+            case HusToolTip.PositionLeft: {
                 ctx.moveTo(0, 0);
                 ctx.lineTo(0, height);
-                ctx.lineTo(width, height * 0.5);
+                ctx.lineTo(width, height / 2);
             } break;
-            case HusToolTip.Position_Right: {
+            case HusToolTip.PositionRight: {
                 ctx.moveTo(width, 0);
                 ctx.lineTo(width, height);
-                ctx.lineTo(0, height * 0.5);
+                ctx.lineTo(0, height / 2);
             } break;
             }
             ctx.closePath();
@@ -59,24 +59,24 @@ T.ToolTip {
 
     x: {
         switch (position) {
-        case HusToolTip.Position_Top:
-        case HusToolTip.Position_Bottom:
-            return (__private.controlParentWidth - implicitWidth) * 0.5;
-        case HusToolTip.Position_Left:
+        case HusToolTip.PositionTop:
+        case HusToolTip.PositionBottom:
+            return (__private.controlParentWidth - implicitWidth) / 2;
+        case HusToolTip.PositionLeft:
             return -implicitWidth - 4;
-        case HusToolTip.Position_Right:
+        case HusToolTip.PositionRight:
             return __private.controlParentWidth + 4;
         }
     }
     y: {
         switch (position) {
-        case HusToolTip.Position_Top:
+        case HusToolTip.PositionTop:
             return -implicitHeight - 4;
-        case HusToolTip.Position_Bottom:
+        case HusToolTip.PositionBottom:
             return __private.controlParentHeight + 4;
-        case HusToolTip.Position_Left:
-        case HusToolTip.Position_Right:
-            return (__private.controlParentHeight - implicitHeight) * 0.5;
+        case HusToolTip.PositionLeft:
+        case HusToolTip.PositionRight:
+            return (__private.controlParentHeight - implicitHeight) / 2;
         }
     }
 
@@ -112,14 +112,14 @@ T.ToolTip {
 
             Arrow {
                 id: __arrow
-                x: __private.isHorizontal ? (-control.x + (__private.controlParentWidth - width) * 0.5) : 0
-                y: __private.isHorizontal ? 0 : (-control.y + (__private.controlParentHeight - height)) * 0.5
+                x: __private.isHorizontal ? (-control.x + (__private.controlParentWidth - width) / 2) : 0
+                y: __private.isHorizontal ? 0 : (-control.y + (__private.controlParentHeight - height)) / 2
                 width: __private.arrowSize.width
                 height: __private.arrowSize.height
-                anchors.top: control.position === HusToolTip.Position_Bottom ? parent.top : undefined
-                anchors.bottom: control.position === HusToolTip.Position_Top ? parent.bottom : undefined
-                anchors.left: control.position === HusToolTip.Position_Right ? parent.left : undefined
-                anchors.right: control.position === HusToolTip.Position_Left ? parent.right : undefined
+                anchors.top: control.position === HusToolTip.PositionBottom ? parent.top : undefined
+                anchors.bottom: control.position === HusToolTip.PositionTop ? parent.bottom : undefined
+                anchors.left: control.position === HusToolTip.PositionRight ? parent.left : undefined
+                anchors.right: control.position === HusToolTip.PositionLeft ? parent.right : undefined
 
                 Connections {
                     target: control
@@ -133,10 +133,10 @@ T.ToolTip {
                 id: __bg
                 width: __text.implicitWidth + 14
                 height: __text.implicitHeight + 12
-                anchors.top: control.position === HusToolTip.Position_Top ? parent.top : undefined
-                anchors.bottom: control.position === HusToolTip.Position_Bottom ? parent.bottom : undefined
-                anchors.left: control.position === HusToolTip.Position_Left ? parent.left : undefined
-                anchors.right: control.position === HusToolTip.Position_Right ? parent.right : undefined
+                anchors.top: control.position === HusToolTip.PositionTop ? parent.top : undefined
+                anchors.bottom: control.position === HusToolTip.PositionBottom ? parent.bottom : undefined
+                anchors.left: control.position === HusToolTip.PositionLeft ? parent.left : undefined
+                anchors.right: control.position === HusToolTip.PositionRight ? parent.right : undefined
                 anchors.margins: 1
                 color: control.colorBg
                 radius: control.radiusBg.all
@@ -160,7 +160,7 @@ T.ToolTip {
 
     QtObject {
         id: __private
-        property bool isHorizontal: control.position === HusToolTip.Position_Top || control.position === HusToolTip.Position_Bottom
+        property bool isHorizontal: control.position === HusToolTip.PositionTop || control.position === HusToolTip.PositionBottom
         property size arrowSize: control.arrowVisible ? (isHorizontal ? Qt.size(12, 6) : Qt.size(6, 12)) : Qt.size(0, 0)
         property real controlParentWidth: control.parent ? control.parent.width : 0
         property real controlParentHeight: control.parent ? control.parent.height : 0

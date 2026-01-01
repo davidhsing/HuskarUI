@@ -26,11 +26,11 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否启用动画
-layout | int | HusFormItem.Layout_Vertical | 布局方式（来自 HusFormItem）
+layout | int | HusFormItem.LayoutVertical | 布局方式（来自 HusFormItem）
 required | bool | false | 是否必填，为 true 时标签前显示红色星号
 requiredSpacing | int | 4 | 红色星号与标签的间距
 labelText | string | '' | 标签文本
-labelAlign | int | - | 标签文本水平对齐方式(HusFormItem.Align_Left/Align_Right), 垂直居中
+labelAlign | int | - | 标签文本水平对齐方式(HusFormItem.AlignLeft/AlignRight), 垂直居中
 labelWidth | int | 100 | 水平布局时标签宽度
 labelSpacing | int | 4/10 | 标签与输入组件的间距,水平布局默认10,垂直布局默认4
 colonText | string | ':' | 标签末尾分隔符文本
@@ -51,11 +51,11 @@ colorFeedbackError | color | HusTheme.Primary.colorError | 错误状态颜色
 - \`validate()\` 执行验证，返回 bool 表示是否通过
 \n<br/>
 \n### 枚举：
-- \`HusFormItem.Layout_Vertical\` 垂直布局
-- \`HusFormItem.Layout_Horizontal\` 水平布局
-- \`HusFormItem.Validation_None\` 无验证状态
-- \`HusFormItem.Validation_Success\` 验证成功
-- \`HusFormItem.Validation_Error\` 验证失败
+- \`HusFormItem.LayoutVertical\` 垂直布局
+- \`HusFormItem.LayoutHorizontal\` 水平布局
+- \`HusFormItem.ValidationNone\` 无验证状态
+- \`HusFormItem.ValidationSuccess\` 验证成功
+- \`HusFormItem.ValidationError\` 验证失败
             `)
         }
 
@@ -89,15 +89,15 @@ Column {
         id: horizontalAlignRadio
         initCheckedIndex: 0
         model: [
-            { label: 'Left', value: HusFormItem.Align_Left },
-            { label: 'Right', value: HusFormItem.Align_Right }
+            { label: 'Left', value: HusFormItem.AlignLeft },
+            { label: 'Right', value: HusFormItem.AlignRight }
         ]
     }
 
     HusFormItem {
         labelText: '用户名'
         width: parent.width
-        layout: HusFormItem.Layout_Horizontal
+        layout: HusFormItem.LayoutHorizontal
         labelAlign: horizontalAlignRadio.currentCheckedValue
         required: true
 
@@ -115,15 +115,15 @@ Column {
                     id: horizontalAlignRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'Left', value: HusFormItem.Align_Left },
-                        { label: 'Right', value: HusFormItem.Align_Right }
+                        { label: 'Left', value: HusFormItem.AlignLeft },
+                        { label: 'Right', value: HusFormItem.AlignRight }
                     ]
                 }
 
                 HusFormItem {
                     labelText: '用户名'
                     width: parent.width
-                    layout: HusFormItem.Layout_Horizontal
+                    layout: HusFormItem.LayoutHorizontal
                     labelAlign: horizontalAlignRadio.currentCheckedValue
                     required: true
 
@@ -152,8 +152,8 @@ Column {
         id: verticalAlignRadio
         initCheckedIndex: 0
         model: [
-            { label: 'Left', value: HusFormItem.Align_Left },
-            { label: 'Right', value: HusFormItem.Align_Right }
+            { label: 'Left', value: HusFormItem.AlignLeft },
+            { label: 'Right', value: HusFormItem.AlignRight }
         ]
     }
 
@@ -232,8 +232,8 @@ Column {
                     id: verticalAlignRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'Left', value: HusFormItem.Align_Left },
-                        { label: 'Right', value: HusFormItem.Align_Right }
+                        { label: 'Left', value: HusFormItem.AlignLeft },
+                        { label: 'Right', value: HusFormItem.AlignRight }
                     ]
                 }
 

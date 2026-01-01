@@ -6,13 +6,13 @@ Item {
     id: control
 
     enum Type {
-        Type_Filled = 0,
-        Type_Outlined = 1
+        TypeFilled = 0,
+        TypeOutlined = 1
     }
 
     enum Size {
-        Size_Auto = 0,
-        Size_Fixed = 1
+        SizeAuto = 0,
+        SizeFixed = 1
     }
 
     signal clicked(index: int, radioData: var)
@@ -25,8 +25,8 @@ Item {
     property int initCheckedIndex: -1
     property int currentCheckedIndex: -1
     property var currentCheckedValue: undefined
-    property int type: HusRadioBlock.Type_Filled
-    property int size: HusRadioBlock.Size_Auto
+    property int type: HusRadioBlock.TypeFilled
+    property int size: HusRadioBlock.SizeAuto
     property int radioWidth: 120
     property int radioHeight: 30
     property font font: Qt.font({
@@ -58,21 +58,21 @@ Item {
         animationEnabled: control.animationEnabled
         effectEnabled: control.effectEnabled
         hoverCursorShape: control.hoverCursorShape
-        implicitWidth: control.size == HusRadioBlock.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
+        implicitWidth: control.size == HusRadioBlock.SizeAuto ? (implicitContentWidth + leftPadding + rightPadding) :
                                                                  control.radioWidth
-        implicitHeight: control.size == HusRadioBlock.Size_Auto ? (implicitContentHeight + topPadding + bottomPadding) :
+        implicitHeight: control.size == HusRadioBlock.SizeAuto ? (implicitContentHeight + topPadding + bottomPadding) :
                                                                   control.radioHeight
         z: (hovered || checked) ? 1 : 0
         enabled: control.enabled && (modelData.enabled === undefined ? true : modelData.enabled)
         font: control.font
-        type: HusButton.Type_Default
+        type: HusButton.TypeDefault
         iconSource: modelData.icon ?? 0
         text: modelData.label
         colorBorder: (enabled && checked) ? HusTheme.HusRadioBlock.colorBlockBorderChecked :
                                             HusTheme.HusRadioBlock.colorBlockBorder;
         colorText: {
             if (enabled) {
-                if (control.type == HusRadioBlock.Type_Filled) {
+                if (control.type == HusRadioBlock.TypeFilled) {
                     return checked ? HusTheme.HusRadioBlock.colorBlockTextFilledChecked :
                                      hovered ? HusTheme.HusRadioBlock.colorBlockTextChecked :
                                                HusTheme.HusRadioBlock.colorBlockText;
@@ -86,7 +86,7 @@ Item {
         }
         colorBg: {
             if (enabled) {
-                if (control.type == HusRadioBlock.Type_Filled) {
+                if (control.type == HusRadioBlock.TypeFilled) {
                     return down ? (checked ? HusTheme.HusRadioBlock.colorBlockBgActive : HusTheme.HusRadioBlock.colorBlockBg) :
                                   hovered ? (checked ? HusTheme.HusRadioBlock.colorBlockBgHover : HusTheme.HusRadioBlock.colorBlockBg) :
                                             checked ? HusTheme.HusRadioBlock.colorBlockBgChecked :
@@ -160,7 +160,7 @@ Item {
         }
 
         Loader {
-            x: (parent.width - width) * 0.5
+            x: (parent.width - width) / 2
             active: toolTip !== undefined
             sourceComponent: control.toolTipDelegate
             property bool checked: __rootItem.released

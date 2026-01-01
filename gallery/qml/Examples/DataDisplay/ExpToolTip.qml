@@ -25,7 +25,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 arrowVisible | bool | false | 是否显示箭头
-position | enum | HusToolTip.Position_Top | 文字提示的位置(来自 HusToolTip)
+position | enum | HusToolTip.PositionTop | 文字提示的位置(来自 HusToolTip)
 colorText | color | - | 文本颜色
 colorBg | color | - | 背景颜色
 radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
@@ -53,10 +53,10 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
             desc: qsTr(`
 通过 \`arrowVisible\` 属性设置是否显示箭头 \n
 通过 \`position\` 属性设置文字提示的位置，支持的位置：\n
-- 文字提示在项目上方(默认){ HusToolTip.Position_Top }\n
-- 文字提示在项目下方{ HusToolTip.Position_Bottom }\n
-- 文字提示在项目左方{ HusToolTip.Position_Left }\n
-- 文字提示在项目右方{ HusToolTip.Position_Right }\n
+- 文字提示在项目上方(默认){ HusToolTip.PositionTop }\n
+- 文字提示在项目下方{ HusToolTip.PositionBottom }\n
+- 文字提示在项目左方{ HusToolTip.PositionLeft }\n
+- 文字提示在项目右方{ HusToolTip.PositionRight }\n
                        `)
             code: `
 import QtQuick
@@ -92,7 +92,7 @@ Column {
                 visible: parent.hovered
                 arrowVisible: true
                 text: qsTr('左方文字提示')
-                position: HusToolTip.Position_Left
+                position: HusToolTip.PositionLeft
             }
         }
 
@@ -105,7 +105,7 @@ Column {
                 visible: parent.hovered
                 arrowVisible: true
                 text: qsTr('箭头中心会自动指向 parent 的中心')
-                position: HusToolTip.Position_Top
+                position: HusToolTip.PositionTop
             }
         }
 
@@ -117,7 +117,7 @@ Column {
                 visible: parent.hovered
                 arrowVisible: true
                 text: qsTr('右方文字提示')
-                position: HusToolTip.Position_Right
+                position: HusToolTip.PositionRight
             }
         }
 
@@ -130,7 +130,7 @@ Column {
                 visible: parent.hovered
                 arrowVisible: true
                 text: qsTr('下方文字提示')
-                position: HusToolTip.Position_Bottom
+                position: HusToolTip.PositionBottom
             }
         }
     }
@@ -164,7 +164,7 @@ Column {
                             visible: parent.hovered
                             arrowVisible: true
                             text: qsTr('左方文字提示')
-                            position: HusToolTip.Position_Left
+                            position: HusToolTip.PositionLeft
                         }
                     }
 
@@ -177,7 +177,7 @@ Column {
                             visible: parent.hovered
                             arrowVisible: true
                             text: qsTr('箭头中心会自动指向 parent 的中心')
-                            position: HusToolTip.Position_Top
+                            position: HusToolTip.PositionTop
                         }
                     }
 
@@ -189,7 +189,7 @@ Column {
                             visible: parent.hovered
                             arrowVisible: true
                             text: qsTr('右方文字提示')
-                            position: HusToolTip.Position_Right
+                            position: HusToolTip.PositionRight
                         }
                     }
 
@@ -202,7 +202,7 @@ Column {
                             visible: parent.hovered
                             arrowVisible: true
                             text: qsTr('下方文字提示')
-                            position: HusToolTip.Position_Bottom
+                            position: HusToolTip.PositionBottom
                         }
                     }
                 }

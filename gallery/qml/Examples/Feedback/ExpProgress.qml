@@ -26,8 +26,8 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-type | enum | HusProgress.Type_Line | 进度条类型(来自 HusProgress)
-status | enum | HusProgress.Status_Normal | 进度条状态(来自 HusProgress)
+type | enum | HusProgress.TypeLine | 进度条类型(来自 HusProgress)
+status | enum | HusProgress.StatusNormal | 进度条状态(来自 HusProgress)
 percent | real | 0 | 进度百分比(0.0~100.0)
 barThickness | real | 8 | 进度条宽度
 strokeLineCap | string | 'round' | 进度条线帽样式, 支持 'butt'丨'round'
@@ -69,14 +69,14 @@ colorInfo | color | - | 进度条信息文本颜色
             desc: qsTr(`
 默认的条形进度条。\n
 通过 \`type\` 设置进度条类型，支持的类型：\n
-- 条形进度条(默认){ HusProgress.Type_Line }\n
-- 圆形进度条{ HusProgress.Type_Circle }\n
-- 仪表盘进度条{ HusProgress.Type_Dashboard }
+- 条形进度条(默认){ HusProgress.TypeLine }\n
+- 圆形进度条{ HusProgress.TypeCircle }\n
+- 仪表盘进度条{ HusProgress.TypeDashboard }
 通过 \`status\` 设置进度条状态，支持的状态：\n
-- 一般状态(默认){ HusProgress.Status_Normal }\n
-- 成功状态{ HusProgress.Status_Success }\n
-- 异常状态{ HusProgress.Status_Exception }\n
-- 激活状态(仅条形进度条有效){ HusProgress.Status_Active }\n
+- 一般状态(默认){ HusProgress.StatusNormal }\n
+- 成功状态{ HusProgress.StatusSuccess }\n
+- 异常状态{ HusProgress.StatusException }\n
+- 激活状态(仅条形进度条有效){ HusProgress.StatusActive }\n
                        `)
             code: `
 import QtQuick
@@ -87,9 +87,9 @@ Column {
     spacing: 10
 
     HusProgress { width: parent.width; percent: 30 }
-    HusProgress { width: parent.width; percent: 50; status: HusProgress.Status_Active }
-    HusProgress { width: parent.width; percent: 70; status: HusProgress.Status_Exception }
-    HusProgress { width: parent.width; percent: 100; status: HusProgress.Status_Success }
+    HusProgress { width: parent.width; percent: 50; status: HusProgress.StatusActive }
+    HusProgress { width: parent.width; percent: 70; status: HusProgress.StatusException }
+    HusProgress { width: parent.width; percent: 100; status: HusProgress.StatusSuccess }
     HusProgress { width: parent.width; percent: 50; showInfo: false }
 }
             `
@@ -97,9 +97,9 @@ Column {
                 spacing: 10
 
                 HusProgress { width: parent.width; percent: 30 }
-                HusProgress { width: parent.width; percent: 50; status: HusProgress.Status_Active }
-                HusProgress { width: parent.width; percent: 70; status: HusProgress.Status_Exception }
-                HusProgress { width: parent.width; percent: 100; status: HusProgress.Status_Success }
+                HusProgress { width: parent.width; percent: 50; status: HusProgress.StatusActive }
+                HusProgress { width: parent.width; percent: 70; status: HusProgress.StatusException }
+                HusProgress { width: parent.width; percent: 100; status: HusProgress.StatusSuccess }
                 HusProgress { width: parent.width; percent: 50; showInfo: false }
             }
         }
@@ -118,17 +118,17 @@ Row {
     width: parent.width
     spacing: 10
 
-    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75 }
-    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75; status: HusProgress.Status_Exception }
-    HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 100; status: HusProgress.Status_Success }
+    HusProgress { width: 120; height: width; type: HusProgress.TypeCircle; percent: 75 }
+    HusProgress { width: 120; height: width; type: HusProgress.TypeCircle; percent: 75; status: HusProgress.StatusException }
+    HusProgress { width: 120; height: width; type: HusProgress.TypeCircle; percent: 100; status: HusProgress.StatusSuccess }
 }
             `
             exampleDelegate: Row {
                 spacing: 10
 
-                HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75 }
-                HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 75; status: HusProgress.Status_Exception }
-                HusProgress { width: 120; height: width; type: HusProgress.Type_Circle; percent: 100; status: HusProgress.Status_Success }
+                HusProgress { width: 120; height: width; type: HusProgress.TypeCircle; percent: 75 }
+                HusProgress { width: 120; height: width; type: HusProgress.TypeCircle; percent: 75; status: HusProgress.StatusException }
+                HusProgress { width: 120; height: width; type: HusProgress.TypeCircle; percent: 100; status: HusProgress.StatusSuccess }
             }
         }
 
@@ -136,7 +136,7 @@ Row {
             width: parent.width
             descTitle: qsTr('仪表盘进度条')
             desc: qsTr(`
-通过设置 \`type\` 为 \`HusProgress.Type_Dashboard\`，可以很方便地实现仪表盘样式的进度条。\n
+通过设置 \`type\` 为 \`HusProgress.TypeDashboard\`，可以很方便地实现仪表盘样式的进度条。\n
 若想要修改缺口的角度，可以设置 \`gapDegree\` 为你想要的值。\n
                        `)
             code: `
@@ -150,14 +150,14 @@ Row {
     HusProgress {
         width: 120
         height: width
-        type: HusProgress.Type_Dashboard
+        type: HusProgress.TypeDashboard
         percent: 75
     }
 
     HusProgress {
         width: 120
         height: width
-        type: HusProgress.Type_Dashboard
+        type: HusProgress.TypeDashboard
         percent: 75
         gapDegree: 30
     }
@@ -169,14 +169,14 @@ Row {
                 HusProgress {
                     width: 120
                     height: width
-                    type: HusProgress.Type_Dashboard
+                    type: HusProgress.TypeDashboard
                     percent: 75
                 }
 
                 HusProgress {
                     width: 120
                     height: width
-                    type: HusProgress.Type_Dashboard
+                    type: HusProgress.TypeDashboard
                     percent: 75
                     gapDegree: 30
                 }
@@ -200,27 +200,27 @@ Column {
 
     HusProgress {
         width: parent.width
-        type: HusProgress.Type_Line
+        type: HusProgress.TypeLine
         percent: newPercent
-        status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+        status: percent >= 100 ? HusProgress.StatusSuccess : HusProgress.StatusNormal
     }
 
     Row {
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Circle
+            type: HusProgress.TypeCircle
             percent: newPercent
             gapDegree: 30
-            status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+            status: percent >= 100 ? HusProgress.StatusSuccess : HusProgress.StatusNormal
         }
 
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Dashboard
+            type: HusProgress.TypeDashboard
             percent: newPercent
-            status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+            status: percent >= 100 ? HusProgress.StatusSuccess : HusProgress.StatusNormal
         }
     }
 
@@ -252,27 +252,27 @@ Column {
 
                 HusProgress {
                     width: parent.width
-                    type: HusProgress.Type_Line
+                    type: HusProgress.TypeLine
                     percent: newPercent
-                    status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+                    status: percent >= 100 ? HusProgress.StatusSuccess : HusProgress.StatusNormal
                 }
 
                 Row {
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Circle
+                        type: HusProgress.TypeCircle
                         percent: newPercent
                         gapDegree: 30
-                        status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+                        status: percent >= 100 ? HusProgress.StatusSuccess : HusProgress.StatusNormal
                     }
 
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Dashboard
+                        type: HusProgress.TypeDashboard
                         percent: newPercent
-                        status: percent >= 100 ? HusProgress.Status_Success : HusProgress.Status_Normal
+                        status: percent >= 100 ? HusProgress.StatusSuccess : HusProgress.StatusNormal
                     }
                 }
 
@@ -316,7 +316,7 @@ Row {
     HusProgress {
         width: 120
         height: width
-        type: HusProgress.Type_Circle
+        type: HusProgress.TypeCircle
         percent: 75
         formatter: () => \`\${percent} Days\`
     }
@@ -324,9 +324,9 @@ Row {
     HusProgress {
         width: 120
         height: width
-        type: HusProgress.Type_Circle
+        type: HusProgress.TypeCircle
         percent: 100
-        status: HusProgress.Status_Success
+        status: HusProgress.StatusSuccess
         formatter: () => 'Done'
     }
 }
@@ -337,7 +337,7 @@ Row {
                 HusProgress {
                     width: 120
                     height: width
-                    type: HusProgress.Type_Circle
+                    type: HusProgress.TypeCircle
                     percent: 75
                     formatter: () => `${percent} Days`
                 }
@@ -345,9 +345,9 @@ Row {
                 HusProgress {
                     width: 120
                     height: width
-                    type: HusProgress.Type_Circle
+                    type: HusProgress.TypeCircle
                     percent: 100
-                    status: HusProgress.Status_Success
+                    status: HusProgress.StatusSuccess
                     formatter: () => 'Done'
                 }
             }
@@ -402,7 +402,7 @@ Column {
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Circle
+            type: HusProgress.TypeCircle
             percent: 75
             useGradient: true
             gradientStops: twoColors
@@ -411,8 +411,8 @@ Column {
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Circle
-            status: HusProgress.Status_Success
+            type: HusProgress.TypeCircle
+            status: HusProgress.StatusSuccess
             percent: 100
             useGradient: true
             gradientStops: twoColors
@@ -421,7 +421,7 @@ Column {
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Circle
+            type: HusProgress.TypeCircle
             percent: 93
             useGradient: true
             gradientStops: conicColors
@@ -434,7 +434,7 @@ Column {
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Dashboard
+            type: HusProgress.TypeDashboard
             percent: 75
             useGradient: true
             gradientStops: twoColors
@@ -443,8 +443,8 @@ Column {
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Dashboard
-            status: HusProgress.Status_Success
+            type: HusProgress.TypeDashboard
+            status: HusProgress.StatusSuccess
             percent: 100
             useGradient: true
             gradientStops: twoColors
@@ -453,7 +453,7 @@ Column {
         HusProgress {
             width: 120
             height: width
-            type: HusProgress.Type_Dashboard
+            type: HusProgress.TypeDashboard
             percent: 93
             useGradient: true
             gradientStops: conicColors
@@ -498,7 +498,7 @@ Column {
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Circle
+                        type: HusProgress.TypeCircle
                         percent: 75
                         useGradient: true
                         gradientStops: twoColors
@@ -507,8 +507,8 @@ Column {
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Circle
-                        status: HusProgress.Status_Success
+                        type: HusProgress.TypeCircle
+                        status: HusProgress.StatusSuccess
                         percent: 100
                         useGradient: true
                         gradientStops: twoColors
@@ -517,7 +517,7 @@ Column {
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Circle
+                        type: HusProgress.TypeCircle
                         percent: 93
                         useGradient: true
                         gradientStops: conicColors
@@ -530,7 +530,7 @@ Column {
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Dashboard
+                        type: HusProgress.TypeDashboard
                         percent: 75
                         useGradient: true
                         gradientStops: twoColors
@@ -539,8 +539,8 @@ Column {
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Dashboard
-                        status: HusProgress.Status_Success
+                        type: HusProgress.TypeDashboard
+                        status: HusProgress.StatusSuccess
                         percent: 100
                         useGradient: true
                         gradientStops: twoColors
@@ -549,7 +549,7 @@ Column {
                     HusProgress {
                         width: 120
                         height: width
-                        type: HusProgress.Type_Dashboard
+                        type: HusProgress.TypeDashboard
                         percent: 93
                         useGradient: true
                         gradientStops: conicColors
@@ -634,7 +634,7 @@ Column {
         HusProgress {
             width: 600
             height: Math.min(40, Math.max(barThickness, 16))
-            status: HusProgress.Status_Exception
+            status: HusProgress.StatusException
             barThickness: barThicknessSlider.currentValue
             percent: 75
             gap: gapCountSlider.currentValue
@@ -649,7 +649,7 @@ Column {
         HusProgress {
             width: 200
             height: width
-            type: HusProgress.Type_Circle
+            type: HusProgress.TypeCircle
             barThickness: barThicknessSlider.currentValue
             percent: 75
             gap: gapCountSlider.currentValue
@@ -660,8 +660,8 @@ Column {
         HusProgress {
             width: 200
             height: width
-            type: HusProgress.Type_Circle
-            status: HusProgress.Status_Exception
+            type: HusProgress.TypeCircle
+            status: HusProgress.StatusException
             barThickness: barThicknessSlider.currentValue
             percent: 75
             gap: gapCountSlider.currentValue
@@ -676,7 +676,7 @@ Column {
         HusProgress {
             width: 200
             height: width
-            type: HusProgress.Type_Dashboard
+            type: HusProgress.TypeDashboard
             barThickness: barThicknessSlider.currentValue
             percent: 75
             gap: gapCountSlider.currentValue
@@ -687,8 +687,8 @@ Column {
         HusProgress {
             width: 200
             height: width
-            type: HusProgress.Type_Dashboard
-            status: HusProgress.Status_Exception
+            type: HusProgress.TypeDashboard
+            status: HusProgress.StatusException
             barThickness: barThicknessSlider.currentValue
             percent: 75
             gap: gapCountSlider.currentValue
@@ -762,7 +762,7 @@ Column {
                     HusProgress {
                         width: 600
                         height: Math.min(40, Math.max(barThickness, 16))
-                        status: HusProgress.Status_Exception
+                        status: HusProgress.StatusException
                         barThickness: barThicknessSlider.currentValue
                         percent: 75
                         gap: gapCountSlider.currentValue
@@ -777,7 +777,7 @@ Column {
                     HusProgress {
                         width: 200
                         height: width
-                        type: HusProgress.Type_Circle
+                        type: HusProgress.TypeCircle
                         barThickness: barThicknessSlider.currentValue
                         percent: 75
                         gap: gapCountSlider.currentValue
@@ -788,8 +788,8 @@ Column {
                     HusProgress {
                         width: 200
                         height: width
-                        type: HusProgress.Type_Circle
-                        status: HusProgress.Status_Exception
+                        type: HusProgress.TypeCircle
+                        status: HusProgress.StatusException
                         barThickness: barThicknessSlider.currentValue
                         percent: 75
                         gap: gapCountSlider.currentValue
@@ -804,7 +804,7 @@ Column {
                     HusProgress {
                         width: 200
                         height: width
-                        type: HusProgress.Type_Dashboard
+                        type: HusProgress.TypeDashboard
                         barThickness: barThicknessSlider.currentValue
                         percent: 75
                         gap: gapCountSlider.currentValue
@@ -815,8 +815,8 @@ Column {
                     HusProgress {
                         width: 200
                         height: width
-                        type: HusProgress.Type_Dashboard
-                        status: HusProgress.Status_Exception
+                        type: HusProgress.TypeDashboard
+                        status: HusProgress.StatusException
                         barThickness: barThicknessSlider.currentValue
                         percent: 75
                         gap: gapCountSlider.currentValue

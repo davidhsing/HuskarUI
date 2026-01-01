@@ -35,7 +35,7 @@ T.RadioButton {
             id: __effect
             width: __bg.width
             height: __bg.height
-            radius: width * 0.5
+            radius: width / 2
             anchors.centerIn: parent
             visible: control.effectEnabled
             color: 'transparent'
@@ -78,7 +78,7 @@ T.RadioButton {
             width: control.radiusIndicator.all * 2
             height: width
             anchors.centerIn: parent
-            radius: height * 0.5
+            radius: height / 2
             color: control.colorIndicator
             border.color: control.colorIndicatorBorder
             border.width: control.checked ? 0 : 1
@@ -90,7 +90,7 @@ T.RadioButton {
                 width: control.checked ? control.radiusIndicator.all - 2 : 0
                 height: width
                 anchors.centerIn: parent
-                radius: width * 0.5
+                radius: width / 2
 
                 Behavior on width { enabled: control.animationEnabled; NumberAnimation { duration: HusTheme.Primary.durationMid } }
             }

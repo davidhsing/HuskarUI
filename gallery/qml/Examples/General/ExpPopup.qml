@@ -72,7 +72,7 @@ Item {
 
     HusButton {
         text: (popup.opened ? qsTr('隐藏') : qsTr('显示'))
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             if (popup.opened)
                 popup.close();
@@ -83,8 +83,8 @@ Item {
 
     HusPopup {
         id: popup
-        x: (parent.width - width) * 0.5
-        y: (parent.height - height) * 0.5
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
         width: 400
         height: 300
         parent: Overlay.overlay
@@ -116,7 +116,7 @@ Item {
 
                 HusButton {
                     text: (popup.opened ? qsTr('隐藏') : qsTr('显示'))
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         if (popup.opened)
                             popup.close();
@@ -127,8 +127,8 @@ Item {
 
                 HusPopup {
                     id: popup
-                    x: (parent.width - width) * 0.5
-                    y: (parent.height - height) * 0.5
+                    x: (parent.width - width) / 2
+                    y: (parent.height - height) / 2
                     width: 400
                     height: 300
                     parent: Overlay.overlay

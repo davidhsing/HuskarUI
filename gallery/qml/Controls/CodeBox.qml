@@ -102,7 +102,7 @@ Rectangle {
             width: parent.width
             height: 30
             title: qsTr('代码')
-            titleAlign: HusDivider.Align_Center
+            titleAlign: HusDivider.AlignCenter
             titleDelegate: Row {
                 spacing: 10
                 HusIconButton {

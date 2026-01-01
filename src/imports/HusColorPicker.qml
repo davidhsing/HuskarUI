@@ -217,10 +217,10 @@ T.Control {
                 sourceComponent: control.footerDelegate
             }
         }
-        property real xCenter: x + width * 0.5
-        property real yCenter: y + height * 0.5
-        property bool isLeft: xCenter < control.width * 0.5
-        property bool isTop: yCenter < control.height * 0.5
+        property real xCenter: x + width / 2
+        property real yCenter: y + height / 2
+        property bool isLeft: xCenter < control.width / 2
+        property bool isTop: yCenter < control.height / 2
     }
 
     function invertColor(color: color): color {

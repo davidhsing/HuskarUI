@@ -106,7 +106,7 @@ Column {
 
     HusButton {
         text: 'Show image preview'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             imagePreview.open();
         }
@@ -124,8 +124,8 @@ Column {
             bottomPadding: 10
             iconSource: HusIcon.SettingOutlined
             iconSize: 20
-            shape: HusButton.Shape_Circle
-            type: HusButton.Type_Default
+            shape: HusButton.ShapeCircle
+            type: HusButton.TypeDefault
             colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
             colorBg: hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg
             colorBorder: colorBg
@@ -139,7 +139,7 @@ Column {
 
                 HusButton {
                     text: 'Show image preview'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         imagePreview.open();
                     }
@@ -157,8 +157,8 @@ Column {
                         bottomPadding: 10
                         iconSource: HusIcon.SettingOutlined
                         iconSize: 20
-                        shape: HusButton.Shape_Circle
-                        type: HusButton.Type_Default
+                        shape: HusButton.ShapeCircle
+                        type: HusButton.TypeDefault
                         colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
                         colorBg: hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg
                         colorBorder: colorBg
@@ -183,7 +183,7 @@ Column {
 
     HusButton {
         text: 'Show gif image preview'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             gifPreview.open();
         }
@@ -212,7 +212,7 @@ Column {
 
                 HusButton {
                     text: 'Show gif image preview'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         gifPreview.open();
                     }

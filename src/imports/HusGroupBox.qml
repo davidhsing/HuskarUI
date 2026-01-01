@@ -6,14 +6,14 @@ Item {
     id: control
 
     enum TitlePosition {
-        Position_Top = 0,
-        Position_Bottom = 1
+        PositionTop = 0,
+        PositionBottom = 1
     }
 
     enum TitleAlign {
-        Align_Left = 0,
-        Align_Center = 1,
-        Align_Right = 2
+        AlignLeft = 0,
+        AlignCenter = 1,
+        AlignRight = 2
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
@@ -22,8 +22,8 @@ Item {
         family: HusTheme.HusGroupBox.fontFamily,
         pixelSize: HusTheme.HusGroupBox.fontSize
     })
-    property int titlePosition: HusGroupBox.Position_Top
-    property int titleAlign: HusGroupBox.Align_Left
+    property int titlePosition: HusGroupBox.PositionTop
+    property int titleAlign: HusGroupBox.AlignLeft
     property int titlePadding: 20
     property int titleLeftPadding: 4
     property int titleRightPadding: 4
@@ -66,7 +66,7 @@ Item {
         // 标题位置的遮罩
         Rectangle {
             x: __titleLoader.x - 4
-            y: (control.titlePosition === HusGroupBox.Position_Top) ? -1 : control.height - 1
+            y: (control.titlePosition === HusGroupBox.PositionTop) ? -1 : control.height - 1
             width: __titleLoader.implicitWidth + 8
             height: control.borderWidth + 1
             color: control.colorBg
@@ -100,18 +100,18 @@ Item {
         id: __titleLoader
         z: 1
         x: {
-            if (control.titleAlign === HusGroupBox.Align_Left) {
+            if (control.titleAlign === HusGroupBox.AlignLeft) {
                 return control.titlePadding;
-            } else if (control.titleAlign === HusGroupBox.Align_Right) {
+            } else if (control.titleAlign === HusGroupBox.AlignRight) {
                 return control.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0) - control.titlePadding;
             }
-            return (control.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0)) * 0.5;
+            return (control.width - (__titleLoader.item ? __titleLoader.item.implicitWidth : 0)) / 2;
         }
         y: {
-            if (control.titlePosition === HusGroupBox.Position_Top) {
-                return -(__titleLoader.item ? __titleLoader.item.implicitHeight : 0) * 0.5;
-            } else if (control.titlePosition === HusGroupBox.Position_Bottom) {
-                return control.height - (__titleLoader.item ? __titleLoader.item.implicitHeight : 0) * 0.5;
+            if (control.titlePosition === HusGroupBox.PositionTop) {
+                return -(__titleLoader.item ? __titleLoader.item.implicitHeight : 0) / 2;
+            } else if (control.titlePosition === HusGroupBox.PositionBottom) {
+                return control.height - (__titleLoader.item ? __titleLoader.item.implicitHeight : 0) / 2;
             }
             return 0;
         }

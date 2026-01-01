@@ -25,7 +25,7 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-browserMode | int | HusFileBrowser.Open_File | 浏览器样式(来自 HusFileBrowser)
+browserMode | int | HusFileBrowser.OpenFile | 浏览器样式(来自 HusFileBrowser)
 defaultFolder | string | - | 默认的浏览文件夹路径
 inputText | string | - | 文本框文本
 inputPlaceholder | string | - | 文本框占位符
@@ -33,7 +33,7 @@ inputEnabled | bool | true | 文本框已启用
 inputReadOnly | bool | false | 文本框只读
 buttonEnabled | bool | true | 按钮已启用
 buttonText | string | '浏览' | 按钮文本
-buttonType | int | HusButton.Type_Default | 按钮样式(来自 HusButton)
+buttonType | int | HusButton.TypeDefault | 按钮样式(来自 HusButton)
 buttonIconSource | int丨string | 0丨'' | 按钮图标源(来自 HusIcon)或图标链接
 buttonWidth | int | 80 | 按钮宽度
 spacing | int | 8 | 文本框与按钮的间距
@@ -79,10 +79,10 @@ Column {
         id: browserModeRadio
         initCheckedIndex: 0
         model: [
-            { label: 'OpenFile', value: HusFileBrowser.Open_File },
-            { label: 'OpenFiles', value: HusFileBrowser.Open_Files },
-            { label: 'OpenFolder', value: HusFileBrowser.Open_Folder },
-            { label: 'SaveFile', value: HusFileBrowser.Save_File }
+            { label: 'OpenFile', value: HusFileBrowser.OpenFile },
+            { label: 'OpenFiles', value: HusFileBrowser.OpenFiles },
+            { label: 'OpenFolder', value: HusFileBrowser.OpenFolder },
+            { label: 'SaveFile', value: HusFileBrowser.SaveFile }
         ]
     }
 
@@ -105,10 +105,10 @@ Column {
                     id: browserModeRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'OpenFile', value: HusFileBrowser.Open_File },
-                        { label: 'OpenFiles', value: HusFileBrowser.Open_Files },
-                        { label: 'OpenFolder', value: HusFileBrowser.Open_Folder },
-                        { label: 'SaveFile', value: HusFileBrowser.Save_File }
+                        { label: 'OpenFile', value: HusFileBrowser.OpenFile },
+                        { label: 'OpenFiles', value: HusFileBrowser.OpenFiles },
+                        { label: 'OpenFolder', value: HusFileBrowser.OpenFolder },
+                        { label: 'SaveFile', value: HusFileBrowser.SaveFile }
                     ]
                 }
 

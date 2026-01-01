@@ -228,7 +228,7 @@ HusRectangle {
 
         HusPopup {
             id: __filterPopup
-            x: -width * 0.5
+            x: -width / 2
             y: parent.height
             padding: 5
             animationEnabled: control.animationEnabled
@@ -260,7 +260,7 @@ HusRectangle {
                         animationEnabled: control.animationEnabled
                         text: qsTr('Search')
                         iconSource: HusIcon.SearchOutlined
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         onClicked: {
                             if (__searchInput.text.length === 0)
                                 __filterPopup.close();
@@ -284,7 +284,7 @@ HusRectangle {
                     HusButton {
                         animationEnabled: control.animationEnabled
                         text: qsTr('Close')
-                        type: HusButton.Type_Link
+                        type: HusButton.TypeLink
                         onClicked: {
                             __filterPopup.close();
                         }
@@ -744,7 +744,7 @@ HusRectangle {
                     z: 2
                     width: 1
                     color: control.colorGridLine
-                    height: parent.height * 0.5
+                    height: parent.height / 2
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -755,7 +755,7 @@ HusRectangle {
                     minimumWidth: __columnHeaderItem.minimumWidth
                     maximumWidth: __columnHeaderItem.maximumWidth
                     anchors.right: parent.right
-                    anchors.rightMargin: -width * 0.5
+                    anchors.rightMargin: -width / 2
                     enabled: control.columnResizable
                     target: __columnHeaderItem
                     isHorizontal: true
@@ -812,7 +812,7 @@ HusRectangle {
 
                 Rectangle {
                     z: 2
-                    width: parent.width * 0.5
+                    width: parent.width / 2
                     color: control.colorGridLine
                     height: 1
                     anchors.bottom: parent.bottom
@@ -826,7 +826,7 @@ HusRectangle {
                     minimumHeight: control.minimumRowHeight
                     maximumHeight: control.maximumRowHeight
                     anchors.bottom: parent.bottom
-                    anchors.bottomMargin: -height * 0.5
+                    anchors.bottomMargin: -height / 2
                     enabled: control.rowResizable
                     target: __rowHeaderItem
                     isHorizontal: false
@@ -1017,7 +1017,7 @@ HusRectangle {
                 height: 8
                 minimumHeight: control.defaultColumnHeaderHeight
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: -height * 0.5
+                anchors.bottomMargin: -height / 2
                 enabled: control.rowResizable
                 target: __columnHeaderViewBg
                 isHorizontal: false
@@ -1029,7 +1029,7 @@ HusRectangle {
                 height: parent.height
                 minimumWidth: control.defaultRowHeaderWidth
                 anchors.right: parent.right
-                anchors.rightMargin: -width * 0.5
+                anchors.rightMargin: -width / 2
                 enabled: control.columnResizable
                 target: __rowHeaderViewBg
                 isHorizontal: true
@@ -1060,7 +1060,7 @@ HusRectangle {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 width: 1
-                height: parent.height * 0.5
+                height: parent.height / 2
                 sourceComponent: Rectangle {color: control.colorGridLine }
             }
         }

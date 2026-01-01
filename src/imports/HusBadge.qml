@@ -6,16 +6,16 @@ Item {
     id: control
 
     enum State {
-        State_Success = 1,
-        State_Processing = 2,
-        State_Error = 3,
-        State_Warning  = 4,
-        State_Default = 5
+        StateSuccess = 1,
+        StateProcessing = 2,
+        StateError = 3,
+        StateWarning  = 4,
+        StateDefault = 5
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property int badgeState: HusBadge.State_Error
-    property bool stateEffect: badgeState === HusBadge.State_Processing
+    property int badgeState: HusBadge.StateError
+    property bool stateEffect: badgeState === HusBadge.StateProcessing
     property string presetColor: ''
     property int count: 0
     property var iconSource: 0 ?? ''
@@ -38,9 +38,9 @@ Item {
     width: __badge.width
     height: __badge.height
     anchors.left: __parentIsLayout ? undefined : parent.right
-    anchors.leftMargin: __parentIsLayout ? 0 : -width * 0.5
+    anchors.leftMargin: __parentIsLayout ? 0 : -width / 2
     anchors.bottom: __parentIsLayout ? undefined : parent.top
-    anchors.bottomMargin: __parentIsLayout ? 0 : -height * 0.5
+    anchors.bottomMargin: __parentIsLayout ? 0 : -height / 2
 
     onCountChanged: {
         const max = Math.min(count, overflowCount);
@@ -57,11 +57,11 @@ Item {
     }
     onBadgeStateChanged: {
         switch (badgeState) {
-        case HusBadge.State_Success: presetColor = '#52c41a'; break;
-        case HusBadge.State_Processing: presetColor = '#1677ff'; break;
-        case HusBadge.State_Error: presetColor = '#ff4d4f'; break;
-        case HusBadge.State_Warning: presetColor = '#faad14'; break;
-        case HusBadge.State_Default: presetColor = '#888888'; break;
+        case HusBadge.StateSuccess: presetColor = '#52c41a'; break;
+        case HusBadge.StateProcessing: presetColor = '#1677ff'; break;
+        case HusBadge.StateError: presetColor = '#ff4d4f'; break;
+        case HusBadge.StateWarning: presetColor = '#faad14'; break;
+        case HusBadge.StateDefault: presetColor = '#888888'; break;
         default: presetColor = '';
         }
     }
@@ -82,7 +82,7 @@ Item {
         case 'magenta': preset = HusColorGenerator.Preset_Magenta; break;
         }
 
-        if (badgeState === HusBadge.State_Error) {
+        if (badgeState === HusBadge.StateError) {
             __private.isCustom = preset == -1 ? true : false;
             __private.presetColor = preset == -1 ? '#000' : husColorGenerator.presetToColor(preset);
         } else {
@@ -105,9 +105,9 @@ Item {
     Rectangle {
         id: __effect
         visible: control.stateEffect
-        x: __border.x + (__border.width - width) * 0.5
-        y: __border.y + (__border.height - height) * 0.5
-        radius: height * 0.5
+        x: __border.x + (__border.width - width) / 2
+        y: __border.y + (__border.height - height) / 2
+        radius: height / 2
         color: 'transparent'
         border.color: __badge.color
 
@@ -149,7 +149,7 @@ Item {
         width: __badge.width + 2
         height: __badge.height + 2
         anchors.centerIn: __badge
-        radius: height * 0.5
+        radius: height / 2
         color: 'transparent'
         border.width: 2
         border.color: !__private.isNumber ? 'transparent' : 'white'
@@ -162,7 +162,7 @@ Item {
         width: control.dot ? 8 : Math.max(__content.width + 12, height)
         height: control.dot ? 8 : 20
         anchors.centerIn: parent
-        radius: height * 0.5
+        radius: height / 2
         color: control.colorBg
         scale: (control.dot || control.count > 0 || control.showZero || !__private.isNumber) ? 1 : 0
 

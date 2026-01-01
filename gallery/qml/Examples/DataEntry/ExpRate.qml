@@ -377,7 +377,7 @@ Column {
             width: custom3.iconSize
             height: custom3.iconSize
             onPaint: {
-                const size = custom3.iconSize * 0.5;
+                const size = custom3.iconSize / 2;
                 custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorFill);
             }
         }
@@ -385,7 +385,7 @@ Column {
             width: custom3.iconSize
             height: custom3.iconSize
             onPaint: {
-                const size = custom3.iconSize * 0.5;
+                const size = custom3.iconSize / 2;
                 custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
             }
         }
@@ -393,7 +393,7 @@ Column {
             width: custom3.iconSize
             height: custom3.iconSize
             onPaint: {
-                const size = custom3.iconSize * 0.5;
+                const size = custom3.iconSize / 2;
                 custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
             }
 
@@ -403,7 +403,7 @@ Column {
                 layer.enabled: true
                 layer.effect: custom3.halfRateHelper
                 onPaint: {
-                    const size = custom3.iconSize * 0.5;
+                    const size = custom3.iconSize / 2;
                     custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorFill);
                 }
             }
@@ -448,7 +448,7 @@ Column {
                         width: custom3.iconSize
                         height: custom3.iconSize
                         onPaint: {
-                            const size = custom3.iconSize * 0.5;
+                            const size = custom3.iconSize / 2;
                             custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorFill);
                         }
                     }
@@ -456,7 +456,7 @@ Column {
                         width: custom3.iconSize
                         height: custom3.iconSize
                         onPaint: {
-                            const size = custom3.iconSize * 0.5;
+                            const size = custom3.iconSize / 2;
                             custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
                         }
                     }
@@ -464,7 +464,7 @@ Column {
                         width: custom3.iconSize
                         height: custom3.iconSize
                         onPaint: {
-                            const size = custom3.iconSize * 0.5;
+                            const size = custom3.iconSize / 2;
                             custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorEmpty, false);
                         }
 
@@ -474,7 +474,7 @@ Column {
                             layer.enabled: true
                             layer.effect: custom3.halfRateHelper
                             onPaint: {
-                                const size = custom3.iconSize * 0.5;
+                                const size = custom3.iconSize / 2;
                                 custom3.drawHexagon(getContext('2d'), size, size, size - 1, custom3.colorHalf);
                             }
                         }

@@ -115,7 +115,7 @@ T.Control {
                 y: (1 - __private.visualV) * parent.height - radius
                 width: 16
                 height: width
-                radius: width * 0.5
+                radius: width / 2
                 border.width: 2
                 border.color: HusTheme.isDark ? 'black' : 'white'
                 color: 'transparent'
@@ -162,7 +162,7 @@ T.Control {
                         width: parent.width
                         height: 7
                         anchors.verticalCenter: parent.verticalCenter
-                        radius: height * 0.5
+                        radius: height / 2
                         gradient: Gradient {
                             orientation: Gradient.Horizontal
                             GradientStop { position: 0.00; color: '#ff0000' }
@@ -180,7 +180,7 @@ T.Control {
                         width: 14
                         height: width
                         anchors.verticalCenter: parent.verticalCenter
-                        radius: width * 0.5
+                        radius: width / 2
                         color: HusTheme.isDark ? 'black' : 'white'
                         border.color: control.themeSource.colorBorderHover
                         border.width: 1
@@ -189,7 +189,7 @@ T.Control {
                             width: parent.width - 6
                             height: width
                             anchors.centerIn: parent
-                            radius: width * 0.5
+                            radius: width / 2
                             color: Qt.hsva(__private.h, 1, 1, 1)
                         }
                     }
@@ -220,14 +220,14 @@ T.Control {
                             anchors.verticalCenter: parent.verticalCenter
                             rows: 2
                             columns: 36
-                            radiusBg.all: height * 0.5
+                            radiusBg.all: height / 2
                         }
 
                         Rectangle {
                             width: parent.width
                             height: 7
                             anchors.verticalCenter: parent.verticalCenter
-                            radius: height * 0.5
+                            radius: height / 2
                             gradient: Gradient {
                                 orientation: Gradient.Horizontal
                                 GradientStop {
@@ -246,7 +246,7 @@ T.Control {
                             width: 14
                             height: width
                             anchors.verticalCenter: parent.verticalCenter
-                            radius: width * 0.5
+                            radius: width / 2
                             color: 'transparent'
                             border.color: control.themeSource.colorBorderHover
                             border.width: 1
@@ -255,7 +255,7 @@ T.Control {
                                 width: parent.width - 2
                                 height: width
                                 anchors.centerIn: parent
-                                radius: width * 0.5
+                                radius: width / 2
                                 color: 'transparent'
                                 border.color: HusTheme.isDark ? 'black' : 'white'
                                 border.width: 2

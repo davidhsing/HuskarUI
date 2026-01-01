@@ -65,7 +65,7 @@ HusSelect {
             HusText {
                 id: __text
                 anchors.verticalCenter: parent.verticalCenter
-                text: __tag.tagData.label
+                text: __tag.tagData ? (__tag.tagData[control.textRole] || __tag.tagData.label) : ''
                 font: control.font
                 color: control.colorTagText
 
@@ -379,7 +379,7 @@ HusSelect {
                         visible: __popupDelegate.hovered
                         animationEnabled: control.animationEnabled
                         text: __popupDelegate.model[control.textRole]
-                        position: HusToolTip.Position_Bottom
+                        position: HusToolTip.PositionBottom
                     }
                 }
             }
@@ -409,7 +409,8 @@ HusSelect {
         }
 
         function insert(key, data) {
-            __tagListModel.append({ '__related__': key, 'tagData': data });
+            const cleanData = (typeof data === 'object' && data !== null) ? Object.assign({}, data) : {};
+            __tagListModel.append({ '__related__': key, 'tagData': cleanData });
             selectedKeysMap.set(key, data);
             selectedKeysMapChanged();
             control.select(data);

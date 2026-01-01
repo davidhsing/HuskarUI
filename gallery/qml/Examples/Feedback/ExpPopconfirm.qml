@@ -79,12 +79,12 @@ import HuskarUI.Basic
 Row {
     HusButton {
         text: 'Delete'
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
         onClicked: popconfirm.open();
 
         HusPopconfirm {
             id: popconfirm
-            x: (parent.width - width) * 0.5
+            x: (parent.width - width) / 2
             y: parent.height + 6
             width: 300
             title: 'Delete the task'
@@ -106,12 +106,12 @@ Row {
             exampleDelegate: Row {
                 HusButton {
                     text: 'Delete'
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                     onClicked: popconfirm.open();
 
                     HusPopconfirm {
                         id: popconfirm
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 300
                         title: 'Delete the task'
@@ -146,12 +146,12 @@ Row {
 
     HusButton {
         text: 'Add'
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
         onClicked: popconfirm2.open();
 
         HusPopconfirm {
             id: popconfirm2
-            x: (parent.width - width) * 0.5
+            x: (parent.width - width) / 2
             y: parent.height + 6
             iconSource: HusIcon.QuestionCircleOutlined
             width: 300
@@ -172,12 +172,12 @@ Row {
 
     HusButton {
         text: 'Delete'
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
         onClicked: popconfirm3.open();
 
         HusPopconfirm {
             id: popconfirm3
-            x: (parent.width - width) * 0.5
+            x: (parent.width - width) / 2
             y: parent.height + 6
             iconSource: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
             width: 300
@@ -202,12 +202,12 @@ Row {
 
                 HusButton {
                     text: 'Add'
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                     onClicked: popconfirm2.open();
 
                     HusPopconfirm {
                         id: popconfirm2
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: parent.height + 6
                         iconSource: HusIcon.QuestionCircleOutlined
                         width: 300
@@ -228,12 +228,12 @@ Row {
 
                 HusButton {
                     text: 'Delete'
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                     onClicked: popconfirm3.open();
 
                     HusPopconfirm {
                         id: popconfirm3
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: parent.height + 6
                         iconSource: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
                         width: 300
@@ -268,11 +268,11 @@ import HuskarUI.Basic
 Row {
     HusButton {
         text: 'Hover Tooltip'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
 
         HusPopconfirm {
             id: popconfirm4
-            x: (parent.width - width) * 0.5
+            x: (parent.width - width) / 2
             y: parent.height + 6
             width: 150
             title: 'Tooltip'
@@ -286,11 +286,11 @@ Row {
             exampleDelegate: Row {
                 HusButton {
                     text: 'Hover Tooltip'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
 
                     HusPopconfirm {
                         id: popconfirm4
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 150
                         title: 'Tooltip'

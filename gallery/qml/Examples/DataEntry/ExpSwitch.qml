@@ -93,7 +93,7 @@ Column {
 
     HusButton {
         text: qsTr('切换 enabled')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: switch1.enabled = !switch1.enabled;
     }
 }
@@ -108,7 +108,7 @@ Column {
 
                 HusButton {
                     text: qsTr('切换 enabled')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: switch1.enabled = !switch1.enabled;
                 }
             }

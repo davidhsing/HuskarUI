@@ -467,11 +467,11 @@ void HusRectangle::paint(QPainter *painter)
     if (d->m_pen && d->m_pen->isValid()) {
         rect = boundingRect();
         if (rect.width() > d->m_pen->width() * 2) {
-            auto dx = d->m_pen->width() * 0.5;
+            auto dx = d->m_pen->width() / 2;
             rect.adjust(dx, 0, -dx, 0);
         }
         if (rect.height() > d->m_pen->width() * 2) {
-            auto dy = d->m_pen->width() * 0.5;
+            auto dy = d->m_pen->width() / 2;
             rect.adjust(0, dy, 0, -dy);
         }
         painter->setPen(QPen(d->m_pen->color(), d->m_pen->width(), Qt::PenStyle(d->m_pen->style()), Qt::SquareCap, Qt::SvgMiterJoin));
@@ -479,7 +479,7 @@ void HusRectangle::paint(QPainter *painter)
         painter->setPen(QPen(Qt::transparent));
     }
 
-    const auto maxRadius = height() * 0.5;
+    const auto maxRadius = height() / 2;
     const auto topLeftRadius = std::min(d->m_topLeftRadius, maxRadius);
     const auto topRightRadius = std::min(d->m_topRightRadius, maxRadius);
     const auto bottomLeftRadius = std::min(d->m_bottomLeftRadius, maxRadius);

@@ -219,7 +219,7 @@ HusWindow {
 
             HusButton {
                 text: qsTr('创建')
-                type: HusButton.Type_Primary
+                type: HusButton.TypePrimary
                 onClicked: {
                     let object = {};
                     object.projectName = projectNameInput.text;
@@ -235,7 +235,7 @@ HusWindow {
 
             HusButton {
                 text: qsTr('取消')
-                type: HusButton.Type_Outlined
+                type: HusButton.TypeOutlined
                 onClicked: captionBar.closeCallback();
             }
         }

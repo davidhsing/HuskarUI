@@ -33,7 +33,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-position | enum | HusNotification.Position_Top | 通知显示的位置(来自HusNotification)
+position | enum | HusNotification.PositionTop | 通知显示的位置(来自HusNotification)
 pauseOnHover | bool | true | 是否悬浮暂停超时
 showProgress | bool | false | 是否显示进度条
 stackMode | bool | true | 堆叠模式(超过stackThreshold自动堆叠)
@@ -124,7 +124,7 @@ Item {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_TopLeft
+        position: HusNotification.PositionTopLeft
     }
 
     HusNotification {
@@ -132,7 +132,7 @@ Item {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_TopRight
+        position: HusNotification.PositionTopRight
     }
 
     HusNotification {
@@ -140,7 +140,7 @@ Item {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_BottomLeft
+        position: HusNotification.PositionBottomLeft
     }
 
     HusNotification {
@@ -148,7 +148,7 @@ Item {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_BottomRight
+        position: HusNotification.PositionBottomRight
     }
 
     HusNotification {
@@ -156,7 +156,7 @@ Item {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_Top
+        position: HusNotification.PositionTop
     }
 
     HusNotification {
@@ -164,7 +164,7 @@ Item {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_Bottom
+        position: HusNotification.PositionBottom
     }
 
     Grid {
@@ -173,7 +173,7 @@ Item {
         spacing: 10
 
         HusIconButton {
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             iconSource: HusIcon.RadiusUpleftOutlined
             text: 'TopLeft'
             onClicked: {
@@ -182,7 +182,7 @@ Item {
         }
 
         HusIconButton {
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             iconSource: HusIcon.RadiusUprightOutlined
             text: 'TopRight'
             onClicked: {
@@ -191,7 +191,7 @@ Item {
         }
 
         HusIconButton {
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             iconSource: HusIcon.RadiusBottomleftOutlined
             text: 'BottomLeft'
             onClicked: {
@@ -200,7 +200,7 @@ Item {
         }
 
         HusIconButton {
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             iconSource: HusIcon.RadiusBottomrightOutlined
             text: 'BottomRight'
             onClicked: {
@@ -209,7 +209,7 @@ Item {
         }
 
         HusIconButton {
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             iconSource: HusIcon.BorderTopOutlined
             text: 'Top'
             onClicked: {
@@ -218,7 +218,7 @@ Item {
         }
 
         HusIconButton {
-            type: HusButton.Type_Primary
+            type: HusButton.TypePrimary
             iconSource: HusIcon.BorderBottomOutlined
             text: 'Bottom'
             onClicked: {
@@ -235,7 +235,7 @@ Item {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_TopLeft
+                    position: HusNotification.PositionTopLeft
                 }
 
                 HusNotification {
@@ -243,7 +243,7 @@ Item {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_TopRight
+                    position: HusNotification.PositionTopRight
                 }
 
                 HusNotification {
@@ -251,7 +251,7 @@ Item {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_BottomLeft
+                    position: HusNotification.PositionBottomLeft
                 }
 
                 HusNotification {
@@ -259,7 +259,7 @@ Item {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_BottomRight
+                    position: HusNotification.PositionBottomRight
                 }
 
                 HusNotification {
@@ -267,7 +267,7 @@ Item {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_Top
+                    position: HusNotification.PositionTop
                 }
 
                 HusNotification {
@@ -275,7 +275,7 @@ Item {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_Bottom
+                    position: HusNotification.PositionBottom
                 }
 
                 Grid {
@@ -284,7 +284,7 @@ Item {
                     spacing: 10
 
                     HusIconButton {
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         iconSource: HusIcon.RadiusUpleftOutlined
                         text: 'TopLeft'
                         onClicked: {
@@ -293,7 +293,7 @@ Item {
                     }
 
                     HusIconButton {
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         iconSource: HusIcon.RadiusUprightOutlined
                         text: 'TopRight'
                         onClicked: {
@@ -302,7 +302,7 @@ Item {
                     }
 
                     HusIconButton {
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         iconSource: HusIcon.RadiusBottomleftOutlined
                         text: 'BottomLeft'
                         onClicked: {
@@ -311,7 +311,7 @@ Item {
                     }
 
                     HusIconButton {
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         iconSource: HusIcon.RadiusBottomrightOutlined
                         text: 'BottomRight'
                         onClicked: {
@@ -320,7 +320,7 @@ Item {
                     }
 
                     HusIconButton {
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         iconSource: HusIcon.BorderTopOutlined
                         text: 'Top'
                         onClicked: {
@@ -329,7 +329,7 @@ Item {
                     }
 
                     HusIconButton {
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         iconSource: HusIcon.BorderBottomOutlined
                         text: 'Bottom'
                         onClicked: {
@@ -358,11 +358,11 @@ Item {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_TopRight
+        position: HusNotification.PositionTopRight
     }
 
     HusButton {
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         text: 'Open the notification box'
         onClicked: {
             notification7.info('Notification Title', 'I will never close automatically. This is a purposely very very long description that has many many characters and words.', 99999999);
@@ -376,11 +376,11 @@ Item {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_TopRight
+                    position: HusNotification.PositionTopRight
                 }
 
                 HusButton {
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     text: 'Open the notification box'
                     onClicked: {
                         notification7.info('Notification Title', 'I will never close automatically. This is a purposely very very long description that has many many characters and words.', 99999999);
@@ -409,7 +409,7 @@ Row {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_TopRight
+        position: HusNotification.PositionTopRight
     }
 
     HusButton {
@@ -449,7 +449,7 @@ Row {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_TopRight
+                    position: HusNotification.PositionTopRight
                 }
 
                 HusButton {
@@ -502,7 +502,7 @@ Row {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_TopRight
+        position: HusNotification.PositionTopRight
         showProgress: true
     }
 
@@ -522,13 +522,13 @@ Row {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_TopRight
+                    position: HusNotification.PositionTopRight
                     showProgress: true
                 }
 
                 HusButton {
                     text: 'Show progress notification'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         notification9.info('Notification Title', 'This is a show progress notification!');
                     }
@@ -557,7 +557,7 @@ Row {
         parent: Overlay.overlay
         anchors.fill: parent
         anchors.topMargin: captionBar.height
-        position: HusNotification.Position_TopRight
+        position: HusNotification.PositionTopRight
         stackMode: stackSwitch.checked
         stackThreshold: stackThresholdInput.value
     }
@@ -565,7 +565,7 @@ Row {
     HusButton {
         anchors.verticalCenter: parent.verticalCenter
         text: 'Open the notification box'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             notification10.open({
                                     message: 'Notification Title',
@@ -605,7 +605,7 @@ Row {
                     parent: Overlay.overlay
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
-                    position: HusNotification.Position_TopRight
+                    position: HusNotification.PositionTopRight
                     stackMode: stackSwitch.checked
                     stackThreshold: stackThresholdInput.value
                 }
@@ -613,7 +613,7 @@ Row {
                 HusButton {
                     anchors.verticalCenter: parent.verticalCenter
                     text: 'Open the notification box'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         notification10.open({
                                                 message: 'Notification Title',

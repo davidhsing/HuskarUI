@@ -134,7 +134,7 @@ Item {
                     ctx.beginPath();
                     ctx.moveTo(0, 0);
                     ctx.lineTo(width, 0);
-                    ctx.lineTo(width * 0.5, height);
+                    ctx.lineTo(width / 2, height);
                     ctx.closePath();
                     ctx.fillStyle = colorBg;
                     ctx.fill();
@@ -214,7 +214,7 @@ Item {
                     onPositionChanged: function(mouse) {
                         let newValue;
                         if (control.allowHalf) {
-                            if (mouse.x > (width * 0.5)) {
+                            if (mouse.x > (width / 2)) {
                                 newValue = index + 1;
                             } else {
                                 newValue = index + 0.5;
@@ -306,7 +306,7 @@ Item {
                     }
 
                     Loader {
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: -height - 4
                         z: 10
                         active: control.toolTipVisible

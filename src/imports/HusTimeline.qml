@@ -5,15 +5,15 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Mode {
-        Mode_Left = 0,
-        Mode_Right = 1,
-        Mode_Alternate = 2
+    enum TimelineMode {
+        ModeLeft = 0,
+        ModeRight = 1,
+        ModeAlternate = 2
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
     property var initModel: []
-    property int mode: HusTimeline.Mode_Left
+    property int mode: HusTimeline.ModeLeft
     property bool reverse: false
     property int defaultNodeSize: 11
     property int defaultLineWidth: 1
@@ -46,7 +46,7 @@ Item {
                     radius: width >> 1
                     color: control.colorNodeBg
                     border.color: model.colorNode
-                    border.width: radius * 0.5
+                    border.width: radius / 2
                 }
             }
 
@@ -240,9 +240,9 @@ Item {
             required property var model
             required property int index
             property bool timeOnLeft: {
-                if (control.mode === HusTimeline.Mode_Right) {
+                if (control.mode === HusTimeline.ModeRight) {
                     return false;
-                } else if (control.mode === HusTimeline.Mode_Alternate) {
+                } else if (control.mode === HusTimeline.ModeAlternate) {
                     return index % 2 === 0;
                 } else {
                     return true;
@@ -270,10 +270,10 @@ Item {
             Loader {
                 id: nodeLoader
                 x: {
-                    if (__private.noTime && control.mode !== HusTimeline.Mode_Alternate) {
-                        return control.mode === HusTimeline.Mode_Left ? 0 : parent.width - width;
+                    if (__private.noTime && control.mode !== HusTimeline.ModeAlternate) {
+                        return control.mode === HusTimeline.ModeLeft ? 0 : parent.width - width;
                     } else {
-                        return (__rootItem.width - width) * 0.5;
+                        return (__rootItem.width - width) / 2;
                     }
                 }
                 width: 30
@@ -284,7 +284,7 @@ Item {
 
             Loader {
                 id: timeLoader
-                y: (nodeLoader.height - __timeFontMetrics.height) * 0.5
+                y: (nodeLoader.height - __timeFontMetrics.height) / 2
                 anchors.left: __rootItem.timeOnLeft ? parent.left : nodeLoader.right
                 anchors.leftMargin: __rootItem.timeOnLeft ? 0 : 5
                 anchors.right: __rootItem.timeOnLeft ? nodeLoader.left : parent.right
@@ -302,7 +302,7 @@ Item {
 
             Loader {
                 id: contentLoader
-                y: (nodeLoader.height - __contentFontMetrics.height) * 0.5
+                y: (nodeLoader.height - __contentFontMetrics.height) / 2
                 anchors.left: !__rootItem.timeOnLeft ? parent.left : nodeLoader.right
                 anchors.leftMargin: !__rootItem.timeOnLeft ? 0 : 5
                 anchors.right: !__rootItem.timeOnLeft ? nodeLoader.left : parent.right

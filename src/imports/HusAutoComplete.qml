@@ -38,7 +38,7 @@ HusInput {
 
     objectName: '__HusAutoComplete__'
     themeSource: HusTheme.HusAutoComplete
-    iconPosition: HusInput.Position_Right
+    iconPosition: HusInput.PositionRight
     clearEnabled: 'active'
     onClickClear: {
         control.clearInput();
@@ -208,7 +208,7 @@ HusInput {
                         arrowVisible: false
                         visible: __popupDelegate.hovered && !__popupDelegate.pressed
                         text: __popupDelegate.textData
-                        position: HusToolTip.Position_Bottom
+                        position: HusToolTip.PositionBottom
                     }
                 }
             }

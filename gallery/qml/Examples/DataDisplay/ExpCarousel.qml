@@ -35,7 +35,7 @@ Flickable {
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 initModel | list | [] | 初始数据模型
 currentIndex | int | -1 | 当前索引
-position | enum | HusCarousel.Position_Bottom | 滚动的方向和指示器的位置(来自 HusCarousel)
+position | enum | HusCarousel.PositionBottom | 滚动的方向和指示器的位置(来自 HusCarousel)
 speed | int | 500 | 切换动效的时间(毫秒)
 infinite | bool | true | 是否无限滚动
 autoplay | bool | false | 是否自动切换
@@ -175,10 +175,10 @@ Column {
             descTitle: qsTr('位置')
             desc: qsTr(`
 通过 \`position\` 属性设置滚动的方向和指示器的位置，支持的位置：\n
-- 水平滚动，指示器在上方，{ HusCarousel.Position_Top }\n
-- 水平滚动，指示器在下方{ HusCarousel.Position_Bottom }\n
-- 垂直滚动，指示器在左方{ HusCarousel.Position_Left }\n
-- 垂直滚动，指示器在右方{ HusCarousel.Position_Right }\n
+- 水平滚动，指示器在上方，{ HusCarousel.PositionTop }\n
+- 水平滚动，指示器在下方{ HusCarousel.PositionBottom }\n
+- 垂直滚动，指示器在左方{ HusCarousel.PositionLeft }\n
+- 垂直滚动，指示器在右方{ HusCarousel.PositionRight }\n
                        `)
             code: `
 import QtQuick
@@ -192,10 +192,10 @@ Column {
         id: positionBlock
         initCheckedIndex: 1
         model: [
-            { label: qsTr('上'), value: HusCarousel.Position_Top },
-            { label: qsTr('下'), value: HusCarousel.Position_Bottom },
-            { label: qsTr('左'), value: HusCarousel.Position_Left },
-            { label: qsTr('右'), value: HusCarousel.Position_Right }
+            { label: qsTr('上'), value: HusCarousel.PositionTop },
+            { label: qsTr('下'), value: HusCarousel.PositionBottom },
+            { label: qsTr('左'), value: HusCarousel.PositionLeft },
+            { label: qsTr('右'), value: HusCarousel.PositionRight }
         ]
     }
 
@@ -233,10 +233,10 @@ Column {
                     id: positionBlock
                     initCheckedIndex: 1
                     model: [
-                        { label: qsTr('上'), value: HusCarousel.Position_Top },
-                        { label: qsTr('下'), value: HusCarousel.Position_Bottom },
-                        { label: qsTr('左'), value: HusCarousel.Position_Left },
-                        { label: qsTr('右'), value: HusCarousel.Position_Right }
+                        { label: qsTr('上'), value: HusCarousel.PositionTop },
+                        { label: qsTr('下'), value: HusCarousel.PositionBottom },
+                        { label: qsTr('左'), value: HusCarousel.PositionLeft },
+                        { label: qsTr('右'), value: HusCarousel.PositionRight }
                     ]
                 }
 

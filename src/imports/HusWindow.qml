@@ -5,12 +5,12 @@ Window {
     id: window
 
     enum SpecialEffect {
-        None = 0,
-        Win_DwmBlur = 1,
-        Win_AcrylicMaterial = 2,
-        Win_Mica = 3,
-        Win_MicaAlt = 4,
-        Mac_BlurEffect = 10
+        EffectNone = 0,
+        EffectWinDwmBlur = 1,
+        EffectWinAcrylicMaterial = 2,
+        EffectWinMica = 3,
+        EffectWinMicaAlt = 4,
+        EffectMacBlurEffect = 10
     }
 
     property real contentHeight: height - captionBar.height
@@ -18,7 +18,7 @@ Window {
     property alias windowAgent: __windowAgent
     property bool followThemeSwitch: true
     property bool initialized: false
-    property int specialEffect: HusWindow.None
+    property int specialEffect: HusWindow.EffectNone
     property bool isDesktopPlatform: Qt.platform.os === 'windows' || Qt.platform.os === 'osx' || Qt.platform.os === 'linux'
 
     visible: true
@@ -52,7 +52,7 @@ Window {
         target: HusTheme
         enabled: Qt.platform.os === 'osx' /*! 需额外为 MACOSX 处理*/
         function onIsDarkChanged() {
-            if (window.specialEffect === HusWindow.Mac_BlurEffect) {
+            if (window.specialEffect === HusWindow.EffectMacBlurEffect) {
                 windowAgent.setWindowAttribute('blur-effect', HusTheme.isDark ? 'dark' : 'light');
             }
         }
@@ -63,7 +63,7 @@ Window {
         target: HusTheme
         enabled: window.followThemeSwitch
         function onIsDarkChanged() {
-            if (window.specialEffect === HusWindow.None) {
+            if (window.specialEffect === HusWindow.EffectNone) {
                 window.color = HusTheme.Primary.colorBgBase;
             }
             window.setWindowMode(HusTheme.isDark);
@@ -91,74 +91,74 @@ Window {
         if (Qt.platform.os === 'windows') {
             switch (specialEffect)
             {
-                case HusWindow.Win_DwmBlur:
+                case HusWindow.EffectWinDwmBlur:
                     windowAgent.setWindowAttribute('acrylic-material', false);
                     windowAgent.setWindowAttribute('mica', false);
                     windowAgent.setWindowAttribute('mica-alt', false);
                     if (windowAgent.setWindowAttribute('dwm-blur', true)) {
-                        window.specialEffect = HusWindow.Win_DwmBlur;
+                        window.specialEffect = HusWindow.EffectWinDwmBlur;
                         window.color = 'transparent'
                         return true;
                     } else {
                         return false;
                     }
-                case HusWindow.Win_AcrylicMaterial:
+                case HusWindow.EffectWinAcrylicMaterial:
                     windowAgent.setWindowAttribute('dwm-blur', false);
                     windowAgent.setWindowAttribute('mica', false);
                     windowAgent.setWindowAttribute('mica-alt', false);
                     if (windowAgent.setWindowAttribute('acrylic-material', true)) {
-                        window.specialEffect = HusWindow.Win_AcrylicMaterial;
+                        window.specialEffect = HusWindow.EffectWinAcrylicMaterial;
                         window.color = 'transparent';
                         return true;
                     } else {
                         return false;
                     }
-                case HusWindow.Win_Mica:
+                case HusWindow.EffectWinMica:
                     windowAgent.setWindowAttribute('dwm-blur', false);
                     windowAgent.setWindowAttribute('acrylic-material', false);
                     windowAgent.setWindowAttribute('mica-alt', false);
                     if (windowAgent.setWindowAttribute('mica', true)) {
-                        window.specialEffect = HusWindow.Win_Mica;
+                        window.specialEffect = HusWindow.EffectWinMica;
                         window.color = 'transparent';
                         return true;
                     } else {
                         return false;
                     }
-                case HusWindow.Win_MicaAlt:
+                case HusWindow.EffectWinMicaAlt:
                     windowAgent.setWindowAttribute('dwm-blur', false);
                     windowAgent.setWindowAttribute('acrylic-material', false);
                     windowAgent.setWindowAttribute('mica', false);
                     if (windowAgent.setWindowAttribute('mica-alt', true)) {
-                        window.specialEffect = HusWindow.Win_MicaAlt;
+                        window.specialEffect = HusWindow.EffectWinMicaAlt;
                         window.color = 'transparent';
                         return true;
                     } else {
                         return false;
                     }
-                case HusWindow.None:
+                case HusWindow.EffectNone:
                 default:
                     windowAgent.setWindowAttribute('dwm-blur', false);
                     windowAgent.setWindowAttribute('acrylic-material', false);
                     windowAgent.setWindowAttribute('mica', false);
                     windowAgent.setWindowAttribute('mica-alt', false);
-                    window.specialEffect = HusWindow.None;
+                    window.specialEffect = HusWindow.EffectNone;
                     window.color = HusTheme.Primary.colorBgBase;
                     return true;
             }
         } else if (Qt.platform.os === 'osx') {
             switch (specialEffect) {
-                case HusWindow.Mac_BlurEffect:
+                case HusWindow.EffectMacBlurEffect:
                     if (windowAgent.setWindowAttribute('blur-effect', HusTheme.isDark ? 'dark' : 'light')) {
-                        window.specialEffect = HusWindow.Mac_BlurEffect;
+                        window.specialEffect = HusWindow.EffectMacBlurEffect;
                         window.color = 'transparent'
                         return true;
                     } else {
                         return false;
                     }
-                case HusWindow.None:
+                case HusWindow.EffectNone:
                 default:
                     windowAgent.setWindowAttribute('blur-effect', 'none');
-                    window.specialEffect = HusWindow.None;
+                    window.specialEffect = HusWindow.EffectNone;
                     window.color = HusTheme.Primary.colorBgBase;
                     return true;
             }

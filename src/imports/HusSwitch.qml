@@ -13,7 +13,7 @@ T.Switch {
     property string uncheckedText: ''
     property var checkedIconSource: 0 ?? ''
     property var uncheckedIconSource: 0 ?? ''
-    property HusRadius radiusBg: HusRadius { all: control.implicitIndicatorHeight * 0.5 }
+    property HusRadius radiusBg: HusRadius { all: control.implicitIndicatorHeight / 2 }
     property color colorHandle: HusTheme.HusSwitch.colorHandle
     property color colorBg: {
         if (!enabled)
@@ -30,7 +30,7 @@ T.Switch {
     }
     property string contentDescription: ''
     property Component handleDelegate: Rectangle {
-        radius: height * 0.5
+        radius: height / 2
         color: control.colorHandle
 
         HusIconText {

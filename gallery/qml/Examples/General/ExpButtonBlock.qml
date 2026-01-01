@@ -33,9 +33,9 @@ effectEnabled | bool | true | 是否开启点击效果
 hoverCursorShape | int | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
 model | list | [] | 按钮块模型
 count | int | - | 按钮数量
-size | enum | HusButtonBlock.Size_Auto | 按钮项大小(来自 HusButtonBlock)
-buttonWidth | int | 120 | 按钮项宽度(size == HusButtonBlock.Size_Fixed 生效)
-buttonHeight | int | 30 | 按钮项高度(size == HusButtonBlock.Size_Fixed 生效)
+size | enum | HusButtonBlock.SizeAuto | 按钮项大小(来自 HusButtonBlock)
+buttonWidth | int | 120 | 按钮项宽度(size == HusButtonBlock.SizeFixed 生效)
+buttonHeight | int | 30 | 按钮项高度(size == HusButtonBlock.SizeFixed 生效)
 buttonLeftPadding | int | 10 | 按钮项左填充
 buttonRightPadding | int | 10 | 按钮项右填充
 buttonTopPadding | int | 8 | 按钮项上填充
@@ -111,11 +111,11 @@ Column {
 
     HusButtonBlock {
         model: [
-            { label: 'Default', type: HusButton.Type_Default },
-            { label: 'Outlined', type: HusButton.Type_Outlined },
-            { label: 'Primary', type: HusButton.Type_Primary },
-            { label: 'Filled', type: HusButton.Type_Filled },
-            { label: 'Text', type: HusButton.Type_Text },
+            { label: 'Default', type: HusButton.TypeDefault },
+            { label: 'Outlined', type: HusButton.TypeOutlined },
+            { label: 'Primary', type: HusButton.TypePrimary },
+            { label: 'Filled', type: HusButton.TypeFilled },
+            { label: 'Text', type: HusButton.TypeText },
         ]
     }
 
@@ -159,11 +159,11 @@ Column {
 
                 HusButtonBlock {
                     model: [
-                        { label: 'Default', type: HusButton.Type_Default },
-                        { label: 'Outlined', type: HusButton.Type_Outlined },
-                        { label: 'Primary', type: HusButton.Type_Primary },
-                        { label: 'Filled', type: HusButton.Type_Filled },
-                        { label: 'Text', type: HusButton.Type_Text },
+                        { label: 'Default', type: HusButton.TypeDefault },
+                        { label: 'Outlined', type: HusButton.TypeOutlined },
+                        { label: 'Primary', type: HusButton.TypePrimary },
+                        { label: 'Filled', type: HusButton.TypeFilled },
+                        { label: 'Text', type: HusButton.TypeText },
                     ]
                 }
 
@@ -199,8 +199,8 @@ Column {
             width: parent.width
             desc: qsTr(`
 通过 \`size\` 属性设置按钮块调整大小的模式，支持的大小：\n
-- 自动计算大小(默认) { HusButtonBlock.Size_Auto }\n
-- 固定大小(将使用buttonWidth/buttonHeight) { HusButtonBlock.Size_Fixed }\n
+- 自动计算大小(默认) { HusButtonBlock.SizeAuto }\n
+- 固定大小(将使用buttonWidth/buttonHeight) { HusButtonBlock.SizeFixed }\n
                        `)
             code: `
 import QtQuick
@@ -210,7 +210,7 @@ Column {
     spacing: 10
 
     HusButtonBlock {
-        size: HusButtonBlock.Size_Auto
+        size: HusButtonBlock.SizeAuto
         model: [
             { label: 'Apple', value: 'Apple' },
             { label: 'Pear', value: 'Pear' },
@@ -219,7 +219,7 @@ Column {
     }
 
     HusButtonBlock {
-        size: HusButtonBlock.Size_Fixed
+        size: HusButtonBlock.SizeFixed
         model: [
             { label: 'Apple', value: 'Apple' },
             { label: 'Pear', value: 'Pear' },
@@ -232,7 +232,7 @@ Column {
                 spacing: 10
 
                 HusButtonBlock {
-                    size: HusButtonBlock.Size_Auto
+                    size: HusButtonBlock.SizeAuto
                     model: [
                         { label: 'Apple', value: 'Apple' },
                         { label: 'Pear', value: 'Pear' },
@@ -241,7 +241,7 @@ Column {
                 }
 
                 HusButtonBlock {
-                    size: HusButtonBlock.Size_Fixed
+                    size: HusButtonBlock.SizeFixed
                     model: [
                         { label: 'Apple', value: 'Apple' },
                         { label: 'Pear', value: 'Pear' },

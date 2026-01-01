@@ -113,7 +113,7 @@ Item {
     }
 
     HusButton {
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         text: 'Display normal message'
         onClicked: {
             message.info('Hello, HuskarUI!');
@@ -132,7 +132,7 @@ Item {
                 }
 
                 HusButton {
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     text: 'Display normal message'
                     onClicked: {
                         message.info('Hello, HuskarUI!');
@@ -249,7 +249,7 @@ Row {
         text: 'Customized display duration'
         onClicked: {
             message2.open({
-                              'type': HusMessage.Type_Success,
+                              'type': HusMessage.TypeSuccess,
                               'message': 'This is a prompt message for success, and it will disappear in 10 seconds',
                               'duration': 10000
                           });
@@ -273,7 +273,7 @@ Row {
                     text: 'Customized display duration'
                     onClicked: {
                         message2.open({
-                                          'type': HusMessage.Type_Success,
+                                          'type': HusMessage.TypeSuccess,
                                           'message': 'This is a prompt message for success, and it will disappear in 10 seconds',
                                           'duration': 10000
                                       });
@@ -392,7 +392,7 @@ Item {
 
     HusButton {
         text: 'Display custom message'
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             message4.open({
                               'message': 'This is a custom message',
@@ -416,7 +416,7 @@ Item {
 
                 HusButton {
                     text: 'Display custom message'
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         message4.open({
                             'message': 'This is a custom message',

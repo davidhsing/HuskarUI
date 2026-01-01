@@ -293,7 +293,7 @@ T.ComboBox {
                         visible: __popupDelegate.hovered
                         animationEnabled: control.animationEnabled
                         text: __popupDelegate.model[control.textRole]
-                        position: HusToolTip.Position_Bottom
+                        position: HusToolTip.PositionBottom
                     }
                 }
             }

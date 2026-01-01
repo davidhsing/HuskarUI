@@ -5,21 +5,21 @@ Item {
     id: control
 
     enum Type {
-        Type_Line = 0,
-        Type_Circle = 1,
-        Type_Dashboard = 2
+        TypeLine = 0,
+        TypeCircle = 1,
+        TypeDashboard = 2
     }
 
     enum Status {
-        Status_Normal = 0,
-        Status_Success = 1,
-        Status_Exception = 2,
-        Status_Active = 3
+        StatusNormal = 0,
+        StatusSuccess = 1,
+        StatusException = 2,
+        StatusActive = 3
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property int type: HusProgress.Type_Line
-    property int status: HusProgress.Status_Normal
+    property int type: HusProgress.TypeLine
+    property int status: HusProgress.StatusNormal
     property real percent: 0
     property real barThickness: 8
     property string strokeLineCap: 'round'
@@ -36,35 +36,35 @@ Item {
     property int precision: 0
     property var formatter: () => {
         switch (control.status) {
-            case HusProgress.Status_Success:
-                return control.type === HusProgress.Type_Line ? HusIcon.CheckCircleFilled : HusIcon.CheckOutlined;
-            case HusProgress.Status_Exception:
-                return control.type === HusProgress.Type_Line ? HusIcon.CloseCircleFilled : HusIcon.CloseOutlined;
+            case HusProgress.StatusSuccess:
+                return control.type === HusProgress.TypeLine ? HusIcon.CheckCircleFilled : HusIcon.CheckOutlined;
+            case HusProgress.StatusException:
+                return control.type === HusProgress.TypeLine ? HusIcon.CloseCircleFilled : HusIcon.CloseOutlined;
             default:
                 return `${control.percent.toFixed(control.precision)}%`;
         }
     }
     property color colorBar: {
         switch (control.status) {
-            case HusProgress.Status_Success: return HusTheme.HusProgress.colorBarSuccess;
-            case HusProgress.Status_Exception: return HusTheme.HusProgress.colorBarException;
-            case HusProgress.Status_Normal: return HusTheme.HusProgress.colorBarNormal;
-            case HusProgress.Status_Active : return HusTheme.HusProgress.colorBarNormal;
+            case HusProgress.StatusSuccess: return HusTheme.HusProgress.colorBarSuccess;
+            case HusProgress.StatusException: return HusTheme.HusProgress.colorBarException;
+            case HusProgress.StatusNormal: return HusTheme.HusProgress.colorBarNormal;
+            case HusProgress.StatusActive : return HusTheme.HusProgress.colorBarNormal;
             default: return HusTheme.HusProgress.colorBarNormal;
         }
     }
     property color colorTrack: HusTheme.HusProgress.colorTrack
     property color colorInfo: {
         switch (control.status) {
-            case HusProgress.Status_Success: return HusTheme.HusProgress.colorInfoSuccess;
-            case HusProgress.Status_Exception: return HusTheme.HusProgress.colorInfoException;
+            case HusProgress.StatusSuccess: return HusTheme.HusProgress.colorInfoSuccess;
+            case HusProgress.StatusException: return HusTheme.HusProgress.colorInfoException;
             default: return HusTheme.HusProgress.colorInfoNormal;
         }
     }
     property Component infoDelegate: HusIconText {
         color: control.colorInfo
         font.family: isIcon ? 'HuskarUI-Icons' : HusTheme.HusProgress.fontFamily
-        font.pixelSize: type === HusProgress.Type_Line ? HusTheme.HusProgress.fontSize + (!isIcon ? 0 : 2) : HusTheme.HusProgress.fontSize + (!isIcon ? 8 : 16)
+        font.pixelSize: type === HusProgress.TypeLine ? HusTheme.HusProgress.fontSize + (!isIcon ? 0 : 2) : HusTheme.HusProgress.fontSize + (!isIcon ? 8 : 16)
         text: isIcon ? String.fromCharCode(formatText) : formatText
         property var formatText: control.formatter()
         property bool isIcon: typeof formatText == 'number'
@@ -94,8 +94,8 @@ Item {
         id: __canvas
         height: parent.height
         anchors.left: parent.left
-        anchors.right: control.type === HusProgress.Type_Line ? __infoLoader.left : parent.right
-        anchors.rightMargin: control.type === HusProgress.Type_Line ? 5 : 0
+        anchors.right: control.type === HusProgress.TypeLine ? __infoLoader.left : parent.right
+        anchors.rightMargin: control.type === HusProgress.TypeLine ? 5 : 0
         antialiasing: true
         onWidthChanged: requestPaint();
         onHeightChanged: requestPaint();
@@ -106,7 +106,7 @@ Item {
         property real progressWidth: control.percent * 0.01 * width
 
         NumberAnimation on activeWidth {
-            running: control.type === HusProgress.Type_Line && control.status === HusProgress.Status_Active
+            running: control.type === HusProgress.TypeLine && control.status === HusProgress.StatusActive
             from: 0
             to: __canvas.progressWidth
             loops: Animation.Infinite
@@ -138,10 +138,10 @@ Item {
         function drawRoundLine(ctx, x, y, width, height, radius, color) {
             ctx.beginPath();
             if (control.strokeLineCap === 'butt') {
-                ctx.moveTo(x, y + height * 0.5);
-                ctx.lineTo(x + width, y + height * 0.5);
+                ctx.moveTo(x, y + height / 2);
+                ctx.lineTo(x + width, y + height / 2);
             } else {
-                ctx.moveTo(x + radius, y + height * 0.5);
+                ctx.moveTo(x + radius, y + height / 2);
                 ctx.lineTo(x + width - radius * 2, y + radius);
             }
             ctx.lineWidth = control.barThickness;
@@ -155,7 +155,7 @@ Item {
             if (control.steps > 0) {
                 const stepWidth = (width - ((control.steps - 1) * control.gap)) / control.steps;
                 const stepHeight = control.barThickness;
-                const stepY = (__canvas.height - stepHeight) * 0.5;
+                const stepY = (__canvas.height - stepHeight) / 2;
 
                 for (let i = 0; i < control.steps; i++) {
                     const stepX = i * control.gap + i * stepWidth;
@@ -170,16 +170,16 @@ Item {
                 }
             } else {
                 const x = 0;
-                const y = (height - control.barThickness) * 0.5;
+                const y = (height - control.barThickness) / 2;
                 const progressWidth = control.percent * 0.01 * width;
-                const radius = control.strokeLineCap === 'round' ? control.barThickness * 0.5 : 0;
+                const radius = control.strokeLineCap === 'round' ? control.barThickness / 2 : 0;
 
                 drawRoundLine(ctx, x, y, width, control.barThickness, radius, control.colorTrack);
 
                 if (progressWidth > 0) {
                     drawRoundLine(ctx, x, y, progressWidth, control.barThickness, radius, color);
                     /*! 绘制激活状态动画 */
-                    if (control.status === HusProgress.Status_Active) {
+                    if (control.status === HusProgress.StatusActive) {
                         drawRoundLine(ctx, x, y, __canvas.activeWidth, control.barThickness, radius, __canvas.activeColor);
                     }
                 }
@@ -188,7 +188,7 @@ Item {
 
         function drawCircle(ctx, centerX, centerY, radius) {
             /*! 确保绘制不会超出边界 */
-            radius = Math.max(0, Math.min(radius, Math.min(width, height) * 0.5 - control.barThickness));
+            radius = Math.max(0, Math.min(radius, Math.min(width, height) / 2 - control.barThickness));
             const color = getCurrentColor(ctx);
             if (control.steps > 0) {
                 /*! 计算每个步骤的弧长，考虑圆角影响 */
@@ -231,11 +231,11 @@ Item {
         }
 
         function drawDashboard(ctx, centerX, centerY, radius) {
-            radius = Math.max(0,Math.min(radius, Math.min(width, height) * 0.5 - control.barThickness));
+            radius = Math.max(0,Math.min(radius, Math.min(width, height) / 2 - control.barThickness));
             /* ! 计算开始和结束角度 */
             const gapRad = Math.min(Math.max(control.gapDegree, 0), 295) * Math.PI / 180;
-            const startAngle = Math.PI * 0.5 + gapRad * 0.5;
-            const endAngle = Math.PI * 2.5 - gapRad * 0.5;
+            const startAngle = Math.PI / 2 + gapRad / 2;
+            const endAngle = Math.PI * 2.5 - gapRad / 2;
             const color = getCurrentColor(ctx);
             
             if (control.steps > 0) {
@@ -285,11 +285,11 @@ Item {
             ctx.clearRect(0, 0, width, height);
 
             switch (control.type) {
-            case HusProgress.Type_Line:
+            case HusProgress.TypeLine:
                 drawLine(ctx); break;
-            case HusProgress.Type_Circle:
+            case HusProgress.TypeCircle:
                 drawCircle(ctx, centerX, centerY, radius); break;
-            case HusProgress.Type_Dashboard:
+            case HusProgress.TypeDashboard:
                 drawDashboard(ctx, centerX, centerY, radius); break;
             default: break;
             }
@@ -300,8 +300,8 @@ Item {
         id: __infoLoader
         active: control.showInfo
         anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: control.type === HusProgress.Type_Line ? undefined : parent.horizontalCenter
-        anchors.right: control.type === HusProgress.Type_Line ? parent.right : undefined
+        anchors.horizontalCenter: control.type === HusProgress.TypeLine ? undefined : parent.horizontalCenter
+        anchors.right: control.type === HusProgress.TypeLine ? parent.right : undefined
         sourceComponent: control.infoDelegate
     }
 }

@@ -37,7 +37,7 @@ HusPopup {
             ctx.fillStyle = fillStyle;
             ctx.beginPath();
             ctx.moveTo(0, height);
-            ctx.lineTo(width * 0.5, 0);
+            ctx.lineTo(width / 2, 0);
             ctx.lineTo(width, height);
             ctx.closePath();
             ctx.fill();
@@ -187,7 +187,7 @@ HusPopup {
 
             Loader {
                 id: __arrowLoader
-                x: -control.x + (__private.parentWidth - width) * 0.5
+                x: -control.x + (__private.parentWidth - width) / 2
                 y: __private.isTop ? (__bg.height - height) : 0
                 width: control.arrowWidth
                 height: control.arrowHeight

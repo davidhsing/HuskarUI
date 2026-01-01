@@ -114,7 +114,7 @@ Column {
 
     HusButton {
         text: qsTr('漫游步骤')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             tourStep.resetStep();
             tourStep.open();
@@ -153,19 +153,19 @@ Column {
         HusButton {
             id: tourStepButton1
             text: qsTr('漫游步骤1')
-            type: HusButton.Type_Outlined
+            type: HusButton.TypeOutlined
         }
 
         HusButton {
             id: tourStepButton2
             text: qsTr('漫游步骤2')
-            type: HusButton.Type_Outlined
+            type: HusButton.TypeOutlined
         }
 
         HusButton {
             id: tourStepButton3
             text: qsTr('漫游步骤3   ####')
-            type: HusButton.Type_Outlined
+            type: HusButton.TypeOutlined
         }
     }
 
@@ -184,7 +184,7 @@ Column {
 
                 HusButton {
                     text: qsTr('漫游步骤')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         tourStep.resetStep();
                         tourStep.open();
@@ -223,19 +223,19 @@ Column {
                     HusButton {
                         id: tourStepButton1
                         text: qsTr('漫游步骤1')
-                        type: HusButton.Type_Outlined
+                        type: HusButton.TypeOutlined
                     }
 
                     HusButton {
                         id: tourStepButton2
                         text: qsTr('漫游步骤2')
-                        type: HusButton.Type_Outlined
+                        type: HusButton.TypeOutlined
                     }
 
                     HusButton {
                         id: tourStepButton3
                         text: qsTr('漫游步骤3   ####')
-                        type: HusButton.Type_Outlined
+                        type: HusButton.TypeOutlined
                     }
                 }
 
@@ -268,7 +268,7 @@ Column {
 
     HusButton {
         text: qsTr('开始漫游')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             tourStep2.open();
         }
@@ -320,7 +320,7 @@ Column {
                     HusButton {
                         anchors.right: parent.right
                         text: qsTr('结束导览')
-                        type: HusButton.Type_Primary
+                        type: HusButton.TypePrimary
                         onClicked: {
                             tourStep2.close();
                         }
@@ -376,7 +376,7 @@ Column {
 
                 HusButton {
                     text: qsTr('开始漫游')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         tourStep2.open();
                     }
@@ -428,7 +428,7 @@ Column {
                                 HusButton {
                                     anchors.right: parent.right
                                     text: qsTr('结束导览')
-                                    type: HusButton.Type_Primary
+                                    type: HusButton.TypePrimary
                                     onClicked: {
                                         tourStep2.close();
                                     }

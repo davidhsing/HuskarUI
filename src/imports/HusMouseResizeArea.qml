@@ -35,8 +35,8 @@ Item {
 
     MouseArea {
         id: area1
-        x: -areaMarginSize * 0.5
-        y: -areaMarginSize * 0.5
+        x: -areaMarginSize / 2
+        y: -areaMarginSize / 2
         width: areaMarginSize
         height: areaMarginSize
         enabled: resizable
@@ -76,8 +76,8 @@ Item {
 
     MouseArea {
         id: area2
-        x: areaMarginSize * 0.5
-        y: -areaMarginSize * 0.5
+        x: areaMarginSize / 2
+        y: -areaMarginSize / 2
         width: target.width - areaMarginSize
         height: areaMarginSize
         enabled: resizable
@@ -105,8 +105,8 @@ Item {
 
     MouseArea {
         id: area3
-        x: target.width - areaMarginSize * 0.5
-        y: -areaMarginSize * 0.5
+        x: target.width - areaMarginSize / 2
+        y: -areaMarginSize / 2
         width: areaMarginSize
         height: areaMarginSize
         enabled: resizable
@@ -148,8 +148,8 @@ Item {
 
     MouseArea {
         id: area4
-        x: -areaMarginSize * 0.5
-        y: areaMarginSize * 0.5
+        x: -areaMarginSize / 2
+        y: areaMarginSize / 2
         width: areaMarginSize
         height: target.height - areaMarginSize
         enabled: resizable
@@ -179,8 +179,8 @@ Item {
 
     HusMouseMoveArea {
         id: area5
-        x: areaMarginSize * 0.5
-        y: areaMarginSize * 0.5
+        x: areaMarginSize / 2
+        y: areaMarginSize / 2
         width: control.target.width - areaMarginSize
         height: control.target.height - areaMarginSize
         enabled: false
@@ -190,8 +190,8 @@ Item {
 
     MouseArea {
         id: area6
-        x: target.width - areaMarginSize * 0.5
-        y: areaMarginSize * 0.5
+        x: target.width - areaMarginSize / 2
+        y: areaMarginSize / 2
         width: areaMarginSize
         height: target.height - areaMarginSize
         enabled: resizable
@@ -223,8 +223,8 @@ Item {
 
     MouseArea {
         id: area7
-        x: -areaMarginSize * 0.5
-        y: target.height - areaMarginSize * 0.5
+        x: -areaMarginSize / 2
+        y: target.height - areaMarginSize / 2
         width: areaMarginSize
         height: areaMarginSize
         enabled: resizable
@@ -267,8 +267,8 @@ Item {
 
     MouseArea {
         id: area8
-        x: areaMarginSize * 0.5
-        y: target.height - areaMarginSize * 0.5
+        x: areaMarginSize / 2
+        y: target.height - areaMarginSize / 2
         width: target.height - areaMarginSize
         height: areaMarginSize
         enabled: resizable
@@ -300,8 +300,8 @@ Item {
 
     MouseArea {
         id: area9
-        x: target.width - areaMarginSize * 0.5
-        y: target.height - areaMarginSize * 0.5
+        x: target.width - areaMarginSize / 2
+        y: target.height - areaMarginSize / 2
         width: areaMarginSize
         height: areaMarginSize
         enabled: resizable

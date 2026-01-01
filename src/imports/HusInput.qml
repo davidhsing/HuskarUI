@@ -8,33 +8,33 @@ T.TextField {
     signal clickClear()
 
     enum IconPosition {
-        Position_Left = 0,
-        Position_Right = 1
+        PositionLeft = 0,
+        PositionRight = 1
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
     readonly property bool active: hovered || activeFocus
     property var iconSource: 0 ?? ''
     property int iconSize: themeSource.fontIconSize
-    property int iconPosition: HusInput.Position_Left
+    property int iconPosition: HusInput.PositionLeft
     property var clearEnabled: false ?? ''
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int clearIconSize: themeSource.fontClearIconSize
-    property int clearIconPosition: HusInput.Position_Right
+    property int clearIconPosition: HusInput.PositionRight
     property int clearLeftMargin: 5
     property int clearRightMargin: 5
     property bool readOnlyBg: false
-    readonly property int leftIconPadding: (iconPosition === HusInput.Position_Left) ? __private.iconSize : 0
-    readonly property int rightIconPadding: (iconPosition === HusInput.Position_Right) ? __private.iconSize : 0
+    readonly property int leftIconPadding: (iconPosition === HusInput.PositionLeft) ? __private.iconSize : 0
+    readonly property int rightIconPadding: (iconPosition === HusInput.PositionRight) ? __private.iconSize : 0
     readonly property int leftClearIconPadding: {
-        if (clearIconPosition === HusInput.Position_Left) {
+        if (clearIconPosition === HusInput.PositionLeft) {
             return leftIconPadding > 0 ? (__private.clearIconSize + 5) : __private.clearIconSize;
         } else {
             return 0;
         }
     }
     readonly property int rightClearIconPadding: {
-        if (clearIconPosition === HusInput.Position_Right) {
+        if (clearIconPosition === HusInput.PositionRight) {
             return rightIconPadding > 0 ? (__private.clearIconSize + 5) : __private.clearIconSize;
         } else {
             return 0;
@@ -118,8 +118,8 @@ T.TextField {
     Loader {
         id: __iconLoader
         active: control.iconSource !== 0 && control.iconSource !== ''
-        anchors.left: control.iconPosition === HusInput.Position_Left ? parent.left : undefined
-        anchors.right: control.iconPosition === HusInput.Position_Right ? parent.right : undefined
+        anchors.left: control.iconPosition === HusInput.PositionLeft ? parent.left : undefined
+        anchors.right: control.iconPosition === HusInput.PositionRight ? parent.right : undefined
         anchors.margins: 5
         anchors.verticalCenter: parent.verticalCenter
         sourceComponent: control.iconDelegate
@@ -129,15 +129,15 @@ T.TextField {
         id: __clearIconLoader
         active: control.enabled && !control.readOnly && control.clearIconSource !== 0 && control.clearIconSource !== '' && (control.clearEnabled === true || (control.clearEnabled === 'active' && control.active))
         anchors.left: {
-            if (control.clearIconPosition === HusInput.Position_Left) {
-                return __iconLoader.active && control.iconPosition === HusInput.Position_Left ? __iconLoader.right : parent.left;
+            if (control.clearIconPosition === HusInput.PositionLeft) {
+                return __iconLoader.active && control.iconPosition === HusInput.PositionLeft ? __iconLoader.right : parent.left;
             } else {
                 return undefined;
             }
         }
         anchors.right: {
-            if (control.clearIconPosition === HusInput.Position_Right) {
-                return __iconLoader.active && control.iconPosition === HusInput.Position_Right ? __iconLoader.left : parent.right;
+            if (control.clearIconPosition === HusInput.PositionRight) {
+                return __iconLoader.active && control.iconPosition === HusInput.PositionRight ? __iconLoader.left : parent.right;
             } else {
                 return undefined;
             }

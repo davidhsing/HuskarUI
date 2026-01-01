@@ -62,13 +62,13 @@ maskColorization | real | 0 | 着色强度(0.0~1.0)
             width: parent.width
             desc: qsTr(`
 通过 \`type\` 属性设置特效类型，支持的类型：\n
-- 无{ HusSwitchEffect.Type_None }\n
-- 透明度特效{ HusSwitchEffect.Type_Opacity }\n
-- 模糊特效{ HusSwitchEffect.Type_Blurry }\n
-- 遮罩特效{ HusSwitchEffect.Type_Mask }\n
-- 百叶窗特效{ HusSwitchEffect.Type_Blinds }\n
-- 3D翻转特效{ HusSwitchEffect.Type_3DFlip }\n
-- 雷电特效{ HusSwitchEffect.Type_Thunder }\n
+- 无{ HusSwitchEffect.TypeNone }\n
+- 透明度特效{ HusSwitchEffect.TypeOpacity }\n
+- 模糊特效{ HusSwitchEffect.TypeBlurry }\n
+- 遮罩特效{ HusSwitchEffect.TypeMask }\n
+- 百叶窗特效{ HusSwitchEffect.TypeBlinds }\n
+- 3D翻转特效{ HusSwitchEffect.Type3dFlip }\n
+- 雷电特效{ HusSwitchEffect.TypeThunder }\n
 通过 \`duration\` 属性设置特效持续时间(毫秒)。\n
 通过 \`startSwitch\` 函数开始切换。\n
                        `)
@@ -85,7 +85,7 @@ Column {
         leftPadding: 20
         rightPadding: 20
         text: qsTr('开始')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         onClicked: {
             direction = !direction;
             if (direction) {
@@ -125,12 +125,12 @@ Column {
         id: effectType
         initCheckedIndex: 0
         model: [
-            { 'label': qsTr('无'), 'value': HusSwitchEffect.Type_None, 'duration': 0 },
-            { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.Type_Opacity, 'duration': 800 },
-            { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.Type_Blurry, 'duration': 1200 },
+            { 'label': qsTr('无'), 'value': HusSwitchEffect.TypeNone, 'duration': 0 },
+            { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.TypeOpacity, 'duration': 800 },
+            { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.TypeBlurry, 'duration': 1200 },
             {
                 'label': qsTr('遮罩特效'),
-                'value': HusSwitchEffect.Type_Mask,
+                'value': HusSwitchEffect.TypeMask,
                 'duration': 1500,
                 'maskScaleEnabled': true,
                 'maskRotationEnabled': true,
@@ -138,17 +138,17 @@ Column {
             },
             {
                 'label': qsTr('百叶窗特效'),
-                'value': HusSwitchEffect.Type_Blinds,
+                'value': HusSwitchEffect.TypeBlinds,
                 'duration': 1500,
             },
             {
                 'label': qsTr('3D翻转特效'),
-                'value': HusSwitchEffect.Type_3DFlip,
+                'value': HusSwitchEffect.Type3dFlip,
                 'duration': 1500,
             },
             {
                 'label': qsTr('雷电特效'),
-                'value': HusSwitchEffect.Type_Thunder,
+                'value': HusSwitchEffect.TypeThunder,
                 'duration': 1500,
             },
         ]
@@ -203,7 +203,7 @@ Column {
                     leftPadding: 20
                     rightPadding: 20
                     text: qsTr('开始')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         direction = !direction;
                         if (direction) {
@@ -243,12 +243,12 @@ Column {
                     id: effectType
                     initCheckedIndex: 0
                     model: [
-                        { 'label': qsTr('无'), 'value': HusSwitchEffect.Type_None, 'duration': 0 },
-                        { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.Type_Opacity, 'duration': 800 },
-                        { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.Type_Blurry, 'duration': 1200 },
+                        { 'label': qsTr('无'), 'value': HusSwitchEffect.TypeNone, 'duration': 0 },
+                        { 'label': qsTr('透明度特效'), 'value': HusSwitchEffect.TypeOpacity, 'duration': 800 },
+                        { 'label': qsTr('模糊特效'), 'value': HusSwitchEffect.TypeBlurry, 'duration': 1200 },
                         {
                             'label': qsTr('遮罩特效'),
-                            'value': HusSwitchEffect.Type_Mask,
+                            'value': HusSwitchEffect.TypeMask,
                             'duration': 1500,
                             'maskScaleEnabled': true,
                             'maskRotationEnabled': true,
@@ -256,18 +256,18 @@ Column {
                         },
                         {
                             'label': qsTr('百叶窗特效'),
-                            'value': HusSwitchEffect.Type_Blinds,
+                            'value': HusSwitchEffect.TypeBlinds,
                             'duration': 1500,
                             'maskRotationEnabled': true,
                         },
                         {
                             'label': qsTr('3D翻转特效'),
-                            'value': HusSwitchEffect.Type_3DFlip,
+                            'value': HusSwitchEffect.Type3dFlip,
                             'duration': 1500,
                         },
                         {
                             'label': qsTr('雷电特效'),
-                            'value': HusSwitchEffect.Type_Thunder,
+                            'value': HusSwitchEffect.TypeThunder,
                             'duration': 1500,
                         },
                     ]
@@ -305,7 +305,7 @@ Column {
                         anchors.fill: parent
                         duration: durationSlider.currentValue
                         maskScale: animationTime * 3
-                        maskRotation: type == HusSwitchEffect.Type_Blinds ? 45 : (1.0 - animationTime) * 360
+                        maskRotation: type == HusSwitchEffect.TypeBlinds ? 45 : (1.0 - animationTime) * 360
                         onFinished: {
                             item1.visible = !startButton.direction;
                             item2.visible = startButton.direction;

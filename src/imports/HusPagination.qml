@@ -320,6 +320,6 @@ Item {
 
     QtObject {
         id: __private
-        property int pageButtonHalfCount: Math.ceil(control.pageButtonMaxCount * 0.5)
+        property int pageButtonHalfCount: Math.ceil(control.pageButtonMaxCount / 2)
     }
 }

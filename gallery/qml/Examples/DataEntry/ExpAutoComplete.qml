@@ -241,7 +241,7 @@ Row {
                 sourceComponent: HusDivider {
                     width: delegateColumn.width
                     height: 30
-                    titleAlign: HusDivider.Align_Center
+                    titleAlign: HusDivider.AlignCenter
                     title: delegateColumn.option
                     colorText: 'red'
                 }
@@ -297,7 +297,7 @@ Row {
                             sourceComponent: HusDivider {
                                 width: delegateColumn.width
                                 height: 30
-                                titleAlign: HusDivider.Align_Center
+                                titleAlign: HusDivider.AlignCenter
                                 title: delegateColumn.option
                                 colorText: 'red'
                             }
@@ -378,7 +378,7 @@ Row {
     HusIconButton {
         id: searchButton
         height: 40
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         iconSource: HusIcon.SearchOutlined
         background: HusRectangle {
             topLeftRadius: 0
@@ -431,7 +431,7 @@ Row {
                 HusIconButton {
                     id: searchButton
                     height: 40
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     iconSource: HusIcon.SearchOutlined
                     background: HusRectangle {
                         topLeftRadius: 0
@@ -454,8 +454,8 @@ Row {
 通过 \`clearIconSource\` 设置清除图标，为 0 则不显示。\n
 通过 \`clearIconSize\` 设置清除图标大小。\n
 通过 \`clearIconPosition\` 设置清除图标的位置，支持的位置：\n
-- 清除图标在输入框左边(默认){ HusAutoComplete.Position_Left }\n
-- 清除图标在输入框右边{ HusAutoComplete.Position_Right }\n
+- 清除图标在输入框左边(默认){ HusAutoComplete.PositionLeft }\n
+- 清除图标在输入框右边{ HusAutoComplete.PositionRight }\n
                        `)
             code: `
 import QtQuick

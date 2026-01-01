@@ -47,7 +47,7 @@ T.ScrollBar {
             }
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            radius: control.orientation == Qt.Vertical ? width * 0.5 : height * 0.5
+            radius: control.orientation == Qt.Vertical ? width / 2 : height / 2
             color: control.colorBar
             opacity: {
                 if (control.policy == T.ScrollBar.AlwaysOn) {

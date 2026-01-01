@@ -36,16 +36,16 @@ animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 initModel | list | true | 标签页初始模型
 count | int | true | 当前标签页数量
 currentIndex | int | true | 当前标签页索引(更改该值可切换页)
-tabType | enum | HusTabs.Type_Default | 标签类型(来自 HusTabs)
-tabSize | enum | HusTabs.Size_Auto | 标签大小(来自 HusTabs)
-tabPosition | enum | HusTabs.Position_Top | 标签位置(来自 HusTabs)
+tabType | enum | HusTabs.TypeDefault | 标签类型(来自 HusTabs)
+tabSize | enum | HusTabs.SizeAuto | 标签大小(来自 HusTabs)
+tabPosition | enum | HusTabs.PositionTop | 标签位置(来自 HusTabs)
 tabAddable | bool | false | 标签是否可新增
 tabCentered | bool | false | 标签是否居中
-tabCardMovable | bool | false | 标签卡片是否可移动(tabType == Type_Card*生效)
+tabCardMovable | bool | false | 标签卡片是否可移动(tabType == TypeCard*生效)
 defaultTabWidth | int | 80 | 默认标签宽度
 defaultTabHeight | int | - | 默认标签高度
 defaultTabSpacing | int | 2 | 默认标签间隔
-defaultTabBgRadius | int | - | 默认标签背景半径(tabType == Type_Card*生效)
+defaultTabBgRadius | int | - | 默认标签背景半径(tabType == TypeCard*生效)
 defaultHighlightWidth | int | 40丨20 | 默认高亮条宽度半径(tabType == Type_Default生效)
 tabAddCallback | function | - | 添加标签回调(点击+按钮时调用)
 tabCloseCallback | function(index, data) | - | 关闭标签回调(点击x按钮时调用)
@@ -110,13 +110,13 @@ editable | bool | 可选 | 本标签是否可编辑
 - { tabHeight: 本标签高度 }\n
 - { editable: 本标签是否可编辑(tabType == Type_CardEditable时生效) }\n
 通过 \`tabPosition\` 属性设置标签位置，支持的位置：\n
-- 标签在上方(默认){ HusTabs.Position_Top }\n
-- 标签在下方{ HusTabs.Position_Bottom }\n
-- 标签在左方{ HusTabs.Position_Left }\n
-- 标签在右方{ HusTabs.Position_Right }\n
+- 标签在上方(默认){ HusTabs.PositionTop }\n
+- 标签在下方{ HusTabs.PositionBottom }\n
+- 标签在左方{ HusTabs.PositionLeft }\n
+- 标签在右方{ HusTabs.PositionRight }\n
 通过 \`tabSize\` 属性设置标签大小计算方式，支持的方式：\n
-- 自动计算标签大小(取决于文本大小){ HusTabs.Size_Auto }\n
-- 固定标签大小(取决于 tabWidth 和 defaultTabWidth){ HusTabs.Size_Fixed }\n
+- 自动计算标签大小(取决于文本大小){ HusTabs.SizeAuto }\n
+- 固定标签大小(取决于 tabWidth 和 defaultTabWidth){ HusTabs.SizeFixed }\n
 通过 \`tabAddable\` 属性设置标签列表是否可新增\n
 通过 \`tabCentered\` 属性设置标签列表是否居中\n
                        `)
@@ -132,10 +132,10 @@ Column {
         id: positionRadio1
         initCheckedIndex: 0
         model: [
-            { label: qsTr('上'), value: HusTabs.Position_Top },
-            { label: qsTr('下'), value: HusTabs.Position_Bottom },
-            { label: qsTr('左'), value: HusTabs.Position_Left },
-            { label: qsTr('右'), value: HusTabs.Position_Right }
+            { label: qsTr('上'), value: HusTabs.PositionTop },
+            { label: qsTr('下'), value: HusTabs.PositionBottom },
+            { label: qsTr('左'), value: HusTabs.PositionLeft },
+            { label: qsTr('右'), value: HusTabs.PositionRight }
         ]
     }
 
@@ -184,7 +184,7 @@ Column {
         height: 200
         defaultTabWidth: 40
         tabPosition: positionRadio1.currentCheckedValue
-        tabSize: sizeSwitch.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
+        tabSize: sizeSwitch.checked ? HusTabs.SizeFixed : HusTabs.SizeAuto
         tabAddable: addableSwitch.checked
         tabCentered: isCenterSwitch.checked
         tabAddCallback:
@@ -237,10 +237,10 @@ Column {
                     id: positionRadio1
                     initCheckedIndex: 0
                     model: [
-                        { label: qsTr('上'), value: HusTabs.Position_Top },
-                        { label: qsTr('下'), value: HusTabs.Position_Bottom },
-                        { label: qsTr('左'), value: HusTabs.Position_Left },
-                        { label: qsTr('右'), value: HusTabs.Position_Right }
+                        { label: qsTr('上'), value: HusTabs.PositionTop },
+                        { label: qsTr('下'), value: HusTabs.PositionBottom },
+                        { label: qsTr('左'), value: HusTabs.PositionLeft },
+                        { label: qsTr('右'), value: HusTabs.PositionRight }
                     ]
                 }
 
@@ -289,7 +289,7 @@ Column {
                     height: 200
                     defaultTabWidth: 40
                     tabPosition: positionRadio1.currentCheckedValue
-                    tabSize: sizeSwitch.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
+                    tabSize: sizeSwitch.checked ? HusTabs.SizeFixed : HusTabs.SizeAuto
                     tabAddable: addableSwitch.checked
                     tabCentered: isCenterSwitch.checked
                     tabAddCallback: () => {
@@ -339,9 +339,9 @@ Column {
             width: parent.width
             desc: qsTr(`
 通过 \`tabType\` 属性设置标签类型，支持的类型：\n
-- 默认标签(默认){ HusTabs.Type_Default }\n
-- 卡片标签{ HusTabs.Type_Card }\n
-- 可编辑卡片标签{ HusTabs.Type_CardEditable }\n
+- 默认标签(默认){ HusTabs.TypeDefault }\n
+- 卡片标签{ HusTabs.TypeCard }\n
+- 可编辑卡片标签{ HusTabs.TypeCardEditable }\n
                        `)
             code: `
 import QtQuick
@@ -355,10 +355,10 @@ Column {
         id: positionRadio2
         initCheckedIndex: 0
         model: [
-            { label: qsTr('上'), value: HusTabs.Position_Top },
-            { label: qsTr('下'), value: HusTabs.Position_Bottom },
-            { label: qsTr('左'), value: HusTabs.Position_Left },
-            { label: qsTr('右'), value: HusTabs.Position_Right }
+            { label: qsTr('上'), value: HusTabs.PositionTop },
+            { label: qsTr('下'), value: HusTabs.PositionBottom },
+            { label: qsTr('左'), value: HusTabs.PositionLeft },
+            { label: qsTr('右'), value: HusTabs.PositionRight }
         ]
     }
 
@@ -420,8 +420,8 @@ Column {
         height: 200
         defaultTabWidth: 50
         tabPosition: positionRadio2.currentCheckedValue
-        tabSize: sizeSwitch2.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
-        tabType: typeSwitch.checked ? HusTabs.Type_CardEditable :  HusTabs.Type_Card
+        tabSize: sizeSwitch2.checked ? HusTabs.SizeFixed : HusTabs.SizeAuto
+        tabType: typeSwitch.checked ? HusTabs.TypeCardEditable :  HusTabs.TypeCard
         tabAddable: addableSwitch2.checked
         tabCentered: isCenterSwitch2.checked
         tabAddCallback:
@@ -475,10 +475,10 @@ Column {
                     id: positionRadio2
                     initCheckedIndex: 0
                     model: [
-                        { label: qsTr('上'), value: HusTabs.Position_Top },
-                        { label: qsTr('下'), value: HusTabs.Position_Bottom },
-                        { label: qsTr('左'), value: HusTabs.Position_Left },
-                        { label: qsTr('右'), value: HusTabs.Position_Right }
+                        { label: qsTr('上'), value: HusTabs.PositionTop },
+                        { label: qsTr('下'), value: HusTabs.PositionBottom },
+                        { label: qsTr('左'), value: HusTabs.PositionLeft },
+                        { label: qsTr('右'), value: HusTabs.PositionRight }
                     ]
                 }
 
@@ -547,8 +547,8 @@ Column {
                     height: 200
                     defaultTabWidth: 50
                     tabPosition: positionRadio2.currentCheckedValue
-                    tabSize: sizeSwitch2.checked ? HusTabs.Size_Fixed : HusTabs.Size_Auto
-                    tabType: typeSwitch.checked ? HusTabs.Type_CardEditable :  HusTabs.Type_Card
+                    tabSize: sizeSwitch2.checked ? HusTabs.SizeFixed : HusTabs.SizeAuto
+                    tabType: typeSwitch.checked ? HusTabs.TypeCardEditable :  HusTabs.TypeCard
                     tabAddable: addableSwitch2.checked
                     tabCentered: isCenterSwitch2.checked
                     tabAddCallback:

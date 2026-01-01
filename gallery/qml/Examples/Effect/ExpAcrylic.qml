@@ -124,8 +124,8 @@ Column {
         }
 
         HusAcrylic {
-            x: (source.width - width) * 0.5
-            y: (source.height - height) * 0.5
+            x: (source.width - width) / 2
+            y: (source.height - height) / 2
             width: 200
             height: width
             sourceItem: source
@@ -212,8 +212,8 @@ Column {
                     }
 
                     HusAcrylic {
-                        x: (source.width - width) * 0.5
-                        y: (source.height - height) * 0.5
+                        x: (source.width - width) / 2
+                        y: (source.height - height) / 2
                         width: 200
                         height: width
                         sourceItem: source

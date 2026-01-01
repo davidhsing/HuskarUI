@@ -7,30 +7,30 @@ Item {
 
     // 枚举定义
     enum LayoutType {
-        Layout_Vertical = 0,
-        Layout_Horizontal = 1
+        LayoutVertical = 0,
+        LayoutHorizontal = 1
     }
 
-    enum LabelAlignment {
-        Align_Left = 0,
-        Align_Right = 1
+    enum LabelAlign {
+        AlignLeft = 0,
+        AlignRight = 1
     }
 
     enum ValidationStatus {
-        Validation_None = 0,
-        Validation_Success = 1,
-        Validation_Error = 2
+        ValidationNone = 0,
+        ValidationSuccess = 1,
+        ValidationError = 2
     }
 
     // 基础属性
     property bool animationEnabled: HusTheme.animationEnabled
     property bool required: false
     property int requiredSpacing: 4
-    property int layout: HusFormItem.Layout_Vertical
+    property int layout: HusFormItem.LayoutVertical
     property string labelText: ''
-    property int labelAlign: HusFormItem.Align_Left
+    property int labelAlign: HusFormItem.AlignLeft
     property int labelWidth: 100
-    property int labelSpacing: (layout === HusFormItem.Layout_Vertical) ? 4 : 10
+    property int labelSpacing: (layout === HusFormItem.LayoutVertical) ? 4 : 10
     property string colonText: ':'
     property bool colonVisible: false
     property int feedbackSpacing: 2
@@ -61,7 +61,7 @@ Item {
     Loader {
         id: __mainLoader
         anchors.fill: parent
-        sourceComponent: (control.layout === HusFormItem.Layout_Vertical) ? __verticalComponent : __horizontalComponent
+        sourceComponent: (control.layout === HusFormItem.LayoutVertical) ? __verticalComponent : __horizontalComponent
     }
 
     // 垂直布局组件
@@ -134,7 +134,7 @@ Item {
             // 标签区域
             Loader {
                 id: __labelLoader
-                Layout.alignment: (layout === HusFormItem.Layout_Vertical) ? Qt.AlignVCenter : Qt.AlignTop
+                Layout.alignment: (layout === HusFormItem.LayoutVertical) ? Qt.AlignVCenter : Qt.AlignTop
                 Layout.preferredWidth: control.labelWidth
                 Layout.preferredHeight: __horizontalRowLayout.maxContentHeight
                 sourceComponent: __labelComponent
@@ -152,7 +152,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     onChildrenRectChanged: {
-                        if (control.layout === HusFormItem.Layout_Horizontal) {
+                        if (control.layout === HusFormItem.LayoutHorizontal) {
                             __horizontalRowLayout.recalculateMaxHeight();
                         }
                     }
@@ -160,7 +160,7 @@ Item {
                         for (let i = 0; i < __contentItem.data.length; i++) {
                             __contentItem.data[i].parent = __horizontalContentArea;
                         }
-                        if (control.layout === HusFormItem.Layout_Horizontal) {
+                        if (control.layout === HusFormItem.LayoutHorizontal) {
                             __horizontalRowLayout.recalculateMaxHeight();
                         }
                     }
@@ -204,7 +204,7 @@ Item {
             visible: !!control.labelText
 
             Item {
-                Layout.fillWidth: control.labelAlign === HusFormItem.Align_Right
+                Layout.fillWidth: control.labelAlign === HusFormItem.AlignRight
             }
 
             // 必填星号
@@ -236,7 +236,7 @@ Item {
             }
 
             Item {
-                Layout.fillWidth: control.labelAlign === HusFormItem.Align_Left
+                Layout.fillWidth: control.labelAlign === HusFormItem.AlignLeft
             }
         }
     }
@@ -249,9 +249,9 @@ Item {
             text: __private.feedbackText
             color: {
                 switch (__private.validationStatus) {
-                    case HusFormItem.Validation_Success:
+                    case HusFormItem.ValidationSuccess:
                         return control.colorFeedbackSuccess;
-                    case HusFormItem.Validation_Error:
+                    case HusFormItem.ValidationError:
                         return control.colorFeedbackError;
                     default:
                         return control.themeSource.colorFeedbackNormal;
@@ -290,7 +290,7 @@ Item {
         // 执行当前组件的验证
         __private.validateInternal(param);
         // 检查当前组件的验证状态
-        if (__private.validationStatus === HusFormItem.Validation_Error) {
+        if (__private.validationStatus === HusFormItem.ValidationError) {
             allValid = false;
         }
         return allValid;
@@ -298,12 +298,12 @@ Item {
 
     QtObject {
         id: __private
-        property int validationStatus: HusFormItem.Validation_None
+        property int validationStatus: HusFormItem.ValidationNone
         property string feedbackText: ''
 
         function validateInternal(param) {
             if (typeof control.validator !== 'function') {
-                __private.validationStatus = HusFormItem.Validation_None;
+                __private.validationStatus = HusFormItem.ValidationNone;
                 __private.feedbackText = '';
                 return;
             }
@@ -312,23 +312,23 @@ Item {
                 let result = (arguments.length > 0) ? control.validator(param) : control.validator();
                 // 处理 undefined 返回值 - 清空反馈
                 if (result === undefined) {
-                    __private.validationStatus = HusFormItem.Validation_None;
+                    __private.validationStatus = HusFormItem.ValidationNone;
                     __private.feedbackText = '';
                     return;
                 }
                 // 支持返回布尔值
                 if (typeof result === 'boolean') {
-                    __private.validationStatus = result ? HusFormItem.Validation_Success : HusFormItem.Validation_Error;
+                    __private.validationStatus = result ? HusFormItem.ValidationSuccess : HusFormItem.ValidationError;
                     __private.feedbackText = result ? qsTr('校验通过') : qsTr('校验不通过');
                 }
                 // 支持返回对象 {valid: bool, message: string}
                 else if (typeof result === 'object' && result !== null) {
-                    __private.validationStatus = result.valid ? HusFormItem.Validation_Success : HusFormItem.Validation_Error;
+                    __private.validationStatus = result.valid ? HusFormItem.ValidationSuccess : HusFormItem.ValidationError;
                     __private.feedbackText = result.message || '';
                 }
             } catch (ex) {
                 console.error('HusFormItem Validation error:', ex);
-                __private.validationStatus = HusFormItem.Validation_Error;
+                __private.validationStatus = HusFormItem.ValidationError;
                 __private.feedbackText = qsTr('验证出错');
             }
         }

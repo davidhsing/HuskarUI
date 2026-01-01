@@ -6,8 +6,8 @@ Item {
     id: control
 
     enum TextSiz {
-        Size_Fixed = 0,
-        Size_Auto = 1
+        SizeFixed = 0,
+        SizeAuto = 1
     }
 
     property int size: 30
@@ -19,14 +19,14 @@ Item {
     property string textSource: ''
     property font textFont: Qt.font({
         family: HusTheme.Primary.fontPrimaryFamily,
-        pixelSize: control.size * 0.5
+        pixelSize: control.size / 2
     })
-    property int textSize: HusAvatar.Size_Fixed
+    property int textSize: HusAvatar.SizeFixed
     property int textGap: 4
     property color colorBg: HusTheme.Primary.colorTextQuaternary
     property color colorIcon: 'white'
     property color colorText: 'white'
-    property HusRadius radiusBg: HusRadius { all: control.width * 0.5 }
+    property HusRadius radiusBg: HusRadius { all: control.width / 2 }
 
     objectName: '__HusAvatar__'
     width: __loader.width
@@ -109,10 +109,10 @@ Item {
             Component.onCompleted: calcBestSize();
 
             function calcBestSize() {
-                if (control.textSize === HusAvatar.Size_Fixed) {
-                    __textSource.font.pixelSize = control.size * 0.5;
+                if (control.textSize === HusAvatar.SizeFixed) {
+                    __textSource.font.pixelSize = control.size / 2;
                 } else {
-                    let bestSize = control.size * 0.5;
+                    let bestSize = control.size / 2;
                     __fontMetrics.font.pixelSize = bestSize;
                     while ((__fontMetrics.advanceWidth(control.textSource) + control.textGap * 2 > control.size)) {
                         bestSize -= 1;

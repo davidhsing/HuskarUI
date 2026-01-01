@@ -53,7 +53,7 @@ T.Popup {
             ctx.fillStyle = fillStyle;
             ctx.beginPath();
             ctx.moveTo(0, height);
-            ctx.lineTo(width * 0.5, 0);
+            ctx.lineTo(width / 2, 0);
             ctx.lineTo(width, height);
             ctx.closePath();
             ctx.fill();
@@ -151,7 +151,7 @@ T.Popup {
                     animationEnabled: control.animationEnabled
                     text: qsTr('上一步')
                     font: control.buttonFont
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                     onClicked: {
                         if (control.currentStep > 0) {
                             control.currentStep -= 1;
@@ -170,7 +170,7 @@ T.Popup {
                     animationEnabled: control.animationEnabled
                     text: (control.currentStep + 1 == control.stepModel.length) ? qsTr('结束导览') : qsTr('下一步')
                     font: control.buttonFont
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     onClicked: {
                         if ((control.currentStep + 1 == control.stepModel.length)) {
                             control.close();
@@ -329,7 +329,7 @@ T.Popup {
     background: Item {
         Item {
             id: __anchor
-            x: __private.focusX + __private.focusWidth * 0.5
+            x: __private.focusX + __private.focusWidth / 2
             y: __private.focusY + __private.focusHeight
             opacity: control.opacity
             onYChanged: recalcPosition();
@@ -353,13 +353,13 @@ T.Popup {
             Loader {
                 id: __stepLoader
                 x: {
-                    if (__anchor.x - itemWidth * 0.5 > 0) {
-                        if (__anchor.x + itemWidth * 0.5 > winWidth) {
+                    if (__anchor.x - itemWidth / 2 > 0) {
+                        if (__anchor.x + itemWidth / 2 > winWidth) {
                             /*! 最右 */
                             return winWidth - __anchor.x - itemWidth;
                         } else {
                             /*! 中心 */
-                            return -itemWidth * 0.5;
+                            return -itemWidth / 2;
                         }
                     } else {
                         /*! 最左 */

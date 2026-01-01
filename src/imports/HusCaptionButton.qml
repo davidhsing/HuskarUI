@@ -9,7 +9,7 @@ HusIconButton {
     rightPadding: 12
     radiusBg.all: 0
     hoverCursorShape: Qt.ArrowCursor
-    type: HusButton.Type_Text
+    type: HusButton.TypeText
     iconSize: HusTheme.HusCaptionButton.fontSize
     effectEnabled: false
     colorIcon: {

@@ -87,7 +87,7 @@ T.SpinBox {
         enabled: control.enabled
         width: enabled && (control.hovered || control.alwaysShowHandler) ? control.defaultHandlerWidth : 0
 
-        property real halfHeight: height * 0.5
+        property real halfHeight: height / 2
         property real hoverHeight: height * 0.6
         property real noHoverHeight: height * 0.4
         property color colorBorder: enabled ? control.themeSource.colorBorder : control.themeSource.colorBorderDisabled
@@ -207,8 +207,8 @@ T.SpinBox {
         clearIconDelegate: HusIconText {
             iconSource: control.clearIconSource
             iconSize: control.clearIconSize
-            leftPadding: control.clearIconPosition === HusInput.Position_Left ? (control.leftIconPadding > 0 ? 5 : 10) * __input.sizeRatio : 0
-            rightPadding: control.clearIconPosition === HusInput.Position_Right ?
+            leftPadding: control.clearIconPosition === HusInput.PositionLeft ? (control.leftIconPadding > 0 ? 5 : 10) * __input.sizeRatio : 0
+            rightPadding: control.clearIconPosition === HusInput.PositionRight ?
                               ((control.rightIconPadding > 0 ? 5 : 30) * __input.sizeRatio + __handlerLoader.implicitWidth) : 0
             colorIcon: {
                 if (control.enabled) {

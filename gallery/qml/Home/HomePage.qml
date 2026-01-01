@@ -375,8 +375,8 @@ Rectangle {
                         title.text: __rootItem.name
                         desc.text: __rootItem.desc
                         transform: Rotation {
-                            origin.x: __rootItem.width * 0.5
-                            origin.y: __rootItem.height * 0.5
+                            origin.x: __rootItem.width / 2
+                            origin.y: __rootItem.height / 2
                             axis {
                                 x: 0
                                 y: 1

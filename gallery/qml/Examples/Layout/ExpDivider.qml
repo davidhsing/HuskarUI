@@ -28,9 +28,9 @@ Flickable {
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 title | string | '' | 标题
 titleFont | font | - | 标题字体
-titleAlign | enum | HusDivider.Align_Left | 标题对齐(来自 HusDivider)
+titleAlign | enum | HusDivider.AlignLeft | 标题对齐(来自 HusDivider)
 titlePadding | int | 20 | 标题填充
-lineStyle | enum | HusDivider.Solid_Line | 分割线样式(来自 HusDivider)
+lineStyle | enum | HusDivider.LineSolid | 分割线样式(来自 HusDivider)
 lineWidth | real | 1 | 分割线宽度
 dashPattern | list | [4, 2] | 分割线虚线模式
 orientation | enum | Qt.Horizontal | 方向(Qt.Horizontal 或 Qt.Vertical)
@@ -61,9 +61,9 @@ contentDescription | string | '' | 内容描述(提高可用性)
             desc: qsTr(`
 通过 \`title\` 属性改变标题文字\n
 通过 \`titleAlign\` 属性改变标题对齐，支持的对齐：\n
-- 居左(默认){ HusDivider.Align_Left }\n
-- 居中{ HusDivider.Align_Center }\n
-- 居右{ HusDivider.Align_Right }
+- 居左(默认){ HusDivider.AlignLeft }\n
+- 居中{ HusDivider.AlignCenter }\n
+- 居右{ HusDivider.AlignRight }
                        `)
             code: `
                 import QtQuick
@@ -83,21 +83,21 @@ contentDescription | string | '' | 内容描述(提高可用性)
                         width: parent.width
                         height: 30
                         title: qsTr('水平分割线-居左')
-                        titleAlign: HusDivider.Align_Left
+                        titleAlign: HusDivider.AlignLeft
                     }
 
                     HusDivider {
                         width: parent.width
                         height: 30
                         title: qsTr('水平分割线-居中')
-                        titleAlign: HusDivider.Align_Center
+                        titleAlign: HusDivider.AlignCenter
                     }
 
                     HusDivider {
                         width: parent.width
                         height: 30
                         title: qsTr('水平分割线-居右')
-                        titleAlign: HusDivider.Align_Right
+                        titleAlign: HusDivider.AlignRight
                     }
                 }
             `
@@ -114,21 +114,21 @@ contentDescription | string | '' | 内容描述(提高可用性)
                     width: parent.width
                     height: 30
                     title: qsTr('水平分割线-居左')
-                    titleAlign: HusDivider.Align_Left
+                    titleAlign: HusDivider.AlignLeft
                 }
 
                 HusDivider {
                     width: parent.width
                     height: 30
                     title: qsTr('水平分割线-居中')
-                    titleAlign: HusDivider.Align_Center
+                    titleAlign: HusDivider.AlignCenter
                 }
 
                 HusDivider {
                     width: parent.width
                     height: 30
                     title: qsTr('水平分割线-居右')
-                    titleAlign: HusDivider.Align_Right
+                    titleAlign: HusDivider.AlignRight
                 }
             }
         }
@@ -197,8 +197,8 @@ contentDescription | string | '' | 内容描述(提高可用性)
             width: parent.width
             desc: qsTr(`
 通过 \`lineStyle\` 属性改变线条风格，支持的风格：\n
-- 实线(默认){ HusDivider.Solid_Line }\n
-- 虚线{ HusDivider.Dash_Line }
+- 实线(默认){ HusDivider.LineSolid }\n
+- 虚线{ HusDivider.LineDashed }
                        `)
             code: `
                 import QtQuick
@@ -223,7 +223,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
                     HusDivider {
                         width: parent.width
                         height: 30
-                        lineStyle: HusDivider.Dash_Line
+                        lineStyle: HusDivider.LineDashed
                         title: qsTr('虚线分割线')
                     }
                 }
@@ -246,7 +246,7 @@ contentDescription | string | '' | 内容描述(提高可用性)
                 HusDivider {
                     width: parent.width
                     height: 30
-                    lineStyle: HusDivider.Dash_Line
+                    lineStyle: HusDivider.LineDashed
                     title: qsTr('虚线分割线')
                 }
             }

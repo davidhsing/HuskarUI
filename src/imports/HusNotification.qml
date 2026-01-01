@@ -9,28 +9,28 @@ Item {
     id: control
 
     enum NotificationPosition {
-        Position_Top = 0,
-        Position_TopLeft = 1,
-        Position_TopRight = 2,
-        Position_Bottom = 3,
-        Position_BottomLeft = 4,
-        Position_BottomRight = 5,
-        Position_Left = 6,
-        Position_Right = 7
+        PositionTop = 0,
+        PositionTopLeft = 1,
+        PositionTopRight = 2,
+        PositionBottom = 3,
+        PositionBottomLeft = 4,
+        PositionBottomRight = 5,
+        PositionLeft = 6,
+        PositionRight = 7
     }
 
     enum MessageType {
-        Type_None = 0,
-        Type_Success = 1,
-        Type_Warning = 2,
-        Type_Message = 3,
-        Type_Error = 4
+        TypeNone = 0,
+        TypeSuccess = 1,
+        TypeWarning = 2,
+        TypeMessage = 3,
+        TypeError = 4
     }
 
     signal closed(key: string)
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property int position: HusNotification.Position_Top
+    property int position: HusNotification.PositionTop
     property bool pauseOnHover: true
     property bool showProgress: false
     property bool stackMode: true
@@ -85,25 +85,25 @@ Item {
     QtObject {
         id: __private
 
-        property bool isLeft: control.position == HusNotification.Position_Left ||
-                              control.position == HusNotification.Position_TopLeft ||
-                              control.position == HusNotification.Position_BottomLeft
-        property bool isRight: control.position == HusNotification.Position_Right ||
-                               control.position == HusNotification.Position_TopRight ||
-                               control.position == HusNotification.Position_BottomRight
-        property bool isTop: control.position == HusNotification.Position_Top ||
-                             control.position == HusNotification.Position_TopLeft ||
-                             control.position == HusNotification.Position_TopRight
-        property bool isBottom: control.position == HusNotification.Position_Bottom ||
-                                control.position == HusNotification.Position_BottomLeft ||
-                                control.position == HusNotification.Position_BottomRight
+        property bool isLeft: control.position == HusNotification.PositionLeft ||
+                              control.position == HusNotification.PositionTopLeft ||
+                              control.position == HusNotification.PositionBottomLeft
+        property bool isRight: control.position == HusNotification.PositionRight ||
+                               control.position == HusNotification.PositionTopRight ||
+                               control.position == HusNotification.PositionBottomRight
+        property bool isTop: control.position == HusNotification.PositionTop ||
+                             control.position == HusNotification.PositionTopLeft ||
+                             control.position == HusNotification.PositionTopRight
+        property bool isBottom: control.position == HusNotification.PositionBottom ||
+                                control.position == HusNotification.PositionBottomLeft ||
+                                control.position == HusNotification.PositionBottomRight
 
         function initObject(object) {
             if (!object.hasOwnProperty('key')) object.key = '';
             if (!object.hasOwnProperty('loading')) object.loading = false;
             if (!object.hasOwnProperty('message')) object.message = '';
             if (!object.hasOwnProperty('description')) object.description = '';
-            if (!object.hasOwnProperty('type')) object.type = HusNotification.Type_None;
+            if (!object.hasOwnProperty('type')) object.type = HusNotification.TypeNone;
             if (!object.hasOwnProperty('duration')) object.duration = 4500;
             if (!object.hasOwnProperty('iconSize')) object.iconSize = control.defaultIconSize;
             if (!object.hasOwnProperty('iconSource')) object.iconSource = 0;
@@ -122,10 +122,10 @@ Item {
             right: __private.isRight ? parent.right : undefined
             top: __private.isTop ? parent.top : undefined
             bottom: __private.isBottom ? parent.bottom : undefined
-            horizontalCenter: control.position == HusNotification.Position_Top||
-                              control.position == HusNotification.Position_Bottom ? parent.horizontalCenter : undefined
-            verticalCenter: control.position == HusNotification.Position_Left ||
-                            control.position == HusNotification.Position_Right ? parent.verticalCenter : undefined
+            horizontalCenter: control.position == HusNotification.PositionTop||
+                              control.position == HusNotification.PositionBottom ? parent.horizontalCenter : undefined
+            verticalCenter: control.position == HusNotification.PositionLeft ||
+                            control.position == HusNotification.PositionRight ? parent.verticalCenter : undefined
             margins: 10
             topMargin: control.topMargin
         }
@@ -253,10 +253,10 @@ Item {
                                 if (__rootItem.loading) return HusIcon.LoadingOutlined;
                                 if (__rootItem.iconSource != 0) return __rootItem.iconSource;
                                 switch (type) {
-                                    case HusNotification.Type_Success: return HusIcon.CheckCircleFilled;
-                                    case HusNotification.Type_Warning: return HusIcon.ExclamationCircleFilled;
-                                    case HusNotification.Type_Message: return HusIcon.ExclamationCircleFilled;
-                                    case HusNotification.Type_Error: return HusIcon.CloseCircleFilled;
+                                    case HusNotification.TypeSuccess: return HusIcon.CheckCircleFilled;
+                                    case HusNotification.TypeWarning: return HusIcon.ExclamationCircleFilled;
+                                    case HusNotification.TypeMessage: return HusIcon.ExclamationCircleFilled;
+                                    case HusNotification.TypeError: return HusIcon.CloseCircleFilled;
                                     default: return 0;
                                 }
                             }
@@ -264,10 +264,10 @@ Item {
                                 if (__rootItem.loading) return HusTheme.Primary.colorInfo;
                                 if (__rootItem.colorIcon !== '') return __rootItem.colorIcon;
                                 switch ((type)) {
-                                    case HusNotification.Type_Success: return HusTheme.Primary.colorSuccess;
-                                    case HusNotification.Type_Warning: return HusTheme.Primary.colorWarning;
-                                    case HusNotification.Type_Message: return HusTheme.Primary.colorInfo;
-                                    case HusNotification.Type_Error: return HusTheme.Primary.colorError;
+                                    case HusNotification.TypeSuccess: return HusTheme.Primary.colorSuccess;
+                                    case HusNotification.TypeWarning: return HusTheme.Primary.colorWarning;
+                                    case HusNotification.TypeMessage: return HusTheme.Primary.colorInfo;
+                                    case HusNotification.TypeError: return HusTheme.Primary.colorError;
                                     default: return HusTheme.Primary.colorInfo;
                                 }
                             }
@@ -355,7 +355,7 @@ Item {
         open({
             'message': message,
             'description': description,
-            'type': HusNotification.Type_Message,
+            'type': HusNotification.TypeMessage,
             'duration': duration
         });
     }
@@ -364,7 +364,7 @@ Item {
         open({
             'message': message,
             'description': description,
-            'type': HusNotification.Type_Success,
+            'type': HusNotification.TypeSuccess,
             'duration': duration
         });
     }
@@ -373,7 +373,7 @@ Item {
         open({
             'message': message,
             'description': description,
-            'type': HusNotification.Type_Error,
+            'type': HusNotification.TypeError,
             'duration': duration
         });
     }
@@ -382,7 +382,7 @@ Item {
         open({
             'message': message,
             'description': description,
-            'type': HusNotification.Type_Warning,
+            'type': HusNotification.TypeWarning,
             'duration': duration
         });
     }
@@ -392,7 +392,7 @@ Item {
             'loading': true,
             'message': message,
             'description': description,
-            'type': HusNotification.Type_Message,
+            'type': HusNotification.TypeMessage,
             'duration': duration
         });
     }

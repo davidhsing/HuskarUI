@@ -20,9 +20,6 @@ Flickable {
 用来代表用户或事物，支持图片、图标或字符展示。\n
 * **继承自 { Item }**\n
 \n<br/>
-\n### 支持的代理：\n
-- 无\n
-\n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
@@ -34,7 +31,7 @@ fallbackImageSource | url | '' | 加载失败时显示的头像图像占位符
 emptyAsError | bool | false | 是否将空的头像 source 视为加载失败(触发 fallback)
 textSource | string | '' | 头像文本
 textFont | font | - | 文本字体(文本头像时生效)
-textSize | enum | HusAvatar.Size_Fixed | 文本大小模式(来自 HusAvatar)
+textSize | enum | HusAvatar.SizeFixed | 文本大小模式(来自 HusAvatar)
 textGap | int | 4 | 文本距离两侧单位像素(文本头像时生效)
 colorBg | color | - | 背景颜色
 colorIcon | color | - | 图标颜色(图标头像时生效)
@@ -291,8 +288,8 @@ Row {
             descTitle: qsTr('自动调整字符型头像大小')
             desc: qsTr(`
 通过 \`textSize\` 属性设置文本大小调整模式，支持的大小：\n
-- 固定大小(默认) { HusAvatar.Size_Fixed }\n
-- 自动计算大小 { HusAvatar.Size_Auto }\n
+- 固定大小(默认) { HusAvatar.SizeFixed }\n
+- 自动计算大小 { HusAvatar.SizeAuto }\n
 通过 \`textGap\` 属性设置字符距离左右两侧边界单位像素。\n
                        `)
             code: `
@@ -307,7 +304,7 @@ Row {
         size: 40
         textSource: changeButton.userList[changeButton.index]
         colorBg: changeButton.colorList[changeButton.index]
-        textSize: HusAvatar.Size_Fixed
+        textSize: HusAvatar.SizeFixed
     }
 
     HusAvatar {
@@ -315,7 +312,7 @@ Row {
         size: 40
         textSource: changeButton.userList[changeButton.index]
         colorBg: changeButton.colorList[changeButton.index]
-        textSize: HusAvatar.Size_Auto
+        textSize: HusAvatar.SizeAuto
     }
 
     HusButton {
@@ -339,7 +336,7 @@ Row {
                     size: 40
                     textSource: changeButton.userList[changeButton.index]
                     colorBg: changeButton.colorList[changeButton.index]
-                    textSize: HusAvatar.Size_Fixed
+                    textSize: HusAvatar.SizeFixed
                 }
 
                 HusAvatar {
@@ -347,7 +344,7 @@ Row {
                     size: 40
                     textSource: changeButton.userList[changeButton.index]
                     colorBg: changeButton.colorList[changeButton.index]
-                    textSize: HusAvatar.Size_Auto
+                    textSize: HusAvatar.SizeAuto
                 }
 
                 HusButton {

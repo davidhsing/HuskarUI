@@ -24,7 +24,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-tagState | enum | HusTag.State_Default | 标签状态(来自 HusTag)
+tagState | enum | HusTag.StateDefault | 标签状态(来自 HusTag)
 text | string | '' | 标签文本
 font | font | - | 标签字体
 rotating | bool | false | 旋转中
@@ -380,11 +380,11 @@ Row {
             desc: qsTr(`
 通过 \`rotating\` 设置图标是否旋转中。\n
 通过 \`tagState\` 来设置不同的状态，支持的状态有：\n
-- 默认状态(默认){ HusTag.State_Default }\n
-- 成功状态{ HusTag.State_Success }\n
-- 处理中状态{ HusTag.State_Processing }\n
-- 错误状态{ HusTag.State_Error }\n
-- 警告状态{ HusTag.State_Warning }\n
+- 默认状态(默认){ HusTag.StateDefault }\n
+- 成功状态{ HusTag.StateSuccess }\n
+- 处理中状态{ HusTag.StateProcessing }\n
+- 错误状态{ HusTag.StateError }\n
+- 警告状态{ HusTag.StateWarning }\n
                        `)
             code: `
 import QtQuick
@@ -399,27 +399,27 @@ Column {
 
         HusTag {
             text: 'success'
-            tagState: HusTag.State_Success
+            tagState: HusTag.StateSuccess
         }
 
         HusTag {
             text: 'processing'
-            tagState: HusTag.State_Processing
+            tagState: HusTag.StateProcessing
         }
 
         HusTag {
             text: 'error'
-            tagState: HusTag.State_Error
+            tagState: HusTag.StateError
         }
 
         HusTag {
             text: 'warning'
-            tagState: HusTag.State_Warning
+            tagState: HusTag.StateWarning
         }
 
         HusTag {
             text: 'default'
-            tagState: HusTag.State_Default
+            tagState: HusTag.StateDefault
         }
     }
 
@@ -428,38 +428,38 @@ Column {
 
         HusTag {
             text: 'success'
-            tagState: HusTag.State_Success
+            tagState: HusTag.StateSuccess
             iconSource: HusIcon.CheckCircleOutlined
         }
 
         HusTag {
             text: 'processing'
             rotating: true
-            tagState: HusTag.State_Processing
+            tagState: HusTag.StateProcessing
             iconSource: HusIcon.SyncOutlined
         }
 
         HusTag {
             text: 'error'
-            tagState: HusTag.State_Error
+            tagState: HusTag.StateError
             iconSource: HusIcon.CloseCircleOutlined
         }
 
         HusTag {
             text: 'warning'
-            tagState: HusTag.State_Warning
+            tagState: HusTag.StateWarning
             iconSource: HusIcon.ExclamationCircleOutlined
         }
 
         HusTag {
             text: 'waiting'
-            tagState: HusTag.State_Default
+            tagState: HusTag.StateDefault
             iconSource: HusIcon.ClockCircleOutlined
         }
 
         HusTag {
             text: 'stop'
-            tagState: HusTag.State_Default
+            tagState: HusTag.StateDefault
             iconSource: HusIcon.MinusCircleOutlined
         }
     }
@@ -473,27 +473,27 @@ Column {
 
                     HusTag {
                         text: 'success'
-                        tagState: HusTag.State_Success
+                        tagState: HusTag.StateSuccess
                     }
 
                     HusTag {
                         text: 'processing'
-                        tagState: HusTag.State_Processing
+                        tagState: HusTag.StateProcessing
                     }
 
                     HusTag {
                         text: 'error'
-                        tagState: HusTag.State_Error
+                        tagState: HusTag.StateError
                     }
 
                     HusTag {
                         text: 'warning'
-                        tagState: HusTag.State_Warning
+                        tagState: HusTag.StateWarning
                     }
 
                     HusTag {
                         text: 'default'
-                        tagState: HusTag.State_Default
+                        tagState: HusTag.StateDefault
                     }
                 }
 
@@ -502,38 +502,38 @@ Column {
 
                     HusTag {
                         text: 'success'
-                        tagState: HusTag.State_Success
+                        tagState: HusTag.StateSuccess
                         iconSource: HusIcon.CheckCircleOutlined
                     }
 
                     HusTag {
                         text: 'processing'
                         rotating: true
-                        tagState: HusTag.State_Processing
+                        tagState: HusTag.StateProcessing
                         iconSource: HusIcon.SyncOutlined
                     }
 
                     HusTag {
                         text: 'error'
-                        tagState: HusTag.State_Error
+                        tagState: HusTag.StateError
                         iconSource: HusIcon.CloseCircleOutlined
                     }
 
                     HusTag {
                         text: 'warning'
-                        tagState: HusTag.State_Warning
+                        tagState: HusTag.StateWarning
                         iconSource: HusIcon.ExclamationCircleOutlined
                     }
 
                     HusTag {
                         text: 'waiting'
-                        tagState: HusTag.State_Default
+                        tagState: HusTag.StateDefault
                         iconSource: HusIcon.ClockCircleOutlined
                     }
 
                     HusTag {
                         text: 'stop'
-                        tagState: HusTag.State_Default
+                        tagState: HusTag.StateDefault
                         iconSource: HusIcon.MinusCircleOutlined
                     }
                 }

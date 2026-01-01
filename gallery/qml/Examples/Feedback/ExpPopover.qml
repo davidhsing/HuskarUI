@@ -90,10 +90,10 @@ Row {
 
     HusButton {
         text: 'Hover'
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
 
         HusPopover {
-            x: (parent.width - width) * 0.5
+            x: (parent.width - width) / 2
             y: parent.height + 6
             width: 300
             visible: parent.hovered || parent.down
@@ -105,12 +105,12 @@ Row {
 
     HusButton {
         text: 'Click'
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
         onClicked: popover.open();
 
         HusPopover {
             id: popover
-            x: (parent.width - width) * 0.5
+            x: (parent.width - width) / 2
             y: parent.height + 6
             width: 300
             title: 'Click details'
@@ -124,10 +124,10 @@ Row {
 
                 HusButton {
                     text: 'Hover'
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
 
                     HusPopover {
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 300
                         visible: parent.hovered || parent.down
@@ -139,12 +139,12 @@ Row {
 
                 HusButton {
                     text: 'Click'
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                     onClicked: popover.open();
 
                     HusPopover {
                         id: popover
-                        x: (parent.width - width) * 0.5
+                        x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 300
                         title: 'Click details'

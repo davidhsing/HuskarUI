@@ -41,8 +41,8 @@ HusPopup {
         effectEnabled: false
         iconSource: HusIcon.CloseOutlined
         iconSize: 20
-        shape: HusButton.Shape_Circle
-        type: HusButton.Type_Default
+        shape: HusButton.ShapeCircle
+        type: HusButton.TypeDefault
         colorIcon: HusTheme.HusImage.colorButtonTextHover
         colorBg: hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg
         colorBorder: colorBg
@@ -55,8 +55,8 @@ HusPopup {
         effectEnabled: false
         iconSource: HusIcon.LeftOutlined
         iconSize: 20
-        shape: HusButton.Shape_Circle
-        type: HusButton.Type_Default
+        shape: HusButton.ShapeCircle
+        type: HusButton.TypeDefault
         hoverCursorShape: control.currentIndex <= 0 ? Qt.ForbiddenCursor : Qt.PointingHandCursor
         colorIcon: control.currentIndex <= 0 ? HusTheme.HusImage.colorButtonText :
                                                HusTheme.HusImage.colorButtonTextHover
@@ -73,8 +73,8 @@ HusPopup {
         effectEnabled: false
         iconSource: HusIcon.RightOutlined
         iconSize: 20
-        shape: HusButton.Shape_Circle
-        type: HusButton.Type_Default
+        shape: HusButton.ShapeCircle
+        type: HusButton.TypeDefault
         hoverCursorShape: (control.currentIndex >= (control.count - 1)) ? Qt.ForbiddenCursor : Qt.PointingHandCursor
         colorIcon: (control.currentIndex >= (control.count - 1)) ? HusTheme.HusImage.colorButtonText : HusTheme.HusImage.colorButtonTextHover
         colorBg: (control.currentIndex >= (control.count - 1)) ? 'transparent' : (hovered ? HusTheme.HusImage.colorButtonBgHover : HusTheme.HusImage.colorButtonBg)
@@ -97,7 +97,7 @@ HusPopup {
         Rectangle {
             id: __operations
             anchors.fill: parent
-            radius: height * 0.5
+            radius: height / 2
             color: HusTheme.HusImage.colorOperationBg
 
             Row {
@@ -105,7 +105,7 @@ HusPopup {
 
                 HusIconButton {
                     animationEnabled: control.animationEnabled
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     iconSource: HusIcon.SwapOutlined
                     colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
                     iconSize: 20
@@ -126,7 +126,7 @@ HusPopup {
 
                 HusIconButton {
                     animationEnabled: control.animationEnabled
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     iconSource: HusIcon.SwapOutlined
                     colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
                     iconSize: 20
@@ -141,7 +141,7 @@ HusPopup {
 
                 HusIconButton {
                     animationEnabled: control.animationEnabled
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     iconSource: HusIcon.RotateLeftOutlined
                     colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
                     iconSize: 20
@@ -156,7 +156,7 @@ HusPopup {
 
                 HusIconButton {
                     animationEnabled: control.animationEnabled
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     iconSource: HusIcon.RotateRightOutlined
                     colorIcon: hovered ? HusTheme.HusImage.colorButtonTextHover : HusTheme.HusImage.colorButtonText
                     iconSize: 20
@@ -171,7 +171,7 @@ HusPopup {
 
                 HusIconButton {
                     animationEnabled: control.animationEnabled
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     iconSource: HusIcon.ZoomOutOutlined
                     hoverCursorShape: control.currentScale > control.scaleMin ? Qt.PointingHandCursor : Qt.ForbiddenCursor
                     colorIcon: control.currentScale > control.scaleMin ?
@@ -189,7 +189,7 @@ HusPopup {
 
                 HusIconButton {
                     animationEnabled: control.animationEnabled
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     iconSource: HusIcon.ZoomInOutlined
                     hoverCursorShape: control.currentScale < control.scaleMax ? Qt.PointingHandCursor : Qt.ForbiddenCursor
                     colorIcon: control.currentScale < control.scaleMax ?
@@ -444,22 +444,22 @@ HusPopup {
                         onXChanged: calcMapRect();
                         onYChanged: calcMapRect();
 
-                        x: (parent.width - width) * 0.5
-                        y: (parent.height - height) * 0.5
+                        x: (parent.width - width) / 2
+                        y: (parent.height - height) / 2
                         width: height * aspectRatio
                         height: Math.min(sourceSize.height, minViewHeight)
                         transform: [
                             Scale {
                                 id: __scale
-                                origin.x: __private.isCenterScale ? __image.width * 0.5 : __private.scaleOriginX
-                                origin.y: __private.isCenterScale ? __image.height * 0.5 : __private.scaleOriginY
+                                origin.x: __private.isCenterScale ? __image.width / 2 : __private.scaleOriginX
+                                origin.y: __private.isCenterScale ? __image.height / 2 : __private.scaleOriginY
                                 xScale: __private.scale
                                 yScale: __private.scale
                                 onXScaleChanged: __image.calcMapRect();
                             },
                             Rotation {
-                                origin.x: __image.width * 0.5
-                                origin.y: __image.height * 0.5
+                                origin.x: __image.width / 2
+                                origin.y: __image.height / 2
                                 axis { x: 0; y: 0; z: 1 }
                                 angle: __rootItem.isCurrent ? __private.rotation : 0
 
@@ -472,8 +472,8 @@ HusPopup {
                                 }
                             },
                             Rotation {
-                                origin.x: __image.width * 0.5
-                                origin.y: __image.height * 0.5
+                                origin.x: __image.width / 2
+                                origin.y: __image.height / 2
                                 axis { x: 0; y: 1; z: 0 }
                                 angle: __rootItem.isCurrent ? (__private.flipX ? 180 : 0) : 0
 
@@ -486,8 +486,8 @@ HusPopup {
                                 }
                             },
                             Rotation {
-                                origin.x: __image.width * 0.5
-                                origin.y: __image.height * 0.5
+                                origin.x: __image.width / 2
+                                origin.y: __image.height / 2
                                 axis { x: 1; y: 0; z: 0 }
                                 angle: __rootItem.isCurrent ? (__private.flipY ? 180 : 0) : 0
                                 onAngleChanged: __image.calcMapRect();

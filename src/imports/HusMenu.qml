@@ -95,8 +95,8 @@ Item {
             colorIcon: menuButton.colorText
             transform: Rotation {
                 origin {
-                    x: __expandedIcon.width * 0.5
-                    y: __expandedIcon.height * 0.5
+                    x: __expandedIcon.width / 2
+                    y: __expandedIcon.height / 2
                 }
                 axis {
                     x: 1
@@ -367,9 +367,9 @@ Item {
                     id: __menuButton
                     width: parent.width
                     height: __rootItem.menuHeight + control.defaultMenuSpacing
-                    topInset: control.defaultMenuSpacing * 0.5
+                    topInset: control.defaultMenuSpacing / 2
                     leftPadding: 15 + (control.compactMode || control.popupMode ? 0 : iconSize * __rootItem.view.menuDeep)
-                    bottomInset: control.defaultMenuSpacing * 0.5
+                    bottomInset: control.defaultMenuSpacing / 2
                     enabled: __rootItem.menuEnabled
                     radiusBg: control.radiusMenuBg
                     text: (control.compactMode && __rootItem.view.menuDeep === 0) ? '' : __rootItem.menuLabel
@@ -377,7 +377,7 @@ Item {
                     iconSize: __rootItem.menuIconSize
                     iconSource: __rootItem.menuIconSource
                     iconSpacing: __rootItem.menuIconSpacing
-                    iconStart: (control.compactMode && __rootItem.view.menuDeep === 0) ? (width - iconSize - leftPadding - rightPadding) * 0.5 : 0
+                    iconStart: (control.compactMode && __rootItem.view.menuDeep === 0) ? (width - iconSize - leftPadding - rightPadding) / 2 : 0
                     expandedVisible: {
                         if (__rootItem.menuType == 'group' ||
                                 (control.compactMode && __rootItem.view.menuDeep === 0))
@@ -421,7 +421,7 @@ Item {
                     HusToolTip {
                         visible: control.tooltipVisible ? parent.hovered : false
                         animationEnabled: control.animationEnabled
-                        position: control.compactMode || control.popupMode ? HusToolTip.Position_Right : HusToolTip.Position_Bottom
+                        position: control.compactMode || control.popupMode ? HusToolTip.PositionRight : HusToolTip.PositionBottom
                         text: __rootItem.menuLabel
                         delay: 500
                     }

@@ -27,8 +27,8 @@ danger | bool | false | 是否警示状态
 effectEnabled | bool | true | 是否开启点击效果
 forceState | bool | false | 无禁用状态(即被禁用时不会更改颜色)
 hoverCursorShape | int | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Qt.*Cursor)
-type | enum | HusButton.Type_Default | 按钮类型(来自 HusButton)
-shape | enum | HusButton.Shape_Default | 按钮形状(来自 HusButton)
+type | enum | HusButton.TypeDefault | 按钮类型(来自 HusButton)
+shape | enum | HusButton.ShapeDefault | 按钮形状(来自 HusButton)
 radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 colorText | color | - | 文本颜色
 colorBg | color | - | 背景颜色
@@ -63,12 +63,12 @@ contentDescription | string | '' | 内容描述(提高可用性)
             width: parent.width
             desc: qsTr(`
 通过 \`type\` 属性改变按钮类型，支持的类型：\n
-- 默认按钮{ HusButton.Type_Default }\n
-- 线框按钮{ HusButton.Type_Outlined }\n
-- 主要按钮{ HusButton.Type_Primary }\n
-- 填充按钮{ HusButton.Type_Filled }\n
-- 文本按钮{ HusButton.Type_Text }\n
-- 链接按钮{ HusButton.Type_Link }\n
+- 默认按钮{ HusButton.TypeDefault }\n
+- 线框按钮{ HusButton.TypeOutlined }\n
+- 主要按钮{ HusButton.TypePrimary }\n
+- 填充按钮{ HusButton.TypeFilled }\n
+- 文本按钮{ HusButton.TypeText }\n
+- 链接按钮{ HusButton.TypeLink }\n
                        `)
             code: `
 import QtQuick
@@ -83,27 +83,27 @@ Row {
 
     HusButton {
         text: qsTr('线框')
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
     }
 
     HusButton {
         text: qsTr('主要')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
     }
 
     HusButton {
         text: qsTr('填充')
-        type: HusButton.Type_Filled
+        type: HusButton.TypeFilled
     }
 
     HusButton {
         text: qsTr('文本')
-        type: HusButton.Type_Text
+        type: HusButton.TypeText
     }
 
     HusButton {
         text: qsTr('链接')
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
     }
 }
             `
@@ -116,27 +116,27 @@ Row {
 
                 HusButton {
                     text: qsTr('线框')
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                 }
 
                 HusButton {
                     text: qsTr('主要')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                 }
 
                 HusButton {
                     text: qsTr('填充')
-                    type: HusButton.Type_Filled
+                    type: HusButton.TypeFilled
                 }
 
                 HusButton {
                     text: qsTr('文本')
-                    type: HusButton.Type_Text
+                    type: HusButton.TypeText
                 }
 
                 HusButton {
                     text: qsTr('链接')
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                 }
             }
         }
@@ -160,31 +160,31 @@ Row {
 
     HusButton {
         text: qsTr('线框')
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
         danger: true
     }
 
     HusButton {
         text: qsTr('主要')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         danger: true
     }
 
     HusButton {
         text: qsTr('填充')
-        type: HusButton.Type_Filled
+        type: HusButton.TypeFilled
         danger: true
     }
 
     HusButton {
         text: qsTr('文本')
-        type: HusButton.Type_Text
+        type: HusButton.TypeText
         danger: true
     }
 
     HusButton {
         text: qsTr('链接')
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
         danger: true
     }
 }
@@ -199,31 +199,31 @@ Row {
 
                 HusButton {
                     text: qsTr('线框')
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                     danger: true
                 }
 
                 HusButton {
                     text: qsTr('主要')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     danger: true
                 }
 
                 HusButton {
                     text: qsTr('填充')
-                    type: HusButton.Type_Filled
+                    type: HusButton.TypeFilled
                     danger: true
                 }
 
                 HusButton {
                     text: qsTr('文本')
-                    type: HusButton.Type_Text
+                    type: HusButton.TypeText
                     danger: true
                 }
 
                 HusButton {
                     text: qsTr('链接')
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     danger: true
                 }
             }
@@ -248,31 +248,31 @@ Row {
 
     HusButton {
         text: qsTr('线框')
-        type: HusButton.Type_Outlined
+        type: HusButton.TypeOutlined
         enabled: false
     }
 
     HusButton {
         text: qsTr('主要')
-        type: HusButton.Type_Primary
+        type: HusButton.TypePrimary
         enabled: false
     }
 
     HusButton {
         text: qsTr('填充')
-        type: HusButton.Type_Filled
+        type: HusButton.TypeFilled
         enabled: false
     }
 
     HusButton {
         text: qsTr('文本')
-        type: HusButton.Type_Text
+        type: HusButton.TypeText
         enabled: false
     }
 
     HusButton {
         text: qsTr('链接')
-        type: HusButton.Type_Link
+        type: HusButton.TypeLink
         enabled: false
     }
 }
@@ -287,31 +287,31 @@ Row {
 
                 HusButton {
                     text: qsTr('线框')
-                    type: HusButton.Type_Outlined
+                    type: HusButton.TypeOutlined
                     enabled: false
                 }
 
                 HusButton {
                     text: qsTr('主要')
-                    type: HusButton.Type_Primary
+                    type: HusButton.TypePrimary
                     enabled: false
                 }
 
                 HusButton {
                     text: qsTr('填充')
-                    type: HusButton.Type_Filled
+                    type: HusButton.TypeFilled
                     enabled: false
                 }
 
                 HusButton {
                     text: qsTr('文本')
-                    type: HusButton.Type_Text
+                    type: HusButton.TypeText
                     enabled: false
                 }
 
                 HusButton {
                     text: qsTr('链接')
-                    type: HusButton.Type_Link
+                    type: HusButton.TypeLink
                     enabled: false
                 }
             }
@@ -321,8 +321,8 @@ Row {
             width: parent.width
             desc: qsTr(`
 通过 \`shape\` 属性改变按钮形状，支持的形状：\n
-- 默认形状{ HusButton.Shape_Default }\n
-- 圆形{ HusButton.Shape_Circle }
+- 默认形状{ HusButton.ShapeDefault }\n
+- 圆形{ HusButton.ShapeCircle }
                        `)
             code: `
 import QtQuick
@@ -333,31 +333,31 @@ Row {
 
     HusButton {
         text: qsTr('A')
-        shape: HusButton.Shape_Circle
+        shape: HusButton.ShapeCircle
     }
 
     HusButton {
         text: qsTr('A')
-        type: HusButton.Type_Outlined
-        shape: HusButton.Shape_Circle
+        type: HusButton.TypeOutlined
+        shape: HusButton.ShapeCircle
     }
 
     HusButton {
         text: qsTr('A')
-        type: HusButton.Type_Primary
-        shape: HusButton.Shape_Circle
+        type: HusButton.TypePrimary
+        shape: HusButton.ShapeCircle
     }
 
     HusButton {
         text: qsTr('A')
-        type: HusButton.Type_Filled
-        shape: HusButton.Shape_Circle
+        type: HusButton.TypeFilled
+        shape: HusButton.ShapeCircle
     }
 
     HusButton {
         text: qsTr('A')
-        type: HusButton.Type_Text
-        shape: HusButton.Shape_Circle
+        type: HusButton.TypeText
+        shape: HusButton.ShapeCircle
     }
 }
             `
@@ -366,31 +366,31 @@ Row {
 
                 HusButton {
                     text: qsTr('A')
-                    shape: HusButton.Shape_Circle
+                    shape: HusButton.ShapeCircle
                 }
 
                 HusButton {
                     text: qsTr('A')
-                    type: HusButton.Type_Outlined
-                    shape: HusButton.Shape_Circle
+                    type: HusButton.TypeOutlined
+                    shape: HusButton.ShapeCircle
                 }
 
                 HusButton {
                     text: qsTr('A')
-                    type: HusButton.Type_Primary
-                    shape: HusButton.Shape_Circle
+                    type: HusButton.TypePrimary
+                    shape: HusButton.ShapeCircle
                 }
 
                 HusButton {
                     text: qsTr('A')
-                    type: HusButton.Type_Filled
-                    shape: HusButton.Shape_Circle
+                    type: HusButton.TypeFilled
+                    shape: HusButton.ShapeCircle
                 }
 
                 HusButton {
                     text: qsTr('A')
-                    type: HusButton.Type_Text
-                    shape: HusButton.Shape_Circle
+                    type: HusButton.TypeText
+                    shape: HusButton.ShapeCircle
                 }
             }
         }

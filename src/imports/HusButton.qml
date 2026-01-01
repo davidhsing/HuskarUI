@@ -6,17 +6,17 @@ T.Button {
     id: control
 
     enum Type {
-        Type_Default = 0,
-        Type_Outlined = 1,
-        Type_Primary = 2,
-        Type_Filled = 3,
-        Type_Text = 4,
-        Type_Link = 5
+        TypeDefault = 0,
+        TypeOutlined = 1,
+        TypePrimary = 2,
+        TypeFilled = 3,
+        TypeText = 4,
+        TypeLink = 5
     }
 
     enum Shape {
-        Shape_Default = 0,
-        Shape_Circle = 1
+        ShapeDefault = 0,
+        ShapeCircle = 1
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
@@ -24,32 +24,32 @@ T.Button {
     property bool effectEnabled: true
     property bool forceState: false
     property int hoverCursorShape: Qt.PointingHandCursor
-    property int type: HusButton.Type_Default
-    property int shape: HusButton.Shape_Default
+    property int type: HusButton.TypeDefault
+    property int shape: HusButton.ShapeDefault
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusButton.radiusBg }
     property color colorText: {
         if (enabled || control.forceState) {
             if (control.danger) {
                 switch(control.type) {
-                    case HusButton.Type_Primary: return 'white';
-                    case HusButton.Type_Filled:
-                    case HusButton.Type_Default:
-                    case HusButton.Type_Outlined:
-                    case HusButton.Type_Text:
-                    case HusButton.Type_Link:
+                    case HusButton.TypePrimary: return 'white';
+                    case HusButton.TypeFilled:
+                    case HusButton.TypeDefault:
+                    case HusButton.TypeOutlined:
+                    case HusButton.TypeText:
+                    case HusButton.TypeLink:
                         return control.down ? HusTheme.HusButton.colorErrorTextActive : (control.hovered ? HusTheme.HusButton.colorErrorTextHover :  HusTheme.HusButton.colorError);
                 }
             }
             switch (control.type) {
-                case HusButton.Type_Default:
+                case HusButton.TypeDefault:
                     return control.down ? HusTheme.HusButton.colorTextActive : (control.hovered ? HusTheme.HusButton.colorTextHover : HusTheme.HusButton.colorTextDefault);
-                case HusButton.Type_Outlined:
+                case HusButton.TypeOutlined:
                     return control.down ? HusTheme.HusButton.colorTextActive : (control.hovered ? HusTheme.HusButton.colorTextHover : HusTheme.HusButton.colorText);
-                case HusButton.Type_Primary:
+                case HusButton.TypePrimary:
                     return 'white';
-                case HusButton.Type_Filled:
-                case HusButton.Type_Text:
-                case HusButton.Type_Link:
+                case HusButton.TypeFilled:
+                case HusButton.TypeText:
+                case HusButton.TypeLink:
                     return control.down ? HusTheme.HusButton.colorTextActive : (control.hovered ? HusTheme.HusButton.colorTextHover : HusTheme.HusButton.colorText);
                 default:
                     return HusTheme.HusButton.colorText;
@@ -58,37 +58,37 @@ T.Button {
         return HusTheme.HusButton.colorTextDisabled;
     }
     property color colorBg: {
-        if (control.type === HusButton.Type_Link) {
+        if (control.type === HusButton.TypeLink) {
             return 'transparent';
         }
         if (enabled || control.forceState) {
             if (control.danger) {
                 switch(control.type) {
-                    case HusButton.Type_Primary:
+                    case HusButton.TypePrimary:
                         return control.down ? HusTheme.HusButton.colorErrorBgActive: (control.hovered ? HusTheme.HusButton.colorErrorBgHover : HusTheme.HusButton.colorErrorBg);
-                    case HusButton.Type_Filled:
+                    case HusButton.TypeFilled:
                         return control.down ? HusTheme.HusButton.colorErrorFillBgActive: (control.hovered ? HusTheme.HusButton.colorErrorFillBgHover : HusTheme.HusButton.colorErrorFillBg);
-                    case HusButton.Type_Text:
+                    case HusButton.TypeText:
                         return control.down ? HusTheme.HusButton.colorErrorFillBgActive: (control.hovered ? HusTheme.HusButton.colorErrorFillBg : 'transparent');
-                    case HusButton.Type_Default:
-                    case HusButton.Type_Outlined:
+                    case HusButton.TypeDefault:
+                    case HusButton.TypeOutlined:
                         return control.down ? HusTheme.HusButton.colorBgActive: (control.hovered ? HusTheme.HusButton.colorBgHover : HusTheme.HusButton.colorBg);
                     default: return HusTheme.HusButton.colorBg;
                 }
             }
             switch (control.type) {
-                case HusButton.Type_Default:
-                case HusButton.Type_Outlined:
+                case HusButton.TypeDefault:
+                case HusButton.TypeOutlined:
                     return control.down ? HusTheme.HusButton.colorBgActive : (control.hovered ? HusTheme.HusButton.colorBgHover : HusTheme.HusButton.colorBg);
-                case HusButton.Type_Primary:
+                case HusButton.TypePrimary:
                     return control.down ? HusTheme.HusButton.colorPrimaryBgActive : (control.hovered ? HusTheme.HusButton.colorPrimaryBgHover : HusTheme.HusButton.colorPrimaryBg);
-                case HusButton.Type_Filled:
+                case HusButton.TypeFilled:
                     if (HusTheme.isDark) {
                         return control.down ? HusTheme.HusButton.colorFillBgDarkActive : (control.hovered ? HusTheme.HusButton.colorFillBgDarkHover : HusTheme.HusButton.colorFillBgDark);
                     } else {
                         return control.down ? HusTheme.HusButton.colorFillBgActive : (control.hovered ? HusTheme.HusButton.colorFillBgHover : HusTheme.HusButton.colorFillBg);
                     }
-                case HusButton.Type_Text:
+                case HusButton.TypeText:
                     if (HusTheme.isDark) {
                         return control.down ? HusTheme.HusButton.colorFillBgDarkActive : (control.hovered ? HusTheme.HusButton.colorFillBgDarkHover : HusTheme.HusButton.colorTextBg);
                     } else {
@@ -101,20 +101,20 @@ T.Button {
         return HusTheme.HusButton.colorBgDisabled;
     }
     property color colorBorder: {
-        if (type === HusButton.Type_Link) {
+        if (type === HusButton.TypeLink) {
             return 'transparent';
         }
         if (enabled || control.forceState) {
             if (control.danger) {
                 switch (control.type) {
-                    case HusButton.Type_Default:
+                    case HusButton.TypeDefault:
                         return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorErrorBorderHover : HusTheme.HusButton.colorDefaultBorder);
                     default:
                         return control.down ? HusTheme.HusButton.colorErrorBorderActive: (control.hovered ? HusTheme.HusButton.colorErrorBorderHover : HusTheme.HusButton.colorErrorBorder);
                 }
             }
             switch (control.type) {
-                case HusButton.Type_Default:
+                case HusButton.TypeDefault:
                     return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorDefaultBorder);
                 default:
                     return control.down ? HusTheme.HusButton.colorBorderActive : (control.hovered ? HusTheme.HusButton.colorBorderHover : HusTheme.HusButton.colorBorder);
@@ -150,9 +150,9 @@ T.Button {
             id: __effect
             width: __bg.width
             height: __bg.height
-            radius: control.shape === HusButton.Shape_Circle ? height * 0.5 : __bg.radius
+            radius: control.shape === HusButton.ShapeCircle ? height / 2 : __bg.radius
             anchors.centerIn: parent
-            visible: control.effectEnabled && control.type !== HusButton.Type_Link
+            visible: control.effectEnabled && control.type !== HusButton.TypeLink
             color: 'transparent'
             border.width: 0
             border.color: (control.enabled || control.forceState) ? HusTheme.HusButton.colorBorderHover : 'transparent'
@@ -193,16 +193,16 @@ T.Button {
             height: realHeight
             anchors.centerIn: parent
             radius: control.radiusBg?.all ?? 0
-            topLeftRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.topLeft ?? 0 : height * 0.5
-            topRightRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.topRight ?? 0 : height * 0.5
-            bottomLeftRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.bottomLeft ?? 0 : height * 0.5
-            bottomRightRadius: control.shape === HusButton.Shape_Default ? control.radiusBg?.bottomRight ?? 0 : height * 0.5
+            topLeftRadius: control.shape === HusButton.ShapeDefault ? control.radiusBg?.topLeft ?? 0 : height / 2
+            topRightRadius: control.shape === HusButton.ShapeDefault ? control.radiusBg?.topRight ?? 0 : height / 2
+            bottomLeftRadius: control.shape === HusButton.ShapeDefault ? control.radiusBg?.bottomLeft ?? 0 : height / 2
+            bottomRightRadius: control.shape === HusButton.ShapeDefault ? control.radiusBg?.bottomRight ?? 0 : height / 2
             color: control.colorBg
-            border.color: (control.enabled || control.forceState) ? control.colorBorder : (control.type === HusButton.Type_Link ? 'transparent' : HusTheme.HusButton.colorDefaultBorder)
-            border.width: (control.type === HusButton.Type_Filled || control.type === HusButton.Type_Text) ? 0 : 1
+            border.color: (control.enabled || control.forceState) ? control.colorBorder : (control.type === HusButton.TypeLink ? 'transparent' : HusTheme.HusButton.colorDefaultBorder)
+            border.width: (control.type === HusButton.TypeFilled || control.type === HusButton.TypeText) ? 0 : 1
 
-            property real realWidth: control.shape === HusButton.Shape_Default ? parent.width : parent.height
-            property real realHeight: control.shape === HusButton.Shape_Default ? parent.height : parent.height
+            property real realWidth: control.shape === HusButton.ShapeDefault ? parent.width : parent.height
+            property real realHeight: control.shape === HusButton.ShapeDefault ? parent.height : parent.height
 
             Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
             Behavior on border.color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
