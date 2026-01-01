@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls.Basic
 import HuskarUI.Basic
 import Gallery
-
 import '../../Controls'
 
 Flickable {

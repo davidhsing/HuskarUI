@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import HuskarUI.Basic
-
 import '../../Controls'
 
 Item {

@@ -1,6 +1,5 @@
 import QtQuick
 import HuskarUI.Basic
-
 import '../../Controls'
 
 Flickable {
@@ -25,7 +24,7 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-browserMode | int | HusFileBrowser.OpenFile | 浏览器样式(来自 HusFileBrowser)
+browserMode | int | HusFileBrowser.ModeOpenFile | 浏览器样式(来自 HusFileBrowser)
 defaultFolder | string | - | 默认的浏览文件夹路径
 inputText | string | - | 文本框文本
 inputPlaceholder | string | - | 文本框占位符
@@ -79,10 +78,10 @@ Column {
         id: browserModeRadio
         initCheckedIndex: 0
         model: [
-            { label: 'OpenFile', value: HusFileBrowser.OpenFile },
-            { label: 'OpenFiles', value: HusFileBrowser.OpenFiles },
-            { label: 'OpenFolder', value: HusFileBrowser.OpenFolder },
-            { label: 'SaveFile', value: HusFileBrowser.SaveFile }
+            { label: 'ModeOpenFile', value: HusFileBrowser.ModeOpenFile },
+            { label: 'ModeOpenFiles', value: HusFileBrowser.ModeOpenFiles },
+            { label: 'ModeOpenFolder', value: HusFileBrowser.ModeOpenFolder },
+            { label: 'ModeSaveFile', value: HusFileBrowser.ModeSaveFile }
         ]
     }
 
@@ -105,10 +104,10 @@ Column {
                     id: browserModeRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'OpenFile', value: HusFileBrowser.OpenFile },
-                        { label: 'OpenFiles', value: HusFileBrowser.OpenFiles },
-                        { label: 'OpenFolder', value: HusFileBrowser.OpenFolder },
-                        { label: 'SaveFile', value: HusFileBrowser.SaveFile }
+                        { label: 'ModeOpenFile', value: HusFileBrowser.ModeOpenFile },
+                        { label: 'ModeOpenFiles', value: HusFileBrowser.ModeOpenFiles },
+                        { label: 'ModeOpenFolder', value: HusFileBrowser.ModeOpenFolder },
+                        { label: 'ModeSaveFile', value: HusFileBrowser.ModeSaveFile }
                     ]
                 }
 

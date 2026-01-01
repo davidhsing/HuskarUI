@@ -7,13 +7,13 @@ Item {
     id: control
 
     enum BrowserMode {
-        OpenFile,
-        OpenFiles,
-        OpenFolder,
-        SaveFile
+        ModeOpenFile,
+        ModeOpenFiles,
+        ModeOpenFolder,
+        ModeSaveFile
     }
 
-    property int browserMode: HusFileBrowser.OpenFile
+    property int browserMode: HusFileBrowser.ModeOpenFile
     property string defaultFolder: ''
     property string inputText: ''
     property string inputPlaceholder: ''
@@ -104,12 +104,12 @@ Item {
     FileDialog {
         id: __fileDialog
         visible: false
-        fileMode: (control.browserMode === HusFileBrowser.SaveFile) ? FileDialog.SaveFile : ((control.browserMode === HusFileBrowser.OpenFile) ? FileDialog.OpenFile : FileDialog.OpenFiles)
-        currentFolder: ((control.browserMode === HusFileBrowser.OpenFile || control.browserMode === HusFileBrowser.SaveFile) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
+        fileMode: (control.browserMode === HusFileBrowser.ModeSaveFile) ? FileDialog.ModeSaveFile : ((control.browserMode === HusFileBrowser.ModeOpenFile) ? FileDialog.ModeOpenFile : FileDialog.ModeOpenFiles)
+        currentFolder: ((control.browserMode === HusFileBrowser.ModeOpenFile || control.browserMode === HusFileBrowser.ModeSaveFile) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
         defaultSuffix: control.defaultSuffix
         nameFilters: control.nameFilters
         onAccepted: {
-            if (control.browserMode === HusFileBrowser.OpenFiles) {
+            if (control.browserMode === HusFileBrowser.ModeOpenFiles) {
                 const paths = selectedFiles.map(url => control.convertLocal ? __private.urlToLocalFile(url) : url.toString());
                 control.inputText = paths.join(control.pathJoiner);
                 control.pathsSelected(paths);
@@ -134,7 +134,7 @@ Item {
         id: __private
 
         function openDialog() {
-            if (control.browserMode === HusFileBrowser.OpenFolder) {
+            if (control.browserMode === HusFileBrowser.ModeOpenFolder) {
                 __folderDialog.open();
             } else {
                 __fileDialog.open();
