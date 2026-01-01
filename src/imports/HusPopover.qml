@@ -10,7 +10,7 @@ HusPopup {
     property int iconSize: 16
     property string title: ''
     property string description: ''
-    property bool showArrow: true
+    property bool arrowVisible: true
     property int arrowWidth: 16
     property int arrowHeight: 8
     property color colorIcon: control.themeSource.colorIcon
@@ -192,7 +192,7 @@ HusPopup {
                 width: control.arrowWidth
                 height: control.arrowHeight
                 rotation: __private.isTop ? 180 : 0
-                active: control.showArrow
+                active: control.arrowVisible
                 sourceComponent: control.arrowDelegate
             }
 

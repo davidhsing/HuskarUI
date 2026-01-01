@@ -5,7 +5,7 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Size {
+    enum ButtonSize {
         SizeAuto = 0,
         SizeFixed = 1
     }

@@ -34,15 +34,16 @@ Flickable {
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 initModel | list | [] | 初始数据模型
 currentIndex | int | -1 | 当前索引
-position | enum | HusCarousel.PositionBottom | 滚动的方向和指示器的位置(来自 HusCarousel)
+layout | int | HusCarousel.LayoutHorizontal | 布局方式(滚动的方向)(来自 HusCarousel)
 speed | int | 500 | 切换动效的时间(毫秒)
 infinite | bool | true | 是否无限滚动
 autoplay | bool | false | 是否自动切换
 autoplaySpeed | int | 3000 | 自动切换的时间(毫秒)
 draggable | bool | true | 是否启用拖拽切换
-showIndicator | bool | true | 是否显示指示器
+indicatorVisible | bool | true | 是否显示指示器
+indicatorPosition | enum | HusCarousel.PositionBottom | 指示器的位置(来自 HusCarousel)
 indicatorSpacing | int | 6 | 指示器间隔
-showArrow | bool | false | 是否显示箭头
+arrowVisible | bool | false | 是否显示箭头
 radiusIndicator | [HusRadius](internal://HusRadius) | - | 指示器圆角半径
 \n<br/>
 \n### 支持的函数：\n
@@ -173,7 +174,7 @@ Column {
             width: parent.width
             descTitle: qsTr('位置')
             desc: qsTr(`
-通过 \`position\` 属性设置滚动的方向和指示器的位置，支持的位置：\n
+通过 \`indicatorPosition\` 属性设置滚动的方向和指示器的位置，支持的位置：\n
 - 水平滚动，指示器在上方，{ HusCarousel.PositionTop }\n
 - 水平滚动，指示器在下方{ HusCarousel.PositionBottom }\n
 - 垂直滚动，指示器在左方{ HusCarousel.PositionLeft }\n
@@ -202,7 +203,7 @@ Column {
         id: carousel2
         width: parent.width
         height: 200
-        position: positionBlock.currentCheckedValue
+        indicatorPosition: positionBlock.currentCheckedValue
         initModel: [
             { label: '1' },
             { label: '2' },
@@ -243,7 +244,7 @@ Column {
                     id: carousel2
                     width: parent.width
                     height: 200
-                    position: positionBlock.currentCheckedValue
+                    indicatorPosition: positionBlock.currentCheckedValue
                     initModel: [
                         { label: '1' },
                         { label: '2' },
@@ -344,7 +345,7 @@ Column {
             width: parent.width
             descTitle: qsTr('切换箭头')
             desc: qsTr(`
-通过 \`showArrow\` 属性设置是否显示切换箭头。\n
+通过 \`arrowVisible\` 属性设置是否显示切换箭头。\n
                        `)
             code: `
 import QtQuick
@@ -358,7 +359,7 @@ Column {
         id: carousel5
         width: parent.width
         height: 200
-        showArrow: true
+        arrowVisible: true
         initModel: [
             { label: '1' },
             { label: '2' },
@@ -388,7 +389,7 @@ Column {
                     id: carousel5
                     width: parent.width
                     height: 200
-                    showArrow: true
+                    arrowVisible: true
                     initModel: [
                         { label: '1' },
                         { label: '2' },

@@ -4,7 +4,12 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Position {
+    enum ScrollDirection {
+        DirectionVertical = 0,
+        DirectionHorizontal = 1
+    }
+
+    enum IndicatorPosition {
         PositionTop = 0,
         PositionBottom = 1,
         PositionLeft = 2,
@@ -14,15 +19,16 @@ Item {
     property bool animationEnabled: HusTheme.animationEnabled
     property var initModel: []
     property int currentIndex: -1
-    property int position: HusCarousel.PositionBottom
+    property int direction: HusCarousel.DirectionHorizontal
     property int speed: 500
     property bool infinite: true
     property bool autoplay: false
     property int autoplaySpeed: 3000
     property bool draggable: true
-    property bool showIndicator: true
+    property bool indicatorVisible: true
+    property int indicatorPosition: HusCarousel.PositionBottom
     property int indicatorSpacing: 6
-    property bool showArrow: false
+    property bool arrowVisible: false
     property HusRadius radiusIndicator: HusRadius { all: HusTheme.HusCarousel.radiusIndicator }
     property Component contentDelegate: Item { }
     property Component indicatorDelegate: HusRectangleInternal {
@@ -37,7 +43,7 @@ Item {
 
         required property int index
         required property var model
-        property bool isHorizontal: control.position === HusCarousel.PositionTop || control.position === HusCarousel.PositionBottom
+        property bool isHorizontal: control.indicatorPosition === HusCarousel.PositionTop || control.indicatorPosition === HusCarousel.PositionBottom
         property bool isCurrent: index === control.currentIndex
         property bool hovered: __hoverHandler.hovered
 
@@ -136,7 +142,7 @@ Item {
         onMovementEnded: __private.updateInfiniteIndex();
 
         Loader {
-            active: control.position ===  HusCarousel.PositionTop && control.showIndicator
+            active: control.indicatorPosition === HusCarousel.PositionTop && control.indicatorVisible
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top:  parent.top
             anchors.topMargin: 10
@@ -150,7 +156,7 @@ Item {
         }
 
         Loader {
-            active: control.position === HusCarousel.PositionBottom && control.showIndicator
+            active: control.indicatorPosition === HusCarousel.PositionBottom && control.indicatorVisible
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
@@ -164,7 +170,7 @@ Item {
         }
 
         Loader {
-            active: control.position === HusCarousel.PositionLeft && control.showIndicator
+            active: control.indicatorPosition === HusCarousel.PositionLeft && control.indicatorVisible
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: 10
@@ -178,7 +184,7 @@ Item {
         }
 
         Loader {
-            active: control.position === HusCarousel.PositionRight && control.showIndicator
+            active: control.indicatorPosition === HusCarousel.PositionRight && control.indicatorVisible
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 10
@@ -192,23 +198,23 @@ Item {
         }
 
         Loader {
-            active: control.showArrow && showPrev
+            active: control.arrowVisible && prevVisible
             anchors.verticalCenter: __private.isHorizontal ? parent.verticalCenter : undefined
             anchors.horizontalCenter: !__private.isHorizontal ? parent.horizontalCenter : undefined
             anchors.top: !__private.isHorizontal ? parent.top : undefined
             anchors.left: __private.isHorizontal ? parent.left : undefined
             sourceComponent: control.prevDelegate
-            property bool showPrev: control.infinite ? true : (control.currentIndex !== 0)
+            property bool prevVisible: control.infinite || control.currentIndex !== 0
         }
 
         Loader {
-            active: control.showArrow && showNext
+            active: control.arrowVisible && nextVisible
             anchors.verticalCenter: __private.isHorizontal ? parent.verticalCenter : undefined
             anchors.horizontalCenter: !__private.isHorizontal ? parent.horizontalCenter : undefined
             anchors.bottom: !__private.isHorizontal ? parent.bottom : undefined
             anchors.right: __private.isHorizontal ? parent.right : undefined
             sourceComponent: control.nextDelegate
-            property bool showNext: control.infinite ? true : (control.currentIndex !== __listModel.count - 1)
+            property bool nextVisible: control.infinite || control.currentIndex !== __listModel.count - 1
         }
     }
 
@@ -251,7 +257,7 @@ Item {
 
     QtObject {
         id: __private
-        property bool isHorizontal: control.position === HusCarousel.PositionTop || control.position === HusCarousel.PositionBottom
+        property bool isHorizontal: control.direction === HusCarousel.DirectionHorizontal
         property int indicatorWidth: control.getSuitableIndicatorWidth(__listView.width)
 
         function updateInfiniteIndex() {

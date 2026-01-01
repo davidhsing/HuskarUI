@@ -4,7 +4,7 @@ import HuskarUI.Basic
 Rectangle {
     id: control
 
-    enum State {
+    enum TagState {
         StateDefault = 0,
         StateSuccess = 1,
         StateProcessing = 2,

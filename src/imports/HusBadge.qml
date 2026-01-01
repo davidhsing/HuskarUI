@@ -5,7 +5,7 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum State {
+    enum BadgeState {
         StateSuccess = 1,
         StateProcessing = 2,
         StateError = 3,

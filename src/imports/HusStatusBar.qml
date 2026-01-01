@@ -5,7 +5,7 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum AlignType {
+    enum ItemAlign {
         AlignLeft = 0,
         AlignCenter = 1,
         AlignRight = 2

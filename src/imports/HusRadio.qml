@@ -10,11 +10,8 @@ T.RadioButton {
     property int hoverCursorShape: Qt.PointingHandCursor
     property HusRadius radiusIndicator: HusRadius { all: HusTheme.HusRadio.radiusIndicator }
     property color colorText: enabled ? HusTheme.HusRadio.colorText : HusTheme.HusRadio.colorTextDisabled
-    property color colorIndicator: enabled ?
-                                       checked ? HusTheme.HusRadio.colorIndicatorChecked :
-                                                 HusTheme.HusRadio.colorIndicator : HusTheme.HusRadio.colorIndicatorDisabled
-    property color colorIndicatorBorder: (enabled && (hovered || checked)) ? HusTheme.HusRadio.colorIndicatorBorderChecked :
-                                                                             HusTheme.HusRadio.colorIndicatorBorder
+    property color colorIndicator: enabled ? (checked ? HusTheme.HusRadio.colorIndicatorChecked : HusTheme.HusRadio.colorIndicator) : HusTheme.HusRadio.colorIndicatorDisabled
+    property color colorIndicatorBorder: (enabled && (hovered || checked)) ? HusTheme.HusRadio.colorIndicatorBorderChecked : HusTheme.HusRadio.colorIndicatorBorder
     property string contentDescription: ''
 
     objectName: '__HusRadio__'

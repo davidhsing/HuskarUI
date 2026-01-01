@@ -44,7 +44,7 @@ iconSource | int丨string | HusIcon.ExclamationCircleFilled丨'' | 图标源(来
 iconSize | int | 16 | 图标大小
 title | string | '' | 标题文本
 description | string | '' | 描述文本
-showArrow | bool | true | 是否显示箭头
+arrowVisible | bool | true | 是否显示箭头
 arrowWidth | int | 16 | 箭头宽度
 arrowHeight | int | 8 | 箭头高度
 colorIcon | color | - | 图标颜色

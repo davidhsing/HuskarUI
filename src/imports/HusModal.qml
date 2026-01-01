@@ -6,7 +6,7 @@ import HuskarUI.Basic
 HusPopup {
     id: control
 
-    enum Position {
+    enum PopupPosition {
         PositionTop = 0,
         PositionBottom = 1,
         PositionCenter = 2,

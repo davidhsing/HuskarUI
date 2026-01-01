@@ -4,13 +4,13 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Type {
+    enum ProgressType {
         TypeLine = 0,
         TypeCircle = 1,
         TypeDashboard = 2
     }
 
-    enum Status {
+    enum ProgressStatus {
         StatusNormal = 0,
         StatusSuccess = 1,
         StatusException = 2,

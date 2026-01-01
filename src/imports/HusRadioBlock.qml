@@ -5,12 +5,12 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    enum Type {
+    enum BlockType {
         TypeFilled = 0,
         TypeOutlined = 1
     }
 
-    enum Size {
+    enum RadioSize {
         SizeAuto = 0,
         SizeFixed = 1
     }
