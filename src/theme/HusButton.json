@@ -5,7 +5,7 @@
         "fontHeight": "@fontPrimaryHeight",
         "fontLineHeight": "1.0",
         "colorTextDisabled": "@colorPrimaryTextDisabled",
-        "colorTextDefault": "@colorTextBase",
+        "colorTextDefault": "@colorTextPrimary",
         "colorText": "@colorPrimaryText",
         "colorTextHover": "@colorPrimaryTextHover",
         "colorTextActive": "@colorPrimaryTextActive",

@@ -4,7 +4,7 @@
         "fontSize": "@fontPrimarySize",
         "colorBg": "transparent",
         "colorGridLine": "@colorBorderSecondary",
-        "colorColumnHeaderText": "@colorTextBase",
+        "colorColumnHeaderText": "@colorTextPrimary",
         "colorColumnHeaderBg": "@colorFillQuaternary",
         "colorIcon": "@colorTextTertiary",
         "colorIconHover": "@colorPrimary",

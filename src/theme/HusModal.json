@@ -8,7 +8,7 @@
         "fontDescriptionSize": "@fontPrimarySize",
         "colorOverlay": "@colorBgMask",
         "colorIcon": "@colorInfo",
-        "colorTitle": "@colorTextBase",
+        "colorTitle": "@colorTextPrimary",
         "colorDescription": "@colorTextPrimary",
         "radiusCloseBg": "@radiusPrimarySM"
     }

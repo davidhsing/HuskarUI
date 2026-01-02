@@ -2,9 +2,9 @@
     "__style__": {
         "fontSize": "14",
         "colorIconDisabled": "@colorPrimaryTextDisabled",
-        "colorIcon": "@colorTextBase",
-        "colorIconHover": "@colorTextBase",
-        "colorIconActive": "@colorTextBase",
+        "colorIcon": "@colorTextPrimary",
+        "colorIconHover": "@colorTextPrimary",
+        "colorIconActive": "@colorTextPrimary",
         "colorIconChecked": "@colorPrimaryTextHover",
         "colorBgDisabled": "@colorBgDisabled",
         "colorBg": "$alpha(@colorTextBase, 0)",

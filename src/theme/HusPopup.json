@@ -2,7 +2,7 @@
     "__style__": {
         "fontFamily": "@fontPrimaryFamily",
         "fontSize": "@fontPrimarySize",
-        "colorShadow": "@colorTextBase",
+        "colorShadow": "@colorTextPrimary",
         "colorBg": "@colorBgBase",
         "colorBgDark": "@colorMain-11",
         "radiusBg": "@radiusPrimary"

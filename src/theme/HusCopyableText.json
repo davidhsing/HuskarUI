@@ -2,8 +2,8 @@
     "__style__": {
         "fontFamily": "@fontPrimaryFamily",
         "fontSize": "@fontPrimarySize",
-        "colorText": "@colorTextBase",
-        "colorTextSelected": "@colorTextBase",
+        "colorText": "@colorTextPrimary",
+        "colorTextSelected": "@colorTextPrimary",
         "colorSelection": "$alpha(@colorPrimary, 0.6)"
     }
 }

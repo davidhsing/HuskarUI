@@ -5,7 +5,7 @@
         "fontSizeDescription": "@fontPrimarySize",
         "fontSizeIndicator": "@fontPrimarySize",
         "fontSizeButton": "@fontPrimarySize",
-        "colorText": "@colorTextBase",
+        "colorText": "@colorTextPrimary",
         "colorBg": "$lighter(@colorBgBase)",
         "colorOverlay": "@colorBgMask",
         "radiusCard": "@radiusPrimary",

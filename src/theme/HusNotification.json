@@ -7,9 +7,9 @@
         "colorDescription": "@colorTextSecondary",
         "colorBg": "@colorBgBase",
         "colorBgDark": "@colorMain-11",
-        "colorBgShadow": "@colorTextBase",
+        "colorBgShadow": "@colorTextPrimary",
         "colorClose": "@colorTextTertiary",
-        "colorCloseHover": "@colorTextBase",
+        "colorCloseHover": "@colorTextPrimary",
         "radiusBg": "@radiusPrimaryLG"
     }
 }

@@ -3,7 +3,7 @@
         "fontFamily": "@fontPrimaryFamily",
         "fontSize": "@fontPrimarySizeHeading5",
         "colorTextDisabled": "@colorPrimaryTextDisabled",
-        "colorText": "@colorTextBase",
+        "colorText": "@colorTextPrimary",
         "colorTextActive": "@colorPrimaryTextHover",
         "colorBgDisabled": "transparent",
         "colorBg": "$alpha(@colorPrimaryBgActive, 0)",

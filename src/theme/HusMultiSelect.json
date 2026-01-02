@@ -4,7 +4,7 @@
     },
     "__style__": {
         "colorIconSelect": "@colorPrimary",
-        "colorTagText": "@colorTextBase",
+        "colorTagText": "@colorTextPrimary",
         "colorTagBg": "@colorFillPrimary",
         "colorTagCloseHover": "@colorTextPrimary",
         "colorTagClose": "@colorTextTertiary",

@@ -5,9 +5,9 @@
         "colorMessage": "@colorTextPrimary",
         "colorBg": "@colorBgBase",
         "colorBgDark": "@colorMain-11",
-        "colorBgShadow": "@colorTextBase",
+        "colorBgShadow": "@colorTextPrimary",
         "colorClose": "@colorTextTertiary",
-        "colorCloseHover": "@colorTextBase",
+        "colorCloseHover": "@colorTextPrimary",
         "radiusBg": "@radiusPrimaryLG"
     }
 }

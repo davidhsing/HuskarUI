@@ -3,7 +3,7 @@
         "__import__": ["HusRadio"]
     },
     "__style__": {
-        "colorBlockText": "@colorTextBase",
+        "colorBlockText": "@colorTextPrimary",
         "colorBlockTextFilledChecked": "#fff",
         "colorBlockTextChecked": "@colorPrimary",
         "colorBlockTextDisabled": "@colorPrimaryTextDisabled",

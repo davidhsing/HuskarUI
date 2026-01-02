@@ -7,9 +7,9 @@
         "colorBg": "@colorBgContainer",
         "colorBorder": "@colorBorderSecondary",
         "colorBorderDark": "#424242",
-        "colorTitle": "@colorTextBase",
-        "colorBodyAvatar": "@colorTextBase",
-        "colorBodyTitle": "@colorTextBase",
+        "colorTitle": "@colorTextPrimary",
+        "colorBodyAvatar": "@colorTextPrimary",
+        "colorBodyTitle": "@colorTextPrimary",
         "colorBodyDescription": "@colorTextTertiary",
         "radiusBg": "@radiusPrimary"
     }

@@ -2,7 +2,7 @@
     "__style__": {
         "fontFamily": "@fontPrimaryFamily",
         "fontSize": "@fontPrimarySize",
-        "colorText": "@colorTextBase",
+        "colorText": "@colorTextPrimary",
         "colorTextActive": "$onBackground(@colorTextTertiary, @colorBgBase)",
         "colorTextDisabled": "$onBackground(@colorPrimaryTextDisabled, @colorBgBase)",
         "colorIndicator": "$onBackground(@colorTextQuaternary, @colorBgBase)",
@@ -18,7 +18,7 @@
         "colorErrorBorderHover": "@colorErrorActive",
         "colorPopupBg": "@colorBgBase",
         "colorPopupBgDark": "@colorMain-11",
-        "colorItemText": "@colorTextBase",
+        "colorItemText": "@colorTextPrimary",
         "colorItemTextDisabled": "@colorPrimaryTextDisabled",
         "colorItemBg": "@colorBgBase",
         "colorItemBgHover": "$onBackground(@colorFillTertiary, @colorBgBase)",

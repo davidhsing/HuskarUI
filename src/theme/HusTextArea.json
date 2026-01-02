@@ -2,11 +2,11 @@
     "__style__": {
         "fontFamily": "@fontPrimaryFamily",
         "fontSize": "@fontPrimarySize",
-        "colorText": "@colorTextBase",
+        "colorText": "@colorTextPrimary",
         "colorTextDisabled": "@colorPrimaryTextDisabled",
         "colorPlaceholderText": "@colorTextQuaternary",
         "colorPlaceholderTextDisabled": "@colorPrimaryTextDisabled",
-        "colorTextSelected": "@colorTextBase",
+        "colorTextSelected": "@colorTextPrimary",
         "colorSelection": "$alpha(@colorPrimary, 0.6)",
         "colorBorder": "$onBackground(@colorTextQuaternary, @colorBgBase)",
         "colorBorderHover": "@colorPrimary",

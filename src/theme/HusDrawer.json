@@ -2,8 +2,8 @@
     "__style__": {
         "fontFamily": "@fontPrimaryFamily",
         "fontSizeTitle": "@fontPrimarySizeHeading5",
-        "colorTitle": "@colorTextBase",
-        "colorShadow": "@colorTextBase",
+        "colorTitle": "@colorTextPrimary",
+        "colorShadow": "@colorTextPrimary",
         "colorBg": "$lighter(@colorBgBase)",
         "colorOverlay": "@colorBgMask",
         "radiusButtonBg": "@radiusPrimarySM"

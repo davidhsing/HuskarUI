@@ -9,6 +9,6 @@
         "colorBarActive": "@colorPrimary",
         "colorInfoSuccess": "@colorSuccess",
         "colorInfoException": "@colorError",
-        "colorInfoNormal": "@colorTextBase"
+        "colorInfoNormal": "@colorTextPrimary"
     }
 }

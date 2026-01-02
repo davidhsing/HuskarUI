@@ -2,7 +2,7 @@
     "__style__": {
         "fontFamily": "@fontPrimaryFamily",
         "fontSize": "@fontPrimarySize",
-        "colorText": "@colorTextBase",
+        "colorText": "@colorTextPrimary",
         "colorTextDisabled": "@colorPrimaryTextDisabled",
         "colorIndicator": "@colorBgBase",
         "colorIndicatorChecked": "@colorPrimary",
@@ -12,7 +12,7 @@
         "colorEffectBg": "@colorTextTertiary",
         "radiusIndicator": "8",
 
-        "colorBlockText": "@colorTextBase",
+        "colorBlockText": "@colorTextPrimary",
         "colorBlockTextFilledChecked": "#fff",
         "colorBlockTextChecked": "@colorPrimary",
         "colorBlockTextDisabled": "@colorPrimaryTextDisabled",
