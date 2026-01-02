@@ -4,7 +4,7 @@ import HuskarUI.Basic
 HusText {
     id: control
 
-    readonly property bool empty: iconSource === 0 || iconSource === ''
+    readonly property bool empty: iconSource === 0 || (typeof control.iconSource === 'string' && control.iconSource === '') || (typeof control.iconSource === 'object' && control.iconSource.toString() === '')
     property var iconSource: 0 ?? ''
     property alias iconSize: control.font.pixelSize
     property alias colorIcon: control.color
@@ -21,13 +21,14 @@ HusText {
     Loader {
         id: __iconLoader
         anchors.centerIn: parent
-        active: (typeof control.iconSource === 'string' && control.iconSource !== '') || (typeof control.iconSource === 'object' && control.iconSource.toString() !== '')
         sourceComponent: Image {
             source: control.iconSource
             width: control.iconSize
             height: control.iconSize
             sourceSize: Qt.size(width, height)
         }
+        active: control.iconSource !== 0 && ((typeof control.iconSource === 'string' && control.iconSource !== '') || (typeof control.iconSource === 'object' && control.iconSource.toString() !== ''))
+        visible: active
     }
 
     Accessible.role: Accessible.StaticText
