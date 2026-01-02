@@ -75,7 +75,7 @@ Item {
 
     // Margin properties
     property HusMargin marginExtra: HusMargin { all: 0 }
-    property HusMargin marginIcon: HusMargin { top: 4; bottom: 0 }
+    property HusMargin marginIcon: HusMargin { top: 8; bottom: 0 }
     property HusMargin marginTitle: HusMargin { top: 4; bottom: 0 }
     property HusMargin marginDescription: HusMargin { all: 0 }
     property HusMargin marginAction: HusMargin { all: 0 }
@@ -117,7 +117,7 @@ Item {
                 iconSource: {
                     switch (control.type) {
                         case HusResult.TypeInfo: return HusIcon.ExclamationCircleFilled;
-                        case HusResult.Type_Warn: return HusIcon.ExclamationCircleFilled;
+                        case HusResult.TypeWarning: return HusIcon.ExclamationCircleFilled;
                         case HusResult.TypeSuccess: return HusIcon.CheckCircleFilled;
                         case HusResult.TypeError: return HusIcon.CloseCircleFilled;
                         default: return HusIcon.ExclamationCircleFilled;
@@ -164,112 +164,9 @@ Item {
         bottomRightRadius: control.radiusBg.bottomRight
     }
 
-    property Component contentDelegate: Item {
-        implicitHeight: __mainColumn.implicitHeight
-
-        // Extra content (top left or top right)
-        Item {
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.topMargin: control.marginExtra.top
-            anchors.leftMargin: control.extraPosition === HusResult.PositionStart ? control.marginExtra.left : 0
-            anchors.rightMargin: control.extraPosition === HusResult.PositionEnd ? control.marginExtra.right : 0
-            implicitHeight: __extraLoader.item ? __extraLoader.item.implicitHeight : 0
-            visible: control.extraVisible
-
-            Loader {
-                id: __extraLoader
-                anchors.top: parent.top
-                anchors.left: control.extraPosition === HusResult.PositionStart ? parent.left : undefined
-                anchors.right: control.extraPosition === HusResult.PositionEnd ? parent.right : undefined
-                sourceComponent: control.extraDelegate
-                active: control.extraVisible
-                visible: active
-                z: 1
-            }
-        }
-
-        ColumnLayout {
-            id: __mainColumn
-            anchors.fill: parent
-            spacing: control.spacing
-
-            // Icon
-            Loader {
-                id: __iconLoader
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                Layout.topMargin: control.marginIcon.top
-                Layout.bottomMargin: control.marginIcon.bottom
-                Layout.leftMargin: control.marginIcon.left
-                Layout.rightMargin: control.marginIcon.right
-                sourceComponent: control.iconDelegate
-                active: control.iconVisible
-                visible: active
-            }
-
-            // Title
-            Loader {
-                id: __titleLoader
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                Layout.topMargin: control.marginTitle.top
-                Layout.bottomMargin: control.marginTitle.bottom
-                Layout.leftMargin: control.marginTitle.left
-                Layout.rightMargin: control.marginTitle.right
-                sourceComponent: control.titleDelegate
-                active: control.titleVisible
-                visible: active
-            }
-
-            // Description
-            Loader {
-                id: __descriptionLoader
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                Layout.topMargin: control.marginDescription.top
-                Layout.bottomMargin: control.marginDescription.bottom
-                Layout.leftMargin: control.marginDescription.left
-                Layout.rightMargin: control.marginDescription.right
-                sourceComponent: control.descriptionDelegate
-                active: control.descriptionVisible
-                visible: active
-            }
-
-            // Action
-            Loader {
-                id: __actionLoader
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                Layout.topMargin: control.marginAction.top
-                Layout.bottomMargin: control.marginAction.bottom
-                Layout.leftMargin: control.marginAction.left
-                Layout.rightMargin: control.marginAction.right
-                sourceComponent: control.actionDelegate
-                active: control.actionVisible
-                visible: active
-            }
-
-            // Footer
-            Loader {
-                id: __footerLoader
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                Layout.topMargin: control.marginFooter.top
-                Layout.bottomMargin: control.marginFooter.bottom
-                Layout.leftMargin: control.marginFooter.left
-                Layout.rightMargin: control.marginFooter.right
-                sourceComponent: control.footerDelegate
-                active: control.footerVisible
-                visible: active
-            }
-        }
-    }
-
     objectName: '__HusResult__'
-    implicitWidth: Math.max(__bgLoader.implicitWidth, __contentLoader.implicitWidth)
-    implicitHeight: Math.max(__bgLoader.implicitHeight, __contentLoader.implicitHeight)
+    implicitWidth: Math.max(__bgLoader.implicitWidth, __mainLayout.implicitWidth)
+    implicitHeight: Math.max(__bgLoader.implicitHeight, __mainLayout.implicitHeight)
     width: parent.width
     height: implicitHeight
 
@@ -279,9 +176,103 @@ Item {
         sourceComponent: control.bgDelegate
     }
 
-    Loader {
-        id: __contentLoader
+    // Extra area
+    Item {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: control.marginExtra.top
+        anchors.leftMargin: control.extraPosition === HusResult.PositionStart ? control.marginExtra.left : 0
+        anchors.rightMargin: control.extraPosition === HusResult.PositionEnd ? control.marginExtra.right : 0
+        implicitHeight: __extraLoader.item ? __extraLoader.item.implicitHeight : 0
+        visible: control.extraVisible
+
+        Loader {
+            id: __extraLoader
+            anchors.top: parent.top
+            anchors.left: control.extraPosition === HusResult.PositionStart ? parent.left : undefined
+            anchors.right: control.extraPosition === HusResult.PositionEnd ? parent.right : undefined
+            sourceComponent: control.extraDelegate
+            active: control.extraVisible
+            visible: active
+            z: 1
+        }
+    }
+
+    // Content area
+    ColumnLayout {
+        id: __mainLayout
         anchors.fill: parent
-        sourceComponent: control.contentDelegate
+        spacing: control.spacing
+
+        // Icon
+        Loader {
+            id: __iconLoader
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.topMargin: control.marginIcon.top
+            Layout.bottomMargin: control.marginIcon.bottom
+            Layout.leftMargin: control.marginIcon.left
+            Layout.rightMargin: control.marginIcon.right
+            sourceComponent: control.iconDelegate
+            active: control.iconVisible
+            visible: active
+        }
+
+        // Title
+        Loader {
+            id: __titleLoader
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.topMargin: control.marginTitle.top
+            Layout.bottomMargin: control.marginTitle.bottom
+            Layout.leftMargin: control.marginTitle.left
+            Layout.rightMargin: control.marginTitle.right
+            sourceComponent: control.titleDelegate
+            active: control.titleVisible
+            visible: active
+        }
+
+        // Description
+        Loader {
+            id: __descriptionLoader
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.topMargin: control.marginDescription.top
+            Layout.bottomMargin: control.marginDescription.bottom
+            Layout.leftMargin: control.marginDescription.left
+            Layout.rightMargin: control.marginDescription.right
+            sourceComponent: control.descriptionDelegate
+            active: control.descriptionVisible
+            visible: active
+        }
+
+        // Action
+        Loader {
+            id: __actionLoader
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.topMargin: control.marginAction.top
+            Layout.bottomMargin: control.marginAction.bottom
+            Layout.leftMargin: control.marginAction.left
+            Layout.rightMargin: control.marginAction.right
+            sourceComponent: control.actionDelegate
+            active: control.actionVisible
+            visible: active
+        }
+
+        // Footer
+        Loader {
+            id: __footerLoader
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.topMargin: control.marginFooter.top
+            Layout.bottomMargin: control.marginFooter.bottom
+            Layout.leftMargin: control.marginFooter.left
+            Layout.rightMargin: control.marginFooter.right
+            sourceComponent: control.footerDelegate
+            active: control.footerVisible
+            visible: active
+        }
     }
 }
