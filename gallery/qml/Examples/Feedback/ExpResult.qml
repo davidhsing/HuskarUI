@@ -16,13 +16,12 @@ Flickable {
         Description {
             width: parent.width
             desc: qsTr(`
-# HusResult 结果 \n
+# HusResult 结果\n
 用于反馈一系列操作任务的处理结果。\n
 * **继承自 { Item }**\n
 \n<br/>
 \n### 支持的代理：\n
 - **bgDelegate: Component** 背景代理\n
-- **contentDelegate: Component** 内容代理(以下所有代理的入口)\n
 - **extraDelegate: Component** 额外操作代理\n
 - **titleDelegate: Component** 标题代理\n
 - **descriptionDelegate: Component** 描述代理\n
@@ -32,7 +31,7 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-type | ResultType | TypeInfo | 结果类型
+type | enum | HusResult.TypeInfo | 结果类型
 borderVisible | bool | true | 外侧边框是否可见
 iconVisible | bool | true | 图标是否可见
 extraVisible | bool | true | 额外内容是否可见
@@ -53,10 +52,10 @@ descriptionText | string | - | 描述文本
 descriptionFont | font | - | 描述字体
 spacing | int | 16 | 间距
 colorBg | color | - | 背景颜色
-radiusBg | [HusRadius](internal://HusRadius) | 6 | 圆角半径
+radiusBg | [HusRadius](internal://HusRadius) | 6 | 背景圆角半径
 marginExtra | [HusMargin](internal://HusMargin) | 0 | 额外内容边距
-marginIcon | [HusMargin](internal://HusMargin) | 0 | 图标边距
-marginTitle | [HusMargin](internal://HusMargin) | 0 | 标题边距
+marginIcon | [HusMargin](internal://HusMargin) | { top: 8; bottom: 0 } | 图标边距
+marginTitle | [HusMargin](internal://HusMargin) | { top: 4; bottom: 0 } | 标题边距
 marginDescription | [HusMargin](internal://HusMargin) | 0 | 描述边距
 marginAction | [HusMargin](internal://HusMargin) | 0 | 操作区边距
 marginFooter | [HusMargin](internal://HusMargin) | 0 | 页脚边距
