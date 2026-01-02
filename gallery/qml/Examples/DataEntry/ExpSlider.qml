@@ -42,7 +42,7 @@ value | number丨[number, number] | 0丨[0, 0] | 设置滑块值, range为true�
 currentValue | (readonly)number丨[number, number] | - | 获取当前滑块值, range为true时为数组[min, max]
 range | bool | false | 是否双滑块模式
 hovered | bool | - | 是否悬浮在滑动条上
-snapMode | enum | HusSlider.NoSnap | 滑块对齐模式(来自 HusSlider)
+snapMode | enum | HusSlider.SnapNone | 滑块对齐模式(来自 HusSlider)
 orientation | enum | Qt.Horizontal | 滑动条方向(Qt.Horizontal 或 Qt.Vertical)
 colorHandle | color | - | 滑块颜色
 colorTrack | color | - | 滑块轨道颜色
@@ -260,7 +260,7 @@ Row {
             width: parent.width
             desc: qsTr(`
 通过 \`snapMode\` 属性改变滑块对齐模式，支持的模式：\n
-- 不对齐(默认){ HusSlider.NoSnap }\n
+- 不对齐(默认){ HusSlider.SnapNone }\n
 - 拖动控制柄时滑块会自动对齐 { HusSlider.SnapAlways }\n
 - 滑块在拖动时不会对齐，但只有在释放滑块后才会对齐 { HusSlider.SnapOnRelease }\n
                        `)
@@ -275,7 +275,7 @@ Column {
         min: 0
         max: 10
         stepSize: 1
-        snapMode: HusSlider.NoSnap
+        snapMode: HusSlider.SnapNone
 
         HusCopyableText {
             anchors.verticalCenter: parent.verticalCenter
@@ -325,7 +325,7 @@ Column {
                     min: 0
                     max: 10
                     stepSize: 1
-                    snapMode: HusSlider.NoSnap
+                    snapMode: HusSlider.SnapNone
 
                     HusCopyableText {
                         anchors.verticalCenter: parent.verticalCenter

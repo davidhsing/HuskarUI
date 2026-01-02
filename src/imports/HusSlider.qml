@@ -11,7 +11,7 @@ Item {
     signal secondReleased()
 
     enum SnapMode {
-        NoSnap = 0,
+        SnapNone = 0,
         SnapAlways = 1,
         SnapOnRelease = 2
     }
@@ -25,23 +25,24 @@ Item {
     readonly property var currentValue: {
         if (__sliderLoader.item) {
             return range ? [__sliderLoader.item.first.value, __sliderLoader.item.second.value] : __sliderLoader.item.value;
-        } else {
-            return value;
         }
+        return value;
     }
     property bool range: false
     readonly property bool hovered: __sliderLoader.item ? __sliderLoader.item.hovered : false
-    property int snapMode: HusSlider.NoSnap
+    property int snapMode: HusSlider.SnapNone
     property int orientation: Qt.Horizontal
     property color colorBg: (enabled && hovered) ? HusTheme.HusSlider.colorBgHover : HusTheme.HusSlider.colorBg
     property color colorHandle: HusTheme.HusSlider.colorHandle
     property color colorTrack: {
-        if (!enabled) return HusTheme.HusSlider.colorTrackDisabled;
-
-        if (HusTheme.isDark)
+        if (!enabled) {
+            return HusTheme.HusSlider.colorTrackDisabled;
+        }
+        if (HusTheme.isDark) {
             return hovered ? HusTheme.HusSlider.colorTrackHoverDark : HusTheme.HusSlider.colorTrackDark;
-        else
+        } else {
             return hovered ? HusTheme.HusSlider.colorTrackHover : HusTheme.HusSlider.colorTrack;
+        }
     }
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusSlider.radiusBg }
     property Component handleToolTipDelegate: Item { }
@@ -50,16 +51,14 @@ Item {
         x: {
             if (control.orientation === Qt.Horizontal) {
                 return slider.leftPadding + visualPosition * (slider.availableWidth - width);
-            } else {
-                return slider.topPadding + (slider.availableWidth - width) / 2;
             }
+            return slider.topPadding + (slider.availableWidth - width) / 2;
         }
         y: {
             if (control.orientation === Qt.Horizontal) {
                 return slider.topPadding + (slider.availableHeight - height) / 2;
-            } else {
-                return slider.leftPadding + visualPosition * (slider.availableHeight - height);
             }
+            return slider.leftPadding + visualPosition * (slider.availableHeight - height);
         }
         implicitWidth: active ? 18 : 14
         implicitHeight: active ? 18 : 14
@@ -67,10 +66,11 @@ Item {
         color: control.colorHandle
         border.color: {
             if (control.enabled) {
-                if (HusTheme.isDark)
+                if (HusTheme.isDark) {
                     return active ? HusTheme.HusSlider.colorHandleBorderHoverDark : HusTheme.HusSlider.colorHandleBorderDark;
-                else
+                } else {
                     return active ? HusTheme.HusSlider.colorHandleBorderHover : HusTheme.HusSlider.colorHandleBorder;
+                }
             } else {
                 return HusTheme.HusSlider.colorHandleBorderDisabled;
             }
@@ -115,28 +115,28 @@ Item {
 
             Rectangle {
                 x: {
-                    if (control.orientation === Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal) {
                         return range ? (slider.first.visualPosition * parent.width) : 0;
-                    else
-                        return 0;
+                    }
+                    return 0;
                 }
                 y: {
-                    if (control.orientation === Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal) {
                         return 0;
-                    else
-                        return range ? (slider.second.visualPosition * parent.height) : slider.visualPosition * parent.height;
+                    }
+                    return range ? (slider.second.visualPosition * parent.height) : slider.visualPosition * parent.height;
                 }
                 width: {
-                    if (control.orientation === Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal) {
                         return range ? (slider.second.visualPosition * parent.width - x) : slider.visualPosition * parent.width;
-                    else
-                        return parent.width;
+                    }
+                    return parent.width;
                 }
                 height: {
-                    if (control.orientation === Qt.Horizontal)
+                    if (control.orientation === Qt.Horizontal) {
                         return parent.height;
-                    else
-                        return range ? (slider.first.visualPosition * parent.height - y) : ((1.0 - slider.visualPosition) * parent.height);
+                    }
+                    return range ? (slider.first.visualPosition * parent.height - y) : ((1.0 - slider.visualPosition) * parent.height);
                 }
                 color: colorTrack
                 radius: parent.radius
@@ -161,9 +161,9 @@ Item {
             orientation: control.orientation
             snapMode: {
                 switch (control.snapMode) {
-                case HusSlider.SnapAlways: return T.Slider.SnapAlways;
-                case HusSlider.SnapOnRelease: return T.Slider.SnapOnRelease;
-                default: return T.Slider.NoSnap;
+                    case HusSlider.SnapAlways: return T.Slider.SnapAlways;
+                    case HusSlider.SnapOnRelease: return T.Slider.SnapOnRelease;
+                    default: return T.Slider.SnapNone;
                 }
             }
             handle: Loader {
@@ -179,8 +179,9 @@ Item {
             }
             onMoved: control.firstMoved();
             onPressedChanged: {
-                if (!pressed)
+                if (!pressed) {
                     control.firstReleased();
+                }
             }
         }
     }
@@ -195,9 +196,9 @@ Item {
             stepSize: control.stepSize
             snapMode: {
                 switch (control.snapMode) {
-                case HusSlider.SnapAlways: return T.RangeSlider.SnapAlways;
-                case HusSlider.SnapOnRelease: return T.RangeSlider.SnapOnRelease;
-                default: return T.RangeSlider.NoSnap;
+                    case HusSlider.SnapAlways: return T.RangeSlider.SnapAlways;
+                    case HusSlider.SnapOnRelease: return T.RangeSlider.SnapOnRelease;
+                    default: return T.RangeSlider.SnapNone;
                 }
             }
             orientation: control.orientation
@@ -209,8 +210,9 @@ Item {
             }
             first.onMoved: control.firstMoved();
             first.onPressedChanged: {
-                if (!first.pressed)
+                if (!first.pressed) {
                     control.firstReleased();
+                }
             }
             second.handle: Loader {
                 sourceComponent: handleDelegate
@@ -220,8 +222,9 @@ Item {
             }
             second.onMoved: control.secondMoved();
             second.onPressedChanged: {
-                if (!second.pressed)
+                if (!second.pressed) {
                     control.secondReleased();
+                }
             }
             background: Loader {
                 sourceComponent: bgDelegate

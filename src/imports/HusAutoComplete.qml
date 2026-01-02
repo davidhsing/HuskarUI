@@ -29,9 +29,7 @@ HusInput {
     }
     property Component labelBgDelegate: Rectangle {
         radius: control.themeSource.radiusLabelBg
-        color: highlighted ? control.themeSource.colorItemBgActive :
-                             (hovered || selected) ? control.themeSource.colorItemBgHover :
-                                                     control.themeSource.colorItemBg;
+        color: highlighted ? control.themeSource.colorItemBgActive : ((hovered || selected) ? control.themeSource.colorItemBgHover : control.themeSource.colorItemBg);
 
         Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
     }

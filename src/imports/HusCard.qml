@@ -73,8 +73,8 @@ Rectangle {
     property Component extraDelegate: Item { }
     property Component coverDelegate: Image {
         height: !visible ? 0 : control.coverHeight
-        source: control.coverSource
         fillMode: control.coverFillMode
+        source: control.coverSource
         visible: (typeof control.coverSource == 'string' && control.coverSource !== '') || (typeof control.coverSource == 'object' && control.coverSource.toString() !== '')
     }
     property Component bodyDelegate: Item {
