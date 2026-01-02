@@ -13,7 +13,7 @@ Item {
         width: parent.width
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.bottom
-        closeButtonVisible: true
+        closable: true
     }
 
     Flickable {
