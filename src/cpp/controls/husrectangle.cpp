@@ -17,10 +17,8 @@ void HusRadius::setAll(const qreal all) {
     if (m_all == all) {
         return;
     }
-
     m_all = all;
     emit allChanged();
-
     setTopLeft(all);
     setTopRight(all);
     setBottomLeft(all);
@@ -31,7 +29,6 @@ qreal HusRadius::topLeft() const {
     if (m_topLeft >= 0.) {
         return m_topLeft;
     }
-
     return m_all;
 }
 
@@ -39,20 +36,18 @@ void HusRadius::setTopLeft(const qreal topLeft) {
     if (m_topLeft == topLeft) {
         return;
     }
-
     if (topLeft < 0) {
         qmlWarning(this) << "topLeftRadius (" << topLeft << ") cannot be less than 0.";
         return;
     }
-
     m_topLeft = topLeft;
     emit topLeftChanged();
 }
 
 qreal HusRadius::topRight() const {
-    if (m_topRight >= 0.)
+    if (m_topRight >= 0.) {
         return m_topRight;
-
+    }
     return m_all;
 }
 
@@ -60,12 +55,10 @@ void HusRadius::setTopRight(const qreal topRight) {
     if (m_topRight == topRight) {
         return;
     }
-
     if (topRight < 0) {
         qmlWarning(this) << "topRightRadius (" << topRight << ") cannot be less than 0.";
         return;
     }
-
     m_topRight = topRight;
     emit topRightChanged();
 }
@@ -74,20 +67,17 @@ qreal HusRadius::bottomLeft() const {
     if (m_bottomLeft >= 0.) {
         return m_bottomLeft;
     }
-
     return m_all;
 }
 
-void HusRadius::setBottomLeft(qreal bottomLeft) {
+void HusRadius::setBottomLeft(const qreal bottomLeft) {
     if (m_bottomLeft == bottomLeft) {
         return;
     }
-
     if (bottomLeft < 0) {
         qmlWarning(this) << "bottomLeftRadius (" << bottomLeft << ") cannot be less than 0.";
         return;
     }
-
     m_bottomLeft = bottomLeft;
     emit bottomLeftChanged();
 }
@@ -96,7 +86,6 @@ qreal HusRadius::bottomRight() const {
     if (m_bottomRight >= 0.) {
         return m_bottomRight;
     }
-
     return m_all;
 }
 
@@ -104,12 +93,10 @@ void HusRadius::setBottomRight(const qreal bottomRight) {
     if (m_bottomRight == bottomRight) {
         return;
     }
-
     if (bottomRight < 0) {
         qmlWarning(this) << "bottomRightRadius (" << bottomRight << ") cannot be less than 0.";
         return;
     }
-
     m_bottomRight = bottomRight;
     emit bottomRightChanged();
 }
@@ -122,10 +109,8 @@ void HusMargin::setAll(const qreal all) {
     if (m_all == all) {
         return;
     }
-
     m_all = all;
     emit allChanged();
-
     setLeft(all);
     setTop(all);
     setRight(all);
@@ -136,7 +121,6 @@ qreal HusMargin::left() const {
     if (m_left >= 0.) {
         return m_left;
     }
-
     return m_all;
 }
 
@@ -144,12 +128,10 @@ void HusMargin::setLeft(const qreal left) {
     if (m_left == left) {
         return;
     }
-
     if (left < 0) {
         qmlWarning(this) << "left (" << left << ") cannot be less than 0.";
         return;
     }
-
     m_left = left;
     emit leftChanged();
 }
@@ -158,7 +140,6 @@ qreal HusMargin::top() const {
     if (m_top >= 0.) {
         return m_top;
     }
-
     return m_all;
 }
 
@@ -166,12 +147,10 @@ void HusMargin::setTop(const qreal top) {
     if (m_top == top) {
         return;
     }
-
     if (top < 0) {
         qmlWarning(this) << "top (" << top << ") cannot be less than 0.";
         return;
     }
-
     m_top = top;
     emit topChanged();
 }
@@ -180,7 +159,6 @@ qreal HusMargin::right() const {
     if (m_right >= 0.) {
         return m_right;
     }
-
     return m_all;
 }
 
@@ -188,20 +166,18 @@ void HusMargin::setRight(const qreal right) {
     if (m_right == right) {
         return;
     }
-
     if (right < 0) {
         qmlWarning(this) << "right (" << right << ") cannot be less than 0.";
         return;
     }
-
     m_right = right;
     emit rightChanged();
 }
 
 qreal HusMargin::bottom() const {
-    if (m_bottom >= 0.)
+    if (m_bottom >= 0.) {
         return m_bottom;
-
+    }
     return m_all;
 }
 
@@ -209,18 +185,15 @@ void HusMargin::setBottom(const qreal bottom) {
     if (m_bottom == bottom) {
         return;
     }
-
     if (bottom < 0) {
         qmlWarning(this) << "bottom (" << bottom << ") cannot be less than 0.";
         return;
     }
-
     m_bottom = bottom;
     emit bottomChanged();
 }
 
-class HusRectanglePrivate
-{
+class HusRectanglePrivate {
 public:
     QColor m_color = { 0xffffff };
     HusPen *m_pen = nullptr;
@@ -236,22 +209,15 @@ public:
 
 int HusRectanglePrivate::doUpdateSlotIdx = -1;
 
-HusRectangle::HusRectangle(QQuickItem *parent)
-    : QQuickPaintedItem{parent}
-    , d_ptr(new HusRectanglePrivate)
-{
-
+HusRectangle::HusRectangle(QQuickItem* parent) : QQuickPaintedItem{parent}, d_ptr(new HusRectanglePrivate) {
 }
 
-QColor HusRectangle::color() const
-{
+QColor HusRectangle::color() const {
     Q_D(const HusRectangle);
-
     return d->m_color;
 }
 
-void HusRectangle::setColor(QColor color)
-{
+void HusRectangle::setColor(const QColor color) {
     Q_D(HusRectangle);
     if (d->m_color != color) {
         d->m_color = color;
@@ -260,8 +226,7 @@ void HusRectangle::setColor(QColor color)
     }
 }
 
-HusPen *HusRectangle::border()
-{
+HusPen *HusRectangle::border() {
     Q_D(HusRectangle);
     if (!d->m_pen) {
         d->m_pen = new HusPen;
@@ -274,14 +239,12 @@ HusPen *HusRectangle::border()
     return d->m_pen;
 }
 
-QJSValue HusRectangle::gradient() const
-{
+QJSValue HusRectangle::gradient() const {
     Q_D(const HusRectangle);
     return d->m_gradient;
 }
 
-void HusRectangle::setGradient(const QJSValue &gradient)
-{
+void HusRectangle::setGradient(const QJSValue &gradient) {
     Q_D(HusRectangle);
     if (d->m_gradient.equals(gradient)) {
         return;
@@ -290,7 +253,7 @@ void HusRectangle::setGradient(const QJSValue &gradient)
     if (HusRectanglePrivate::doUpdateSlotIdx < 0) {
         HusRectanglePrivate::doUpdateSlotIdx = QQuickRectangle::staticMetaObject.indexOfSlot("doUpdate()");
     }
-    if (auto oldGradient = qobject_cast<QQuickGradient*>(d->m_gradient.toQObject())) {
+    if (const auto oldGradient = qobject_cast<QQuickGradient*>(d->m_gradient.toQObject())) {
         QMetaObject::disconnect(oldGradient, updatedSignalIdx, this, d->doUpdateSlotIdx);
     }
     if (gradient.isQObject()) {
@@ -336,19 +299,16 @@ void HusRectangle::setGradient(const QJSValue &gradient)
     update();
 }
 
-void HusRectangle::resetGradient()
-{
+void HusRectangle::resetGradient() {
     setGradient(QJSValue());
 }
 
-qreal HusRectangle::radius() const
-{
+qreal HusRectangle::radius() const {
     Q_D(const HusRectangle);
     return d->m_radius;
 }
 
-void HusRectangle::setRadius(const qreal radius)
-{
+void HusRectangle::setRadius(const qreal radius) {
     Q_D(HusRectangle);
     if (d->m_radius == radius) {
         return;
@@ -362,8 +322,7 @@ void HusRectangle::setRadius(const qreal radius)
     update();
 }
 
-qreal HusRectangle::topLeftRadius() const
-{
+qreal HusRectangle::topLeftRadius() const {
     Q_D(const HusRectangle);
     if (d->m_topLeftRadius >= 0.) {
         return d->m_topLeftRadius;
@@ -371,8 +330,7 @@ qreal HusRectangle::topLeftRadius() const
     return d->m_radius;
 }
 
-void HusRectangle::setTopLeftRadius(qreal radius)
-{
+void HusRectangle::setTopLeftRadius(const qreal radius) {
     Q_D(HusRectangle);
     if (d->m_topLeftRadius == radius) {
         return;
@@ -386,8 +344,7 @@ void HusRectangle::setTopLeftRadius(qreal radius)
     update();
 }
 
-qreal HusRectangle::topRightRadius() const
-{
+qreal HusRectangle::topRightRadius() const {
     Q_D(const HusRectangle);
     if (d->m_topRightRadius >= 0.) {
         return d->m_topRightRadius;
@@ -395,8 +352,7 @@ qreal HusRectangle::topRightRadius() const
     return d->m_radius;
 }
 
-void HusRectangle::setTopRightRadius(qreal radius)
-{
+void HusRectangle::setTopRightRadius(const qreal radius) {
     Q_D(HusRectangle);
     if (d->m_topRightRadius == radius) {
         return;
@@ -410,8 +366,7 @@ void HusRectangle::setTopRightRadius(qreal radius)
     update();
 }
 
-qreal HusRectangle::bottomLeftRadius() const
-{
+qreal HusRectangle::bottomLeftRadius() const {
     Q_D(const HusRectangle);
     if (d->m_bottomLeftRadius >= 0.) {
         return d->m_bottomLeftRadius;
@@ -419,8 +374,7 @@ qreal HusRectangle::bottomLeftRadius() const
     return d->m_radius;
 }
 
-void HusRectangle::setBottomLeftRadius(qreal radius)
-{
+void HusRectangle::setBottomLeftRadius(const qreal radius) {
     Q_D(HusRectangle);
     if (d->m_bottomLeftRadius == radius) {
         return;
@@ -434,8 +388,7 @@ void HusRectangle::setBottomLeftRadius(qreal radius)
     update();
 }
 
-qreal HusRectangle::bottomRightRadius() const
-{
+qreal HusRectangle::bottomRightRadius() const {
     Q_D(const HusRectangle);
     if (d->m_bottomRightRadius >= 0.) {
         return d->m_bottomRightRadius;
@@ -443,8 +396,7 @@ qreal HusRectangle::bottomRightRadius() const
     return d->m_radius;
 }
 
-void HusRectangle::setBottomRightRadius(qreal radius)
-{
+void HusRectangle::setBottomRightRadius(const qreal radius) {
     Q_D(HusRectangle);
     if (d->m_bottomRightRadius == radius) {
         return;
@@ -458,8 +410,7 @@ void HusRectangle::setBottomRightRadius(qreal radius)
     update();
 }
 
-void HusRectangle::paint(QPainter *painter)
-{
+void HusRectangle::paint(QPainter* painter) {
     Q_D(HusRectangle);
     painter->save();
     painter->setRenderHint(QPainter::Antialiasing);
@@ -478,13 +429,11 @@ void HusRectangle::paint(QPainter *painter)
     } else {
         painter->setPen(QPen(Qt::transparent));
     }
-
     const auto maxRadius = height() / 2;
     const auto topLeftRadius = std::min(d->m_topLeftRadius, maxRadius);
     const auto topRightRadius = std::min(d->m_topRightRadius, maxRadius);
     const auto bottomLeftRadius = std::min(d->m_bottomLeftRadius, maxRadius);
     const auto bottomRightRadius = std::min(d->m_bottomRightRadius, maxRadius);
-
     QPainterPath path;
     path.moveTo(rect.bottomRight() - QPointF(0, bottomRightRadius));
     path.lineTo(rect.topRight() + QPointF(0, topRightRadius));
@@ -498,7 +447,6 @@ void HusRectangle::paint(QPainter *painter)
     path.lineTo(rect.bottomRight() - QPointF(bottomRightRadius, 0));
     path.arcTo(QRectF(QPointF(rect.bottomRight() - QPointF(bottomRightRadius * 2, bottomRightRadius * 2)),
                       QSize(bottomRightRadius * 2, bottomRightRadius * 2)), 270, 90);
-
     /*! 绘制渐变 */
     QGradientStops stops;
     bool vertical = true;
@@ -532,10 +480,8 @@ void HusRectangle::paint(QPainter *painter)
         float gradientStart = vertical ? rect.top() : rect.left();
         float gradientLength = vertical ? rect.height() : rect.width();
         float secondaryLength = vertical ? rect.width() : rect.height();
-        QLinearGradient gradient(vertical ? QPointF{ gradientStart, 0 }
-                                          : QPointF{ 0, secondaryLength },
-                                 vertical ? QPointF{ gradientStart, gradientLength }
-                                          : QPointF{ gradientLength, secondaryLength });
+        QLinearGradient gradient(vertical ? QPointF{ gradientStart, 0 } : QPointF{ 0, secondaryLength },
+                                 vertical ? QPointF{ gradientStart, gradientLength } : QPointF{ gradientLength, secondaryLength });
         gradient.setStops(stops);
         painter->setBrush(gradient);
     }
@@ -543,7 +489,6 @@ void HusRectangle::paint(QPainter *painter)
     painter->restore();
 }
 
-void HusRectangle::doUpdate()
-{
+void HusRectangle::doUpdate() {
     update();
 }
