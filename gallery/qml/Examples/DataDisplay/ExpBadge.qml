@@ -28,7 +28,7 @@ presetColor | color | '' | 预设颜色
 count | int | 0 | 徽标展示的数字
 iconSource | int丨string | 0丨'' | 徽标展示的图标(来自 HusIcon)或图标链接
 dot | bool | false | 不展示数字,只有一个小红点(默认 false)
-showZero | bool | false | 当数值为 0 时, 是否展示 HusBadge
+zeroVisible | bool | false | 当数值为 0 时, 是否展示 HusBadge
 overflowCount | int | 99 | 展示封顶的数字值
 font | font | - | 文本字体
 colorBg | color | - | 背景颜色
@@ -53,7 +53,7 @@ colorText | color | - | 文本颜色
             descTitle: qsTr('基本用法')
             desc: qsTr(`
 通过 \`count \` 属性设置展示的数字，大于 overflowCount 时显示为 {overflowCount}+，为 0 时隐藏。\n
-通过 \`showZero\` 属性设置为 0 时也显示数字。\n
+通过 \`zeroVisible\` 属性设置为 0 时也显示数字。\n
                        `)
             code: `
 import QtQuick
@@ -73,7 +73,7 @@ Row {
         size: 40
         radiusBg.all: 6
 
-        HusBadge { count: 0; showZero: true }
+        HusBadge { count: 0; zeroVisible: true }
     }
 
     HusAvatar {
@@ -103,7 +103,7 @@ Row {
                     size: 40
                     radiusBg.all: 6
 
-                    HusBadge { count: 0; showZero: true }
+                    HusBadge { count: 0; zeroVisible: true }
                 }
 
                 HusAvatar {
@@ -138,7 +138,7 @@ Row {
         checked: false
     }
 
-    HusBadge { count: showSwitch.checked ? 11 : 0; showZero: true; colorBg: '#faad14' }
+    HusBadge { count: showSwitch.checked ? 11 : 0; zeroVisible: true; colorBg: '#faad14' }
     HusBadge { count: showSwitch.checked ? 25 : 0 }
     HusBadge {
         iconSource: showSwitch.checked ? HusIcon.ClockCircleOutlined : 0
@@ -157,7 +157,7 @@ Row {
                     checked: false
                 }
 
-                HusBadge { count: showSwitch.checked ? 11 : 0; showZero: true; colorBg: '#faad14' }
+                HusBadge { count: showSwitch.checked ? 11 : 0; zeroVisible: true; colorBg: '#faad14' }
                 HusBadge { count: showSwitch.checked ? 25 : 0 }
                 HusBadge {
                     iconSource: showSwitch.checked ? HusIcon.ClockCircleOutlined : 0

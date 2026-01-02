@@ -32,8 +32,8 @@ clearIconSource | int丨string | HusIcon.CloseCircleFilled | 清除图标源(来
 clearIconSize | int | - | 清除图标大小
 clearIconPosition | enum | HusInput.PositionRight | 清除图标位置(来自 HusInput)
 readOnly | bool | false | 输入框是否只读
-showHandler | bool | true | 是否显示增减按钮
-alwaysShowHandler | bool | false | 是否始终显示增减按钮
+handlerVisible | bool | true | 是否显示增减按钮
+handlerAlwaysVisible | bool | false | 是否始终显示增减按钮
 useWheel | bool | false | 是否使用鼠标滚轮控制
 useKeyboard | bool | true | 是否使用键盘控制
 value | real | 0 | 当前值

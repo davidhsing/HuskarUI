@@ -14,18 +14,18 @@ HusInput {
         ModeDay = 4
     }
 
-    enum TimeFormat {
-        FormatHHMMSS = 0,
-        FormatHHMM = 1,
-        FormatMMSS = 2
+    enum TimePattern {
+        PatternHHMMSS = 0,
+        PatternHHMM = 1,
+        PatternMMSS = 2
     }
 
     signal selected(date: var)
 
-    property bool showDate: true
-    property bool showTime: true
+    property bool dateVisible: true
+    property bool timeVisible: true
     property int pickerMode: HusDateTimePicker.ModeDay
-    property int timeFormat: HusDateTimePicker.FormatHHMMSS
+    property int timePattern: HusDateTimePicker.PatternHHMMSS
     property var initDateTime: undefined
     property var currentDateTime: new Date()
     property int currentYear: new Date().getFullYear()
@@ -80,10 +80,10 @@ HusInput {
     }
 
     objectName: '__HusDateTimePicker__'
-    width: showDate && showTime ? 210 : 160
+    width: dateVisible && timeVisible ? 210 : 160
     themeSource: HusTheme.HusDateTimePicker
     iconSource: (__private.interactive && control.hovered && control.length !== 0) ?
-                    HusIcon.CloseCircleFilled : control.showDate ? HusIcon.CalendarOutlined :
+                    HusIcon.CloseCircleFilled : control.dateVisible ? HusIcon.CalendarOutlined :
                                                                    HusIcon.ClockCircleOutlined
     iconPosition: HusInput.PositionRight
     iconDelegate: HusIconText {
@@ -108,7 +108,7 @@ HusInput {
             onEntered: hovered = true;
             onExited: hovered = false;
             onClicked: {
-                if (control.showTime) {
+                if (control.timeVisible) {
                     control.currentHours = 0;
                     control.currentMinutes = 0;
                     control.currentSeconds = 0;
@@ -551,8 +551,8 @@ HusInput {
         implicitWidth: implicitContentWidth + leftPadding + rightPadding
         implicitHeight: implicitContentHeight + topPadding + bottomPadding
         padding: 8
-        leftPadding: control.showDate ? 8 : 2
-        rightPadding: control.showDate ? (control.showTime ? 2 : 8) : 2
+        leftPadding: control.dateVisible ? 8 : 2
+        rightPadding: control.dateVisible ? (control.timeVisible ? 2 : 8) : 2
         colorBg: HusTheme.isDark ? control.themeSource.colorPopupBgDark : control.themeSource.colorPopupBg
         radiusBg: control.radiusPopupBg
         animationEnabled: control.animationEnabled
@@ -616,7 +616,7 @@ HusInput {
             }
             }
 
-            if (control.showTime) {
+            if (control.timeVisible) {
                 __private.timeViewAtBeginning();
             }
         }
@@ -630,7 +630,7 @@ HusInput {
                 Row {
 
                     Column {
-                        visible: control.showDate
+                        visible: control.dateVisible
                         spacing: 5
 
                         PickerHeader {
@@ -733,7 +733,7 @@ HusInput {
 
                                     MouseArea {
                                         anchors.fill: parent
-                                        onClicked: __private.selectDateTime(model.date, !(control.showDate && control.showTime));
+                                        onClicked: __private.selectDateTime(model.date, !(control.dateVisible && control.timeVisible));
                                     }
                                 }
                             }
@@ -786,7 +786,7 @@ HusInput {
                                                 __pickerHeader.isPickYear = false;
                                                 __pickerHeader.isPickQuarter = true;
                                             } else if (control.pickerMode == HusDateTimePicker.ModeYear) {
-                                                __private.selectDateTime(new Date(control.visualYear + 1, 0, 0), !(control.showDate && control.showTime));
+                                                __private.selectDateTime(new Date(control.visualYear + 1, 0, 0), !(control.dateVisible && control.timeVisible));
                                             }
                                         }
                                         property int year: control.visualYear + modelData - 4
@@ -830,7 +830,7 @@ HusInput {
                                                 __pickerHeader.isPickMonth = false;
                                             } else if (control.pickerMode == HusDateTimePicker.ModeMonth) {
                                                 __private.selectDateTime(new Date(control.visualYear, control.visualMonth + 1, 0),
-                                                                         !(control.showDate && control.showTime));
+                                                                         !(control.dateVisible && control.timeVisible));
                                             }
                                         }
                                         property int month: modelData
@@ -869,7 +869,7 @@ HusInput {
 
                                             if (control.pickerMode == HusDateTimePicker.ModeQuarter) {
                                                 __private.selectDateTime(new Date(control.visualYear, (quarter - 1) * 3 + 1, 0),
-                                                                         !(control.showDate && control.showTime));
+                                                                         !(control.dateVisible && control.timeVisible));
                                             }
                                         }
                                         property int quarter: modelData + 1
@@ -880,7 +880,7 @@ HusInput {
 
                         Loader {
                             width: parent.width
-                            active: control.pickerMode == HusDateTimePicker.ModeDay && !control.showTime
+                            active: control.pickerMode == HusDateTimePicker.ModeDay && !control.timeVisible
                             sourceComponent: Rectangle {
                                 height: 1
                                 color: control.themeSource.colorSplitLine
@@ -889,19 +889,19 @@ HusInput {
 
                         Loader {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            active: control.pickerMode == HusDateTimePicker.ModeDay && !control.showTime
+                            active: control.pickerMode == HusDateTimePicker.ModeDay && !control.timeVisible
                             sourceComponent: HusButton {
                                 animationEnabled: control.animationEnabled
                                 type: HusButton.TypeLink
                                 text: qsTr('今天')
-                                onClicked: __private.selectDateTime(new Date(), !(control.showDate && control.showTime));
+                                onClicked: __private.selectDateTime(new Date(), !(control.dateVisible && control.timeVisible));
                             }
                         }
                     }
 
                     Loader {
                         height: parent.height
-                        active: control.showDate && control.showTime
+                        active: control.dateVisible && control.timeVisible
                         sourceComponent: Item {
                             width: 8
 
@@ -915,13 +915,13 @@ HusInput {
                     }
 
                     ColumnLayout {
-                        visible: control.showTime
+                        visible: control.timeVisible
                         height: Math.max(220, parent.height)
 
                         Item {
                             Layout.fillWidth: true
                             Layout.preferredHeight: 36
-                            visible: control.showDate
+                            visible: control.dateVisible
 
                             HusText {
                                 anchors.centerIn: parent
@@ -931,13 +931,13 @@ HusInput {
                                     bold: true
                                 }
                                 text: {
-                                    switch (control.timeFormat) {
-                                    case HusDateTimePicker.FormatHHMMSS:
-                                        return `${__hourListView.checkValue}:${__minuteListView.checkValue}:${__secondListView.checkValue}`;
-                                    case HusDateTimePicker.FormatHHMM:
-                                        return `${__hourListView.checkValue}:${__minuteListView.checkValue}`;
-                                    case HusDateTimePicker.FormatMMSS:
-                                        return `${__minuteListView.checkValue}:${__secondListView.checkValue}`;
+                                    switch (control.timePattern) {
+                                        case HusDateTimePicker.PatternHHMMSS:
+                                            return `${__hourListView.checkValue}:${__minuteListView.checkValue}:${__secondListView.checkValue}`;
+                                        case HusDateTimePicker.PatternHHMM:
+                                            return `${__hourListView.checkValue}:${__minuteListView.checkValue}`;
+                                        case HusDateTimePicker.PatternMMSS:
+                                            return `${__minuteListView.checkValue}:${__secondListView.checkValue}`;
                                     }
                                 }
                                 color: control.themeSource.colorTimeHeaderText
@@ -948,7 +948,7 @@ HusInput {
                                 height: 1
                                 anchors.bottom: parent.bottom
                                 color: control.themeSource.colorSplitLine
-                                visible: control.showDate && control.showTime
+                                visible: control.dateVisible && control.timeVisible
                             }
                         }
 
@@ -959,8 +959,8 @@ HusInput {
                             TimeListView {
                                 id: __hourListView
                                 model: 24
-                                visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
-                                         control.timeFormat == HusDateTimePicker.FormatHHMM
+                                visible: control.timePattern == HusDateTimePicker.PatternHHMMSS ||
+                                         control.timePattern == HusDateTimePicker.PatternHHMM
 
                                 Rectangle {
                                     width: 1
@@ -973,16 +973,16 @@ HusInput {
                             TimeListView {
                                 id: __minuteListView
                                 model: 60
-                                visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
-                                         control.timeFormat == HusDateTimePicker.FormatHHMM ||
-                                         control.timeFormat == HusDateTimePicker.FormatMMSS
+                                visible: control.timePattern == HusDateTimePicker.PatternHHMMSS ||
+                                         control.timePattern == HusDateTimePicker.PatternHHMM ||
+                                         control.timePattern == HusDateTimePicker.PatternMMSS
 
                                 Rectangle {
                                     width: 1
                                     height: parent.height
                                     anchors.right: parent.right
-                                    visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
-                                             control.timeFormat == HusDateTimePicker.FormatMMSS
+                                    visible: control.timePattern == HusDateTimePicker.PatternHHMMSS ||
+                                             control.timePattern == HusDateTimePicker.PatternMMSS
                                     color: control.themeSource.colorSplitLine
                                 }
                             }
@@ -990,16 +990,16 @@ HusInput {
                             TimeListView {
                                 id: __secondListView
                                 model: 60
-                                visible: control.timeFormat == HusDateTimePicker.FormatHHMMSS ||
-                                         control.timeFormat == HusDateTimePicker.FormatMMSS
+                                visible: control.timePattern == HusDateTimePicker.PatternHHMMSS ||
+                                         control.timePattern == HusDateTimePicker.PatternMMSS
                             }
                         }
                     }
                 }
 
                 Loader {
-                    width: parent.width - (control.showDate ? 8 : 0)
-                    active: control.showTime
+                    width: parent.width - (control.dateVisible ? 8 : 0)
+                    active: control.timeVisible
                     sourceComponent: Item {
                         height: 32
 

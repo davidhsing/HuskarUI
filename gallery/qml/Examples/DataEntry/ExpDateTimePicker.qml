@@ -31,10 +31,10 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-showDate | bool | - | 显示日期部分
-showTime | bool | - | 显示时间部分
+dateVisible | bool | - | 显示日期部分
+timeVisible | bool | - | 显示时间部分
 pickerMode | int | HusDateTimePicker.ModeDay | 日期选择模式(来自 HusDateTimePicker)
-timeFormat | int | HusDateTimePicker.FormatHHMMSS | 时间选择模式(来自 HusDateTimePicker)
+timePattern | int | HusDateTimePicker.PatternHHMMSS | 时间选择模式(来自 HusDateTimePicker)
 initDateTime | date | undefined | 初始日期时间
 currentDateTime | date | - | 当前日期时间
 currentYear | int | - | 当前年份
@@ -87,18 +87,18 @@ radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
             descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法，在浮层中可以选择或者输入日期。\n
-通过 \`showDate\` 属性设置是否显示日期选择部分。\n
-通过 \`showTime\` 属性设置是否显示时间选择部分。\n
+通过 \`dateVisible\` 属性设置是否显示日期选择部分。\n
+通过 \`timeVisible\` 属性设置是否显示时间选择部分。\n
 通过 \`pickerMode\` 属性设置日期选择模式，支持的模式：\n
 - 年份选择模式{ HusDateTimePicker.ModeYear }\n
 - 季度选择模式{ HusDateTimePicker.ModeQuarter }\n
 - 月选择模式{ HusDateTimePicker.ModeMonth }\n
 - 周选择模式{ HusDateTimePicker.ModeWeek }\n
 - 天选择模式(默认){ HusDateTimePicker.ModeDay }\n
-通过 \`timeFormat\` 属性设置时间选择模式，支持的模式：\n
-- 小时分钟秒{hh:mm:ss}(默认){ HusDateTimePicker.FormatHHMMSS }\n
-- 小时分钟{hh:mm}{ HusDateTimePicker.FormatHHMM }\n
-- 分钟秒{mm:ss}{ HusDateTimePicker.FormatMMSS }\n
+通过 \`timePattern\` 属性设置时间选择模式，支持的模式：\n
+- 小时分钟秒{hh:mm:ss}(默认){ HusDateTimePicker.PatternHHMMSS }\n
+- 小时分钟{hh:mm}{ HusDateTimePicker.PatternHHMM }\n
+- 分钟秒{mm:ss}{ HusDateTimePicker.PatternMMSS }\n
 通过 \`format\` 属性设置日期时间格式：\n
 年月日时分秒遵从一般日期格式 \`yyyy MM dd hh mm ss\`，而 \`w\` 将替换为周数，\`q\` 将替换为季度。\n
                        `)
@@ -117,42 +117,42 @@ Column {
     HusDateTimePicker {
         placeholderText: qsTr('请选择日期')
         pickerMode: HusDateTimePicker.ModeDay
-        showTime: false
+        timeVisible: false
         format: qsTr('yyyy-MM-dd')
     }
 
     HusDateTimePicker {
         placeholderText: qsTr('请选择周')
         pickerMode: HusDateTimePicker.ModeWeek
-        showTime: false
+        timeVisible: false
         format: qsTr('yyyy-w周')
     }
 
     HusDateTimePicker {
         placeholderText: qsTr('请选择月份')
         pickerMode: HusDateTimePicker.ModeMonth
-        showTime: false
+        timeVisible: false
         format: qsTr('yyyy-MM')
     }
 
     HusDateTimePicker {
         placeholderText: qsTr('请选择季度')
         pickerMode: HusDateTimePicker.ModeQuarter
-        showTime: false
+        timeVisible: false
         format: qsTr('yyyy-Qq')
     }
 
     HusDateTimePicker {
         placeholderText: qsTr('请选择年份')
         pickerMode: HusDateTimePicker.ModeYear
-        showTime: false
+        timeVisible: false
         format: qsTr('yyyy')
     }
 
     HusDateTimePicker {
         placeholderText: qsTr('请选择时间')
-        showDate: false
-        timeFormat: HusDateTimePicker.FormatHHMMSS
+        dateVisible: false
+        timePattern: HusDateTimePicker.PatternHHMMSS
         format: qsTr('hh:mm:ss')
     }
 }
@@ -168,42 +168,42 @@ Column {
                 HusDateTimePicker {
                     placeholderText: qsTr('请选择日期')
                     pickerMode: HusDateTimePicker.ModeDay
-                    showTime: false
+                    timeVisible: false
                     format: qsTr('yyyy-MM-dd')
                 }
 
                 HusDateTimePicker {
                     placeholderText: qsTr('请选择周')
                     pickerMode: HusDateTimePicker.ModeWeek
-                    showTime: false
+                    timeVisible: false
                     format: qsTr('yyyy-w周')
                 }
 
                 HusDateTimePicker {
                     placeholderText: qsTr('请选择月份')
                     pickerMode: HusDateTimePicker.ModeMonth
-                    showTime: false
+                    timeVisible: false
                     format: qsTr('yyyy-MM')
                 }
 
                 HusDateTimePicker {
                     placeholderText: qsTr('请选择季度')
                     pickerMode: HusDateTimePicker.ModeQuarter
-                    showTime: false
+                    timeVisible: false
                     format: qsTr('yyyy-Qq')
                 }
 
                 HusDateTimePicker {
                     placeholderText: qsTr('请选择年份')
                     pickerMode: HusDateTimePicker.ModeYear
-                    showTime: false
+                    timeVisible: false
                     format: qsTr('yyyy')
                 }
 
                 HusDateTimePicker {
                     placeholderText: qsTr('请选择时间')
-                    showDate: false
-                    timeFormat: HusDateTimePicker.FormatHHMMSS
+                    dateVisible: false
+                    timePattern: HusDateTimePicker.PatternHHMMSS
                     format: qsTr('hh:mm:ss')
                 }
             }
@@ -223,20 +223,20 @@ Row {
     spacing: 10
 
     HusDateTimePicker {
-        showDate: false
-        timeFormat: HusDateTimePicker.FormatHHMMSS
+        dateVisible: false
+        timePattern: HusDateTimePicker.PatternHHMMSS
         format: 'hh:mm:ss'
     }
 
     HusDateTimePicker {
-        showDate: false
-        timeFormat: HusDateTimePicker.FormatHHMM
+        dateVisible: false
+        timePattern: HusDateTimePicker.PatternHHMM
         format: 'hh:mm'
     }
 
     HusDateTimePicker {
-        showDate: false
-        timeFormat: HusDateTimePicker.FormatMMSS
+        dateVisible: false
+        timePattern: HusDateTimePicker.PatternMMSS
         format: 'mm:ss'
     }
 }
@@ -245,20 +245,20 @@ Row {
                 spacing: 10
 
                 HusDateTimePicker {
-                    showDate: false
-                    timeFormat: HusDateTimePicker.FormatHHMMSS
+                    dateVisible: false
+                    timePattern: HusDateTimePicker.PatternHHMMSS
                     format: 'hh:mm:ss'
                 }
 
                 HusDateTimePicker {
-                    showDate: false
-                    timeFormat: HusDateTimePicker.FormatHHMM
+                    dateVisible: false
+                    timePattern: HusDateTimePicker.PatternHHMM
                     format: 'hh:mm'
                 }
 
                 HusDateTimePicker {
-                    showDate: false
-                    timeFormat: HusDateTimePicker.FormatMMSS
+                    dateVisible: false
+                    timePattern: HusDateTimePicker.PatternMMSS
                     format: 'mm:ss'
                 }
             }
@@ -284,7 +284,7 @@ Column {
         initDateTime: new Date(2025, 4, 1)
         placeholderText: qsTr('请选择日期')
         pickerMode: HusDateTimePicker.ModeDay
-        showTime: false
+        timeVisible: false
         format: qsTr('yyyy-MM-dd')
         dayDelegate: HusButton {
             padding: 0
@@ -331,7 +331,7 @@ Column {
                     initDateTime: new Date(2025, 4, 1)
                     placeholderText: qsTr('请选择日期')
                     pickerMode: HusDateTimePicker.ModeDay
-                    showTime: false
+                    timeVisible: false
                     format: qsTr('yyyy-MM-dd')
                     dayDelegate: HusButton {
                         padding: 0

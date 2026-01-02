@@ -478,7 +478,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         total: 1000
         pageSize: 100
-        showQuickJumper: true
+        quickJumperVisible: true
         onCurrentPageIndexChanged: {
             /*! 生成一些数据 */
             tableView.initModel = Array.from({ length: pageSize }).map(
@@ -586,7 +586,7 @@ Column {
                     anchors.horizontalCenter: parent.horizontalCenter
                     total: 1000
                     pageSize: 100
-                    showQuickJumper: true
+                    quickJumperVisible: true
                     onCurrentPageIndexChanged: {
                         /*! 生成一些数据 */
                         tableView.initModel = Array.from({ length: pageSize }).map(
@@ -668,7 +668,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         total: 1000
         pageSize: 100
-        showQuickJumper: true
+        quickJumperVisible: true
         onCurrentPageIndexChanged: {
             /*! 生成一些数据 */
             sortAndFilterTable.initModel = Array.from({ length: pageSize }).map(
@@ -734,7 +734,7 @@ Column {
                     anchors.horizontalCenter: parent.horizontalCenter
                     total: 1000
                     pageSize: 100
-                    showQuickJumper: true
+                    quickJumperVisible: true
                     onCurrentPageIndexChanged: {
                         /*! 生成一些数据 */
                         sortAndFilterTable.initModel = Array.from({ length: pageSize }).map(

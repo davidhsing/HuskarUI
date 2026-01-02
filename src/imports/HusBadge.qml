@@ -20,7 +20,7 @@ Item {
     property int count: 0
     property var iconSource: 0 ?? ''
     property bool dot: false
-    property bool showZero: false
+    property bool zeroVisible: false
     property int overflowCount: 99
     property font font: Qt.font({
         family: __private.isNumber ? HusTheme.Primary.fontPrimaryFamily : 'HuskarUI-Icons',
@@ -164,7 +164,7 @@ Item {
         anchors.centerIn: parent
         radius: height / 2
         color: control.colorBg
-        scale: (control.dot || control.count > 0 || control.showZero || !__private.isNumber) ? 1 : 0
+        scale: (control.dot || control.count > 0 || control.zeroVisible || !__private.isNumber) ? 1 : 0
 
         Behavior on scale {
             enabled: control.animationEnabled
@@ -184,7 +184,7 @@ Item {
 
             HusText {
                 id: __content
-                visible: (control.count > 0 || control.showZero || !__private.isNumber) && !__upAnimation.running && !__downAnimation.running
+                visible: (control.count > 0 || control.zeroVisible || !__private.isNumber) && !__upAnimation.running && !__downAnimation.running
                 font: control.font
                 text: control.iconSource === 0 ? (control.count > control.overflowCount ? `${control.overflowCount}+` : control.count) :
                                                  String.fromCharCode(control.iconSource)
@@ -194,7 +194,7 @@ Item {
 
             ListView {
                 id: __numberList
-                visible: (control.count > 0 || control.showZero || !__private.isNumber) && control.iconSource === 0 && !__content.visible
+                visible: (control.count > 0 || control.zeroVisible || !__private.isNumber) && control.iconSource === 0 && !__content.visible
                 anchors.fill: parent
                 interactive: false
                 clip: true

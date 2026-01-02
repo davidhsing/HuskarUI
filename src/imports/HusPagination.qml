@@ -8,7 +8,6 @@ Item {
     property int defaultButtonWidth: 32
     property int defaultButtonHeight: 32
     property int defaultButtonSpacing: 8
-    property bool showQuickJumper: false
     property int currentPageIndex: 0
     property int total: 0
     property int pageTotal: pageSize > 0 ? Math.ceil(total / pageSize) : 0
@@ -19,6 +18,7 @@ Item {
     property string nextButtonTooltip: qsTr('下一页')
     property string prevMoreTooltip: qsTr('向前5页')
     property string nextMoreTooltip: qsTr('向后5页')
+    property bool quickJumperVisible: false
     property string quickJumperPrefix: qsTr('跳至')
     property string quickJumperSuffix: ''
     property Component prevButtonDelegate: ActionButton {
@@ -132,7 +132,7 @@ Item {
         colorBorder: 'transparent'
         text: '•••'
 
-        property bool showIcon: (enabled && (down || hovered))
+        property bool iconVisible: (enabled && (down || hovered))
         property bool isPrev: false
         property alias tooltipText: __moreTooltip.text
 
@@ -143,7 +143,7 @@ Item {
             alwaysRunToEnd: true
             ScriptAction {
                 script: {
-                    if (__moreRoot.showIcon) {
+                    if (__moreRoot.iconVisible) {
                         __moreRoot.text = '';
                         __moreRoot.iconSource = __moreRoot.isPrev ? HusIcon.DoubleLeftOutlined : HusIcon.DoubleRightOutlined;
                     } else {
@@ -276,7 +276,7 @@ Item {
 
         Loader {
             anchors.verticalCenter: parent.verticalCenter
-            sourceComponent: control.showQuickJumper ? control.quickJumperDelegate : null
+            sourceComponent: control.quickJumperVisible ? control.quickJumperDelegate : null
         }
     }
 

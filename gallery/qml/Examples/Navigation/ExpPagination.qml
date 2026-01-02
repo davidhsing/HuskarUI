@@ -30,7 +30,6 @@ animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 defaultButtonWidth | int | 32 | 按钮宽度
 defaultButtonHeight | int | 32 | 按钮高度
 defaultButtonSpacing | int | 8 | 按钮间隔
-showQuickJumper | bool | false | 是否显示快速跳转
 currentPageIndex | int | 0 | 当前页索引
 total | int | 0 | 数据项总数
 pageTotal | int | - | 页总数
@@ -41,6 +40,7 @@ prevButtonTooltip | string | '上一页' | 上一页按钮的提示文本(为空
 nextButtonTooltip | string | '下一页' | 下一页按钮的提示文本(为空则不显示)
 prevMoreTooltip | string | '向前5页' | 向前更多的提示文本(为空则不显示)
 nextMoreTooltip | string | '向后5页' | 向后更多的提示文本(为空则不显示)
+quickJumperVisible | bool | false | 是否显示快速跳转
 quickJumperPrefix | string | '跳至' | 快捷跳转的前置文本(为空则不显示)
 quickJumperSuffix | string | - | 快捷跳转的后置文本(为空则不显示)
 \n<br/>
@@ -163,7 +163,7 @@ Column {
             width: parent.width
             descTitle: qsTr('跳转')
             desc: qsTr(`
-通过 \`showQuickJumper\` 显示快速跳转项，可通过 \`quickJumperDelegate\` 自定义。
+通过 \`quickJumperVisible\` 显示快速跳转项，可通过 \`quickJumperDelegate\` 自定义。
                        `)
             code: `
 import QtQuick
@@ -175,7 +175,7 @@ Column {
     HusPagination {
         currentPageIndex: 6
         total: 500
-        showQuickJumper: true
+        quickJumperVisible: true
         pageSizeModel: [
             { label: qsTr('10条每页'), value: 10 },
             { label: qsTr('20条每页'), value: 20 },
@@ -188,7 +188,7 @@ Column {
         enabled: false
         currentPageIndex: 6
         total: 500
-        showQuickJumper: true
+        quickJumperVisible: true
         pageSizeModel: [
             { label: qsTr('10条每页'), value: 10 },
             { label: qsTr('20条每页'), value: 20 },
@@ -204,7 +204,7 @@ Column {
                 HusPagination {
                     currentPageIndex: 6
                     total: 500
-                    showQuickJumper: true
+                    quickJumperVisible: true
                     pageSizeModel: [
                         { label: qsTr('10条每页'), value: 10 },
                         { label: qsTr('20条每页'), value: 20 },
@@ -217,7 +217,7 @@ Column {
                     enabled: false
                     currentPageIndex: 6
                     total: 500
-                    showQuickJumper: true
+                    quickJumperVisible: true
                     pageSizeModel: [
                         { label: qsTr('10条每页'), value: 10 },
                         { label: qsTr('20条每页'), value: 20 },

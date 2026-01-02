@@ -28,8 +28,8 @@ imageSource | string | '' | 自定义的图片地址(优先显示此地址)
 imageStyle | int | HusEmpty.ImageDefault | 预设的图片样式(来自 HusEmpty)
 imageWidth | int | - | 图片宽度
 imageHeight | int | - | 图片高度
-showDescription | bool | true | 是否显示描述文本
-description | string | '' | 描述文本
+descriptionVisible | bool | true | 是否显示描述文本
+descriptionText | string | '' | 描述文本
 descriptionFont | font | - | 描述文本字体
 descriptionSpacing | int | 12 | 描述文本与图像的间距
 colorDescription | color | - | 描述文本颜色
@@ -59,7 +59,7 @@ colorDescription | color | - | 描述文本颜色
 最简单的用法，支持图像和描述。\n
 通过 \`imageSource\` 属性设置图片地址。\n
 通过 \`imageStyle\` 属性设置预设的图片样式。\n
-通过 \`description\` 属性设置描述文本。\n
+通过 \`descriptionText\` 属性设置描述文本。\n
                        `)
             code: `
 import QtQuick
@@ -86,7 +86,7 @@ Column {
         HusEmpty {
             anchors.fill: parent
             imageStyle: imageStyleRadio.currentCheckedValue
-            description: qsTr('暂无数据')
+            descriptionText: qsTr('暂无数据')
         }
     }
 }
@@ -112,7 +112,7 @@ Column {
                     HusEmpty {
                         anchors.fill: parent
                         imageStyle: imageStyleRadio.currentCheckedValue
-                        description: qsTr('暂无数据')
+                        descriptionText: qsTr('暂无数据')
                     }
                 }
             }

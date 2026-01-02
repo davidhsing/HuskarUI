@@ -14,8 +14,8 @@ Item {
     property alias clearIconSize: __input.clearIconSize
     property alias clearIconPosition: __input.clearIconPosition
     property alias readOnly: __input.readOnly
-    property bool showHandler: true
-    property bool alwaysShowHandler: false
+    property bool handlerVisible: true
+    property bool handlerAlwaysVisible: false
     property bool useWheel: false
     property bool useKeyboard: true
     property real value: 0
@@ -89,7 +89,7 @@ Item {
         id: __handlerRoot
         clip: true
         enabled: control.enabled
-        width: enabled && (__input.hovered || control.alwaysShowHandler) ? control.defaultHandlerWidth : 0
+        width: enabled && (__input.hovered || control.handlerAlwaysVisible) ? control.defaultHandlerWidth : 0
 
         property real halfHeight: height / 2
         property real hoverHeight: height * 0.6
@@ -321,7 +321,7 @@ Item {
                 anchors.right: parent.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                active: control.showHandler && !__input.readOnly
+                active: control.handlerVisible && !__input.readOnly
                 sourceComponent: control.handlerDelegate
             }
 

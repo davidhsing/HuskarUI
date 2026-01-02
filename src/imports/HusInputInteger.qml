@@ -15,8 +15,8 @@ T.SpinBox {
     property alias clearIconSize: __input.clearIconSize
     property alias clearIconPosition: __input.clearIconPosition
     property alias readOnly: __input.readOnly
-    property bool showHandler: true
-    property bool alwaysShowHandler: false
+    property bool handlerVisible: true
+    property bool handlerAlwaysVisible: false
     property bool useWheel: false
     property bool useKeyboard: true
     property alias min: control.from
@@ -85,7 +85,7 @@ T.SpinBox {
         id: __handlerRoot
         clip: true
         enabled: control.enabled
-        width: enabled && (control.hovered || control.alwaysShowHandler) ? control.defaultHandlerWidth : 0
+        width: enabled && (control.hovered || control.handlerAlwaysVisible) ? control.defaultHandlerWidth : 0
 
         property real halfHeight: height / 2
         property real hoverHeight: height * 0.6
@@ -299,7 +299,7 @@ T.SpinBox {
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            active: control.showHandler && !__input.readOnly
+            active: control.handlerVisible && !__input.readOnly
             sourceComponent: control.handlerDelegate
         }
     }

@@ -33,8 +33,8 @@ Item {
             case HusEmpty.ImageSimple: return 41;
         }
     }
-    property bool showDescription: true
-    property string description: ''
+    property bool descriptionVisible: true
+    property string descriptionText: ''
     property int descriptionSpacing: 12
     property font descriptionFont: Qt.font({
         family: HusTheme.HusEmpty.fontFamily,
@@ -49,7 +49,7 @@ Item {
         sourceSize: Qt.size(width, height)
     }
     property Component descriptionDelegate: HusText {
-        text: control.description
+        text: control.descriptionText
         font: control.descriptionFont
         color: control.colorDescription
         horizontalAlignment: Text.AlignHCenter
@@ -75,7 +75,7 @@ Item {
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
             visible: active
-            active: control.showDescription
+            active: control.descriptionVisible
             sourceComponent: control.descriptionDelegate
         }
     }
