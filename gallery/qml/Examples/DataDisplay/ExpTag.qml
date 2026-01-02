@@ -39,7 +39,7 @@ colorBorder | color | - | 边框颜色
 colorIcon | color | - | 图标颜色
 \n<br/>
 \n### 支持的信号：\n
-- \`close()\` 点击关闭图标(如果有)时发出\n
+- \`closed()\` 点击关闭图标(如果有)时发出\n
                        `)
         }
 
@@ -66,7 +66,7 @@ colorIcon | color | - | 图标颜色
 基本标签的用法\n
 通过 \`text\` 设置标签文本。\n
 通过 \`closeIconSource\` 设置关闭图标。\n
-点击关闭图标将发送 \`close\` 信号。\n
+点击关闭图标将发送 \`closed\` 信号。\n
                        `)
             code: `
 import QtQuick
@@ -219,7 +219,7 @@ Column {
             width: parent.width
             descTitle: qsTr('动态添加和删除')
             desc: qsTr(`
-简单生成一组标签，利用 \`close()\` 信号可以实现动态添加和删除。\n
+简单生成一组标签，利用 \`closed()\` 信号可以实现动态添加和删除。\n
                        `)
             code: `
 import QtQuick

@@ -34,13 +34,13 @@ Flickable {
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 position | enum | HusNotification.PositionTop | 通知显示的位置(来自HusNotification)
 pauseOnHover | bool | true | 是否悬浮暂停超时
-showProgress | bool | false | 是否显示进度条
+progressVisible | bool | false | 是否显示进度条
 stackMode | bool | true | 堆叠模式(超过stackThreshold自动堆叠)
 stackThreshold | int | 5 | 堆叠阈值
 defaultIconSize | int | 20 | 默认图标大小
 maxNotificationWidth | int | 300 | 通知框最大宽度
 spacing | int | 10 | 通知之间的间隔
-closeButtonVisible | bool | false | 是否显示关闭按钮
+closable | bool | false | 是否显示关闭按钮
 topMargin | int | 12 | 通知距离顶端的距离
 bgTopPadding | int | 12 | 背景上部填充
 bgBottomPadding | int | 12 | 背景下部填充
@@ -485,7 +485,7 @@ Row {
             width: parent.width
             descTitle: qsTr('显示进度条')
             desc: qsTr(`
-通过 \`showProgress\` 属性设置是否显示进度条。\n
+通过 \`progressVisible\` 属性设置是否显示进度条。\n
                        `)
             code: `
 import QtQuick
@@ -502,7 +502,7 @@ Row {
         anchors.fill: parent
         anchors.topMargin: captionBar.height
         position: HusNotification.PositionTopRight
-        showProgress: true
+        progressVisible: true
     }
 
     HusButton {
@@ -522,7 +522,7 @@ Row {
                     anchors.fill: parent
                     anchors.topMargin: captionBar.height
                     position: HusNotification.PositionTopRight
-                    showProgress: true
+                    progressVisible: true
                 }
 
                 HusButton {

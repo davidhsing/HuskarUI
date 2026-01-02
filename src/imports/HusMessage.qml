@@ -20,7 +20,7 @@ Item {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property int defaultIconSize: 18
-    property bool closeButtonVisible: false
+    property bool closable: false
     property int spacing: 10
     property int topMargin: 12
     property int bgTopPadding: 12
@@ -192,7 +192,7 @@ Item {
 
                         Loader {
                             Layout.alignment: Qt.AlignVCenter
-                            active: control.closeButtonVisible
+                            active: control.closable
                             sourceComponent: HusCaptionButton {
                                 topPadding: 2
                                 bottomPadding: 2

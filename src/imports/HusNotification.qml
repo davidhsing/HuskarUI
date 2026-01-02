@@ -32,13 +32,13 @@ Item {
     property bool animationEnabled: HusTheme.animationEnabled
     property int position: HusNotification.PositionTop
     property bool pauseOnHover: true
-    property bool showProgress: false
+    property bool progressVisible: false
     property bool stackMode: true
     property int stackThreshold: 5
     property int defaultIconSize: 20
     property int maxNotificationWidth: 300
     property int spacing: 10
-    property bool closeButtonVisible: true
+    property bool closable: true
     property int topMargin: 12
     property int bgTopPadding: 12
     property int bgBottomPadding: 12
@@ -311,7 +311,7 @@ Item {
                         Loader {
                             Layout.alignment: Qt.AlignTop
                             Layout.topMargin: 5
-                            active: control.closeButtonVisible
+                            active: control.closable
                             sourceComponent: HusCaptionButton {
                                 topPadding: 2
                                 bottomPadding: 2
@@ -335,7 +335,7 @@ Item {
                         height: 2
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.bottom: parent.bottom
-                        active: control.showProgress
+                        active: control.progressVisible
                         sourceComponent: HusProgress {
                             percent: (__rootItem.duration - __timer.time) / __rootItem.duration * 100
                             animationEnabled: false

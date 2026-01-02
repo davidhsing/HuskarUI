@@ -12,7 +12,7 @@ Rectangle {
         StateWarning  = 4
     }
 
-    signal close()
+    signal closed()
 
     property bool animationEnabled: HusTheme.animationEnabled
     property int tagState: HusTag.StateDefault
@@ -138,7 +138,7 @@ Rectangle {
 
             TapHandler {
                 id: __tapHander
-                onTapped: control.close();
+                onTapped: control.closed();
             }
         }
     }
