@@ -110,7 +110,7 @@ Item {
         barThickness: control.progressThickness
         gapDegree: control.progressGap
         useGradient: control.progressGradient
-        showInfo: false
+        infoVisible: false
     }
 
     // 麦克风图标

@@ -13,7 +13,7 @@ T.Popup {
     property Item currentTarget: null
     property int currentStep: 0
     property color colorOverlay: HusTheme.HusTour.colorOverlay
-    property bool showArrow: true
+    property bool arrowVisible: true
     property int arrowWidth: 16
     property int arrowHeight: 8
     property int focusMargin: 5
@@ -348,6 +348,8 @@ T.Popup {
                 anchors.horizontalCenter: parent.horizontalCenter
                 sourceComponent: control.arrowDelegate
                 rotation: __anchor.isTop ? 180 : 0
+                active: control.arrowVisible
+                visible: active
             }
 
             Loader {

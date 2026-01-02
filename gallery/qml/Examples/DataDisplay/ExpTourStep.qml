@@ -35,7 +35,7 @@ stepModel | list | [] | 步骤模型
 currentTarget | Item | null | 当前步骤目标
 currentStep | int | 0 | 当前步数
 overlayColor | color | - | 覆盖层颜色
-showArrow | bool | true |  是否显示箭头
+arrowVisible | bool | true |  是否显示箭头
 arrowWidth | int | 16 | 箭头宽度
 arrowHeight | int | 8 | 箭头高度
 focusMargin | int | 5 | 焦点边距

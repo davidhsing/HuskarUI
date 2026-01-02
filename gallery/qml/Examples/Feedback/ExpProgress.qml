@@ -36,7 +36,7 @@ gap | real | 4 | 步骤间隔(步骤形式时有效)
 gapDegree | real | 60 | 间隔角度(仪表盘进度条时有效)
 useGradient | bool | false | 是否使用渐变色
 gradientStops | object | - | 渐变色样式对象
-showInfo | bool | true | 是否显示进度数值或状态图标
+infoVisible | bool | true | 是否显示进度数值或状态图标
 precision | int | 0 | 进度文本显示的小数点精度
 formatter | function | - | 信息文本格式化器
 colorBar | color | - | 进度条颜色
@@ -89,7 +89,7 @@ Column {
     HusProgress { width: parent.width; percent: 50; status: HusProgress.StatusActive }
     HusProgress { width: parent.width; percent: 70; status: HusProgress.StatusException }
     HusProgress { width: parent.width; percent: 100; status: HusProgress.StatusSuccess }
-    HusProgress { width: parent.width; percent: 50; showInfo: false }
+    HusProgress { width: parent.width; percent: 50; infoVisible: false }
 }
             `
             exampleDelegate: Column {
@@ -99,7 +99,7 @@ Column {
                 HusProgress { width: parent.width; percent: 50; status: HusProgress.StatusActive }
                 HusProgress { width: parent.width; percent: 70; status: HusProgress.StatusException }
                 HusProgress { width: parent.width; percent: 100; status: HusProgress.StatusSuccess }
-                HusProgress { width: parent.width; percent: 50; showInfo: false }
+                HusProgress { width: parent.width; percent: 50; infoVisible: false }
             }
         }
 

@@ -32,7 +32,7 @@ Item {
         '0%': control.colorBar,
         '100%': control.colorBar
     })
-    property bool showInfo: true
+    property bool infoVisible: true
     property int precision: 0
     property var formatter: () => {
         switch (control.status) {
@@ -298,10 +298,11 @@ Item {
 
     Loader {
         id: __infoLoader
-        active: control.showInfo
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: control.type === HusProgress.TypeLine ? undefined : parent.horizontalCenter
         anchors.right: control.type === HusProgress.TypeLine ? parent.right : undefined
         sourceComponent: control.infoDelegate
+        active: control.infoVisible
+        visible: active
     }
 }
