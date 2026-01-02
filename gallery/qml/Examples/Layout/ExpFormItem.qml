@@ -26,7 +26,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否启用动画
-layout | int | HusFormItem.LayoutVertical | 布局方式(来自 HusFormItem)
+orientation | enum | Qt.Horizontal | 方向(Qt.Horizontal 或 Qt.Vertical)
 required | bool | false | 是否必填，为 true 时标签前显示红色星号
 requiredSpacing | int | 4 | 红色星号与标签的间距
 labelText | string | '' | 标签文本
@@ -97,7 +97,7 @@ Column {
     HusFormItem {
         labelText: '用户名'
         width: parent.width
-        layout: HusFormItem.LayoutHorizontal
+        orientation: Qt.Horizontal
         labelAlign: horizontalAlignRadio.currentCheckedValue
         required: true
 
@@ -123,7 +123,7 @@ Column {
                 HusFormItem {
                     labelText: '用户名'
                     width: parent.width
-                    layout: HusFormItem.LayoutHorizontal
+                    orientation: Qt.Horizontal
                     labelAlign: horizontalAlignRadio.currentCheckedValue
                     required: true
 

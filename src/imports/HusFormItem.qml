@@ -6,11 +6,6 @@ Item {
     id: control
 
     // 枚举定义
-    enum LayoutType {
-        LayoutVertical = 0,
-        LayoutHorizontal = 1
-    }
-
     enum LabelAlign {
         AlignLeft = 0,
         AlignRight = 1
@@ -26,11 +21,11 @@ Item {
     property bool animationEnabled: HusTheme.animationEnabled
     property bool required: false
     property int requiredSpacing: 4
-    property int layout: HusFormItem.LayoutVertical
+    property int orientation: Qt.Vertical
     property string labelText: ''
     property int labelAlign: HusFormItem.AlignLeft
     property int labelWidth: 100
-    property int labelSpacing: (layout === HusFormItem.LayoutVertical) ? 4 : 10
+    property int labelSpacing: (control.orientation === Qt.Vertical) ? 4 : 10
     property string colonText: ':'
     property bool colonVisible: false
     property int feedbackSpacing: 2
@@ -61,7 +56,7 @@ Item {
     Loader {
         id: __mainLoader
         anchors.fill: parent
-        sourceComponent: (control.layout === HusFormItem.LayoutVertical) ? __verticalComponent : __horizontalComponent
+        sourceComponent: (control.orientation === Qt.Vertical) ? __verticalComponent : __horizontalComponent
     }
 
     // 垂直布局组件
@@ -134,7 +129,7 @@ Item {
             // 标签区域
             Loader {
                 id: __labelLoader
-                Layout.alignment: (layout === HusFormItem.LayoutVertical) ? Qt.AlignVCenter : Qt.AlignTop
+                Layout.alignment: (control.orientation === Qt.Vertical) ? Qt.AlignVCenter : Qt.AlignTop
                 Layout.preferredWidth: control.labelWidth
                 Layout.preferredHeight: __horizontalRowLayout.maxContentHeight
                 sourceComponent: __labelComponent
@@ -152,7 +147,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     onChildrenRectChanged: {
-                        if (control.layout === HusFormItem.LayoutHorizontal) {
+                        if (control.orientation === Qt.Horizontal) {
                             __horizontalRowLayout.recalculateMaxHeight();
                         }
                     }
@@ -160,7 +155,7 @@ Item {
                         for (let i = 0; i < __contentItem.data.length; i++) {
                             __contentItem.data[i].parent = __horizontalContentArea;
                         }
-                        if (control.layout === HusFormItem.LayoutHorizontal) {
+                        if (control.orientation === Qt.Horizontal) {
                             __horizontalRowLayout.recalculateMaxHeight();
                         }
                     }
