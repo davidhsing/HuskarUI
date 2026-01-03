@@ -104,7 +104,7 @@ Item {
     FileDialog {
         id: __fileDialog
         visible: false
-        fileMode: (control.browserMode === HusFileBrowser.ModeSaveFile) ? FileDialog.ModeSaveFile : ((control.browserMode === HusFileBrowser.ModeOpenFile) ? FileDialog.ModeOpenFile : FileDialog.ModeOpenFiles)
+        fileMode: (control.browserMode === HusFileBrowser.ModeSaveFile) ? FileDialog.SaveFile : ((control.browserMode === HusFileBrowser.ModeOpenFile) ? FileDialog.OpenFile : FileDialog.OpenFiles)
         currentFolder: ((control.browserMode === HusFileBrowser.ModeOpenFile || control.browserMode === HusFileBrowser.ModeSaveFile) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
         defaultSuffix: control.defaultSuffix
         nameFilters: control.nameFilters
