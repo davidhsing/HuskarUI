@@ -51,7 +51,7 @@ readOnlyBg | bool | false | 当只读时是否采用禁用时的背景色
 ariaConstrual | string | '' | 内容描述(提高可用性)
 \n<br/>
 \n### 支持的信号：\n
-- \`clickClear()\` 点击清除图标时发出\n
+- \`cleared()\` 点击清除图标时发出\n
                        `)
         }
 

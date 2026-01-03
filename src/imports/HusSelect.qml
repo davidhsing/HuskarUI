@@ -5,7 +5,7 @@ import HuskarUI.Basic
 T.ComboBox {
     id: control
 
-    signal clickClear()
+    signal cleared()
 
     property bool animationEnabled: HusTheme.animationEnabled
     readonly property bool active: hovered || activeFocus
@@ -76,7 +76,7 @@ T.ComboBox {
                         control.editText = '';
                     }
                     control.currentIndex = -1;
-                    control.clickClear();
+                    control.cleared();
                 } else {
                     if (control.popup.opened) {
                         control.popup.close();

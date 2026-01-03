@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusSelect 选择器 \n
+# HusSelect 选择器\n
 下拉选择器。\n
 * **继承自 { ComboBox }**\n
 \n<br/>
@@ -45,7 +45,7 @@ radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗背景圆角
 ariaConstrual | string | '' | 内容描述(提高可用性)
 \n<br/>
 \n### 支持的信号：\n
-- \`clickClear()\` 点击清除图标时发出\n
+- \`cleared()\` 点击清除图标时发出\n
                        `)
         }
 

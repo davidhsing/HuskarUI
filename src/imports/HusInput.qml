@@ -5,7 +5,7 @@ import HuskarUI.Basic
 T.TextField {
     id: control
 
-    signal clickClear()
+    signal cleared()
 
     enum IconPosition {
         PositionLeft = 0,
@@ -78,7 +78,7 @@ T.TextField {
             enabled: (control.clearable === 'active' || control.clearable === true) && !control.readOnly
             onTapped: {
                 control.clear();
-                control.clickClear();
+                control.cleared();
             }
         }
     }
