@@ -37,7 +37,7 @@ HusInput {
     objectName: '__HusAutoComplete__'
     themeSource: HusTheme.HusAutoComplete
     iconPosition: HusInput.PositionRight
-    clearEnabled: 'active'
+    clearable: 'active'
     onClickClear: {
         control.clearInput();
     }

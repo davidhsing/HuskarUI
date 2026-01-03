@@ -266,7 +266,7 @@ Item {
         HusSelect {
             anchors.verticalCenter: parent.verticalCenter
             animationEnabled: control.animationEnabled
-            clearEnabled: false
+            clearable: false
             model: control.pageSizeModel
             visible: count > 0
             onActivated: (index) => {

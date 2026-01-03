@@ -26,7 +26,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 active | bool(readonly) | - | 是否处于激活状态
-clearEnabled | bool | false | 是否启用清除按钮
+clearable | bool | false | 是否启用清除按钮
 clearIconSource | int丨string | HusIcon.CloseCircleFilled | 清除图标源(来自 HusIcon)或图标链接
 defaultPopupMaxHeight | int | 240 | 默认弹窗最大高度
 danger | bool | false | 是否为警示状态

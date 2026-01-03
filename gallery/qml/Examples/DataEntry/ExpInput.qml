@@ -31,7 +31,7 @@ active | bool(readonly) | - | 是否处于激活状态
 iconSource | int丨string | 0丨'' | 图标源(来自 HusIcon)或图标链接
 iconSize | int | - | 图标大小
 iconPosition | enum | HusInput.PositionLeft | 图标位置(来自 HusInput)
-clearEnabled | bool丨'active' | false | 是否启用清除按钮(active-仅当激活状态下可见)
+clearable | bool丨'active' | false | 是否启用清除按钮(active-仅当激活状态下可见)
 clearIconSource | int丨string | HusIcon.CloseCircleFilled | 清除图标源(来自 HusIcon)或图标链接
 clearIconSize | int | - | 清除图标大小
 clearIconPosition | enum | HusInput.PositionRight | 清除图标位置(来自 HusInput)
@@ -79,7 +79,7 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
 通过 \`iconPosition\` 属性改变图标位置，支持的位置：\n
 - 图标在输入框左边(默认){ HusInput.PositionLeft }\n
 - 图标在输入框右边{ HusInput.PositionRight }\n
-通过 \`clearEnabled\` 设置是否启用清除按钮。\n
+通过 \`clearable\` 设置是否启用清除按钮。\n
 通过 \`clearIconSource\` 设置清除图标，为 0 则不显示。\n
 通过 \`clearIconSize\` 设置清除图标大小。\n
 通过 \`clearIconPosition\` 设置清除图标的位置，支持的位置：\n
@@ -101,7 +101,7 @@ Column {
     HusInput {
         width: 150
         placeholderText: 'Clear Active'
-        clearEnabled: 'active'
+        clearable: 'active'
     }
 
     HusInput {
@@ -136,7 +136,7 @@ Column {
                 HusInput {
                     width: 150
                     placeholderText: 'Clear Active'
-                    clearEnabled: 'active'
+                    clearable: 'active'
                 }
 
                 HusInput {

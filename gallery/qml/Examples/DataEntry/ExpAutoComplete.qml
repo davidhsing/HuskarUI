@@ -449,7 +449,7 @@ Row {
             width: parent.width
             descTitle: qsTr('自定义清除按钮')
             desc: qsTr(`
-通过 \`clearEnabled\` 设置是否启用清除按钮。\n
+通过 \`clearable\` 设置是否启用清除按钮。\n
 通过 \`clearIconSource\` 设置清除图标，为 0 则不显示。\n
 通过 \`clearIconSize\` 设置清除图标大小。\n
 通过 \`clearIconPosition\` 设置清除图标的位置，支持的位置：\n

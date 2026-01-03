@@ -34,7 +34,7 @@ changeableValue | color | defaultValue | 更改的颜色值
 changeableSync | bool | false | 是否自动同步更改的颜色值到颜色值(changeableValue->value)
 title | string | '' | 弹窗标题
 alphaEnabled | bool | true | 透明度是否启用
-clearEnabled | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
+clearable | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
 open | bool | false | 弹窗是否打开
 format | string | 'hex' | 颜色格式
 presets | list | [] | 预设颜色列表
@@ -163,7 +163,7 @@ Column {
                 HusColorPickerPanel {
                     id: colorPickerPanel
                     title: 'color picker panel'
-                    clearEnabled: true
+                    clearable: true
                     defaultValue: '#1677ff'
                     presets: [
                         { label: 'primary', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Blue) },

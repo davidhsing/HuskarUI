@@ -9,7 +9,7 @@ Item {
     signal afterActivated(index: int, var data)
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property alias clearEnabled: __input.clearEnabled
+    property alias clearable: __input.clearable
     property alias clearIconSource: __input.clearIconSource
     property alias clearIconSize: __input.clearIconSize
     property alias clearIconPosition: __input.clearIconPosition
@@ -174,7 +174,7 @@ Item {
             colorText: isBefore ? control.colorBeforeLabel : control.colorAfterLabel
             colorBg: 'transparent'
             colorBorder: 'transparent'
-            clearEnabled: false
+            clearable: false
             model: isBefore ? control.beforeLabel : control.afterLabel
             currentIndex: isBefore ? control.initBeforeLabelIndex : control.initAfterLabelIndex
             onActivated: (index) => {
@@ -257,13 +257,13 @@ Item {
 
                 HoverHandler {
                     id: __hoverHandler
-                    enabled: (control.clearEnabled === 'active' || control.clearEnabled === true) && !control.readOnly
+                    enabled: (control.clearable === 'active' || control.clearable === true) && !control.readOnly
                     cursorShape: Qt.PointingHandCursor
                 }
 
                 TapHandler {
                     id: __tapHandler
-                    enabled: (control.clearEnabled === 'active' || control.clearEnabled === true) && !control.readOnly
+                    enabled: (control.clearable === 'active' || control.clearable === true) && !control.readOnly
                     onTapped: control.clear();
                 }
             }

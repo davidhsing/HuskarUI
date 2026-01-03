@@ -9,7 +9,7 @@ T.ComboBox {
 
     property bool animationEnabled: HusTheme.animationEnabled
     readonly property bool active: hovered || activeFocus
-    property bool clearEnabled: false
+    property bool clearable: false
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int defaultPopupMaxHeight: 240
     property bool danger: false
@@ -45,7 +45,7 @@ T.ComboBox {
         }
         iconSize: control.themeSource.fontSize
         iconSource: {
-            if (control.enabled && control.clearEnabled && __clearMouseArea.active) {
+            if (control.enabled && control.clearable && __clearMouseArea.active) {
                 return control.clearIconSource;
             } else {
                 return control.loading ? HusIcon.LoadingOutlined : HusIcon.DownOutlined
@@ -71,7 +71,7 @@ T.ComboBox {
             onEntered: hovered = true;
             onExited: hovered = false;
             onClicked: function(mouse) {
-                if (active && control.clearEnabled) {
+                if (active && control.clearable) {
                     if (control.editable) {
                         control.editText = '';
                     }

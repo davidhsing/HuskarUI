@@ -17,7 +17,7 @@ T.Control {
     property bool changeableSync: false
     property string title: ''
     property bool alphaEnabled: true
-    property bool clearEnabled: false
+    property bool clearable: false
     property string format: 'hex'
     property var presets: []
     property int presetsOrientation: Qt.Vertical
@@ -317,7 +317,7 @@ T.Control {
                     Connections {
                         target: __private
                         function onTransparentChanged() {
-                            if (control.clearEnabled) {
+                            if (control.clearable) {
                                 __emptyCanvas.requestPaint();
                             }
                         }
@@ -330,7 +330,7 @@ T.Control {
                     iconSource: HusIcon.CloseCircleOutlined
                     iconSize: 16
                     colorIcon: control.invertColor(__private.value)
-                    visible: control.clearEnabled && !__private.transparent && __hoverHandler.hovered
+                    visible: control.clearable && !__private.transparent && __hoverHandler.hovered
                     scale: __hoverHandler.hovered ? 1.1 : 1.0
 
                     Behavior on scale {
@@ -341,12 +341,12 @@ T.Control {
 
                 HoverHandler {
                     id: __hoverHandler
-                    cursorShape: control.clearEnabled && !__private.transparent ? Qt.PointingHandCursor : Qt.ArrowCursor
+                    cursorShape: control.clearable && !__private.transparent ? Qt.PointingHandCursor : Qt.ArrowCursor
                 }
 
                 TapHandler {
                     onTapped: {
-                        if (control.clearEnabled && !control.isTransparent(__private.value, control.alphaEnabled)) {
+                        if (control.clearable && !control.isTransparent(__private.value, control.alphaEnabled)) {
                             __private.clearColor();
                         }
                     }
@@ -366,7 +366,7 @@ T.Control {
                 rightPadding: 0
                 animationEnabled: control.animationEnabled
                 font: control.inputFont
-                clearEnabled: false
+                clearable: false
                 valueRole: 'label'
                 background: Item { }
                 model: [

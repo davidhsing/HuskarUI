@@ -17,7 +17,7 @@ T.TextField {
     property var iconSource: 0 ?? ''
     property int iconSize: themeSource.fontIconSize
     property int iconPosition: HusInput.PositionLeft
-    property var clearEnabled: false ?? ''
+    property var clearable: false ?? ''
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int clearIconSize: themeSource.fontClearIconSize
     property int clearIconPosition: HusInput.PositionRight
@@ -69,13 +69,13 @@ T.TextField {
 
         HoverHandler {
             id: __hoverHandler
-            enabled: (control.clearEnabled === 'active' || control.clearEnabled === true) && !control.readOnly
+            enabled: (control.clearable === 'active' || control.clearable === true) && !control.readOnly
             cursorShape: Qt.PointingHandCursor
         }
 
         TapHandler {
             id: __tapHandler
-            enabled: (control.clearEnabled === 'active' || control.clearEnabled === true) && !control.readOnly
+            enabled: (control.clearable === 'active' || control.clearable === true) && !control.readOnly
             onTapped: {
                 control.clear();
                 control.clickClear();
@@ -127,7 +127,7 @@ T.TextField {
 
     Loader {
         id: __clearIconLoader
-        active: control.enabled && !control.readOnly && control.clearIconSource !== 0 && control.clearIconSource !== '' && (control.clearEnabled === true || (control.clearEnabled === 'active' && control.active))
+        active: control.enabled && !control.readOnly && control.clearIconSource !== 0 && control.clearIconSource !== '' && (control.clearable === true || (control.clearable === 'active' && control.active))
         anchors.left: {
             if (control.clearIconPosition === HusInput.PositionLeft) {
                 return __iconLoader.active && control.iconPosition === HusInput.PositionLeft ? __iconLoader.right : parent.left;

@@ -25,7 +25,7 @@ T.Control {
     }
     property alias title: __colorPickerPanel.title
     property alias alphaEnabled: __colorPickerPanel.alphaEnabled
-    property alias clearEnabled: __colorPickerPanel.clearEnabled
+    property alias clearable: __colorPickerPanel.clearable
     property alias open: __popup.visible
     property alias format: __colorPickerPanel.format
     property alias presets: __colorPickerPanel.presets
@@ -116,7 +116,7 @@ T.Control {
                 Connections {
                     target: control
                     function onTransparentChanged() {
-                        if (control.clearEnabled) {
+                        if (control.clearable) {
                             __emptyCanvas.requestPaint();
                         }
                     }

@@ -38,7 +38,7 @@ textVisible | bool | false | 是否显示文本
 textFormatter | function(color): string | - | 文本格式化器
 title | string | '' | 弹窗标题
 alphaEnabled | bool | true | 透明度是否启用
-clearEnabled | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
+clearable | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
 open | bool | false | 弹窗是否打开
 format | string | 'hex' | 颜色格式
 presets | list | [] | 预设颜色列表
@@ -132,7 +132,7 @@ Column {
             descTitle: qsTr('透明度和清除')
             desc: qsTr(`
 通过 \`alphaEnabled\` 属性设置是否启用透明度。\n
-通过 \`clearEnabled\` 属性设置是否允许清除。\n
+通过 \`clearable\` 属性设置是否允许清除。\n
 通过 \`setValue\` 方法设置颜色。\n
                        `)
             code: `
@@ -181,7 +181,7 @@ Column {
                     id: colorPicker
                     defaultValue: '#1677ff'
                     alphaEnabled: alphaCheckBox.checked
-                    clearEnabled: clearCheckBox.checked
+                    clearable: clearCheckBox.checked
                 }
 
                 HusButton {
