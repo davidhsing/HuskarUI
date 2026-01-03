@@ -132,6 +132,7 @@ Row {
 通过 \`spinning\` 属性设置是否加载中。\n
 通过 \`size\` 属性设置图标大小。\n
 通过 \`tip\` 属性设置描述文本。\n
+通过 \`delay\` 属性设置延迟关闭时间。\n
                        `)
             code: `
 import QtQuick

@@ -28,7 +28,6 @@ Item {
         id: __delayTimer
         interval: control.delay
         running: control.spinning && control.delay > 0
-        repeat: false
         onTriggered: {
             __private.spinVisible = false;
             control.closed();
