@@ -62,7 +62,7 @@ radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
   - \`input\` 输入文本\n
 - \`select(option: var)\` 选择补全项时发出\n
   - \`option\` 选择的选项\n
-- \`removeTag(option: var)\` 删除标签项时发出\n
+- \`tagRemoved(option: var)\` 删除标签项时发出\n
   - \`option\` 删除的选项\n
 \n<br/>
 \n### 注意事项：\n
@@ -359,7 +359,7 @@ HusMultiSelect {
         filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
         options = filteredOptions.map((item) => ({ label: item }));
     }
-    onRemoveTag: {
+    onTagRemoved: {
         filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
         options = filteredOptions.map((item) => ({ label: item }));
     }
@@ -382,7 +382,7 @@ HusMultiSelect {
                         filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
                         options = filteredOptions.map((item) => ({ label: item }));
                     }
-                    onRemoveTag: {
+                    onTagRemoved: {
                         filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
                         options = filteredOptions.map((item) => ({ label: item }));
                     }

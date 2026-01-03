@@ -7,7 +7,7 @@ HusSelect {
 
     signal search(input: string)
     signal select(option: var)
-    signal removeTag(option: var)
+    signal tagRemoved(option: var)
 
     property var options: []
     property var filterOption: (input, option) => true
@@ -402,7 +402,7 @@ HusSelect {
         }
 
         function clear() {
-            selectedKeysMap.forEach((value, key) => control.removeTag(value));
+            selectedKeysMap.forEach((value, key) => control.tagRemoved(value));
             __tagListModel.clear();
             selectedKeysMap = new Map;
             selectedKeysMapChanged();
@@ -424,7 +424,7 @@ HusSelect {
                     __tagListModel.remove(i);
                     selectedKeysMap.delete(relatedKey);
                     selectedKeysMapChanged();
-                    control.removeTag(data);
+                    control.tagRemoved(data);
                     break;
                 }
             }
@@ -436,7 +436,7 @@ HusSelect {
             __tagListModel.remove(index);
             selectedKeysMap.delete(relatedKey);
             selectedKeysMapChanged();
-            control.removeTag(data);
+            control.tagRemoved(data);
         }
 
         function getData(key) {
