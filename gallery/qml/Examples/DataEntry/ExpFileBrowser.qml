@@ -84,10 +84,10 @@ Column {
         id: browserModeRadio
         initCheckedIndex: 0
         model: [
-            { label: 'ModeOpenFile', value: HusFileBrowser.ModeOpenFile },
-            { label: 'ModeOpenFiles', value: HusFileBrowser.ModeOpenFiles },
-            { label: 'ModeOpenFolder', value: HusFileBrowser.ModeOpenFolder },
-            { label: 'ModeSaveFile', value: HusFileBrowser.ModeSaveFile }
+            { label: 'OpenFile', value: HusFileBrowser.ModeOpenFile },
+            { label: 'OpenFiles', value: HusFileBrowser.ModeOpenFiles },
+            { label: 'OpenFolder', value: HusFileBrowser.ModeOpenFolder },
+            { label: 'SaveFile', value: HusFileBrowser.ModeSaveFile }
         ]
     }
 
@@ -110,10 +110,10 @@ Column {
                     id: browserModeRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'ModeOpenFile', value: HusFileBrowser.ModeOpenFile },
-                        { label: 'ModeOpenFiles', value: HusFileBrowser.ModeOpenFiles },
-                        { label: 'ModeOpenFolder', value: HusFileBrowser.ModeOpenFolder },
-                        { label: 'ModeSaveFile', value: HusFileBrowser.ModeSaveFile }
+                        { label: 'OpenFile', value: HusFileBrowser.ModeOpenFile },
+                        { label: 'OpenFiles', value: HusFileBrowser.ModeOpenFiles },
+                        { label: 'OpenFolder', value: HusFileBrowser.ModeOpenFolder },
+                        { label: 'SaveFile', value: HusFileBrowser.ModeSaveFile }
                     ]
                 }
 
