@@ -13,8 +13,8 @@ Item {
     }
 
     enum MarqueeDirection {
-        DirectionStart = 0,
-        DirectionEnd = 1
+        DirectionLeft = 0,
+        DirectionRight = 1
     }
 
     // 基础属性
@@ -47,7 +47,7 @@ Item {
     property bool marqueeEnabled: false
     property int marqueeDelay: 0
     property int marqueeSpeed: 25000
-    property int marqueeDirection: HusAlert.DirectionStart
+    property int marqueeDirection: HusAlert.DirectionLeft
 
     // 主题相关
     property color colorBg: {
@@ -230,7 +230,7 @@ Item {
                     duration: control.marqueeSpeed
                     easing.type: Easing.Linear
                     onFinished: {
-                        if (control.marqueeDirection === HusAlert.DirectionStart) {
+                        if (control.marqueeDirection === HusAlert.DirectionLeft) {
                             __marqueeText.x = __marqueeContainer.width;
                         } else {
                             __marqueeText.x = -__marqueeText.width;
@@ -268,7 +268,7 @@ Item {
         interval: control.marqueeDelay
         running: control.marqueeEnabled && control.visible && control.height > 0
         onTriggered: {
-            if (control.marqueeDirection === HusAlert.DirectionStart) {
+            if (control.marqueeDirection === HusAlert.DirectionLeft) {
                 __marqueeText.x = __marqueeContainer.width;
                 __marqueeAnimation.to = -__marqueeText.width;
             } else {

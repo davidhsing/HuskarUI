@@ -101,10 +101,10 @@ Item {
             id: __rootItem
             width: __listView.width
             height: __column.height + ((detached && active) ? 1 : 0)
-            topLeftRadius: (isStart || detached) ? control.radiusBg.topLeft : 0
-            topRightRadius: (isStart || detached) ? control.radiusBg.topRight : 0
-            bottomLeftRadius: (isEnd || detached) ? control.radiusBg.bottomLeft : 0
-            bottomRightRadius: (isEnd || detached) ? control.radiusBg.bottomRight : 0
+            topLeftRadius: (isFirst || detached) ? control.radiusBg.topLeft : 0
+            topRightRadius: (isFirst || detached) ? control.radiusBg.topRight : 0
+            bottomLeftRadius: (isLast || detached) ? control.radiusBg.bottomLeft : 0
+            bottomRightRadius: (isLast || detached) ? control.radiusBg.bottomRight : 0
             color: control.colorBg
             border.color: control.colorBorder
             border.width: (!detached || !control.borderVisible) ? 0 : 1
@@ -112,8 +112,8 @@ Item {
 
             required property var model
             required property int index
-            property bool isStart: index === 0
-            property bool isEnd: (index + 1) === control.count
+            property bool isFirst: index === 0
+            property bool isLast: (index + 1) === control.count
             property bool active: false
             property bool detached: __listView.spacing !== -1
 
@@ -131,10 +131,10 @@ Item {
                 HusRectangleInternal {
                     width: parent.width
                     height: __titleLoader.height
-                    topLeftRadius: (isStart || detached) ? control.radiusBg.topLeft : 0
-                    topRightRadius: (isStart || detached) ? control.radiusBg.topRight : 0
-                    bottomLeftRadius: (isEnd && !active) || (detached && !active) ? control.radiusBg.bottomLeft : 0
-                    bottomRightRadius: (isEnd && !active) || (detached && !active) ? control.radiusBg.bottomRight : 0
+                    topLeftRadius: (isFirst || detached) ? control.radiusBg.topLeft : 0
+                    topRightRadius: (isFirst || detached) ? control.radiusBg.topRight : 0
+                    bottomLeftRadius: (isLast && !active) || (detached && !active) ? control.radiusBg.bottomLeft : 0
+                    bottomRightRadius: (isLast && !active) || (detached && !active) ? control.radiusBg.bottomRight : 0
                     color: control.colorTitleBg
                     border.color: control.colorBorder
                     border.width: !control.borderVisible ? 0 : 1

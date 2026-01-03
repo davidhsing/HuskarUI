@@ -49,7 +49,7 @@ contentColumnSpacing | real | 8 | 内容区列间距
 marqueeEnabled | bool | false | 是否启用跑马灯效果
 marqueeDelay | int | 0 | 跑马灯延迟滚动时间（毫秒）(停留多长时间后开始滚动)
 marqueeSpeed | int | 25000 | 跑马灯滚动速度（毫秒）
-marqueeDirection | int | HusAlert.DirectionStart | 跑马灯方向
+marqueeDirection | int | HusAlert.DirectionLeft | 跑马灯方向
 colorBg | color | - | 背景颜色，根据 type 自动获取
 colorBorder | color | - | 边框颜色，根据 type 自动获取
 colorIcon | color | - | 图标颜色，根据 type 自动获取
@@ -68,8 +68,8 @@ marginExtra | [HusMargin](internal://HusMargin) | { top: 4; right: 6 } | 额外�
 - \`HusAlert.TypeWarning\` 警告
 - \`HusAlert.TypeSuccess\` 成功
 - \`HusAlert.TypeError\` 错误
-- \`HusAlert.DirectionStart\` 左侧
-- \`HusAlert.DirectionEnd\` 右侧
+- \`HusAlert.DirectionLeft\` 左侧
+- \`HusAlert.DirectionRight\` 右侧
 \n### 支持的信号：\n
 - \`closed()\` 关闭后发出\n
 \n### 支持的函数：\n
@@ -212,7 +212,7 @@ HusAlert {
     titleText: '重要公告'
     descriptionText: '系统将于今晚22:00进行维护，预计持续2小时'
     marqueeEnabled: true
-    marqueeDirection: HusAlert.DirectionStart
+    marqueeDirection: HusAlert.DirectionLeft
     borderVisible: false
 }`
             exampleDelegate: HusAlert {
@@ -223,7 +223,7 @@ HusAlert {
                 titleText: '重要公告'
                 descriptionText: '系统将于今晚22:00进行维护，预计持续2小时'
                 marqueeEnabled: true
-                marqueeDirection: HusAlert.DirectionStart
+                marqueeDirection: HusAlert.DirectionLeft
                 borderVisible: false
             }
         }

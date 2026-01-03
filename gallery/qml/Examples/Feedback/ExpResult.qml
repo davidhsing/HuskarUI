@@ -45,7 +45,7 @@ iconImageHeight | int | - | 自定义图片的高度
 iconSource | url | - | 图标源
 iconSize | int | 80 | 图标大小
 colorIcon | color | - | 图标颜色
-extraPosition | HusResult.ExtraPosition | PositionEnd | 额外内容位置
+extraPosition | HusResult.ExtraPosition | PositionRight | 额外内容位置
 titleText | string | - | 标题文本
 titleFont | font | - | 标题字体
 descriptionText | string | - | 描述文本
@@ -65,8 +65,8 @@ marginFooter | [HusMargin](internal://HusMargin) | 0 | 页脚边距
 - \`HusResult.TypeWarning\` 警告
 - \`HusResult.TypeSuccess\` 成功
 - \`HusResult.TypeError\` 错误
-- \`HusResult.PositionStart\` 左侧
-- \`HusResult.PositionEnd\` 右侧
+- \`HusResult.PositionLeft\` 左侧
+- \`HusResult.PositionRight\` 右侧
             `)
         }
 
@@ -279,7 +279,7 @@ HusResult {
     type: HusResult.TypeWarning
     titleText: 'There are some problems with your operation.'
     descriptionVisible: false
-    extraPosition: HusResult.PositionEnd
+    extraPosition: HusResult.PositionRight
     extraDelegate: HusIconButton {
         iconSource: HusIcon.CloseOutlined
         type: HusIconButton.TypeText
@@ -308,7 +308,7 @@ HusResult {
                 type: HusResult.TypeWarning
                 titleText: 'There are some problems with your operation.'
                 descriptionVisible: false
-                extraPosition: HusResult.PositionEnd
+                extraPosition: HusResult.PositionRight
                 extraDelegate: HusIconButton {
                     iconSource: HusIcon.CloseOutlined
                     type: HusIconButton.TypeText

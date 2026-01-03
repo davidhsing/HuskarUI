@@ -28,7 +28,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 maskClosable | bool | true | 点击蒙层是否允许关闭
-closePosition | enum | HusDrawer.PositionStart | 关闭按钮的位置(来自 HusDrawer)
+closePosition | enum | HusDrawer.PositionLeft | 关闭按钮的位置(来自 HusDrawer)
 drawerSize | int | 378 | 抽屉宽度
 edge | enum | Qt.RightEdge | 抽屉打开的位置(来自 Qt.*Edge)
 title | string | '' | 标题文本
@@ -111,8 +111,8 @@ Row {
 - 抽屉在项目左边{ Qt.LeftEdge }\n
 - 抽屉在项目右边(默认){ Qt.RightEdge }\n\n
 通过 \`closePosition\` 属性设置抽屉关闭按钮的位置，支持的位置：\n
-- 起始位置(默认){ HusDrawer.PositionStart }\n
-- 末尾位置{ HusDrawer.PositionEnd }\n
+- 起始位置(默认){ HusDrawer.PositionLeft }\n
+- 末尾位置{ HusDrawer.PositionRight }\n
                        `)
             code: `
 import QtQuick
@@ -153,8 +153,8 @@ Column {
         id: closeRadio
         initCheckedIndex: 0
         model: [
-            { label: 'Start', value: HusDrawer.PositionStart },
-            { label: 'End', value: HusDrawer.PositionEnd }
+            { label: 'Start', value: HusDrawer.PositionLeft },
+            { label: 'End', value: HusDrawer.PositionRight }
         ]
     }
 }
@@ -194,8 +194,8 @@ Column {
                     id: closeRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'Start', value: HusDrawer.PositionStart },
-                        { label: 'End', value: HusDrawer.PositionEnd }
+                        { label: 'Start', value: HusDrawer.PositionLeft },
+                        { label: 'End', value: HusDrawer.PositionRight }
                     ]
                 }
             }

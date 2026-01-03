@@ -24,7 +24,7 @@ Flickable {
 iconSource | int丨string | 0丨'' | 图标源(来自 HusIcon)或图标链接
 iconSize | int | - | 图标大小
 iconSpacing | int | 5 | 图标间隔
-iconPosition | enum | HusIconButton.PositionStart | 图标位置(来自 HusIconButton)
+iconPosition | enum | HusIconButton.PositionLeft | 图标位置(来自 HusIconButton)
 loading | bool | false | 是否在加载中
 colorIcon | color | - | 图标颜色
                        `)
@@ -52,8 +52,8 @@ colorIcon | color | - | 图标颜色
 通过 \`iconSource\` 属性设置图标源{ HusIcon中定义 }\n
 通过 \`iconSize\` 属性设置图标大小\n
 通过 \`iconPosition\` 属性设置图标位置，支持的位置有：\n
-- 图标处于开始位置(默认){ HusIconButton.PositionStart }\n
-- 图标处于结束位置{ HusIconButton.PositionEnd }
+- 图标处于开始位置(默认){ HusIconButton.PositionLeft }\n
+- 图标处于结束位置{ HusIconButton.PositionRight }
                        `)
             code: `
 import QtQuick
@@ -88,7 +88,7 @@ Row {
         text: qsTr('搜索')
         type: HusButton.TypePrimary
         iconSource: HusIcon.SearchOutlined
-        iconPosition: HusIconButton.PositionEnd
+        iconPosition: HusIconButton.PositionRight
     }
 
     HusIconButton {
@@ -138,7 +138,7 @@ Row {
                     text: qsTr('搜索')
                     type: HusButton.TypePrimary
                     iconSource: HusIcon.SearchOutlined
-                    iconPosition: HusIconButton.PositionEnd
+                    iconPosition: HusIconButton.PositionRight
                 }
 
                 HusIconButton {

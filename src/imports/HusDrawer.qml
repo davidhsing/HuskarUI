@@ -7,13 +7,13 @@ T.Drawer {
     id: control
 
     enum ClosePosition {
-        PositionStart = 0,
-        PositionEnd = 1
+        PositionLeft = 0,
+        PositionRight = 1
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool maskClosable: true
-    property int closePosition: HusDrawer.PositionStart
+    property int closePosition: HusDrawer.PositionLeft
     property int drawerSize: 378
     property string title: ''
     property font titleFont: Qt.font({
@@ -54,8 +54,8 @@ T.Drawer {
                 id: __closeStartLoader
                 sourceComponent: closeDelegate
                 Layout.alignment: Qt.AlignVCenter
-                active: control.closePosition === HusDrawer.PositionStart
-                visible: control.closePosition === HusDrawer.PositionStart
+                active: control.closePosition === HusDrawer.PositionLeft
+                visible: control.closePosition === HusDrawer.PositionLeft
             }
 
             HusText {
@@ -71,8 +71,8 @@ T.Drawer {
                 id: __closeEndLoader
                 sourceComponent: closeDelegate
                 Layout.alignment: Qt.AlignVCenter
-                active: control.closePosition === HusDrawer.PositionEnd
-                visible: control.closePosition === HusDrawer.PositionEnd
+                active: control.closePosition === HusDrawer.PositionRight
+                visible: control.closePosition === HusDrawer.PositionRight
             }
         }
 

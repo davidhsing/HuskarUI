@@ -13,8 +13,8 @@ Item {
     }
 
     enum ExtraPosition {
-        PositionStart = 0,
-        PositionEnd = 1
+        PositionLeft = 0,
+        PositionRight = 1
     }
 
     // Basic properties
@@ -44,7 +44,7 @@ Item {
     }
 
     // Extra properties
-    property int extraPosition: HusResult.PositionEnd
+    property int extraPosition: HusResult.PositionRight
     property bool extraVisible: true
 
     // Title properties
@@ -182,16 +182,16 @@ Item {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.topMargin: control.marginExtra.top
-        anchors.leftMargin: control.extraPosition === HusResult.PositionStart ? control.marginExtra.left : 0
-        anchors.rightMargin: control.extraPosition === HusResult.PositionEnd ? control.marginExtra.right : 0
+        anchors.leftMargin: control.extraPosition === HusResult.PositionLeft ? control.marginExtra.left : 0
+        anchors.rightMargin: control.extraPosition === HusResult.PositionRight ? control.marginExtra.right : 0
         implicitHeight: __extraLoader.item ? __extraLoader.item.implicitHeight : 0
         visible: control.extraVisible
 
         Loader {
             id: __extraLoader
             anchors.top: parent.top
-            anchors.left: control.extraPosition === HusResult.PositionStart ? parent.left : undefined
-            anchors.right: control.extraPosition === HusResult.PositionEnd ? parent.right : undefined
+            anchors.left: control.extraPosition === HusResult.PositionLeft ? parent.left : undefined
+            anchors.right: control.extraPosition === HusResult.PositionRight ? parent.right : undefined
             sourceComponent: control.extraDelegate
             active: control.extraVisible
             visible: active
