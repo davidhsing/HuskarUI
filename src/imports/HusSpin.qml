@@ -15,7 +15,7 @@ Item {
     property int delay: 0    // 毫秒
     default property alias contentDelegate: __contentItem.data
 
-    signal delayed()
+    signal closed()
 
     objectName: '__HusSpin__'
     implicitWidth: Math.max(__spinIcon.width, __tipText.width, __contentItem.implicitWidth)
@@ -31,7 +31,7 @@ Item {
         repeat: false
         onTriggered: {
             __private.spinVisible = false;
-            control.delayed();
+            control.closed();
         }
     }
 
