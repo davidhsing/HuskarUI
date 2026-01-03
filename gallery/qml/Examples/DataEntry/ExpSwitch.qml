@@ -35,7 +35,7 @@ uncheckedIconSource | int丨string | 0丨'' | 未选中图标(来自 HusIcon)或
 radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 colorHandle | color | - | 把手颜色
 colorBg | color | - | 背景颜色
-contentDescription | string | '' | 内容描述(提高可用性)
+ariaConstrual | string | '' | 内容描述(提高可用性)
                        `)
         }
 

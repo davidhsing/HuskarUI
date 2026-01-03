@@ -32,7 +32,7 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 colorText | color | - | 文本颜色
 colorBg | color | - | 背景颜色
 colorBorder | color | - | 边框颜色
-contentDescription | string | '' | 内容描述(提高可用性)
+ariaConstrual | string | '' | 内容描述(提高可用性)
                        `)
         }
 

@@ -18,7 +18,7 @@ T.CheckBox {
         return themeSource.colorIndicatorDisabled;
     }
     property color colorIndicatorBorder: enabled ? ((hovered || checked) ? themeSource.colorIndicatorBorderChecked : themeSource.colorIndicatorBorder) : themeSource.colorIndicatorDisabled
-    property string contentDescription: ''
+    property string ariaConstrual: ''
     property var themeSource: HusTheme.HusCheckBox
 
     Behavior on colorText { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
@@ -257,6 +257,6 @@ T.CheckBox {
 
     Accessible.role: Accessible.CheckBox
     Accessible.name: control.text
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
     Accessible.onPressAction: control.clicked();
 }

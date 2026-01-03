@@ -118,7 +118,7 @@ Item {
             }
         }
     }
-    property string contentDescription: ''
+    property string ariaConstrual: ''
 
     objectName: '__HusButtonBlock__'
     implicitWidth: __loader.width
@@ -138,6 +138,6 @@ Item {
     }
 
     Accessible.role: Accessible.Button
-    Accessible.name: control.contentDescription
-    Accessible.description: control.contentDescription
+    Accessible.name: control.ariaConstrual
+    Accessible.description: control.ariaConstrual
 }

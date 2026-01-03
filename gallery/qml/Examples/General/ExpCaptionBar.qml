@@ -53,7 +53,7 @@ topCallback | function | function(checked) | 按下置顶按钮时回调
 minimizeCallback | function | function() | 按下最小化按钮时回调
 maximizeCallback | function | function() | 按下最大化按钮时回调
 closeCallback | function | function() | 按下关闭按钮时回调
-contentDescription | string | - | 内容描述(提高可用性)
+ariaConstrual | string | - | 内容描述(提高可用性)
 \n<br/>
 \n### 支持的函数：\n
 - \`addInteractionItem(item: var)\` 添加交互项 \`item\` (当交互项覆盖标题栏时需要使用)\n

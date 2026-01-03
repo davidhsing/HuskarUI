@@ -37,7 +37,7 @@ Item {
     property color colorBorder: HusTheme.HusGroupBox.colorBorder
     property color colorBg: HusTheme.HusGroupBox.colorBg
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusGroupBox.radiusBg }
-    property string contentDescription: title
+    property string ariaConstrual: title
 
     property Component titleDelegate: HusText {
         text: control.title
@@ -131,5 +131,5 @@ Item {
 
     Accessible.role: Accessible.Grouping
     Accessible.name: control.title
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 }

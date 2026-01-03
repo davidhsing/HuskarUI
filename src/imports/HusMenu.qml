@@ -9,7 +9,7 @@ Item {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool borderVisible: false
-    property string contentDescription: ''
+    property string ariaConstrual: ''
     property bool tooltipVisible: false
     property bool compactMode: false
     property int compactWidth: 50
@@ -587,7 +587,7 @@ Item {
     }
 
     Accessible.role: Accessible.Tree
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 
     function gotoMenu(key) {
         __private.gotoMenuKey = key;

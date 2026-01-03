@@ -8,7 +8,7 @@ HusText {
     property var iconSource: 0 ?? ''
     property alias iconSize: control.font.pixelSize
     property alias colorIcon: control.color
-    property string contentDescription: text
+    property string ariaConstrual: text
 
     objectName: '__HusIconText__'
     width: __iconLoader.active ? (__iconLoader.implicitWidth + leftPadding + rightPadding): implicitWidth
@@ -33,5 +33,5 @@ HusText {
 
     Accessible.role: Accessible.StaticText
     Accessible.name: control.text
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 }

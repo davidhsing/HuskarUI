@@ -122,7 +122,7 @@ T.Button {
         }
         return HusTheme.HusButton.colorBorderDisabled;
     }
-    property string contentDescription: text
+    property string ariaConstrual: text
 
     objectName: '__HusButton__'
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
@@ -215,6 +215,6 @@ T.Button {
 
     Accessible.role: Accessible.Button
     Accessible.name: control.text
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
     Accessible.onPressAction: control.clicked();
 }

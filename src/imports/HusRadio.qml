@@ -12,7 +12,7 @@ T.RadioButton {
     property color colorText: enabled ? HusTheme.HusRadio.colorText : HusTheme.HusRadio.colorTextDisabled
     property color colorIndicator: enabled ? (checked ? HusTheme.HusRadio.colorIndicatorChecked : HusTheme.HusRadio.colorIndicator) : HusTheme.HusRadio.colorIndicatorDisabled
     property color colorIndicatorBorder: (enabled && (hovered || checked)) ? HusTheme.HusRadio.colorIndicatorBorderChecked : HusTheme.HusRadio.colorIndicatorBorder
-    property string contentDescription: ''
+    property string ariaConstrual: ''
 
     objectName: '__HusRadio__'
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
@@ -109,6 +109,6 @@ T.RadioButton {
 
     Accessible.role: Accessible.RadioButton
     Accessible.name: control.text
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
     Accessible.onPressAction: control.clicked();
 }

@@ -178,7 +178,7 @@ Item {
             }
         }
     }
-    property string contentDescription: ''
+    property string ariaConstrual: ''
 
     objectName: '__HusRadioBlock__'
     implicitWidth: __loader.implicitWidth
@@ -208,7 +208,7 @@ Item {
     }
 
     Accessible.role: Accessible.RadioButton
-    Accessible.name: control.contentDescription
-    Accessible.description: control.contentDescription
+    Accessible.name: control.ariaConstrual
+    Accessible.description: control.ariaConstrual
     Accessible.onPressAction: control.clicked();
 }

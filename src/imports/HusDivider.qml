@@ -91,7 +91,7 @@ Item {
             }
         }
     }
-    property string contentDescription: title
+    property string ariaConstrual: title
 
     objectName: '__HusDivider__'
 
@@ -121,5 +121,5 @@ Item {
 
     Accessible.role: Accessible.Separator
     Accessible.name: control.title
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 }

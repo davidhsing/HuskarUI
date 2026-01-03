@@ -46,7 +46,7 @@ T.TextField {
     property color colorBorder: danger ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : ((!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder))
     property color colorBg: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
     property HusRadius radiusBg: HusRadius { all: themeSource.radiusBg }
-    property string contentDescription: ''
+    property string ariaConstrual: ''
     property var themeSource: HusTheme.HusInput
 
     property Component iconDelegate: HusIconText {
@@ -150,7 +150,7 @@ T.TextField {
 
     Accessible.role: Accessible.EditableText
     Accessible.editable: control.readOnly
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 
     QtObject {
         id: __private

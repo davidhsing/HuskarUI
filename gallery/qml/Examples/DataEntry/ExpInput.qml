@@ -48,7 +48,7 @@ colorBorder | color | - | 边框颜色
 colorBg | color | - | 背景颜色
 radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 readOnlyBg | bool | false | 当只读时是否采用禁用时的背景色
-contentDescription | string | '' | 内容描述(提高可用性)
+ariaConstrual | string | '' | 内容描述(提高可用性)
 \n<br/>
 \n### 支持的信号：\n
 - \`clickClear()\` 点击清除图标时发出\n

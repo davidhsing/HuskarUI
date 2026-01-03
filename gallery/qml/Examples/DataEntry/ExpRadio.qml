@@ -29,7 +29,7 @@ colorText | color | - | 文本颜色
 colorIndicator | color | - | 指示器颜色
 colorIndicatorBorder | color | - | 指示器边框颜色
 radiusIndicator | [HusRadius](internal://HusRadius) | 8 | 指示器圆角半径
-contentDescription | string | '' | 内容描述(提高可用性)
+ariaConstrual | string | '' | 内容描述(提高可用性)
                        `)
         }
 

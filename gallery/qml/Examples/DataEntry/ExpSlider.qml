@@ -48,7 +48,7 @@ colorHandle | color | - | 滑块颜色
 colorTrack | color | - | 滑块轨道颜色
 colorBg | color | - | 背景颜色
 radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
-contentDescription | string | '' | 内容描述(提高可用性)
+ariaConstrual | string | '' | 内容描述(提高可用性)
 \n<br/>
 \n### 支持的函数：\n
 - \`decrease(frist: bool = true)\` 将第 \`first\` 个滑块(first 为 false 则为第二个)值减小 stepSize 或 0.1\n

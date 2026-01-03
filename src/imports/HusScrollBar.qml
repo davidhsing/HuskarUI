@@ -9,7 +9,7 @@ T.ScrollBar {
     property int minimumHandleSize: 24
     property color colorBar: control.pressed ? HusTheme.HusScrollBar.colorBarActive : (control.hovered ? HusTheme.HusScrollBar.colorBarHover : HusTheme.HusScrollBar.colorBar)
     property color colorBg: control.pressed ? HusTheme.HusScrollBar.colorBgActive : (control.hovered ? HusTheme.HusScrollBar.colorBgHover : HusTheme.HusScrollBar.colorBg)
-    property string contentDescription: ''
+    property string ariaConstrual: ''
 
     objectName: '__HusScrollBar__'
     width: control.orientation == Qt.Vertical ? 10 : parent.width
@@ -149,7 +149,7 @@ T.ScrollBar {
     }
 
     Accessible.role: Accessible.ScrollBar
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 
     QtObject {
         id: __private

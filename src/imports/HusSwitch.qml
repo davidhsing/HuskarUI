@@ -28,7 +28,7 @@ T.Switch {
                                   control.hovered ? HusTheme.HusSwitch.colorBgHover :
                                                     HusTheme.HusSwitch.colorBg;
     }
-    property string contentDescription: ''
+    property string ariaConstrual: ''
     property Component handleDelegate: Rectangle {
         radius: height / 2
         color: control.colorHandle
@@ -197,6 +197,6 @@ T.Switch {
 
     Accessible.role: Accessible.CheckBox
     Accessible.name: control.checked ? control.checkedText : control.uncheckedText
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
     Accessible.onToggleAction: control.toggle();
 }

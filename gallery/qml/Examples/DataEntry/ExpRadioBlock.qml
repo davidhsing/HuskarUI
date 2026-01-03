@@ -46,7 +46,7 @@ radioWidth | int | 120 | 单选项宽度(size == HusRadioBlock.SizeFixed 生效)
 radioHeight | int | 30 | 单选项高度(size == HusRadioBlock.SizeFixed 生效)
 font | font | true | 单选项字体
 radiusBg | [HusRadius](internal://HusRadius) | - | 单选项背景圆角
-contentDescription | string | '' | 内容描述(提高可用性)
+ariaConstrual | string | '' | 内容描述(提高可用性)
 \n<br/>
 \n### 模型支持的属性：\n
 属性名 | 类型 | 可选/必选 | 描述

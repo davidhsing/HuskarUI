@@ -34,7 +34,7 @@ Item {
     property color colorBorder: danger ? (active ? themeSource.colorErrorBorderHover : themeSource.colorErrorBorder) : ((!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBorderDisabled : (active ? themeSource.colorBorderHover : themeSource.colorBorder))
     property color colorBg: (!enabled || (readOnly && control.readOnlyBg)) ? themeSource.colorBgDisabled : themeSource.colorBg
     property HusRadius radiusBg: HusRadius { all: themeSource.radiusBg }
-    property string contentDescription: ''
+    property string ariaConstrual: ''
     property var themeSource: HusTheme.HusTextArea
 
     property alias textArea: __textArea
@@ -172,7 +172,7 @@ Item {
 
     Accessible.role: Accessible.EditableText
     Accessible.editable: control.readOnly
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 
     function scrollToBegin() {
         __textArea.cursorPosition = 0;

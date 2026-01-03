@@ -47,7 +47,7 @@ Rectangle {
     property var closeCallback: () => {
         if (targetWindow) targetWindow.close();
     }
-    property string contentDescription: winTitle
+    property string ariaConstrual: winTitle
 
     property Component winIconDelegate: Image {
         source: control.winIcon
@@ -77,7 +77,7 @@ Rectangle {
             forceState: true
             iconSource: HusTheme.isDark ? HusIcon.MoonOutlined : HusIcon.SunOutlined
             iconSize: 14
-            contentDescription: qsTr('明暗主题切换')
+            ariaConstrual: qsTr('明暗主题切换')
             onClicked: {
                 control.themeCallback();
             }
@@ -92,7 +92,7 @@ Rectangle {
             iconSize: 14
             checkable: true
             checked: control.topButtonChecked
-            contentDescription: qsTr('置顶')
+            ariaConstrual: qsTr('置顶')
             onClicked: {
                 control.topCallback(checked);
             }
@@ -117,7 +117,7 @@ Rectangle {
             forceState: true
             iconSource: HusIcon.LineOutlined
             iconSize: 14
-            contentDescription: qsTr('最小化')
+            ariaConstrual: qsTr('最小化')
             visible: control.minimizeButtonVisible
             onClicked: {
                 control.minimizeCallback();
@@ -146,7 +146,7 @@ Rectangle {
                     visible: targetWindow && targetWindow.visibility === Window.Maximized
                 }
             }
-            contentDescription: qsTr('最大化')
+            ariaConstrual: qsTr('最大化')
             onClicked: {
                 control.maximizeCallback();
             }
@@ -160,7 +160,7 @@ Rectangle {
             iconSource: HusIcon.CloseOutlined
             iconSize: 14
             danger: true
-            contentDescription: qsTr('关闭')
+            ariaConstrual: qsTr('关闭')
             onClicked: {
                 control.closeCallback();
             }
@@ -183,7 +183,7 @@ Rectangle {
             iconSize: HusTheme.HusCaptionButton.fontSize + 2
             visible: control.returnButtonVisible
             onClicked: control.returnCallback();
-            contentDescription: qsTr('返回')
+            ariaConstrual: qsTr('返回')
         }
 
         Item {
@@ -246,8 +246,8 @@ Rectangle {
     }
 
     Accessible.role: Accessible.TitleBar
-    Accessible.name: control.contentDescription
-    Accessible.description: control.contentDescription
+    Accessible.name: control.ariaConstrual
+    Accessible.description: control.ariaConstrual
 
     function addInteractionItem(item) {
         if (windowAgent) {

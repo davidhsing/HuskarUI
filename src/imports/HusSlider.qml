@@ -145,7 +145,7 @@ Item {
             }
         }
     }
-    property string contentDescription: ''
+    property string ariaConstrual: ''
 
     objectName: '__HusSlider__'
     onValueChanged: __private.fromValueUpdate();
@@ -241,8 +241,8 @@ Item {
     }
 
     Accessible.role: Accessible.Slider
-    Accessible.name: control.contentDescription
-    Accessible.description: control.contentDescription
+    Accessible.name: control.ariaConstrual
+    Accessible.description: control.ariaConstrual
     Accessible.onIncreaseAction: increase();
     Accessible.onDecreaseAction: decrease();
 

@@ -25,7 +25,7 @@ T.ComboBox {
     property HusRadius radiusBg: HusRadius { all: themeSource.radiusBg }
     property HusRadius radiusItemBg: HusRadius { all: themeSource.radiusItemBg }
     property HusRadius radiusPopupBg: HusRadius { all: themeSource.radiusPopupBg }
-    property string contentDescription: ''
+    property string ariaConstrual: ''
     property var themeSource: HusTheme.HusSelect
 
     property Component indicatorDelegate: HusIconText {
@@ -312,7 +312,7 @@ T.ComboBox {
 
     Accessible.role: Accessible.ComboBox
     Accessible.name: control.displayText
-    Accessible.description: control.contentDescription
+    Accessible.description: control.ariaConstrual
 
     QtObject {
         id: __private

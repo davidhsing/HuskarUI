@@ -63,7 +63,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 borderVisible | bool | false | 右侧边框是否可见
-contentDescription | string | '' | 内容描述(提高可用性)
+ariaConstrual | string | '' | 内容描述(提高可用性)
 tooltipVisible | bool | false | 是否显示工具提示
 compactMode | bool | false | 是否为紧凑模式
 compactWidth | int | 50 | 紧凑模式宽度
