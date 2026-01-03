@@ -142,10 +142,10 @@ Column {
         id: edgeRadio
         initCheckedIndex: 3
         model: [
-            { label: 'Top', value: Qt.TopEdge },
-            { label: 'Bottom', value: Qt.BottomEdge },
-            { label: 'Left', value: Qt.LeftEdge },
-            { label: 'Right', value: Qt.RightEdge }
+            { label: 'Open-Top', value: Qt.TopEdge },
+            { label: 'Open-Bottom', value: Qt.BottomEdge },
+            { label: 'Open-Left', value: Qt.LeftEdge },
+            { label: 'Open-Right', value: Qt.RightEdge }
         ]
     }
 
@@ -153,8 +153,8 @@ Column {
         id: closeRadio
         initCheckedIndex: 0
         model: [
-            { label: 'Start', value: HusDrawer.PositionLeft },
-            { label: 'End', value: HusDrawer.PositionRight }
+            { label: 'Close-Left', value: HusDrawer.PositionLeft },
+            { label: 'Close-Right', value: HusDrawer.PositionRight }
         ]
     }
 }
@@ -183,10 +183,10 @@ Column {
                     id: edgeRadio
                     initCheckedIndex: 3
                     model: [
-                        { label: 'Top', value: Qt.TopEdge },
-                        { label: 'Bottom', value: Qt.BottomEdge },
-                        { label: 'Left', value: Qt.LeftEdge },
-                        { label: 'Right', value: Qt.RightEdge }
+                        { label: 'Open-Top', value: Qt.TopEdge },
+                        { label: 'Open-Bottom', value: Qt.BottomEdge },
+                        { label: 'Open-Left', value: Qt.LeftEdge },
+                        { label: 'Open-Right', value: Qt.RightEdge }
                     ]
                 }
 
@@ -194,8 +194,8 @@ Column {
                     id: closeRadio
                     initCheckedIndex: 0
                     model: [
-                        { label: 'Start', value: HusDrawer.PositionLeft },
-                        { label: 'End', value: HusDrawer.PositionRight }
+                        { label: 'Close-Left', value: HusDrawer.PositionLeft },
+                        { label: 'Close-Right', value: HusDrawer.PositionRight }
                     ]
                 }
             }

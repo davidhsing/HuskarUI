@@ -51,7 +51,7 @@ T.Drawer {
             spacing: 5
 
             Loader {
-                id: __closeStartLoader
+                id: __closeLeftLoader
                 sourceComponent: closeDelegate
                 Layout.alignment: Qt.AlignVCenter
                 active: control.closePosition === HusDrawer.PositionLeft
@@ -68,7 +68,7 @@ T.Drawer {
             }
 
             Loader {
-                id: __closeEndLoader
+                id: __closeRightLoader
                 sourceComponent: closeDelegate
                 Layout.alignment: Qt.AlignVCenter
                 active: control.closePosition === HusDrawer.PositionRight
@@ -126,16 +126,18 @@ T.Drawer {
             sourceComponent: control.contentDelegate
         }
     }
-    onAboutToShow: {
-        if (captionBar && modal) {
-            captionBar.enabled = false;
-        }
-    }
-    onAboutToHide: {
-        if (captionBar && modal) {
-            captionBar.enabled = true;
-        }
-    }
+
+    // 因 qwindowkit 新版本逻辑变更（或者说 bug）, 无法继续使用
+    // onAboutToShow: {
+    //     if (captionBar && modal) {
+    //         captionBar.enabled = false;
+    //     }
+    // }
+    // onAboutToHide: {
+    //     if (captionBar && modal) {
+    //         captionBar.enabled = true;
+    //     }
+    // }
 
     T.Overlay.modal: Rectangle {
         color: control.colorOverlay
