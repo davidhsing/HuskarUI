@@ -42,6 +42,12 @@ defaultSuffix | string | - | 默认的文件后缀
 nameFilters | [] | - | 文件选择过滤器
 pathJoiner | string | '; ' | 多个文件的分隔符
 \n<br/>
+\n### 支持的信号：\n
+- \`pathSelected(path: string)\` 选定单个路径时发出\n
+  - \`path\` 选择的路径\n
+- \`pathsSelected(paths: var)\` 选定多个路径时发出\n
+  - \`paths\` 选择的路径数组\n
+\n<br/>
                        `)
         }
 

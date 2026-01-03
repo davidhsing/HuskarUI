@@ -39,8 +39,8 @@ Item {
     implicitWidth: parent.width
     implicitHeight: __layout.implicitHeight
 
-    signal pathSelected(string path)
-    signal pathsSelected(var paths)
+    signal pathSelected(path: string)
+    signal pathsSelected(paths: var)
 
     RowLayout {
         id: __layout
