@@ -32,7 +32,9 @@ tipSpacing | int | 8 | 描述文本与图标的间距
 colorIcon | color | HusTheme.Primary.colorPrimary | 图标颜色
 colorTip | color | HusTheme.Primary.colorTextSecondary | 描述文本颜色
 delay | int | - | spinning 状态持续多长时间(正数表示启用延迟)
-delayCallback | function | function() | 到达延迟时间后的回调
+\n<br/>
+\n### 支持的信号：\n
+- \`delayed()\` spinning 状态持续结束后发出\n
 \n<br/>
                        `)
         }
@@ -150,7 +152,7 @@ Column {
         spinning: spinningSwitch.checked
         tip: '加载中...'
         delay: 3000
-        delayCallback: () => {
+        onDelayed: () => {
             messageApi.success('延迟函数调用完成');
         }
 
@@ -193,7 +195,7 @@ Column {
                     spinning: spinningSwitch.checked
                     tip: '加载3秒...'
                     delay: 3000
-                    delayCallback: () => {
+                    onDelayed: () => {
                         messageApi.success('延迟函数调用完成');
                         spinningSwitch.checked = false
                     }

@@ -5,7 +5,7 @@ Item {
     id: control
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property int iconSource: 0     // 0 表示使用默认四叶草,其他值使用 HusIcon
+    property var iconSource: 0 ?? ''     // 0 表示使用默认四叶草,其他值使用 HusIcon
     property int size: 32
     property bool spinning: true
     property string tip: ''
@@ -13,8 +13,9 @@ Item {
     property color colorIcon: HusTheme.HusSpin.colorIcon
     property color colorTip: HusTheme.HusSpin.colorTip
     property int delay: 0    // 毫秒
-    property var delayCallback: null
     default property alias contentDelegate: __contentItem.data
+
+    signal delayed()
 
     objectName: '__HusSpin__'
     implicitWidth: Math.max(__spinIcon.width, __tipText.width, __contentItem.implicitWidth)
@@ -30,9 +31,7 @@ Item {
         repeat: false
         onTriggered: {
             __private.spinVisible = false;
-            if (control.delayCallback && typeof control.delayCallback === 'function') {
-                control.delayCallback();
-            }
+            control.delayed();
         }
     }
 
@@ -140,10 +139,10 @@ Item {
             // HusIcon 图标 (自定义时使用)
             HusIconText {
                 anchors.fill: parent
-                visible: control.iconSource !== 0
                 iconSource: control.iconSource
                 iconSize: control.size
                 colorIcon: control.colorIcon
+                visible: control.iconSource !== 0
             }
 
             NumberAnimation on rotation {
