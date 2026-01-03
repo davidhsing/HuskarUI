@@ -158,11 +158,9 @@ void HusQrCodePrivate::genQrCode()
         const auto icon = m_cachedIcon.scaled(iconWidth, iconHeight);
         const auto startX = (m_qrCodeImage.width() - iconWidth) / 2;
         const auto startY = (m_qrCodeImage.height() - iconHeight) / 2;
-        const auto rangeX = m_qrCodeImage.width() - startX;
-        const auto rangeY = m_qrCodeImage.height() - startY;
-        for (int y = startY; y < rangeY; y++) {
-            for (int x = startX; x < rangeX; x++) {
-                m_qrCodeImage.setPixelColor(x, y, icon.pixelColor(x - startX, y - startY));
+        for (int y = 0; y < iconHeight; y++) {
+            for (int x = 0; x < iconWidth; x++) {
+                m_qrCodeImage.setPixelColor(startX + x, startY + y, icon.pixelColor(x, y));
             }
         }
     }
@@ -171,9 +169,7 @@ void HusQrCodePrivate::genQrCode()
     q->update();
 }
 
-HusQrCode::HusQrCode(QQuickItem *parent)
-    : QQuickItem(parent)
-    , d_ptr(new HusQrCodePrivate(this))
+HusQrCode::HusQrCode(QQuickItem *parent) : QQuickItem(parent), d_ptr(new HusQrCodePrivate(this))
 {
     Q_D(HusQrCode);
 
