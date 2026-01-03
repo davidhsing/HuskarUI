@@ -5,8 +5,8 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    signal click(index: int, data: var)
-    signal clickMenu(deep: int, key: string, keyPath: var, data: var)
+    signal clicked(index: int, data: var)
+    signal menuClicked(deep: int, key: string, keyPath: var, data: var)
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool allowHoverTap: true
@@ -102,7 +102,7 @@ Item {
         TapHandler {
             id: __tapHandler
             enabled: !isCurrent && control.allowHoverTap
-            onTapped: control.click(index, model);
+            onTapped: control.clicked(index, model);
         }
 
         Loader {
@@ -121,7 +121,7 @@ Item {
                         open();
                     }
                 }
-                onClickMenu: (deep, key, keyPath, data) => control.clickMenu(deep, key, keyPath, data);
+                onMenuClicked: (deep, key, keyPath, data) => control.menuClicked(deep, key, keyPath, data);
                 Component.onCompleted: HusApi.setPopupAllowAutoFlip(this);
                 property bool hovered: __hoverHandler.hovered
 

@@ -74,11 +74,11 @@ items | list | 可选 | 菜单模型
 - \`string getPath()\` 获取当前路由路径 \n
 \n<br/>
 \n### 支持的信号：\n
-- \`click(index: int, data: var)\` 点击路由项时发出\n
+- \`clicked(index: int, data: var)\` 点击路由项时发出\n
   - \`index\` 路由项索引\n
   - \`data\` 路由项数据\n
 \n### 支持的信号：\n
-- \`clickMenu(deep: int, key: string, keyPath: var, data: var)\` 点击任意路由-菜单项时发出\n
+- \`menuClicked(deep: int, key: string, keyPath: var, data: var)\` 点击任意路由-菜单项时发出\n
   - \`deep\` 菜单项深度\n
   - \`key\` 菜单项的键\n
   - \`keyPath\` 菜单项的键路径数组\n
@@ -147,7 +147,7 @@ Column {
             { title: 'Application List' },
             { title: 'An Application', },
         ]
-        onClick: (index, data) => remove(index + 1, count - index - 1);
+        onClicked: (index, data) => remove(index + 1, count - index - 1);
     }
 }
             `
@@ -190,7 +190,7 @@ Column {
                         { title: 'Application List' },
                         { title: 'An Application', },
                     ]
-                    onClick: (index, data) => remove(index + 1, count - index - 1);
+                    onClicked: (index, data) => remove(index + 1, count - index - 1);
                 }
             }
         }

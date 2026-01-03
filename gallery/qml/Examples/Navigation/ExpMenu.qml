@@ -124,7 +124,7 @@ bgDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBgDelegate)
 - \`clear()\` 清空所有模型数据 \n
 \n<br/>
 \n### 支持的信号：\n
-- \`clickMenu(deep: int, key: string, keyPath: var, data: var)\` 点击任意菜单项时发出\n
+- \`menuClicked(deep: int, key: string, keyPath: var, data: var)\` 点击任意菜单项时发出\n
   - \`deep\` 菜单项深度\n
   - \`key\` 菜单项的键\n
   - \`keyPath\` 菜单项的键路径数组\n
@@ -169,7 +169,7 @@ bgDelegate | var | 可选 | 本菜单项背景代理(将覆盖menuBgDelegate)
 - 'item' { 普通菜单项(默认) }\n
 - 'group' { 组菜单项 }\n
 - 'divider' { 此菜单项为分隔器 }\n
-点击任意菜单项将发出 \`clickMenu(deep, menuKey, menuData)\` 信号。
+点击任意菜单项将发出 \`menuClicked(deep, menuKey, menuData)\` 信号。
                        `)
             code: `
 import QtQuick

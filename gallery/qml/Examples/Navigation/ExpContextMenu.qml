@@ -33,7 +33,7 @@ subMenuOffset | int | -4 | 子菜单偏移
 radiusMenuBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
 \n<br/>
 \n### 支持的信号：\n
-- \`clickMenu(deep: int, key: string, keyPath: var, data: var)\` 点击任意菜单项时发出\n
+- \`menuClicked(deep: int, key: string, keyPath: var, data: var)\` 点击任意菜单项时发出\n
   - \`deep\` 菜单项深度\n
   - \`key\` 菜单项的键\n
   - \`keyPath\` 菜单项的键路径数组\n
@@ -104,7 +104,7 @@ MouseArea {
             { type: 'divider' },
             { key: 'Exit', label: 'Exit', iconSource: HusIcon.IcoMoonExit },
         ]
-        onClickMenu: (deep, key, keyPath, data) => copyableText.append('Click: ' + key);
+        onMenuClicked: (deep, key, keyPath, data) => copyableText.append('Click: ' + key);
     }
 
     HusCopyableText {
@@ -154,7 +154,7 @@ MouseArea {
                         { type: 'divider' },
                         { key: 'Exit', label: 'Exit', iconSource: HusIcon.IcoMoonExit },
                     ]
-                    onClickMenu: (deep, key, keyPath, data) => copyableText.append('Click: ' + key);
+                    onMenuClicked: (deep, key, keyPath, data) => copyableText.append('Click: ' + key);
                 }
 
                 HusCopyableText {
@@ -210,7 +210,7 @@ Item {
                 { key: 'Dark', label: 'Dark', iconDelegate: checkIconDelegate, },
                 { key: 'Light', label: 'Light', iconDelegate: checkIconDelegate, },
             ]
-            onClickMenu:
+            onMenuClicked:
                 (deep, key, keyPath, data) => {
                     if (key === 'Dark') {
                         galleryWindow.captionBar.themeCallback();
@@ -256,7 +256,7 @@ Item {
                             { key: 'Dark', label: 'Dark', iconDelegate: checkIconDelegate, },
                             { key: 'Light', label: 'Light', iconDelegate: checkIconDelegate, },
                         ]
-                        onClickMenu:
+                        onMenuClicked:
                             (deep, key, keyPath, data) => {
                                 if (key === 'Dark' && !HusTheme.isDark) {
                                     galleryWindow.captionBar.themeCallback();

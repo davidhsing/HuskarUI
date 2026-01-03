@@ -5,7 +5,7 @@ import HuskarUI.Basic
 Item {
     id: control
 
-    signal clickMenu(deep: int, key: string, keyPath: var, data: var)
+    signal menuClicked(deep: int, key: string, keyPath: var, data: var)
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool borderVisible: false
@@ -259,15 +259,15 @@ Item {
             property bool isCurrentParent: false
             property var layerPopup: null
 
-            function clickMenu() {
-                control.clickMenu(view.menuDeep, menuKey, keyPath, model);
+            function menuClicked() {
+                control.menuClicked(view.menuDeep, menuKey, keyPath, model);
             }
 
             function expandMenu() {
                 if (__menuButton.expandedVisible) {
                     __menuButton.expanded = true;
                 }
-                __rootItem.clickMenu();
+                __rootItem.menuClicked();
             }
 
             /*! 查找当前菜单的根菜单 */
@@ -393,7 +393,7 @@ Item {
                     contentDelegate: __rootItem.menuContentDelegate
                     bgDelegate: __rootItem.menuBgDelegate
                     onClicked: {
-                        __rootItem.clickMenu();
+                        __rootItem.menuClicked();
                         if (__rootItem.menuChildrenLength == 0) {
                             __private.selectedItem = __rootItem;
                             __rootItem.selectedCurrentParentMenu();
