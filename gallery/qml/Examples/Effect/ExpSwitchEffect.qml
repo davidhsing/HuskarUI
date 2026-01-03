@@ -168,7 +168,7 @@ Column {
             id: item1
             width: parent.width
             height: parent.height
-            source: 'qrc:/Gallery/images/swithc_effect1.jpg'
+            source: 'qrc:/Gallery/images/switch_effect1.jpg'
             visible: true
         }
 
@@ -176,7 +176,7 @@ Column {
             id: item2
             width: parent.width
             height: parent.height
-            source: 'qrc:/Gallery/images/swithc_effect2.jpg'
+            source: 'qrc:/Gallery/images/switch_effect2.jpg'
             visible: false
         }
 
@@ -287,7 +287,7 @@ Column {
                         id: item1
                         width: parent.width
                         height: parent.height
-                        source: 'qrc:/Gallery/images/swithc_effect1.jpg'
+                        source: 'qrc:/Gallery/images/switch_effect1.jpg'
                         visible: true
                     }
 
@@ -295,7 +295,7 @@ Column {
                         id: item2
                         width: parent.width
                         height: parent.height
-                        source: 'qrc:/Gallery/images/swithc_effect2.jpg'
+                        source: 'qrc:/Gallery/images/switch_effect2.jpg'
                         visible: false
                     }
 

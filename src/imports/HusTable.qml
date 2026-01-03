@@ -461,29 +461,37 @@ HusRectangle {
         __private.updateRowHeader();
     }
 
-    function getRow(rowIndex) {
+    function getRow(rowIndex: int) {
         if (rowIndex >= 0 && rowIndex < __private.model.length) {
             return __private.model[rowIndex];
         }
         return undefined;
     }
 
-    function insertRow(rowIndex, object: var) {
+    function rowCount(): int {
+        return __cellModel.rowCount();
+    }
+
+    function columnCount(): int {
+        return __cellModel.columnCount();
+    }
+
+    function insertRow(rowIndex: int, object: var): void {
         __cellModel.insertRow(rowIndex, __private.toCellObject(object));
         __private.model.splice(rowIndex, 0, object);
         __private.updateRowHeader();
     }
 
-    function moveRow(fromRowIndex, toRowIndex, count = 1) {
+    function moveRow(fromRowIndex: int, toRowIndex: int, count = 1): void {
         if (fromRowIndex >= 0 && fromRowIndex < __private.model.length && toRowIndex >= 0 && toRowIndex < __private.model.length) {
             const objects = __private.model.splice(from, count);
-            __cellModel.moveRow(fromRowIndex, toRowIndex, count);
             __private.model.splice(to, 0, ...objects);
+            __cellModel.moveRow(fromRowIndex, toRowIndex, count);
             __private.updateRowHeader();
         }
     }
 
-    function removeRow(rowIndex, count = 1) {
+    function removeRow(rowIndex: int, count = 1): void {
         if (rowIndex >= 0 && rowIndex < __private.model.length) {
             __cellModel.removeRow(rowIndex, count);
             __private.model.splice(rowIndex, count);
@@ -491,7 +499,7 @@ HusRectangle {
         }
     }
 
-    function setRow(rowIndex, object: var) {
+    function setRow(rowIndex: int, object: var): void {
         if (rowIndex >= 0 && rowIndex < __private.model.length) {
             __cellModel.setRow(rowIndex, __private.toCellObject(object));
             __private.model[rowIndex] = object;

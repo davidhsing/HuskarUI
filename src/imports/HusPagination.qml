@@ -136,7 +136,7 @@ Item {
         property bool isPrev: false
         property alias tooltipText: __moreTooltip.text
 
-        onShowIconChanged: __seqAnimation.restart();
+        onIconVisibleChanged: __seqAnimation.restart();
 
         SequentialAnimation {
             id: __seqAnimation

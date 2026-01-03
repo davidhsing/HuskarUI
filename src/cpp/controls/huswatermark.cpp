@@ -23,7 +23,6 @@ public:
     QString m_text;
     QUrl m_image;
     QNetworkReply *m_imageReply = nullptr;
-    QNetworkAccessManager *m_manager = nullptr;
     QImage m_cachedImage;
     bool m_isSetMarkSize { false };
     QSize m_markSize;
@@ -43,33 +42,34 @@ void HusWatermarkPrivate::updateImage()
         updateMarkSize();
         q->update();
     } else {
+        if (!m_cachedImage.isNull()) {
+            m_cachedImage = QImage();
+        }
+
         if (m_imageReply) {
             m_imageReply->abort();
             m_imageReply = nullptr;
         }
 
-        if (!m_manager) {
-            if (qmlEngine(q)) {
-                m_manager = qmlEngine(q)->networkAccessManager();
+        if (qmlEngine(q)) {
+            const auto manager = qmlEngine(q)->networkAccessManager();
+            if (manager) {
+                m_imageReply = manager->get(QNetworkRequest(m_image));
+                QObject::connect(m_imageReply, &QNetworkReply::finished, q, [this]{
+                    Q_Q(HusWatermark);
+                    if (m_imageReply->error() == QNetworkReply::NoError) {
+                        m_cachedImage = QImage::fromData(m_imageReply->readAll());
+                        updateMarkSize();
+                        q->update();
+                    } else {
+                        qCWarning(lcHusWatermark) << "Request image error:" << m_imageReply->errorString();
+                    }
+                    m_imageReply->deleteLater();
+                    m_imageReply = nullptr;
+                });
             } else {
                 qCWarning(lcHusWatermark) << "HusWatermark without QmlEngine, we cannot get QNetworkAccessManager!";
             }
-        }
-
-        if (m_manager) {
-            m_imageReply = m_manager->get(QNetworkRequest(m_image));
-            QObject::connect(m_imageReply, &QNetworkReply::finished, q, [this]{
-                Q_Q(HusWatermark);
-                if (m_imageReply->error() == QNetworkReply::NoError) {
-                    m_cachedImage = QImage::fromData(m_imageReply->readAll());
-                    updateMarkSize();
-                    q->update();
-                } else {
-                    qCWarning(lcHusWatermark) << "Request image error:" << m_imageReply->errorString();
-                }
-                m_imageReply->deleteLater();
-                m_imageReply = nullptr;
-            });
         }
     }
 }
@@ -92,7 +92,9 @@ HusWatermark::HusWatermark(QQuickItem *parent)
     Q_D(HusWatermark);
 
     d->m_font.setFamily(HusTheme::instance()->Primary()["fontPrimaryFamily"].toString());
-    d->m_font.setPixelSize(HusTheme::instance()->Primary()["fontPrimarySize"].toInt() - 1);
+    d->m_font.setPixelSize(HusTheme::instance()->Primary()["fontPrimarySize"].toInt());
+
+    setAntialiasing(true);
 }
 
 HusWatermark::~HusWatermark()
@@ -261,28 +263,31 @@ void HusWatermark::paint(QPainter *painter)
     Q_D(HusWatermark);
 
     painter->save();
-    painter->setRenderHint(QPainter::Antialiasing);
+
+    if (antialiasing()) {
+        painter->setRenderHint(QPainter::Antialiasing);
+    }
 
     painter->setFont(d->m_font);
     painter->setPen(d->m_colorText);
 
-    int markWidth = d->m_markSize.width();
-    int markHeight = d->m_markSize.height();
-    int stepX = std::round(markWidth + d->m_gap.x());
-    int stepY = std::round(markHeight + d->m_gap.y());
-    int rowCount = std::round(width() / stepX + 1);
-    int columnCount = std::round(height() / stepY + 1);
+    const int markWidth = d->m_markSize.width();
+    const int markHeight = d->m_markSize.height();
+    const int stepX = static_cast<int>(std::round(markWidth + d->m_gap.x()));
+    const int stepY = static_cast<int>(std::round(markHeight + d->m_gap.y()));
+    const int rowCount = static_cast<int>(std::round(width() / stepX + 1));
+    const int columnCount = static_cast<int>(std::round(height() / stepY + 1));
     for (int row = 0; row < rowCount; row++) {
         for (int column = 0; column < columnCount; column++) {
-            qreal x = stepX * row + d->m_offset.x() + markWidth / 2;
-            qreal y = stepY * column + d->m_offset.y() + markHeight / 2;
+            qreal x = stepX * row + d->m_offset.x() + markWidth * 0.5;
+            qreal y = stepY * column + d->m_offset.y() + markHeight * 0.5;
             painter->save();
             painter->translate(x, y);
             painter->rotate(d->m_rotate);
             if (d->m_cachedImage.isNull()) {
-                painter->drawText(QRectF(-markWidth / 2, -markHeight / 2, markWidth, markHeight), d->m_text);
+                painter->drawText(QRectF(-markWidth * 0.5, -markHeight * 0.5, markWidth, markHeight), d->m_text);
             } else {
-                painter->drawImage(QRectF(-markWidth / 2, -markHeight / 2, markWidth, markHeight), d->m_cachedImage);
+                painter->drawImage(QRectF(-markWidth * 0.5, -markHeight * 0.5, markWidth, markHeight), d->m_cachedImage);
             }
             painter->restore();
         }

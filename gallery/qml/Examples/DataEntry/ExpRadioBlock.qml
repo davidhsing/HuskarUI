@@ -54,7 +54,7 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
 label | string | 必选 | 本单选项的标签
 value | sting | 可选 | 本单选项的值
 enabled | var | 可选 | 本单选项是否启用
-icon | int | 可选 | 本单选项图标
+iconSource | int丨string | 可选 | 本按钮图标(参见 HusIcon)或图标链接
 toolTip | var | 可选 | 存在时则创建文字提示
 toolTip.text | string | 可选 | 存在时则创建文字提示
 toolTip.delay | int | 可选 | 文字提示延时(ms)
@@ -92,7 +92,7 @@ toolTip.timeout | int | 可选 | 文字提示超时(ms)
 - { label: 本单选项的标签 }\n
 - { value: 本单选项的值 }\n
 - { enabled: 本单选项是否启用 }\n
-- { icon: 本单选项图标 }\n
+- { iconSource: 本单选项图标 }\n
 通过 \`type\` 属性设置单选块的类型，支持的类型：\n
 - 填充样式的按钮(默认) { HusRadioBlock.TypeFilled }\n
 - 线框样式的按钮(无填充) { HusRadioBlock.TypeOutlined }\n
@@ -110,7 +110,7 @@ Column {
             { label: 'Apple', value: 'Apple' },
             { label: 'Pear', value: 'Pear' },
             { label: 'Orange', value: 'Orange' },
-            { icon: HusIcon.QuestionOutlined, value: 'Orange' },
+            { iconSource: HusIcon.QuestionOutlined, value: 'Orange' },
         ]
     }
 
@@ -121,7 +121,7 @@ Column {
             { label: 'Apple', value: 'Apple' },
             { label: 'Pear', value: 'Pear' },
             { label: 'Orange', value: 'Orange' },
-            { icon: HusIcon.QuestionOutlined, value: 'Orange' },
+            { iconSource: HusIcon.QuestionOutlined, value: 'Orange' },
         ]
     }
 
@@ -154,7 +154,7 @@ Column {
                         { label: 'Apple', value: 'Apple' },
                         { label: 'Pear', value: 'Pear' },
                         { label: 'Orange', value: 'Orange' },
-                        { icon: HusIcon.QuestionOutlined, value: 'Orange' },
+                        { iconSource: HusIcon.QuestionOutlined, value: 'Orange' },
                     ]
                 }
 
@@ -165,7 +165,7 @@ Column {
                         { label: 'Apple', value: 'Apple' },
                         { label: 'Pear', value: 'Pear' },
                         { label: 'Orange', value: 'Orange' },
-                        { icon: HusIcon.QuestionOutlined, value: 'Orange' },
+                        { iconSource: HusIcon.QuestionOutlined, value: 'Orange' },
                     ]
                 }
 

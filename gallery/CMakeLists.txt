@@ -146,8 +146,8 @@ qt_add_resources(${PROJECT_NAME} "images"
     PREFIX "/Gallery"
     FILES
         images/huskarui_icon.svg
-        images/swithc_effect1.jpg
-        images/swithc_effect2.jpg
+        images/switch_effect1.jpg
+        images/switch_effect2.jpg
 )
 
 qt_add_shaders(${PROJECT_NAME} "shaders"

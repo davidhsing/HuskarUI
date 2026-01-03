@@ -157,11 +157,16 @@ Item {
 
     objectName: '__HusInputNumber__'
     height: __row.implicitHeight
-    onValueChanged: __input.text = formatter(value);
     onPrefixChanged: valueChanged();
     onSuffixChanged: valueChanged();
     onCurrentAfterLabelChanged: valueChanged();
     onCurrentBeforeLabelChanged: valueChanged();
+    onValueChanged: {
+        const formatted = formatter(value);
+        if (formatted !== __input.text) {
+            __input.text = formatted;
+        }
+    }
     Component.onCompleted: valueChanged();
 
     Component {
@@ -269,8 +274,8 @@ Item {
             }
             onTextChanged: {
                 let v = control.parser(text);
-                if (v >= control.min && v <= control.max) {
-                    control.value = v
+                if (v >= control.min && v <= control.max && v !== control.value) {
+                    control.value = v;
                 }
             }
             onEditingFinished: control.valueChanged();

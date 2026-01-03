@@ -66,8 +66,8 @@ Item {
         enabled: control.enabled && (modelData.enabled === undefined ? true : modelData.enabled)
         font: control.font
         type: HusButton.TypeDefault
-        iconSource: modelData.icon ?? 0
-        text: modelData.label
+        iconSource: modelData.iconSource ?? 0
+        text: modelData.label ?? ''
         colorBorder: (enabled && checked) ? HusTheme.HusRadioBlock.colorBlockBorderChecked :
                                             HusTheme.HusRadioBlock.colorBlockBorder;
         colorText: {
