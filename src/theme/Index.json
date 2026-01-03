@@ -192,6 +192,7 @@
         "HusModal": ":/HuskarUI/theme/HusModal.json",
         "HusTextArea": ":/HuskarUI/theme/HusTextArea.json",
         "HusAudioDiagnosis": ":/HuskarUI/theme/HusAudioDiagnosis.json",
+        "HusAlert": ":/HuskarUI/theme/HusAlert.json",
         "HusPopover": ":/HuskarUI/theme/HusPopover.json",
         "HusEmpty": ":/HuskarUI/theme/HusEmpty.json",
         "HusSpin": ":/HuskarUI/theme/HusSpin.json",

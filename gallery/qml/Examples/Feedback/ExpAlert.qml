@@ -1,0 +1,231 @@
+import QtQuick
+import QtQuick.Layouts
+import HuskarUI.Basic
+import '../../Controls'
+
+Flickable {
+    contentHeight: column.height
+    HusScrollBar.vertical: HusScrollBar { }
+
+    Column {
+        id: column
+        width: parent.width - 15
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 30
+
+        Description {
+            width: parent.width
+            desc: qsTr(`
+# HusAlert 警告提示\n
+静态的警告提示组件，用于展示重要信息。\n
+* **继承自 { Item }**\n
+\n<br/>
+\n### 支持的代理：\n
+- **bgDelegate: Component** 背景代理\n
+- **extraDelegate: Component** 额外操作代理\n
+- **titleDelegate: Component** 标题代理\n
+- **descriptionDelegate: Component** 描述代理\n
+- **closeDelegate: Component** 关闭代理\n
+\n<br/>
+\n### 支持的属性：\n
+属性名 | 类型 | 默认值 | 描述
+------ | --- | :---: | ---
+animationEnabled | bool | - | 是否启用动画，从主题系统获取
+borderVisible | bool | true | 是否显示边框
+closable | bool | true | 是否显示关闭按钮
+delay | int | 0 | 正数表示启动延迟关闭
+type | enum | HusAlert.TypeInfo | 警告类型
+iconVisible | bool | true | 是否显示图标
+iconSize | int | 16 | 图标大小
+iconSource | var | - | 图标源
+titleVisible | bool | true | 是否显示标题
+titleText | string | '' | 标题文本内容
+descriptionVisible | bool | true | 是否显示描述
+descriptionText | string | '' | 描述文本内容
+extraVisible | bool | true | 额外内容是否可见
+radiusBg | [HusRadius](internal://HusRadius) | 6 | 背景圆角半径
+contentRowSpacing | real | 10 | 内容区行间距
+contentColumnSpacing | real | 8 | 内容区列间距
+marqueeEnabled | bool | false | 是否启用跑马灯效果
+marqueeDelay | int | 0 | 跑马灯延迟滚动时间（毫秒）(停留多长时间后开始滚动)
+marqueeSpeed | int | 25000 | 跑马灯滚动速度（毫秒）
+marqueeDirection | int | HusAlert.DirectionStart | 跑马灯方向
+colorBg | color | - | 背景颜色，根据 type 自动获取
+colorBorder | color | - | 边框颜色，根据 type 自动获取
+colorIcon | color | - | 图标颜色，根据 type 自动获取
+colorTitle | color | - | 标题文本颜色
+colorDescription | color | - | 描述文本颜色
+colorMarquee | color | - | 跑马灯文本颜色
+titleFont | font | - | 标题字体
+descriptionFont | font | - | 描述字体
+marqueeFont | font | - | 跑马灯字体
+marginIcon | [HusMargin](internal://HusMargin) | 0 | 图标边距
+marginContent | [HusMargin](internal://HusMargin) | { left: 16 } | 内容区边距
+marginExtra | [HusMargin](internal://HusMargin) | { top: 4; right: 6 } | 额外内容边距
+\n<br/>
+\n### 枚举：
+- \`HusAlert.TypeInfo\` 信息
+- \`HusAlert.TypeWarning\` 警告
+- \`HusAlert.TypeSuccess\` 成功
+- \`HusAlert.TypeError\` 错误
+- \`HusAlert.DirectionStart\` 左侧
+- \`HusAlert.DirectionEnd\` 右侧
+\n### 支持的信号：\n
+- \`closed()\` 关闭后发出\n
+\n### 支持的函数：\n
+- \`close()\` 关闭组件\n
+            `)
+        }
+
+        Description {
+            width: parent.width
+            title: qsTr('何时使用')
+            desc: qsTr('当有重要的操作需要告知用户处理结果时使用。')
+        }
+
+        ThemeToken {
+            source: 'HusAlert'
+        }
+
+        Description {
+            width: parent.width
+            title: qsTr('代码演示')
+        }
+
+        CodeBox {
+            expTitle: 'Info 类型'
+            desc: '信息类型的警告提示，通常用于展示一般性信息。可设置延迟 20 秒自动关闭。'
+            code: `
+import QtQuick
+import HuskarUI.Basic
+
+HusAlert {
+    width: parent.width
+    height: 80
+    type: HusAlert.TypeInfo
+    titleText: '信息提示'
+    descriptionText: '这是一条信息提示内容'
+    delay: 20000
+}`
+            exampleDelegate: HusAlert {
+                id: _alert
+                width: parent.width
+                height: 80
+                type: HusAlert.TypeInfo
+                titleText: '信息提示'
+                descriptionText: '这是一条信息提示内容。'
+                delay: 20000
+            }
+        }
+
+        CodeBox {
+            expTitle: 'Warning 类型'
+            desc: '警告类型的警告提示，用于展示需要注意的信息。'
+            code: `
+import QtQuick
+import HuskarUI.Basic
+
+HusAlert {
+    width: parent.width
+    height: 80
+    type: HusAlert.TypeWarning
+    titleText: '警告信息'
+    descriptionText: '请注意，此操作可能存在风险'
+    closable: true
+}`
+            exampleDelegate: HusAlert {
+                width: parent.width
+                height: 80
+                type: HusAlert.TypeWarning
+                titleText: '警告信息'
+                descriptionText: '请注意，此操作可能存在风险'
+                closable: true
+            }
+        }
+
+        CodeBox {
+            expTitle: 'Success 类型'
+            desc: '成功类型的警告提示，用于展示操作成功的反馈。'
+            code: `
+import QtQuick
+import HuskarUI.Basic
+
+HusAlert {
+    width: parent.width
+    height: 80
+    type: HusAlert.TypeSuccess
+    titleText: '操作成功'
+    descriptionText: '您的操作已成功完成'
+}`
+            exampleDelegate: HusAlert {
+                width: parent.width
+                height: 80
+                type: HusAlert.TypeSuccess
+                titleText: '操作成功'
+                descriptionText: '您的操作已成功完成'
+            }
+        }
+
+        CodeBox {
+            expTitle: 'Error 类型'
+            desc: '错误类型的警告提示，用于展示错误信息。'
+            code: `
+import QtQuick
+import HuskarUI.Basic
+
+HusAlert {
+    width: parent.width
+    height: 80
+    type: HusAlert.TypeError
+    titleText: '错误提示'
+    descriptionText: '操作失败，请检查输入信息'
+    extraDelegate: HusButton {
+        iconSource: HusIcon.RedoOutlined
+        type: HusIconButton.TypeText
+    }
+}`
+            exampleDelegate: HusAlert {
+                width: parent.width
+                height: 80
+                type: HusAlert.TypeError
+                titleText: '错误提示'
+                descriptionText: '操作失败，请检查输入信息'
+                extraDelegate: HusIconButton {
+                    iconSource: HusIcon.RedoOutlined
+                    type: HusIconButton.TypeText
+                }
+            }
+        }
+
+        CodeBox {
+            expTitle: '跑马灯效果'
+            desc: '启用跑马灯效果，文本会自动滚动显示。适用于公告栏等场景。'
+            code: `
+import QtQuick
+import HuskarUI.Basic
+
+HusAlert {
+    width: parent.width
+    height: 30
+    type: HusAlert.TypeInfo
+    iconSize: 16
+    titleText: '重要公告'
+    descriptionText: '系统将于今晚22:00进行维护，预计持续2小时'
+    marqueeEnabled: true
+    marqueeDirection: HusAlert.DirectionStart
+    borderVisible: false
+}`
+            exampleDelegate: HusAlert {
+                width: parent.width
+                height: 30
+                type: HusAlert.TypeInfo
+                iconSize: 16
+                titleText: '重要公告'
+                descriptionText: '系统将于今晚22:00进行维护，预计持续2小时'
+                marqueeEnabled: true
+                marqueeDirection: HusAlert.DirectionStart
+                borderVisible: false
+            }
+        }
+    }
+}

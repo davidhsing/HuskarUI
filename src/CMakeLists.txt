@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(HUSKARUI_VERSION 0.5.0.0)
+set(HUSKARUI_VERSION 0.6.0.0)
 
 message(STATUS "Configuring HuskarUIBasic Version: ${HUSKARUI_VERSION}")
 
@@ -155,6 +155,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusFileBrowser.qml
         imports/HusTextArea.qml
         imports/HusAudioDiagnosis.qml
+        imports/HusAlert.qml
         imports/HusPopover.qml
         imports/HusEmpty.qml
         imports/HusSpin.qml
@@ -236,6 +237,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusModal.json
         theme/HusTextArea.json
         theme/HusAudioDiagnosis.json
+        theme/HusAlert.json
         theme/HusPopover.json
         theme/HusEmpty.json
         theme/HusSpin.json

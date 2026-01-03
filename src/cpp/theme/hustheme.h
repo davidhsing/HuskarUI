@@ -64,6 +64,7 @@ class HUSKARUI_EXPORT HusTheme : public QObject
     HUS_PROPERTY_READONLY(QVariantMap, HusModal);
     HUS_PROPERTY_READONLY(QVariantMap, HusTextArea);
     HUS_PROPERTY_READONLY(QVariantMap, HusAudioDiagnosis);
+    HUS_PROPERTY_READONLY(QVariantMap, HusAlert);
     HUS_PROPERTY_READONLY(QVariantMap, HusPopover);
     HUS_PROPERTY_READONLY(QVariantMap, HusEmpty);
     HUS_PROPERTY_READONLY(QVariantMap, HusSpin);

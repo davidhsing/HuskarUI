@@ -526,10 +526,17 @@ QtObject {
                     desc: qsTr('展示一个对话框，提供标题、内容区、操作区。')
                 },
                 {
+                    key: 'HusAlert',
+                    label: qsTr('HusAlert 警告提示'),
+                    source: './Examples/Feedback/ExpAlert.qml',
+                    addVersion: '0.6.0.0',
+                    desc: qsTr('静态的警告提示组件。')
+                },
+                {
                     key: 'HusResult',
                     label: qsTr('HusResult 结果'),
                     source: './Examples/Feedback/ExpResult.qml',
-                    addVersion: '0.5.0.0',
+                    addVersion: '0.6.0.0',
                     desc: qsTr('用于反馈一系列操作任务的处理结果。')
                 }
             ]
