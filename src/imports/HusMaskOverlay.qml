@@ -13,7 +13,7 @@ HusRectangle {
     color: control.colorBg
     visible: false
 
-    signal maskClicked()
+    signal clicked()
 
     Behavior on opacity {
         enabled: control.animationEnabled
@@ -29,7 +29,7 @@ HusRectangle {
             if (control.closable) {
                 control.visible = false;
             }
-            control.maskClicked();
+            control.clicked();
         }
     }
 }

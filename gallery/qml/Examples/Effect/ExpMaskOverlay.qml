@@ -16,8 +16,18 @@ Flickable {
         Description {
             desc: qsTr(`
 # HusMaskOverlay 遮罩层\n
-HusMaskOverlay 是一个独立的遮罩层组件，提供半透明背景覆盖效果。\n
-* **继承自 { [HusRectangle](internal://HusRectangle) }**\n
+一个独立的遮罩层组件，提供半透明背景覆盖效果。\n
+* **继承自 { HusRectangle }**\n
+\n<br/>
+\n### 支持的属性：\n
+属性名 | 类型 | 默认值 | 描述
+------ | --- | :---: | ---
+closable | bool | true | 是否可点击关闭
+colorBg | color | - | 背景色
+\n<br/>
+\n### 支持的信号：\n
+- \`clicked()\` 点击时发出\n
+<br/>
                        `)
         }
 
@@ -47,8 +57,9 @@ HusMaskOverlay 是一个独立的遮罩层组件，提供半透明背景覆盖�
 可以通过 'parent' 属性更改要覆盖的容器。 
             `)
             code: `  
-import QtQuick  
-import HuskarUI.Basic  
+import QtQuick
+import QtQuick.Templates as T
+import HuskarUI.Basic
   
 Item {
     width: parent.width
@@ -65,7 +76,7 @@ Item {
         id: maskOverlay
         closable: true
         parent: T.Overlay.overlay
-        onMaskClicked: {
+        onClicked: {
             messageApi.success('遮罩层被点击');
         }
     }
@@ -95,7 +106,7 @@ Item {
                     id: maskOverlay
                     closable: true
                     parent: T.Overlay.overlay
-                    onMaskClicked: {
+                    onClicked: {
                         messageApi.success('遮罩层被点击');
                     }
                 }
