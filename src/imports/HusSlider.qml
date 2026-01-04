@@ -161,6 +161,7 @@ Item {
             orientation: control.orientation
             snapMode: {
                 switch (control.snapMode) {
+                    case HusSlider.SnapNone: return T.Slider.NoSnap;
                     case HusSlider.SnapAlways: return T.Slider.SnapAlways;
                     case HusSlider.SnapOnRelease: return T.Slider.SnapOnRelease;
                     default: return T.Slider.SnapNone;
@@ -196,9 +197,10 @@ Item {
             stepSize: control.stepSize
             snapMode: {
                 switch (control.snapMode) {
+                    case HusSlider.SnapNone: return T.RangeSlider.NoSnap;
                     case HusSlider.SnapAlways: return T.RangeSlider.SnapAlways;
                     case HusSlider.SnapOnRelease: return T.RangeSlider.SnapOnRelease;
-                    default: return T.RangeSlider.SnapNone;
+                    default: return T.RangeSlider.NoSnap;
                 }
             }
             orientation: control.orientation
