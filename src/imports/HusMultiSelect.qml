@@ -5,8 +5,8 @@ import HuskarUI.Basic
 HusSelect {
     id: control
 
-    signal search(input: string)
-    signal select(option: var)
+    signal searched(input: string)
+    signal selected(option: var)
     signal tagRemoved(option: var)
 
     property var options: []
@@ -206,7 +206,7 @@ HusSelect {
             font: control.font
             readOnly: !control.searchEnabled
             onTextEdited: {
-                control.search(text);
+                control.searched(text);
                 control.filter();
                 if (control.model.length > 0)
                     control.openPopup();
@@ -413,7 +413,7 @@ HusSelect {
             __tagListModel.append({ '__related__': key, 'tagData': cleanData });
             selectedKeysMap.set(key, data);
             selectedKeysMapChanged();
-            control.select(data);
+            control.selected(data);
         }
 
         function remove(key) {

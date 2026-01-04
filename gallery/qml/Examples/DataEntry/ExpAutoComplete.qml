@@ -51,9 +51,9 @@ defaultOptionSpacing | int | 0 | 默认选项间隔
 - \`filter()\` 使用 \`filterOption\` 过滤选项列表
 \n<br/>
 \n### 支持的信号：\n
-- \`search(input: string)\` 搜索补全项的时发出\n
+- \`searched(input: string)\` 搜索补全项的时发出\n
   - \`input\` 输入文本\n
-- \`select(option: var)\` 选择补全项时发出\n
+- \`selected(option: var)\` 选择补全项时发出\n
   - \`option\` 选择的选项\n
                        `)
         }
@@ -93,7 +93,7 @@ Row {
     HusAutoComplete {
         width: 180
         placeholderText: 'Basic Usage'
-        onSearch: function(input) {
+        onSearched: function(input) {
             options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
         }
     }
@@ -105,7 +105,7 @@ Row {
                 HusAutoComplete {
                     width: 180
                     placeholderText: 'Basic Usage'
-                    onSearch: function(input) {
+                    onSearched: function(input) {
                         options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
                     }
                 }
@@ -128,7 +128,7 @@ Row {
     HusAutoComplete {
         width: 180
         placeholderText: 'Custom Options'
-        onSearch: function(input) {
+        onSearched: function(input) {
             if (!input || input.includes('@')) {
                 options = [];
             } else {
@@ -148,7 +148,7 @@ Row {
                 HusAutoComplete {
                     width: 180
                     placeholderText: 'Custom Options'
-                    onSearch: function(input) {
+                    onSearched: function(input) {
                         if (!input || input.includes('@')) {
                             options = [];
                         } else {
@@ -241,7 +241,7 @@ Row {
                     width: delegateColumn.width
                     height: 30
                     titleAlign: HusDivider.AlignCenter
-                    title: delegateColumn.option
+                    titleText: delegateColumn.option
                     colorText: 'red'
                 }
             }
@@ -297,7 +297,7 @@ Row {
                                 width: delegateColumn.width
                                 height: 30
                                 titleAlign: HusDivider.AlignCenter
-                                title: delegateColumn.option
+                                titleText: delegateColumn.option
                                 colorText: 'red'
                             }
                         }
@@ -315,7 +315,7 @@ Row {
 
                         Rectangle {
                             width: parent.width
-                            height: option == '' ? parent.height : parent.height - 30
+                            height: option === '' ? parent.height : parent.height - 30
                             anchors.bottom: parent.bottom
                             clip: true
                             radius: 2
@@ -344,10 +344,10 @@ Row {
     HusAutoComplete {
         width: 280
         height: 40
-        rightPadding: 20
+        rightPadding: 30
         tooltipVisible: true
         placeholderText: 'input here'
-        onSearch: function(input) {
+        onSearched: function(input) {
             if (!input) {
                 options = [];
             } else {
@@ -397,10 +397,10 @@ Row {
                 HusAutoComplete {
                     width: 280
                     height: 40
-                    rightPadding: 20
+                    rightPadding: 30
                     tooltipVisible: true
                     placeholderText: 'input here'
-                    onSearch: function(input) {
+                    onSearched: function(input) {
                         if (!input) {
                             options = [];
                         } else {
@@ -467,7 +467,7 @@ Row {
         width: 240
         clearIconSource: HusIcon.CloseSquareFilled
         placeholderText: 'Customized clear icon'
-        onSearch: function(input) {
+        onSearched: function(input) {
             options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
         }
     }
@@ -480,7 +480,7 @@ Row {
                     width: 240
                     clearIconSource: HusIcon.CloseSquareFilled
                     placeholderText: 'Customized clear icon'
-                    onSearch: function(input) {
+                    onSearched: function(input) {
                         options = input ? [{ label: input.repeat(1) }, { label: input.repeat(2) }, { label: input.repeat(3) }] : [];
                     }
                 }

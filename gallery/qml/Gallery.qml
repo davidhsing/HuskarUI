@@ -210,7 +210,7 @@ HusWindow {
             filterOption: function(input, option) {
                 return option.label.toUpperCase().indexOf(input.toUpperCase()) !== -1;
             }
-            onSelect: function(option) {
+            onSelected: function(option) {
                 galleryMenu.gotoMenu(option.key);
             }
             labelDelegate: HusText {

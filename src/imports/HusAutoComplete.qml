@@ -5,8 +5,8 @@ import HuskarUI.Basic
 HusInput {
     id: control
 
-    signal search(input: string)
-    signal select(option: var)
+    signal searched(input: string)
+    signal selected(option: var)
 
     property var options: []
     property var filterOption: (input, option) => true
@@ -48,12 +48,13 @@ HusInput {
         control.filter();
     }
     onTextEdited: {
-        control.search(text);
+        control.searched(text);
         control.filter();
-        if (__private.model.length > 0)
+        if (__private.model.length > 0) {
             control.openPopup();
-        else
+        } else {
             control.closePopup();
+        }
     }
 
     Keys.onPressed: function(event) {
@@ -77,19 +78,13 @@ HusInput {
                 const modelData = __private.model[__popupListView.selectIndex];
                 const textData = modelData[control.textRole];
                 const valueData = modelData[control.valueRole] ?? textData;
-                control.select(modelData);
+                control.selected(modelData);
                 control.text = valueData;
                 __popup.close();
                 control.filter();
                 __popupListView.currentIndex = __popupListView.selectIndex = 0;
             }
         }
-    }
-
-    Item {
-        id: __private
-        property var window: Window.window
-        property var model: []
     }
 
     TapHandler {
@@ -187,7 +182,7 @@ HusInput {
                     property alias highlighted: __popupDelegate.highlighted
                 }
                 onClicked: {
-                    control.select(__popupDelegate.modelData);
+                    control.selected(__popupDelegate.modelData);
                     control.text = __popupDelegate.valueData;
                     __popup.close();
                     control.filter();
@@ -234,5 +229,11 @@ HusInput {
     function filter() {
         __private.model = options.filter(option => filterOption(text, option) === true);
         __popupListView.currentIndex = __popupListView.selectIndex = -1;
+    }
+
+    Item {
+        id: __private
+        property var window: Window.window
+        property var model: []
     }
 }

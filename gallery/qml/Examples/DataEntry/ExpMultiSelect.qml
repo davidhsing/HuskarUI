@@ -58,9 +58,9 @@ radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
 - \`closePopup()\` 关闭弹出框\n
 \n<br/>
 \n### 支持的信号：\n
-- \`search(input: string)\` 搜索补全项的时发出\n
+- \`searched(input: string)\` 搜索补全项的时发出\n
   - \`input\` 输入文本\n
-- \`select(option: var)\` 选择补全项时发出\n
+- \`selected(option: var)\` 选择补全项时发出\n
   - \`option\` 选择的选项\n
 - \`tagRemoved(option: var)\` 删除标签项时发出\n
   - \`option\` 删除的选项\n
@@ -157,7 +157,7 @@ Row {
         width: 200
         textRole: 'desc'
         searchEnabled: false
-        placeholderText: 'select one country'
+        placeholderText: 'selected one country'
         options: [
             {
                 label: 'China',
@@ -191,7 +191,7 @@ Row {
                     width: 200
                     textRole: 'desc'
                     searchEnabled: false
-                    placeholderText: 'select one country'
+                    placeholderText: 'selected one country'
                     options: [
                         {
                             label: 'China',
@@ -355,7 +355,7 @@ HusMultiSelect {
             filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
             return filteredOptions.indexOf(option.label) != -1;
         }
-    onSelect: {
+    onSelected: {
         filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
         options = filteredOptions.map((item) => ({ label: item }));
     }
@@ -378,7 +378,7 @@ HusMultiSelect {
                             filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
                             return filteredOptions.indexOf(option.label) != -1;
                         }
-                    onSelect: {
+                    onSelected: {
                         filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
                         options = filteredOptions.map((item) => ({ label: item }));
                     }
@@ -412,7 +412,7 @@ HusMultiSelect {
         presetColor: tagData.value
         closeIconSource: HusIcon.CloseOutlined
         closeIconSize: 12
-        onClose: customTag.removeTagAtIndex(index);
+        onClosed: customTag.removeTagAtIndex(index);
     }
     options: [
         { label: 'gold', value: 'gold' },
@@ -433,7 +433,7 @@ HusMultiSelect {
                         presetColor: tagData.value
                         closeIconSource: HusIcon.CloseOutlined
                         closeIconSize: 12
-                        onClose: customTag.removeTagAtIndex(index);
+                        onClosed: customTag.removeTagAtIndex(index);
                     }
                     options: [
                         { label: 'gold', value: 'gold' },

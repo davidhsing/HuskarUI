@@ -244,7 +244,7 @@ Column {
             delegate: HusTag {
                 text: tag
                 closeIconSource: removable ? HusIcon.CloseOutlined : 0
-                onClose: {
+                onClosed: {
                     editTagsModel.remove(index, 1);
                 }
             }
@@ -283,7 +283,7 @@ Column {
                         delegate: HusTag {
                             text: tag
                             closeIconSource: removable ? HusIcon.CloseOutlined : 0
-                            onClose: {
+                            onClosed: {
                                 editTagsModel.remove(index, 1);
                             }
                         }

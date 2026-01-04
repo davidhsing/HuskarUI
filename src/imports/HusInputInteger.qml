@@ -36,7 +36,7 @@ T.SpinBox {
     property int initAfterLabelIndex: 0
     property string currentBeforeLabel: ''
     property string currentAfterLabel: ''
-    property var formatter: (value, locale) => value.toLocaleString(locale, 'f', 0)
+    property var formatter: (value, locale) => value.toString()    // value.toLocaleString(locale, 'f', 0)
     property var parser: (text, locale) => Number.fromLocaleString(locale, text)
     property int defaultHandlerWidth: 24
     property alias colorText: __input.colorText
