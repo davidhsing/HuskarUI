@@ -23,7 +23,6 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 closable | bool | true | 是否可点击关闭
-colorBg | color | - | 背景色
 \n<br/>
 \n### 支持的信号：\n
 - \`clicked()\` 点击时发出\n

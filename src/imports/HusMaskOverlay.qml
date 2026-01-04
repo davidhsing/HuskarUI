@@ -6,11 +6,10 @@ HusRectangle {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool closable: false
-    property color colorBg: HusTheme.HusMaskOverlay.colorBg
 
     objectName: '__HusMaskOverlay__'
     anchors.fill: parent
-    color: control.colorBg
+    color: HusTheme.HusMaskOverlay.colorBg
     visible: false
 
     signal clicked()
@@ -25,6 +24,7 @@ HusRectangle {
 
     MouseArea {
         anchors.fill: parent
+        hoverEnabled: true
         onClicked: {
             if (control.closable) {
                 control.visible = false;
