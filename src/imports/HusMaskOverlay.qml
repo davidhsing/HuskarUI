@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Templates as T
 import HuskarUI.Basic
 
 HusRectangle {
@@ -12,9 +11,7 @@ HusRectangle {
     objectName: '__HusMaskOverlay__'
     anchors.fill: parent
     color: control.colorBg
-    parent: T.Overlay.overlay
     visible: false
-    z: 11000
 
     signal maskClicked()
 

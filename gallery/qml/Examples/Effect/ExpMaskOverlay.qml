@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls.Basic
+import QtQuick.Templates as T
 import HuskarUI.Basic
 import '../../Controls'
 
@@ -63,6 +64,7 @@ Item {
     HusMaskOverlay {
         id: maskOverlay
         closable: true
+        parent: T.Overlay.overlay
         onMaskClicked: {
             messageApi.success('遮罩层被点击');
         }
@@ -92,6 +94,7 @@ Item {
                 HusMaskOverlay {
                     id: maskOverlay
                     closable: true
+                    parent: T.Overlay.overlay
                     onMaskClicked: {
                         messageApi.success('遮罩层被点击');
                     }
