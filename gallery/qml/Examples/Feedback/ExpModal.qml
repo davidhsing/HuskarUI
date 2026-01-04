@@ -49,9 +49,9 @@ colorDescription | color | - | 描述文本颜色
 titleFont | font | - | 标题文本字体
 descriptionFont | font | - | 描述文本字体
 bgVisible | bool | true | 背景是否可见
-iconVisible | bool | true | 图标是否可见
-titleVisible | bool | true | 标题是否可见
-descriptionVisible | bool | true | 描述是否可见
+iconVisible | bool | - | 图标是否可见
+titleVisible | bool | - | 标题是否可见
+descriptionVisible | bool | - | 描述是否可见
 footerVisible | bool | true | 页脚是否可见
 confirmVisible | bool | true | 确认按钮是否可见
 cancelVisible | bool | true | 取消按钮是否可见

@@ -40,12 +40,12 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-iconVisible | bool | true | 图标是否可见
+iconVisible | bool | - | 图标是否可见
 iconSource | int丨string | HusIcon.ExclamationCircleFilled丨'' | 图标源(来自 HusIcon)或图标链接
 iconSize | int | 16 | 图标大小
-titleVisible | bool | true | 标题是否可见
+titleVisible | bool | - | 标题是否可见
 titleText | string | '' | 标题文本
-descriptionVisible | bool | true | 描述是否可见
+descriptionVisible | bool | - | 描述是否可见
 descriptionText | string | '' | 描述文本
 arrowVisible | bool | true | 是否显示箭头
 arrowWidth | int | 16 | 箭头宽度

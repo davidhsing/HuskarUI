@@ -35,12 +35,12 @@ borderVisible | bool | true | 是否显示边框
 closable | bool | true | 是否显示关闭按钮
 delay | int | 0 | 正数表示启动延迟关闭
 type | enum | HusAlert.TypeInfo | 警告类型
-iconVisible | bool | true | 是否显示图标
+iconVisible | bool | - | 图标是否可见
 iconSize | int | 16 | 图标大小
 iconSource | var | - | 图标源
-titleVisible | bool | true | 是否显示标题
+titleVisible | bool | - | 标题是否可见
 titleText | string | '' | 标题文本内容
-descriptionVisible | bool | true | 是否显示描述
+descriptionVisible | bool | - | 描述是否可见
 descriptionText | string | '' | 描述文本内容
 extraVisible | bool | true | 额外内容是否可见
 radiusBg | [HusRadius](internal://HusRadius) | 6 | 背景圆角半径

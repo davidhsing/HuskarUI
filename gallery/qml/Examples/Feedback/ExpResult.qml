@@ -33,10 +33,10 @@ Flickable {
 ------ | --- | :---: | ---
 type | enum | HusResult.TypeInfo | 结果类型
 borderVisible | bool | true | 外侧边框是否可见
-iconVisible | bool | true | 图标是否可见
+iconVisible | bool | - | 图标是否可见
 extraVisible | bool | true | 额外内容是否可见
-titleVisible | bool | true | 标题是否可见
-descriptionVisible | bool | true | 描述是否可见
+titleVisible | bool | - | 标题是否可见
+descriptionVisible | bool | - | 描述是否可见
 actionVisible | bool | true | 操作区是否可见
 footerVisible | bool | true | 页脚是否可见
 iconImageSource | url | - | 自定义图片源

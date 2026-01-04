@@ -6,12 +6,12 @@ import HuskarUI.Basic
 HusPopup {
     id: control
 
-    property bool iconVisible: true
+    property bool iconVisible: control.iconSource !== 0 && control.iconSource !== ''
     property var iconSource: HusIcon.ExclamationCircleFilled || ''
     property int iconSize: 16
-    property bool titleVisible: true
+    property bool titleVisible: !!control.titleText
     property string titleText: ''
-    property bool descriptionVisible: true
+    property bool descriptionVisible: !!control.descriptionText
     property string descriptionText: ''
     property bool arrowVisible: true
     property int arrowWidth: 16

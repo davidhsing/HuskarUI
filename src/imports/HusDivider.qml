@@ -17,7 +17,7 @@ Item {
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property bool titleVisible: true
+    property bool titleVisible: !!control.titleText
     property string titleText: ''
     property font titleFont: Qt.font({
         family: themeSource.fontFamily,

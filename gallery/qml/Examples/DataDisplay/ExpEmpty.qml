@@ -28,7 +28,7 @@ imageSource | string | '' | 自定义的图片地址(优先显示此地址)
 imageStyle | int | HusEmpty.ImageDefault | 预设的图片样式(来自 HusEmpty)
 imageWidth | int | - | 图片宽度
 imageHeight | int | - | 图片高度
-descriptionVisible | bool | true | 是否显示描述文本
+descriptionVisible | bool | - | 描述是否可见
 descriptionText | string | '' | 描述文本
 descriptionFont | font | - | 描述文本字体
 descriptionSpacing | int | 12 | 描述文本与图像的间距

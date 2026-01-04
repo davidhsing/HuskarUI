@@ -31,7 +31,7 @@ maskClosable | bool | true | 点击蒙层是否允许关闭
 closePosition | enum | HusDrawer.PositionLeft | 关闭按钮的位置(来自 HusDrawer)
 drawerSize | int | 378 | 抽屉宽度
 edge | enum | Qt.RightEdge | 抽屉打开的位置(来自 Qt.*Edge)
-titleVisible | bool | true | 标题是否可见
+titleVisible | bool | - | 标题是否可见
 titleText | string | '' | 标题文本
 titleFont | font | - | 标题字体
 colorTitle | color | - | 标题颜色

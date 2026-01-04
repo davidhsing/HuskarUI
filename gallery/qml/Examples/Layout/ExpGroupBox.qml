@@ -26,7 +26,7 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否启用动画
-titleVisible | bool | true | 标题是否可见
+titleVisible | bool | - | 标题是否可见
 titleText | string | '' | 标题文本
 titlePosition | enum | PositionTop | 标题位置(PositionTop/PositionBottom)（来自 HusGroupBox）
 titleAlign | enum | AlignLeft | 标题对齐方式(AlignLeft/AlignCenter/AlignRight)（来自 HusGroupBox）

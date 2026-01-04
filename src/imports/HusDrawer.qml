@@ -15,7 +15,7 @@ T.Drawer {
     property bool maskClosable: true
     property int closePosition: HusDrawer.PositionLeft
     property int drawerSize: 378
-    property bool titleVisible: true
+    property bool titleVisible: !!control.titleText
     property string titleText: ''
     property font titleFont: Qt.font({
         family: HusTheme.HusDrawer.fontFamily,

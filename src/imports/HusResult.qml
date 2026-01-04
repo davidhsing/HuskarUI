@@ -24,6 +24,7 @@ Item {
     property int type: HusResult.TypeInfo
 
     // Icon properties
+    property bool iconVisible: control.iconSource !== 0 && control.iconSource !== ''
     property var iconSource: 0 ?? ''
     property real iconSize: 80
     property var iconImageSource: ''
@@ -32,7 +33,6 @@ Item {
     property bool iconImageEmptyAsError: false
     property int iconImageWidth: -1
     property int iconImageHeight: -1
-    property bool iconVisible: true
     property color colorIcon: {
         switch (control.type) {
             case HusResult.TypeInfo: return HusTheme.Primary.colorInfo;
@@ -44,24 +44,24 @@ Item {
     }
 
     // Extra properties
-    property int extraPosition: HusResult.PositionRight
     property bool extraVisible: true
+    property int extraPosition: HusResult.PositionRight
 
     // Title properties
+    property bool titleVisible: !!control.titleText
     property string titleText: ''
     property font titleFont: Qt.font({
         family: HusTheme.HusResult.fontTitleFamily,
         pixelSize: HusTheme.HusResult.fontTitleSize
     })
-    property bool titleVisible: true
 
     // Description properties
+    property bool descriptionVisible: !!control.descriptionText
     property string descriptionText: ''
     property font descriptionFont: Qt.font({
         family: HusTheme.HusResult.fontDescriptionFamily,
         pixelSize: HusTheme.HusResult.fontDescriptionSize
     })
-    property bool descriptionVisible: true
 
     // Action properties
     property bool actionVisible: true

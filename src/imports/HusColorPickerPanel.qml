@@ -15,7 +15,7 @@ T.Control {
     property bool autoChange: true
     property color changeableValue: defaultValue
     property bool changeableSync: false
-    property bool titleVisible: false
+    property bool titleVisible: !!control.titleText
     property string titleText: ''
     property bool alphaEnabled: true
     property bool clearable: false

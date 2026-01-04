@@ -33,7 +33,7 @@ Item {
             case HusEmpty.ImageSimple: return 41;
         }
     }
-    property bool descriptionVisible: true
+    property bool descriptionVisible: !!control.descriptionText
     property string descriptionText: ''
     property int descriptionSpacing: 12
     property font descriptionFont: Qt.font({

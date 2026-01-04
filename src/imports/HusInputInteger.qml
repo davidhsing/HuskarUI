@@ -37,7 +37,7 @@ T.SpinBox {
     property string currentBeforeLabel: ''
     property string currentAfterLabel: ''
     property var formatter: (value, locale) => value.toString()    // value.toLocaleString(locale, 'f', 0)
-    property var parser: (text, locale) => Number.fromLocaleString(locale, text)
+    property var parser: (text, locale) => Number(text) || 0    // Number.fromLocaleString(locale, text)
     property int defaultHandlerWidth: 24
     property alias colorText: __input.colorText
     property color colorPrefix: themeSource.colorPrefix
@@ -180,8 +180,8 @@ T.SpinBox {
         family: themeSource.fontFamily
         pixelSize: parseInt(themeSource.fontSize)
     }
-    valueFromText: parser
-    textFromValue: formatter
+    // valueFromText: parser
+    // textFromValue: formatter
     contentItem: HusInput {
         id: __input
         enabled: control.enabled
@@ -237,7 +237,15 @@ T.SpinBox {
                 }
             }
         }
-        onTextEdited: modified = true;
+        onTextChanged: {
+            Qt.callLater(() => {
+                const parsed = control.parser(text);
+                if (!isNaN(parsed) && parsed >= control.from && parsed <= control.to && parsed !== control.value) {
+                    control.value = parsed;
+                }
+            });
+        }
+        onEditingFinished: control.valueChanged();
 
         property bool modified: false
 
@@ -305,16 +313,19 @@ T.SpinBox {
     }
 
     onValueChanged: {
-        if (__input.modified) {
-            __input.modified = false;
-            control.valueModified();
-        }
+        Qt.callLater(() => {
+            __input.text = control.formatter(value, control.locale);
+        });
     }
     onPrefixChanged: valueChanged();
     onSuffixChanged: valueChanged();
     onCurrentAfterLabelChanged: valueChanged();
     onCurrentBeforeLabelChanged: valueChanged();
-    Component.onCompleted: valueChanged();
+
+    Component.onCompleted: {
+        __input.text = control.formatter(value, control.locale);
+        valueChanged();
+    }
 
     Loader {
         id: __beforeLoader

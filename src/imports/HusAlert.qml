@@ -23,7 +23,7 @@ Item {
     property bool closable: false
     property int delay: 0    // 毫秒
     property int type: HusAlert.TypeInfo
-    property bool iconVisible: true
+    property bool iconVisible: control.iconSource !== 0 && control.iconSource !== ''
     property int iconSize: 24
     property var iconSource: {
         switch (type) {
@@ -34,10 +34,10 @@ Item {
             default: return HusIcon.InfoCircleFilled
         }
     }
-    property bool titleVisible: true
+    property bool titleVisible: !!control.titleText
     property string titleText: ''
+    property bool descriptionVisible: !!control.descriptionText
     property string descriptionText: ''
-    property bool descriptionVisible: true
     property bool extraVisible: true
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusAlert.radiusBg }
     property real contentRowSpacing: 10

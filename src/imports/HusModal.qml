@@ -41,9 +41,9 @@ HusPopup {
         pixelSize: parseInt(control.themeSource.fontDescriptionSize)
     })
     property bool bgVisible: true
-    property bool iconVisible: true
-    property bool titleVisible: true
-    property bool descriptionVisible: true
+    property bool iconVisible: control.iconSource !== 0 && control.iconSource !== ''
+    property bool titleVisible: !!control.titleText
+    property bool descriptionVisible: !!control.descriptionText
     property bool footerVisible: true
     property bool confirmVisible: true
     property bool cancelVisible: true
