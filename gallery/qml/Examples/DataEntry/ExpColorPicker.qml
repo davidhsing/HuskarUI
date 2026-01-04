@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusColorPicker 颜色选择器 \n
+# HusColorPicker 颜色选择器\n
 用于选择颜色。\n
 * **继承自 { Control }**\n
 \n<br/>
@@ -36,7 +36,8 @@ changeableValue | color | defaultValue | 更改的颜色值
 changeableSync | bool | false | 是否自动同步更改的颜色值到颜色值(changeableValue->value)
 textVisible | bool | false | 是否显示文本
 textFormatter | function(color): string | - | 文本格式化器
-title | string | '' | 弹窗标题
+titleVisible | bool | false | 弹窗标题是否可见
+titleText | string | '' | 弹窗标题文本
 alphaEnabled | bool | true | 透明度是否启用
 clearable | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
 open | bool | false | 弹窗是否打开
@@ -261,7 +262,8 @@ Column {
             width: parent.width
             descTitle: qsTr('自定义标题')
             desc: qsTr(`
-通过 \`title\` 属性设置是否显示弹出面板的标题。\n
+通过 \`titleText\` 属性设置是否显示弹出面板的标题。\n
+通过 \`titleVisible\` 属性设置是否显示弹出面板的标题是否可见。\n
                        `)
             code: `
 import QtQuick
@@ -273,7 +275,7 @@ Column {
     HusColorPicker {
         defaultValue: '#1677ff'
         textVisible: true
-        title: 'color picker'
+        titleText: 'Color Picker'
     }
 }
             `
@@ -283,7 +285,8 @@ Column {
                 HusColorPicker {
                     defaultValue: '#1677ff'
                     textVisible: true
-                    title: 'color picker'
+                    titleVisible: true
+                    titleText: 'Color Picker'
                 }
             }
         }

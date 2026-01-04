@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusMaskOverlay 遮罩层 \n
+# HusMaskOverlay 遮罩层\n
 HusMaskOverlay 是一个独立的遮罩层组件，提供半透明背景覆盖效果。\n
 * **继承自 { [HusRectangle](internal://HusRectangle) }**\n
                        `)
@@ -42,7 +42,7 @@ HusMaskOverlay 是一个独立的遮罩层组件，提供半透明背景覆盖�
             width: parent.width
             descTitle: qsTr("基础用法")
             desc: qsTr(`  
-最简单的遮罩层使用，覆盖整个顶层容器。 \n
+最简单的遮罩层使用，覆盖整个顶层容器。\n
 可以通过 'parent' 属性更改要覆盖的容器。 
             `)
             code: `  

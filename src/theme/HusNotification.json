@@ -1,9 +1,10 @@
 {
     "__style__": {
-        "fontFamily": "@fontPrimaryFamily",
-        "fontMessageSize": "@fontPrimarySizeHeading5",
-        "fontDescriptionSize": "@fontPrimarySize",
-        "colorMessage": "@colorTextPrimary",
+        "titleFontFamily": "@fontPrimaryFamily",
+        "titleFontSize": "@fontPrimarySize",
+        "descriptionFontFamily": "@fontPrimaryFamily",
+        "descriptionFontSize": "@fontPrimarySize",
+        "colorTitle": "@colorTextPrimary",
         "colorDescription": "@colorTextSecondary",
         "colorBg": "@colorBgBase",
         "colorBgDark": "@colorMain-11",

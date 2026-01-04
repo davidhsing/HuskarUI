@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusTag 标签 \n
+# HusTag 标签\n
 进行标记和分类的小标签。\n
 * **继承自 { Rectangle }**\n
 \n<br/>
@@ -150,7 +150,7 @@ Column {
             desc: qsTr(`
 通过 \`presetColor\` 设置预设颜色。\n
 支持的预设颜色：\n
-**['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']** \n
+**['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']**\n
 如果预设颜色不在该列表中，则为自定义标签。\n
                        `)
             code: `

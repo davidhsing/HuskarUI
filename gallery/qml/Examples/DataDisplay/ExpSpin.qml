@@ -13,7 +13,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusSpin 加载中 \n
+# HusSpin 加载中\n
 显示一个正在加载的状态的图标和提示文本。\n
 * **继承自 { Item }**\n
 \n<br/>

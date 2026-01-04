@@ -13,7 +13,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusAudioDiagnosis 音频诊断器 \n
+# HusAudioDiagnosis 音频诊断器\n
 用于测试音频输入设备，显示实时音频信号强度的圆形指示器组件。\n
 * **继承自 { Item }**\n
 \n<br/>

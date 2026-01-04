@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusAsyncHasher 异步散列器 \n
+# HusAsyncHasher 异步散列器\n
 可对任意数据(url/text/object)生成加密哈希的异步散列器。\n
 * **继承自 { QObject }**\n
 \n<br/>

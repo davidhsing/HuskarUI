@@ -14,8 +14,8 @@ HusPopup {
         PositionRight = 4
     }
 
-    signal confirm()
-    signal cancel()
+    signal confirmed()
+    signal canceled()
 
     property int position: HusModal.PositionCenter
     property int positionMargin: 120
@@ -23,8 +23,8 @@ HusPopup {
     property bool maskClosable: true
     property var iconSource: 0 || ''
     property int iconSize: 24
-    property string title: ''
-    property string description: ''
+    property string titleText: ''
+    property string descriptionText: ''
     property string confirmText: ''
     property string cancelText: ''
     property color colorOverlay: control.themeSource.colorOverlay
@@ -33,8 +33,8 @@ HusPopup {
     property color colorDescription: control.themeSource.colorDescription
     property font titleFont: Qt.font({
         family: control.themeSource.fontFamily,
-        bold: true,
-        pixelSize: parseInt(control.themeSource.fontTitleSize)
+        pixelSize: parseInt(control.themeSource.fontTitleSize),
+        bold: true
     })
     property font descriptionFont: Qt.font({
         family: control.themeSource.fontFamily,
@@ -45,8 +45,8 @@ HusPopup {
     property bool titleVisible: true
     property bool descriptionVisible: true
     property bool footerVisible: true
-    property bool confirmButtonVisible: true
-    property bool cancelButtonVisible: true
+    property bool confirmVisible: true
+    property bool cancelVisible: true
     property int widthRevision: -40
     property int heightRevision: 40
     property HusRadius radiusCloseBg: HusRadius { all: themeSource.radiusCloseBg }
@@ -58,7 +58,7 @@ HusPopup {
         bottomLeftRadius: control.radiusBg.bottomLeft
         bottomRightRadius: control.radiusBg.bottomRight
     }
-    property Component closeButtonDelegate: HusCaptionButton {
+    property Component closeDelegate: HusCaptionButton {
         animationEnabled: control.animationEnabled
         topPadding: 4
         bottomPadding: 4
@@ -75,35 +75,35 @@ HusPopup {
         iconSize: control.iconSize
     }
     property Component titleDelegate: HusText {
-        height: control.title === '' ? 0 : implicitHeight
+        height: !control.titleText ? 0 : implicitHeight
         font: control.titleFont
         color: control.colorTitle
-        text: control.title
+        text: control.titleText
         horizontalAlignment: Text.AlignLeft
         wrapMode: Text.WrapAnywhere
     }
     property Component descriptionDelegate: HusText {
-        height: control.description === '' ? 0 : implicitHeight
+        height: !control.descriptionText ? 0 : implicitHeight
         font: control.descriptionFont
         color: control.colorDescription
-        text: control.description
+        text: control.descriptionText
         lineHeight: control.themeSource.fontDescriptionLineHeight
         horizontalAlignment: Text.AlignLeft
         wrapMode: Text.WrapAnywhere
     }
-    property Component confirmButtonDelegate: HusButton {
+    property Component confirmDelegate: HusButton {
         animationEnabled: control.animationEnabled
         text: control.confirmText
         type: HusButton.TypePrimary
         visible: !!control.confirmText
-        onClicked: control.confirm();
+        onClicked: control.confirmed();
     }
-    property Component cancelButtonDelegate: HusButton {
+    property Component cancelDelegate: HusButton {
         animationEnabled: control.animationEnabled
         text: control.cancelText
         type: HusButton.TypeDefault
         visible: !!control.cancelText
-        onClicked: control.cancel();
+        onClicked: control.canceled();
     }
     property Component footerDelegate: Item {
         height: __footer.height
@@ -114,14 +114,14 @@ HusPopup {
             spacing: 10
 
             Loader {
-                sourceComponent: control.confirmButtonDelegate
-                active: control.confirmButtonVisible
+                sourceComponent: control.confirmDelegate
+                active: control.confirmVisible
                 visible: active
             }
 
             Loader {
-                sourceComponent: control.cancelButtonDelegate
-                active: control.cancelButtonVisible
+                sourceComponent: control.cancelDelegate
+                active: control.cancelVisible
                 visible: active
             }
         }
@@ -143,7 +143,7 @@ HusPopup {
                     id: __iconLoader
                     Layout.alignment: Qt.AlignVCenter
                     sourceComponent: control.iconDelegate
-                    active: control.iconVisible && control.iconSource !== 0 && control.iconSource !== ''
+                    active: control.iconVisible
                     visible: active
                 }
 
@@ -180,7 +180,7 @@ HusPopup {
             anchors.rightMargin: 2
             anchors.top: parent.top
             anchors.topMargin: 2
-            sourceComponent: control.closeButtonDelegate
+            sourceComponent: control.closeDelegate
             active: control.closable
             visible: active
         }

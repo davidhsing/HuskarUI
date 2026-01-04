@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusAcrylic 亚克力 \n
+# HusAcrylic 亚克力\n
 亚克力/毛玻璃效果。\n
 * **继承自 { Item }**\n
 \n<br/>

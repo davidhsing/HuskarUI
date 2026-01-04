@@ -15,7 +15,8 @@ T.Control {
     property bool autoChange: true
     property color changeableValue: defaultValue
     property bool changeableSync: false
-    property string title: ''
+    property bool titleVisible: false
+    property string titleText: ''
     property bool alphaEnabled: true
     property bool clearable: false
     property string format: 'hex'
@@ -39,7 +40,7 @@ T.Control {
     property var themeSource: HusTheme.HusColorPicker
 
     property Component titleDelegate: HusText {
-        text: control.title
+        text: control.titleText
         color: control.colorTitle
         font: control.titleFont
     }
@@ -74,9 +75,9 @@ T.Control {
 
         Loader {
             Layout.fillWidth: true
-            active: control.title !== ''
-            visible: active
             sourceComponent: control.titleDelegate
+            active: control.titleVisible
+            visible: active
         }
 
         Item {

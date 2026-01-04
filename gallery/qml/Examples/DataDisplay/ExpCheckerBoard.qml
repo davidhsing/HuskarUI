@@ -13,7 +13,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusCheckerBoard 棋盘格 \n
+# HusCheckerBoard 棋盘格\n
 显示一个双色棋盘格。\n
 * **继承自 { Item }**\n
 \n<br/>

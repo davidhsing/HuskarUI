@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusDateTimePicker 日期选择框 \n
+# HusDateTimePicker 日期选择框\n
 输入或选择日期时间的控件。\n
 * **继承自 { [HusInput](internal://HusInput) }**\n
 \n<br/>
@@ -54,9 +54,9 @@ radiusItemBg | [HusRadius](internal://HusRadius) | - | 选择项圆角半径
 radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
 \n<br/>
 \n### 支持的函数：\n
-- \`setDateTime(date: jsDate)\` 设置当前日期时间为 \`date\` \n
-- \`getDateTime(): jsDate\` 获取当前的日期时间 \n
-- \`setDateTimeString(dateTimeString: string)\` 设置当前日期时间字符串为 \`dateTimeString\` \n
+- \`setDateTime(date: jsDate)\` 设置当前日期时间为 \`date\`\n
+- \`getDateTime(): jsDate\` 获取当前的日期时间\n
+- \`setDateTimeString(dateTimeString: string)\` 设置当前日期时间字符串为 \`dateTimeString\`\n
 - \`getDateTimeString(): string\` 获取当前的日期时间字符串
 - \`openPicker()\` 打开选择弹窗
 - \`closePicker()\` 关闭选择弹窗

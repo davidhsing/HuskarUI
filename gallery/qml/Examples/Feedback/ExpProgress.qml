@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusProgress 进度条 \n
+# HusProgress 进度条\n
 展示操作的当前进度。\n
 * **继承自 { Item }**\n
 \n<br/>

@@ -63,15 +63,15 @@ width | string | 可选 | 菜单宽度
 items | list | 可选 | 菜单模型
 \n<br/>
 \n### 支持的函数：\n
-- \`get(index: int): Object\` 获取 \`index\` 处的模型数据 \n
-- \`set(index: int, object: Object)\` 设置 \`index\` 处的模型数据为 \`object\` \n
-- \`setProperty(index: int, propertyName: string, value: any)\` 设置 \`index\` 处的模型数据属性名 \`propertyName\` 值为 \`value\` \n
-- \`move(from: int, to: int, count: int = 1)\` 将 \`count\` 个模型数据从 \`from\` 位置移动到 \`to\` 位置 \n
-- \`insert(index: int, object: Object)\` 插入标签 \`object\` 到 \`index\` 处 \n
-- \`append(object: Object)\` 在末尾添加标签 \`object\` \n
-- \`remove(index: int, count: int = 1)\` 删除 \`index\` 处 \`count\` 个模型数据 \n
-- \`clear()\` 清空所有模型数据 \n
-- \`string getPath()\` 获取当前路由路径 \n
+- \`get(index: int): Object\` 获取 \`index\` 处的模型数据\n
+- \`set(index: int, object: Object)\` 设置 \`index\` 处的模型数据为 \`object\`\n
+- \`setProperty(index: int, propertyName: string, value: any)\` 设置 \`index\` 处的模型数据属性名 \`propertyName\` 值为 \`value\`\n
+- \`move(from: int, to: int, count: int = 1)\` 将 \`count\` 个模型数据从 \`from\` 位置移动到 \`to\` 位置\n
+- \`insert(index: int, object: Object)\` 插入标签 \`object\` 到 \`index\` 处\n
+- \`append(object: Object)\` 在末尾添加标签 \`object\`\n
+- \`remove(index: int, count: int = 1)\` 删除 \`index\` 处 \`count\` 个模型数据\n
+- \`clear()\` 清空所有模型数据\n
+- \`string getPath()\` 获取当前路由路径\n
 \n<br/>
 \n### 支持的信号：\n
 - \`clicked(index: int, data: var)\` 点击路由项时发出\n

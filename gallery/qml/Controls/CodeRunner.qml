@@ -85,7 +85,7 @@ HusWindow {
                 width: parent.width
                 height: 10
                 anchors.bottom: errorView.top
-                title: qsTr('错误')
+                titleText: qsTr('错误')
             }
 
             ScrollView {

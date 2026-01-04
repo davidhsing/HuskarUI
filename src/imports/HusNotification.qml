@@ -36,7 +36,7 @@ Item {
     property bool stackMode: true
     property int stackThreshold: 5
     property int defaultIconSize: 20
-    property int maxNotificationWidth: 300
+    property int maxWidth: 300
     property int spacing: 10
     property bool closable: true
     property int topMargin: 12
@@ -44,26 +44,27 @@ Item {
     property int bgBottomPadding: 12
     property int bgLeftPadding: 12
     property int bgRightPadding: 12
-    property color colorMessage: HusTheme.HusNotification.colorMessage
+    property int iconSpacing: 8
+    property color colorTitle: HusTheme.HusNotification.colorTitle
     property color colorDescription: HusTheme.HusNotification.colorDescription
     property color colorBg: HusTheme.isDark ? HusTheme.HusNotification.colorBgDark : HusTheme.HusNotification.colorBg
     property color colorBgShadow: HusTheme.HusNotification.colorBgShadow
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusNotification.radiusBg }
-    property font messageFont: Qt.font({
-        family: HusTheme.HusNotification.fontFamily,
-        pixelSize: parseInt(HusTheme.HusNotification.fontMessageSize)
+    property font titleFont: Qt.font({
+        family: HusTheme.HusNotification.titleFontFamily,
+        pixelSize: parseInt(HusTheme.HusNotification.titleFontSize),
+        bold: true
     })
-    property int messageSpacing: 8
     property font descriptionFont: Qt.font({
-        family: HusTheme.HusNotification.fontFamily,
-        pixelSize: parseInt(HusTheme.HusNotification.fontDescriptionSize)
+        family: HusTheme.HusNotification.descriptionFontFamily,
+        pixelSize: parseInt(HusTheme.HusNotification.descriptionFontSize)
     })
     property int descriptionSpacing: 10
 
-    property Component messageDelegate: HusText {
-        font: control.messageFont
-        color: control.colorMessage
-        text: parent.message
+    property Component titleDelegate: HusText {
+        text: parent.title
+        font: control.titleFont
+        color: control.colorTitle
         horizontalAlignment: Text.AlignLeft
         wrapMode: Text.WrapAnywhere
     }
@@ -79,7 +80,7 @@ Item {
     objectName: '__HusNotification__'
 
     Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
-    Behavior on colorMessage { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
+    Behavior on colorTitle { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
     Behavior on colorDescription { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationMid } }
 
     QtObject {
@@ -101,16 +102,14 @@ Item {
         function initObject(object) {
             if (!object.hasOwnProperty('key')) object.key = '';
             if (!object.hasOwnProperty('loading')) object.loading = false;
-            if (!object.hasOwnProperty('message')) object.message = '';
+            if (!object.hasOwnProperty('title')) object.title = '';
             if (!object.hasOwnProperty('description')) object.description = '';
             if (!object.hasOwnProperty('type')) object.type = HusNotification.TypeNone;
             if (!object.hasOwnProperty('duration')) object.duration = 4500;
             if (!object.hasOwnProperty('iconSize')) object.iconSize = control.defaultIconSize;
             if (!object.hasOwnProperty('iconSource')) object.iconSource = 0;
-
             if (!object.hasOwnProperty('colorIcon')) object.colorIcon = '';
             else object.colorIcon = String(object.colorIcon);
-
             return object;
         }
     }
@@ -150,14 +149,13 @@ Item {
                 required property int index
                 required property string key
                 required property bool loading
-                required property string message
+                required property string title
                 required property string description
                 required property int type
                 required property int duration
                 required property int iconSize
                 required property int iconSource
                 required property string colorIcon
-
                 property real collapseTopMargin: index == 0 ? 10 : (index == 1 || index == 2) ? (10 - __content.height) : (- __content.height)
 
                 function removeSelf() {
@@ -241,9 +239,9 @@ Item {
 
                     RowLayout {
                         id: __rowLayout
-                        width: Math.min(control.maxNotificationWidth, control.width - control.bgLeftPadding - control.bgRightPadding)
+                        width: Math.min(control.maxWidth, control.width - control.bgLeftPadding - control.bgRightPadding)
                         anchors.centerIn: parent
-                        spacing: control.messageSpacing
+                        spacing: control.iconSpacing
 
                         HusIconText {
                             Layout.alignment: Qt.AlignTop
@@ -290,10 +288,10 @@ Item {
                             Loader {
                                 id: __messageLoader
                                 width: parent.width
-                                sourceComponent: control.messageDelegate
+                                sourceComponent: control.titleDelegate
                                 property alias index: __rootItem.index
                                 property alias key: __rootItem.key
-                                property alias message: __rootItem.message
+                                property alias title: __rootItem.title
                             }
 
                             Loader {
@@ -339,7 +337,7 @@ Item {
                         sourceComponent: HusProgress {
                             percent: (__rootItem.duration - __timer.time) / __rootItem.duration * 100
                             animationEnabled: false
-                            showInfo: false
+                            infoVisible: false
                         }
                     }
                 }
@@ -351,46 +349,46 @@ Item {
         }
     }
 
-    function info(message: string, description: string, duration = 4500) {
+    function info(title: string, description: string, duration = 4500) {
         open({
-            'message': message,
+            'title': title,
             'description': description,
             'type': HusNotification.TypeMessage,
             'duration': duration
         });
     }
 
-    function success(message: string, description: string, duration = 4500) {
+    function success(title: string, description: string, duration = 4500) {
         open({
-            'message': message,
+            'title': title,
             'description': description,
             'type': HusNotification.TypeSuccess,
             'duration': duration
         });
     }
 
-    function error(message: string, description: string, duration = 4500) {
+    function error(title: string, description: string, duration = 4500) {
         open({
-            'message': message,
+            'title': title,
             'description': description,
             'type': HusNotification.TypeError,
             'duration': duration
         });
     }
 
-    function warning(message: string, description: string, duration = 4500) {
+    function warning(title: string, description: string, duration = 4500) {
         open({
-            'message': message,
+            'title': title,
             'description': description,
             'type': HusNotification.TypeWarning,
             'duration': duration
         });
     }
 
-    function loading(message: string, description: string, duration = 4500) {
+    function loading(title: string, description: string, duration = 4500) {
         open({
             'loading': true,
-            'message': message,
+            'title': title,
             'description': description,
             'type': HusNotification.TypeMessage,
             'duration': duration

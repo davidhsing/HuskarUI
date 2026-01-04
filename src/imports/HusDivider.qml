@@ -17,7 +17,8 @@ Item {
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property string title: ''
+    property bool titleVisible: true
+    property string titleText: ''
     property font titleFont: Qt.font({
         family: themeSource.fontFamily,
         pixelSize: parseInt(themeSource.fontSize)
@@ -33,7 +34,12 @@ Item {
     property var themeSource: HusTheme.HusDivider
 
     property Component titleDelegate: HusText {
-        text: control.title
+        text: {
+            if (control.orientation === Qt.Horizontal) {
+                return control.titleText;
+            }
+            return !control.titleText ? '' : control.titleText.split('').join('\n');
+        }
         font: control.titleFont
         color: control.colorText
     }
@@ -55,7 +61,7 @@ Item {
             PathLine {
                 x: {
                     if (control.orientation === Qt.Horizontal) {
-                        return control.title === '' ? 0 : __titleLoader.x - 10;
+                        return control.titleText === '' ? 0 : __titleLoader.x - 10;
                     } else {
                         return __shape.lineX;
                     }
@@ -72,7 +78,7 @@ Item {
             fillColor: 'transparent'
             startX: {
                 if (control.orientation === Qt.Horizontal) {
-                    return control.title === '' ? 0 : (__titleLoader.x + __titleLoader.implicitWidth + 10);
+                    return control.titleText === '' ? 0 : (__titleLoader.x + __titleLoader.implicitWidth + 10);
                 } else {
                     return __shape.lineX;
                 }
@@ -81,7 +87,7 @@ Item {
                 if (control.orientation === Qt.Horizontal) {
                     return __shape.lineY;
                 } else {
-                    return control.title === '' ? 0 : (__titleLoader.y + __titleLoader.implicitHeight + 10);
+                    return control.titleText === '' ? 0 : (__titleLoader.y + __titleLoader.implicitHeight + 10);
                 }
             }
 
@@ -91,7 +97,7 @@ Item {
             }
         }
     }
-    property string ariaConstrual: title
+    property string ariaConstrual: titleText
 
     objectName: '__HusDivider__'
 
@@ -117,9 +123,11 @@ Item {
         anchors.horizontalCenter: (control.orientation !== Qt.Horizontal || control.titleAlign === HusDivider.AlignCenter) ? parent.horizontalCenter : undefined
         anchors.verticalCenter: (control.orientation === Qt.Horizontal || control.titleAlign === HusDivider.AlignCenter) ? parent.verticalCenter : undefined
         sourceComponent: control.titleDelegate
+        active: control.titleVisible
+        visible: active
     }
 
     Accessible.role: Accessible.Separator
-    Accessible.name: control.title
+    Accessible.name: control.titleText
     Accessible.description: control.ariaConstrual
 }

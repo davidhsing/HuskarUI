@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusSwitchEffect 切换效果 \n
+# HusSwitchEffect 切换效果\n
 两个组件之间的切换/过渡效果。\n
 * **继承自 { Item }**\n
 \n<br/>

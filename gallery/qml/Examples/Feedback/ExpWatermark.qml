@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusWatermark 水印 \n
+# HusWatermark 水印\n
 可给页面的任意项加上水印。\n
 * **继承自 { QQuickPaintedItem }**\n
 \n<br/>

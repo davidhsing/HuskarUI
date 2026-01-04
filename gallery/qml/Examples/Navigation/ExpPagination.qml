@@ -45,11 +45,11 @@ quickJumperPrefix | string | '跳至' | 快捷跳转的前置文本(为空则不
 quickJumperSuffix | string | - | 快捷跳转的后置文本(为空则不显示)
 \n<br/>
 \n### 支持的函数：\n
-- \`gotoPageIndex(index: int)\` 跳转到\`index\` 处的页 \n
-- \`gotoPrevPage()\` 跳转到前一页 \n
-- \`gotoPrev5Page()\` 跳转到前五页 \n
-- \`gotoNextPage()\` 跳转到后一页 \n
-- \`gotoNext5Page()\` 跳转到后五页 \n
+- \`gotoPageIndex(index: int)\` 跳转到\`index\` 处的页\n
+- \`gotoPrevPage()\` 跳转到前一页\n
+- \`gotoPrev5Page()\` 跳转到前五页\n
+- \`gotoNextPage()\` 跳转到后一页\n
+- \`gotoNext5Page()\` 跳转到后五页\n
 `)
         }
 

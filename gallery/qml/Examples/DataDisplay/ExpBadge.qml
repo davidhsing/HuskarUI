@@ -525,7 +525,7 @@ Column {
 我们添加了多种预设色彩的徽标样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。\n
 通过 \`presetColor\` 设置预设颜色。\n
 支持的预设颜色：\n
-**['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']** \n
+**['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']**\n
                        `)
             code: `
 import QtQuick

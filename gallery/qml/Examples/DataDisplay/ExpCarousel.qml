@@ -47,12 +47,12 @@ arrowVisible | bool | false | 是否显示箭头
 radiusIndicator | [HusRadius](internal://HusRadius) | - | 指示器圆角半径
 \n<br/>
 \n### 支持的函数：\n
-- \`switchTo(index: int, animated: bool = true)\` \n
+- \`switchTo(index: int, animated: bool = true)\`\n
   - \`index\` 要切换的目标处索引
   - \`animated\` 是否使用切换动效
-- \`switchToPrev()\` 切换到前一页 \n
-- \`switchToNext()\` 切换到后一页 \n
-- \`int getSuitableIndicatorWidth(contentWidth: int, indicatorMaxWidth: int = 18)\` 获取合适的指示器宽度 \n
+- \`switchToPrev()\` 切换到前一页\n
+- \`switchToNext()\` 切换到后一页\n
+- \`int getSuitableIndicatorWidth(contentWidth: int, indicatorMaxWidth: int = 18)\` 获取合适的指示器宽度\n
   - \`contentWidth\` 轮播内容的宽度
   - \`indicatorMaxWidth\` 指示器最大宽度
                        `)

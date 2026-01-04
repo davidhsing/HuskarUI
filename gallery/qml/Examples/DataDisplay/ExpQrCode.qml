@@ -13,7 +13,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusQrCode 二维码 \n
+# HusQrCode 二维码\n
 能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。\n
 * **继承自 { Item }**\n
 \n<br/>

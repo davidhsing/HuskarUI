@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusCheckBox 多选框 \n
+# HusCheckBox 多选框\n
 收集用户的多项选择。\n
 * **继承自 { CheckBox }**\n
 \n<br/>

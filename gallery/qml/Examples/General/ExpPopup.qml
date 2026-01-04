@@ -57,9 +57,9 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
         CodeBox {
             width: parent.width
             desc: qsTr(`
-使用方法等同于 \`Popup\` \n
-通过 \`movable\` 设置为可移动 \n
-通过 \`resizable\` 设置为可改变大小 \n
+使用方法等同于 \`Popup\`\n
+通过 \`movable\` 设置为可移动\n
+通过 \`resizable\` 设置为可改变大小\n
                        `)
             code: `
 import QtQuick

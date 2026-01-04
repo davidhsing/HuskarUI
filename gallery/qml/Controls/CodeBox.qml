@@ -13,8 +13,8 @@ Rectangle {
     border.color: HusThemeFunctions.alpha(HusTheme.Primary.colorTextBase, 0.1)
     clip: true
 
-    property alias expTitle: expDivider.title
-    property alias descTitle: descDivider.title
+    property alias expTitle: expDivider.titleText
+    property alias descTitle: descDivider.titleText
     property alias desc: descTextLoader.text
     property bool async: true
     property Component exampleDelegate: Item { }
@@ -42,7 +42,7 @@ Rectangle {
             width: parent.width
             height: 25
             visible: false
-            title: qsTr('示例')
+            titleText: qsTr('示例')
         }
 
         Loader {
@@ -55,7 +55,7 @@ Rectangle {
             id: descDivider
             width: parent.width
             height: 25
-            title: qsTr('说明')
+            titleText: qsTr('说明')
         }
 
         MouseArea {
@@ -101,7 +101,7 @@ Rectangle {
         HusDivider {
             width: parent.width
             height: 30
-            title: qsTr('代码')
+            titleText: qsTr('代码')
             titleAlign: HusDivider.AlignCenter
             titleDelegate: Row {
                 spacing: 10

@@ -23,7 +23,8 @@ T.Control {
             case 'rgb': return toRgbString(color);
         }
     }
-    property alias title: __colorPickerPanel.title
+    property alias titleVisible: __colorPickerPanel.titleVisible
+    property alias titleText: __colorPickerPanel.titleText
     property alias alphaEnabled: __colorPickerPanel.alphaEnabled
     property alias clearable: __colorPickerPanel.clearable
     property alias open: __popup.visible

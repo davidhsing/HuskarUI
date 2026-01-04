@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusToolTip 文字提示 \n
+# HusToolTip 文字提示\n
 单的文字提示气泡框。\n
 * **继承自 { ToolTip }**\n
 \n<br/>
@@ -50,7 +50,7 @@ radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
         CodeBox {
             width: parent.width
             desc: qsTr(`
-通过 \`arrowVisible\` 属性设置是否显示箭头 \n
+通过 \`arrowVisible\` 属性设置是否显示箭头\n
 通过 \`position\` 属性设置文字提示的位置，支持的位置：\n
 - 文字提示在项目上方(默认){ HusToolTip.PositionTop }\n
 - 文字提示在项目下方{ HusToolTip.PositionBottom }\n

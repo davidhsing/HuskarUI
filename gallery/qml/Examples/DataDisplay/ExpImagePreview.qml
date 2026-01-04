@@ -55,21 +55,21 @@ operationVisible | bool | true | 操作区域是否可见
 url | url | 必选 | 图片源
 \n<br/>
 \n### 支持的函数：\n
-- \`get(index: int): Object\` 获取 \`index\` 处的模型数据 \n
-- \`set(index: int, object: Object)\` 设置 \`index\` 处的模型数据为 \`object\` \n
-- \`setProperty(index: int, propertyName: string, value: any)\` 设置 \`index\` 处的模型数据属性名 \`propertyName\` 值为 \`value\` \n
-- \`move(from: int, to: int, count: int = 1)\` 将 \`count\` 个模型数据从 \`from\` 位置移动到 \`to\` 位置 \n
-- \`insert(index: int, object: Object)\` 插入图片项 \`object\` 到 \`index\` 处 \n
-- \`append(object: Object)\` 在末尾添加图片项 \`object\` \n
-- \`remove(index: int, count: int = 1)\` 删除 \`index\` 处 \`count\` 个模型数据 \n
-- \`zoomIn()\` 中心放大 \n
-- \`zoomOut()\` 中心缩小 \n
-- \`flipX()\` 水平翻转 \n
-- \`flipY()\` 垂直翻转 \n
-- \`rotate(angle: real)\` 顺时针旋转 \`angle\` 度 \n
-- \`resetTransform()\` 重置所有变换 \n
-- \`incrementCurrentIndex()\` 当前索引增1 \n
-- \`decrementCurrentIndex()\` 当前索引减1 \n
+- \`get(index: int): Object\` 获取 \`index\` 处的模型数据\n
+- \`set(index: int, object: Object)\` 设置 \`index\` 处的模型数据为 \`object\`\n
+- \`setProperty(index: int, propertyName: string, value: any)\` 设置 \`index\` 处的模型数据属性名 \`propertyName\` 值为 \`value\`\n
+- \`move(from: int, to: int, count: int = 1)\` 将 \`count\` 个模型数据从 \`from\` 位置移动到 \`to\` 位置\n
+- \`insert(index: int, object: Object)\` 插入图片项 \`object\` 到 \`index\` 处\n
+- \`append(object: Object)\` 在末尾添加图片项 \`object\`\n
+- \`remove(index: int, count: int = 1)\` 删除 \`index\` 处 \`count\` 个模型数据\n
+- \`zoomIn()\` 中心放大\n
+- \`zoomOut()\` 中心缩小\n
+- \`flipX()\` 水平翻转\n
+- \`flipY()\` 垂直翻转\n
+- \`rotate(angle: real)\` 顺时针旋转 \`angle\` 度\n
+- \`resetTransform()\` 重置所有变换\n
+- \`incrementCurrentIndex()\` 当前索引增1\n
+- \`decrementCurrentIndex()\` 当前索引减1\n
                        `)
         }
 

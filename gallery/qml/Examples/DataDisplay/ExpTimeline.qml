@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusTimeline 文字提示 \n
+# HusTimeline 文字提示\n
 垂直展示的时间流信息。\n
 * **继承自 { Item }**\n
 \n<br/>
@@ -67,14 +67,14 @@ content | string | 可选 | 本时间节点的内容
 contentFormat | enum | 可选 | 本时间节点内容的文本格式(来自 Text)
 \n<br/>
 \n### 支持的函数：\n
-- \`get(index: int): Object\` 获取 \`index\` 处的模型数据 \n
-- \`set(index: int, object: Object)\` 设置 \`index\` 处的模型数据为 \`object\` \n
-- \`setProperty(index: int, propertyName: string, value: any)\` 设置 \`index\` 处的模型数据属性名 \`propertyName\` 值为 \`value\` \n
-- \`move(from: int, to: int, count: int = 1)\` 将 \`count\` 个模型数据从 \`from\` 位置移动到 \`to\` 位置 \n
-- \`insert(index: int, object: Object)\` 插入时间节点 \`object\` 到 \`index\` 处 \n
-- \`append(object: Object)\` 在末尾添加时间节点 \`object\` \n
-- \`remove(index: int, count: int = 1)\` 删除 \`index\` 处 \`count\` 个模型数据 \n
-- \`clear()\` 清空所有模型数据 \n
+- \`get(index: int): Object\` 获取 \`index\` 处的模型数据\n
+- \`set(index: int, object: Object)\` 设置 \`index\` 处的模型数据为 \`object\`\n
+- \`setProperty(index: int, propertyName: string, value: any)\` 设置 \`index\` 处的模型数据属性名 \`propertyName\` 值为 \`value\`\n
+- \`move(from: int, to: int, count: int = 1)\` 将 \`count\` 个模型数据从 \`from\` 位置移动到 \`to\` 位置\n
+- \`insert(index: int, object: Object)\` 插入时间节点 \`object\` 到 \`index\` 处\n
+- \`append(object: Object)\` 在末尾添加时间节点 \`object\`\n
+- \`remove(index: int, count: int = 1)\` 删除 \`index\` 处 \`count\` 个模型数据\n
+- \`clear()\` 清空所有模型数据\n
                        `)
         }
 
@@ -336,7 +336,7 @@ Column {
 - 时间在轴右侧{ HusTimeline.ModeRight }\n
 - 交替展现{ HusTimeline.ModeAlternate }\n
 通过模型数据的 \`time\` 属性设置时间，类型为 \`Date\`\n
-通过模型数据的 \`timeFormat\` 属性设置时间的格式 \n
+通过模型数据的 \`timeFormat\` 属性设置时间的格式\n
 或通过属性 \`defaultTimeFormat\` 统一设置默认的时间格式\n
                        `)
             code: `

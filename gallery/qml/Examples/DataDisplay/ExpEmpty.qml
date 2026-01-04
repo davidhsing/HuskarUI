@@ -13,7 +13,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusEmpty 空状态 \n
+# HusEmpty 空状态\n
 显示一个表示空状态的图像和描述文本。\n
 * **继承自 { Item }**\n
 \n<br/>

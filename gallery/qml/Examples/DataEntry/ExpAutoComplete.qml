@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusAutoComplete 自动完成 \n
+# HusAutoComplete 自动完成\n
 输入框自动完成功能。\n
 * **继承自 { [HusInput](internal://HusInput) }**\n
 \n<br/>
@@ -45,9 +45,9 @@ defaultPopupMaxHeight | int | 240 | 默认弹出框最大高度
 defaultOptionSpacing | int | 0 | 默认选项间隔
 \n<br/>
 \n### 支持的函数：\n
-- \`clearInput()\` 清空输入 \n
-- \`openPopup()\` 打开弹出框 \n
-- \`closePopup()\` 关闭弹出框 \n
+- \`clearInput()\` 清空输入\n
+- \`openPopup()\` 打开弹出框\n
+- \`closePopup()\` 关闭弹出框\n
 - \`filter()\` 使用 \`filterOption\` 过滤选项列表
 \n<br/>
 \n### 支持的信号：\n

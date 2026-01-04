@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusInputNumber 数字输入框 \n
+# HusInputNumber 数字输入框\n
 通过鼠标或键盘，输入范围内的数值。\n
 * **继承自 { Item }**\n
 \n<br/>
@@ -73,19 +73,19 @@ input | [HusInput](internal://HusInput) | - | 访问内部输入框
   - \`data\` 选择项数据\n
 \n<br/>
 \n### 支持的函数：\n
-- \`increase()\` 增加数值(步长由属性 \`step\` 给出) \n
-- \`decrease()\` 减少数值(步长由属性 \`step\` 给出) \n
-- \`getFullText(): string\` 获取完整输入文本 \n
+- \`increase()\` 增加数值(步长由属性 \`step\` 给出)\n
+- \`decrease()\` 减少数值(步长由属性 \`step\` 给出)\n
+- \`getFullText(): string\` 获取完整输入文本\n
 以下函数来自 \`TextInput\`，具体请查阅官方文档：\n
-- \`select(start: int, end: int)\` \n
-- \`selectAll(start: int, end: int)\` \n
-- \`selectWord(start: int, end: int)\` \n
-- \`clear()\` \n
-- \`copy()\` \n
-- \`cut()\` \n
-- \`paste()\` \n
-- \`redo()\` \n
-- \`undo()\` \n
+- \`select(start: int, end: int)\`\n
+- \`selectAll(start: int, end: int)\`\n
+- \`selectWord(start: int, end: int)\`\n
+- \`clear()\`\n
+- \`copy()\`\n
+- \`cut()\`\n
+- \`paste()\`\n
+- \`redo()\`\n
+- \`undo()\`\n
                        `)
         }
 

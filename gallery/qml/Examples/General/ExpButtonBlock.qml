@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusButtonBlock 按钮块(HusIconButton变种) \n
+# HusButtonBlock 按钮块(HusIconButton变种)\n
 用于将多个按钮组织成块，类似 HusRadioBlock。\n
 * **继承自 { Item }**\n
 \n<br/>

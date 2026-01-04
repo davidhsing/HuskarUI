@@ -23,13 +23,13 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusPopconfirm 气泡确认框 \n
+# HusPopconfirm 气泡确认框\n
 点击元素，弹出气泡式的确认框。\n
 * **继承自 { [HusPopover](internal://HusPopover) }**\n
 \n<br/>
 \n### 支持的代理：\n
-- **confirmButtonDelegate: Component** 确认按钮代理\n
-- **cancelButtonDelegate: Component** 取消按钮代理\n
+- **confirmDelegate: Component** 确认按钮代理\n
+- **cancelDelegate: Component** 取消按钮代理\n
 \n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
@@ -40,8 +40,8 @@ cancelText | string | '' | 取消文本
 \n **注意** 需要显示给出弹出宽度，高度将根据内容自动计算
 \n<br/>
 \n### 支持的信号：\n
-- \`confirm()\` 点击确认按钮后发出\n
-- \`cancel()\` 点击取消按钮后发出\n
+- \`confirmed()\` 点击确认按钮后发出\n
+- \`canceled()\` 点击取消按钮后发出\n
                        `)
         }
 
@@ -66,8 +66,8 @@ cancelText | string | '' | 取消文本
             descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法，支持标题和描述以及确认/取消按钮。\n
-通过 \`title\` 属性设置标题文本。\n
-通过 \`description\` 属性设置描述文本。\n
+通过 \`titleText\` 属性设置标题文本。\n
+通过 \`descriptionText\` 属性设置描述文本。\n
 通过 \`confirmText\` 属性设置确认文本\n
 通过 \`cancelText\` 属性设置取消文本。\n
                        `)
@@ -86,15 +86,15 @@ Row {
             x: (parent.width - width) / 2
             y: parent.height + 6
             width: 300
-            title: 'Delete the task'
-            description: 'Are you sure to delete this task?'
+            titleText: 'Delete the task'
+            descriptionText: 'Are you sure to delete this task?'
             confirmText: 'Yes'
             cancelText: 'No'
-            onConfirm: {
+            onConfirmed: {
                 message.success('Click on Yes');
                 close();
             }
-            onCancel: {
+            onCanceled: {
                 message.error('Click on No');
                 close();
             }
@@ -113,15 +113,15 @@ Row {
                         x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 300
-                        title: 'Delete the task'
-                        description: 'Are you sure to delete this task?'
+                        titleText: 'Delete the task'
+                        descriptionText: 'Are you sure to delete this task?'
                         confirmText: 'Yes'
                         cancelText: 'No'
-                        onConfirm: {
+                        onConfirmed: {
                             message.success('Click on Yes');
                             close();
                         }
-                        onCancel: {
+                        onCanceled: {
                             message.error('Click on No');
                             close();
                         }
@@ -154,15 +154,15 @@ Row {
             y: parent.height + 6
             iconSource: HusIcon.QuestionCircleOutlined
             width: 300
-            title: 'Add the task'
-            description: 'Are you sure to add this task?'
+            titleText: 'Add the task'
+            descriptionText: 'Are you sure to add this task?'
             confirmText: 'Yes'
             cancelText: 'No'
-            onConfirm: {
+            onConfirmed: {
                 message.success('Click on Yes');
                 close();
             }
-            onCancel: {
+            onCanceled: {
                 message.error('Click on No');
                 close();
             }
@@ -180,15 +180,15 @@ Row {
             y: parent.height + 6
             iconSource: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
             width: 300
-            title: 'Delete the task'
-            description: 'Are you sure to delete this task?'
+            titleText: 'Delete the task'
+            descriptionText: 'Are you sure to delete this task?'
             confirmText: 'Yes'
             cancelText: 'No'
-            onConfirm: {
+            onConfirmed: {
                 message.success('Click on Yes');
                 close();
             }
-            onCancel: {
+            onCanceled: {
                 message.error('Click on No');
                 close();
             }
@@ -210,15 +210,15 @@ Row {
                         y: parent.height + 6
                         iconSource: HusIcon.QuestionCircleOutlined
                         width: 300
-                        title: 'Add the task'
-                        description: 'Are you sure to add this task?'
+                        titleText: 'Add the task'
+                        descriptionText: 'Are you sure to add this task?'
                         confirmText: 'Yes'
                         cancelText: 'No'
-                        onConfirm: {
+                        onConfirmed: {
                             message.success('Click on Yes');
                             close();
                         }
-                        onCancel: {
+                        onCanceled: {
                             message.error('Click on No');
                             close();
                         }
@@ -236,15 +236,15 @@ Row {
                         y: parent.height + 6
                         iconSource: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
                         width: 300
-                        title: 'Delete the task'
-                        description: 'Are you sure to delete this task?'
+                        titleText: 'Delete the task'
+                        descriptionText: 'Are you sure to delete this task?'
                         confirmText: 'Yes'
                         cancelText: 'No'
-                        onConfirm: {
+                        onConfirmed: {
                             message.success('Click on Yes');
                             close();
                         }
-                        onCancel: {
+                        onCanceled: {
                             message.error('Click on No');
                             close();
                         }
@@ -274,8 +274,8 @@ Row {
             x: (parent.width - width) / 2
             y: parent.height + 6
             width: 150
-            title: 'Tooltip'
-            description: 'This is tooltip!'
+            titleText: 'Tooltip'
+            descriptionText: 'This is tooltip!'
             iconSource: 0
             visible: parent.hovered
         }
@@ -292,8 +292,8 @@ Row {
                         x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 150
-                        title: 'Tooltip'
-                        description: 'This is tooltip!'
+                        titleText: 'Tooltip'
+                        descriptionText: 'This is tooltip!'
                         iconSource: 0
                         visible: parent.hovered
                     }

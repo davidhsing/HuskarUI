@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusColorPickerPanel 颜色选择器面板 \n
+# HusColorPickerPanel 颜色选择器面板\n
 用于选择颜色。\n
 * **继承自 { Control }**\n
 \n<br/>
@@ -32,7 +32,8 @@ defaultValue | color | Qt.rgba(0, 0, 0, 0) | 默认颜色值
 autoChange | bool | true | 默认颜色值
 changeableValue | color | defaultValue | 更改的颜色值
 changeableSync | bool | false | 是否自动同步更改的颜色值到颜色值(changeableValue->value)
-title | string | '' | 弹窗标题
+titleVisible | bool | false | 标题是否可见
+titleText | string | '' | 标题文本
 alphaEnabled | bool | true | 透明度是否启用
 clearable | bool | false | 是否允许清除颜色(鼠标悬浮右下角预览小方块显示清除图标)
 open | bool | false | 弹窗是否打开
@@ -120,7 +121,7 @@ Column {
 
     HusColorPickerPanel {
         id: colorPickerPanel
-        title: 'color picker panel'
+        titleText: 'color picker panel'
         defaultValue: '#1677ff'
         presets: [
             { label: 'primary', colors: HusThemeFunctions.genColor(HusColorGenerator.Preset_Blue) },
@@ -162,7 +163,7 @@ Column {
 
                 HusColorPickerPanel {
                     id: colorPickerPanel
-                    title: 'color picker panel'
+                    titleText: 'color picker panel'
                     clearable: true
                     defaultValue: '#1677ff'
                     presets: [

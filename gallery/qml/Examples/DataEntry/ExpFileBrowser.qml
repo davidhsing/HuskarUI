@@ -13,7 +13,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusFileBrowser 文件浏览选择 \n
+# HusFileBrowser 文件浏览选择\n
 文件/文件夹浏览器，支持选择文件或文件夹。\n
 * **继承自 { Item }**\n
 \n<br/>
@@ -24,7 +24,7 @@ Flickable {
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
-browserMode | int | HusFileBrowser.ModeOpenFile | 浏览器样式(来自 HusFileBrowser)
+mode | int | HusFileBrowser.ModeOpenFile | 浏览器样式(来自 HusFileBrowser)
 defaultFolder | string | - | 默认的浏览文件夹路径
 inputText | string | - | 文本框文本
 inputPlaceholder | string | - | 文本框占位符
@@ -67,7 +67,7 @@ pathJoiner | string | '; ' | 多个文件的分隔符
             descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法。\n
-通过 \`browserMode\` 属性设置文件/文件夹类型。\n
+通过 \`mode\` 属性设置文件/文件夹类型。\n
 通过 \`inputText\` 属性设置文本框文本。\n
 通过 \`inputPlaceholder\` 属性设置文本框占位符。\n
 通过 \`buttonText\` 属性设置按钮文本。\n
@@ -93,7 +93,7 @@ Column {
 
     HusFileBrowser {
         buttonText: qsTr('浏览')
-        browserMode: browserModeRadio.currentCheckedValue
+        mode: browserModeRadio.currentCheckedValue
         defaultSuffix: 'jpg'
         nameFilters: [
             qsTr('JPEG Images (*.jpg *.jpeg)'),
@@ -119,7 +119,7 @@ Column {
 
                 HusFileBrowser {
                     buttonText: qsTr('浏览')
-                    browserMode: browserModeRadio.currentCheckedValue
+                    mode: browserModeRadio.currentCheckedValue
                     defaultSuffix: 'jpg'
                     nameFilters: [
                         qsTr('JPEG Images (*.jpg *.jpeg)'),

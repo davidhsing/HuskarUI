@@ -26,7 +26,8 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
-title | string | '' | 标题
+titleVisible | bool | true | 标题是否可见
+titleText | string | '' | 标题
 titleFont | font | - | 标题字体
 titleAlign | enum | HusDivider.AlignLeft | 标题对齐(来自 HusDivider)
 titlePadding | int | 20 | 标题填充
@@ -59,7 +60,7 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
         CodeBox {
             width: parent.width
             desc: qsTr(`
-通过 \`title\` 属性改变标题文字\n
+通过 \`titleText\` 属性改变标题文字\n
 通过 \`titleAlign\` 属性改变标题对齐，支持的对齐：\n
 - 居左(默认){ HusDivider.AlignLeft }\n
 - 居中{ HusDivider.AlignCenter }\n
@@ -82,21 +83,21 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
                     HusDivider {
                         width: parent.width
                         height: 30
-                        title: qsTr('水平分割线-居左')
+                        titleText: qsTr('水平分割线-居左')
                         titleAlign: HusDivider.AlignLeft
                     }
 
                     HusDivider {
                         width: parent.width
                         height: 30
-                        title: qsTr('水平分割线-居中')
+                        titleText: qsTr('水平分割线-居中')
                         titleAlign: HusDivider.AlignCenter
                     }
 
                     HusDivider {
                         width: parent.width
                         height: 30
-                        title: qsTr('水平分割线-居右')
+                        titleText: qsTr('水平分割线-居右')
                         titleAlign: HusDivider.AlignRight
                     }
                 }
@@ -113,21 +114,21 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('水平分割线-居左')
+                    titleText: qsTr('水平分割线-居左')
                     titleAlign: HusDivider.AlignLeft
                 }
 
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('水平分割线-居中')
+                    titleText: qsTr('水平分割线-居中')
                     titleAlign: HusDivider.AlignCenter
                 }
 
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('水平分割线-居右')
+                    titleText: qsTr('水平分割线-居右')
                     titleAlign: HusDivider.AlignRight
                 }
             }
@@ -139,7 +140,6 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
 通过 \`orientation\` 属性改变方向，支持的方向：\n
 - 水平分割线(默认){ Qt.Horizontal }\n
 - 垂直分割线{ Qt.Vertical }\n
-如果需要垂直标题，请自行添加\`\\n\`
                        `)
             code: `
                 import QtQuick
@@ -158,14 +158,15 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
                     HusDivider {
                         width: parent.width
                         height: 30
-                        title: qsTr('水平分割线')
+                        titleText: qsTr('水平分割线')
                     }
 
                     HusDivider {
                         width: 30
                         height: 200
                         orientation: Qt.Vertical
-                        title: qsTr('垂\\n直\\n分\\n割\\n线')
+                        titleAlign: HusDivider.AlignCenter
+                        titleText: qsTr('垂直分割线')
                     }
                 }
             `
@@ -181,14 +182,15 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('水平分割线')
+                    titleText: qsTr('水平分割线')
                 }
 
                 HusDivider {
                     width: 30
                     height: 200
                     orientation: Qt.Vertical
-                    title: qsTr('垂\n直\n分\n割\n线')
+                    titleAlign: HusDivider.AlignCenter
+                    titleText: qsTr('垂直分割线')
                 }
             }
         }
@@ -217,14 +219,14 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
                     HusDivider {
                         width: parent.width
                         height: 30
-                        title: qsTr('实线分割线')
+                        titleText: qsTr('实线分割线')
                     }
 
                     HusDivider {
                         width: parent.width
                         height: 30
                         lineStyle: HusDivider.LineDashed
-                        title: qsTr('虚线分割线')
+                        titleText: qsTr('虚线分割线')
                     }
                 }
             `
@@ -240,14 +242,14 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('实线分割线')
+                    titleText: qsTr('实线分割线')
                 }
 
                 HusDivider {
                     width: parent.width
                     height: 30
                     lineStyle: HusDivider.LineDashed
-                    title: qsTr('虚线分割线')
+                    titleText: qsTr('虚线分割线')
                 }
             }
         }

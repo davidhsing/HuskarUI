@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusRadioBlock 单选块(HusRadio变种) \n
+# HusRadioBlock 单选块(HusRadio变种)\n
 用于在多个备选项中选中单个状态。\n
 * **继承自 { Control }**\n
 \n<br/>

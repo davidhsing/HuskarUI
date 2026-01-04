@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusShadow 阴影 \n
+# HusShadow 阴影\n
 阴影效果。\n
 * **继承自 { MultiEffect }**\n
                        `)

@@ -23,7 +23,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusPopover 气泡显示框 \n
+# HusPopover 气泡显示框\n
 点击元素，弹出气泡式的显示框。\n
 * **继承自 { [HusPopup](internal://HusPopup) }**\n
 \n<br/>
@@ -40,10 +40,13 @@ Flickable {
 属性名 | 类型 | 默认值 | 描述
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
+iconVisible | bool | true | 图标是否可见
 iconSource | int丨string | HusIcon.ExclamationCircleFilled丨'' | 图标源(来自 HusIcon)或图标链接
 iconSize | int | 16 | 图标大小
-title | string | '' | 标题文本
-description | string | '' | 描述文本
+titleVisible | bool | true | 标题是否可见
+titleText | string | '' | 标题文本
+descriptionVisible | bool | true | 描述是否可见
+descriptionText | string | '' | 描述文本
 arrowVisible | bool | true | 是否显示箭头
 arrowWidth | int | 16 | 箭头宽度
 arrowHeight | int | 8 | 箭头高度
@@ -77,8 +80,8 @@ descriptionFont | font | - | 描述文本字体
             descTitle: qsTr('基本用法')
             desc: qsTr(`
 最简单的用法，支持标题和描述。\n
-通过 \`title\` 属性设置标题文本。\n
-通过 \`description\` 属性设置描述文本。\n
+通过 \`titleText\` 属性设置标题文本。\n
+通过 \`descriptionText\` 属性设置描述文本。\n
                        `)
             code: `
 import QtQuick
@@ -97,8 +100,8 @@ Row {
             width: 300
             visible: parent.hovered || parent.down
             closePolicy: HusPopover.NoAutoClose
-            title: 'Hover details'
-            description: 'What are you doing here?'
+            titleText: 'Hover details'
+            descriptionText: 'What are you doing here?'
         }
     }
 
@@ -112,8 +115,8 @@ Row {
             x: (parent.width - width) / 2
             y: parent.height + 6
             width: 300
-            title: 'Click details'
-            description: 'What are you doing here?'
+            titleText: 'Click details'
+            descriptionText: 'What are you doing here?'
         }
     }
 }
@@ -131,8 +134,8 @@ Row {
                         width: 300
                         visible: parent.hovered || parent.down
                         closePolicy: HusPopover.NoAutoClose
-                        title: 'Hover details'
-                        description: 'What are you doing here?'
+                        titleText: 'Hover details'
+                        descriptionText: 'What are you doing here?'
                     }
                 }
 
@@ -146,8 +149,8 @@ Row {
                         x: (parent.width - width) / 2
                         y: parent.height + 6
                         width: 300
-                        title: 'Click details'
-                        description: 'What are you doing here?'
+                        titleText: 'Click details'
+                        descriptionText: 'What are you doing here?'
                     }
                 }
             }

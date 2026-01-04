@@ -22,7 +22,7 @@ Flickable {
 - **handleDelgate: Component** 滑块代理，代理可访问属性：\n
   - \`slider: Slider / RangeSlider\` 滑动条本身
   - \`visualPosition: real\` 滑块的有效视觉位置\n
-  - \`pressed: bool\` 当前滑块是否被按下 \n
+  - \`pressed: bool\` 当前滑块是否被按下\n
 - **handleToolTipDelegate: Component** 滑块文字提示代理，代理可访问属性：\n
   - \`handleHovered: bool\` 指示当前滑块是否有鼠标悬浮\n
   - \`handlePressed: bool\` 指示当前滑块是否有鼠标按下\n

@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusRate 评分 \n
+# HusRate 评分\n
 用于对事物进行评分操作。\n
 * **继承自 { Item }**\n
 \n<br/>

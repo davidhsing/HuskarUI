@@ -15,7 +15,8 @@ T.Drawer {
     property bool maskClosable: true
     property int closePosition: HusDrawer.PositionLeft
     property int drawerSize: 378
-    property string title: ''
+    property bool titleVisible: true
+    property string titleText: ''
     property font titleFont: Qt.font({
         family: HusTheme.HusDrawer.fontFamily,
         pixelSize: HusTheme.HusDrawer.fontSizeTitle
@@ -62,7 +63,7 @@ T.Drawer {
                 Layout.alignment: Qt.AlignVCenter
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
-                text: control.title
+                text: control.titleText
                 font: control.titleFont
                 color: control.colorTitle
             }
@@ -113,6 +114,8 @@ T.Drawer {
         Loader {
             Layout.fillWidth: true
             sourceComponent: control.titleDelegate
+            active: control.titleVisible
+            visible: active
             onLoaded: {
                 /*! 无边框窗口的标题栏会阻止事件传递, 需要调这个 */
                 if (captionBar) {

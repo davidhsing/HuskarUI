@@ -13,7 +13,7 @@ Item {
         ModeSaveFile
     }
 
-    property int browserMode: HusFileBrowser.ModeOpenFile
+    property int mode: HusFileBrowser.ModeOpenFile
     property string defaultFolder: ''
     property string inputText: ''
     property string inputPlaceholder: ''
@@ -104,12 +104,12 @@ Item {
     FileDialog {
         id: __fileDialog
         visible: false
-        fileMode: (control.browserMode === HusFileBrowser.ModeSaveFile) ? FileDialog.SaveFile : ((control.browserMode === HusFileBrowser.ModeOpenFile) ? FileDialog.OpenFile : FileDialog.OpenFiles)
-        currentFolder: ((control.browserMode === HusFileBrowser.ModeOpenFile || control.browserMode === HusFileBrowser.ModeSaveFile) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
+        fileMode: (control.mode === HusFileBrowser.ModeSaveFile) ? FileDialog.SaveFile : ((control.mode === HusFileBrowser.ModeOpenFile) ? FileDialog.OpenFile : FileDialog.OpenFiles)
+        currentFolder: ((control.mode === HusFileBrowser.ModeOpenFile || control.mode === HusFileBrowser.ModeSaveFile) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
         defaultSuffix: control.defaultSuffix
         nameFilters: control.nameFilters
         onAccepted: {
-            if (control.browserMode === HusFileBrowser.ModeOpenFiles) {
+            if (control.mode === HusFileBrowser.ModeOpenFiles) {
                 const paths = selectedFiles.map(url => control.convertLocal ? __private.urlToLocalFile(url) : url.toString());
                 control.inputText = paths.join(control.pathJoiner);
                 control.pathsSelected(paths);
@@ -134,7 +134,7 @@ Item {
         id: __private
 
         function openDialog() {
-            if (control.browserMode === HusFileBrowser.ModeOpenFolder) {
+            if (control.mode === HusFileBrowser.ModeOpenFolder) {
                 __folderDialog.open();
             } else {
                 __fileDialog.open();

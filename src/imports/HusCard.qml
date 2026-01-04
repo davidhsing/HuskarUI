@@ -7,7 +7,7 @@ Rectangle {
 
     property bool animationEnabled: HusTheme.animationEnabled
     property bool borderVisible: true
-    property string title: ''
+    property string titleText: ''
     property font titleFont: Qt.font({
         family: HusTheme.HusCard.fontFamily,
         pixelSize: HusTheme.HusCard.fontSizeTitle,
@@ -20,7 +20,7 @@ Rectangle {
     property var bodyAvatarIcon: 0 ?? ''
     property var bodyAvatarSource: ''
     property string bodyAvatarText: ''
-    property string bodyTitle: ''
+    property string bodyTitleText: ''
     property font bodyTitleFont: Qt.font({
         family: HusTheme.HusCard.fontFamily,
         pixelSize: HusTheme.HusCard.fontSizeBodyTitle,
@@ -50,7 +50,7 @@ Rectangle {
             HusText {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                text: control.title
+                text: control.titleText
                 font: control.titleFont
                 color: control.colorTitle
                 wrapMode: Text.WrapAnywhere
@@ -110,11 +110,11 @@ Rectangle {
                     Layout.fillWidth: true
                     leftPadding: __avatar.visible ? 0 : 15
                     rightPadding: 15
-                    text: control.bodyTitle
+                    text: control.bodyTitleText
                     font: control.bodyTitleFont
                     color: control.colorBodyTitle
                     wrapMode: Text.WrapAnywhere
-                    visible: control.bodyTitle !== ''
+                    visible: control.bodyTitleText !== ''
                 }
 
                 HusText {

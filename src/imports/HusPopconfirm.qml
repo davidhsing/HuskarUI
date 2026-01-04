@@ -6,28 +6,28 @@ import HuskarUI.Basic
 HusPopover {
     id: control
 
-    signal confirm()
-    signal cancel()
+    signal confirmed()
+    signal canceled()
 
     property string confirmText: ''
     property string cancelText: ''
-    property Component confirmButtonDelegate: HusButton {
+    property Component confirmDelegate: HusButton {
         animationEnabled: control.animationEnabled
         padding: 10
         topPadding: 4
         bottomPadding: 4
         text: control.confirmText
         type: HusButton.TypePrimary
-        onClicked: control.confirm();
+        onClicked: control.confirmed();
     }
-    property Component cancelButtonDelegate: HusButton {
+    property Component cancelDelegate: HusButton {
         animationEnabled: control.animationEnabled
         padding: 10
         topPadding: 4
         bottomPadding: 4
         text: control.cancelText
         type: HusButton.TypeDefault
-        onClicked: control.cancel();
+        onClicked: control.canceled();
     }
 
     footerDelegate: Item {
@@ -43,14 +43,14 @@ HusPopover {
                 id: __confirmLoader
                 active: control.confirmText !== ''
                 visible: active
-                sourceComponent: control.confirmButtonDelegate
+                sourceComponent: control.confirmDelegate
             }
 
             Loader {
                 id: __cancelLoader
                 active: control.cancelText !== ''
                 visible: active
-                sourceComponent: control.cancelButtonDelegate
+                sourceComponent: control.cancelDelegate
             }
         }
     }

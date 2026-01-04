@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusRadio 单选框 \n
+# HusRadio 单选框\n
 用于在多个备选项中选中单个状态。\n
 * **继承自 { RadioButton }**\n
 \n<br/>

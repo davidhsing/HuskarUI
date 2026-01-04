@@ -31,7 +31,7 @@ Flickable {
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('更改主基础颜色')
+                    titleText: qsTr('更改主基础颜色')
                 }
 
                 Row {
@@ -109,7 +109,7 @@ Flickable {
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('更改主基础字体大小')
+                    titleText: qsTr('更改主基础字体大小')
                 }
             }
         }
@@ -128,7 +128,7 @@ Flickable {
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('更改主基础字体族')
+                    titleText: qsTr('更改主基础字体族')
                 }
             }
         }
@@ -147,7 +147,7 @@ Flickable {
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('更改圆角半径基础大小')
+                    titleText: qsTr('更改圆角半径基础大小')
                 }
             }
         }
@@ -167,7 +167,7 @@ Flickable {
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('更改动画基础速度')
+                    titleText: qsTr('更改动画基础速度')
                 }
             }
         }
@@ -186,7 +186,7 @@ Flickable {
                 HusDivider {
                     width: parent.width
                     height: 30
-                    title: qsTr('更改全局动画')
+                    titleText: qsTr('更改全局动画')
                 }
 
                 HusSwitch {

@@ -30,9 +30,9 @@ initialized | bool | false | 指示窗口是否已经初始化完毕
 specialEffect | enum | HusWindow.EffectNone | 特殊效果(来自 HusWindow)
 \n<br/>
 \n### 支持的函数：\n
-- \`setMacSystemButtonsVisible(visible: bool): bool\` 设置是否显示系统按钮(MacOSX有效) \n
-- \`setWindowMode(isDark: bool): bool\` 设置窗口明/暗模式 \n
-- \`setSpecialEffect(specialEffect: int): bool\` 设置窗口的特殊效果 \n
+- \`setMacSystemButtonsVisible(visible: bool): bool\` 设置是否显示系统按钮(MacOSX有效)\n
+- \`setWindowMode(isDark: bool): bool\` 设置窗口明/暗模式\n
+- \`setSpecialEffect(specialEffect: int): bool\` 设置窗口的特殊效果\n
                        `)
         }
 
@@ -50,7 +50,7 @@ specialEffect | enum | HusWindow.EffectNone | 特殊效果(来自 HusWindow)
         CodeBox {
             width: parent.width
             desc: qsTr(`
-使用方法等同于 \`Window\` \n
+使用方法等同于 \`Window\`\n
 **注意** 不要嵌套使用 HusWindow (源于Qt的某些BUG)：\n
 \`\`\`qml
 HusWindow {

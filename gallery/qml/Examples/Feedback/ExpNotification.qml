@@ -14,15 +14,15 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusNotification 通知提醒框 \n
+# HusNotification 通知提醒框\n
 全局/页面内展示通知提醒信息。\n
 * **继承自 { Item }**\n
 \n<br/>
 \n### 支持的代理：\n
-- **messageDelegate: Component** 通知消息代理：\n
+- **titleDelegate: Component** 通知消息代理：\n
   - \`parent.index: int\` 通知索引\n
   - \`parent.key: string\` 通知键\n
-  - \`parent.message: string\` 通知消息文本\n
+  - \`parent.title: string\` 通知标题文本\n
 - **descriptionDelegate: Component** 通知描述代理：\n
   - \`parent.index: int\` 通知索引\n
   - \`parent.key: string\` 通知键\n
@@ -38,7 +38,7 @@ progressVisible | bool | false | 是否显示进度条
 stackMode | bool | true | 堆叠模式(超过stackThreshold自动堆叠)
 stackThreshold | int | 5 | 堆叠阈值
 defaultIconSize | int | 20 | 默认图标大小
-maxNotificationWidth | int | 300 | 通知框最大宽度
+maxWidth | int | 300 | 通知框最大宽度
 spacing | int | 10 | 通知之间的间隔
 closable | bool | false | 是否显示关闭按钮
 topMargin | int | 12 | 通知距离顶端的距离
@@ -46,13 +46,13 @@ bgTopPadding | int | 12 | 背景上部填充
 bgBottomPadding | int | 12 | 背景下部填充
 bgLeftPadding | int | 12 | 背景左部填充
 bgRightPadding | int | 12 | 背景右部填充
-colorMessage | color | - | 通知消息文本颜色
+iconSpacing | int | 8 | 通知文本和图标之间的间隔
+colorTitle | color | - | 通知消息文本颜色
 colorDescription | color | - | 通知描述文本颜色
 colorBg | color | - | 背景颜色
 colorBgShadow | color | - | 背景阴影颜色
 radiusBg | [HusRadius](internal://HusRadius) | - | 背景圆角半径
-messageFont | font | - | 通知消息字体
-messageSpacing | int | 8 | 通知文本和图标之间的间隔
+titleFont | font | - | 通知消息字体
 descriptionFont | font | - | 通知描述字体
 descriptionSpacing | int | 10 | 消息和描述之间的间隔
 \n<br/>
@@ -61,7 +61,7 @@ descriptionSpacing | int | 10 | 消息和描述之间的间隔
 ------ | --- | :---: | ---
 key | string | 可选 | 通知键
 loading | sting | 可选 | 是否加载中
-message | string | 可选 | 通知文本
+title | string | 可选 | 标题文本
 type | int | 可选 | 通知类型(来自 HusNotification)
 duration | int | 可选 | 通知持续时间(默认4500ms)
 iconSize | int | 可选 | 通知图标大小
@@ -69,11 +69,11 @@ iconSource | int | 可选 | 通知图标
 colorIcon | color | 可选 | 通知图标颜色
 \n<br/>
 \n### 支持的函数：\n
-- \`info(message: string, description: string, duration = 4500)\` 弹出一条 \`info\` 通知。\n
-- \`success(message: string, description: string, duration = 4500)\` 弹出一条 \`success\` 通知。\n
-- \`error(message: string, description: string, duration = 4500)\` 弹出一条 \`error\` 通知。\n
-- \`warning(message: string, description: string, duration = 4500)\` 弹出一条 \`warning\` 通知。\n
-- \`loading(message: string, description: string, duration = 4500)\` 弹出一条 \`loading\` 通知。\n
+- \`info(title: string, description: string, duration = 4500)\` 弹出一条 \`info\` 通知。\n
+- \`success(title: string, description: string, duration = 4500)\` 弹出一条 \`success\` 通知。\n
+- \`error(title: string, description: string, duration = 4500)\` 弹出一条 \`error\` 通知。\n
+- \`warning(title: string, description: string, duration = 4500)\` 弹出一条 \`warning\` 通知。\n
+- \`loading(title: string, description: string, duration = 4500)\` 弹出一条 \`loading\` 通知。\n
 - \`open(object: var)\` 弹出一条通知体为 \`{object}\` 的通知。\n
 - \`close(key: string)\` 关闭一条通知键为 \`key\` 的通知。\n
 - \`clear()\` 清空所有通知。\n
@@ -567,10 +567,10 @@ Row {
         type: HusButton.TypePrimary
         onClicked: {
             notification10.open({
-                                    message: 'Notification Title',
-                                    description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-                                    duration: 99999999
-                                });
+                title: 'Notification Title',
+                description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+                duration: 99999999
+            });
         }
     }
 
@@ -615,10 +615,10 @@ Row {
                     type: HusButton.TypePrimary
                     onClicked: {
                         notification10.open({
-                                                message: 'Notification Title',
-                                                description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-                                                duration: 99999999
-                                            });
+                            title: 'Notification Title',
+                            description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+                            duration: 99999999
+                        });
                     }
                 }
 

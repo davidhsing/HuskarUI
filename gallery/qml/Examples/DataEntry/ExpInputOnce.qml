@@ -13,7 +13,7 @@ Flickable {
         spacing: 30
         Description {
             desc: qsTr(`
-# HusInputOnce 一次性口令输入框 \n
+# HusInputOnce 一次性口令输入框\n
 用于接收和验证一次性口令的输入框组合，通常用于验证码或密码。\n
 * **继承自 { Item }**\n
 \n<br/>

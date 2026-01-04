@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusMultiSelect 选择器 \n
+# HusMultiSelect 选择器\n
 下拉多选器。\n
 * **继承自 { [HusSelect](internal://HusSelect) }**\n
 \n<br/>
@@ -48,14 +48,14 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角半径
 radiusPopupBg | [HusRadius](internal://HusRadius) | - | 弹窗圆角半径
 \n<br/>
 \n### 支持的函数：\n
-- \`findKey(key: string)\` 查找 \`key\` 处的选项数据 \n
-- \`filter()\` 过滤选项列表 \n
-- \`removeTagAtKey(key: string)\` 删除 \`key\` 处的标签 \n
-- \`removeTagAtIndex(index: int)\` 删除 \`index\` 处的标签 \n
-- \`clearTag()\` 清空标签 \n
-- \`clearInput()\` 清空输入 \n
-- \`openPopup()\` 打开弹出框 \n
-- \`closePopup()\` 关闭弹出框 \n
+- \`findKey(key: string)\` 查找 \`key\` 处的选项数据\n
+- \`filter()\` 过滤选项列表\n
+- \`removeTagAtKey(key: string)\` 删除 \`key\` 处的标签\n
+- \`removeTagAtIndex(index: int)\` 删除 \`index\` 处的标签\n
+- \`clearTag()\` 清空标签\n
+- \`clearInput()\` 清空输入\n
+- \`openPopup()\` 打开弹出框\n
+- \`closePopup()\` 关闭弹出框\n
 \n<br/>
 \n### 支持的信号：\n
 - \`search(input: string)\` 搜索补全项的时发出\n

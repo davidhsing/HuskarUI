@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusInput 输入框 \n
+# HusInput 输入框\n
 通过鼠标或键盘输入内容，是最基础的表单域的包装。\n
 * **继承自 { TextField }**\n
 \n<br/>

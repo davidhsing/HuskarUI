@@ -14,7 +14,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusModal 对话框 \n
+# HusModal 对话框\n
 展示一个对话框，提供标题、内容区、操作区。\n
 * **继承自 { [HusPopup](internal://HusPopup) }**\n
 \n<br/>
@@ -25,9 +25,9 @@ Flickable {
 - **descriptionDelegate: Component** 描述代理\n
 - **contentDelegate: Component** 内容代理\n
 - **footerDelegate: Component** 页脚代理(包含确认/取消按钮)\n
-- **closeButtonDelegate: Component** 右上角关闭按钮代理\n
-- **confirmButtonDelegate: Component** 确认按钮代理\n
-- **cancelButtonDelegate: Component** 取消按钮代理\n
+- **closeDelegate: Component** 右上角关闭按钮代理\n
+- **confirmDelegate: Component** 确认按钮代理\n
+- **cancelDelegate: Component** 取消按钮代理\n
 \n<br/>
 \n### 支持的属性：\n
 属性名 | 类型 | 默认值 | 描述
@@ -39,8 +39,8 @@ closable | bool | true | 是否显示右上角的关闭按钮
 maskClosable | bool | true | 点击蒙层是否允许关闭
 iconSource | int丨string | 0丨'' | 图标源(来自 HusIcon)或图标链接
 iconSize | int | 24 | 图标大小
-title | string | '' | 标题文本
-description | string | '' | 描述文本
+titleText | string | '' | 标题文本
+descriptionText | string | '' | 描述文本
 confirmText | string | '' | 确认文本
 cancelText | string | '' | 取消文本
 colorIcon | color | - | 图标颜色
@@ -53,8 +53,8 @@ iconVisible | bool | true | 图标是否可见
 titleVisible | bool | true | 标题是否可见
 descriptionVisible | bool | true | 描述是否可见
 footerVisible | bool | true | 页脚是否可见
-confirmButtonVisible | bool | true | 确认按钮是否可见
-cancelButtonVisible | bool | true | 取消按钮是否可见
+confirmVisible | bool | true | 确认按钮是否可见
+cancelVisible | bool | true | 取消按钮是否可见
 widthRevision | int | -40 | 宽度修正(相对于父组件)
 heightRevision | int | 40 | 高度修正(相对于代理组件)
 \n<br/>
@@ -65,8 +65,8 @@ heightRevision | int | 40 | 高度修正(相对于代理组件)
 - \`openWarning()\` 打开 \`warning\` 弹框\n
 \n<br/>
 \n### 支持的信号：\n
-- \`confirm()\` 点击确认按钮后发出\n
-- \`cancel()\` 点击取消按钮后发出\n
+- \`confirmed()\` 点击确认按钮后发出\n
+- \`canceled()\` 点击取消按钮后发出\n
                        `)
         }
 
@@ -91,8 +91,8 @@ heightRevision | int | 40 | 高度修正(相对于代理组件)
             desc: qsTr(`
 基础弹框。\n
 通过 \`modal\` 属性设置是否为模态。\n
-通过 \`title\` 属性设置标题文本。\n
-通过 \`description\` 属性设置描述文本。\n
+通过 \`titleText\` 属性设置标题文本。\n
+通过 \`descriptionText\` 属性设置描述文本。\n
 通过 \`confirmText\` 属性设置确认文本\n
 通过 \`cancelText\` 属性设置取消文本。\n
 通过 \`closable\` 属性设置右上角关闭按钮。\n
@@ -115,12 +115,12 @@ Column {
             modal: modalSwitch.checked
             position: parseInt(positionRadio.currentCheckedValue)
             closable: closableRadio.currentCheckedValue
-            title: 'Basic Modal'
-            description: 'Some contents...\\nSome contents...\\nSome contents...'
+            titleText: 'Basic Modal'
+            descriptionText: 'Some contents...\\nSome contents...\\nSome contents...'
             confirmText: 'Yes'
             cancelText: 'No'
-            onConfirm: close();
-            onCancel: close();
+            onConfirmed: close();
+            onCanceled: close();
         }
     }
 
@@ -174,12 +174,12 @@ Column {
                         modal: modalSwitch.checked
                         position: parseInt(positionRadio.currentCheckedValue)
                         closable: closableRadio.currentCheckedValue
-                        title: 'Basic Modal'
-                        description: 'Some contents...\nSome contents...\nSome contents...'
+                        titleText: 'Basic Modal'
+                        descriptionText: 'Some contents...\nSome contents...\nSome contents...'
                         confirmText: 'Yes'
                         cancelText: 'No'
-                        onConfirm: close();
-                        onCancel: close();
+                        onConfirmed: close();
+                        onCanceled: close();
                     }
                 }
 
@@ -243,8 +243,8 @@ Column {
         HusModal {
             id: modal2
             width: 500
-            title: 'Title'
-            description: 'Some contents...\\nSome contents...\\nSome contents...\\nSome contents...\\nSome contents...'
+            titleText: 'Title'
+            descriptionText: 'Some contents...\\nSome contents...\\nSome contents...\\nSome contents...\\nSome contents...'
             footerDelegate: Item {
                 height: 30
 
@@ -298,8 +298,8 @@ Column {
                     HusModal {
                         id: modal2
                         width: 500
-                        title: 'Title'
-                        description: 'Some contents...\nSome contents...\nSome contents...\nSome contents...\nSome contents...'
+                        titleText: 'Title'
+                        descriptionText: 'Some contents...\nSome contents...\nSome contents...\nSome contents...\nSome contents...'
                         footerDelegate: Item {
                             height: 30
 
@@ -379,12 +379,12 @@ Row {
     HusModal {
         id: modal3
         width: 500
-        title: 'Title'
-        description: 'Reachable: Light!\\nUnreachable: null!'
+        titleText: 'Title'
+        descriptionText: 'Reachable: Light!\\nUnreachable: null!'
         confirmText: 'Yes'
         cancelText: 'No'
-        onConfirm: close();
-        onCancel: close();
+        onConfirmed: close();
+        onCanceled: close();
     }
 }
             `
@@ -414,12 +414,12 @@ Row {
                 HusModal {
                     id: modal3
                     width: 500
-                    title: 'Title'
-                    description: 'Reachable: Light!\nUnreachable: null!'
+                    titleText: 'Title'
+                    descriptionText: 'Reachable: Light!\nUnreachable: null!'
                     confirmText: 'Yes'
                     cancelText: 'No'
-                    onConfirm: close();
-                    onCancel: close();
+                    onConfirmed: close();
+                    onCanceled: close();
                 }
             }
         }
@@ -444,13 +444,13 @@ Row {
         HusModal {
             id: modal4
             width: 500
-            title: 'Draggable Modal'
+            titleText: 'Draggable Modal'
             movable: true
-            description: 'Just dont learn physics at school and your life will be full of magic and miracles. \\n\\nDay before yesterday I saw a rabbit, and yesterday a deer, and today, you.'
+            descriptionText: 'Just dont learn physics at school and your life will be full of magic and miracles. \\n\\nDay before yesterday I saw a rabbit, and yesterday a deer, and today, you.'
             confirmText: 'Yes'
             cancelText: 'No'
-            onConfirm: close();
-            onCancel: close();
+            onConfirmed: close();
+            onCanceled: close();
         }
     }
 }
@@ -465,13 +465,13 @@ Row {
                     HusModal {
                         id: modal4
                         width: 500
-                        title: 'Draggable Modal'
+                        titleText: 'Draggable Modal'
                         movable: true
-                        description: 'Just dont learn physics at school and your life will be full of magic and miracles. \n\nDay before yesterday I saw a rabbit, and yesterday a deer, and today, you.'
+                        descriptionText: 'Just dont learn physics at school and your life will be full of magic and miracles. \n\nDay before yesterday I saw a rabbit, and yesterday a deer, and today, you.'
                         confirmText: 'Yes'
                         cancelText: 'No'
-                        onConfirm: close();
-                        onCancel: close();
+                        onConfirmed: close();
+                        onCanceled: close();
                     }
                 }
             }

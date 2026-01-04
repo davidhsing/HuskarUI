@@ -17,7 +17,8 @@ Item {
     }
 
     property bool animationEnabled: HusTheme.animationEnabled
-    property string title: ''
+    property bool titleVisible: true
+    property string titleText: ''
     property font titleFont: Qt.font({
         family: HusTheme.HusGroupBox.fontFamily,
         pixelSize: HusTheme.HusGroupBox.fontSize
@@ -37,15 +38,14 @@ Item {
     property color colorBorder: HusTheme.HusGroupBox.colorBorder
     property color colorBg: HusTheme.HusGroupBox.colorBg
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusGroupBox.radiusBg }
-    property string ariaConstrual: title
+    property string ariaConstrual: titleText
 
     property Component titleDelegate: HusText {
-        text: control.title
+        text: control.titleText
         font: control.titleFont
         color: control.colorTitle
         leftPadding: control.titleLeftPadding
         rightPadding: control.titleRightPadding
-        visible: !!control.title
     }
 
     property Component borderDelegate: Item {
@@ -70,7 +70,7 @@ Item {
             width: __titleLoader.implicitWidth + 8
             height: control.borderWidth + 1
             color: control.colorBg
-            visible: !!control.title
+            visible: !!control.titleText
         }
     }
 
@@ -80,7 +80,7 @@ Item {
     implicitWidth: Math.max(1, __contentItem.implicitWidth + control.contentLeftMargin + control.contentRightMargin)
     implicitHeight: {
         let height = __contentItem.implicitHeight + (control.contentTopMargin + control.contentBottomMargin) * 2 / 3;
-        if (!!control.title && __titleLoader.item) {
+        if (!!control.titleText && __titleLoader.item) {
             height += __titleLoader.item.implicitHeight / 2;
         }
         return Math.max(1, height);
@@ -115,7 +115,9 @@ Item {
             }
             return 0;
         }
-        sourceComponent: titleDelegate
+        sourceComponent: control.titleDelegate
+        active: control.titleVisible
+        visible: active
     }
 
     Item {
@@ -130,6 +132,6 @@ Item {
     }
 
     Accessible.role: Accessible.Grouping
-    Accessible.name: control.title
+    Accessible.name: control.titleText
     Accessible.description: control.ariaConstrual
 }

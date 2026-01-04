@@ -613,7 +613,7 @@ Column {
 通过 \`columns\` 对应列中的 \`sorter\` 设置排序器，其原型为 \`function(a, b){}\`，具体可参考 \`Array.sort()\` 参数。\n
 通过 \`columns\` 对应列中的 \`sortDirections\` 设置排序方向列表，在切换排序时按数组内容指示的方向依次切换，项 \`ascend\` 视作升序()。\n
 通过 \`columns\` 对应列中的 \`onFilter\` 设置过滤器，其原型为 \`function(value, record){}\`，\`value\` 为过滤输入，\`record\` 为当前数据记录。\n
-**一种在外部实现自定义过滤的方式** \n
+**一种在外部实现自定义过滤的方式**\n
 - 设置 \`columns\` 对应列中的 \`filterInput\`，接着调用 \`filter()\` 函数即可对该列实现过滤。\n
                        `)
             code: `

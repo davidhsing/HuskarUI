@@ -13,7 +13,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusShield 徽章 \n
+# HusShield 徽章\n
 类似 GitHub Shields 的徽章组件。\n
 * **继承自 { Item }**\n
 \n<br/>

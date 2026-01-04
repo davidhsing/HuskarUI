@@ -6,10 +6,13 @@ import HuskarUI.Basic
 HusPopup {
     id: control
 
+    property bool iconVisible: true
     property var iconSource: HusIcon.ExclamationCircleFilled || ''
     property int iconSize: 16
-    property string title: ''
-    property string description: ''
+    property bool titleVisible: true
+    property string titleText: ''
+    property bool descriptionVisible: true
+    property string descriptionText: ''
     property bool arrowVisible: true
     property int arrowWidth: 16
     property int arrowHeight: 8
@@ -52,7 +55,7 @@ HusPopup {
     property Component titleDelegate: HusText {
         font: control.titleFont
         color: control.colorTitle
-        text: control.title
+        text: control.titleText
         horizontalAlignment: Text.AlignLeft
         wrapMode: Text.WrapAnywhere
     }
@@ -60,7 +63,7 @@ HusPopup {
         width: parent.width
         font: control.descriptionFont
         color: control.colorDescription
-        text: control.description
+        text: control.descriptionText
         horizontalAlignment: Text.AlignLeft
         wrapMode: Text.WrapAnywhere
     }
@@ -80,24 +83,26 @@ HusPopup {
                 Loader {
                     id: __iconLoader
                     Layout.alignment: Qt.AlignVCenter
-                    active: control.iconSource !== 0 && control.iconSource !== ''
                     sourceComponent: control.iconDelegate
+                    active: control.iconVisible
+                    visible: active
                 }
 
                 Loader {
                     id: __titleLoader
                     Layout.alignment: Qt.AlignVCenter
-                    active: control.title !== ''
                     sourceComponent: control.titleDelegate
+                    active: control.titleVisible
+                    visible: active
                 }
             }
 
             Loader {
                 Layout.leftMargin: __iconLoader.width + 5
                 Layout.fillWidth: true
-                visible: active
-                active: control.description !== ''
                 sourceComponent: control.descriptionDelegate
+                active: control.descriptionVisible
+                visible: active
             }
 
             Loader {

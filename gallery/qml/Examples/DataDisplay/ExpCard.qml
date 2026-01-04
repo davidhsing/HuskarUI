@@ -15,7 +15,7 @@ Flickable {
 
         Description {
             desc: qsTr(`
-# HusCard 卡片 \n
+# HusCard 卡片\n
 通用卡片容器。\n
 * **继承自 { Rectangle }**\n
 \n<br/>
@@ -31,7 +31,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 borderVisible | bool | true | 边框是否可见
-title | string | '' | 标题文本
+titleText | string | '' | 标题文本
 titleFont | font | - | 标题字体
 coverSource | url | '' | 封面图片链接
 coverFillMode | enum | Image.Stretch | 封面图片填充模式(来自 Image)
@@ -40,7 +40,7 @@ bodyAvatarSize | int |  40 | 内容字体
 bodyAvatarIcon | int | 0 | 主体部分头像图标(来自 HusIcon)
 bodyAvatarSource | url | '' | 主体部分头像链接
 bodyAvatarText | string | '' | 主体部分头像文本
-bodyTitle | string | '' | 主体部分标题文本
+bodyTitleText | string | '' | 主体部分标题文本
 bodyTitleFont | font | - | 主体部分标题字体
 bodyDescription | string | '' | 主体部分描述文本
 bodyDescriptionFont | font | - | 主体部分描述字体
@@ -82,7 +82,7 @@ Row {
     spacing: 10
 
     HusCard {
-        title: qsTr('Card title')
+        titleText: qsTr('Card title')
         extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
         bodyDescription: qsTr('Card content\\nCard content\\nCard content')
     }
@@ -92,7 +92,7 @@ Row {
                 spacing: 10
 
                 HusCard {
-                    title: qsTr('Card title')
+                    titleText: qsTr('Card title')
                     extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
                     bodyDescription: qsTr('Card content\nCard content\nCard content')
                 }
@@ -103,7 +103,7 @@ Row {
             width: parent.width
             descTitle: qsTr('整体结构')
             desc: qsTr(`
-通过代理可自由定制卡片内容: \n
+通过代理可自由定制卡片内容:\n
 - **titleDelegate: Component** 卡片标题代理\n
 - **extraDelegate: Component** 卡片右上角操作代理\n
 - **coverDelegate: Component** 卡片封面代理\n
@@ -121,11 +121,11 @@ Row {
 
     HusCard {
         id: card
-        title: qsTr('Card title')
+        titleText: qsTr('Card title')
         extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
         coverSource: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
         bodyAvatarIcon: HusIcon.AccountBookOutlined
-        bodyTitle: 'Card Meta title'
+        bodyTitleText: 'Card Meta title'
         bodyDescription: 'This is the description'
         actionDelegate: Item {
             height: 45
@@ -195,11 +195,11 @@ Row {
 
                 HusCard {
                     id: card
-                    title: qsTr('Card title')
+                    titleText: qsTr('Card title')
                     extraDelegate: HusButton { type: HusButton.TypeLink; text: qsTr('More') }
                     coverSource: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
                     bodyAvatarIcon: HusIcon.AccountBookOutlined
-                    bodyTitle: qsTr('Card Meta title')
+                    bodyTitleText: qsTr('Card Meta title')
                     bodyDescription: qsTr('This is the description')
                     actionDelegate: Item {
                         height: 45
