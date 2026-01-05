@@ -242,7 +242,7 @@ Row {
         options: [
             { value: 'jack', label: 'Jack' },
             { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'David', label: 'david' },
             { value: 'disabled', label: 'Disabled', disabled: true },
         ]
     }
@@ -253,7 +253,7 @@ Row {
         options: [
             { value: 'jack', label: 'Jack' },
             { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'David', label: 'david' },
             { value: 'disabled', label: 'Disabled', disabled: true },
         ]
     }
@@ -264,7 +264,7 @@ Row {
         options: [
             { value: 'jack', label: 'Jack' },
             { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'David', label: 'david' },
             { value: 'disabled', label: 'Disabled', disabled: true },
         ]
     }
@@ -275,7 +275,7 @@ Row {
         options: [
             { value: 'jack', label: 'Jack' },
             { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' },
+            { value: 'David', label: 'david' },
             { value: 'disabled', label: 'Disabled', disabled: true },
         ]
     }
@@ -293,7 +293,7 @@ Row {
                         options: [
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
+                            { value: 'David', label: 'david' },
                             { value: 'disabled', label: 'Disabled', disabled: true },
                         ]
                     }
@@ -304,7 +304,7 @@ Row {
                         options: [
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
+                            { value: 'David', label: 'david' },
                             { value: 'disabled', label: 'Disabled', disabled: true },
                         ]
                     }
@@ -319,7 +319,7 @@ Row {
                         options: [
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
+                            { value: 'David', label: 'david' },
                             { value: 'disabled', label: 'Disabled', disabled: true },
                         ]
                     }
@@ -330,7 +330,7 @@ Row {
                         options: [
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
+                            { value: 'David', label: 'david' },
                             { value: 'disabled', label: 'Disabled', disabled: true },
                         ]
                     }
@@ -376,7 +376,7 @@ HusMultiSelect {
                     filterOption:
                         (input, option) => {
                             filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));
-                            return filteredOptions.indexOf(option.label) != -1;
+                            return filteredOptions.indexOf(option.label) !== -1;
                         }
                     onSelected: {
                         filteredOptions = theOptions.filter((o) => !selectedKeys.includes(o));

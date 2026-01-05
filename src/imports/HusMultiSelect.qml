@@ -84,13 +84,15 @@ HusSelect {
 
                 HoverHandler {
                     id: __hoverHander
-                    cursorShape: Qt.PointingHandCursor
+                    cursorShape: (control.enabled && !control.readOnly) ? Qt.PointingHandCursor : Qt.ArrowCursor
                 }
 
                 TapHandler {
                     id: __tapHander
                     onTapped: {
-                        control.removeTagAtIndex(__tag.index);
+                        if (control.enabled && !control.readOnly) {
+                            control.removeTagAtIndex(__tag.index);
+                        }
                     }
                 }
             }
@@ -204,7 +206,7 @@ HusSelect {
             placeholderTextColor: control.themeSource.colorTextDisabled
             placeholderText: (__tagListModel.count > 0 || length > 0) ? '' : control.placeholderText
             font: control.font
-            readOnly: !control.searchEnabled
+            readOnly: !control.searchEnabled || control.readOnly
             onTextEdited: {
                 control.searched(text);
                 control.filter();
@@ -221,8 +223,15 @@ HusSelect {
                 }
             }
 
+            HoverHandler {
+                cursorShape: control.readOnly ? Qt.ArrowCursor : (control.searchEnabled ? Qt.IBeamCursor : Qt.ArrowCursor)
+            }
+
             TapHandler {
                 onTapped: {
+                    if (control.readOnly) {
+                        return;
+                    }
                     if (control.popup.opened) {
                         control.popup.close();
                     } else {
@@ -356,6 +365,9 @@ HusSelect {
                     Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }
                 }
                 onClicked: {
+                    if (!control.enabled || control.readOnly) {
+                        return;
+                    }
                     control.currentIndex = index;
                     const data = __popupDelegate.model;
                     const key = data.key;

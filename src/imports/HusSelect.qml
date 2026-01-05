@@ -17,6 +17,7 @@ T.ComboBox {
     property var initValue: null
     property var activeValue: null
     property bool loading: false
+    property bool readOnly: false
     property bool tooltipVisible: false
     property alias placeholderText: __contentItem.placeholderText
     property color colorText: enabled ? ((popup.visible && !editable) ? themeSource.colorTextActive : themeSource.colorText) : themeSource.colorTextDisabled
@@ -65,12 +66,16 @@ T.ComboBox {
         MouseArea {
             id: __clearMouseArea
             anchors.fill: parent
-            enabled: control.enabled
+            enabled: control.enabled && !control.readOnly
             hoverEnabled: true
-            cursorShape: hovered ? Qt.PointingHandCursor : Qt.ArrowCursor
+            cursorShape: (hovered && !control.readOnly) ? control.hoverCursorShape : Qt.ArrowCursor
             onEntered: hovered = true;
             onExited: hovered = false;
             onClicked: function(mouse) {
+                if (control.readOnly) {
+                    mouse.accepted = true;
+                    return;
+                }
                 if (active && control.clearable) {
                     if (control.editable) {
                         control.editText = '';
@@ -135,7 +140,7 @@ T.ComboBox {
         bottomPadding: 0
         text: control.editable ? control.editText : control.displayText
         placeholderText: control.placeholderText
-        readOnly: !control.editable
+        readOnly: !control.editable || control.readOnly
         autoScroll: control.editable
         font: control.font
         inputMethodHints: control.inputMethodHints
@@ -146,11 +151,14 @@ T.ComboBox {
         colorText: control.colorText
 
         HoverHandler {
-            cursorShape: control.editable ? Qt.IBeamCursor : control.hoverCursorShape
+            cursorShape: control.readOnly ? Qt.ArrowCursor : (control.editable ? Qt.IBeamCursor : control.hoverCursorShape)
         }
 
         TapHandler {
             onTapped: {
+                if (!control.enabled || control.readOnly) {
+                    return;
+                }
                 if (!control.editable) {
                     if (control.popup.opened) {
                         control.popup.close();
@@ -281,7 +289,7 @@ T.ComboBox {
                 }
 
                 HoverHandler {
-                    cursorShape: control.hoverCursorShape
+                    cursorShape: control.readOnly ? Qt.ArrowCursor : control.hoverCursorShape
                 }
 
                 Loader {
@@ -306,8 +314,17 @@ T.ComboBox {
         Binding on height { when: __popup.opened; value: __popup.implicitHeight }
     }
 
+    MouseArea {
+        id: __rootMouseArea
+        anchors.fill: parent
+        enabled: control.readOnly
+        onClicked: function(mouse) {
+            mouse.accepted = true;
+        }
+    }
+
     HoverHandler {
-        cursorShape: control.hoverCursorShape
+        cursorShape: control.readOnly ? Qt.ArrowCursor : control.hoverCursorShape
     }
 
     Accessible.role: Accessible.ComboBox

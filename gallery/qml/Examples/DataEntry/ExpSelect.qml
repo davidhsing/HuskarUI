@@ -34,6 +34,7 @@ hoverCursorShape | enum | Qt.PointingHandCursor | 悬浮时鼠标形状(来自 Q
 initValue | var | - | 初始值
 activeValue | var | - | 绑定值
 loading | bool | false | 是否在加载中
+readOnly | bool | false | 是否只读
 tooltipVisible | bool | false | 是否显示文字提示
 placeholderText | string | - | 占位符文本
 colorText | color | - | 文本颜色
@@ -74,6 +75,7 @@ ariaConstrual | string | '' | 内容描述(提高可用性)
 - { label: 本选择项的标签 } 可通过 **textRole** 更改\n
 - { value: 本选择项的值 } 可通过 **valueRole** 更改\n
 - { enabled: 本选择项是否启用 }\n
+- { readOnly: 本选择项是否只读 }\n
 通过 \`loading\` 属性设置是否在加载中。\n
 可以让 \`enabled\` 绑定 \`loading\` 实现加载完成才启用。\n
 通过 \`danger\` 属性设置警示状态。\n
@@ -97,7 +99,7 @@ Row {
         model: [
             { value: 'jack', label: 'Jack' },
             { value: 'lucy', label: 'Lucy' },
-            { value: 'yiminghe', label: 'Yimingheabcdef' },
+            { value: 'david', label: 'Yimingheabcdef' },
             { value: 'disabled', label: 'Disabled', enabled: false },
         ]
         danger: true
@@ -111,7 +113,7 @@ Row {
         model: [
             { value: 'jack', label: 'Jack' },
             { value: 'lucy', label: 'Lucy' },
-            { value: 'yiminghe', label: 'Yiminghe' },
+            { value: 'david', label: 'David' },
             { value: 'disabled', label: 'Disabled', enabled: false },
         ]
         initValue: 'lucy'
@@ -124,9 +126,19 @@ Row {
         model: [
             { value: 'jack', label: 'Jack' },
             { value: 'lucy', label: 'Lucy' },
-            { value: 'yiminghe', label: 'Yiminghe' },
+            { value: 'david', label: 'David' },
             { value: 'disabled', label: 'Disabled', enabled: false },
         ]
+    }
+
+    HusSelect {
+        width: 120
+        height: 30
+        model: [
+            { value: 'readOnly', label: 'readOnly' }
+        ]
+        initValue: 'readOnly'
+        readOnly: true
     }
 }
             `
@@ -140,7 +152,7 @@ Row {
                     model: [
                         { value: 'jack', label: 'Jack' },
                         { value: 'lucy', label: 'Lucy' },
-                        { value: 'yiminghe', label: 'Yimingheabcdef' },
+                        { value: 'david', label: 'Yimingheabcdef' },
                         { value: 'disabled', label: 'Disabled', enabled: false },
                     ]
                     danger: true
@@ -154,7 +166,7 @@ Row {
                     model: [
                         { value: 'jack', label: 'Jack' },
                         { value: 'lucy', label: 'Lucy' },
-                        { value: 'yiminghe', label: 'Yiminghe' },
+                        { value: 'david', label: 'David' },
                         { value: 'disabled', label: 'Disabled', enabled: false },
                     ]
                     initValue: 'lucy'
@@ -167,9 +179,19 @@ Row {
                     model: [
                         { value: 'jack', label: 'Jack' },
                         { value: 'lucy', label: 'Lucy' },
-                        { value: 'yiminghe', label: 'Yiminghe' },
+                        { value: 'david', label: 'David' },
                         { value: 'disabled', label: 'Disabled', enabled: false },
                     ]
+                }
+
+                HusSelect {
+                    width: 120
+                    height: 30
+                    model: [
+                        { value: 'readOnly', label: 'readOnly' }
+                    ]
+                    initValue: 'readOnly'
+                    readOnly: true
                 }
             }
         }
