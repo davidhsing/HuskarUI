@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(HUSKARUI_VERSION 0.6.0.0)
+set(HUSKARUI_VERSION_MAJOR 0)
+set(HUSKARUI_VERSION_MINOR 6)
+set(HUSKARUI_VERSION_PATCH 0)
+set(HUSKARUI_VERSION_TWEAK 0)
+set(HUSKARUI_VERSION ${HUSKARUI_VERSION_MAJOR}.${HUSKARUI_VERSION_MINOR}.${HUSKARUI_VERSION_PATCH}.${HUSKARUI_VERSION_TWEAK})
 
 message(STATUS "Configuring HuskarUIBasic Version: ${HUSKARUI_VERSION}")
 
@@ -12,8 +16,24 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../.cmake/HuskarUIHelper.cmake)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(Qt6 6.5 COMPONENTS Quick QuickTemplates2 ShaderTools Multimedia REQUIRED)
+find_package(Qt6 6.5 COMPONENTS Quick QuickTemplates2 ShaderTools LabsQmlModels Multimedia REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
+
+#Determine if there is a private module present
+set(QT_HAS_PRIVATE_MODULES FALSE)
+if(Qt6_VERSION VERSION_GREATER_EQUAL "6.10.0")
+    find_package(Qt6 6.10 COMPONENTS QuickPrivate QuickTemplates2Private REQUIRED)
+    if(Qt6QuickPrivate_FOUND AND Qt6QuickTemplates2Private_FOUND)
+        set(QT_HAS_PRIVATE_MODULES TRUE)
+    endif()
+else()
+    get_target_property(QT_HAS_QUICK_PRIVATE Qt6::Quick _qt_module_has_private_headers)
+    get_target_property(QT_HAS_QUICKTEMPLATES2_PRIVATE Qt6::QuickTemplates2 _qt_module_has_private_headers)
+    get_target_property(QT_HAS_LABSQMLMODEL_PRIVATE Qt6::LabsQmlModels _qt_module_has_private_headers)
+    if(QT_HAS_QUICK_PRIVATE AND QT_HAS_QUICKTEMPLATES2_PRIVATE AND QT_HAS_LABSQMLMODEL_PRIVATE)
+        set(QT_HAS_PRIVATE_MODULES TRUE)
+    endif()
+endif()
 
 #Set header output dir.
 if(NOT HUSKARUI_HEADER_OUTPUT_DIRECTORY)
@@ -45,9 +65,18 @@ if(NOT HUSKARUI_PLUGIN_OUTPUT_DIRECTORY)
     endif()
 endif()
 
+#Set install dir.
+if(INSTALL_HUSKARUI_IN_DEFAULT_LOCATION)
+    set(CMAKE_INSTALL_PREFIX "${Qt6_DIR}/../../../" CACHE PATH "" FORCE)
+elseif(HUSKARUI_INSTALL_DIRECTORY)
+    set(CMAKE_INSTALL_PREFIX "${HUSKARUI_INSTALL_DIRECTORY}" CACHE PATH "" FORCE)
+endif()
+
+message(STATUS "The Qt has private module: ${QT_HAS_PRIVATE_MODULES}")
 message(STATUS "The HuskarUI header output dir: ${HUSKARUI_HEADER_OUTPUT_DIRECTORY}")
 message(STATUS "The HuskarUI library output dir: ${HUSKARUI_LIBRARY_OUTPUT_DIRECTORY}")
 message(STATUS "The HuskarUI plugin output dir: ${HUSKARUI_PLUGIN_OUTPUT_DIRECTORY}")
+message(STATUS "The HuskarUI install dir: ${CMAKE_INSTALL_PREFIX}")
 
 if(BUILD_HUSKARUI_STATIC_LIBRARY)
     set(PLUGIN_NAME HuskarUIBasicPlugin)
@@ -85,6 +114,15 @@ endif()
 
 if(QT_KNOWN_POLICY_QTP0004)
     qt_policy(SET QTP0004 NEW)
+endif()
+
+set(QT_TREEMODEL_SOURCES "")
+if(QT_HAS_LABSQMLMODEL_PRIVATE)
+    set(QT_TREEMODEL_SOURCES
+        cpp/models/qqmltreerow_p.h cpp/models/qqmltreerow.cpp
+        cpp/models/qqmltreemodel_p.h cpp/models/qqmltreemodel.cpp
+        cpp/models/qqmlabstractcolumnmodel_p.h cpp/models/qqmlabstractcolumnmodel.cpp
+    )
 endif()
 
 qt_add_qml_module(${PROJECT_NAME}
@@ -154,6 +192,7 @@ qt_add_qml_module(${PROJECT_NAME}
         imports/HusModal.qml
         imports/HusFileBrowser.qml
         imports/HusTextArea.qml
+        imports/HusTree.qml
         imports/HusAudioDiagnosis.qml
         imports/HusAlert.qml
         imports/HusPopover.qml
@@ -236,6 +275,7 @@ qt_add_resources(${PROJECT_NAME} "theme"
         theme/HusPopconfirm.json
         theme/HusModal.json
         theme/HusTextArea.json
+        theme/HusTree.json
         theme/HusAudioDiagnosis.json
         theme/HusAlert.json
         theme/HusPopover.json
@@ -270,6 +310,9 @@ qt_add_shaders(${PROJECT_NAME} "shaders"
 
 # HuskarUI library output dir
 set_target_properties(${PROJECT_NAME} PROPERTIES
+    EXPORT_NAME "Basic"
+    VERSION ${HUSKARUI_VERSION}
+    SOVERSION ${HUSKARUI_VERSION_MAJOR}.${HUSKARUI_VERSION_MINOR}
     RUNTIME_OUTPUT_DIRECTORY ${HUSKARUI_LIBRARY_OUTPUT_DIRECTORY}/bin
     LIBRARY_OUTPUT_DIRECTORY ${HUSKARUI_LIBRARY_OUTPUT_DIRECTORY}/lib
     ARCHIVE_OUTPUT_DIRECTORY ${HUSKARUI_LIBRARY_OUTPUT_DIRECTORY}/lib
@@ -300,40 +343,113 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     $<$<BOOL:${BUILD_HUSKARUI_ON_DESKTOP_PLATFORM}>:QWKQuick>
 )
 
+include(GNUInstallDirs)
+set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}) # include
+set(LIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}) # lib
+set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR}) # bin
+set(QML_INSTALL_DIR "qml") # qml
+set(OBJ_INSTALL_DIR "obj") # obj
+set(HUSKARUI_QML_INSTALL_DIR "${QML_INSTALL_DIR}/HuskarUI")
+set(HUSKARUI_CONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/HuskarUI")
+
 target_include_directories(${PROJECT_NAME} PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/cpp/theme
-    ${CMAKE_CURRENT_SOURCE_DIR}/cpp/controls
-    ${CMAKE_CURRENT_SOURCE_DIR}/cpp/utils
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cpp>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cpp/theme>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cpp/controls>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cpp/models>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cpp/utils>
+    $<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>
+    $<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/HuskarUI>
 )
+
+# < Qt6.10 include QtLabsQmlModels/private
+if(QT_HAS_LABSQMLMODEL_PRIVATE)
+    get_target_property(_module_name Qt6::LabsQmlModels _qt_module_include_name)
+    get_target_property(_module_location Qt6::LabsQmlModels LOCATION)
+    get_filename_component(_qt6_prefix "${_module_location}" DIRECTORY)
+    get_filename_component(_qt6_prefix "${_qt6_prefix}" DIRECTORY) # strip "lib"
+    set(_private_include_dir "${_qt6_prefix}/include/${_module_name}/${Qt6_VERSION_MAJOR}.${Qt6_VERSION_MINOR}.${Qt6_VERSION_PATCH}/${_module_name}/private")
+    target_include_directories(${PROJECT_NAME} PRIVATE ${_private_include_dir})
+    target_compile_definitions(${PROJECT_NAME} PRIVATE QT_FEATURE_qml_tree_model=1)
+    target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::LabsQmlModelsPrivate) # TreeModel
+endif()
 
 #Gen HuskarUI/include
 if(HUSKARUI_HEADER_OUTPUT_DIRECTORY)
-    file(COPY cpp/husglobal.h cpp/husapp.h cpp/husdefinitions.h cpp/controls cpp/theme cpp/utils
-         DESTINATION ${HUSKARUI_HEADER_OUTPUT_DIRECTORY}
-         FILES_MATCHING PATTERN "*.h"
-         PATTERN "*_p.h" EXCLUDE)
+    file(COPY cpp/husglobal.h cpp/husapp.h cpp/husdefinitions.h cpp/controls cpp/models cpp/theme cpp/utils
+        DESTINATION ${HUSKARUI_HEADER_OUTPUT_DIRECTORY}/HuskarUI
+        FILES_MATCHING PATTERN "*.h"
+        PATTERN "*_p.h" EXCLUDE
+    )
 endif()
 
+#Set CMake config output dir
+set(HUSKARUI_CMAKE_CONFIG_DIR ${HUSKARUI_LIBRARY_OUTPUT_DIRECTORY}/lib/cmake)
+
+include(CMakePackageConfigHelpers)
+
+#Generate HuskarUI package config file
+configure_package_config_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/../.cmake/HuskarUIConfig.cmake.in
+    ${HUSKARUI_CMAKE_CONFIG_DIR}/HuskarUIConfig.cmake
+    PATH_VARS INCLUDE_INSTALL_DIR LIB_INSTALL_DIR QML_INSTALL_DIR
+    INSTALL_DESTINATION ${HUSKARUI_CONFIG_INSTALL_DIR}
+)
+
+#Generate HuskarUI package version file
+write_basic_package_version_file(
+    ${HUSKARUI_CMAKE_CONFIG_DIR}/HuskarUIConfigVersion.cmake
+    VERSION ${HUSKARUI_VERSION}
+    COMPATIBILITY SameMinorVersion #Require target lib must has same Major and Minor version
+)
+
 install(TARGETS ${PROJECT_NAME}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/HuskarUI/bin
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/HuskarUI/lib
-    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/HuskarUI/lib
+    EXPORT HuskarUITargets
+    RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+    ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+    LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+)
+
+install(TARGETS ${PLUGIN_NAME}
+    EXPORT HuskarUITargets
+    RUNTIME DESTINATION ${HUSKARUI_QML_INSTALL_DIR}/Basic
+    ARCHIVE DESTINATION ${HUSKARUI_QML_INSTALL_DIR}/Basic
+    LIBRARY DESTINATION ${HUSKARUI_QML_INSTALL_DIR}/Basic
+)
+
+if(BUILD_HUSKARUI_STATIC_LIBRARY)
+    install(
+        TARGETS ${HUSKARUI_QML_OUTPUT_TARGETS} ${HUSKARUI_THEME_OUTPUT_TARGETS}
+        ${HUSKARUI_RES_OUTPUT_TARGETS} ${HUSKARUI_SHADERS_OUTPUT_TARGETS}
+        EXPORT HuskarUITargets
+        RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+        ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+        LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+        OBJECTS DESTINATION ${OBJ_INSTALL_DIR}
+    )
+endif()
+
+install(
+    DIRECTORY ${HUSKARUI_HEADER_OUTPUT_DIRECTORY}/HuskarUI
+    DESTINATION ${INCLUDE_INSTALL_DIR}
 )
 
 install(
-    FILES cpp/husglobal.h cpp/husapp.h cpp/husdefinitions.h
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/HuskarUI/include
+    DIRECTORY ${HUSKARUI_PLUGIN_OUTPUT_DIRECTORY}
+    DESTINATION ${HUSKARUI_QML_INSTALL_DIR}
 )
 
 install(
-    DIRECTORY cpp/controls cpp/theme cpp/utils
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/HuskarUI/include
-    FILES_MATCHING PATTERN "*.h"
-    PATTERN "*_p.h" EXCLUDE
+    FILES ${HUSKARUI_CMAKE_CONFIG_DIR}/HuskarUIConfig.cmake
+    ${HUSKARUI_CMAKE_CONFIG_DIR}/HuskarUIConfigVersion.cmake
+    DESTINATION ${HUSKARUI_CONFIG_INSTALL_DIR}
 )
 
+#Generate and install HuskarUI targets file
 install(
-    DIRECTORY ${HUSKARUI_PLUGIN_OUTPUT_DIRECTORY} DESTINATION ${CMAKE_INSTALL_PREFIX}/HuskarUI/imports/HuskarUI
+    EXPORT HuskarUITargets
+    FILE HuskarUITargets.cmake
+    NAMESPACE HuskarUI::
+    DESTINATION ${HUSKARUI_CONFIG_INSTALL_DIR}
 )

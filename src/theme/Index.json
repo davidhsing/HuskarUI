@@ -193,6 +193,7 @@
         "HusPopconfirm": ":/HuskarUI/theme/HusPopconfirm.json",
         "HusModal": ":/HuskarUI/theme/HusModal.json",
         "HusTextArea": ":/HuskarUI/theme/HusTextArea.json",
+        "HusTree": ":/HuskarUI/theme/HusTree.json",
         "HusAudioDiagnosis": ":/HuskarUI/theme/HusAudioDiagnosis.json",
         "HusAlert": ":/HuskarUI/theme/HusAlert.json",
         "HusPopover": ":/HuskarUI/theme/HusPopover.json",

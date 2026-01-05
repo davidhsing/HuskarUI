@@ -411,17 +411,23 @@ QtObject {
                     desc: qsTr('用于创建双色棋盘格。')
                 },
                 {
+                    key: 'HusQrCode',
+                    label: qsTr('HusQrCode 二维码'),
+                    source: './Examples/DataDisplay/ExpQrCode.qml',
+                    desc: qsTr('将文本转换生成二维码，支持自定义配色和 Logo 配置。')
+                },
+                {
+                    key: 'HusTree',
+                    label: qsTr('HusTree 树视图'),
+                    source: './Examples/DataDisplay/ExpTree.qml',
+                    desc: qsTr('多层次的结构列表。')
+                },
+                {
                     key: 'HusEmpty',
                     label: qsTr('HusEmpty 空状态'),
                     source: './Examples/DataDisplay/ExpEmpty.qml',
                     addVersion: '0.5.0.0',
                     desc: qsTr('显示一个表示空状态的图像和描述文本。')
-                },
-                {
-                    key: 'HusQrCode',
-                    label: qsTr('HusQrCode 二维码'),
-                    source: './Examples/DataDisplay/ExpQRCode.qml',
-                    desc: qsTr('将文本转换生成二维码，支持自定义配色和 Logo 配置。')
                 },
                 {
                     key: 'HusShield',
