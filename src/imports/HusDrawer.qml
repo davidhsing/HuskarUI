@@ -25,20 +25,18 @@ T.Drawer {
     property color colorBg: HusTheme.HusDrawer.colorBg
     property color colorOverlay: HusTheme.HusDrawer.colorOverlay
 
-    property Component closeDelegate: Component {
-        HusCaptionButton {
-            topPadding: 2
-            bottomPadding: 2
-            leftPadding: 4
-            rightPadding: 4
-            anchors.verticalCenter: parent.verticalCenter
-            animationEnabled: control.animationEnabled
-            radiusBg: HusTheme.HusDrawer.radiusButtonBg
-            iconSource: HusIcon.CloseOutlined
-            hoverCursorShape: Qt.PointingHandCursor
-            onClicked: {
-                control.close();
-            }
+    property Component closeDelegate: HusCaptionButton {
+        topPadding: 2
+        bottomPadding: 2
+        leftPadding: 4
+        rightPadding: 4
+        anchors.verticalCenter: parent.verticalCenter
+        animationEnabled: control.animationEnabled
+        radiusBg.all: HusTheme.HusDrawer.radiusButtonBg
+        iconSource: HusIcon.CloseOutlined
+        hoverCursorShape: Qt.PointingHandCursor
+        onClicked: {
+            control.close();
         }
     }
 

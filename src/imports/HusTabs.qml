@@ -54,7 +54,7 @@ Item {
         iconSource: HusIcon.PlusOutlined
         colorIcon: HusTheme.HusTabs.colorTabCloseHover
         hoverCursorShape: Qt.PointingHandCursor
-        radiusBg: HusTheme.HusTabs.radiusButton
+        radiusBg.all: HusTheme.HusTabs.radiusButtonBg
         onClicked: tabAddCallback();
     }
     property Component tabDelegate: tabType === HusTabs.TypeDefault ? __defaultTabDelegate : __cardTabDelegate
@@ -121,7 +121,7 @@ Item {
             ]
             active: control.tabType === HusTabs.TypeDefault
             sourceComponent: Rectangle {
-                color: HusTheme.isDark ? HusTheme.HusTabs.colorHightlightDark : HusTheme.HusTabs.colorHightlight
+                color: HusTheme.isDark ? HusTheme.HusTabs.colorHighlightDark : HusTheme.HusTabs.colorHighlight
             }
         }
     }
@@ -209,7 +209,7 @@ Item {
             colorBorder: 'transparent'
             colorText: {
                 if (isCurrent) {
-                    return HusTheme.isDark ? HusTheme.HusTabs.colorHightlightDark : HusTheme.HusTabs.colorHightlight;
+                    return HusTheme.isDark ? HusTheme.HusTabs.colorHighlightDark : HusTheme.HusTabs.colorHighlight;
                 } else {
                     return down ? HusTheme.HusTabs.colorTabActive :
                                   hovered ? HusTheme.HusTabs.colorTabHover :
@@ -335,7 +335,7 @@ Item {
                 property real calcHeight: Math.max(__icon.implicitHeight, __text.implicitHeight, __close.height)
                 property color colorText: {
                     if (isCurrent) {
-                        return HusTheme.isDark ? HusTheme.HusTabs.colorHightlightDark : HusTheme.HusTabs.colorHightlight;
+                        return HusTheme.isDark ? HusTheme.HusTabs.colorHighlightDark : HusTheme.HusTabs.colorHighlight;
                     } else {
                         return down ? HusTheme.HusTabs.colorTabActive :
                                       hovered ? HusTheme.HusTabs.colorTabHover :

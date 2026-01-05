@@ -12,9 +12,9 @@
         "colorTabCardBgChecked": "@colorBgBase",
         "colorTabCardBgDark": "$lighter(@colorBgBase, 200)",
         "colorTabCardBgCheckedDark": "@colorBgBase",
-        "colorHightlight": "@colorPrimaryBase-6",
-        "colorHightlightDark": "@colorPrimaryBase-5",
-        "radiusButton": "@radiusPrimary",
+        "colorHighlight": "@colorPrimaryBase-6",
+        "colorHighlightDark": "@colorPrimaryBase-5",
+        "radiusButtonBg": "@radiusPrimary",
         "radiusTabBg": "@radiusPrimary"
     }
 }

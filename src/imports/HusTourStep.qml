@@ -77,7 +77,7 @@ T.Popup {
         leftPadding: 4
         rightPadding: 4
         animationEnabled: control.animationEnabled
-        radiusBg: HusTheme.HusTour.radiusButtonBg
+        radiusBg.all: HusTheme.HusTour.radiusButtonBg
         iconSource: HusIcon.CloseOutlined
         hoverCursorShape: Qt.PointingHandCursor
         onClicked: {
