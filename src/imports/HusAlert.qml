@@ -42,8 +42,8 @@ Item {
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusAlert.radiusBg }
     property real contentRowSpacing: 10
     property real contentColumnSpacing: 8
-    property var closeAlign: Qt.AlignTop | Qt.AlignRight
-    property var extraAlign: Qt.AlignTop | Qt.AlignRight
+    property var closeAlign: control.marqueeEnabled ? Qt.AlignRight : Qt.AlignTop | Qt.AlignRight
+    property var extraAlign: control.marqueeEnabled ? Qt.AlignRight : Qt.AlignTop | Qt.AlignRight
 
     // 跑马灯属性
     property bool marqueeEnabled: false
