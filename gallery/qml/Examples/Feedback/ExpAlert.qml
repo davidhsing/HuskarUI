@@ -46,6 +46,8 @@ extraVisible | bool | true | 额外内容是否可见
 radiusBg | [HusRadius](internal://HusRadius) | 6 | 背景圆角半径
 contentRowSpacing | real | 10 | 内容区行间距
 contentColumnSpacing | real | 8 | 内容区列间距
+closeAlign | var | Qt.AlignTop + Qt.AlignRight | 关闭区的对齐方式
+extraAlign | var | Qt.AlignTop + Qt.AlignRight | 额外区的对齐方式
 marqueeEnabled | bool | false | 是否启用跑马灯效果
 marqueeDelay | int | 0 | 跑马灯延迟滚动时间（毫秒）(停留多长时间后开始滚动)
 marqueeSpeed | int | 25000 | 跑马灯滚动速度（毫秒）
@@ -208,23 +210,21 @@ HusAlert {
     width: parent.width
     height: 30
     type: HusAlert.TypeInfo
+    borderVisible: false
     iconSize: 16
     titleText: '重要公告'
     descriptionText: '系统将于今晚22:00进行维护，预计持续2小时'
     marqueeEnabled: true
-    marqueeDirection: HusAlert.DirectionLeft
-    borderVisible: false
 }`
             exampleDelegate: HusAlert {
                 width: parent.width
                 height: 30
                 type: HusAlert.TypeInfo
+                borderVisible: false
                 iconSize: 16
                 titleText: '重要公告'
                 descriptionText: '系统将于今晚22:00进行维护，预计持续2小时'
                 marqueeEnabled: true
-                marqueeDirection: HusAlert.DirectionLeft
-                borderVisible: false
             }
         }
     }

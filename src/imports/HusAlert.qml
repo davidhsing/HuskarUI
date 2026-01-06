@@ -42,6 +42,8 @@ Item {
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusAlert.radiusBg }
     property real contentRowSpacing: 10
     property real contentColumnSpacing: 8
+    property var closeAlign: Qt.AlignTop | Qt.AlignRight
+    property var extraAlign: Qt.AlignTop | Qt.AlignRight
 
     // 跑马灯属性
     property bool marqueeEnabled: false
@@ -243,7 +245,7 @@ Item {
 
         // 额外操作区
         Loader {
-            Layout.alignment: Qt.AlignTop | Qt.AlignRight
+            Layout.alignment: control.extraAlign
             Layout.topMargin: control.marginExtra.top
             Layout.bottomMargin: control.marginExtra.bottom
             Layout.leftMargin: control.marginExtra.left
@@ -255,7 +257,7 @@ Item {
 
         // 关闭按钮
         Loader {
-            Layout.alignment: Qt.AlignTop | Qt.AlignRight
+            Layout.alignment: control.closeAlign
             sourceComponent: control.closeDelegate
             active: control.closable
             visible: active
