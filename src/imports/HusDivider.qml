@@ -25,6 +25,7 @@ Item {
     })
     property int titleAlign: HusDivider.AlignLeft
     property int titlePadding: 20
+    property bool titleSplit: true
     property int lineStyle: HusDivider.LineSolid
     property real lineWidth: 1
     property list<real> dashPattern: [4, 2]
@@ -35,7 +36,7 @@ Item {
 
     property Component titleDelegate: HusText {
         text: {
-            if (control.orientation === Qt.Horizontal) {
+            if (control.orientation === Qt.Horizontal || !control.titleSplit) {
                 return control.titleText;
             }
             return !control.titleText ? '' : control.titleText.split('').join('\n');

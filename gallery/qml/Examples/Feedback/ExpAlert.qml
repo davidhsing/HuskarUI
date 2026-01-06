@@ -32,7 +32,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | - | 是否启用动画，从主题系统获取
 borderVisible | bool | true | 是否显示边框
-closable | bool | true | 是否显示关闭按钮
+closable | bool | false | 是否显示关闭按钮
 delay | int | 0 | 正数表示启动延迟关闭
 type | enum | HusAlert.TypeInfo | 警告类型
 iconVisible | bool | - | 图标是否可见

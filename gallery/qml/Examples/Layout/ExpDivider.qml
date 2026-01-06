@@ -27,6 +27,7 @@ Flickable {
 ------ | --- | :---: | ---
 animationEnabled | bool | HusTheme.animationEnabled | 是否开启动画
 titleVisible | bool | - | 标题是否可见
+titleSplit | bool | true | 是否自动拆分标题(垂直方向)
 titleText | string | '' | 标题
 titleFont | font | - | 标题字体
 titleAlign | enum | HusDivider.AlignLeft | 标题对齐(来自 HusDivider)
