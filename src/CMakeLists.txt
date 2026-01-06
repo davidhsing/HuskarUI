@@ -38,9 +38,9 @@ endif()
 #Set header output dir.
 if(NOT HUSKARUI_HEADER_OUTPUT_DIRECTORY)
     if(BUILD_HUSKARUI_IN_DEFAULT_LOCATION)
-        set(HUSKARUI_HEADER_OUTPUT_DIRECTORY ${Qt6_DIR}/../../../include/HuskarUI)
+        set(HUSKARUI_HEADER_OUTPUT_DIRECTORY ${Qt6_DIR}/../../../include)
     else()
-        set(HUSKARUI_HEADER_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/HuskarUI/include)
+        set(HUSKARUI_HEADER_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/dist/include)
     endif()
 endif()
 
@@ -52,7 +52,7 @@ if(NOT HUSKARUI_LIBRARY_OUTPUT_DIRECTORY)
             set(HUSKARUI_LIBRARY_OUTPUT_DIRECTORY ${Qt6_DIR}/../../../)
         endif()
     else()
-        set(HUSKARUI_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/HuskarUI/lib)
+        set(HUSKARUI_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/dist/lib)
     endif()
 endif()
 
@@ -61,7 +61,7 @@ if(NOT HUSKARUI_PLUGIN_OUTPUT_DIRECTORY)
     if(BUILD_HUSKARUI_IN_DEFAULT_LOCATION)
         set(HUSKARUI_PLUGIN_OUTPUT_DIRECTORY ${Qt6_DIR}/../../../qml/HuskarUI/Basic)
     else()
-        set(HUSKARUI_PLUGIN_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/HuskarUI/plugins/HuskarUI/Basic)
+        set(HUSKARUI_PLUGIN_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/dist/plugins/HuskarUI/Basic)
     endif()
 endif()
 
@@ -344,11 +344,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 include(GNUInstallDirs)
-set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}) # include
-set(LIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}) # lib
-set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR}) # bin
-set(QML_INSTALL_DIR "qml") # qml
-set(OBJ_INSTALL_DIR "obj") # obj
+set(INCLUDE_INSTALL_DIR "dist/${CMAKE_INSTALL_INCLUDEDIR}") # include
+set(LIB_INSTALL_DIR "dist/${CMAKE_INSTALL_LIBDIR}") # lib
+set(BIN_INSTALL_DIR "dist/${CMAKE_INSTALL_BINDIR}") # bin
+set(QML_INSTALL_DIR "dist/qml") # qml
+set(OBJ_INSTALL_DIR "dist/obj") # obj
 set(HUSKARUI_QML_INSTALL_DIR "${QML_INSTALL_DIR}/HuskarUI")
 set(HUSKARUI_CONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/HuskarUI")
 

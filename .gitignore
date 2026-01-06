@@ -73,9 +73,9 @@ CMakeLists.txt.user*
 *.exe
 
 # CMake generated files
-/HuskarUI/
-/build/
 /bin/
+/build/
+/dist/
 /gallery/bin/
 /package/
 CMakeCache.txt
