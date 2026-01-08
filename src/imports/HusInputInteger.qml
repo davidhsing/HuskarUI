@@ -172,7 +172,7 @@ T.SpinBox {
     min: -2147483648
     max: 2147483647
     validator: IntValidator {
-        locale: control.locale.name
+        locale: (control && control.locale) ? control.locale.name : Qt.locale().name
         bottom: Math.min(control.from, control.to)
         top: Math.max(control.from, control.to)
     }
@@ -239,9 +239,11 @@ T.SpinBox {
         }
         onTextChanged: {
             Qt.callLater(() => {
-                const parsed = control.parser(text);
-                if (!isNaN(parsed) && parsed >= control.from && parsed <= control.to && parsed !== control.value) {
-                    control.value = parsed;
+                if (control && control.locale) {
+                    const parsed = control.parser(text);
+                    if (!isNaN(parsed) && parsed >= control.from && parsed <= control.to && parsed !== control.value) {
+                        control.value = parsed;
+                    }
                 }
             });
         }
@@ -314,7 +316,9 @@ T.SpinBox {
 
     onValueChanged: {
         Qt.callLater(() => {
-            __input.text = control.formatter(value, control.locale);
+            if (control) {
+                __input.text = control.formatter(value, control.locale);
+            }
         });
     }
     onPrefixChanged: valueChanged();
