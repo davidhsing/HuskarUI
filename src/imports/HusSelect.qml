@@ -8,7 +8,7 @@ T.ComboBox {
     signal cleared()
 
     property bool animationEnabled: HusTheme.animationEnabled
-    readonly property bool active: hovered || activeFocus
+    readonly property bool active: hovered || visualFocus || contentItem.hovered || contentItem.activeFocus
     property bool clearable: false
     property var clearIconSource: HusIcon.CloseCircleFilled ?? ''
     property int defaultPopupMaxHeight: 240
@@ -366,6 +366,8 @@ T.ComboBox {
     }
 
     onModelChanged: {
-        __private.updateCurrentIndexByValue();
+        Qt.callLater(function() {
+            __private.updateCurrentIndexByValue();
+        });
     }
 }
