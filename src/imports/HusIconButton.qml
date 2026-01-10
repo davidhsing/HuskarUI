@@ -17,7 +17,6 @@ HusButton {
     property color colorIcon: colorText
 
     objectName: '__HusIconButton__'
-    enabled: control.loading ? false : control.enabled
 
     contentItem: Item {
         implicitWidth: __row.implicitWidth
