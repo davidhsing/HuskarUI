@@ -115,8 +115,8 @@ T.ComboBox {
     objectName: '__HusSelect__'
     leftPadding: padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
     rightPadding: padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
-    topPadding: 4
-    bottomPadding: 4
+    topPadding: 6
+    bottomPadding: 6
     spacing: 8
     implicitWidth: implicitContentWidth + implicitIndicatorWidth + leftPadding + rightPadding
     implicitHeight: implicitContentHeight + topPadding + bottomPadding
