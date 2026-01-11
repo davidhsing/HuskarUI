@@ -4,7 +4,7 @@
         "fontSize": "$subtract(@fontPrimarySize, 1)",
         "colorTitle": "@colorTextSecondary",
         "colorBorder": "@colorBorder",
-        "colorBg": "@colorBgContainer",
+        "colorBg": "transparent",
         "radiusBg": "@radiusPrimary"
     }
 }
