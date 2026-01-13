@@ -25,7 +25,15 @@ Item {
 
     // Icon properties
     property bool iconVisible: control.iconSource !== 0 && control.iconSource !== ''
-    property var iconSource: 0 ?? ''
+    property var iconSource: {
+        switch (control.type) {
+            case HusResult.TypeInfo: return HusIcon.ExclamationCircleFilled;
+            case HusResult.TypeWarning: return HusIcon.ExclamationCircleFilled;
+            case HusResult.TypeSuccess: return HusIcon.CheckCircleFilled;
+            case HusResult.TypeError: return HusIcon.CloseCircleFilled;
+            default: return HusIcon.ExclamationCircleFilled;
+        }
+    }
     property real iconSize: 80
     property var iconImageSource: ''
     property var iconImageFallback: ''
@@ -114,15 +122,7 @@ Item {
                 id: __iconText
                 anchors.fill: parent
                 color: control.colorIcon
-                iconSource: {
-                    switch (control.type) {
-                        case HusResult.TypeInfo: return HusIcon.ExclamationCircleFilled;
-                        case HusResult.TypeWarning: return HusIcon.ExclamationCircleFilled;
-                        case HusResult.TypeSuccess: return HusIcon.CheckCircleFilled;
-                        case HusResult.TypeError: return HusIcon.CloseCircleFilled;
-                        default: return HusIcon.ExclamationCircleFilled;
-                    }
-                }
+                iconSource: control.iconSource
                 iconSize: control.iconSize
                 horizontalAlignment: Text.AlignHCenter
             }
