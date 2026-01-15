@@ -133,7 +133,7 @@ Item {
     QtObject {
         id: __private
 
-        function openDialog() {
+        function openDialog(): void {
             if (control.mode === HusFileBrowser.ModeOpenFolder) {
                 __folderDialog.open();
             } else {
@@ -141,28 +141,31 @@ Item {
             }
         }
 
-        function urlToLocalFile(url) {
+        function urlToLocalFile(url: url): string {
             if (!url) {
                 return url;
             }
             let urlString = (typeof url === 'string') ? url : url.toString();
             if (!urlString.startsWith('file:///')) {
-                return urlString;
+                return decodeURIComponent(urlString);
             }
+            // 解码URL转义字符
+            urlString = decodeURIComponent(urlString);
             urlString = urlString.replace(/^file:\/\/\//, Qt.platform.os === 'windows' ? '' : '/');
             urlString = urlString.replace(/\//g, (Qt.platform.os === 'windows') ? '\\' : '/');
             return urlString;
         }
 
-        function urlToUniformFile(path) {
+        function urlToUniformFile(path: url): string {
             if (!path) {
                 return path;
             }
             let pathString = (typeof path === 'string') ? path : path.toString();
             if (pathString.startsWith('file:///')) {
-                return pathString;
+                return encodeURIComponent(pathString);
             }
-            return 'file:///' + pathString;
+            // 编码URL转义字符
+            return 'file:///' + encodeURIComponent(pathString);
         }
     }
 }
