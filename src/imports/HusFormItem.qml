@@ -148,7 +148,7 @@ Item {
                     Layout.fillHeight: true
                     onChildrenRectChanged: {
                         if (control.orientation === Qt.Horizontal) {
-                            __horizontalRowLayout.recalculateMaxHeight();
+                            __horizontalRowLayout.recalcMaxHeight();
                         }
                     }
                     Component.onCompleted: {
@@ -156,7 +156,7 @@ Item {
                             __contentItem.data[i].parent = __horizontalContentArea;
                         }
                         if (control.orientation === Qt.Horizontal) {
-                            __horizontalRowLayout.recalculateMaxHeight();
+                            __horizontalRowLayout.recalcMaxHeight();
                         }
                     }
                 }
@@ -170,7 +170,7 @@ Item {
             }
 
             // 延迟计算函数
-            function recalculateMaxHeight() {
+            function recalcMaxHeight(): void {
                 Qt.callLater(function() {
                     const labelHeight = __labelLoader.item ? __labelLoader.item.implicitHeight : 0;
                     const contentHeight = __horizontalContentArea.childrenRect.height;
@@ -271,7 +271,7 @@ Item {
     }
 
     // 公开的验证方法 - 校验所有一级子组件
-    function validate(param) {
+    function validate(param): bool {
         let allValid = true;
         for (let i = 0; i < __contentItem.children.length; i++) {
             const child = __contentItem.children[i];
@@ -296,7 +296,7 @@ Item {
         property int validationStatus: HusFormItem.ValidationNone
         property string feedbackText: ''
 
-        function validateInternal(param) {
+        function validateInternal(param): void {
             if (typeof control.validator !== 'function') {
                 __private.validationStatus = HusFormItem.ValidationNone;
                 __private.feedbackText = '';
@@ -322,7 +322,7 @@ Item {
                     __private.feedbackText = result.message || '';
                 }
             } catch (ex) {
-                console.error('HusFormItem Validation error:', ex);
+                console.error('HusFormItem validation error:', ex);
                 __private.validationStatus = HusFormItem.ValidationError;
                 __private.feedbackText = qsTr('验证出错');
             }

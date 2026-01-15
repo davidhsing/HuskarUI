@@ -148,7 +148,7 @@ Item {
     onDeviceIdChanged: __private.validateDevice()
     onFallbackDefaultChanged: __private.validateDevice()
 
-    function generateAudioLocation() {
+    function generateAudioLocation(): string {
         return StandardPaths.writableLocation(StandardPaths.TempLocation) + '/HusAudioDiagnosis_' + new Date().getTime() + '.m4a';
     }
 
@@ -158,7 +158,7 @@ Item {
         property var audioDevice: null
         property bool audioRecording: false
 
-        function findAudioDevice() {
+        function findAudioDevice(): var {
             const devices = mediaDevices.audioInputs;
             if (control.deviceId) {
                 for (let i = 0; i < devices.length; i++) {
@@ -174,7 +174,7 @@ Item {
             }
         }
 
-        function validateDevice() {
+        function validateDevice(): void {
             __private.audioDevice = findAudioDevice();
             if (!__private.audioDevice) {
                 mediaRecorder.stop();
