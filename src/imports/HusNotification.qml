@@ -36,7 +36,7 @@ Item {
     property bool stackMode: true
     property int stackThreshold: 5
     property int defaultIconSize: 20
-    property int maxWidth: 300
+    property int maxWidth: 400
     property int spacing: 10
     property bool closable: true
     property int topMargin: 12
