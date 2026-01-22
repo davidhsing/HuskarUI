@@ -178,6 +178,11 @@ Item {
                                 to: 360
                                 loops: Animation.Infinite
                                 duration: 1000
+                                onRunningChanged: {
+                                    if (!running && !__rootItem.loading) {
+                                        rotation = 0;
+                                    }
+                                }
                             }
                         }
 

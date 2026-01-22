@@ -58,6 +58,11 @@ Item {
                     to: 360
                     loops: Animation.Infinite
                     duration: 1000
+                    onRunningChanged: {
+                        if (!running && !model.loading) {
+                            __icon.rotation = 0;
+                        }
+                    }
                 }
 
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: HusTheme.Primary.durationFast } }

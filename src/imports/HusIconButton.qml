@@ -48,6 +48,11 @@ HusButton {
                     to: 360
                     loops: Animation.Infinite
                     duration: 1000
+                    onRunningChanged: {
+                        if (!running && !control.loading) {
+                            __icon.rotation = 0;
+                        }
+                    }
                 }
             }
 

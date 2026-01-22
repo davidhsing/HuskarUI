@@ -76,6 +76,11 @@ Item {
                         to: 360
                         loops: Animation.Infinite
                         duration: 1000
+                        onRunningChanged: {
+                            if (!running && !model.loading) {
+                                rotation = 0;
+                            }
+                        }
                     }
                 }
             }
