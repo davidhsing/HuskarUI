@@ -36,7 +36,7 @@ buttonType | int | HusButton.TypeDefault | 按钮样式(来自 HusButton)
 buttonIconSource | int丨string | 0丨'' | 按钮图标源(来自 HusIcon)或图标链接
 buttonWidth | int | 80 | 按钮宽度
 spacing | int | 8 | 文本框与按钮的间距
-convertLocal | bool | true | 是否转化为本地文件形式(否则带 file:/// 前缀)
+convertNative | bool | true | 是否转化为本地文件形式(否则带 file:/// 前缀)
 initFolder | string | - | 初始目录
 defaultSuffix | string | - | 默认的文件后缀
 nameFilters | [] | - | 文件选择过滤器

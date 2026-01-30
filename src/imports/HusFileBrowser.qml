@@ -27,7 +27,7 @@ Item {
     property int buttonWidth: 80
     property bool danger: false
     property int spacing: 8
-    property bool convertLocal: true
+    property bool convertNative: true
     property string initFolder: ''
     property alias defaultSuffix: __fileDialog.defaultSuffix
     property alias nameFilters: __fileDialog.nameFilters
@@ -92,16 +92,16 @@ Item {
         id: __fileDialog
         visible: false
         fileMode: (control.mode === HusFileBrowser.ModeSaveFile) ? FileDialog.SaveFile : ((control.mode === HusFileBrowser.ModeOpenFile) ? FileDialog.OpenFile : FileDialog.OpenFiles)
-        currentFolder: ((control.mode === HusFileBrowser.ModeOpenFile || control.mode === HusFileBrowser.ModeSaveFile) && !!control.inputText) ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
+        currentFolder: (control.mode === HusFileBrowser.ModeOpenFile || control.mode === HusFileBrowser.ModeSaveFile) ? __private.toUniformPath(control.initFolder ?? control.inputText, true) : __private.toUniformPath(control.initFolder, true)
         defaultSuffix: control.defaultSuffix
         nameFilters: control.nameFilters
         onAccepted: {
             if (control.mode === HusFileBrowser.ModeOpenFiles) {
-                const paths = selectedFiles.map(url => control.convertLocal ? __private.urlToLocalFile(url) : url.toString());
+                const paths = selectedFiles.map(url => control.convertNative ? __private.toNativePath(url, false) : url.toString());
                 control.inputText = paths.join(control.pathJoiner);
                 control.pathsSelected(paths);
             } else {
-                control.inputText = control.convertLocal ? __private.urlToLocalFile(selectedFile) : selectedFile.toString();
+                control.inputText = control.convertNative ? __private.toNativePath(selectedFile, false) : selectedFile.toString();
                 control.pathSelected(control.inputText);
             }
         }
@@ -110,9 +110,9 @@ Item {
     FolderDialog {
         id: __folderDialog
         visible: false
-        currentFolder: control.inputText ? Qt.resolvedUrl(__private.urlToUniformFile(control.inputText)) : control.initFolder
+        currentFolder: __private.toUniformPath(control.initFolder ?? control.inputText, true)
         onAccepted: {
-            control.inputText = control.convertLocal ? __private.urlToLocalFile(selectedFolder.toString()) : selectedFolder.toString();
+            control.inputText = control.convertNative ? __private.toNativePath(selectedFolder.toString(), false) : selectedFolder.toString();
             control.pathSelected(control.inputText);
         }
     }
@@ -128,31 +128,62 @@ Item {
             }
         }
 
-        function urlToLocalFile(url: url): string {
+        function toNativePath(url: url, protocol: bool): string {
             if (!url) {
                 return url;
             }
             let urlString = (typeof url === 'string') ? url : url.toString();
-            if (!urlString.startsWith('file:///')) {
-                return decodeURIComponent(urlString);
+            if (protocol) {
+                // Add file:/// prefix if not present
+                if (!urlString.startsWith('file:///')) {
+                    if (urlString.startsWith('file:/') && !urlString.startsWith('file://')) {
+                        // Handle case where it starts with file:/ but not file:///
+                        urlString = 'file:///' + urlString.substring(6);
+                    } else {
+                        urlString = 'file:///' + urlString;
+                    }
+                }
+            } else {
+                // Remove file:/// prefix if present
+                if (urlString.startsWith('file:///')) {
+                    urlString = urlString.substring(8);
+                } else if (urlString.startsWith('file:/')) {
+                    urlString = urlString.substring(6);
+                }
             }
-            // 解码 URL 转义字符
+            // Decode URL escaped characters
             urlString = decodeURIComponent(urlString);
-            urlString = urlString.replace(/^file:\/\/\//, Qt.platform.os === 'windows' ? '' : '/');
-            urlString = urlString.replace(/\//g, (Qt.platform.os === 'windows') ? '\\' : '/');
+            if (Qt.platform.os === 'windows') {
+                urlString = urlString.replace(/\//g,  '\\');
+            }
             return urlString;
         }
 
-        function urlToUniformFile(path: url): string {
+        function toUniformPath(path: url, protocol: bool): string {
             if (!path) {
                 return path;
             }
             let pathString = (typeof path === 'string') ? path : path.toString();
-            if (pathString.startsWith('file:///')) {
-                return encodeURIComponent(pathString);
+            pathString = pathString.replace(/\\/g, '/');
+            if (protocol) {
+                // Add file:/// prefix if not present
+                if (!pathString.startsWith('file:///')) {
+                    if (pathString.startsWith('file:/') && !pathString.startsWith('file://')) {
+                        // Handle case where it starts with file:/ but not file:///
+                        pathString = 'file:///' + pathString.substring(6);
+                    } else {
+                        pathString = 'file:///' + pathString;
+                    }
+                }
+            } else {
+                // Remove file:/// prefix if present
+                if (pathString.startsWith('file:///')) {
+                    pathString = pathString.substring(8);
+                } else if (pathString.startsWith('file:/')) {
+                    pathString = pathString.substring(6);
+                }
             }
-            // 编码 URL 转义字符
-            return 'file:///' + encodeURIComponent(pathString);
+            return pathString;
         }
     }
 }
