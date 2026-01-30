@@ -35,6 +35,7 @@ Item {
     property int contentLeftMargin: contentMargins
     property int contentRightMargin: contentMargins
     property color colorTitle: HusTheme.HusGroupBox.colorTitle
+    property color colorTitleBg: HusTheme.HusGroupBox.colorTitleBg
     property color colorBorder: HusTheme.HusGroupBox.colorBorder
     property color colorBg: HusTheme.HusGroupBox.colorBg
     property HusRadius radiusBg: HusRadius { all: HusTheme.HusGroupBox.radiusBg }
@@ -69,7 +70,7 @@ Item {
             y: (control.titlePosition === HusGroupBox.PositionTop) ? -1 : control.height - 1
             width: __titleLoader.implicitWidth + 8
             height: control.borderWidth + 1
-            color: control.colorBg
+            color: control.colorTitleBg
             visible: !!control.titleText
         }
     }
