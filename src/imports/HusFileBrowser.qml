@@ -22,9 +22,10 @@ Item {
     property bool inputReadOnlyBg: false
     property bool buttonEnabled: true
     property string buttonText: qsTr('浏览')
-    property int buttonType: HusButton.TypeDefault
+    property int buttonType: control.danger ? HusButton.TypeOutlined : HusButton.TypeDefault
     property var buttonIconSource: 0 ?? ''
     property int buttonWidth: 80
+    property bool danger: false
     property int spacing: 8
     property bool convertLocal: true
     property string initFolder: ''
@@ -33,8 +34,21 @@ Item {
     property string pathJoiner: ';'
 
     // Delegates
-    property Component inputDelegate: HusInput { }
-    property Component buttonDelegate: HusIconButton { }
+    property Component inputDelegate: HusInput {
+        text: control.inputText
+        placeholderText: control.inputPlaceholder
+        enabled: control.inputEnabled
+        readOnly: control.inputReadOnly
+        readOnlyBg: control.inputReadOnlyBg
+        danger: control.danger
+    }
+    property Component buttonDelegate: HusIconButton {
+        text: control.buttonText
+        iconSource: control.buttonIconSource
+        enabled: control.buttonEnabled
+        type: control.buttonType
+        danger: control.danger
+    }
 
     implicitWidth: parent.width
     implicitHeight: __layout.implicitHeight
@@ -53,21 +67,6 @@ Item {
             sourceComponent: control.inputDelegate
             onLoaded: {
                 // Check if item has properties before binding
-                if (item.hasOwnProperty('text')) {
-                    item.text = Qt.binding(() => control.inputText);
-                }
-                if (item.hasOwnProperty('placeholderText')) {
-                    item.placeholderText = Qt.binding(() => control.inputPlaceholder);
-                }
-                if (item.hasOwnProperty('enabled')) {
-                    item.enabled = Qt.binding(() => control.inputEnabled);
-                }
-                if (item.hasOwnProperty('readOnly')) {
-                    item.readOnly = Qt.binding(() => control.inputReadOnly);
-                }
-                if (item.hasOwnProperty('readOnlyBg')) {
-                    item.readOnlyBg = Qt.binding(() => control.inputReadOnlyBg);
-                }
                 if (item.hasOwnProperty('text') && item.hasOwnProperty('textChanged') && typeof item.textChanged.connect === 'function') {
                     item.textChanged.connect(() => {
                         control.inputText = item.text;
@@ -82,18 +81,6 @@ Item {
             Layout.preferredWidth: control.buttonWidth
             onLoaded: {
                 // Check if item has properties before binding
-                if (item.hasOwnProperty('text')) {
-                    item.text = Qt.binding(() => control.buttonText);
-                }
-                if (item.hasOwnProperty('iconSource')) {
-                    item.iconSource = Qt.binding(() => control.buttonIconSource);
-                }
-                if (item.hasOwnProperty('enabled')) {
-                    item.enabled = Qt.binding(() => control.buttonEnabled);
-                }
-                if (item.hasOwnProperty('type')) {
-                    item.type = Qt.binding(() => control.buttonType);
-                }
                 if (item.hasOwnProperty('clicked') && typeof item.clicked.connect === 'function') {
                     item.clicked.connect(__private.openDialog);
                 }
@@ -149,7 +136,7 @@ Item {
             if (!urlString.startsWith('file:///')) {
                 return decodeURIComponent(urlString);
             }
-            // 解码URL转义字符
+            // 解码 URL 转义字符
             urlString = decodeURIComponent(urlString);
             urlString = urlString.replace(/^file:\/\/\//, Qt.platform.os === 'windows' ? '' : '/');
             urlString = urlString.replace(/\//g, (Qt.platform.os === 'windows') ? '\\' : '/');
@@ -164,7 +151,7 @@ Item {
             if (pathString.startsWith('file:///')) {
                 return encodeURIComponent(pathString);
             }
-            // 编码URL转义字符
+            // 编码 URL 转义字符
             return 'file:///' + encodeURIComponent(pathString);
         }
     }

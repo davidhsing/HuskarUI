@@ -91,9 +91,19 @@ Column {
         ]
     }
 
+    HusRadioBlock {
+        id: dangerRadio
+        initCheckedIndex: 1
+        model: [
+            { label: 'Danger', value: true },
+            { label: 'NonDanger', value: false }
+        ]
+    }
+
     HusFileBrowser {
         buttonText: qsTr('浏览')
         mode: browserModeRadio.currentCheckedValue
+        danger: dangerRadio.currentCheckedValue
         defaultSuffix: 'jpg'
         nameFilters: [
             qsTr('JPEG Images (*.jpg *.jpeg)'),
@@ -117,9 +127,19 @@ Column {
                     ]
                 }
 
+                HusRadioBlock {
+                    id: dangerRadio
+                    initCheckedIndex: 1
+                    model: [
+                        { label: 'Danger', value: true },
+                        { label: 'NonDanger', value: false }
+                    ]
+                }
+
                 HusFileBrowser {
                     buttonText: qsTr('浏览')
                     mode: browserModeRadio.currentCheckedValue
+                    danger: dangerRadio.currentCheckedValue
                     defaultSuffix: 'jpg'
                     nameFilters: [
                         qsTr('JPEG Images (*.jpg *.jpeg)'),
