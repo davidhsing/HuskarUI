@@ -87,12 +87,12 @@ git submodule update --remote --recursive
 - Build
 ```cmake
 # cd HuskarUI
-cmake -S . -B build -G "MinGW Makefiles"
+cmake -S . -B build -G "Ninja"
 cmake --build build --config Release --target all --parallel
 # cmake --install build
 ```
 
-- Build with MinGW
+- Build with Ninja/MinGW
 ```cmake
 cmake -S . -B build -G "Ninja"
 or

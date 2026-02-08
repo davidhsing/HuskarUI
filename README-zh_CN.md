@@ -86,7 +86,7 @@ cmake -S . -B build
 cmake --build build --config Release --target all --parallel
 ```
 
-- 使用 MinGW 构建
+- 使用 Ninja/MinGW 构建
 ```cmake
 cmake -S . -B build -G "Ninja"
 or
