@@ -36,7 +36,7 @@ Item {
     property bool stackMode: true
     property int stackThreshold: 5
     property int defaultIconSize: 20
-    property int maxWidth: 380
+    property int maxWidth: 300
     property int spacing: 10
     property bool closable: true
     property int topMargin: 12
@@ -100,16 +100,38 @@ Item {
                                 control.position == HusNotification.PositionBottomRight
 
         function initObject(object) {
-            if (!object.hasOwnProperty('key')) object.key = '';
-            if (!object.hasOwnProperty('loading')) object.loading = false;
-            if (!object.hasOwnProperty('title')) object.title = '';
-            if (!object.hasOwnProperty('description')) object.description = '';
-            if (!object.hasOwnProperty('type')) object.type = HusNotification.TypeNone;
-            if (!object.hasOwnProperty('duration')) object.duration = 4500;
-            if (!object.hasOwnProperty('iconSize')) object.iconSize = control.defaultIconSize;
-            if (!object.hasOwnProperty('iconSource')) object.iconSource = 0;
-            if (!object.hasOwnProperty('colorIcon')) object.colorIcon = '';
-            else object.colorIcon = String(object.colorIcon);
+            if (!object.hasOwnProperty('key')) {
+                object.key = '';
+            }
+            if (!object.hasOwnProperty('loading')) {
+                object.loading = false;
+            }
+            if (!object.hasOwnProperty('title')) {
+                object.title = '';
+            }
+            if (!object.hasOwnProperty('description')) {
+                object.description = '';
+            }
+            if (!object.hasOwnProperty('type')) {
+                object.type = HusNotification.TypeNone;
+            }
+            if (!object.hasOwnProperty('duration')) {
+                object.duration = 4500;
+            }
+            if (!object.hasOwnProperty('iconSize')) {
+                object.iconSize = control.defaultIconSize;
+            }
+            if (!object.hasOwnProperty('iconSource')) {
+                object.iconSource = 0;
+            }
+            if (!object.hasOwnProperty('colorIcon')) {
+                object.colorIcon = '';
+            } else {
+                object.colorIcon = String(object.colorIcon);
+            }
+            if (!object.hasOwnProperty('maxWidth')) {
+                object.maxWidth = -1;
+            }
             return object;
         }
     }
@@ -156,6 +178,7 @@ Item {
                 required property int iconSize
                 required property int iconSource
                 required property string colorIcon
+                required property int maxWidth
                 property real collapseTopMargin: index == 0 ? 10 : (index == 1 || index == 2) ? (10 - __content.height) : (- __content.height)
 
                 function removeSelf() {
@@ -239,7 +262,7 @@ Item {
 
                     RowLayout {
                         id: __rowLayout
-                        width: Math.min(control.maxWidth, control.width - control.bgLeftPadding - control.bgRightPadding)
+                        width: Math.min(__rootItem.maxWidth > 0 ? __rootItem.maxWidth : control.maxWidth, control.width - control.bgLeftPadding - control.bgRightPadding)
                         anchors.centerIn: parent
                         spacing: control.iconSpacing
 
@@ -349,49 +372,54 @@ Item {
         }
     }
 
-    function info(title: string, description: string, duration = 4500) {
+    function info(title: string, description: string, duration = 4500, maxWidth = -1) {
         open({
             'title': title,
             'description': description,
             'type': HusNotification.TypeMessage,
-            'duration': duration
+            'duration': duration,
+            'maxWidth': maxWidth
         });
     }
 
-    function success(title: string, description: string, duration = 4500) {
+    function success(title: string, description: string, duration = 4500, maxWidth = -1) {
         open({
             'title': title,
             'description': description,
             'type': HusNotification.TypeSuccess,
-            'duration': duration
+            'duration': duration,
+            'maxWidth': maxWidth
         });
     }
 
-    function error(title: string, description: string, duration = 4500) {
+    function error(title: string, description: string, duration = 4500, maxWidth = -1) {
         open({
             'title': title,
             'description': description,
             'type': HusNotification.TypeError,
-            'duration': duration
+            'duration': duration,
+            'maxWidth': maxWidth
         });
     }
 
-    function warning(title: string, description: string, duration = 4500) {
+    function warning(title: string, description: string, duration = 4500, maxWidth = -1) {
         open({
             'title': title,
             'description': description,
             'type': HusNotification.TypeWarning,
-            'duration': duration
+            'duration': duration,
+            'maxWidth': maxWidth
         });
     }
 
-    function loading(title: string, description: string, duration = 4500) {
+    function loading(title: string, description: string, duration = 4500, maxWidth = -1) {
         open({
             'loading': true,
             'title': title,
             'description': description,
             'type': HusNotification.TypeMessage,
-            'duration': duration
+            'duration': duration,
+            'maxWidth': maxWidth
         });
     }
 

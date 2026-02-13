@@ -38,7 +38,7 @@ progressVisible | bool | false | 是否显示进度条
 stackMode | bool | true | 堆叠模式(超过stackThreshold自动堆叠)
 stackThreshold | int | 5 | 堆叠阈值
 defaultIconSize | int | 20 | 默认图标大小
-maxWidth | int | 380 | 通知框最大宽度
+maxWidth | int | 300 | 通知框最大宽度
 spacing | int | 10 | 通知之间的间隔
 closable | bool | false | 是否显示关闭按钮
 topMargin | int | 12 | 通知距离顶端的距离
@@ -67,13 +67,14 @@ duration | int | 可选 | 通知持续时间(默认4500ms)
 iconSize | int | 可选 | 通知图标大小
 iconSource | int | 可选 | 通知图标
 colorIcon | color | 可选 | 通知图标颜色
+maxWidth | int | 可选 | 通知宽度
 \n<br/>
 \n### 支持的函数：\n
-- \`info(title: string, description: string, duration = 4500)\` 弹出一条 \`info\` 通知。\n
-- \`success(title: string, description: string, duration = 4500)\` 弹出一条 \`success\` 通知。\n
-- \`error(title: string, description: string, duration = 4500)\` 弹出一条 \`error\` 通知。\n
-- \`warning(title: string, description: string, duration = 4500)\` 弹出一条 \`warning\` 通知。\n
-- \`loading(title: string, description: string, duration = 4500)\` 弹出一条 \`loading\` 通知。\n
+- \`info(title: string, description: string, duration = 4500, maxWidth = -1)\` 弹出一条 \`info\` 通知。\n
+- \`success(title: string, description: string, duration = 4500, maxWidth = -1)\` 弹出一条 \`success\` 通知。\n
+- \`error(title: string, description: string, duration = 4500, maxWidth = -1)\` 弹出一条 \`error\` 通知。\n
+- \`warning(title: string, description: string, duration = 4500, maxWidth = -1)\` 弹出一条 \`warning\` 通知。\n
+- \`loading(title: string, description: string, duration = 4500, maxWidth = -1)\` 弹出一条 \`loading\` 通知。\n
 - \`open(object: var)\` 弹出一条通知体为 \`{object}\` 的通知。\n
 - \`close(key: string)\` 关闭一条通知键为 \`key\` 的通知。\n
 - \`clear()\` 清空所有通知。\n
@@ -383,6 +384,55 @@ Item {
                     text: 'Open the notification box'
                     onClicked: {
                         notification7.info('Notification Title', 'I will never close automatically. This is a purposely very very long description that has many many characters and words.', 99999999);
+                    }
+                }
+            }
+        }
+
+        CodeBox {
+            width: parent.width
+            descTitle: qsTr('自定义通知框的宽度')
+            desc: qsTr(`
+自定义通知框的宽度，通过 \`maxWidth\` 属性设置最大宽度，默认 -1 表示使用全局的默认宽度 300 像素。\n
+                       `)
+            code: `
+import QtQuick
+import QtQuick.Controls.Basic
+import HuskarUI.Basic
+
+Item {
+    width: parent.width
+    HusNotification {
+        id: notification11
+        parent: Overlay.overlay
+        anchors.fill: parent
+        anchors.topMargin: captionBar.height
+        position: HusNotification.PositionTopRight
+    }
+
+    HusButton {
+        type: HusButton.TypePrimary
+        text: 'Custom Width'
+        onClicked: {
+            notification11.info('Notification Title', 'This notification has a custom width.', 4500, 400);
+        }
+    }
+}
+            `
+            exampleDelegate: Row {
+                HusNotification {
+                    id: notification11
+                    parent: Overlay.overlay
+                    anchors.fill: parent
+                    anchors.topMargin: captionBar.height
+                    position: HusNotification.PositionTopRight
+                }
+
+                HusButton {
+                    type: HusButton.TypePrimary
+                    text: 'Custom Width'
+                    onClicked: {
+                        notification11.info('Notification Title', 'This notification has a custom width.', 4500, 400);
                     }
                 }
             }
