@@ -98,6 +98,7 @@ cmake -S . -B build -G "Ninja"
 or
 cmake -S . -B build -G "MinGW Makefiles"
 ```
+
 > [!IMPORTANT]
 > By default, `BUILD_HUSKARUI_IN_DEFAULT_LOCATION=ON`:
 > - the `headers` will be built in the `[QtDir]/[QtVersion]/[Kit]/include/HuskarUI` directory.
