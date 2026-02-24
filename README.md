@@ -51,7 +51,7 @@ English | [中文](./README-zh_CN.md)
 
 - 📦 A set of high-quality Qml components out of the box.
 - 🎨 Powerful theme customization system.
-- 💻 Based on Qml, completely cross platform.
+- 💻 Based on Qml, completely cross-platform.
 - 🔧 Highly flexible delegate based component customization.
 
 ## 🗺️ Roadmap

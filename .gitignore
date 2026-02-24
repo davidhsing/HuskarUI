@@ -75,7 +75,7 @@ CMakeLists.txt.user*
 # CMake generated files
 /bin/
 /build/
-/install/
+/dist/
 /gallery/bin/
 /package/
 CMakeCache.txt
