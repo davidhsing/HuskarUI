@@ -344,11 +344,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 include(GNUInstallDirs)
-set(INCLUDE_INSTALL_DIR "dist/${CMAKE_INSTALL_INCLUDEDIR}") # include
-set(LIB_INSTALL_DIR "dist/${CMAKE_INSTALL_LIBDIR}") # lib
-set(BIN_INSTALL_DIR "dist/${CMAKE_INSTALL_BINDIR}") # bin
-set(QML_INSTALL_DIR "dist/qml") # qml
-set(OBJ_INSTALL_DIR "dist/obj") # obj
+set(INCLUDE_INSTALL_DIR "install/${CMAKE_INSTALL_INCLUDEDIR}") # include
+set(LIB_INSTALL_DIR "install/${CMAKE_INSTALL_LIBDIR}") # lib
+set(BIN_INSTALL_DIR "install/${CMAKE_INSTALL_BINDIR}") # bin
+set(QML_INSTALL_DIR "install/qml") # qml
+set(OBJ_INSTALL_DIR "install/obj") # obj
 set(HUSKARUI_QML_INSTALL_DIR "${QML_INSTALL_DIR}/HuskarUI")
 set(HUSKARUI_CONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/HuskarUI")
 
