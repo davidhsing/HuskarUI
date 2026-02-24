@@ -89,7 +89,7 @@ git submodule update --remote --recursive
 # cd HuskarUI
 cmake -S . -B build -G "Ninja"
 cmake --build build --config Release --target all --parallel
-# cmake --install build
+# cmake --install build --prefix install
 ```
 
 - Build with Ninja/MinGW
